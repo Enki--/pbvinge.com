@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to pbvinge.com">
+  <header>
+    <h1>Welcome to pbvinge.com</h1>
+  </header>
+  <main>
+    <p>This is the main page of pbvinge.com. Explore our content and enjoy your stay!</p>
+  </main>
+  <footer>
+    <p>&copy; {new Date().getFullYear()} pbvinge.com. All rights reserved.</p>
+  </footer>
+</Layout>
+
+<style>
+  header, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
