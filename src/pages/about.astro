@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About - Patrick Vinge">
+  <article class="about">
+    <h1>About Me</h1>
+    <p>
+      [Your brief introduction here. Talk about who you are, what you do, 
+      and what interests you. Keep it concise and personal.]
+    </p>
+    
+    <h2>Current Work</h2>
+    <p>
+      [Describe what you're working on currently]
+    </p>
+
+    <h2>Connect</h2>
+    <ul class="social-links">
+      <li><a href="https://twitter.com/yourusername">Twitter</a></li>
+      <li><a href="https://github.com/yourusername">GitHub</a></li>
+      <li><a href="mailto:your@email.com">Email</a></li>
+    </ul>
+  </article>
+</Layout>
+
+<style>
+  .about {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .social-links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .social-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .social-links a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .social-links a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,28 +1,109 @@
 ---
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = "Patrick Vinge's personal website" } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <title>{title}</title>
-</head>
-<body>
-    <slot />
-</body>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="/" class="home-link">Patrick Vinge</a>
+        <div class="nav-links">
+          <a href="/writing">Writing</a>
+          <a href="/about">About</a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>
 
 <style is:global>
-  /* You can move your styles.css content here or import it */
+  :root {
+    --text-color: #333;
+    --background-color: #fff;
+    --link-color: #0066CC;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background-color);
     margin: 0;
-    padding: 20px;
-    font-family: system-ui, -apple-system, sans-serif;
+    padding: 0;
+  }
+
+  nav {
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-content {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .home-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .nav-links a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+
+
+
+
+
+
+
+
+</style>  }    line-height: 1.3;  h1, h2, h3 {  }    text-decoration: underline;  a:hover {
+  a:hover {
+    text-decoration: underline;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.3;
   }
 </style>

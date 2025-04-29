@@ -2,21 +2,79 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Welcome to pbvinge.com">
-  <header>
-    <h1>Welcome to pbvinge.com</h1>
-  </header>
-  <main>
-    <p>This is the main page of pbvinge.com. Explore our content and enjoy your stay!</p>
-  </main>
-  <footer>
-    <p>&copy; {new Date().getFullYear()} pbvinge.com. All rights reserved.</p>
-  </footer>
+<Layout title="Patrick Vinge">
+  <div class="intro">
+    <h1>Hi, I'm Patrick Vinge</h1>
+    <p class="bio">
+      Welcome to my personal website. Here you'll find my thoughts on [your interests/expertise], 
+      along with notes from what I'm learning and working on.
+    </p>
+  </div>
+
+  <section class="featured">
+    <h2>Featured Writing</h2>
+    <ul class="post-list">
+      <li>
+        <a href="/post-1">
+          <span class="post-title">Your First Post Title</span>
+          <span class="post-date">April 2024</span>
+        </a>
+      </li>
+      <!-- Add more posts as needed -->
+    </ul>
+  </section>
 </Layout>
 
 <style>
-  header, main, footer {
-    max-width: 800px;
-    margin: 0 auto;
+  .intro {
+    margin: 4rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .bio {
+    font-size: 1.25rem;
+    color: #555;
+    margin: 1rem 0 2rem 0;
+  }
+
+  .featured {
+    margin: 3rem 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-list li {
+    margin-bottom: 1rem;
+  }
+
+  .post-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .post-title {
+    font-weight: 500;
+  }
+
+  .post-date {
+    color: #666;
+    font-size: 0.9rem;
   }
 </style>
