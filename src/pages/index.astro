@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Patrick Vinge">
   <div class="intro">
+    <img src="/assets/picture.png" alt="Patrick Vinge" class="profile-picture" />
     <h1>Hi, I'm Patrick Vinge</h1>
     <p class="bio">
       Welcome to my personal website. Here you'll find my thoughts on [your interests/expertise], 
@@ -28,6 +29,20 @@ import Layout from '../layouts/Layout.astro';
 <style>
   .intro {
     margin: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   h1 {
