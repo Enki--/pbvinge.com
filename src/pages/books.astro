@@ -1,40 +1,213 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// This will be replaced with real book data later
+const books = [
+  {
+    title: "Example Book 1",
+    author: "Author Name",
+    rating: 4, // out of 5 stars
+    coverImage: "https://placehold.co/200x300", // Replace with actual book cover
+    summary: "A placeholder summary for this book. Replace with your actual notes from Obsidian.",
+    tags: ["Business", "Psychology"]
+  },
+  {
+    title: "Example Book 2",
+    author: "Another Author",
+    rating: 5,
+    coverImage: "https://placehold.co/200x300",
+    summary: "Another placeholder summary. Your book reports from Obsidian will go here.",
+    tags: ["Philosophy", "Personal Growth"]
+  }
+];
+
+// Helper function to render stars
+function renderStars(rating: number) {
+  return "★".repeat(rating) + "☆".repeat(5 - rating);
+}
 ---
 
-<Layout title="Books - Patrick Vinge">
-  <article class="books">
-    <h1>Books</h1>
-    <p class="intro">
-      A curated collection of books I've read and recommend.
-    </p>
-    
-    <section class="book-list">
-      <!-- Book entries will go here -->
-    </section>
-  </article>
+<Layout title="Book Notes - Shrink">
+  <div class="books-container">
+    <header class="page-header">
+      <h1>Book Notes</h1>
+      <p class="intro">
+        A collection of books I've read, with ratings and brief thoughts on each.
+      </p>
+    </header>
+
+    <div class="search-section">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search books by title, author, or tag..."
+        class="search-input"
+      />
+      <div class="tag-filters">
+        <!-- Tags will be dynamically populated -->
+      </div>
+    </div>
+
+    <div class="books-grid" id="booksGrid">
+      {books.map((book) => (
+        <article class="book-card">
+          <div class="book-cover">
+            <img src={book.coverImage} alt={`Cover of ${book.title}`} />
+          </div>
+          <div class="book-content">
+            <h2>{book.title}</h2>
+            <div class="book-meta">
+              <span class="author">{book.author}</span>
+              <span class="rating" title={`${book.rating} out of 5 stars`}>
+                {renderStars(book.rating)}
+              </span>
+            </div>
+            <p class="summary">{book.summary}</p>
+            <div class="book-tags">
+              {book.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
 </Layout>
 
 <style>
-  .books {
-    max-width: 680px;
+  .books-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
   }
 
   h1 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .intro {
     font-size: 1.2rem;
     color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .search-section {
     margin-bottom: 3rem;
   }
 
-  .book-list {
+  .search-input {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    display: block;
+    padding: 0.8rem 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .books-grid {
     display: grid;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+  }
+
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background: transparent;
+    transition: transform 0.2s;
+  }
+
+  .book-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .book-cover {
+    margin-bottom: 1rem;
+    position: relative;
+    aspect-ratio: 2/3;
+  }
+
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-content {
+    flex: 1;
+  }
+
+  .book-content h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+  }
+
+  .book-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .rating {
+    color: #ffd700;
+    letter-spacing: 1px;
+  }
+
+  .summary {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #666;
   }
 </style>
+
+<script>
+  // Client-side search functionality
+  const searchInput = document.getElementById('searchInput');
+  const booksGrid = document.getElementById('booksGrid');
+  
+  if (searchInput && booksGrid) {
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const bookCards = booksGrid.querySelectorAll('.book-card');
+      
+      bookCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+      });
+    });
+  }
+</script>
