@@ -7,7 +7,7 @@ const futureReads = [
     title: "Example Book 1",
     author: "Author Name",
     class: "Psychology",
-    dateCompleted: "TBR", // To Be Read
+    dateCompleted: "TBR",
     coverImage: "https://placehold.co/120x180"
   },
   {
@@ -29,18 +29,39 @@ const futureReads = [
       </p>
     </header>
 
+    <div class="controls">
+      <input 
+        type="text" 
+        id="filterInput" 
+        placeholder="Filter books..."
+        class="filter-input"
+      />
+    </div>
+
     <div class="table-wrapper">
       <table class="reading-table">
         <thead>
           <tr>
             <th class="cover-col">Cover</th>
-            <th class="title-col">Title</th>
-            <th class="author-col">Author</th>
-            <th class="class-col">Class</th>
-            <th class="date-col">Status</th>
+            <th class="title-col sortable" data-sort="title">
+              Title
+              <span class="sort-icon">↕</span>
+            </th>
+            <th class="author-col sortable" data-sort="author">
+              Author
+              <span class="sort-icon">↕</span>
+            </th>
+            <th class="class-col sortable" data-sort="class">
+              Class
+              <span class="sort-icon">↕</span>
+            </th>
+            <th class="date-col sortable" data-sort="dateCompleted">
+              Status
+              <span class="sort-icon">↕</span>
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="tableBody">
           {futureReads.map((book) => (
             <tr>
               <td class="cover-col">
@@ -60,14 +81,15 @@ const futureReads = [
 
 <style>
   .reading-container {
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 2rem 1rem;
   }
 
   .page-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   h1 {
@@ -82,19 +104,37 @@ const futureReads = [
     margin: 0 auto;
   }
 
+  .controls {
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem 1rem;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+
+  .filter-input:focus {
+    outline: none;
+    border-color: var(--link-color);
+  }
+
   .table-wrapper {
-    overflow-x: auto;
-    margin-top: 2rem;
+    width: 100%;
+    margin-top: 1rem;
     background: white;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
   }
 
   .reading-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.95rem;
-    min-width: 800px;
   }
 
   thead {
@@ -107,6 +147,27 @@ const futureReads = [
     padding: 1rem;
     font-weight: 600;
     color: #444;
+    white-space: nowrap;
+  }
+
+  .sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sortable:hover {
+    background: #f1f3f5;
+  }
+
+  .sort-icon {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #999;
+    font-size: 0.8em;
+  }
+
+  .sort-icon.active {
+    color: var(--link-color);
   }
 
   td {
@@ -120,7 +181,8 @@ const futureReads = [
   }
 
   .cover-col {
-    width: 100px;
+    padding: 0.5rem;
+    min-width: 80px;
   }
 
   .cover-col img {
@@ -132,22 +194,22 @@ const futureReads = [
   }
 
   .title-col {
-    width: 30%;
+    min-width: 200px;
     font-weight: 500;
   }
 
   .author-col {
-    width: 20%;
+    min-width: 150px;
     color: #555;
   }
 
   .class-col {
-    width: 15%;
+    min-width: 120px;
     color: #666;
   }
 
   .date-col {
-    width: 15%;
+    min-width: 100px;
     color: #666;
   }
 
@@ -164,4 +226,102 @@ const futureReads = [
       padding: 0.75rem;
     }
   }
+
+  .hidden {
+    display: none;
+  }
 </style>
+
+<script>
+  // Get DOM elements
+  const filterInput = document.getElementById('filterInput');
+  const tableBody = document.getElementById('tableBody');
+  const sortableHeaders = document.querySelectorAll('.sortable');
+  
+  // Current sort state
+  let currentSort = {
+    column: '',
+    ascending: true
+  };
+
+  // Convert table rows to array of objects for easier manipulation
+  function getTableData() {
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    return rows.map(row => ({
+      element: row,
+      title: row.querySelector('.title-col').textContent,
+      author: row.querySelector('.author-col').textContent,
+      class: row.querySelector('.class-col').textContent,
+      dateCompleted: row.querySelector('.date-col').textContent
+    }));
+  }
+
+  // Sort table data
+  function sortData(data, column) {
+    return data.sort((a, b) => {
+      const aVal = a[column].toLowerCase();
+      const bVal = b[column].toLowerCase();
+      
+      if (currentSort.ascending) {
+        return aVal.localeCompare(bVal);
+      } else {
+        return bVal.localeCompare(aVal);
+      }
+    });
+  }
+
+  // Update table with sorted/filtered data
+  function updateTable(data) {
+    tableBody.innerHTML = '';
+    data.forEach(item => {
+      tableBody.appendChild(item.element);
+    });
+  }
+
+  // Filter table data
+  function filterData(data, searchTerm) {
+    return data.filter(item => {
+      const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
+      return searchString.includes(searchTerm.toLowerCase());
+    });
+  }
+
+  // Add event listeners
+  if (filterInput && tableBody) {
+    filterInput.addEventListener('input', () => {
+      const data = getTableData();
+      const filtered = filterData(data, filterInput.value);
+      updateTable(filtered);
+    });
+  }
+
+  // Add sorting functionality
+  sortableHeaders.forEach(header => {
+    const sortIcon = header.querySelector('.sort-icon');
+    
+    header.addEventListener('click', () => {
+      const column = header.dataset.sort;
+      
+      // Remove active class from all icons
+      document.querySelectorAll('.sort-icon').forEach(icon => {
+        icon.classList.remove('active');
+      });
+      
+      // Update sort state
+      if (currentSort.column === column) {
+        currentSort.ascending = !currentSort.ascending;
+      } else {
+        currentSort.column = column;
+        currentSort.ascending = true;
+      }
+      
+      // Add active class to current sort icon
+      sortIcon.classList.add('active');
+      
+      // Sort and update table
+      const data = getTableData();
+      const sorted = sortData(data, column);
+      updateTable(sorted);
+    });
+  });
+</script>
