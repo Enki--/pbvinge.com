@@ -11,7 +11,7 @@ isbn: "978-0374275631"
 
 # Website display metadata
 rating: 5
-coverImage: "/assets/books/thinking-fast-and-slow.jpg"
+coverImage: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 dateCompleted: "2024-04-29"
 tags: ["Psychology", "Decision Making", "Behavioral Economics"]
 class: "Psychology"

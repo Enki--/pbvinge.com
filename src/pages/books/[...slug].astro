@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { renderStars } from '../../data/books';
+import { generateCitation } from '../../utils/citations';
 
 // Generate static paths for all books
 export async function getStaticPaths() {
@@ -76,6 +77,20 @@ const { Content } = await book.render();
           </>
         )}
       </dl>
+      
+      <div class="citation-export mt-6">
+        <div class="flex items-center gap-4">
+          <select id="citationFormat" class="px-3 py-2 border rounded-lg text-sm">
+            <option value="bibtex">BibTeX</option>
+            <option value="apa">APA</option>
+            <option value="mla">MLA</option>
+          </select>
+          <button id="copyCitation" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors">
+            Copy Citation
+          </button>
+        </div>
+        <pre id="citationPreview" class="mt-4 p-4 bg-gray-100 rounded-lg text-sm overflow-x-auto"></pre>
+      </div>
     </div>
 
     <div class="book-content">
@@ -83,6 +98,43 @@ const { Content } = await book.render();
     </div>
   </article>
 </Layout>
+
+<script define:vars={{ book: book.data }}>
+// Citation export functionality
+const formatSelect = document.getElementById('citationFormat');
+const copyButton = document.getElementById('copyCitation');
+const previewElement = document.getElementById('citationPreview');
+
+function updateCitationPreview() {
+  if (!formatSelect || !previewElement) return;
+  const format = formatSelect.value;
+  const citation = generateCitation(book, format);
+  previewElement.textContent = citation;
+}
+
+formatSelect?.addEventListener('change', updateCitationPreview);
+
+copyButton?.addEventListener('click', async () => {
+  if (!previewElement?.textContent) return;
+  
+  try {
+    await navigator.clipboard.writeText(previewElement.textContent);
+    const originalText = copyButton.textContent;
+    copyButton.textContent = 'Copied!';
+    copyButton.classList.add('bg-green-500');
+    
+    setTimeout(() => {
+      copyButton.textContent = originalText;
+      copyButton.classList.remove('bg-green-500');
+    }, 2000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
+});
+
+// Initialize preview
+updateCitationPreview();
+</script>
 
 <style>
   .book-detail {
@@ -187,6 +239,17 @@ const { Content } = await book.render();
 
   dd {
     margin: 0;
+  }
+
+  .citation-export {
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+  }
+
+  #citationPreview {
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 
   .book-content {
