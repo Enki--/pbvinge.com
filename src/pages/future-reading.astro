@@ -81,15 +81,19 @@ const futureReads = [
 
 <style>
   .reading-container {
-    width: 95vw;  /* Use viewport width */
-    max-width: 1400px;
+    width: 100%;
+    max-width: 95%;
     margin: 0 auto;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .page-header {
     text-align: center;
     margin-bottom: 2rem;
+    width: 100%;
   }
 
   h1 {
@@ -105,6 +109,9 @@ const futureReads = [
   }
 
   .controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     margin-bottom: 1.5rem;
   }
 
@@ -124,7 +131,7 @@ const futureReads = [
 
   .table-wrapper {
     width: 100%;
-    margin-top: 1rem;
+    margin: 0 auto;
     background: white;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -133,9 +140,10 @@ const futureReads = [
 
   .reading-table {
     width: 100%;
-    table-layout: fixed; /* This helps with column sizing */
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 0.95rem;
+    margin: 0 auto;
   }
 
   thead {
@@ -185,9 +193,9 @@ const futureReads = [
   }
 
   .cover-col {
-    width: 8vw;
-    min-width: 70px;
-    max-width: 90px;
+    width: 7%;
+    min-width: 60px;
+    max-width: 80px;
   }
 
   .cover-col img {
@@ -201,25 +209,25 @@ const futureReads = [
   }
 
   .title-col {
-    width: 25vw;
-    min-width: 150px;
+    width: 30%;
+    min-width: 140px;
     font-weight: 500;
   }
 
   .author-col {
-    width: 20vw;
+    width: 25%;
     min-width: 120px;
     color: #555;
   }
 
   .class-col {
-    width: 15vw;
+    width: 20%;
     min-width: 100px;
     color: #666;
   }
 
   .date-col {
-    width: 12vw;
+    width: 18%;
     min-width: 90px;
     color: #666;
   }
@@ -230,7 +238,7 @@ const futureReads = [
 
   @media (max-width: 768px) {
     .reading-container {
-      width: 100vw;
+      max-width: 100%;
       padding: 0.5rem;
     }
 
@@ -240,6 +248,10 @@ const futureReads = [
 
     th, td {
       padding: 0.75rem 0.5rem;
+    }
+
+    .table-wrapper {
+      border-radius: 0;
     }
 
     /* Show full text on hover for mobile */
