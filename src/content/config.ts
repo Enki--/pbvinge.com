@@ -24,4 +24,19 @@ export const collections = {
       isPublished: z.boolean().default(true),
     }),
   }),
+  
+  futureReads: defineCollection({
+    type: 'content',
+    schema: z.object({
+      books: z.array(z.object({
+        title: z.string(),
+        author: z.string(),
+        class: z.string(),
+        dateCompleted: z.string(),
+        coverImage: z.string(),
+        tags: z.array(z.string()).optional(),
+        reason: z.string().optional()
+      }))
+    })
+  })
 };

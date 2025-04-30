@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { futureReads } from '../data/future-reads';
+import { getFutureReads } from '../data/future-reads';
+
+const futureReads = await getFutureReads();
 ---
 
 <Layout title="Future Reading - Shrink">

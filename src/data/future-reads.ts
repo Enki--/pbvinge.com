@@ -1,24 +1,17 @@
-interface Book {
+import { getCollection } from 'astro:content';
+
+export interface FutureRead {
   title: string;
   author: string;
   class: string;
   dateCompleted: string;
   coverImage: string;
+  tags?: string[];
+  reason?: string;
 }
 
-export const futureReads: Book[] = [
-  {
-    title: "How to Read a Book",
-    author: "Motimer J. Adler",
-    class: "SAASS Prep",
-    dateCompleted: "4/1/2024",
-    coverImage: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-  },
-  {
-    title: "Example Book 2",
-    author: "Another Author",
-    class: "Philosophy",
-    dateCompleted: "TBR",
-    coverImage: "https://placehold.co/120x180"
-  }
-];
+export async function getFutureReads(): Promise<FutureRead[]> {
+  const futureReadsEntry = await getCollection('futureReads');
+  // Since we now have a single markdown file, we get the first (and only) entry
+  return futureReadsEntry[0].data.books;
+}
