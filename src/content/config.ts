@@ -4,24 +4,24 @@ export const collections = {
   books: defineCollection({
     type: 'content',
     schema: z.object({
-      // Citation metadata
-      citekey: z.string().optional(),
-      aliases: z.array(z.string()).optional(),
-      title: z.string(),
-      authors: z.array(z.string()),
-      year: z.number(),
-      itemType: z.string().optional(),
-      publisher: z.string().optional(),
-      isbn: z.string().optional(),
-      
-      // Website display metadata
-      rating: z.number().min(1).max(5),
-      coverImage: z.string(),
-      dateCompleted: z.string(),
       tags: z.array(z.string()),
-      class: z.string(),
-      summary: z.string().optional(),
-      isPublished: z.boolean().default(true),
+      title: z.string(),
+      subtitle: z.string().optional(),
+      author: z.array(z.string()),
+      category: z.array(z.string()).optional(),
+      publisher: z.string().optional(),
+      publish: z.string().optional(),
+      pages: z.number().optional(),
+      isbn10: z.string().optional(),
+      isbn13: z.string().optional(),
+      cover: z.string(),
+      status: z.enum(["to read", "reading", "complete"]).optional(),
+      created: z.string().optional(),
+      updated: z.string().optional(),
+      class: z.string().optional(),
+      sequence: z.any().optional(),
+      slug: z.string().optional(),
+      isPublished: z.boolean().default(true)
     }),
   }),
   

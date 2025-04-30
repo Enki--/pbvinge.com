@@ -2,16 +2,17 @@ type CitationFormat = 'bibtex' | 'apa' | 'mla';
 
 interface BookData {
   title: string;
-  authors: string[];
-  year: number;
+  author: string[];  // Changed from authors to author to match your format
+  publish?: string;  // Changed from year to publish
   publisher?: string;
-  isbn?: string;
-  citekey?: string;
+  isbn10?: string;
+  isbn13?: string;
 }
 
 export function generateBibtex(book: BookData): string {
-  const citekey = book.citekey || `${book.authors[0].split(' ').pop()?.toLowerCase()}${book.year}${book.title.split(' ')[0].toLowerCase()}`;
-  const authors = book.authors.map(author => {
+  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
+  const citekey = `${book.author[0].split(' ').pop()?.toLowerCase()}${year}${book.title.split(' ')[0].toLowerCase()}`;
+  const authors = book.author.map(author => {
     const parts = author.split(' ');
     const lastName = parts.pop();
     return `${lastName}, ${parts.join(' ')}`;
@@ -20,36 +21,39 @@ export function generateBibtex(book: BookData): string {
   return `@book{${citekey},
   title = {${book.title}},
   author = {${authors}},
-  year = {${book.year}}${book.publisher ? `,
-  publisher = {${book.publisher}}` : ''}${book.isbn ? `,
-  isbn = {${book.isbn}}` : ''}
+  year = {${year}}${book.publisher ? `,
+  publisher = {${book.publisher}}` : ''}${book.isbn13 ? `,
+  isbn = {${book.isbn13}}` : book.isbn10 ? `,
+  isbn = {${book.isbn10}}` : ''}
 }`;
 }
 
 export function generateAPA(book: BookData): string {
-  const authors = book.authors.map(author => {
+  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
+  const authors = book.author.map(author => {
     const parts = author.split(' ');
     const lastName = parts.pop();
     const initials = parts.map(name => `${name[0]}.`).join(' ');
     return `${lastName}, ${initials}`;
   }).join(', ');
 
-  return `${authors} (${book.year}). ${book.title}${book.publisher ? `. ${book.publisher}` : ''}.`;
+  return `${authors} (${year}). ${book.title}${book.publisher ? `. ${book.publisher}` : ''}.`;
 }
 
 export function generateMLA(book: BookData): string {
-  const mainAuthor = book.authors[0];
+  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
+  const mainAuthor = book.author[0];
   const authorParts = mainAuthor.split(' ');
   const lastName = authorParts.pop();
   const firstName = authorParts.join(' ');
 
   let citation = `${lastName}, ${firstName}`;
   
-  if (book.authors.length > 1) {
+  if (book.author.length > 1) {
     citation += ', et al';
   }
 
-  citation += `. ${book.title}${book.publisher ? `, ${book.publisher}` : ''}, ${book.year}.`;
+  citation += `. ${book.title}${book.publisher ? `, ${book.publisher}` : ''}, ${year}.`;
   return citation;
 }
 
