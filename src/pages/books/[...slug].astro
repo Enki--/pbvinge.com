@@ -2,9 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { renderStars } from '../../data/books';
-import { generateCitation } from '../../utils/citations';
+import { generateBibtex, generateAPA, generateMLA } from '../../utils/citations';
 
-// Generate static paths for all books
 export async function getStaticPaths() {
   const books = await getCollection('books');
   return books.map(book => ({
@@ -15,6 +14,13 @@ export async function getStaticPaths() {
 
 const { book } = Astro.props;
 const { Content } = await book.render();
+
+// Pre-generate citations
+const citations = {
+  bibtex: generateBibtex(book.data),
+  apa: generateAPA(book.data),
+  mla: generateMLA(book.data)
+};
 ---
 
 <Layout title={`${book.data.title} - Book Notes - Shrink`}>
@@ -99,7 +105,7 @@ const { Content } = await book.render();
   </article>
 </Layout>
 
-<script define:vars={{ book: book.data }}>
+<script define:vars={{ citations }}>
 // Citation export functionality
 const formatSelect = document.getElementById('citationFormat');
 const copyButton = document.getElementById('copyCitation');
@@ -108,8 +114,7 @@ const previewElement = document.getElementById('citationPreview');
 function updateCitationPreview() {
   if (!formatSelect || !previewElement) return;
   const format = formatSelect.value;
-  const citation = generateCitation(book, format);
-  previewElement.textContent = citation;
+  previewElement.textContent = citations[format];
 }
 
 formatSelect?.addEventListener('change', updateCitationPreview);
@@ -122,13 +127,16 @@ copyButton?.addEventListener('click', async () => {
     const originalText = copyButton.textContent;
     copyButton.textContent = 'Copied!';
     copyButton.classList.add('bg-green-500');
+    copyButton.classList.remove('bg-blue-500');
     
     setTimeout(() => {
       copyButton.textContent = originalText;
       copyButton.classList.remove('bg-green-500');
+      copyButton.classList.add('bg-blue-500');
     }, 2000);
   } catch (err) {
     console.error('Failed to copy:', err);
+    alert('Failed to copy to clipboard');
   }
 });
 
