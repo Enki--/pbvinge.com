@@ -81,10 +81,10 @@ const futureReads = [
 
 <style>
   .reading-container {
-    width: 90%;
+    width: 95vw;  /* Use viewport width */
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
 
   .page-header {
@@ -133,6 +133,7 @@ const futureReads = [
 
   .reading-table {
     width: 100%;
+    table-layout: fixed; /* This helps with column sizing */
     border-collapse: collapse;
     font-size: 0.95rem;
   }
@@ -174,6 +175,9 @@ const futureReads = [
     padding: 1rem;
     border-bottom: 1px solid #eee;
     vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   tr:last-child td {
@@ -181,35 +185,42 @@ const futureReads = [
   }
 
   .cover-col {
-    padding: 0.5rem;
-    min-width: 80px;
+    width: 8vw;
+    min-width: 70px;
+    max-width: 90px;
   }
 
   .cover-col img {
-    width: 60px;
-    height: 90px;
+    width: 100%;
+    max-width: 60px;
+    height: auto;
+    aspect-ratio: 2/3;
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .title-col {
-    min-width: 200px;
+    width: 25vw;
+    min-width: 150px;
     font-weight: 500;
   }
 
   .author-col {
-    min-width: 150px;
+    width: 20vw;
+    min-width: 120px;
     color: #555;
   }
 
   .class-col {
-    min-width: 120px;
+    width: 15vw;
+    min-width: 100px;
     color: #666;
   }
 
   .date-col {
-    min-width: 100px;
+    width: 12vw;
+    min-width: 90px;
     color: #666;
   }
 
@@ -218,12 +229,26 @@ const futureReads = [
   }
 
   @media (max-width: 768px) {
+    .reading-container {
+      width: 100vw;
+      padding: 0.5rem;
+    }
+
     .reading-table {
       font-size: 0.9rem;
     }
 
     th, td {
-      padding: 0.75rem;
+      padding: 0.75rem 0.5rem;
+    }
+
+    /* Show full text on hover for mobile */
+    td:hover {
+      white-space: normal;
+      overflow: visible;
+      position: relative;
+      background-color: white;
+      z-index: 1;
     }
   }
 
