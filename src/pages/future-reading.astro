@@ -21,259 +21,71 @@ const futureReads = [
 ---
 
 <Layout title="Future Reading - Shrink">
-  <div class="reading-container">
-    <header class="page-header">
-      <h1>Future Reading</h1>
-      <p class="intro">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-4">Future Reading</h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Books I plan to read, organized by subject area.
       </p>
     </header>
 
-    <div class="controls">
+    <div class="mb-6">
       <input 
         type="text" 
         id="filterInput" 
         placeholder="Filter books..."
-        class="filter-input"
+        class="w-full max-w-md mx-auto block px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
       />
     </div>
 
-    <div class="table-wrapper">
-      <table class="reading-table">
-        <thead>
-          <tr>
-            <th class="cover-col">Cover</th>
-            <th class="title-col sortable" data-sort="title">
-              Title
-              <span class="sort-icon">↕</span>
-            </th>
-            <th class="author-col sortable" data-sort="author">
-              Author
-              <span class="sort-icon">↕</span>
-            </th>
-            <th class="class-col sortable" data-sort="class">
-              Class
-              <span class="sort-icon">↕</span>
-            </th>
-            <th class="date-col sortable" data-sort="dateCompleted">
-              Status
-              <span class="sort-icon">↕</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
-          {futureReads.map((book) => (
+    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead class="bg-gray-50">
             <tr>
-              <td class="cover-col">
-                <img src={book.coverImage} alt={`Cover of ${book.title}`} />
-              </td>
-              <td class="title-col">{book.title}</td>
-              <td class="author-col">{book.author}</td>
-              <td class="class-col">{book.class}</td>
-              <td class="date-col">{book.dateCompleted}</td>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Cover</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer" data-sort="title">
+                Title
+                <span class="sort-icon ml-2 text-gray-400">↕</span>
+              </th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer" data-sort="author">
+                Author
+                <span class="sort-icon ml-2 text-gray-400">↕</span>
+              </th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer" data-sort="class">
+                Class
+                <span class="sort-icon ml-2 text-gray-400">↕</span>
+              </th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer" data-sort="dateCompleted">
+                Status
+                <span class="sort-icon ml-2 text-gray-400">↕</span>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="divide-y divide-gray-200 bg-white" id="tableBody">
+            {futureReads.map((book) => (
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 pl-4 pr-3 sm:pl-6">
+                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-12 h-auto rounded shadow-sm" />
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">{book.title}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.author}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.class}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.dateCompleted}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </Layout>
-
-<style>
-  .reading-container {
-    width: 100%;
-    max-width: 1400px; /* Increased from 95% to allow more space on large screens */
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .page-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    width: 100%;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .intro {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .controls {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .filter-input {
-    width: 100%;
-    max-width: 300px;
-    padding: 0.5rem 1rem;
-    border: 2px solid #eee;
-    border-radius: 6px;
-    font-size: 0.95rem;
-  }
-
-  .filter-input:focus {
-    outline: none;
-    border-color: var(--link-color);
-  }
-
-  .table-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-  }
-
-  .reading-table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-    margin: 0 auto;
-  }
-
-  thead {
-    background: #f8f9fa;
-    border-bottom: 2px solid #eee;
-  }
-
-  th {
-    text-align: left;
-    padding: 1rem;
-    font-weight: 600;
-    color: #444;
-    white-space: nowrap;
-  }
-
-  .sortable {
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .sortable:hover {
-    background: #f1f3f5;
-  }
-
-  .sort-icon {
-    display: inline-block;
-    margin-left: 0.5rem;
-    color: #999;
-    font-size: 0.8em;
-  }
-
-  .sort-icon.active {
-    color: var(--link-color);
-  }
-
-  td {
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-    vertical-align: middle;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
-
-  .cover-col {
-    width: 10%;
-    min-width: 80px;
-    max-width: 100px;
-  }
-
-  .cover-col img {
-    width: 100%;
-    max-width: 60px;
-    height: auto;
-    aspect-ratio: 2/3;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .title-col {
-    width: 35%;
-    min-width: 200px;
-    font-weight: 500;
-  }
-
-  .author-col {
-    width: 25%;
-    min-width: 150px;
-    color: #555;
-  }
-
-  .class-col {
-    width: 15%;
-    min-width: 120px;
-    color: #666;
-  }
-
-  .date-col {
-    width: 15%;
-    min-width: 100px;
-    color: #666;
-  }
-
-  tr:hover {
-    background: #f8f9fa;
-  }
-
-  @media (max-width: 768px) {
-    .reading-container {
-      max-width: 100%;
-      padding: 0.5rem;
-    }
-
-    .reading-table {
-      font-size: 0.9rem;
-    }
-
-    th, td {
-      padding: 0.75rem 0.5rem;
-    }
-
-    .table-wrapper {
-      border-radius: 0;
-    }
-
-    /* Show full text on hover for mobile */
-    td:hover {
-      white-space: normal;
-      overflow: visible;
-      position: relative;
-      background-color: white;
-      z-index: 1;
-    }
-  }
-
-  .hidden {
-    display: none;
-  }
-</style>
 
 <script>
   // Get DOM elements
   const filterInput = document.getElementById('filterInput');
   const tableBody = document.getElementById('tableBody');
-  const sortableHeaders = document.querySelectorAll('.sortable');
+  const sortableHeaders = document.querySelectorAll('[data-sort]');
   
   // Current sort state
   let currentSort = {
@@ -286,10 +98,10 @@ const futureReads = [
     const rows = Array.from(tableBody.querySelectorAll('tr'));
     return rows.map(row => ({
       element: row,
-      title: row.querySelector('.title-col').textContent,
-      author: row.querySelector('.author-col').textContent,
-      class: row.querySelector('.class-col').textContent,
-      dateCompleted: row.querySelector('.date-col').textContent
+      title: row.children[1].textContent,
+      author: row.children[2].textContent,
+      class: row.children[3].textContent,
+      dateCompleted: row.children[4].textContent
     }));
   }
 
@@ -341,7 +153,8 @@ const futureReads = [
       
       // Remove active class from all icons
       document.querySelectorAll('.sort-icon').forEach(icon => {
-        icon.classList.remove('active');
+        icon.classList.remove('text-blue-500');
+        icon.classList.add('text-gray-400');
       });
       
       // Update sort state
@@ -353,7 +166,8 @@ const futureReads = [
       }
       
       // Add active class to current sort icon
-      sortIcon.classList.add('active');
+      sortIcon.classList.remove('text-gray-400');
+      sortIcon.classList.add('text-blue-500');
       
       // Sort and update table
       const data = getTableData();
