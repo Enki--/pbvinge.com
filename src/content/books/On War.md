@@ -6,19 +6,19 @@ author:
   - "Carl von Clausewitz"
 category:
   - "Military Science"
-publisher: 
-publish: 2004-01-01
+publisher: ""
+publish: "2004-01-01"
 pages: 635
-isbn10: 0691018545
-isbn13: 9780691018546
+isbn10: "0691018545"
+isbn13: "9780691018546"
 cover: http://books.google.com/books/content?id=DRoL0_HF_3YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 status: to read
-created: 2025-04-30 16:31:24
-updated: 2025-04-30 16:31:24
-class: 
+created: "2025-04-30 16:31:24"
+updated: "2025-04-30 16:31:24"
+class: ""
 sequence:
-
 ---
+
 <p align="center">
   <img src="http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" width="150">
 </p>

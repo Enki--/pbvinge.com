@@ -6,18 +6,17 @@ author:
   - "Mortimer J. Adler, Charles Van Doren"
 category:
   - "Language Arts & Disciplines"
-publisher: Simon and Schuster
-publish: 2011-05-10
+publisher: "Simon and Schuster"
+publish: "2011-05-10"
 pages: 452
-isbn10: 1439144834
-isbn13: 9781439144831
+isbn10: "1439144834"
+isbn13: "9781439144831"
 cover: http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
-status: to read # options: [To Read, Reading, Complete]
-created: 2025-04-30 16:31:24
-updated: 2025-04-30 16:31:24
-class: 
+status: to read
+created: "2025-04-30 16:31:24"
+updated: "2025-04-30 16:31:24"
+class: ""
 sequence:
-
 ---
 <p align="center">
   <img src="http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" width="150">

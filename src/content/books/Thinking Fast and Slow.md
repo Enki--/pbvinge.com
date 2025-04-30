@@ -6,16 +6,16 @@ author:
   - "Daniel Kahneman"
 category:
   - "Psychology"
-publisher: Doubleday Canada
-publish: 2011-11-01
+publisher: "Doubleday Canada"
+publish: "2011-11-01"
 pages: 619
-isbn10: 0385676522
-isbn13: 9780385676526
+isbn10: "0385676522"
+isbn13: "9780385676526"
 cover: http://books.google.com/books/content?id=TA7Q27RWlj0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 status: to read # options: [To Read, Reading, Complete]
-created: 2025-04-30 18:10:49
-updated: 2025-04-30 18:10:49
-class: 
+created: "2025-04-30 18:10:49"
+updated: "2025-04-30 18:10:49"
+class: ""
 sequence:
 
 ---
