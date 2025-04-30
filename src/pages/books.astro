@@ -38,11 +38,15 @@ const sortedBooks = books.sort((a, b) =>
     <div class="books-grid" id="booksGrid">
       {sortedBooks.map((book) => (
         <article class="book-card">
-          <div class="book-cover">
-            <img src={book.data.coverImage} alt={`Cover of ${book.data.title}`} />
-          </div>
+          <a href={`/books/${book.slug}`} class="book-cover-link">
+            <div class="book-cover">
+              <img src={book.data.coverImage} alt={`Cover of ${book.data.title}`} />
+            </div>
+          </a>
           <div class="book-content">
-            <h2>{book.data.title}</h2>
+            <a href={`/books/${book.slug}`} class="book-title-link">
+              <h2>{book.data.title}</h2>
+            </a>
             <div class="book-meta">
               <span class="author">{book.data.author}</span>
               <span class="rating" title={`${book.data.rating} out of 5 stars`}>
@@ -55,9 +59,6 @@ const sortedBooks = books.sort((a, b) =>
                 <span class="tag">{tag}</span>
               ))}
             </div>
-            <a href={`/books/${book.slug}`} class="read-more">
-              Read Full Notes →
-            </a>
           </div>
         </article>
       ))}
@@ -193,6 +194,21 @@ const sortedBooks = books.sort((a, b) =>
 
   .read-more:hover {
     text-decoration: underline;
+  }
+
+  .book-cover-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .book-title-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .book-title-link:hover h2 {
+    color: var(--link-color);
   }
 </style>
 
