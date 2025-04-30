@@ -5,19 +5,18 @@ subtitle: ""
 author:
   - "Carl von Clausewitz"
 category:
-  - "History"
-publisher: Princeton University Press
-publish: 2008-09-02
-pages: 751
-isbn10: 1400837405
-isbn13: 9781400837403
-cover: http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
-status: to read # options: [To Read, Reading, Complete]
-created: 2025-04-30 18:10:03
-updated: 2025-04-30 18:10:03
+  - "Military Science"
+publisher: 
+publish: 2004-01-01
+pages: 635
+isbn10: 0691018545
+isbn13: 9780691018546
+cover: http://books.google.com/books/content?id=DRoL0_HF_3YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+status: to read
+created: 2025-04-30 16:31:24
+updated: 2025-04-30 16:31:24
 class: 
 sequence:
-slug: on-war
 
 ---
 <p align="center">

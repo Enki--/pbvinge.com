@@ -17,7 +17,6 @@ created: 2025-04-30 16:31:24
 updated: 2025-04-30 16:31:24
 class: 
 sequence:
-slug: how-to-read-a-book
 
 ---
 <p align="center">

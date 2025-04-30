@@ -17,7 +17,6 @@ created: 2025-04-30 18:10:49
 updated: 2025-04-30 18:10:49
 class: 
 sequence:
-slug: thinking-fast-and-slow
 
 ---
 <p align="center">

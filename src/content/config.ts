@@ -20,7 +20,6 @@ export const collections = {
       updated: z.string().optional(),
       class: z.string().optional(),
       sequence: z.any().optional(),
-      slug: z.string().optional(),
       isPublished: z.boolean().default(true)
     }),
   }),
