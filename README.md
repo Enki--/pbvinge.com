@@ -1,52 +1,112 @@
 # pbvinge.com
 
-This is the repository for the static website **pbvinge.com** hosted on Cloudflare Pages.
+Personal website built with Astro and Tailwind CSS, hosted on Cloudflare Pages.
+
+## Design Principles
+
+1. **Content First**: All content is managed through Markdown files, making it easily editable and compatible with Obsidian for knowledge management.
+2. **Academic Integration**: Built-in citation system supporting multiple formats (BibTeX, APA, MLA) for academic reference.
+3. **Minimal & Clean**: Using Tailwind CSS for a clean, responsive design that puts content readability first.
+
+## Content Structure
+
+The site uses Astro's Content Collections to manage structured content:
+
+- `src/content/books/` - Individual book notes with detailed metadata and citations
+- `src/content/futureReads/` - Reading list managed through a single Markdown file
+
+### Book Note Format
+
+Book notes use frontmatter for metadata:
+
+```yaml
+---
+citekey: authorYEARfirstword
+aliases: ["Alternative Title"]
+title: "Book Title"
+authors: ["Author Name"]
+year: YYYY
+rating: 5
+coverImage: "/assets/books/image.jpg"
+dateCompleted: "YYYY-MM-DD"
+tags: ["Tag1", "Tag2"]
+class: "Category"
+---
+```
+
+### Future Reading List
+
+Future reading list is managed in `src/content/futureReads/index.md` with the following structure:
+
+```yaml
+---
+books:
+  - title: "Book Title"
+    author: "Author Name"
+    class: "Category"
+    dateCompleted: "TBR"
+    coverImage: "path/to/cover.jpg"
+    tags: ["Tag1", "Tag2"]
+    reason: "Why you want to read this book"
+---
+```
 
 ## Project Structure
 
 ```
-pbvinge.com
-├── src
-│   ├── css
-│   │   └── styles.css
-│   ├── js
-│   │   └── main.js
-│   └── pages
-│       └── index.html
-├── public
-│   └── assets
-├── .gitignore
-└── README.md
+pbvinge.com/
+├── src/
+│   ├── content/          # Content collections (books, future reads)
+│   ├── data/            # Data management and utilities
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Route components
+│   └── utils/           # Utility functions (citations, etc)
+└── public/
+    └── assets/          # Images and static files
 ```
 
-## Overview
+## Features
 
-The **pbvinge.com** project is a static website designed to provide information and resources related to pbvinge. The website is built using HTML, CSS, and JavaScript, ensuring a responsive and interactive user experience.
-
-## Setup Instructions
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/pbvinge.com.git
-   ```
-
-2. Navigate to the project directory:
-   ```
-   cd pbvinge.com
-   ```
-
-3. Open the `src/pages/index.html` file in your browser to view the website.
+- 📚 Book Notes with:
+  - Cover art display
+  - Star ratings
+  - Tag system
+  - Full text search
+  - Citation export (BibTeX/APA/MLA)
+- 📖 Future Reading List with:
+  - Sortable table view
+  - Search functionality
+  - Category organization
+- 🔍 Content search across all sections
+- 📱 Responsive design
 
 ## Development
 
-- CSS styles are located in `src/css/styles.css`.
-- JavaScript functionality is implemented in `src/js/main.js`.
-- The main HTML page is `src/pages/index.html`.
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+## Content Management
+
+- Book notes go in `src/content/books/` as individual .md files
+- Future reading list is managed in `src/content/futureReads/index.md`
+- All content supports Obsidian-compatible Markdown formatting
 
 ## Deployment
 
-This project is intended to be deployed on Cloudflare Pages. Follow the Cloudflare Pages documentation for instructions on how to deploy your static site.
+The site is automatically deployed to Cloudflare Pages on push to the main branch.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the LICENSE file for details.
