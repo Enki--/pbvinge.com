@@ -12,6 +12,9 @@ export interface FutureRead {
 
 export async function getFutureReads(): Promise<FutureRead[]> {
   const futureReadsEntry = await getCollection('futureReads');
-  // Since we now have a single markdown file, we get the first (and only) entry
+  // Get the data from the index.md file in the futureReads collection
+  if (futureReadsEntry.length === 0) {
+    return [];
+  }
   return futureReadsEntry[0].data.books;
 }
