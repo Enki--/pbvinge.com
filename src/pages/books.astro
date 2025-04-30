@@ -1,30 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { renderStars } from '../data/books';
 
-// This will be replaced with real book data later
-const books = [
-  {
-    title: "Example Book 1",
-    author: "Author Name",
-    rating: 4, // out of 5 stars
-    coverImage: "https://placehold.co/200x300", // Replace with actual book cover
-    summary: "A placeholder summary for this book. Replace with your actual notes from Obsidian.",
-    tags: ["Business", "Psychology"]
-  },
-  {
-    title: "Example Book 2",
-    author: "Another Author",
-    rating: 5,
-    coverImage: "https://placehold.co/200x300",
-    summary: "Another placeholder summary. Your book reports from Obsidian will go here.",
-    tags: ["Philosophy", "Personal Growth"]
-  }
-];
+// Get all published books from the content collection
+const books = await getCollection('books', ({ data }) => {
+  return data.isPublished;
+});
 
-// Helper function to render stars
-function renderStars(rating: number) {
-  return "★".repeat(rating) + "☆".repeat(5 - rating);
-}
+// Sort books by date completed, most recent first
+const sortedBooks = books.sort((a, b) => 
+  new Date(b.data.dateCompleted).getTime() - new Date(a.data.dateCompleted).getTime()
+);
 ---
 
 <Layout title="Book Notes - Shrink">
@@ -32,7 +19,7 @@ function renderStars(rating: number) {
     <header class="page-header">
       <h1>Book Notes</h1>
       <p class="intro">
-        A collection of books I've read, with ratings and brief thoughts on each.
+        A collection of books I've read, with detailed notes and reflections on each.
       </p>
     </header>
 
@@ -49,25 +36,28 @@ function renderStars(rating: number) {
     </div>
 
     <div class="books-grid" id="booksGrid">
-      {books.map((book) => (
+      {sortedBooks.map((book) => (
         <article class="book-card">
           <div class="book-cover">
-            <img src={book.coverImage} alt={`Cover of ${book.title}`} />
+            <img src={book.data.coverImage} alt={`Cover of ${book.data.title}`} />
           </div>
           <div class="book-content">
-            <h2>{book.title}</h2>
+            <h2>{book.data.title}</h2>
             <div class="book-meta">
-              <span class="author">{book.author}</span>
-              <span class="rating" title={`${book.rating} out of 5 stars`}>
-                {renderStars(book.rating)}
+              <span class="author">{book.data.author}</span>
+              <span class="rating" title={`${book.data.rating} out of 5 stars`}>
+                {renderStars(book.data.rating)}
               </span>
             </div>
-            <p class="summary">{book.summary}</p>
+            <p class="summary">{book.data.summary}</p>
             <div class="book-tags">
-              {book.tags.map((tag) => (
+              {book.data.tags.map((tag) => (
                 <span class="tag">{tag}</span>
               ))}
             </div>
+            <a href={`/books/${book.slug}`} class="read-more">
+              Read Full Notes →
+            </a>
           </div>
         </article>
       ))}
@@ -191,6 +181,18 @@ function renderStars(rating: number) {
     border-radius: 20px;
     font-size: 0.8rem;
     color: #666;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--link-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
   }
 </style>
 

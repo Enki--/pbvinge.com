@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { renderStars } from '../../data/books';
+
+// Generate static paths for all books
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map(book => ({
+    params: { slug: book.slug },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
+const { Content } = await book.render();
+---
+
+<Layout title={`${book.data.title} - Book Notes - Shrink`}>
+  <article class="book-detail">
+    <header class="book-header">
+      <div class="book-meta">
+        <div class="cover-container">
+          <img src={book.data.coverImage} alt={`Cover of ${book.data.title}`} class="book-cover" />
+        </div>
+        <div class="book-info">
+          <h1>{book.data.title}</h1>
+          <p class="author">by {book.data.author}</p>
+          <div class="rating" title={`${book.data.rating} out of 5 stars`}>
+            {renderStars(book.data.rating)}
+          </div>
+          <div class="tags">
+            {book.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <p class="date">Read on: {new Date(book.data.dateCompleted).toLocaleDateString()}</p>
+        </div>
+      </div>
+      {book.data.summary && (
+        <div class="summary">
+          <p>{book.data.summary}</p>
+        </div>
+      )}
+    </header>
+
+    <div class="citation-info">
+      <h2>Citation Information</h2>
+      <dl>
+        {book.data.citekey && (
+          <>
+            <dt>Cite Key</dt>
+            <dd>{book.data.citekey}</dd>
+          </>
+        )}
+        <dt>Authors</dt>
+        <dd>{book.data.authors.join(', ')}</dd>
+        <dt>Year</dt>
+        <dd>{book.data.year}</dd>
+        {book.data.publisher && (
+          <>
+            <dt>Publisher</dt>
+            <dd>{book.data.publisher}</dd>
+          </>
+        )}
+        {book.data.isbn && (
+          <>
+            <dt>ISBN</dt>
+            <dd>{book.data.isbn}</dd>
+          </>
+        )}
+        {book.data.aliases && book.data.aliases.length > 0 && (
+          <>
+            <dt>Also Known As</dt>
+            <dd>{book.data.aliases.join(', ')}</dd>
+          </>
+        )}
+      </dl>
+    </div>
+
+    <div class="book-content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .book-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .book-header {
+    margin-bottom: 3rem;
+  }
+
+  .book-meta {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cover-container {
+    width: 200px;
+  }
+
+  .book-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-info h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .author {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0.5rem 0;
+  }
+
+  .rating {
+    font-size: 1.2rem;
+    color: #ffd700;
+    letter-spacing: 1px;
+    margin: 0.5rem 0;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .tag {
+    background: #f0f0f0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .date {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  .summary {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+
+  .citation-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .citation-info h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+    color: #333;
+  }
+
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1.5rem;
+  }
+
+  dt {
+    font-weight: 600;
+    color: #555;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .book-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .book-content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: #222;
+  }
+
+  .book-content p {
+    margin-bottom: 1.5rem;
+  }
+
+  .book-content ul, 
+  .book-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .book-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .book-content blockquote {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    border-left: 4px solid #ddd;
+    background: #f9f9f9;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .book-meta {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .cover-container {
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    .book-info h1 {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .book-info {
+      text-align: center;
+    }
+
+    .tags {
+      justify-content: center;
+    }
+  }
+</style>
