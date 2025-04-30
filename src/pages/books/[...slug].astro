@@ -36,96 +36,94 @@ function getStatusColor(status: string | undefined) {
 <Layout title={`${book.data.title} - Book Notes`}>
   <article class="book-detail">
     <header class="book-header">
+      <h1>{book.data.title}</h1>
+      {book.data.subtitle && <p class="subtitle">{book.data.subtitle}</p>}
+      
+      <p class="author">by {book.data.author.join(', ')}</p>
+      
       <div class="book-meta">
-        <div class="book-info">
-          <h1>{book.data.title}</h1>
-          {book.data.subtitle && <p class="subtitle">{book.data.subtitle}</p>}
-          <p class="author">by {book.data.author.join(', ')}</p>
+        <div class="metadata-row">
+          <span class={`status-badge ${getStatusColor(book.data.status)}`}>
+            {book.data.status || 'To Read'}
+          </span>
           
-          <div class="metadata-grid">
-            <div class="status-container">
-              <span class={`status-badge ${getStatusColor(book.data.status)}`}>
-                {book.data.status || 'To Read'}
-              </span>
-              {book.data.pages && (
-                <span class="pages">{book.data.pages} pages</span>
-              )}
-            </div>
-            
-            {book.data.category && (
-              <div class="categories">
-                {book.data.category.map((cat) => (
-                  <span class="category">{cat}</span>
-                ))}
-              </div>
-            )}
-            
-            <div class="tags">
-              {book.data.tags.filter(tag => tag !== '📚Book').map((tag) => (
-                <span class="tag">{tag}</span>
+          {book.data.pages && (
+            <span class="pages">{book.data.pages} pages</span>
+          )}
+
+          {book.data.category && (
+            <div class="categories">
+              {book.data.category.map((cat) => (
+                <span class="category">{cat}</span>
               ))}
             </div>
+          )}
+          
+          <div class="tags">
+            {book.data.tags.filter(tag => tag !== '📚Book').map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
           </div>
 
-          <div class="dates text-sm text-gray-600 mt-4">
-            {book.data.created && (
-              <p>Added: {formatDate(book.data.created)}</p>
-            )}
-            {book.data.updated && book.data.updated !== book.data.created && (
-              <p>Last updated: {formatDate(book.data.updated)}</p>
-            )}
-          </div>
+          {book.data.created && (
+            <span class="date">Added: {formatDate(book.data.created)}</span>
+          )}
+          {book.data.updated && book.data.updated !== book.data.created && (
+            <span class="date">Updated: {formatDate(book.data.updated)}</span>
+          )}
         </div>
       </div>
     </header>
 
-    <div class="book-metadata">
-      <h2>Book Details</h2>
-      <dl>
-        {book.data.publisher && (
-          <>
-            <dt>Publisher</dt>
-            <dd>{book.data.publisher}</dd>
-          </>
-        )}
-        {book.data.publish && (
-          <>
-            <dt>Published</dt>
-            <dd>{formatDate(book.data.publish)}</dd>
-          </>
-        )}
-        {book.data.isbn13 && (
-          <>
-            <dt>ISBN-13</dt>
-            <dd>{book.data.isbn13}</dd>
-          </>
-        )}
-        {book.data.isbn10 && (
-          <>
-            <dt>ISBN-10</dt>
-            <dd>{book.data.isbn10}</dd>
-          </>
-        )}
-      </dl>
-      
-      <div class="citation-export mt-6">
-        <div class="flex items-center gap-4">
-          <select id="citationFormat" class="px-3 py-2 border rounded-lg text-sm">
-            <option value="bibtex">BibTeX</option>
-            <option value="apa">APA</option>
-            <option value="mla">MLA</option>
-          </select>
-          <button id="copyCitation" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors">
-            Copy Citation
-          </button>
-        </div>
-        <pre id="citationPreview" class="mt-4 p-4 bg-gray-100 rounded-lg text-sm overflow-x-auto"></pre>
-      </div>
-    </div>
-
     <div class="book-content prose prose-lg max-w-none">
       <Content />
     </div>
+
+    <footer class="book-footer">
+      <div class="book-metadata">
+        <h2>Book Details</h2>
+        <dl>
+          {book.data.publisher && (
+            <>
+              <dt>Publisher</dt>
+              <dd>{book.data.publisher}</dd>
+            </>
+          )}
+          {book.data.publish && (
+            <>
+              <dt>Published</dt>
+              <dd>{formatDate(book.data.publish)}</dd>
+            </>
+          )}
+          {book.data.isbn13 && (
+            <>
+              <dt>ISBN-13</dt>
+              <dd>{book.data.isbn13}</dd>
+            </>
+          )}
+          {book.data.isbn10 && (
+            <>
+              <dt>ISBN-10</dt>
+              <dd>{book.data.isbn10}</dd>
+            </>
+          )}
+        </dl>
+        
+        <div class="citation-export mt-6">
+          <div class="flex items-center gap-4">
+            <select id="citationFormat" class="px-3 py-2 border rounded-lg text-sm">
+              <option value="bibtex">BibTeX</option>
+              <option value="apa">APA</option>
+              <option value="mla">MLA</option>
+            </select>
+            <button id="copyCitation" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors">
+              Copy Citation
+            </button>
+          </div>
+          <pre id="citationPreview" class="mt-4 p-4 bg-gray-100 rounded-lg text-sm overflow-x-auto"></pre>
+        </div>
+      </div>
+    </footer>
   </article>
 </Layout>
 
@@ -138,37 +136,37 @@ function getStatusColor(status: string | undefined) {
 
   .book-header {
     margin-bottom: 3rem;
+    text-align: center;
   }
 
-  .book-info h1 {
+  .book-header h1 {
     font-size: 2.5rem;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     line-height: 1.2;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #666;
-    margin: 0.5rem 0;
+    margin: 0.25rem 0 1rem;
   }
 
   .author {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #666;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
   }
 
-  .metadata-grid {
+  .book-meta {
+    margin-top: 1rem;
+  }
+
+  .metadata-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
-    margin: 1.5rem 0;
-  }
-
-  .status-container {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
   }
 
   .status-badge {
@@ -186,7 +184,6 @@ function getStatusColor(status: string | undefined) {
 
   .categories {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
@@ -200,7 +197,6 @@ function getStatusColor(status: string | undefined) {
 
   .tags {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.5rem;
   }
 
@@ -208,6 +204,11 @@ function getStatusColor(status: string | undefined) {
     background: #f0f0f0;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .date {
     font-size: 0.9rem;
     color: #666;
   }
@@ -286,18 +287,24 @@ function getStatusColor(status: string | undefined) {
     font-style: italic;
   }
 
+  .book-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+
   @media (max-width: 768px) {
-    .book-info h1 {
+    .book-header h1 {
       font-size: 2rem;
     }
 
-    .metadata-grid {
-      text-align: center;
+    .metadata-row {
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .status-container,
-    .tags,
-    .categories {
+    .categories,
+    .tags {
       justify-content: center;
     }
   }
