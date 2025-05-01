@@ -51,7 +51,7 @@ const futureReads = await getFutureReads();
             {futureReads.map((book) => (
               <tr class="hover:bg-gray-50">
                 <td class="py-4 pl-4 pr-3 sm:pl-6">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-12 h-auto rounded shadow-sm" />
+                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-12 h-auto rounded shadow-sm border border-gray-200" />
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">{book.title}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.author}</td>

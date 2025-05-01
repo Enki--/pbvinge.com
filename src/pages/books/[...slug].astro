@@ -48,6 +48,16 @@ const citations = {
       
       <p class="author">by {book.data.author.join(', ')}</p>
       
+      <div class="book-cover mb-6">
+        {book.data.cover && (
+          <img 
+            src={book.data.cover} 
+            alt={`Cover of ${book.data.title}`} 
+            class="mx-auto max-w-[200px] rounded-lg shadow-sm border border-gray-200"
+          />
+        )}
+      </div>
+      
       <div class="book-meta">
         <div class="metadata-row">
           <span class={`status-badge ${getStatusColor(book.data.status)}`}>
