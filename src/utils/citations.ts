@@ -1,71 +1,86 @@
-type CitationFormat = 'bibtex' | 'apa' | 'mla';
-
-interface BookData {
+interface BookMetadata {
   title: string;
-  author: string[];  // Changed from authors to author to match your format
-  publish?: string;  // Changed from year to publish
+  subtitle?: string;
+  author: string[];
   publisher?: string;
+  publish?: string;
+  pages?: number;
   isbn10?: string;
   isbn13?: string;
 }
 
-export function generateBibtex(book: BookData): string {
-  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
-  const citekey = `${book.author[0].split(' ').pop()?.toLowerCase()}${year}${book.title.split(' ')[0].toLowerCase()}`;
-  const authors = book.author.map(author => {
-    const parts = author.split(' ');
-    const lastName = parts.pop();
-    return `${lastName}, ${parts.join(' ')}`;
-  }).join(' and ');
+// Helper function to get author names in correct format
+function formatAuthors(authors: string[], format: 'bibtex' | 'apa' | 'mla'): string {
+  switch (format) {
+    case 'bibtex':
+      return authors.join(' and ');
+    case 'apa':
+      if (authors.length === 1) return authors[0];
+      if (authors.length === 2) return `${authors[0]} & ${authors[1]}`;
+      return `${authors.slice(0, -1).join(', ')}, & ${authors[authors.length - 1]}`;
+    case 'mla':
+      if (authors.length === 1) return authors[0];
+      if (authors.length === 2) return `${authors[0]} and ${authors[1]}`;
+      if (authors.length === 3) return `${authors[0]}, ${authors[1]}, and ${authors[2]}`;
+      return `${authors[0]} et al.`;
+  }
+}
+
+// Helper function to get year from publish date
+function getYear(publish?: string): string {
+  if (!publish) return '';
+  return new Date(publish).getFullYear().toString();
+}
+
+// Generate BibTeX citation
+export function generateBibTeX(book: BookMetadata): string {
+  const year = getYear(book.publish);
+  // Create citekey from first author's lastname, year, and first word of title
+  const firstAuthor = book.author[0].split(' ').pop() || '';
+  const firstWord = book.title.split(' ')[0].toLowerCase();
+  const citekey = `${firstAuthor}${year}${firstWord}`;
 
   return `@book{${citekey},
-  title = {${book.title}},
-  author = {${authors}},
-  year = {${year}}${book.publisher ? `,
-  publisher = {${book.publisher}}` : ''}${book.isbn13 ? `,
-  isbn = {${book.isbn13}}` : book.isbn10 ? `,
-  isbn = {${book.isbn10}}` : ''}
+  title = {${book.title}${book.subtitle ? `: ${book.subtitle}` : ''}},
+  author = {${formatAuthors(book.author, 'bibtex')}},
+  year = {${year}},
+  ${book.publisher ? `publisher = {${book.publisher}},` : ''}
+  ${book.isbn13 ? `isbn = {${book.isbn13}},` : ''}
+  ${book.pages ? `pages = {${book.pages}}` : ''}
 }`;
 }
 
-export function generateAPA(book: BookData): string {
-  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
-  const authors = book.author.map(author => {
-    const parts = author.split(' ');
-    const lastName = parts.pop();
-    const initials = parts.map(name => `${name[0]}.`).join(' ');
-    return `${lastName}, ${initials}`;
-  }).join(', ');
+// Generate APA citation
+export function generateAPA(book: BookMetadata): string {
+  const year = getYear(book.publish);
+  const authors = formatAuthors(book.author, 'apa');
+  const title = book.subtitle 
+    ? `${book.title}: ${book.subtitle}`
+    : book.title;
 
-  return `${authors} (${year}). ${book.title}${book.publisher ? `. ${book.publisher}` : ''}.`;
+  return `${authors}${year ? ` (${year})` : ''}. ${title}${book.publisher ? `. ${book.publisher}` : ''}.`;
 }
 
-export function generateMLA(book: BookData): string {
-  const year = book.publish ? new Date(book.publish).getFullYear() : new Date().getFullYear();
-  const mainAuthor = book.author[0];
-  const authorParts = mainAuthor.split(' ');
-  const lastName = authorParts.pop();
-  const firstName = authorParts.join(' ');
+// Generate MLA citation
+export function generateMLA(book: BookMetadata): string {
+  const authors = formatAuthors(book.author, 'mla');
+  const title = book.subtitle 
+    ? `${book.title}: ${book.subtitle}`
+    : book.title;
 
-  let citation = `${lastName}, ${firstName}`;
-  
-  if (book.author.length > 1) {
-    citation += ', et al';
-  }
-
-  citation += `. ${book.title}${book.publisher ? `, ${book.publisher}` : ''}, ${year}.`;
-  return citation;
+  return `${authors}. ${title}${book.publisher ? `. ${book.publisher}` : ''}${book.publish ? `, ${getYear(book.publish)}` : ''}.`;
 }
 
-export function generateCitation(book: BookData, format: CitationFormat): string {
+// Main function to get citation in requested format
+export function getCitation(book: BookMetadata, format: 'bibtex' | 'apa' | 'mla'): string {
   switch (format) {
     case 'bibtex':
-      return generateBibtex(book);
+      return generateBibTeX(book);
     case 'apa':
       return generateAPA(book);
     case 'mla':
       return generateMLA(book);
     default:
-      throw new Error('Unsupported citation format');
+      throw new Error(`Unsupported citation format: ${format}`);
   }
 }
