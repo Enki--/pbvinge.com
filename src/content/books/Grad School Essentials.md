@@ -7,14 +7,14 @@ author:
 category:
   - "Study Aids"
 publisher: "Univ of California Press"
-publish: "2016-01-05"
+publish: 2016-01-05
 pages: 156
 isbn10: "0520963261"
 isbn13: "9780520963269"
-cover: http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+cover: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "Completed"
-created: "2025-05-12 15:41:10"
-updated: "2025-05-12 15:41:10"
+created: 2025-05-12 15:41:10
+updated: 2025-05-12 15:41:10
 class: "SAASS"
 sequence: "Prep"
 ---
