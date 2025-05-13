@@ -16,8 +16,8 @@ export const collections = {
       isbn13: z.string().optional(),
       cover: z.string(),
       status: z.enum(["to read", "reading", "complete"]).optional(),
-      created: z.string().optional(),
-      updated: z.string().optional(),
+      created: z.coerce.date().optional(),
+      updated: z.coerce.date().optional(),
       class: z.string().optional(),
       sequence: z.any().optional(),
       isPublished: z.boolean().default(true)
