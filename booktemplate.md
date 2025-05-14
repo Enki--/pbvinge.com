@@ -21,24 +21,24 @@ sequence: ""
 
 # {{title}}
 
-## Description
+## Online Description
 {{description}}
 
-## Author Background
+## 🔫 Author Background
 - Example: Author's education and career
 - Example: Previous works and expertise
 - Example: Relevant accomplishments
 
-## Main Issue / Thesis
+## 🔍 Author's Main Issue / Thesis
 - Main argument or central idea of the book
 - Key problems addressed
 
-## Book Structure
+## 📒 Sections
 ### Introduction
 - Key points from introduction
 - Initial framework presented
 
-### Key Chapters
+### Key Points
 - Chapter 1: Main points
   - Sub-point
   - Evidence provided
@@ -50,17 +50,17 @@ sequence: ""
 - Author's final arguments
 - Solutions proposed
 
-## Target Audience
+## 🥰 Who Would Like it?
 - Who would benefit most from this book
 - Required background knowledge
 - Reading level
 
-## Related Works
+## 📚 Related Books
 - Similar books in the field
 - Contrasting viewpoints
 - Recommended follow-up reading
 
-## Critical Analysis
+## ☠️ Agree, Disagree, or Suspend 
 ### Strengths
 - Strong points of the argument
 - Well-supported claims
@@ -71,12 +71,12 @@ sequence: ""
 - Counter-arguments
 - Areas needing more support
 
-## Key Terms and Concepts
+## ✍️ Key Terms
 - Important terminology
 - Core concepts defined
 - Key frameworks introduced
 
-## Notable Quotes and Insights
+## 🗂 Notable Quotes & Thoughts
 - "Example quote with page number" (p. XX)
 - Important passages
 - Key insights
