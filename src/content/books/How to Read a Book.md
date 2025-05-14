@@ -12,7 +12,7 @@ pages: 452
 isbn10: "1439144834"
 isbn13: "9781439144831"
 cover: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-status: to read
+status: complete
 created: 2025-04-30 20:06:39
 updated: 2025-04-30 20:06:39
 class: ""
