@@ -22,22 +22,27 @@ const recentBooks = allBooks
   </div>
 
   <section class="featured">
-    <h2>Recent Book Notes</h2>
-    <ul class="post-list">
+    <div class="section-header">
+      <h2>Recent Book Notes</h2>
+      <a href="/books" class="view-all">View all books →</a>
+    </div>
+    <div class="book-grid">
       {recentBooks.map((book) => (
-        <li>
-          <a href={`/books/${book.slug}`}>
-            <span class="post-title">{book.data.title}</span>
-            <span class="post-date">
+        <a href={`/books/${book.slug}`} class="book-card">
+          <img src={book.data.cover} alt={`Cover of ${book.data.title}`} class="book-cover" />
+          <div class="book-info">
+            <h3>{book.data.title}</h3>
+            <p class="book-author">by {book.data.author.join(', ')}</p>
+            <p class="book-date">
               {new Date(book.data.created).toLocaleDateString('en-US', { 
                 month: 'long',
                 year: 'numeric'
               })}
-            </span>
-          </a>
-        </li>
+            </p>
+          </div>
+        </a>
       ))}
-    </ul>
+    </div>
   </section>
 </Layout>
 
@@ -76,36 +81,82 @@ const recentBooks = allBooks
     margin: 3rem 0;
   }
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .post-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .post-list li {
-    margin-bottom: 1rem;
-  }
-
-  .post-list a {
+  .section-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .view-all {
+    color: #666;
     text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .view-all:hover {
     color: var(--text-color);
   }
 
-  .post-title {
-    font-weight: 500;
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
   }
 
-  .post-date {
+  .book-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-cover {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .book-info h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .book-author {
+    color: #555;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .book-date {
     color: #666;
     font-size: 0.9rem;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
