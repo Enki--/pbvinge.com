@@ -1,5 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Get completed books and sort by created date
+const allBooks = await getCollection('books');
+const recentBooks = allBooks
+  .filter(book => book.data.status === "complete")
+  .sort((a, b) => b.data.created.getTime() - a.data.created.getTime())
+  .slice(0, 2);
 ---
 
 <Layout title="Shrink">
@@ -7,22 +15,28 @@ import Layout from '../layouts/Layout.astro';
     <img src="/assets/picture.png" alt="Shrink" class="profile-picture" />
     <h1>Hi, I'm Shrink</h1>
     <p class="bio">
-        This is my digital brain — a growing collection of notes, insights, and takeaways from the books I’ve read, the tech I’m exploring, and the ideas I’m chasing.
+        This is my digital brain — a growing collection of notes, insights, and takeaways from the books I've read, the tech I'm exploring, and the ideas I'm chasing.
         Think of it as a living library: part commonplace book, part lab notebook, part reading list.
         Whether you're here to find your next read, learn something new, or just see how I think — welcome.
     </p>
   </div>
 
   <section class="featured">
-    <h2>Featured Writing</h2>
+    <h2>Recent Book Notes</h2>
     <ul class="post-list">
-      <li>
-        <a href="/post-1">
-          <span class="post-title">Your First Post Title</span>
-          <span class="post-date">April 2024</span>
-        </a>
-      </li>
-      <!-- Add more posts as needed -->
+      {recentBooks.map((book) => (
+        <li>
+          <a href={`/books/${book.slug}`}>
+            <span class="post-title">{book.data.title}</span>
+            <span class="post-date">
+              {new Date(book.data.created).toLocaleDateString('en-US', { 
+                month: 'long',
+                year: 'numeric'
+              })}
+            </span>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 </Layout>
