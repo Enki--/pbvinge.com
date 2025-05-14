@@ -10,7 +10,7 @@ export const collections = {
       author: z.array(z.string()),
       category: z.array(z.string()).optional(),
       publisher: z.string().optional(),
-      publish: z.string().optional(),
+      publish: z.coerce.date().optional(),
       pages: z.number().optional(),
       isbn10: z.string().optional(),
       isbn13: z.string().optional(),

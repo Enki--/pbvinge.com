@@ -30,16 +30,24 @@ Book notes use frontmatter for metadata:
 
 ```yaml
 ---
-citekey: authorYEARfirstword
-aliases: ["Alternative Title"]
+tags: ["📚Book"]
 title: "Book Title"
-authors: ["Author Name"]
-year: YYYY
-rating: 5
-coverImage: "/assets/books/image.jpg"
-dateCompleted: "YYYY-MM-DD"
-tags: ["Tag1", "Tag2"]
-class: "Category"
+subtitle: "Book Subtitle"  # Optional
+author:
+  - "Author Name"
+category:
+  - "Category"  # Optional
+publisher: "Publisher Name"  # Optional
+publish: YYYY-MM-DD  # Optional, date format
+pages: 123  # Optional
+isbn10: "1234567890"  # Optional
+isbn13: "1234567890123"  # Optional
+cover: "URL to cover image"
+status: "to read" | "reading" | "complete"  # Optional
+created: YYYY-MM-DD HH:MM:SS  # Optional
+updated: YYYY-MM-DD HH:MM:SS  # Optional
+class: "Class/Category"  # Optional
+sequence: "Sequence Info"  # Optional
 ---
 ```
 
