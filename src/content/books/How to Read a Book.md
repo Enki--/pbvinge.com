@@ -1,17 +1,17 @@
 ---
-tags:[📚Book]
-title: How to Read a Book
+tags: [📚Book]
+title: "How to Read a Book"
 subtitle: ""
 author:
-  - Mortimer J. Adler, Charles Van Doren
+  - "Mortimer J. Adler, Charles Van Doren"
 category:
-  - Language Arts & Disciplines
-publisher: Simon and Schuster
+  - "Language Arts & Disciplines"
+publisher: "Simon and Schuster"
 publish: 2011-05-10
 pages: 452
 isbn10: "1439144834"
 isbn13: "9781439144831"
-cover: http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+cover: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "complete"
 created: 2025-05-12 15:24:30
 updated: 2025-05-12 15:24:30
@@ -201,4 +201,4 @@ With half a million copies in print, How to Read a Book is the best and most suc
 - Agree.  I think the author makes a compelling argument that Americans generally stop learning how to read and reading, and to over come this, people should practice reading books at the different levels he recommends. 
 
 # 🗂 Thoughts / Quotes
-- Over all I think a good book for prepping for SAASS, if someone is looking for a shorter version, "Grad School Essentials" delivers largely the same content in a shorter and quicker read. 
+- Over all I think a good book for prepping for SAASS, if someone is looking for a shorter version, "Grad School Essentials" delivers largely the same content in a shorter and quicker read.
