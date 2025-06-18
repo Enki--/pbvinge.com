@@ -1,5 +1,5 @@
 ---
-books: [
+books: 
   - title: "The Structure of Scientific Revolutions"
     author: ["Kuhn, Thomas"]
     class: "601"
@@ -84,7 +84,6 @@ books: [
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
-]
 ---
 
 # Future Reading List
