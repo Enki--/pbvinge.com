@@ -1,85 +1,85 @@
 ---
 books:
   - title: "The Structure of Scientific Revolutions"
-    author: "Kuhn, Thomas"
+    author: ["Kuhn, Thomas"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=3eUtDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Why War?"
-    author: "Overy, Richard"
+    author: ["Overy, Richard"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=3v1nAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Essence of Decision: Explaining the Cuban Missile Crisis"
-    author: "Allison, Graham, and Philip S. Zelikow"
+    author: ["Allison, Graham, and Philip S. Zelikow"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "The Landmark Thucydides"
-    author: "Strassler, Robert B., ed"
+    author: ["Strassler, Robert B., ed"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Just and Unjust Wars (fifth edition)"
-    author: "Walzer, Michael"
+    author: ["Walzer, Michael"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=8wQFAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Analogies at War"
-    author: "Khong, Yuen Foong"
+    author: ["Khong, Yuen Foong"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Perception and Misperception in International Politics. (new edition)"
-    author: "Jervis, Robert"
+    author: ["Jervis, Robert"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "When France Fell: The Vichy Crisis and the Fate of the Anglo-American Alliance."
-    author: "Neiberg, Michael S"
+    author: ["Neiberg, Michael S"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Every War Must End (second revised edition)"
-    author: "Iklé, Fred Charles"
+    author: ["Iklé, Fred Charles"]
     class: "601"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "How to Read a Book: The Classic Guide to Intelligent Reading"
-    author: "Adler, Mortimer J., and Chales Van Doren"
+    author: ["Adler, Mortimer J., and Chales Van Doren"]
     class: "690"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Air University Style and Author Guide"
-    author: "AU"
+    author: ["AU"]
     class: "690"
     dateCompleted: "TBR"
     coverImage: "https://media.defense.gov/2022/May/26/2003009647/-1/-1/1/AU-1.PDF"
     tags: []
   - title: "The Craft of Research"
-    author: "Booth, Wayne C., et al"
+    author: ["Booth, Wayne C., et al"]
     class: "690"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "Out of the Darkness: The Germans, 1942-2022"
-    author: "Trentmann, Frank"
+    author: ["Trentmann, Frank"]
     class: "690"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=zc6_EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Grad School Essentials: A Crash Course in Scholarly Skills"
-    author: "Shore, Zachary"
+    author: ["Shore, Zachary"]
     class: "690"
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
