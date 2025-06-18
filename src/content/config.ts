@@ -29,7 +29,7 @@ export const collections = {
     schema: z.object({
       books: z.array(z.object({
         title: z.string(),
-        author: z.string(),
+        author: z.array(z.string()),
         class: z.string(),
         dateCompleted: z.string(),
         coverImage: z.string(),
