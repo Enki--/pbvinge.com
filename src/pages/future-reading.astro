@@ -25,42 +25,51 @@ const futureReads = await getFutureReads();
 
     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
       <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-300 text-xs sm:text-sm md:text-base">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold text-gray-900 sm:pl-6">Cover</th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="title">
-                Title
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
-              </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="author">
-                Author
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
-              </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="class">
-                Class
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
-              </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="dateCompleted">
-                Status
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200 bg-white" id="tableBody">
-            {futureReads.map((book) => (
-              <tr class="hover:bg-gray-50">
-                <td class="py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
-                </td>
-                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
-                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
-                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.class}</td>
-                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.dateCompleted}</td>
+        <div class="w-full">
+          <table class="w-full min-w-0 divide-y divide-gray-300 text-xs sm:text-sm md:text-base table-fixed">
+            <colgroup>
+              <col class="w-20 sm:w-24" />
+              <col span="1" class="w-1/4" />
+              <col span="1" class="w-1/4" />
+              <col span="1" class="w-1/12" />
+              <col span="1" class="w-1/12" />
+            </colgroup>
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold text-gray-900 sm:pl-6">Cover</th>
+                <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="title">
+                  Title
+                  <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                </th>
+                <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="author">
+                  Author
+                  <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                </th>
+                <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="class">
+                  Class
+                  <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                </th>
+                <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="dateCompleted">
+                  Status
+                  <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white" id="tableBody">
+              {futureReads.map((book) => (
+                <tr class="hover:bg-gray-50">
+                  <td class="py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
+                    <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
+                  </td>
+                  <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
+                  <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
+                  <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.class}</td>
+                  <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.dateCompleted}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
