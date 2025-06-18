@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 export interface FutureRead {
   title: string;
-  author: string;
+  author: string[];
   class: string;
   dateCompleted: string;
   coverImage: string;
