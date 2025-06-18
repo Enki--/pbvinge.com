@@ -54,7 +54,7 @@ const futureReads = await getFutureReads();
                   <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-12 h-auto rounded shadow-sm border border-gray-200" />
                 </td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">{book.title}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.author}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.author.join(', ')}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.class}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{book.dateCompleted}</td>
               </tr>
