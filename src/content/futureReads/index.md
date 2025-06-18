@@ -1,5 +1,5 @@
 ---
-books: 
+books:
   - title: "The Structure of Scientific Revolutions"
     author: ["Kuhn, Thomas"]
     class: "601"
