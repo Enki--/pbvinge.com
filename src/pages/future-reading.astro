@@ -5,6 +5,17 @@ import { getFutureReads } from '../data/future-reads';
 const futureReads = await getFutureReads();
 ---
 
+<!-- DEBUG: Show futureReads length and first item -->
+{futureReads && futureReads.length > 0 ? (
+  <pre class="bg-yellow-100 text-xs p-2 mb-4 rounded border border-yellow-300">
+    {`futureReads.length: ${futureReads.length}\nFirst item: ${JSON.stringify(futureReads[0], null, 2)}`}
+  </pre>
+) : (
+  <pre class="bg-red-100 text-xs p-2 mb-4 rounded border border-red-300">
+    No futureReads data loaded.
+  </pre>
+)}
+
 <Layout title="Future Reading - Shrink">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <header class="text-center mb-8">
