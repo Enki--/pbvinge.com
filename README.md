@@ -64,7 +64,6 @@ books:
     dateCompleted: "TBR"
     coverImage: "path/to/cover.jpg"
     tags: ["Tag1", "Tag2"]
-    reason: "Why you want to read this book"
 ---
 ```
 
