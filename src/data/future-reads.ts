@@ -7,7 +7,6 @@ export interface FutureRead {
   dateCompleted: string;
   coverImage: string;
   tags?: string[];
-  reason?: string;
 }
 
 export async function getFutureReads(): Promise<FutureRead[]> {

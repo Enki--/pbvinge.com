@@ -33,8 +33,7 @@ export const collections = {
         class: z.string(),
         dateCompleted: z.string(),
         coverImage: z.string(),
-        tags: z.array(z.string()).optional(),
-        reason: z.string().optional()
+        tags: z.array(z.string()).optional()
       }))
     })
   })
