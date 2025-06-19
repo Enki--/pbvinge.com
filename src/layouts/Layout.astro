@@ -37,7 +37,7 @@ const { title, description = "Shrink's personal website" } = Astro.props;
         </div>
       </div>
     </nav>
-    <main>
+    <main class="w-full max-w-screen-xl mx-auto px-4 py-8">
       <slot />
     </main>
   </body>
@@ -86,12 +86,6 @@ const { title, description = "Shrink's personal website" } = Astro.props;
     margin-left: 2rem;
     text-decoration: none;
     color: var(--text-color);
-  }
-
-  main {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
   }
 
   a {
