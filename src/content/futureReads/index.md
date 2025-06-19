@@ -70,7 +70,7 @@ books:
     author: ["Booth, Wayne C., et al"]
     class: "690"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=SjPqDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Out of the Darkness: The Germans, 1942-2022"
     author: ["Trentmann, Frank"]
@@ -82,7 +82,7 @@ books:
     author: ["Shore, Zachary"]
     class: "690"
     dateCompleted: "Complete"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
     tags: []
 ---
 
