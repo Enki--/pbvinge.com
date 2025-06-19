@@ -60,6 +60,7 @@ books:
     dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "how-to-read-a-book"
   - title: "Air University Style and Author Guide"
     author: ["AU"]
     class: "690"
@@ -78,12 +79,14 @@ books:
     dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=zc6_EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "out-of-the-darkness"
   - title: "Grad School Essentials: A Crash Course in Scholarly Skills"
     author: ["Shore, Zachary"]
     class: "690"
     dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "grad-school-essentials"
 ---
 
 # Future Reading List

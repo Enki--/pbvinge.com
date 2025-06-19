@@ -52,9 +52,21 @@ const futureReads = await getFutureReads();
             {futureReads.map((book) => (
               <tr class="hover:bg-gray-50">
                 <td class="py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
+                  {book.slug ? (
+                    <a href={`/books/${book.slug}`} class="block">
+                      <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
+                    </a>
+                  ) : (
+                    <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
+                  )}
                 </td>
-                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
+                <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">
+                  {book.slug ? (
+                    <a href={`/books/${book.slug}`} class="text-blue-600 hover:underline">{book.title}</a>
+                  ) : (
+                    book.title
+                  )}
+                </td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.class}</td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.dateCompleted}</td>
@@ -69,9 +81,19 @@ const futureReads = await getFutureReads();
         {futureReads.map((book) => (
           <div class="bg-white rounded shadow p-4 mb-4 flex flex-col">
             <div class="flex items-center mb-2">
-              <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-16 h-auto rounded shadow-sm border border-gray-200 mr-4" />
+              {book.slug ? (
+                <a href={`/books/${book.slug}`} class="block mr-4">
+                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-16 h-auto rounded shadow-sm border border-gray-200" />
+                </a>
+              ) : (
+                <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-16 h-auto rounded shadow-sm border border-gray-200 mr-4" />
+              )}
               <div>
-                <div class="font-bold text-base">{book.title}</div>
+                {book.slug ? (
+                  <a href={`/books/${book.slug}`} class="font-bold text-base text-blue-600 hover:underline">{book.title}</a>
+                ) : (
+                  <div class="font-bold text-base">{book.title}</div>
+                )}
                 <div class="text-gray-500 text-sm">{book.author.join(', ')}</div>
               </div>
             </div>
