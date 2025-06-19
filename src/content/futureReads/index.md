@@ -57,7 +57,7 @@ books:
   - title: "How to Read a Book: The Classic Guide to Intelligent Reading"
     author: ["Adler, Mortimer J., and Chales Van Doren"]
     class: "690"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Air University Style and Author Guide"
@@ -75,13 +75,13 @@ books:
   - title: "Out of the Darkness: The Germans, 1942-2022"
     author: ["Trentmann, Frank"]
     class: "690"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=zc6_EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Grad School Essentials: A Crash Course in Scholarly Skills"
     author: ["Shore, Zachary"]
     class: "690"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
 ---
