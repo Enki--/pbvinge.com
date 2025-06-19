@@ -167,10 +167,11 @@ const futureReads = await getFutureReads();
   function filterData(data, searchTerm, classValue, statusValue) {
     return data.filter(item => {
       const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
-      const matchesSearch = searchString.includes(searchTerm.toLowerCase());
+      const matchesSearch = !searchTerm || searchString.includes(searchTerm.toLowerCase());
       const matchesClass = !classValue || item.class.trim().toLowerCase() === classValue.trim().toLowerCase();
       const matchesStatus = !statusValue || item.dateCompleted.trim().toLowerCase() === statusValue.trim().toLowerCase();
-      return matchesSearch && matchesClass && matchesStatus;
+      // OR logic: show if any filter matches (or all are empty)
+      return matchesSearch || matchesClass || matchesStatus;
     });
   }
 
