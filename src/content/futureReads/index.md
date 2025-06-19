@@ -34,25 +34,25 @@ books:
     author: ["Khong, Yuen Foong"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=0irZ8O6jJt4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Perception and Misperception in International Politics. (new edition)"
     author: ["Jervis, Robert"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=nQUVvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "When France Fell: The Vichy Crisis and the Fate of the Anglo-American Alliance."
     author: ["Neiberg, Michael S"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=4_M5EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Every War Must End (second revised edition)"
     author: ["Iklé, Fred Charles"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=H1F_X_3gV-gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "How to Read a Book: The Classic Guide to Intelligent Reading"
     author: ["Adler, Mortimer J., and Chales Van Doren"]
@@ -64,7 +64,7 @@ books:
     author: ["AU"]
     class: "690"
     dateCompleted: "TBR"
-    coverImage: "https://media.defense.gov/2022/May/26/2003009647/-1/-1/1/AU-1.PDF"
+    coverImage: "/assets/au1.png"
     tags: []
   - title: "The Craft of Research"
     author: ["Booth, Wayne C., et al"]
