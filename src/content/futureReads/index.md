@@ -82,7 +82,7 @@ books:
     author: ["Shore, Zachary"]
     class: "690"
     dateCompleted: "Complete"
-    coverImage: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+    coverImage: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
 ---
 
