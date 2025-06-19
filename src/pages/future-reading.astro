@@ -168,8 +168,8 @@ const futureReads = await getFutureReads();
     return data.filter(item => {
       const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
       const matchesSearch = searchString.includes(searchTerm.toLowerCase());
-      const matchesClass = !classValue || item.class === classValue;
-      const matchesStatus = !statusValue || item.dateCompleted === statusValue;
+      const matchesClass = !classValue || item.class.trim().toLowerCase() === classValue.trim().toLowerCase();
+      const matchesStatus = !statusValue || item.dateCompleted.trim().toLowerCase() === statusValue.trim().toLowerCase();
       return matchesSearch && matchesClass && matchesStatus;
     });
   }
