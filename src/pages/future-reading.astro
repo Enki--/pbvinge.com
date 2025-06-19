@@ -24,6 +24,23 @@ const futureReads = await getFutureReads();
         />
       </div>
 
+      <div class="mb-4 flex flex-wrap gap-4 items-center">
+        <label for="classFilter" class="font-medium">Filter by Class:</label>
+        <select id="classFilter" class="border rounded px-2 py-1">
+          <option value="">All</option>
+          {Array.from(new Set(futureReads.map(book => book.class))).map(cls => (
+            <option value={cls}>{cls}</option>
+          ))}
+        </select>
+        <label for="statusFilter" class="font-medium ml-4">Filter by Status:</label>
+        <select id="statusFilter" class="border rounded px-2 py-1">
+          <option value="">All</option>
+          {Array.from(new Set(futureReads.map(book => book.dateCompleted))).map(status => (
+            <option value={status}>{status}</option>
+          ))}
+        </select>
+      </div>
+
       <!-- Desktop Table -->
       <div class="hidden md:block w-full">
         <table class="w-full max-w-screen-lg mx-auto divide-y divide-gray-300 text-base">
@@ -109,6 +126,8 @@ const futureReads = await getFutureReads();
 <script>
   // Get DOM elements
   const filterInput = document.getElementById('filterInput');
+  const classFilter = document.getElementById('classFilter');
+  const statusFilter = document.getElementById('statusFilter');
   const tableBody = document.getElementById('tableBody');
   const sortableHeaders = document.querySelectorAll('[data-sort]');
   
@@ -144,6 +163,17 @@ const futureReads = await getFutureReads();
     });
   }
 
+  // Filter table data
+  function filterData(data, searchTerm, classValue, statusValue) {
+    return data.filter(item => {
+      const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
+      const matchesSearch = searchString.includes(searchTerm.toLowerCase());
+      const matchesClass = !classValue || item.class === classValue;
+      const matchesStatus = !statusValue || item.dateCompleted === statusValue;
+      return matchesSearch && matchesClass && matchesStatus;
+    });
+  }
+
   // Update table with sorted/filtered data
   function updateTable(data) {
     tableBody.innerHTML = '';
@@ -152,21 +182,17 @@ const futureReads = await getFutureReads();
     });
   }
 
-  // Filter table data
-  function filterData(data, searchTerm) {
-    return data.filter(item => {
-      const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
-      return searchString.includes(searchTerm.toLowerCase());
-    });
+  function applyFilters() {
+    const data = getTableData();
+    const filtered = filterData(data, filterInput.value, classFilter.value, statusFilter.value);
+    updateTable(filtered);
   }
 
   // Add event listeners
-  if (filterInput && tableBody) {
-    filterInput.addEventListener('input', () => {
-      const data = getTableData();
-      const filtered = filterData(data, filterInput.value);
-      updateTable(filtered);
-    });
+  if (filterInput && tableBody && classFilter && statusFilter) {
+    filterInput.addEventListener('input', applyFilters);
+    classFilter.addEventListener('change', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
   }
 
   // Add sorting functionality

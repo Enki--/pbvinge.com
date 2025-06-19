@@ -3,9 +3,9 @@ tags: [📚Book]
 title: "{{title}}"
 subtitle: "{{subtitle}}"
 author:
-  - "{{author}}"
+- "{{author}}"
 category:
-  - "{{category}}"
+- "{{category}}"
 publisher: "{{publisher}}"
 publish: {{publishDate}}
 pages: {{totalPage}}
@@ -17,12 +17,15 @@ created: {{DATE:YYYY-MM-DD HH:mm:ss}}
 updated: {{DATE:YYYY-MM-DD HH:mm:ss}}
 class: ""
 sequence: ""
+slug: <% tp.file.title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '-').toLowerCase() %>
 ---
 
 # {{title}}
 
 ## Online Description
+
 {{description}}
+  
 
 ## 🔫 Author Background
 - Example: Author's education and career
@@ -40,11 +43,11 @@ sequence: ""
 
 ### Key Points
 - Chapter 1: Main points
-  - Sub-point
-  - Evidence provided
+- Sub-point
+- Evidence provided
 - Chapter 2: Main points
-  - Key arguments
-  - Notable quotes
+- Key arguments
+- Notable quotes
 
 ### Conclusion
 - Author's final arguments
@@ -60,7 +63,7 @@ sequence: ""
 - Contrasting viewpoints
 - Recommended follow-up reading
 
-## ☠️ Agree, Disagree, or Suspend 
+## ☠️ Agree, Disagree, or Suspend
 ### Strengths
 - Strong points of the argument
 - Well-supported claims
