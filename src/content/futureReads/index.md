@@ -4,31 +4,31 @@ books:
     author: ["Kuhn, Thomas"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=3eUtDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=3eP5Y_OOuzwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Why War?"
     author: ["Overy, Richard"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=3v1nAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=EDDXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Essence of Decision: Explaining the Cuban Missile Crisis"
     author: ["Allison, Graham, and Philip S. Zelikow"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=9Kt7AAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
   - title: "The Landmark Thucydides"
     author: ["Strassler, Robert B., ed"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=Qw8FAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=pjt3ZGU61wIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Just and Unjust Wars (fifth edition)"
     author: ["Walzer, Michael"]
     class: "601"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=8wQFAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=EuTQCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Analogies at War"
     author: ["Khong, Yuen Foong"]
