@@ -15,7 +15,10 @@ export const collections = {
       isbn10: z.string().optional(),
       isbn13: z.string().optional(),
       cover: z.string(),
-      status: z.enum(["to read", "reading", "complete"]).optional(),
+      status: z.string()
+        .transform((val) => val.toLowerCase())
+        .pipe(z.enum(["to read", "reading", "complete"]))
+        .optional(),
       created: z.coerce.date().optional(),
       updated: z.coerce.date().optional(),
       class: z.string().optional(),
