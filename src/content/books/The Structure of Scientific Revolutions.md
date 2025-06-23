@@ -26,20 +26,28 @@ sequence: "1"
 
 Why begin a yearlong program in military strategy with a book that seems to have nothing to do with that topic? 
 - I think the book does relate to the military and military strategy.  The old saying that we are always preparing for the last war is very similar to the idea that paradigms are challenging to change and require identifying anomalies.  The problem with the military is that the iteration rate is significantly slower than with science.  SAASS, from my reading, is the same application of normal science education presented in text, stick to the knowledge base and paradigm of the program, and you will be good.   
+
 How does science take place?
 - Science takes place over a sigmoid curve. When a discovery or new paradigm is established, normal science jumps in to create depth and research the known unknowns. Over time, anomalies are identified, and once recognized as a crisis, the sigmoid jumps to a new function and the process starts over again.  This continued progress is because no paradigm or theory perfectly reflects reality.
+
 What is a paradigm?
 - A paradigm is the culture established around a field of research, including what questions must be answered, what data is important, what the rules of search are, and what the community's world view must be. 
+
 How and why do scientific revolutions take place?
 - Revolutions generally come from anomalies identified in a paradigm that become crises because they can't be resolved with the current paradigm. While anyone conducting normal science can identify an anomaly, generally only young men or outsiders can create the new theories and paradigms required for a revolution. 
+
 How does an understanding of normal science help us think about strategic puzzles?
 - From my observation, normal science can almost be replaced with strategy. Few new strategic paradigms have been created since Thucydides that are general enough to cover all military strategies. A persistent engagement strategy is a promising start for the cyber community, but unless the new world order completely breaks apart, I see little application to other domains. 
+
 What strategic puzzles does the US face?
 - IMHO, the primary is the return to a multipolar world (GPC), and the acute is Russian and Israeli aggression.   
+
 Is there such a thing as “normal strategy making”?
 - Yes, I think most strategy is normal strategy making. As a government and military, we are re-using the playbooks of old and filling in known unknowns with every engagement. 
+
 What does this book tell us about organizational and cultural change?
 - They are hard to change, due to cultural upbringings that lead people to identify with the world they were raised in.  Over a decade into the stand-up of USCYBERCOM, most generals still have no appreciation for the domain because it is such a paradigm from the world they grew up in.  Like Kuhn says, we will have to wait them out. 
+
 Is there a science of strategy?
 - No, there has been minimal advancement in strategy, and as Kuhn highlights, a topic can't be science without advancement. While tactics evolve to meet threats, strategy continues to be the combination of ends, ways, and means informed by risk to meet political objectives. 
 
