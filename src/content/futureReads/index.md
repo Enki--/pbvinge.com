@@ -6,6 +6,7 @@ books:
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=3eP5Y_OOuzwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "the-structure-of-scientific-revolutions"
   - title: "Why War?"
     author: ["Overy, Richard"]
     class: "601"
