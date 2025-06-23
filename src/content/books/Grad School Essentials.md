@@ -19,8 +19,6 @@ class: "SAASS"
 sequence: "Prep"
 ---
 
-## Grad School Essentials
-
 ### Online Description
 
 What’s the hardest part of grad school? It’s not simply that the workload is heavy and the demands are high. It’s that too many students lack efficient methods to let them do their best. Professor Zachary Shore aims to change this. With humorous, lively prose, Professor Shore teaches you to master the five most crucial skills you need to succeed: how to read, write, speak, act, and research at a higher level. Each chapter in this no-nonsense guide outlines a unique approach to acquiring a skill and then demonstrates how to enhance it. Through these concrete, practical methods, Grad School Essentials will save you time, elevate the quality of your work, and help you to earn the degree you seek.

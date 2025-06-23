@@ -20,8 +20,6 @@ class: "601"
 sequence: "1"
 ---
 
-# The Structure of Scientific Revolutions
-
 ## Reading Questions
 
 Why begin a yearlong program in military strategy with a book that seems to have nothing to do with that topic? 
