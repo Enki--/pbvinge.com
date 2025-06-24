@@ -13,6 +13,7 @@ books:
     dateCompleted: "TBR"
     coverImage: "http://books.google.com/books/content?id=EDDXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "why-war"
   - title: "Essence of Decision: Explaining the Cuban Missile Crisis"
     author: ["Allison, Graham, and Philip S. Zelikow"]
     class: "601"
