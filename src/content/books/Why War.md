@@ -62,7 +62,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 
 ### Key Points
 
-- 1) Biology
+- **1) Biology**
 	- In this chapter, Overy argues that one factor that can influence why humans go to War is possibly genetic due to increased reproductive success. Still, without evidence from early humans, he argues that knowing is impossible. **Biology views war as genetic.**
 	- Since Darwin created the idea of "the struggle for survival," researchers have attempted to determine if aggression/war is genetic and results from human evolution. 
 	- Germany took this idea to the extreme during WWII, arguing that war would enable the superior German race to persist, but they were not alone; multiple people have argued that war produces more fit humans.  
@@ -76,7 +76,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 	- While there are some historic examples of Women fighting, biology generally looks at the problem of War as males using aggression to show biological advantage, and females developing to flee or submit to violence.  Additinally, females may have promoted male aggression by selecting the mates they believe could best defend them. 
 	- Conflict as a means of inclusive fitness aligns with evolutionary theory, but remains speculative because there is no way to gather evidence from early human communities. 
  
-- 2) Psychology
+- **2) Psychology**
 	- In chapter two, the author looks at the possible psychological origins of War (most lack evidence), and finds that group learned aggression and the reduction in empathy for out-groups may play a role. **Psychology views war as a learned behavior by the individual.**
 	- Presents Freud's idea of the Oedipus complex, or the idea that an individual's traits can be linked to their earliest interactions with their mother.  The idea is that a mother removing her breast from a baby creates aggression and primes them for war in adulthood. 
 		- No evidence at all
@@ -92,7 +92,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 		- This extends into the modern era with the German idea of the Volk. 
 	- However, when an enemy is identified, the state leads to a reduction or the elimination of empathy for the enemy.  This can be seen even years after a conflict.  For example, in post-WWII Germany, it took a generation to feel empathy for the suffering of the Jews. 
 
-- 3) Anthropology
+- **3) Anthropology**
 	- The view of warfare from anthropology looks at the problem as a cultural evolution but can't identify why a war starts; it is just the human norms that prime a culture for war.  Additionally, with warfare being a universal human condition, it may support the ideas of biology and psychology as war being a universal human driver. **Anthropology views war as learned culturally**.
 	- Margaret Mead argued that warfare was a human invention and could be uninvented.  
 		- If this is true, when was it invented, and why?
@@ -112,7 +112,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 		- The culture of warfare was passed from generation to generation until it became part of the culture.
 	- "Cultural variability dictates how warfare might be regarded in different times and contexts, while material or immaterial motives for war are still necessary for warfare to happen. But cultures of war are universal, just another invention which suggests that biology and psychology might still have something to contribute alongside culture in explaining a phenomenon that is more than just another invention."
 
-4) Ecology
+- **4) Ecology**
 	- Ecology looks at the problem of Why War occurs through the lens of what human population a given area can support. It argues that regions with few natural resources drive conflict; however, there is little evidence for this argument. **Ecology views war as an environmental outcome.**
 	- Ernst Haeckel suggests that when human populations outgrow the carrying capacity of land, they can turn to warfare to adjust the population levels. 
 	- Der Lebensraum argued that a significant reason people battle is for space.
@@ -130,7 +130,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 		- Drought and extreme rainfall lead to crop disruption and reduced carrying capacity. 
 	- There is not much evidence for any of the ecological ideas. Still, it may be the case that increased ecological pressure encourages one of the other factors to tip the scales towards war. 
 	
-- 5) Resources
+- **5) Resources**
 	- The book's second part looks at the drivers for war based on a school of science.  The idea is that humans go to war for resources to expand populations or gain power. ** The need for resources drives countries to war.** 
 	- The drive for resources is separate from ecological pressure, because resources are viewed as things that give power beyond the necessities for life. 
 		- I'm early in, but I can't see how this differs from ecology. No one needs to steal to live, but humans do to increase the land's carrying capacity.    
@@ -147,7 +147,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 	- Oil is a fixed asset (vs lootable), so it may drive additional wars in the future as supply is constrained. 
 	- Value is a human construct, so wars are linked directly to resources, psychology, and anthropology. 
 	
-- 6) Belief
+- **6) Belief**
 	- Belief looks at all forms of religion as drivers of war, arguing that a secular world view can not be applied to counter the argument, because religions are deeply held beliefs that can drive members to extremes. **Belief drives war to defend and promote religions**
 	- Belief has not driven all wars, but has been the context for many throughout human history. 
 	- Christianity and Islam are the modern belief drivers of war, but beliefs as drivers of war go back further in history than modern religions. 
@@ -155,7 +155,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 		- "However exotic or fantastic many beliefs seem to a modern audience, it is necessary to understand them from within, in what anthropologists define as “emic” meaning, rather than through evaluation of external, universal, or “etic” terms. Attached to many such beliefs is a commitment to warlike violence that cannot be understood separate from the faith, or belief, or ideas that generate it. Without recognizing the power of belief in mobilizing and permitting violence, explanations for many kinds of warfare will be incomplete or poorly understood."
 	- It is a paradox that Christianity was founded on the idea of loving your neighbor, but has endorsed so much warfare. 
 	
-- 7) Power
+- **7) Power**
 	- Power looks at war as a means to gain and maintain power, either at the state or individual level, while it is hard to justify that the sole reason for war is a potent motivator for conflict.  **Power drives war to gain power.**
 	- War and the threat of war have been used in various forms to gain "compulsory power." 
 	- Small egalitarian communities didn't have an idea of power, because they could move.
@@ -178,7 +178,7 @@ An Economist Best Book of 2024 Why has war been such a consistent presence throu
 	- War for only power is hard to rationalize, but mixed with all other means presented in this text, the whole could justify the means. 
 		- Outside of wars caused by Hubristic power.
 
-- 8) Security
+- **8) Security**
 	- Security looks at war as a means to ensure a state's and individuals' security.  There have been multiple schools of thought on this topic throughout history, but hard to prove as a cause for war with current evidence.  **Security justifies war, Maslow.**
 	- Hobbes' view of human nature, that all humans are self-interested and fearful of death, leads to war.  It is human nature to protect oneself and the person's / community's security. 
 	- Security can be maintained through strong defenses or offensive action to degrade enemies. 
