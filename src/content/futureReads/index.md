@@ -3,23 +3,24 @@ books:
   - title: "The Structure of Scientific Revolutions"
     author: ["Kuhn, Thomas"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=3eP5Y_OOuzwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
     slug: "the-structure-of-scientific-revolutions"
   - title: "Why War?"
     author: ["Overy, Richard"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=EDDXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
     slug: "why-war"
   - title: "Essence of Decision: Explaining the Cuban Missile Crisis"
     author: ["Allison, Graham, and Philip S. Zelikow"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=9Kt7AAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
+    slug: "essence-of-decision"
   - title: "The Landmark Thucydides"
     author: ["Strassler, Robert B., ed"]
     class: "601"
@@ -66,13 +67,13 @@ books:
   - title: "Air University Style and Author Guide"
     author: ["AU"]
     class: "690"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "/assets/au1.png"
     tags: []
   - title: "The Craft of Research"
     author: ["Booth, Wayne C., et al"]
     class: "690"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=SjPqDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Out of the Darkness: The Germans, 1942-2022"
