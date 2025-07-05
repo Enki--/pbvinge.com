@@ -13,7 +13,7 @@ pages: 440
 isbn10: ""
 isbn13: UOM:39015054021186
 cover: http://books.google.com/books/content?id=9Kt7AAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
-status: to read
+status: "complete"
 created: 2025-06-18 20:43:04
 updated: 2025-06-18 20:43:04
 class: "601"
