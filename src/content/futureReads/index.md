@@ -24,9 +24,10 @@ books:
   - title: "The Landmark Thucydides"
     author: ["Strassler, Robert B., ed"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=pjt3ZGU61wIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "the-landmark-thucydides"
   - title: "Just and Unjust Wars (fifth edition)"
     author: ["Walzer, Michael"]
     class: "601"
