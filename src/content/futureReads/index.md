@@ -45,9 +45,10 @@ books:
   - title: "Perception and Misperception in International Politics. (new edition)"
     author: ["Jervis, Robert"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=nQUVvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
+    slug: "Perception-and-Misperception-in-International-Politics"
   - title: "When France Fell: The Vichy Crisis and the Fate of the Anglo-American Alliance."
     author: ["Neiberg, Michael S"]
     class: "601"
