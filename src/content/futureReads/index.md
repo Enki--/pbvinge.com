@@ -48,7 +48,7 @@ books:
     dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=nQUVvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     tags: []
-    slug: "Perception-and-Misperception-in-International-Politics"
+    slug: "perception-and-misperception-in-international-politics"
   - title: "When France Fell: The Vichy Crisis and the Fate of the Anglo-American Alliance."
     author: ["Neiberg, Michael S"]
     class: "601"
