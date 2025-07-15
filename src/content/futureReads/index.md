@@ -31,9 +31,10 @@ books:
   - title: "Just and Unjust Wars (fifth edition)"
     author: ["Walzer, Michael"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=EuTQCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "just-and-unjust-wars"
   - title: "Analogies at War"
     author: ["Khong, Yuen Foong"]
     class: "601"
