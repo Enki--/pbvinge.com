@@ -38,9 +38,10 @@ books:
   - title: "Analogies at War"
     author: ["Khong, Yuen Foong"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=0irZ8O6jJt4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "analogies-at-war"
   - title: "Perception and Misperception in International Politics. (new edition)"
     author: ["Jervis, Robert"]
     class: "601"
