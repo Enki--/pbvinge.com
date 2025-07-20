@@ -96,6 +96,104 @@ books:
     coverImage: "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
     slug: "grad-school-essentials"
+  - title: "On War"
+    author: ["Clausewitz, Carl"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "on-war"
+  - title: "Some Principles of Maritime Strategy"
+    author: ["Corbett, Julian"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=Qw8nAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "some-principles-of-maritime-strategy"
+  - title: "The Book of Deeds of Arms and of Chivalry"
+    author: ["De Pizan, Christine"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-book-of-deeds-of-arms-and-of-chivalry"
+  - title: "The Command of the Air"
+    author: ["Douhet, Giulio"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-command-of-the-air"
+  - title: "The Strategy Bridge: Theory for Practice"
+    author: ["Gray, Colin S."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-strategy-bridge-theory-for-practice"
+  - title: "The Foundations of the Science of War"
+    author: ["Fuller, J.F.C."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-foundations-of-the-science-of-war"
+  - title: "The Evolution of Strategy: Thinking War from Antiquity to the Present"
+    author: ["Heuser, Beatrice"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-evolution-of-strategy-thinking-war-from-antiquity-to-the-present"
+  - title: "The Art of War"
+    author: ["Jomini, Antoine-Henri"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-art-of-war"
+  - title: "Strategy"
+    author: ["Liddell Hart, B.H."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "strategy"
+  - title: "Mahan on Naval Strategy"
+    author: ["Mahan, Alfred Thayer"]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "mahan-on-naval-strategy"
+  - title: "The Makers of Modern Strategy: From Machiavelli to the Nuclear Age"
+    author: ["Paret, Peter, ed."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-makers-of-modern-strategy-from-machiavelli-to-the-nuclear-age"
+  - title: "The Seven Military Classics of Ancient China"
+    author: ["Sawyer, Ralph D., ed. and trans."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "the-seven-military-classics-of-ancient-china"
+  - title: "Air Power and Armies"
+    author: ["Slessor, J.C."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "air-power-and-armies"
+  - title: "Military Strategy: A General Theory of Power Control"
+    author: ["Wylie, J.C."]
+    class: "600"
+    dateCompleted: "TBR"
+    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    tags: []
+    slug: "military-strategy-a-general-theory-of-power-control"
 ---
 
 # Future Reading List
