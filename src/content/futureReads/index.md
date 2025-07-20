@@ -100,7 +100,7 @@ books:
     author: ["Clausewitz, Carl"]
     class: "600"
     dateCompleted: "TBR"
-    coverImage: "http://books.google.com/books/content?id=6QK4AAAAIAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    coverImage: "http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
   - title: "Some Principles of Maritime Strategy"
     author: ["Corbett, Julian"]
