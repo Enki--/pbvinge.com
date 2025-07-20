@@ -52,15 +52,17 @@ books:
   - title: "When France Fell: The Vichy Crisis and the Fate of the Anglo-American Alliance."
     author: ["Neiberg, Michael S"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=4_M5EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "when-france-fell"
   - title: "Every War Must End (second revised edition)"
     author: ["Iklé, Fred Charles"]
     class: "601"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=H1F_X_3gV-gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "every-war-must-end"
   - title: "How to Read a Book: The Classic Guide to Intelligent Reading"
     author: ["Adler, Mortimer J., and Chales Van Doren"]
     class: "690"
@@ -71,7 +73,7 @@ books:
   - title: "Air University Style and Author Guide"
     author: ["AU"]
     class: "690"
-    dateCompleted: "Complete"
+    dateCompleted: "TBD"
     coverImage: "/assets/au1.png"
     tags: []
   - title: "The Craft of Research"
