@@ -111,9 +111,10 @@ books:
   - title: "The Book of Deeds of Arms and of Chivalry"
     author: ["De Pizan, Christine"]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=epXQh7B1w20C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "book-of-deeds-of-arms-and-of-chivalry"
   - title: "The Command of the Air"
     author: ["Douhet, Giulio"]
     class: "600"
@@ -165,9 +166,10 @@ books:
   - title: "The Seven Military Classics of Ancient China"
     author: ["Sawyer, Ralph D., ed. and trans."]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=6Ju5DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "the-seven-military-classics-of-anvient-china"
   - title: "Air Power and Armies"
     author: ["Slessor, J.C."]
     class: "600"
