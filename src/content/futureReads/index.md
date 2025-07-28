@@ -99,9 +99,10 @@ books:
   - title: "On War"
     author: ["Clausewitz, Carl"]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "on-war"
   - title: "Some Principles of Maritime Strategy"
     author: ["Corbett, Julian"]
     class: "600"
