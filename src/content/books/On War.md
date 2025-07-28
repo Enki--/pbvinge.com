@@ -14,8 +14,8 @@ isbn10: "1400837405"
 isbn13: "9781400837403"
 cover: http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 status: "complete"
-created: 2025-07-20 11:48:10
-updated: 2025-07-20 11:48:10
+created: 2025-07-27 11:48:10
+updated: 2025-07-27 11:48:10
 class: "600"
 sequence: "3"
 ---
