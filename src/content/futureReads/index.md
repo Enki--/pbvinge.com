@@ -161,9 +161,10 @@ books:
   - title: "The Makers of Modern Strategy: From Machiavelli to the Nuclear Age"
     author: ["Paret, Peter, ed."]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=raIZRUQfAasC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "the-new-makers-of-modern-strategy"
   - title: "The Seven Military Classics of Ancient China"
     author: ["Sawyer, Ralph D., ed. and trans."]
     class: "600"
