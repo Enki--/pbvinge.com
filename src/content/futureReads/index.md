@@ -143,9 +143,10 @@ books:
   - title: "The Art of War"
     author: ["Jomini, Antoine-Henri"]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=pW88Hd2afpEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "the-art-of-war"
   - title: "Strategy"
     author: ["Liddell Hart, B.H."]
     class: "600"
