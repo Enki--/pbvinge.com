@@ -156,9 +156,10 @@ books:
   - title: "Mahan on Naval Strategy"
     author: ["Mahan, Alfred Thayer"]
     class: "600"
-    dateCompleted: "TBR"
+    dateCompleted: "Complete"
     coverImage: "http://books.google.com/books/content?id=BKIvBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     tags: []
+    slug: "mahan-on-naval-strategy"
   - title: "The Makers of Modern Strategy: From Machiavelli to the Nuclear Age"
     author: ["Paret, Peter, ed."]
     class: "600"

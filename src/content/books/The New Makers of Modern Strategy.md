@@ -118,7 +118,6 @@ This chapter examines Napoleon's contribution to modern warfare, highlighting th
 > He "condemned the dispersal of forces as a vicious habit that made it impossible to achieve important results" (Paret, p. 82).
 
 > Jomini observed that Napoleon's system "presente une application constante de ces principes invariables" of "operating with the greatest possible force in a combined effort against the decisive point".
-
   
 
 ### Supporting Ideas & Details:
@@ -149,4 +148,41 @@ This chapter examines Napoleon's contribution to modern warfare, highlighting th
 
 • Problems with "Wars of Opinion": As Napoleon faced "wars of opinion" (national or civil wars, like in Spain or Russia), his usual principles of massed offensive action became problematic, forcing him to divide forces and deal with insurgent elements. Jomini found this subject difficult and generally advised avoiding such wars.
 
+---
 
+## 📗 Peter Paret, "Jomini" (pp. 143-185)
+## Overview
+In the chapter "Jomini" from Peter Paret's *Makers of Modern Strategy*, John Shy presents Antoine-Henri Jomini as a pivotal figure in modern military thought, comparable to Napoleon and Clausewitz, primarily for his role in transforming the study of warfare into a "scientific" pursuit focused on prescriptive strategic techniques (Shy, 1986, p. 143).
+
+## Jomini's Core Strategic Ideas
+Jomini's theories are built upon the belief that the art of war rests on "certain and fixed principles, which are by their nature invariable" (Shy, 1986, p. 148, quoting Lloyd). He contended that Napoleon's success stemmed from a superior application of these principles (Shy, 1986, p. 146). Key among these were:
+
+- **Massing Force at the Decisive Point:** Jomini asserted that all effective strategic combinations must "conform to the basic principle 'of operating with the greatest possible force in a combined effort against the decisive point'" (Shy, 1986, p. 152). This involves concentrating superior force against a vulnerable enemy point. A "decisive point" could be a road junction, river crossing, supply base, or an exposed enemy flank (Shy, 1986, p. 153).
+- **Offensive Action and Relentless Pursuit:** He stressed the necessity of the offensive, arguing that the initiative should not be ceded to the enemy, and that commanders must inspire troops through "boldness and courage" (Shy, 1986, p. 152). Victory, he believed, required the relentless pursuit of a defeated foe (Shy, 1986, p. 152).
+- **Interior Lines of Operation:** This concept, which he saw exemplified in Frederick the Great's victory at Leuthen and Napoleon's Italian campaigns, involves a force positioned "between—'inside'—separated enemy forces" to defeat each in turn (Shy, 1986, p. 168).
+- **Logistics ("Communications"):** Jomini recognized the critical link between logistics and combat, using the term "communications" to describe the vital lines that maintain a military force's connection to its national power and supply (Shy, 1986, p. 250, 254-255).
+
+## Methodology and Historical Interpretation
+Jomini's method was to reduce the complexity of warfare to a small number of crucial factors and prescribe actions for victory (Shy, 1986, p. 131). He sought to reveal the "secret of French victory" by showing how Napoleon better applied these principles (Shy, 1986, p. 146). Although he drew inspiration from General Henry Lloyd's pursuit of "invariable principles," Jomini sharply criticized Lloyd's cautious approach and Frederick the Great's limitations, advocating for Napoleon's daring, rapid advances and willingness to live off the land (echoing Caesar's "war could feed war") (Shy, 1986, p. 148, 150).
+
+He explicitly highlighted the "profound differences" between pre- and post-1789 warfare (Shy, 1986, p. 148, 151). While his theoretical work aimed for clarity and universal applicability, his historical narratives, often focused on command decisions, also reinforced traditional views of warfare (Shy, 1986, p. 99).
+
+## Personality and Career's Influence
+Shy suggests that Jomini's personal ambition, frustration, and insecurity profoundly shaped his work (Shy, 1986, p. 155). Described as "troublesome, bright but obnoxious" as a youth, he remained "quarrelsome, tactless" throughout his life (Shy, 1986, p. 154). Never entrusted with actual troop command, he found "no complete satisfaction in writing books about war" (Shy, 1986, p. 156). His experiences as a "headquarters staff officer" led him to perceive war primarily in "personal, heroic terms, controlled by the masterful commander," often losing sight of larger, impersonal forces (Shy, 1986, p. 156, 91). He "wrote to publish, and he published to impress" (Shy, 1986, p. 157).
+
+## Significant Influence and Legacy
+Jomini achieved an international reputation, with his *Summary of the Art of War* being translated into many languages (Shy, 1986, p. 153, 110). His work was praised by Napoleon himself, who reportedly considered him for military education leadership (Shy, 1986, p. 143). Jomini provided the nascent military profession with a "prestige of science" and a rationale for its autonomy, arguing that governments should trust their "ablest military commander" to wage war according to "scientific principles" without political "interference" (Shy, 1986, p. 100, 102).
+
+His influence extended to the United States (West Point used his texts) and Germany (where many military writers were his "ardent pupil[s]" or "staunch adherent[s]") (Shy, 1986, p. 144, 145, 209). Alfred Thayer Mahan explicitly sought to apply Jominian principles to "sea power," making him a "maritime counterpart" (Shy, 1986, p. 148). Even in the twentieth century, figures like Liddell Hart and early air power theorists (e.g., Douhet) adopted his didactic, prescriptive approach and the concept of massing force against decisive points (Shy, 1986, p. 151, 152, 153). Jominian "Principles of War" are still found in modern military doctrines (Shy, 1986, p. 154).
+
+## Criticisms and Weaknesses
+Despite his enduring influence, Shy details several weaknesses in Jomini's work:
+
+- **Reductionism and Prescription:** While intentional, this led to oversimplification (Shy, 1986, p. 131).
+- **Failure to Test Counter-Examples:** Jomini often explained away historical cases that did not conform to his theories rather than allowing them to broaden his understanding (Shy, 1986, p. 132).
+- **Assumption of Symmetrical Forces:** His assumption that military units of equal size were "essentially equal" limited his theory's applicability, particularly to "popular wars" (like those in Spain and Russia) or coalition strategies, and made it "peculiarly unsuited to qualitative analysis" of technological change (Shy, 1986, p. 133, 134, 135).
+- **Blurring of Distinctions:** Though he acknowledged that political and tactical realms were not subject to his scientific analysis, he frequently "wanders freely" into these areas, prescribing actions and citing principles as if they applied universally across all levels of military operation (Shy, 1986, p. 136).
+- **Ambiguity:** His writing contained inherent ambiguities, such as whether victory depended on strict adherence to principles or the genius of a commander, or whether the aim of strategy was territorial control or the destruction of enemy forces (Shy, 1986, p. 137, 138).
+
+## Summary
+In essence, Jomini's profound impact stemmed from his fusion of romantic sensibility with an obsession for scientific principles, packaging complex military history into a clear, simple, and repetitive message that appealed deeply to generations of soldiers seeking unchanging truths and practical utility in the conduct of war (Shy, 1986, p. 108, 140).
