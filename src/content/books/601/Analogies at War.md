@@ -32,7 +32,7 @@ created: 2025-06-19 06:49:15
 
 updated: 2025-06-19 06:49:15
 
-class: "6"
+class: "601"
 
 sequence: "601"
 

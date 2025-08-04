@@ -15,7 +15,7 @@ cover: "http://books.google.com/books/content?id=zc6_EAAAQBAJ&printsec=frontcove
 status: "complete"
 created: 2025-05-14 10:19:28
 updated: 2025-05-14 10:19:28
-class: "SAASS"
+class: "690"
 sequence: "Prep - SAASS 690"
 ---
 
