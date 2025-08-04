@@ -15,7 +15,7 @@ const futureReads = allBooks.map(book => ({
   dateCompleted: book.data.status || 'TBR',
   coverImage: book.data.cover,
   tags: book.data.tags || [],
-  slug: book.slug
+  slug: book.data.status === 'complete' ? book.slug : null
 }));
 ---
 
