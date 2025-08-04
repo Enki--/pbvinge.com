@@ -3,9 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getCitation } from '../../utils/citations';
 
-// Generate static paths for all books
+// Generate static paths for completed books only
 export async function getStaticPaths() {
-  const books = await getCollection('books');
+  const books = await getCollection('books', ({ data }) => {
+    return data.status === 'complete';
+  });
   return books.map(book => ({
     params: { slug: book.slug },
     props: { book },

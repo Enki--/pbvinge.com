@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-// Get all published books from the content collection
+// Get all published and completed books from the content collection
 const books = await getCollection('books', ({ data }) => {
-  return data.isPublished;
+  return data.isPublished && data.status === 'complete';
 });
 
 // Sort books by created date, most recent first
