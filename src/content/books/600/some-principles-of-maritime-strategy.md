@@ -145,9 +145,9 @@ Details the strategic advantages of exercising naval dominance, including protec
 
 ## 📚 Related Books
 
-- [**On War** by Carl von Clausewitz](/books/on-war)
-- [**The Art of War** by Antoine-Henri Jomini](/books/the-art-of-war)
-- [**Mahan on Naval Strategy** by Alfred Thayer Mahan](/books/mahan-on-naval-strategy)
+- [**On War** by Carl von Clausewitz](/books/600/on-war)
+- [**The Art of War** by Antoine-Henri Jomini](/books/600/the-art-of-war)
+- [**Mahan on Naval Strategy** by Alfred Thayer Mahan](/books/600/mahan-on-naval-strategy)
 
 ## 🗂 Notable Quotes & Thoughts
 
