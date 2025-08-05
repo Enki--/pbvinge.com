@@ -315,8 +315,8 @@ He wrote *The Command of the Air*, with Book I published in 1921 and additional 
 - Lemay
 
 ## 📚 Related Books
-- On War
-- Mahan on Naval Strategy
+- [On War](/books/600/on-war)
+- [Mahan on Naval Strategy](/books/600/mahan-on-naval-strategy)
 
 ## 🗂 Notable Quotes & Thoughts
 >"The command of the air is a necessary and sufficient condition of victory" (Douhet, 1927, p. 128)
