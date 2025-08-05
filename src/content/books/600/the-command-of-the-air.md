@@ -13,8 +13,8 @@ isbn10: "1782898522"
 isbn13: "9781782898528"
 cover: "http://books.google.com/books/content?id=1p1vCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "Complete"
-created: 2025-07-20 11:50:35
-updated: 2025-07-20 11:50:35
+created: 2025-08-04 11:50:35
+updated: 2025-08-04 11:50:35
 class: "600"
 sequence: "8"
 ---
