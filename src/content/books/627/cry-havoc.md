@@ -3,7 +3,7 @@ title: "Cry Havoc"
 author: ["Maiolo, Joseph"]
 class: "627"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/title/Cry%20Havoc-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/8195859-L.jpg"
 tags: []
 isPublished: true
 ---

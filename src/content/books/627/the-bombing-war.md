@@ -3,7 +3,7 @@ title: "The Bombing War"
 author: ["Overy, Richard"]
 class: "627"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/title/The%20Bombing%20War-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/13437274-L.jpg"
 tags: []
 isPublished: true
 ---

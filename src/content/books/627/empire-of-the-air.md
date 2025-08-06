@@ -3,7 +3,7 @@ title: "Empire of the Air"
 author: ["Van Vleck, Jenifer"]
 class: "627"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/title/Empire%20of%20the%20Air-L.jpg"
+cover: "http://books.google.com/books/content?id=Evb2lgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
 tags: []
 isPublished: true
 ---
