@@ -3,7 +3,7 @@ title: "The Candybombers"
 author: ["Cherny, Andrei"]
 class: "627"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/title/The%20Candybombers-L.jpg"
+cover: "http://books.google.com/books/content?id=9kfBAkMRl8EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 tags: []
 isPublished: true
 ---

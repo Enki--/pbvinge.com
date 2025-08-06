@@ -3,7 +3,7 @@ title: "MacArthur's Airman"
 author: ["Griffith Jr., Thomas E."]
 class: "627"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/title/MacArthur%E2%80%99s%20Airman-L.jpg"
+cover: "http://books.google.com/books/content?id=SuhmAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 tags: []
 isPublished: true
 ---
