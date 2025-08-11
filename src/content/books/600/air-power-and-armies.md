@@ -20,6 +20,8 @@ class: "600"
 sequence: "9"
 ---
 
+# I know these notes are bad and I need to fix them.  
+
 # Air Power and Armies
 
 ## Online Description
