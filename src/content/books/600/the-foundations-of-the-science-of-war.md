@@ -12,7 +12,7 @@ pages: 340
 isbn10: "1839310022"
 isbn13: "9781839310027"
 cover: "http://books.google.com/books/content?id=E9kJygEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-status: "Complete
+status: "Complete"
 created: 2025-08-10 11:52:42
 updated: 2025-08-10 11:52:42
 class: "600"
