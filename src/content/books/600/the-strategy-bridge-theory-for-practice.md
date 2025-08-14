@@ -65,9 +65,13 @@ Key ideas
 Key Quotes
 
 >“Carl von Clausewitz is not dead… there is a sense in which all strategists… are Clausewitzians.” (Gray, 2010, p. 19)
+
 >“Strategy Bridge seeks to help break the grip of Clausewitzian theory… debate over ‘what Clausewitz really meant’ can slide into a barren scholasticism.” (Gray, 2010, p. 20)
+
 >“Strategy Bridge is designed… to be strategic theory, not commentary on the strategic theory we have inherited from the past.” (Gray, 2010, p. 8)
+
 >“Why the bridge metaphor? Because no other idea so well conveys the core function of strategy.” (Gray, 2010, p. 31)
+
 >“Strategy Bridge argues that strategy seeks control over an enemy’s political behaviour.” (Gray, 2010, p. 32)
 
 ⸻
@@ -108,9 +112,13 @@ Primary dicta (1–9): the nature of strategy
 Key Quotes
 
 >“There is but a single theory of strategy… Those people are strategists.” (Gray, 2010, p. 42)
+
 >“Strategy (content neutral): The direction and use made of means by chosen ways in order to achieve desired ends.” (Gray, 2010, p. 48)
+
 >“Grand strategy… is the theory and practice of statecraft itself.” (Gray, 2010, p. 48)
+
 >“Strategy per se… cannot differ among cultures and historical contexts.” (Gray, 2010, p. 49)
+
 >“All strategy… is contextual.” (Gray, 2010, p. 75)
 
 ⸻
@@ -142,8 +150,11 @@ Consequences (dictum 21)
 Key Quotes
 
 >“Every dictum matters profoundly.” (Gray, 2010, p. 100)
+
 >“Strategy is more difficult to devise and execute than are policies, operations, and tactics.” (Gray, 2010, p. 109)
+
 >“If armed forces cannot be moved and supplied, they cannot fight.” (Gray, 2010, p. 117)
+
 >“What is doctrine for? … a four-part answer…” (Gray, 2010, p. 120)
 
 ⸻
@@ -177,7 +188,9 @@ So what?
 Key Quotes
 
 >“The principal German solution… [let] tactical events and their operational consequences… drive strategic history.” (Gray, 2010, p. 175)
+
 >“Since the primary purpose of strategy is to control an enemy’s behaviour…” (Gray, 2010, p. 185)
+
 >“Strategy as currency conversion is inherently problematic.” (Gray, 2010, p. 188)
 
 ⸻
@@ -200,7 +213,9 @@ Against EBO-style reductionism
 Key Quotes
 
 >“The purpose of strategy is to create strategic effect.” (Yarger, quoted in Gray, 2010, p. 228)
+
 >“Too complex, too dynamic, too human… to be usefully measurable.” (Gray, 2010, p. 243)
+
 >“The dazzling concept of strategic effect is pure gold… [but] as a methodical, calculated application… can be… fool’s gold.” (Gray, 2010, p. 246)
 
 ⸻
@@ -226,7 +241,9 @@ The mission
 Key Quotes
 
 >“Strategic behaviour is command performance writ large.” (Gray, 2010, p. 270)
+
 >“The military strategist is… responsible for making, or for conducting, military strategy… for an entire conflict.” (Gray, 2010, p. 284)
+
 >“Get the big ideas right… communicate… ensure proper execution.” (Petraeus, quoted in Gray, 2010, p. 308)
 
 ⸻
@@ -259,9 +276,13 @@ Bottom line
 Key Quotes
 
 >“The master theme of this book… is the struggle by the strategist to devise, sustain, and satisfactorily conclude purposeful behaviour.” (Gray, 2010, p. 328)
+
 >“There has been, is, and can only be a single general theory of strategy.” (Gray, 2010, p. 332)
+
 >“The human element is by far the greatest source of contingency in strategic affairs.” (Gray, 2010, p. 355)
+
 >“Strategy… is necessary, but can never be sufficient… the wrong strategy is likely to prove lethal.” (Gray, 2010, p. 358)
+
 >“Because the strategist has to perform as a duellist… he need only be a good enough strategist…” (Gray, 2010, p. 360)
 
 ⸻
