@@ -57,9 +57,13 @@ Summary
 Gray argues that Carl von Clausewitz’s ideas remain foundational to contemporary strategy—so much so that “all strategists… are Clausewitzians,” whether they agree with him or not (Gray, 2010, p. 19). On War is “a priceless work of theory for our education, not a manual of doctrine for our obedient instruction” (Gray, 2010, p. 19). Gray cautions that Clausewitz’s “super-iconic” status can stunt original thinking. The aim of The Strategy Bridge is not to re-explain Clausewitz, but to contribute original strategic theory; Clausewitz is a powerful contributor, not sole authority. Strategists should move on with, not from, Clausewitz—absorbing his theory with historical empathy while maintaining independent judgment (Gray, 2010, pp. 19–20, 31–32).
 
 Key ideas
+
 	•	Not a commentary: The book is strategic theory, not an exegesis of classical texts (Gray, 2010, p. 8).
+
 	•	Bridge metaphor: Strategy translates political purpose into feasible instruments and plans to control an enemy’s political behavior (Gray, 2010, p. 31).
+
 	•	Independent judgment: Strategists should absorb Clausewitz with historical empathy but avoid being captured by him intellectually (Gray, 2010, pp. 19–20, 31–32).
+
 	•	Continuity and novelty: “New” theories usually have precedents; the task is careful adaptation, not fashion chasing.
 
 Key Quotes
