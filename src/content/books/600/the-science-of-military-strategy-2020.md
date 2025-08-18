@@ -32,17 +32,17 @@ Name & role. Xiao Tianliang is the editor‑in‑chief of Science of Military St
 
 “Xiao Tianliang, vice president of National Defense University, rank of lieutenant general, doctor of military science, professor, [and] doctoral tutor…” (Xiao, 2020, p. 6).  
 
-	•	Education. Graduated from Zhengzhou Antiaircraft Artillery Academy and National Defense University (Xiao, 2020, p. 6).  ￼
+•	Education. Graduated from Zhengzhou Antiaircraft Artillery Academy and National Defense University (Xiao, 2020, p. 6).  ￼
 
-	•	Career highlights. Roles include acting platoon/company commander in a group army; Director, Military Strategy Teaching & Research Office at NDU; acting Deputy Commander of a Navy destroyer detachment; acting Deputy Chief of Staff, South China Sea Fleet; and Deputy Director/Director of NDU Strategy Teaching & Research Department (Xiao, 2020, p. 6).  ￼
+•	Career highlights. Roles include acting platoon/company commander in a group army; Director, Military Strategy Teaching & Research Office at NDU; acting Deputy Commander of a Navy destroyer detachment; acting Deputy Chief of Staff, South China Sea Fleet; and Deputy Director/Director of NDU Strategy Teaching & Research Department (Xiao, 2020, p. 6).  ￼
 
-	•	Previous works & areas of expertise. Monographs include Science Technology and Future Military Strategy; Research on War Control Issues; and Non‑War Use of Military Forces. He also helped lead/edit Contemporary China’s Military Strategy, Military Strategy Theory, New China’s Military Diplomacy, and Strategy (Xiao, 2020, pp. 6–7).  ￼
+•	Previous works & areas of expertise. Monographs include Science Technology and Future Military Strategy; Research on War Control Issues; and Non‑War Use of Military Forces. He also helped lead/edit Contemporary China’s Military Strategy, Military Strategy Theory, New China’s Military Diplomacy, and Strategy (Xiao, 2020, pp. 6–7).  ￼
 
-	•	International engagement. Studied at Georgetown University and delivered lectures in Japan, Zambia, and Tunisia (Xiao, 2020, p. 7).  ￼
+•	International engagement. Studied at Georgetown University and delivered lectures in Japan, Zambia, and Tunisia (Xiao, 2020, p. 7).  ￼
 
-	•	Awards & recognition. Recipient of China’s National Teaching Achievement Award (Second Prize); Military Teaching Achievement Award (First Prize); Military Talent Education Award; Military Science & Technology Progress Award; PLA Book Award; NDU’s Quality Class Award and Liu Bocheng Research Achievement Award; and selected for the Ministry of Education’s New Century Excellent Talent Support Program (Xiao, 2020, p. 7).  ￼
+•	Awards & recognition. Recipient of China’s National Teaching Achievement Award (Second Prize); Military Teaching Achievement Award (First Prize); Military Talent Education Award; Military Science & Technology Progress Award; PLA Book Award; NDU’s Quality Class Award and Liu Bocheng Research Achievement Award; and selected for the Ministry of Education’s New Century Excellent Talent Support Program (Xiao, 2020, p. 7).  ￼
 
-	•	Editorial team & collective authorship. The volume is a collective product published by National Defense University Press; Xiao serves as editor‑in‑chief with deputy editors Lou Yaoliang, Yuan (Wuchao), and Cai Renzhao; chapters are authored by multiple NDU scholars (Xiao, 2020, pp. 451–452).  ￼
+•	Editorial team & collective authorship. The volume is a collective product published by National Defense University Press; Xiao serves as editor‑in‑chief with deputy editors Lou Yaoliang, Yuan (Wuchao), and Cai Renzhao; chapters are authored by multiple NDU scholars (Xiao, 2020, pp. 451–452).  ￼
 
 “This book, a group product that was not made by just one person, will inevitably have limitations and deficiencies” (Xiao, 2020, p. 452).  ￼
 
@@ -54,31 +54,31 @@ Science of Military Strategy (2020) systematizes a comprehensive PLA theory of s
 
 Direct quotes:
 
-	•	“The science of strategy is a theoretical system about strategy and a discipline that studies the overall guiding laws for the use and construction of military forces.” (Xiao, 2020, p. 15).  ￼
+•	“The science of strategy is a theoretical system about strategy and a discipline that studies the overall guiding laws for the use and construction of military forces.” (Xiao, 2020, p. 15).  ￼
 
-	•	“Strategy is the overall planning and guidance for the use and construction of military forces.” (Xiao, 2020, p. 25).  ￼
+•	“Strategy is the overall planning and guidance for the use and construction of military forces.” (Xiao, 2020, p. 25).  ￼
 
-	•	“To strengthen the country and the army, strategy is first.” (Xiao, 2020, p. 24).  ￼
+•	“To strengthen the country and the army, strategy is first.” (Xiao, 2020, p. 24).  ￼
 
-	•	“Since the founding of New China, it has always adhered to the military strategy of active defense, which fully reflects the essential characteristics of China’s strategic cultural traditions.” (Xiao, 2020, p. 27).  ￼
+•	“Since the founding of New China, it has always adhered to the military strategy of active defense, which fully reflects the essential characteristics of China’s strategic cultural traditions.” (Xiao, 2020, p. 27).  ￼
 
-	•	The 2020 revision aims “to better adapt to the overall trend… from informatization to intelligence, [to] reveal the characteristics and laws of military conflict in the new era, [and] reflect the latest achievements in national defense and military reform.” (Xiao, 2020, pp. 451–452).  ￼
+•	The 2020 revision aims “to better adapt to the overall trend… from informatization to intelligence, [to] reveal the characteristics and laws of military conflict in the new era, [and] reflect the latest achievements in national defense and military reform.” (Xiao, 2020, pp. 451–452).  ￼
 
 Key problems the book addresses:
 
-	•	Foundations of strategy. Defines strategy’s meaning, elements, characteristics, and influencing factors (Ch. 1), positioning strategy as the top‑level guide for military affairs (Xiao, 2020, pp. 15, 24–25).  ￼  ￼
+•	Foundations of strategy. Defines strategy’s meaning, elements, characteristics, and influencing factors (Ch. 1), positioning strategy as the top‑level guide for military affairs (Xiao, 2020, pp. 15, 24–25).  ￼  ￼
 
-	•	A five‑link model of strategic practice. Operationalizes strategy through strategic judgment → decision‑making → planning → implementation → evaluation (Part I overview) (Xiao, 2020, p. 24).  ￼
+•	A five‑link model of strategic practice. Operationalizes strategy through strategic judgment → decision‑making → planning → implementation → evaluation (Part I overview) (Xiao, 2020, p. 24).  ￼
 
-	•	Crisis management & deterrence. Develops frameworks for preventing/handling military crises (Ch. 7) and strategic deterrence concepts and guidance (Ch. 8) (Xiao, 2020, TOC pp. 10–12).  ￼
+•	Crisis management & deterrence. Develops frameworks for preventing/handling military crises (Ch. 7) and strategic deterrence concepts and guidance (Ch. 8) (Xiao, 2020, TOC pp. 10–12).  ￼
 
-	•	New domains of conflict. Extends strategy to space, cyberspace, deep‑sea, polar, biological, and intelligent domains (Ch. 9), reflecting the changing character of warfare (Xiao, 2020, TOC p. 11).  ￼
+•	New domains of conflict. Extends strategy to space, cyberspace, deep‑sea, polar, biological, and intelligent domains (Ch. 9), reflecting the changing character of warfare (Xiao, 2020, TOC p. 11).  ￼
 
-	•	War planning & conduct. Details war planning (Ch. 10), war operations (Ch. 11), battle situation control (Ch. 12), and operational guidance (Ch. 13) (Xiao, 2020, TOC pp. 11–12).  ￼
+•	War planning & conduct. Details war planning (Ch. 10), war operations (Ch. 11), battle situation control (Ch. 12), and operational guidance (Ch. 13) (Xiao, 2020, TOC pp. 11–12).  ￼
 
-	•	Non‑war & overseas operations. Provides strategic guidance for non‑war military operations (Ch. 14) and the overseas use of forces (Ch. 15) (Xiao, 2020, TOC p. 12).  ￼
+•	Non‑war & overseas operations. Provides strategic guidance for non‑war military operations (Ch. 14) and the overseas use of forces (Ch. 15) (Xiao, 2020, TOC p. 12).  ￼
 
-	•	Force construction for the “new era.” Articulates service‑specific construction and capability requirements for Army, Navy, Air Force, Rocket Force, Space, Cyberspace, Joint Logistics, Armed Police, and Reserve forces (Chs. 16–25), aligning modernization with strategic aims (Xiao, 2020, TOC pp. 13–14).  ￼
+•	Force construction for the “new era.” Articulates service‑specific construction and capability requirements for Army, Navy, Air Force, Rocket Force, Space, Cyberspace, Joint Logistics, Armed Police, and Reserve forces (Chs. 16–25), aligning modernization with strategic aims (Xiao, 2020, TOC pp. 13–14).  ￼
 
 SMS 2020 is best understood as the PLA’s authoritative, institutionally curated textbook on strategy—edited by Xiao—whose thesis is to codify a whole‑of‑force, whole‑of‑domain approach to using and building military power for China’s “new era,” while reaffirming active defense as its doctrinal bedrock (Xiao, 2020, pp. 24–27, 451–452).  ￼  ￼  ￼
 
