@@ -12,7 +12,7 @@ pages: 385
 isbn10: "1101153415"
 isbn13: "9781101153413"
 cover: "http://books.google.com/books/content?id=KZHITOPMf4gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-status: "completed"
+status: "complete"
 created: 2025-08-20 13:41:48
 updated: 2025-08-20 13:41:48
 class: "627"
