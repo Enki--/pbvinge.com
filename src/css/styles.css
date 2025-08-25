@@ -48,3 +48,14 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Book content width optimization */
+.prose {
+    max-width: 80ch;
+}
+
+@media (min-width: 1024px) {
+    .prose {
+        max-width: 110ch;
+    }
+}

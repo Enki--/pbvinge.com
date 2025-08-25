@@ -20,6 +20,8 @@ class: "627"
 sequence: 4
 ---
 
+<div class="prose">
+
 # Cry Havoc
 
 ## Online Description
@@ -28,7 +30,7 @@ Did the arms race of the 1930s cause the Second World War? In Cry Havoc, histori
   
 ## 🔫 Author Background
 
-- Joseph Maiolo is a Senior Lecturer in International History in the Department of War Studies, King’s College London [1].
+- Joseph Maiolo is a Senior Lecturer in International History in the Department of War Studies, King's College London [1].
 - He is the author of *The Royal Navy and Nazi Germany, 1933–1939: Appeasement and the Origins of the Second World War in Europe* (1998) [1, 2].
 - He has co-authored *An International History of the Twentieth Century* (2nd ed. rev. 2008) and edited *The Origins of World War Two: The Debate Continues* (2003) [3].
 - Maiolo has won several awards, including the Julian Corbett Award in Modern Naval History [1].
@@ -94,7 +96,7 @@ Stalin's eventual concession in 1932, acknowledging the economic feasibility of 
 **Summary (1-3 paragraphs):**
 Chapter 2 introduces Colonel Ishiwara Kanji, a pivotal figure in Japan's militarization drive, whose career was marked by headstrong individualism and a deep study of warfare [45]. Having witnessed Germany's economic collapse in World War I, Ishiwara concluded that national economic strength was paramount for total war, leading him to believe that Japan's economy had to be mobilized to compete on a "titanic scale" [34, 46]. His visit to Germany and observation of the Soviet Five Year Plan transformed him into a "planomaniac" with a corporatist vision for Japan's "national defense state" [47].
 
-In 1931, Ishiwara, as chief of operations for the Kwantung army, spearheaded the conquest of Manchuria, an enclave larger than France and Germany combined [11, 48]. This new territory, Manchukuo, was envisioned as "a deliberate emulation of Russia’s forced industrialization," a vast military-industrial bastion to be raised against the Soviet Union [11]. Army planners imposed their will, establishing what amounted to an "economic general staff" to control resources and direct industrial development [11, 49].
+In 1931, Ishiwara, as chief of operations for the Kwantung army, spearheaded the conquest of Manchuria, an enclave larger than France and Germany combined [11, 48]. This new territory, Manchukuo, was envisioned as "a deliberate emulation of Russia's forced industrialization," a vast military-industrial bastion to be raised against the Soviet Union [11]. Army planners imposed their will, establishing what amounted to an "economic general staff" to control resources and direct industrial development [11, 49].
 
 By 1936, a five-year plan was initiated for Japan-Manchukuo, aiming to achieve military strength 80% the size of the Red Army in the Far East by 1941 [50, 51]. This plan prioritized steep annual increases in heavy industries like steel, metals, fuel, and aircraft, demonstrating a profound commitment to state-controlled industrial expansion to sustain a future army [51]. Despite temporary setbacks due to political resistance, the goals of a controlling "national defense state" continued to gain traction [52].
 
@@ -159,7 +161,7 @@ Chapter 6 delves into the American military's efforts to prepare for total war a
 
 President Herbert Hoover attempted to dispel fears of wartime dictatorship, while his successor, Franklin Delano Roosevelt, adopted central planning principles through the **New Deal** to address the Great Depression [96-98]. Roosevelt saw the federal government as the legitimate embodiment of the nation, necessary to safeguard democracy from the "tyrannical accretion of economic power by boardroom plutocrats" [98, 99]. Agencies like the National Recovery Administration, though part of the New Deal, were criticized for resembling "Socialism, Communism, Fascism, Nazism and National Regimentation" [100, 101].
 
-Despite the growing militarization in Europe, Roosevelt initially resisted full-scale mobilization, fearing it would undermine democratic liberties and New Deal reforms [99, 102, 103]. Major Dwight D. Eisenhower, who helped refine the M-Day Plan, later warned of the "military-industrial behemoth" potentially wreaking "havoc with the nation’s liberties" if fully unleashed [104]. Roosevelt also acknowledged the inescapable logic that while disarmament was desirable, it was impossible unless other nations also disarmed [105].
+Despite the growing militarization in Europe, Roosevelt initially resisted full-scale mobilization, fearing it would undermine democratic liberties and New Deal reforms [99, 102, 103]. Major Dwight D. Eisenhower, who helped refine the M-Day Plan, later warned of the "military-industrial behemoth" potentially wreaking "havoc with the nation's liberties" if fully unleashed [104]. Roosevelt also acknowledged the inescapable logic that while disarmament was desirable, it was impossible unless other nations also disarmed [105].
 
 **Key Points (bullets):**
 - The **US War Department's Industrial Mobilization Plan (M-Day Plan, 1930)** aimed to convert the US into a "gigantic war machine" with extensive state control [89, 90].
@@ -216,7 +218,7 @@ The chapter highlights internal debates: Winston Churchill, though a strong advo
 - Debates emerged over the extent of state intervention needed, with figures like Lord Weir advocating for "shadow" industries to out-produce enemies without adopting full "military communism" [149, 150].
 - Both France and Britain, facing internal divisions and financial pressures, were forced to make significant compromises, including curtailing social programs and labor rights, to accelerate armaments [141, 151, 152].
 
-### Chapter 10: "Next Time We’ll Urge On the Other Side"
+### Chapter 10: "Next Time We'll Urge On the Other Side"
 
 **Summary (1-3 paragraphs):**
 Chapter 10 examines the Soviet Union's rearmament and diplomatic strategy under Joseph Stalin. In 1935, Mikhail Tukhachevsky analyzed Hitler's "gigantic armaments" plan, predicting intensive development of offensive forces [154]. Stalin, however, deliberately revised Tukhachevsky's articles to emphasize the German threat to Britain and France, believing that Germany aimed to weaken "capitalist-imperialist" rivals, thereby creating opportunities for the USSR [155]. Despite Stalin's occasional preference for economic growth and consumer goods, Tukhachevsky continually pushed for massive military modernization, particularly air power, often using fears of preemptive capitalist attacks to justify accelerated arming [25, 156-158].
@@ -432,16 +434,16 @@ For the United States, escaping this "vicious circle" of mounting military rival
 - "My aim in this narrative study is to correct the orthodoxy by telling the more complex tale of how politicians and military men the world over struggled to cope in vain with the arms race as an underlying dynamic, the supreme wrecker of all master plans." (p. 28)
 - "Planning trampled freedom: an efficient war economy was irreconcilable with parliaments, free markets and social progress." (p. 29)
 - "The compelling emulate-or-capitulate logic that drove the arms race forward." (p. 29)
-- Stalin, denouncing Tukhachevsky's rearmament plan: "To carry out such a ‘plan,’ . . . would certainly ruin the economy of the country, and the Red Army: that would be worse than any counter-revolution.” (p. 34)
-- Mussolini: “The whole Nation must be militarized.” (p. 68)
-- Marshal Badoglio, warning Mussolini about war with Britain over Ethiopia: “I believe Italy cannot face a general conflict without the gravest catastrophe. . . . Our arsenals are empty. Our finances cannot stand up to five days of war.” (p. 93)
-- Dwight D. Eisenhower, reflecting on the M-Day Plan: "when energized in the high-voltage hysteria of a national emergency, the aroused military-industrial behemoth could wreak havoc with the nation’s liberties." (p. 123)
-- Hitler, after the Munich Agreement, on British preparedness: "If the English have not got universal [military service] by the spring of 1939 they may consider their world Empire lost.” (p. 315)
-- Roosevelt, after Munich, on US air power: "Had we had this summer 5,000 planes and the capacity to immediately produce 10,000 per year, even though I might have had to ask Congress for the authority to sell or lend them to the countries in Europe, Hitler would not have dared to take the stand he did.” (p. 347)
+- Stalin, denouncing Tukhachevsky's rearmament plan: "To carry out such a 'plan,' . . . would certainly ruin the economy of the country, and the Red Army: that would be worse than any counter-revolution.” (p. 34)
+- Mussolini: "The whole Nation must be militarized." (p. 68)
+- Marshal Badoglio, warning Mussolini about war with Britain over Ethiopia: "I believe Italy cannot face a general conflict without the gravest catastrophe. . . . Our arsenals are empty. Our finances cannot stand up to five days of war." (p. 93)
+- Dwight D. Eisenhower, reflecting on the M-Day Plan: "when energized in the high-voltage hysteria of a national emergency, the aroused military-industrial behemoth could wreak havoc with the nation's liberties." (p. 123)
+- Hitler, after the Munich Agreement, on British preparedness: "If the English have not got universal [military service] by the spring of 1939 they may consider their world Empire lost." (p. 315)
+- Roosevelt, after Munich, on US air power: "Had we had this summer 5,000 planes and the capacity to immediately produce 10,000 per year, even though I might have had to ask Congress for the authority to sell or lend them to the countries in Europe, Hitler would not have dared to take the stand he did." (p. 347)
 - Geoffrey Crowther, editor of *The Economist*: "Are the two great European democracies being driven, in an effort to defeat totalitarianism, to adopt all forms of totalitarianism itself? Will they ever be able to slough off their new martial uniforms and revert to the free-and-easy life of civilian countries? Is democracy in Europe committing suicide in self-defence?” (p. 355)
-- French Prime Minister Reynaud, after German breakthrough in May 1940: “We have been defeated,” he told Churchill. “We are beaten,” Reynaud repeated tensely, “we have lost the battle.” (p. 385)
-- Hitler, joking about the term: “The expression ‘Blitzkrieg’ is an Italian invention,” he joked at a gathering of Nazi insiders. “We picked it up from the newspapers. I’ve just learned that I owe all my successes to an attentive study of Italian military theories.” (p. 395)
-- US Admiral Stark, on Britain's importance for US security: "If Britain wins decisively against Germany, . . . we could win everywhere; but . . . if she loses the problem confronting us would be very great; and, while we might not lose everywhere, we might, possibly, not win anywhere.” (p. 434)
+- French Prime Minister Reynaud, after German breakthrough in May 1940: "We have been defeated," he told Churchill. "We are beaten," Reynaud repeated tensely, "we have lost the battle." (p. 385)
+- Hitler, joking about the term: "The expression 'Blitzkrieg' is an Italian invention," he joked at a gathering of Nazi insiders. "We picked it up from the newspapers. I've just learned that I owe all my successes to an attentive study of Italian military theories." (p. 395)
+- US Admiral Stark, on Britain's importance for US security: "If Britain wins decisively against Germany, . . . we could win everywhere; but . . . if she loses the problem confronting us would be very great; and, while we might not lose everywhere, we might, possibly, not win anywhere." (p. 434)
 - The book's conclusion: "As the arms race gathered force, it wrecked the master plans of those who embraced the totalitarian trend and those who tried to resist it. Those leaders who tried to master it found that they could not. Those leaders who tried to buck the great armaments trend found that they could not." (p. 455)
 - The book's final sentence: "The rules can change, and so can the stakes, but the race goes on." (p. 456)
 
@@ -484,4 +486,6 @@ For the United States, escaping this "vicious circle" of mounting military rival
 - **1941-09-11** — **US Victory Plan draft lands on Roosevelt's desk** — A comprehensive plan for US and Allied armaments to defeat the Axis [286].
 - **1941-12-01** — **Japanese Imperial Conference accepts war with US** — Decision for war, driven by fears of economic "strangulation" [287].
 - **1941-12-07** — **Japan attacks Pearl Harbor** — Leads to US entry into World War II (Implicit from [287]).
+
+</div>
 
