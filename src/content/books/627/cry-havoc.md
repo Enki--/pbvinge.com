@@ -1,3 +1,24 @@
+---
+tags:
+  - 📚Book
+title: Cry Havoc
+subtitle: How the Arms Race Drove the World to War, 1931-1941
+author:
+  - Joseph Maiolo
+category:
+  - History
+publisher: Basic Books
+publish: 2010-09-28
+pages: 504
+isbn10: "0465022677"
+isbn13: "9780465022670"
+cover: http://books.google.com/books/content?id=9Vl6kEFKPxoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
+status: Complete
+created: 2025-08-25 06:30:07
+updated: 2025-08-25 06:30:07
+class: "627"
+sequence: 4
+---
 
 # Cry Havoc
 
