@@ -51,5 +51,5 @@ footer {
 
 /* Book content width optimization */
 .prose {
-    max-width: clamp(60ch, 80vw, 200ch);
+    max-width: clamp(60ch, 90vw, 500ch);
 }
