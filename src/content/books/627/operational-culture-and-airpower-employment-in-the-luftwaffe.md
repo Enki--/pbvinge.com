@@ -11,7 +11,7 @@ publisher: ""
 publish: 2021
 pages: 416
 isbn10: ""
-isbn13:
+isbn13: ""
 cover: "/assets/Op Culture and Airpower.png"
 status: Complete
 created: 2025-08-25 19:31:10
