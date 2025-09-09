@@ -50,7 +50,7 @@ _Black Snow_ traces the path from Haywood S. “Possum” Hansell Jr.’s falter
 
   
 
-## **🔑 Top Takeaways (5–10 bullets)**
+## **🔑 Top Takeaways**
 
 - The Tokyo firebombing was not an improvisation but a studied answer to jet‑stream winds, cloud cover, and radar limits that had crippled “precision” bombing; the switch to low‑altitude night incendiaries maximized effect while accepting new risks. 
     
