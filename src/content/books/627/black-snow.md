@@ -12,7 +12,7 @@ pages: 295
 isbn10: "1324003006"
 isbn13: "9781324003007"
 cover: "http://books.google.com/books/content?id=7fRhEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-status: "complet"
+status: "complete"
 created: 2025-09-09 07:25:31
 updated: 2025-09-09 07:25:31
 class: "627"
