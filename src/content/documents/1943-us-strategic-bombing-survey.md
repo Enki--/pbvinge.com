@@ -2513,5 +2513,3 @@ g. Friction between the German Army which developed the V-2, and the German Air 
 ---
 
 Return to the [Table of Contents](index.html) of the United States Strategic Bombing Survey.
-
-Return to [The Sinews of War](http://members.tripod.com/~Sturmvogel/WarEcon.html).
