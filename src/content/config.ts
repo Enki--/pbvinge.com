@@ -41,5 +41,23 @@ export const collections = {
       slug: z.string().optional(),
       notes: z.string().optional()
     })
+  }),
+
+  // Historic documents collection
+  documents: defineCollection({
+    type: 'content',
+    schema: z.object({
+      title: z.string(),
+      subtitle: z.string().optional(),
+      authors: z.array(z.string()).optional(),
+      origin: z.string().optional(),
+      date: z.coerce.date().optional(),
+      tags: z.array(z.string()).default([]),
+      cover: z.string().optional(),
+      externalUrl: z.string().url().optional(),
+      isPublished: z.boolean().default(true),
+      created: z.coerce.date().optional(),
+      updated: z.coerce.date().optional()
+    })
   })
 };
