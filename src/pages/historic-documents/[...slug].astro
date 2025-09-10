@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('documents', ({ data }) => data.isPublished !== false);
+  return docs.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+function fmtDate(d?: string | Date) {
+  if (!d) return '';
+  const date = new Date(d);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout title={`${entry.data.title} - Historic Document`}>
+  <article class="doc">
+    <header class="header">
+      <h1>{entry.data.title}</h1>
+      {entry.data.subtitle && <p class="subtitle">{entry.data.subtitle}</p>}
+      <div class="meta">
+        {entry.data.authors && entry.data.authors.length > 0 && (
+          <span class="author">{entry.data.authors.join(', ')}</span>
+        )}
+        {entry.data.origin && <span class="origin">{entry.data.origin}</span>}
+        {entry.data.date && <span class="date">{fmtDate(entry.data.date)}</span>}
+      </div>
+      {entry.data.externalUrl && (
+        <p class="external">
+          <a class="button" href={entry.data.externalUrl} target="_blank" rel="noopener noreferrer">View Original →</a>
+        </p>
+      )}
+    </header>
+
+    <div class="content prose">
+      <Content />
+    </div>
+
+    {entry.data.tags && entry.data.tags.length > 0 && (
+      <footer class="footer">
+        <div class="tags">
+          {entry.data.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      </footer>
+    )}
+  </article>
+</Layout>
+
+<style>
+  .doc { max-width: clamp(90%, 800px, 2000px); margin: 0 auto; padding: 2rem 1rem; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  h1 { font-size: 2.25rem; margin: 0; }
+  .subtitle { font-size: 1.2rem; color: #666; margin-top: 0.25rem; }
+  .meta { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 0.75rem; color: #666; }
+  .external { margin-top: 1rem; }
+  .button { display: inline-block; background: #2563eb; color: #fff; padding: 0.5rem 0.9rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
+  .button:hover { background: #1e40af; }
+  .content { font-size: 1.05rem; line-height: 1.75; color: #222; }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { background: #f0f0f0; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.85rem; color: #555; }
+</style>
+
