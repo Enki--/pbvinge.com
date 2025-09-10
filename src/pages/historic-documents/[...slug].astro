@@ -53,7 +53,7 @@ function fmtDate(d?: string | Date) {
 </Layout>
 
 <style>
-  .doc { max-width: clamp(90%, 800px, 2000px); margin: 0 auto; padding: 2rem 1rem; }
+  .doc { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
   .header { text-align: center; margin-bottom: 2rem; }
   h1 { font-size: 2.25rem; margin: 0; }
   .subtitle { font-size: 1.2rem; color: #666; margin-top: 0.25rem; }
@@ -61,9 +61,26 @@ function fmtDate(d?: string | Date) {
   .external { margin-top: 1rem; }
   .button { display: inline-block; background: #2563eb; color: #fff; padding: 0.5rem 0.9rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; }
   .button:hover { background: #1e40af; }
-  .content { font-size: 1.05rem; line-height: 1.75; color: #222; }
+  .content { font-size: 1.05rem; line-height: 1.75; color: #222; max-width: 46rem; margin: 0 auto; text-align: center; }
+  .content :global(hr) { margin: 2rem 0; border: none; border-top: 1px solid #e5e5e5; }
+  .content :global(h2),
+  .content :global(h3) { margin: 2.25rem 0 1rem; }
+  .content :global(p) { margin: 1rem 0; }
+  .page-marker { display: block; margin: 2rem auto 0.5rem; font-weight: 600; color: #444; }
   .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag { background: #f0f0f0; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.85rem; color: #555; }
 </style>
 
+<script>
+  // Enhance readability: mark "Page N" lines so we can add spacing
+  const content = document.querySelector('.content');
+  if (content) {
+    const ps = content.querySelectorAll('p');
+    const re = /^Page\s+(?:[IVXLCDM]+-\d+|\d+)(?:\.)?$/;
+    ps.forEach(p => {
+      const t = (p.textContent || '').trim();
+      if (re.test(t)) p.classList.add('page-marker');
+    });
+  }
+  </script>
