@@ -15,7 +15,7 @@ cover: "http://books.google.com/books/content?id=Uk60BQAAQBAJ&printsec=frontcove
 status: "Complete"
 created: 2025-08-14 08:35:27
 updated: 2025-08-14 08:35:27
-class: "600å"
+class: "600"
 sequence: "14"
 ---
 
