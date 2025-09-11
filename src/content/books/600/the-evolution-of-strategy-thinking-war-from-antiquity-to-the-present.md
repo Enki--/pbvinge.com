@@ -16,7 +16,7 @@ status: "Complete"
 created: 2025-07-20 11:53:04
 updated: 2025-07-20 11:53:04
 class: "600"
-sequence: ""
+sequence: "16"
 ---
 
 # The Evolution of Strategy
