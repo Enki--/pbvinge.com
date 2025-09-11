@@ -8,7 +8,7 @@ category:
 - "Political Science"
 publisher: "Cambridge University Press"
 publish: 2010-10-14
-pages: "300"
+pages: 300
 isbn10: "113949256X"
 isbn13: "9781139492560"
 cover: "http://books.google.com/books/content?id=lB18hn9MSlEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
