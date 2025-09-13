@@ -5,7 +5,7 @@ author:
 - "Tara Zahra"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/olid/OL38795247M-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/13319660-L.jpg"
 isPublished: true
 ---
 

@@ -5,7 +5,7 @@ author:
 - "Jeffrey W. Legro"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780801473838-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/1508004-L.jpg"
 isPublished: true
 ---
 

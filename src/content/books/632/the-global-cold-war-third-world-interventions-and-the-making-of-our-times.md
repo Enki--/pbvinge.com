@@ -5,7 +5,7 @@ author:
 - "Odd Arne Westad"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780521703147-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/353913-L.jpg"
 isPublished: true
 ---
 

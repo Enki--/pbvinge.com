@@ -5,7 +5,7 @@ author:
 - "Robert O. Keohane"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/olid/OL7759013M-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/443948-L.jpg"
 isPublished: true
 ---
 

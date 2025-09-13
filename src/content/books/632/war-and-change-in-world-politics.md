@@ -5,7 +5,7 @@ author:
 - "Robert Gilpin"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/olid/OL14778477M-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/8456695-L.jpg"
 isPublished: true
 ---
 

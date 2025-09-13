@@ -5,7 +5,7 @@ author:
 - "G. John Ikenberry"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780691169217-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/8801380-L.jpg"
 isPublished: true
 ---
 

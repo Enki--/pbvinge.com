@@ -5,7 +5,7 @@ author:
 - "Steven Lukes"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780333420928-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/198930-L.jpg"
 isPublished: true
 ---
 

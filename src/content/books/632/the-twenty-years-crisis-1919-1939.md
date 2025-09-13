@@ -6,7 +6,7 @@ author:
 - "Michael Cox (Editor)"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/olid/OL28163723M-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/10103026-L.jpg"
 isPublished: true
 ---
 

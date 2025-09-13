@@ -5,7 +5,7 @@ author:
 - "Van Jackson"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780300257281-L.jpg"
+cover: "https://covers.openlibrary.org/b/id/13164525-L.jpg"
 isPublished: true
 ---
 
