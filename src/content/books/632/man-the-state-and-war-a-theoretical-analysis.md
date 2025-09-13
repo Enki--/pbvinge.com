@@ -5,7 +5,7 @@ author:
 - "Kenneth N. Waltz"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/olid/OL29657064M-L.jpg"
+cover: "https://books.google.com/books/content?id=qUsb210ml48C&printsec=frontcover&img=1&zoom=2"
 isPublished: true
 ---
 

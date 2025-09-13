@@ -5,7 +5,7 @@ author:
 - "David A. Baldwin"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9780691204420-L.jpg"
+cover: "https://pup-assets.imgix.net/onix/images/9780691204437.jpg"
 isPublished: true
 ---
 

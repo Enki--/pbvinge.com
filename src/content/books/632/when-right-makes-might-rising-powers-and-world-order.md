@@ -5,7 +5,7 @@ author:
 - "Stacie E. Goddard"
 class: "632"
 status: "to read"
-cover: "https://covers.openlibrary.org/b/isbn/9781501730306-L.jpg"
+cover: "https://books.google.com/books/content?id=SspWDwAAQBAJ&printsec=frontcover&img=1&zoom=2"
 isPublished: true
 ---
 
