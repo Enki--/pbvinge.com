@@ -33,7 +33,7 @@ Carr’s background gave him both the insider’s view of diplomacy and the scho
 
 
 
-🧭 60‑Second Brief
+## 🧭 60‑Second Brief
 
 • Core claim (1–2 sentences): Durable international order rests on power, not sentiment; “utopian” ideals (law, morality, harmony) are indispensable but must be disciplined by realism about interests and coercion. The practical task is to manage peaceful change so that shifts in power can be accommodated without war. ￼ ￼ ￼
 
@@ -49,7 +49,7 @@ Carr’s background gave him both the insider’s view of diplomacy and the scho
 
   
 
-🧪 Theory Map (IR)
+## 🧪 Theory Map (IR)
 
 • Paradigm(s): Classical realism (critical of “utopian” liberalism; argues for a synthesis of power and morality). ￼ ￼
 
@@ -77,7 +77,7 @@ Carr’s background gave him both the insider’s view of diplomacy and the scho
 
   
 
-🎓 Course Questions (from syllabus)
+## 🎓 Course Questions (from syllabus)
 
 1. How does Carr employ the term “realism” and “idealism”?
 
@@ -93,7 +93,7 @@ Carr’s background gave him both the insider’s view of diplomacy and the scho
 
   
 
-✅ Direct Responses to Course Questions
+## ✅ Direct Responses to Course Questions
 
   
 
@@ -133,7 +133,7 @@ Answer: Writing amid interwar upheaval and looming power shifts, Carr centers po
 
   
 
-📚 Section-by-Section Notes
+## 📚 Section-by-Section Notes
 
   
 
@@ -163,7 +163,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-1. Realism vs. Utopianism
+### 1. Realism vs. Utopianism
 
   
 
@@ -175,7 +175,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-2. The “Harmony of Interests” Critique
+### 2. The “Harmony of Interests” Critique
 
   
 
@@ -187,7 +187,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-3. Power, Law, and Morality
+### 3. Power, Law, and Morality
 
   
 
@@ -199,7 +199,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-4. The Nation‑State and Order
+### 4. The Nation‑State and Order
 
   
 
@@ -211,7 +211,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-5. Peaceful Change
+### 5. Peaceful Change
 
   
 
@@ -223,7 +223,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-6. Against Grand Narratives
+### 6. Against Grand Narratives
 
   
 
@@ -235,7 +235,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-🧩 Key Concepts & Definitions (author’s usage)
+## 🧩 Key Concepts & Definitions (author’s usage)
 
 • Realism / Utopianism (Idealism): Modes of thought that must be combined—realism anchors analysis in power; utopianism supplies normative direction and possibility. ￼
 
@@ -247,7 +247,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-🧑‍🤝‍🧑 Actors & Perspectives
+## 🧑‍🤝‍🧑 Actors & Perspectives
 
 • Great powers / status‑quo elites — assert universal principles; interest‑laden; uphold rules that lock in advantage. Effect: stabilize until rules no longer match power. ￼
 
@@ -255,15 +255,10 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
 • Intellectuals / policy thinkers — produce doctrines reflecting context/position; can clarify or obscure realities. ￼
 
-  
-
-🕰 Timeline of Major Events (if toggled = Yes)
-
-• Not found in provided source.
 
   
 
-🧠 Policy & Strategy Takeaways
+## 🧠 Policy & Strategy Takeaways
 
 • Implications for today’s policy choices:
 
@@ -281,7 +276,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-⚔️ Comparative Placement in the IR Canon
+## ⚔️ Comparative Placement in the IR Canon
 
 • Closest kin / contrasts: Carr’s realism shares family resemblance with classical realists (e.g., Morgenthau) but is explicitly critical and historically minded, not an apologia for power. ￼
 
@@ -291,7 +286,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-🧐 Critical Reflections
+## 🧐 Critical Reflections
 
 • Strengths: Penetrating ideology critique; insists on feasibility; offers an actionable concept—peaceful change. ￼ ￼
 
@@ -301,7 +296,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-❓ Open Questions for Seminar
+## ❓ Open Questions for Seminar
 
 • How, concretely, should “peaceful change” be implemented ex ante (before crises), and what credible commitments can status‑quo powers make? ￼
 
@@ -309,7 +304,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-✍️ Notable Quotes (with pages)
+## ✍️ Notable Quotes (with pages)
 
 • “[Carr’s] exposure of the power relations underlying doctrines of the harmony of interests is especially pertinent… [and] the need to balance power and morality warns against the hypocrisy of contemporary great‑power crusading.” (pp. 3–4). ￼
 
@@ -319,7 +314,7 @@ Exact chapter titles are not legible in the provided digital copy; below are the
 
   
 
-📝 Exam Drills (if toggled = Yes)
+## 📝 Exam Drills (if toggled = Yes)
 
 • Likely prompt: “Explain Carr’s critique of the ‘harmony of interests’ and its policy implications for managing power transitions.”
 
