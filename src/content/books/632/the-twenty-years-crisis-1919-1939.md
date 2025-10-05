@@ -12,7 +12,7 @@ pages: 346
 isbn10: "1349950769"
 isbn13: "9781349950768"
 cover: "http://books.google.com/books/content?id=9ZSkDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-status: "to read"
+status: "complete"
 created: 2025-10-05 18:09:14
 updated: 2025-10-05 18:09:14
 class: "632"
