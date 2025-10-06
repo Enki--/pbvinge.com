@@ -1,3 +1,24 @@
+---
+tags:
+  - 📚Book
+title: Power
+subtitle: A Radical View
+author:
+  - Steven Lukes
+category:
+  - Political science
+publisher: Bloomsbury Publishing
+publish: 2021
+pages: 257
+isbn10: "1352012340"
+isbn13: "9781352012347"
+cover: http://books.google.com/books/content?id=u3atEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api
+status: Complete
+created: 2025-10-06 18:09:19
+updated: 2025-10-06 18:09:19
+class: "632"
+sequence: "3"
+---
 
 # Power
 
