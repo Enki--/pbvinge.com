@@ -46,7 +46,7 @@ import cards from '../data/flashcards.json';
           <div class="card__face card__face--front">
             <span class="card__eyebrow" id="eyebrow">Question</span>
             <div style="display:flex;gap:12px;align-items:center;">
-              <img id="cardImage" src="" alt="" style="max-width:120px;max-height:120px;border-radius:8px;display:none;object-fit:cover;" />
+              <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="120" height="120" style="max-width:120px;max-height:120px;width:120px;height:120px;border-radius:8px;display:none;object-fit:cover;" />
               <div class="card__content" id="q-current">{cards[0].q}</div>
             </div>
             <div class="card__hint">Click to reveal the answer</div>
