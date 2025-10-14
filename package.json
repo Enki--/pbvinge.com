@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "postinstall": "node -e \"(async()=>{try{const esbuild=require('esbuild'); if(typeof esbuild.install==='function'){await esbuild.install();} }catch(e){console.error('esbuild postinstall helper failed, continuing', e);} })()\""
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.0",
