@@ -71,7 +71,8 @@ import cards from '../data/flashcards.json';
   </main>
 
   <script>
-    const cards = JSON.parse(decodeURIComponent("%5B%7B%22q%22%3A%22What%20does%20CSS%20stand%20for%3F%22%2C%22a%22%3A%22Cascading%20Style%20Sheets.%22%7D%2C%7B%22q%22%3A%22What%20is%20the%20capital%20of%20Japan%3F%22%2C%22a%22%3A%22Tokyo.%22%7D%2C%7B%22q%22%3A%222%20%C3%97%207%20%3D%20%3F%22%2C%22a%22%3A%2214.%22%7D%5D"));
+    // Use server-side `cards` (imported in frontmatter) and serialize it into the client script
+    const cards = {JSON.stringify(cards)};
     let idx = 0;
 
   const btn = document.getElementById('cardBtn');
@@ -92,7 +93,10 @@ import cards from '../data/flashcards.json';
       btn.setAttribute('aria-expanded', 'false');
       // image handling
       if (c.img) {
-        cardImage.src = c.img;
+        // Prefer https to avoid mixed-content blocking in browsers
+        let imgUrl = c.img;
+        if (imgUrl.startsWith('http://')) imgUrl = imgUrl.replace(/^http:\/\//, 'https://');
+        cardImage.src = imgUrl;
         cardImage.alt = c.q;
         cardImage.style.display = '';
       } else {
