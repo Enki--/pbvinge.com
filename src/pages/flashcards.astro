@@ -70,9 +70,12 @@ import cards from '../data/flashcards.json';
     <p style="opacity:.75;max-width:var(--card-w);text-align:center">Tip: Click the card, press <kbd>Space</kbd> or <kbd>Enter</kbd> to flip. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
   </main>
 
+  <!-- serialized data for client -->
+  <script id="flashcards-data" type="application/json">{JSON.stringify(cards)}</script>
+
   <script>
-    // Use server-side `cards` (imported in frontmatter) and serialize it into the client script
-    const cards = {JSON.stringify(cards)};
+    // Parse the serialized cards data from the DOM to avoid build-time parsing issues
+    const cards = JSON.parse(document.getElementById('flashcards-data').textContent || '[]');
     let idx = 0;
 
   const btn = document.getElementById('cardBtn');
