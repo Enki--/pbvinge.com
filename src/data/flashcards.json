@@ -1,0 +1,17 @@
+[
+  {
+    "q": "What does CSS stand for?",
+    "a": "Cascading Style Sheets.",
+    "img": "/assets/au1.png"
+  },
+  {
+    "q": "What is the capital of Japan?",
+    "a": "Tokyo.",
+    "img": null
+  },
+  {
+    "q": "2 × 7 = ?",
+    "a": "14.",
+    "img": null
+  }
+]

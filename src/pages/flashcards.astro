@@ -1,11 +1,5 @@
----
 import Layout from '../layouts/Layout.astro';
-/** Replace this data with your own, or import it from /src/data/flashcards.json */
-const cards = [
-  { q: "What does CSS stand for?", a: "Cascading Style Sheets." },
-  { q: "What is the capital of Japan?", a: "Tokyo." },
-  { q: "2 × 7 = ?", a: "14." },
-];
+import cards from '../data/flashcards.json';
 ---
 <Layout title="Flashcards">
   <style>
@@ -50,7 +44,10 @@ const cards = [
         <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current">
           <div class="card__face card__face--front">
             <span class="card__eyebrow" id="eyebrow">Question</span>
-            <div class="card__content" id="q-current">{cards[0].q}</div>
+            <div style="display:flex;gap:12px;align-items:center;">
+              <img id="cardImage" src="" alt="" style="max-width:120px;max-height:120px;border-radius:8px;display:none;object-fit:cover;" />
+              <div class="card__content" id="q-current">{cards[0].q}</div>
+            </div>
             <div class="card__hint">Click to reveal the answer</div>
           </div>
 
@@ -76,13 +73,14 @@ const cards = [
     const cards = JSON.parse(decodeURIComponent("%5B%7B%22q%22%3A%22What%20does%20CSS%20stand%20for%3F%22%2C%22a%22%3A%22Cascading%20Style%20Sheets.%22%7D%2C%7B%22q%22%3A%22What%20is%20the%20capital%20of%20Japan%3F%22%2C%22a%22%3A%22Tokyo.%22%7D%2C%7B%22q%22%3A%222%20%C3%97%207%20%3D%20%3F%22%2C%22a%22%3A%2214.%22%7D%5D"));
     let idx = 0;
 
-    const btn = document.getElementById('cardBtn');
-    const qEl = document.getElementById('q-current');
-    const aEl = document.getElementById('a-current-content');
-    const eyebrow = document.getElementById('eyebrow');
-    const progress = document.getElementById('progress');
-    const prev = document.getElementById('prevBtn');
-    const next = document.getElementById('nextBtn');
+  const btn = document.getElementById('cardBtn');
+  const qEl = document.getElementById('q-current');
+  const aEl = document.getElementById('a-current-content');
+  const eyebrow = document.getElementById('eyebrow');
+  const progress = document.getElementById('progress');
+  const prev = document.getElementById('prevBtn');
+  const next = document.getElementById('nextBtn');
+  const cardImage = document.getElementById('cardImage');
 
     function render() {
       const c = cards[idx];
@@ -91,6 +89,16 @@ const cards = [
       eyebrow.textContent = `Question ${idx + 1}`;
       progress.textContent = `${idx + 1} / ${cards.length}`;
       btn.setAttribute('aria-expanded', 'false');
+      // image handling
+      if (c.img) {
+        cardImage.src = c.img;
+        cardImage.alt = c.q;
+        cardImage.style.display = '';
+      } else {
+        cardImage.src = '';
+        cardImage.alt = '';
+        cardImage.style.display = 'none';
+      }
     }
 
     btn.addEventListener('click', () => {
