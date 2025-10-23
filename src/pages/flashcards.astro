@@ -42,7 +42,8 @@ import cards from '../data/flashcards.json';
 
     <section class="stack" aria-label="Flashcard viewer">
       <article class="card" aria-labelledby="q-current">
-        <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current">
+        <!-- use a unique id for the back region to avoid accidental conflicts -->
+        <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current-region">
           <div class="card__face card__face--front">
             <span class="card__eyebrow" id="eyebrow">Question</span>
             <div style="display:flex;gap:12px;align-items:center;">
@@ -52,7 +53,7 @@ import cards from '../data/flashcards.json';
             <div class="card__hint">Click to reveal the answer</div>
           </div>
 
-          <div class="card__face card__face--back" id="a-current" role="region" aria-label="Answer">
+          <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
             <span class="card__eyebrow">Answer</span>
             <div class="card__content" id="a-current-content">{cards[0].a}</div>
             <div class="card__hint">Click to flip back</div>
@@ -75,54 +76,96 @@ import cards from '../data/flashcards.json';
 
   <script>
     // Parse the serialized cards data from the DOM to avoid build-time parsing issues
-    const cards = JSON.parse(document.getElementById('flashcards-data').textContent || '[]');
+    const dataEl = document.getElementById('flashcards-data');
+    let cards = [];
+    try {
+      cards = JSON.parse(dataEl ? dataEl.textContent || '[]' : '[]');
+    } catch (err) {
+      console.error('Failed to parse flashcards data', err);
+      cards = [];
+    }
+
     let idx = 0;
 
-  const btn = document.getElementById('cardBtn');
-  const qEl = document.getElementById('q-current');
-  const aEl = document.getElementById('a-current-content');
-  const eyebrow = document.getElementById('eyebrow');
-  const progress = document.getElementById('progress');
-  const prev = document.getElementById('prevBtn');
-  const next = document.getElementById('nextBtn');
-  const cardImage = document.getElementById('cardImage');
+    const btn = document.getElementById('cardBtn');
+    const qEl = document.getElementById('q-current');
+    const aEl = document.getElementById('a-current-content');
+    const eyebrow = document.getElementById('eyebrow');
+    const progress = document.getElementById('progress');
+    const prev = document.getElementById('prevBtn');
+    const next = document.getElementById('nextBtn');
+    const cardImage = document.getElementById('cardImage');
+
+    // Basic sanity checks
+    if (!btn || !qEl || !aEl || !progress) {
+      console.error('Flashcards: missing required DOM elements', { btn, qEl, aEl, progress });
+    }
 
     function render() {
+      if (!cards || cards.length === 0) {
+        qEl && (qEl.textContent = 'No cards available');
+        aEl && (aEl.textContent = '');
+        progress && (progress.textContent = '0 / 0');
+        return;
+      }
+
+      // wrap index if out of range
+      idx = ((idx % cards.length) + cards.length) % cards.length;
+
       const c = cards[idx];
-      qEl.textContent = c.q;
-      aEl.textContent = c.a;
+      qEl.textContent = c.q || '';
+      aEl.textContent = c.a || '';
       eyebrow.textContent = `Question ${idx + 1}`;
       progress.textContent = `${idx + 1} / ${cards.length}`;
-      btn.setAttribute('aria-expanded', 'false');
+
+      // always reset to closed on render
+      btn && btn.setAttribute('aria-expanded', 'false');
+
       // image handling
-      if (c.img) {
+      if (c.img && cardImage) {
         // Prefer https to avoid mixed-content blocking in browsers
         let imgUrl = c.img;
         if (imgUrl.startsWith('http://')) imgUrl = imgUrl.replace(/^http:\/\//, 'https://');
         cardImage.src = imgUrl;
-        cardImage.alt = c.q;
-        cardImage.style.display = '';
-      } else {
-        cardImage.src = '';
+        cardImage.alt = c.q || '';
+        // ensure the img is visible and respects its CSS sizing
+        cardImage.style.display = 'block';
+      } else if (cardImage) {
+        cardImage.removeAttribute('src');
         cardImage.alt = '';
         cardImage.style.display = 'none';
       }
+
+      console.debug('Flashcards: rendered', { idx, total: cards.length, card: c });
     }
 
-    btn.addEventListener('click', () => {
-      const open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        console.debug('Flashcards: toggled', { idx, open: !open });
+      });
+    }
 
+    // use code/key values for reliable handling
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; render(); btn.focus(); return }
-      if (e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; render(); btn.focus(); return }
-      if ((e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter') && document.activeElement === btn) { e.preventDefault(); const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!open)); }
+      const activeIsBtn = document.activeElement === btn;
+      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; render(); btn && btn.focus(); return }
+      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus(); return }
+
+      // space/enter toggles when the card button is focused
+      if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
+        e.preventDefault();
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        return;
+      }
     });
 
-    prev.addEventListener('click', () => { idx = (idx - 1 + cards.length) % cards.length; render(); btn.focus() });
-    next.addEventListener('click', () => { idx = (idx + 1) % cards.length; render(); btn.focus() });
+    prev && prev.addEventListener('click', () => { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus() });
+    next && next.addEventListener('click', () => { idx = (idx + 1) % cards.length; render(); btn && btn.focus() });
 
+    // initial render
     render();
   </script>
 </Layout>
