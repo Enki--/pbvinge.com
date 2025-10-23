@@ -34,6 +34,12 @@ import Layout from '../layouts/Layout.astro';
     .controls button { background:transparent; border:1px solid color-mix(in srgb, var(--text-color) 12%, transparent 88%); color:var(--text-color); padding:.45rem .8rem; border-radius:8px; cursor:pointer }
 
     @media (prefers-reduced-motion: reduce) { .card__btn { transition: none } }
+
+    /* Flashcard image layout: center under question and avoid cropping */
+    .card__media { display:flex; flex-direction:column; gap:.75rem; align-items:center; justify-content:flex-start }
+    .card__question-wrap { width:100%; }
+    .card__image-wrap { width:100%; display:flex; justify-content:center }
+    .card__image { display:none; width: clamp(160px, 40vw, 360px); height: auto; max-height: calc(var(--card-h) - 120px); object-fit: contain; border-radius:8px; }
   </style>
 
   <main class="deck">
@@ -45,9 +51,13 @@ import Layout from '../layouts/Layout.astro';
         <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current-region">
           <div class="card__face card__face--front">
             <span class="card__eyebrow" id="eyebrow">Question</span>
-            <div style="display:flex;gap:12px;align-items:center;">
-              <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="120" height="120" style="max-width:120px;max-height:120px;width:120px;height:120px;border-radius:8px;display:none;object-fit:cover;" />
-              <div class="card__content" id="q-current">Loading…</div>
+            <div class="card__media">
+              <div class="card__question-wrap">
+                <div class="card__content" id="q-current">Loading…</div>
+              </div>
+              <div class="card__image-wrap" aria-hidden="true">
+                <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" />
+              </div>
             </div>
             <div class="card__hint">Click to reveal the answer</div>
           </div>
