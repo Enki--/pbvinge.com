@@ -1,9 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import cards from '../data/flashcards.json';
-
-// Serialize cards as base64 to avoid potential HTML-embedding / entity-escaping issues
-const cardsBase64 = Buffer.from(JSON.stringify(cards)).toString('base64');
 ---
 <Layout title="Flashcards">
   <style>
@@ -51,14 +47,14 @@ const cardsBase64 = Buffer.from(JSON.stringify(cards)).toString('base64');
             <span class="card__eyebrow" id="eyebrow">Question</span>
             <div style="display:flex;gap:12px;align-items:center;">
               <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="120" height="120" style="max-width:120px;max-height:120px;width:120px;height:120px;border-radius:8px;display:none;object-fit:cover;" />
-              <div class="card__content" id="q-current">{cards[0].q}</div>
+              <div class="card__content" id="q-current">Loading…</div>
             </div>
             <div class="card__hint">Click to reveal the answer</div>
           </div>
 
           <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
             <span class="card__eyebrow">Answer</span>
-            <div class="card__content" id="a-current-content">{cards[0].a}</div>
+            <div class="card__content" id="a-current-content">Loading…</div>
             <div class="card__hint">Click to flip back</div>
           </div>
         </button>
@@ -74,25 +70,19 @@ const cardsBase64 = Buffer.from(JSON.stringify(cards)).toString('base64');
     <p style="opacity:.75;max-width:var(--card-w);text-align:center">Tip: Click the card, press <kbd>Space</kbd> or <kbd>Enter</kbd> to flip. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
   </main>
 
-  <!-- serialized data for client (base64) -->
-  <script id="flashcards-data" type="text/plain">{cardsBase64}</script>
-
   <script>
-    // Parse the serialized cards data from the DOM (we embed base64 to avoid HTML-embedding quirks)
-    const dataEl = document.getElementById('flashcards-data');
+    // Fetch flashcards JSON from public so we avoid any HTML-embedding/escaping issues
     let cards = [];
-    try {
-      const b64 = dataEl ? (dataEl.textContent || '').trim() : '';
-      if (b64) {
-        // atob is available in browsers; parse the decoded JSON
-        const json = atob(b64);
-        cards = JSON.parse(json);
-      } else {
+    async function loadCards() {
+      try {
+        const res = await fetch('/data/flashcards.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        cards = await res.json();
+      } catch (err) {
+        console.error('Failed to fetch flashcards.json', err);
         cards = [];
       }
-    } catch (err) {
-      console.error('Failed to decode/parse flashcards data', err, dataEl && dataEl.textContent && dataEl.textContent.slice(0,120));
-      cards = [];
+      render();
     }
 
     let idx = 0;
@@ -175,7 +165,8 @@ const cardsBase64 = Buffer.from(JSON.stringify(cards)).toString('base64');
     prev && prev.addEventListener('click', () => { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus() });
     next && next.addEventListener('click', () => { idx = (idx + 1) % cards.length; render(); btn && btn.focus() });
 
-    // initial render
+    // initial load + render after fetch
     render();
+    loadCards();
   </script>
 </Layout>
