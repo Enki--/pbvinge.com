@@ -61,8 +61,9 @@ import Layout from '../layouts/Layout.astro';
       </article>
 
       <div class="controls">
-        <button id="prevBtn" aria-label="Previous card">← Prev</button>
-        <div id="progress" style="opacity:.85">1 / {cards.length}</div>
+  <button id="prevBtn" aria-label="Previous card">← Prev</button>
+  <!-- placeholder progress (updated client-side) -->
+  <div id="progress" style="opacity:.85">1 / —</div>
         <button id="nextBtn" aria-label="Next card">Next →</button>
       </div>
     </section>
