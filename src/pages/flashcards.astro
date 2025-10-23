@@ -45,11 +45,27 @@ import Layout from '../layouts/Layout.astro';
 
     @media (prefers-reduced-motion: reduce) { .card__btn { transition: none } }
 
-    /* Flashcard image layout: center under question and avoid cropping */
-    .card__media { display:flex; flex-direction:column; gap:.75rem; align-items:center; justify-content:flex-start }
-    .card__question-wrap { width:100%; }
-    .card__image-wrap { width:100%; display:flex; justify-content:center }
-    .card__image { display:none; width: clamp(160px, 40vw, 360px); height: auto; max-height: calc(var(--card-h) - 120px); object-fit: contain; border-radius:8px; }
+   /* Flashcard image layout: center under question and avoid cropping */
+   .card__media { display:flex; flex-direction:column; gap:.75rem; align-items:center; justify-content:flex-start }
+   .card__question-wrap { width:100%; }
+   .card__image-wrap { width:100%; display:flex; justify-content:center }
+   .card__image { display:none; width: clamp(160px, 40vw, 360px); height: auto; max-height: calc(var(--card-h) - 120px); object-fit: contain; border-radius:8px; }
+
+   /* 3D flip shell + flipper. The shell gets an explicit height from JS so it can animate
+     while the flipper performs the rotateY transform to produce a real 3D flip. */
+   .card__shell { perspective: 1000px; width:100%; transition: height .32s ease }
+   .card__flipper { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.6,.2,1); position: relative }
+   .card__face { backface-visibility: hidden; -webkit-backface-visibility: hidden }
+   .card__face--front { transform: rotateY(0deg); }
+   .card__face--back { transform: rotateY(180deg); position: absolute; inset:0 } 
+   .card__btn.is-flipped .card__flipper { transform: rotateY(180deg) }
+
+   /* subtle content fade/slide when flipping */
+   .card__face { transition: opacity .28s ease, transform .28s ease }
+   .card__btn .card__face--front { opacity:1; transform: translateY(0) }
+   .card__btn.is-flipped .card__face--front { opacity:0; transform: translateY(-6px) }
+   .card__btn .card__face--back { opacity:0; transform: translateY(6px) }
+   .card__btn.is-flipped .card__face--back { opacity:1; transform: translateY(0) }
   </style>
 
   <main class="deck">
@@ -59,7 +75,9 @@ import Layout from '../layouts/Layout.astro';
       <article class="card" aria-labelledby="q-current">
         <!-- use a unique id for the back region to avoid accidental conflicts -->
         <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current-region">
-          <div class="card__face card__face--front">
+          <div class="card__shell">
+            <div class="card__flipper" aria-hidden="true">
+              <div class="card__face card__face--front">
             <span class="card__eyebrow" id="eyebrow">Question</span>
             <div class="card__media">
               <div class="card__question-wrap">
@@ -70,12 +88,14 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
             <div class="card__hint">Click to reveal the answer</div>
-          </div>
+        </div>
 
-          <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
+        <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
             <span class="card__eyebrow">Answer</span>
             <div class="card__content" id="a-current-content">Loading…</div>
             <div class="card__hint">Click to flip back</div>
+              </div>
+            </div>
           </div>
         </button>
       </article>
@@ -160,13 +180,71 @@ import Layout from '../layouts/Layout.astro';
       console.debug('Flashcards: rendered', { idx, total: cards.length, card: c });
     }
 
+    // 3D flip handling with dynamic height
+    const shell = document.querySelector('.card__shell');
+    const flipper = document.querySelector('.card__flipper');
+    const frontFace = document.querySelector('.card__face--front');
+    const backFace = document.querySelector('.card__face--back');
+
+    function measureHeights() {
+      if (!frontFace || !backFace || !shell) return { front: 0, back: 0 };
+      // Temporarily reset shell height so natural content sizes compute correctly
+      const prevHeight = shell.style.height;
+      shell.style.height = 'auto';
+      // ensure backFace is not interfering with layout when measuring
+      backFace.style.display = 'block';
+      backFace.style.position = 'relative';
+      backFace.style.transform = 'none';
+      frontFace.style.position = 'relative';
+      const frontH = frontFace.getBoundingClientRect().height;
+      const backH = backFace.getBoundingClientRect().height;
+      // restore
+      backFace.style.position = '';
+      backFace.style.transform = '';
+      shell.style.height = prevHeight;
+      return { front: Math.round(frontH), back: Math.round(backH) };
+    }
+
+    let heights = { front: 0, back: 0 };
+    function updateHeights() {
+      heights = measureHeights();
+      // set shell height to currently-visible face
+      const open = btn && btn.getAttribute('aria-expanded') === 'true';
+      const target = open ? heights.back : heights.front || heights.back || 0;
+      if (shell) shell.style.height = target ? `${target}px` : 'auto';
+    }
+
     if (btn) {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
         const open = btn.getAttribute('aria-expanded') === 'true';
+        // compute heights before toggling so we can animate
+        updateHeights();
+        // next height
+        const nextHeight = open ? heights.front : heights.back || heights.front;
+        // apply flip class
+        if (open) {
+          btn.classList.remove('is-flipped');
+        } else {
+          btn.classList.add('is-flipped');
+        }
         btn.setAttribute('aria-expanded', String(!open));
+        // animate height
+        if (shell && nextHeight) {
+          // force reflow to ensure transition
+          void shell.offsetHeight;
+          shell.style.height = `${nextHeight}px`;
+        }
         console.debug('Flashcards: toggled', { idx, open: !open });
       });
     }
+
+    // recalc heights when images load or window resizes
+    function attachImageListeners() {
+      if (!cardImage) return;
+      cardImage.addEventListener('load', () => { updateHeights(); });
+    }
+    attachImageListeners();
+    window.addEventListener('resize', () => { updateHeights(); });
 
     // use code/key values for reliable handling
     document.addEventListener('keydown', (e) => {
