@@ -1,7 +1,36 @@
----
 import Layout from '../layouts/Layout.astro';
----
-<Layout title="Flashcards">
+import fs from 'fs';
+import { marked } from 'marked';
+import createDOMPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
+
+// Read the public JSON at build time and render answers to sanitized HTML.
+let processed = [];
+try {
+  const dataFile = new URL('../../public/data/flashcards.json', import.meta.url);
+  const raw = await fs.promises.readFile(dataFile, 'utf-8');
+  const cardsSrc = JSON.parse(raw || '[]');
+
+  const window = new JSDOM('').window;
+  const DOMPurify = createDOMPurify(window);
+
+  processed = (cardsSrc || []).map((c) => {
+    const aRaw = c.a || '';
+    let aHtml = '';
+    try {
+      aHtml = DOMPurify.sanitize(marked.parse(aRaw));
+    } catch (err) {
+      aHtml = aRaw;
+    }
+    return { ...c, aHtml };
+  });
+} catch (err) {
+  console.error('Failed to load/process flashcards.json', err);
+  processed = [];
+}
+
+const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
+
   <style>
     :root {
       --card-w: min(720px, 92vw);
@@ -66,6 +95,13 @@ import Layout from '../layouts/Layout.astro';
    .card__btn.is-flipped .card__face--front { opacity:0; transform: translateY(-6px) }
    .card__btn .card__face--back { opacity:0; transform: translateY(6px) }
    .card__btn.is-flipped .card__face--back { opacity:1; transform: translateY(0) }
+
+  /* Markdown styling for answers */
+  .card__face--back .card__content p { margin: 0 0 .75rem; line-height:1.55 }
+  .card__face--back .card__content ul,
+  .card__face--back .card__content ol { padding-left:1.25rem; margin: .5rem 0 }
+  .card__face--back .card__content pre { background: color-mix(in srgb, var(--background-color) 92%, black 6%); padding:.75rem; border-radius:6px; overflow:auto }
+  .card__face--back .card__content code { background: color-mix(in srgb, var(--background-color) 86%, black 6%); padding:.15rem .35rem; border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Helvetica Neue", monospace }
   </style>
 
   <main class="deck">
@@ -81,7 +117,7 @@ import Layout from '../layouts/Layout.astro';
             <span class="card__eyebrow" id="eyebrow">Question</span>
             <div class="card__media">
               <div class="card__question-wrap">
-                <div class="card__content" id="q-current">Loading…</div>
+                <div class="card__content" id="q-current">{processed[0] ? processed[0].q : 'Loading…'}</div>
               </div>
               <div class="card__image-wrap" aria-hidden="true">
                 <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" />
@@ -92,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
             <span class="card__eyebrow">Answer</span>
-            <div class="card__content" id="a-current-content">Loading…</div>
+            <div class="card__content" id="a-current-content" set:html={processed[0] ? processed[0].aHtml : ''}></div>
             <div class="card__hint">Click to flip back</div>
               </div>
             </div>
@@ -111,19 +147,24 @@ import Layout from '../layouts/Layout.astro';
     <p style="opacity:.75;max-width:var(--card-w);text-align:center">Tip: Click the card, press <kbd>Space</kbd> or <kbd>Enter</kbd> to flip. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
   </main>
 
+  <!-- serialized processed data for client (base64) -->
+  <script id="flashcards-data" type="text/plain">{cardsBase64}</script>
+
   <script>
-    // Fetch flashcards JSON from public so we avoid any HTML-embedding/escaping issues
+    // Parse the serialized cards data from the DOM (base64 produced server-side)
+    const dataEl = document.getElementById('flashcards-data');
     let cards = [];
-    async function loadCards() {
-      try {
-        const res = await fetch('/data/flashcards.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        cards = await res.json();
-      } catch (err) {
-        console.error('Failed to fetch flashcards.json', err);
+    try {
+      const b64 = dataEl ? (dataEl.textContent || '').trim() : '';
+      if (b64) {
+        const json = atob(b64);
+        cards = JSON.parse(json);
+      } else {
         cards = [];
       }
-      render();
+    } catch (err) {
+      console.error('Failed to decode/parse flashcards data', err, dataEl && dataEl.textContent && dataEl.textContent.slice(0,120));
+      cards = [];
     }
 
     let idx = 0;
@@ -155,7 +196,13 @@ import Layout from '../layouts/Layout.astro';
 
       const c = cards[idx];
       qEl.textContent = c.q || '';
-      aEl.textContent = c.a || '';
+      // Render answer as sanitized Markdown -> HTML
+        // server produced HTML is available as `aHtml` in the payload
+        if (c.aHtml) {
+          aEl.innerHTML = c.aHtml;
+        } else {
+          aEl.textContent = c.a || '';
+        }
       eyebrow.textContent = `Question ${idx + 1}`;
       progress.textContent = `${idx + 1} / ${cards.length}`;
 
