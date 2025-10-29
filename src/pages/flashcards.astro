@@ -1,3 +1,4 @@
+---
 import Layout from '../layouts/Layout.astro';
 import fs from 'fs';
 import { marked } from 'marked';
@@ -30,6 +31,9 @@ try {
 }
 
 const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
+---
+
+<Layout>
 
   <style>
     :root {
