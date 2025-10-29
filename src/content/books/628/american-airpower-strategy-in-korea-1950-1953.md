@@ -26,18 +26,6 @@ sequence: 1
 
 The Korean War was the first armed engagement for the newly formed U.S. Air Force, but far from the type of conflict it expected or wanted to fight. As the first air war of the nuclear age, it posed a major challenge to the service to define and successfully carry out its mission by stretching the constraints of limited war while avoiding the excesses of total war. Conrad Crane analyzes both the successes and failures of the air force in Korea, offering a balanced treatment of how the air war in Korea actually unfolded. He examines the Air Force's contention that it could play a decisive role in a non-nuclear regional war but shows that the fledgling service was held to unrealistically high expectations based on airpower's performance in World War II, despite being constrained by the limited nature of the Korean conflict. Crane exposes the tensions and rivalries between services, showing that emphasis on strategic bombing came at the expense of air support for ground troops, and he tells how interactions between army and air force generals shaped the air force's mission and strategy. He also addresses misunderstandings about plans to use nuclear, biological, and chemical weapons in the war and includes new information from pilot correspondence about the informal policy of "hot pursuit" over the Yalu that existed at the end of the war. The book considers not only the actual air effort in Korea but also its ramifications. The air force doubled in size during the war and used that growth to secure its position in the defense establishment, but it wagered its future on its ability to deliver nuclear weapons in a high-intensity conflict—a position that left it unprepared to fight the next limited war in Vietnam. As America observes the fiftieth anniversary of its initial engagement in Korea, Crane's book is an important reminder of the lessons learned there. And as airpower continues to be a cornerstone of American defense, this examination of its uses in Korea provides new insights about the air force's capabilities and limitations.
   
-## **title: American Airpower Strategy in Korea, 1950–1953**
-
-## **author:** Conrad C. Crane
-
-## **year_edition: 2000**
-
-## **session:** The Korean War I – UN Airpower
-
-## **tags: [saass-628, airpower, limited-war, korea, FEAF, interdiction, CAS, strategic-bombing, coercion, SHORAN]**
-
-## **status: completed**
-
 ---
 
 ## **🔫 Author Background**
