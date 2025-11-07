@@ -12,11 +12,11 @@ pages: 338
 isbn10: "0803264542"
 isbn13: "9780803264540"
 cover: "http://books.google.com/books/content?id=VVHDYxYcZJAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-status: "to read"
+status: "Complete"
 created: 2025-11-06 19:46:07
 updated: 2025-11-06 19:46:07
-class: ""
-sequence: ""
+class: "628"
+sequence: "5"
 ---
 
 # The Limits of Air Power
