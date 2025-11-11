@@ -34,12 +34,11 @@ const TimelinePage: React.FC = () => {
   }, [activeFilter]);
 
   return (
-    <main className="pbv-timeline-main">
-      <nav aria-label="Breadcrumb" className="pbv-breadcrumb mb-4">
-        <a href="/">Home</a> &gt; <a href="/research">Research</a> &gt; <span>Major Events Timeline</span>
-      </nav>
-      <h1 className="pbv-timeline-title">Major Events Timeline</h1>
-      <p className="pbv-timeline-desc mb-6">Interactive, chronological timeline of major events from Patrick Vinge’s readings.</p>
+    <div className="pbv-timeline">
+      <div className="pbv-timeline-header">
+        <h1 className="pbv-timeline-title">Major Events Timeline</h1>
+        <p className="pbv-timeline-desc">Interactive, chronological timeline of major events from Patrick Vinge’s readings.</p>
+      </div>
       <FilterChips value={activeFilter} onChange={setActiveFilter} tags={TAGS} />
       <section className="pbv-timeline-vertical">
         <div className="pbv-timeline-axis" aria-hidden="true" />
@@ -52,7 +51,7 @@ const TimelinePage: React.FC = () => {
           />
         ))}
       </section>
-    </main>
+    </div>
   );
 };
 
