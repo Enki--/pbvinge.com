@@ -1,7 +1,10 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import TimelinePage from "../components/TimelinePage";
-layout: ../layouts/Layout.astro
-title: Major Events Timeline — pbvinge
+
+const title = "Major Events Timeline — pbvinge";
 ---
 
-<TimelinePage client:load />
+<Layout title={title}>
+  <TimelinePage client:load />
+</Layout>
