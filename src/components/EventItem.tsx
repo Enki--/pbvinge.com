@@ -1,5 +1,6 @@
 import React from "react";
 import type { Era } from "../types/timeline";
+import { formatDetailedRange } from "../utils/timeline";
 
 interface EventItemProps {
   event: Era["events"][number];
@@ -9,7 +10,7 @@ const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const isRange = "dateRange" in event;
   const start = isRange ? event.dateRange[0] : event.date;
   const end = isRange ? event.dateRange[1] : undefined;
-  const label = end ? `${start.slice(0, 4)}–${end.slice(0, 4)}` : start.slice(0, 4);
+  const label = formatDetailedRange(start, end);
 
   return (
     <div className="pbv-event-content">
