@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import FilterChips from "./FilterChips";
 import EraCard from "./EraCard";
 import { parseDate } from "../utils/timeline";
+import "../css/timeline.css";
 
 const TAGS = [
   "All",

@@ -6,13 +6,20 @@ interface EventItemProps {
 }
 
 const EventItem: React.FC<EventItemProps> = ({ event }) => {
-  if ("date" in event) {
-    return <span><b>{event.date.slice(0,4)}</b>: {event.title}{event.notes ? ` — ${event.notes}` : ''}</span>;
-  }
-  if ("dateRange" in event) {
-    return <span><b>{event.dateRange[0].slice(0,4)}–{event.dateRange[1].slice(0,4)}</b>: {event.title}{event.notes ? ` — ${event.notes}` : ''}</span>;
-  }
-  return null;
+  const isRange = "dateRange" in event;
+  const start = isRange ? event.dateRange[0] : event.date;
+  const end = isRange ? event.dateRange[1] : undefined;
+  const label = end ? `${start.slice(0, 4)}–${end.slice(0, 4)}` : start.slice(0, 4);
+
+  return (
+    <div className="pbv-event-content">
+      <span className="pbv-event-date">{label}</span>
+      <div className="pbv-event-text">
+        <p className="pbv-event-title">{event.title}</p>
+        {event.notes && <p className="pbv-event-notes">{event.notes}</p>}
+      </div>
+    </div>
+  );
 };
 
 export default EventItem;

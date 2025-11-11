@@ -11,11 +11,10 @@ const FilterChips: React.FC<FilterChipsProps> = ({ value, onChange, tags }) => (
     {tags.map(tag => (
       <button
         key={tag}
+        type="button"
         className={`pbv-chip${value === tag ? " pbv-chip-active" : ""}`}
         aria-pressed={value === tag}
         onClick={() => onChange(tag)}
-        tabIndex={0}
-        style={{ borderRadius: 10, marginRight: 12, padding: '6px 18px' }}
       >
         {tag}
       </button>
