@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import fs from 'fs';
+import { pathToFileURL } from 'node:url';
 import { marked } from 'marked';
 import createDOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
@@ -8,7 +9,8 @@ import { JSDOM } from 'jsdom';
 // Read the public JSON at build time and render answers to sanitized HTML.
 let processed = [];
 try {
-  const dataFile = new URL('../../public/data/flashcards.json', import.meta.url);
+  const projectRoot = pathToFileURL(`${process.cwd()}/`);
+  const dataFile = new URL('public/data/flashcards.json', projectRoot);
   const raw = await fs.promises.readFile(dataFile, 'utf-8');
   const cardsSrc = JSON.parse(raw || '[]');
 
