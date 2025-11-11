@@ -1,0 +1,34 @@
+import React from "react";
+import type { Era } from "../types/timeline";
+import EventItem from "./EventItem";
+
+interface EraCardProps {
+  era: Era;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+const EraCard: React.FC<EraCardProps> = ({ era, isOpen, onToggle }) => (
+  <section className="pbv-era-card" style={{ background: era.id === 'vietnam' ? '#FFF0E6' : era.tags?.includes('Cold War') ? '#EAF6EA' : '#E6F0FF', border: '1px solid #B5C7E0', borderRadius: 14, marginBottom: 24, boxShadow: '0 2px 8px #0001' }}>
+    <header
+      className="pbv-era-header"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      onClick={onToggle}
+      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onToggle()}
+      style={{ padding: 12, fontWeight: 600, fontFamily: 'serif', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+    >
+      <span>{era.title} ({era.range.start.slice(0,4)}{era.range.end ? `–${era.range.end.slice(0,4)}` : ''})</span>
+      <span aria-hidden="true">{isOpen ? '▲' : '▼'}</span>
+    </header>
+    {isOpen && (
+      <ul className="pbv-era-events" style={{ padding: '0 18px 12px 18px' }}>
+        {era.events.sort((a, b) => (a.date || a.dateRange?.[0]).localeCompare(b.date || b.dateRange?.[0])).map((event, i) => (
+          <li key={i}><EventItem event={event} /></li>
+        ))}
+      </ul>
+    )}
+  </section>
+);
+
+export default EraCard;
