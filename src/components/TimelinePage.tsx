@@ -37,7 +37,6 @@ const TimelinePage: React.FC = () => {
     <div className="pbv-timeline">
       <div className="pbv-timeline-header">
         <h1 className="pbv-timeline-title">Major Events Timeline</h1>
-        <p className="pbv-timeline-desc">Interactive, chronological timeline of major events from Patrick Vinge’s readings.</p>
       </div>
       <FilterChips value={activeFilter} onChange={setActiveFilter} tags={TAGS} />
       <section className="pbv-timeline-vertical">
