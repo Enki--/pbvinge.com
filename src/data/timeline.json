@@ -8,7 +8,13 @@
       "tags": ["Wars"],
       "events": [
         { "date": "1914-07-28", "title": "War Begins", "notes": "Austria-Hungary declares war on Serbia." },
-        { "date": "1916-07-01", "title": "Battle of the Somme", "notes": "Major Western Front battle." },
+        { "date": "1914-09-06", "title": "First Battle of the Marne", "notes": "Allied counteroffensive halts German advance outside Paris." },
+        { "dateRange": ["1915-04-25", "1916-01-09"], "title": "Gallipoli Campaign", "notes": "Allied attempt to open a sea route to Russia fails against Ottoman defenses." },
+        { "date": "1916-02-21", "title": "Battle of Verdun", "notes": "Longest battle of the war grinds down French and German armies." },
+        { "date": "1917-04-06", "title": "United States Enters War", "notes": "U.S. Congress declares war on Germany." },
+        { "date": "1917-11-07", "title": "Bolshevik Revolution", "notes": "Russia withdraws from the war amid domestic upheaval." },
+        { "date": "1918-03-21", "title": "Spring Offensive", "notes": "Germany launches Operation Michael on the Western Front." },
+        { "date": "1918-08-08", "title": "Hundred Days Offensive", "notes": "Allied counteroffensive pushes German forces back." },
         { "date": "1918-11-11", "title": "Armistice", "notes": "End of World War I." }
       ]
     },
@@ -20,8 +26,36 @@
       "tags": ["Wars"],
       "events": [
         { "date": "1939-09-01", "title": "Invasion of Poland", "notes": "Germany invades Poland." },
+        { "date": "1940-05-10", "title": "Battle of France", "notes": "Germany launches blitzkrieg in Western Europe." },
+        { "dateRange": ["1940-07-10", "1940-10-31"], "title": "Battle of Britain", "notes": "RAF repels Luftwaffe air offensive." },
+        { "date": "1941-06-22", "title": "Operation Barbarossa", "notes": "Germany invades the Soviet Union." },
+        { "date": "1941-12-07", "title": "Pearl Harbor", "notes": "Japan attacks U.S. Pacific Fleet; America enters war." },
+        { "date": "1942-06-04", "title": "Battle of Midway", "notes": "Turning point in the Pacific as U.S. carriers sink four Japanese carriers." },
+        { "dateRange": ["1942-08-23", "1943-02-02"], "title": "Battle of Stalingrad", "notes": "Soviet counteroffensive encircles and defeats 6th Army." },
+        { "date": "1943-07-10", "title": "Allied Invasion of Sicily", "notes": "Operation Husky opens the campaign in Italy." },
         { "date": "1944-06-06", "title": "D-Day", "notes": "Allied landings in Normandy." },
+        { "date": "1944-12-16", "title": "Battle of the Bulge", "notes": "Germany's final major offensive in the West." },
+        { "date": "1945-05-08", "title": "V-E Day", "notes": "Germany surrenders in Europe." },
+        { "date": "1945-08-06", "title": "Hiroshima", "notes": "First atomic bomb used in war." },
         { "date": "1945-09-02", "title": "V-J Day", "notes": "Japan surrenders." }
+      ]
+    },
+    {
+      "id": "koreanwar",
+      "title": "Korean War",
+      "range": { "start": "1950-06-25", "end": "1953-07-27" },
+      "summary": "UN coalition defends South Korea against North Korean and Chinese forces.",
+      "tags": ["Wars", "Airpower"],
+      "events": [
+        { "date": "1950-06-25", "title": "War Begins", "notes": "North Korea invades across the 38th parallel." },
+        { "date": "1950-09-01", "title": "Pusan Perimeter", "notes": "UN forces hold final defensive line in southeast Korea." },
+        { "date": "1950-09-15", "title": "Inchon Landing", "notes": "MacArthur's amphibious assault turns the tide." },
+        { "date": "1950-11-25", "title": "Chinese Intervention", "notes": "Massed PLA forces push UN troops south." },
+        { "date": "1951-04-11", "title": "MacArthur Relieved", "notes": "President Truman replaces MacArthur with Ridgway." },
+        { "date": "1951-07-10", "title": "Armistice Talks Begin", "notes": "Negotiations open at Kaesong then Panmunjom." },
+        { "date": "1952-06-23", "title": "MiG Alley Air Battles", "notes": "UN air forces contest jet combat over northwest Korea." },
+        { "date": "1953-03-05", "title": "Post-Stalin Thaw", "notes": "Leadership change in Moscow accelerates negotiations." },
+        { "date": "1953-07-27", "title": "Armistice Signed", "notes": "Ceasefire establishes the DMZ." }
       ]
     },
     {
@@ -31,9 +65,19 @@
       "summary": "Geopolitical tension between the Soviet Union and the United States.",
       "tags": ["Cold War"],
       "events": [
+        { "date": "1947-03-12", "title": "Truman Doctrine", "notes": "U.S. pledges support to nations resisting communism." },
         { "date": "1948-06-24", "title": "Berlin Blockade", "notes": "Soviet blockade of Berlin." },
+        { "date": "1949-04-04", "title": "NATO Founded", "notes": "North Atlantic Treaty Organization formed." },
+        { "date": "1957-10-04", "title": "Sputnik Launched", "notes": "First artificial satellite intensifies space race." },
+        { "date": "1961-08-13", "title": "Berlin Wall Built", "notes": "East Germany seals the border around West Berlin." },
         { "date": "1962-10-16", "title": "Cuban Missile Crisis", "notes": "Nuclear standoff." },
-        { "date": "1989-11-09", "title": "Fall of Berlin Wall", "notes": "Symbolic end of Cold War." }
+        { "date": "1968-08-20", "title": "Prague Spring Crushed", "notes": "Warsaw Pact troops invade Czechoslovakia." },
+        { "date": "1972-05-26", "title": "SALT I Signed", "notes": "U.S. and USSR agree to strategic arms limits." },
+        { "date": "1979-12-24", "title": "Soviet Invasion of Afghanistan", "notes": "Red Army intervenes to prop up Kabul." },
+        { "date": "1983-09-01", "title": "KAL 007 Shot Down", "notes": "Soviets destroy a Korean Air Lines passenger jet." },
+        { "date": "1987-12-08", "title": "INF Treaty", "notes": "Eliminates intermediate-range missiles in Europe." },
+        { "date": "1989-11-09", "title": "Fall of Berlin Wall", "notes": "Symbolic end of Cold War." },
+        { "date": "1991-12-26", "title": "USSR Dissolves", "notes": "Formal end of the Soviet Union." }
       ]
     },
     {
@@ -41,14 +85,70 @@
       "title": "Vietnam War",
       "range": { "start": "1955-01-01", "end": "1975-04-30" },
       "summary": "Conflict in Vietnam, Laos, and Cambodia.",
-      "tags": ["Wars","Airpower"],
+      "tags": ["Wars", "Airpower"],
       "events": [
+        { "date": "1955-11-01", "title": "MAAG Takes Command", "notes": "U.S. Military Assistance Advisory Group assumes responsibility in South Vietnam." },
+        { "date": "1963-11-01", "title": "Diem Overthrown", "notes": "South Vietnamese coup removes Ngo Dinh Diem." },
         { "date": "1964-08-02", "title": "Gulf of Tonkin", "notes": "Incident leads to escalation." },
-        { "dateRange": ["1965-03-02","1968-11-02"], "title": "Rolling Thunder", "notes": "US bombing campaign." },
+        { "date": "1965-03-02", "title": "Rolling Thunder", "notes": "U.S. bombing campaign." },
+        { "date": "1965-03-08", "title": "Marines Arrive at Da Nang", "notes": "First major U.S. ground combat troops deploy." },
         { "date": "1968-01-30", "title": "Tet Offensive", "notes": "Major North Vietnamese offensive." },
-        { "dateRange": ["1972-05-09","1972-10-23"], "title": "Linebacker I", "notes": "US bombing campaign." },
-        { "dateRange": ["1972-12-18","1972-12-29"], "title": "Linebacker II", "notes": "US bombing campaign." },
-        { "date": "1973-01-27", "title": "Paris Peace Accords", "notes": "Ceasefire agreement." }
+        { "date": "1968-03-16", "title": "My Lai Massacre", "notes": "U.S. troops kill hundreds of civilians." },
+        { "dateRange": ["1972-03-30", "1972-10-22"], "title": "Easter Offensive", "notes": "PAVN conventional push across the DMZ." },
+        { "dateRange": ["1972-05-09", "1972-10-23"], "title": "Linebacker I", "notes": "U.S. bombing campaign." },
+        { "dateRange": ["1972-12-18", "1972-12-29"], "title": "Linebacker II", "notes": "U.S. bombing campaign." },
+        { "date": "1973-01-27", "title": "Paris Peace Accords", "notes": "Ceasefire agreement." },
+        { "date": "1973-03-29", "title": "U.S. Combat Troops Withdraw", "notes": "Last U.S. ground units leave South Vietnam." },
+        { "date": "1975-04-30", "title": "Fall of Saigon", "notes": "North Vietnamese forces capture the capital." }
+      ]
+    },
+    {
+      "id": "desertstorm",
+      "title": "Gulf War",
+      "range": { "start": "1990-08-02", "end": "1991-02-28" },
+      "summary": "U.S.-led coalition liberates Kuwait after Iraq's invasion.",
+      "tags": ["Wars", "Airpower"],
+      "events": [
+        { "date": "1990-08-02", "title": "Iraq Invades Kuwait", "notes": "Saddam Hussein annexes Kuwait." },
+        { "date": "1990-08-07", "title": "Operation Desert Shield", "notes": "U.S. deploys forces to defend Saudi Arabia." },
+        { "date": "1990-11-29", "title": "UN Resolution 678", "notes": "Security Council authorizes force if Iraq does not withdraw." },
+        { "date": "1991-01-17", "title": "Air Campaign Begins", "notes": "Coalition launches precision strikes across Iraq and Kuwait." },
+        { "date": "1991-02-24", "title": "Ground Offensive", "notes": "Coalition VII Corps punches through Iraqi defenses." },
+        { "date": "1991-02-26", "title": "Highway of Death", "notes": "Retreating Iraqi columns destroyed north of Kuwait City." },
+        { "date": "1991-02-28", "title": "Ceasefire Declared", "notes": "Iraq accepts coalition terms; combat stops." }
+      ]
+    },
+    {
+      "id": "kosovo",
+      "title": "Kosovo War",
+      "range": { "start": "1998-02-28", "end": "1999-06-10" },
+      "summary": "NATO intervenes against Serbian forces targeting Kosovar Albanians.",
+      "tags": ["Wars", "Airpower"],
+      "events": [
+        { "date": "1998-02-28", "title": "Serbian Crackdown", "notes": "Yugoslav security forces begin large-scale operations in Drenica." },
+        { "date": "1998-10-13", "title": "NATO Activation Order", "notes": "Alliance threatens air strikes unless Belgrade complies with ceasefire." },
+        { "date": "1999-01-15", "title": "Račak Massacre", "notes": "Killing of civilians galvanizes international action." },
+        { "date": "1999-03-24", "title": "Operation Allied Force", "notes": "NATO air campaign begins against Yugoslavia." },
+        { "date": "1999-04-23", "title": "Belgrade Infrastructure Strikes", "notes": "Expanded target list hits regime nodes and media." },
+        { "date": "1999-05-07", "title": "Chinese Embassy Bombing", "notes": "Errant NATO strike inflames diplomacy." },
+        { "date": "1999-06-10", "title": "Military-Technical Agreement", "notes": "Serbian forces withdraw; KFOR deploys." }
+      ]
+    },
+    {
+      "id": "isis",
+      "title": "War Against ISIS",
+      "range": { "start": "2014-06-10", "end": "2019-03-23" },
+      "summary": "Global coalition dismantles the Islamic State's territorial caliphate.",
+      "tags": ["Wars", "Airpower"],
+      "events": [
+        { "date": "2014-06-10", "title": "Mosul Falls", "notes": "ISIS seizes Iraq's second-largest city." },
+        { "date": "2014-09-10", "title": "Coalition Announced", "notes": "U.S. outlines strategy for Operation Inherent Resolve." },
+        { "date": "2014-09-23", "title": "Airstrikes in Syria", "notes": "Coalition aircraft hit ISIS targets beyond Iraq." },
+        { "date": "2015-10-11", "title": "Syrian Democratic Forces Form", "notes": "Kurdish and Arab militias unite as primary U.S. partner." },
+        { "date": "2016-10-17", "title": "Battle for Mosul Begins", "notes": "Iraqi forces launch major offensive with coalition air support." },
+        { "date": "2017-07-10", "title": "Mosul Liberated", "notes": "Iraqi government declares victory in the city." },
+        { "date": "2017-10-17", "title": "Raqqa Falls", "notes": "SDF captures the group's Syrian capital." },
+        { "date": "2019-03-23", "title": "Baghuz Pocket Cleared", "notes": "Remaining ISIS territory collapses in eastern Syria." }
       ]
     }
   ]
