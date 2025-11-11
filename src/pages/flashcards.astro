@@ -187,13 +187,22 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
       console.error('Flashcards: missing required DOM elements', { btn, qEl, aEl, progress });
     }
 
+    function setExpanded(open) {
+      if (!btn) return;
+      btn.classList.toggle('is-flipped', open);
+      btn.setAttribute('aria-expanded', String(open));
+    }
+
     function render() {
       if (!cards || cards.length === 0) {
         qEl && (qEl.textContent = 'No cards available');
         aEl && (aEl.textContent = '');
         progress && (progress.textContent = '0 / 0');
+        eyebrow && (eyebrow.textContent = 'Question');
+        btn && (btn.setAttribute('disabled', 'true'));
         return;
       }
+      btn && btn.removeAttribute('disabled');
 
       // wrap index if out of range
       idx = ((idx % cards.length) + cards.length) % cards.length;
@@ -207,11 +216,11 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
         } else {
           aEl.textContent = c.a || '';
         }
-      eyebrow.textContent = `Question ${idx + 1}`;
-      progress.textContent = `${idx + 1} / ${cards.length}`;
+      eyebrow && (eyebrow.textContent = `Question ${idx + 1}`);
+      progress && (progress.textContent = `${idx + 1} / ${cards.length}`);
 
       // always reset to closed on render
-      btn && btn.setAttribute('aria-expanded', 'false');
+      setExpanded(false);
 
       // image handling
       if (c.img && cardImage) {
@@ -228,7 +237,7 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
         cardImage.style.display = 'none';
       }
 
-      console.debug('Flashcards: rendered', { idx, total: cards.length, card: c });
+      requestAnimationFrame(() => updateHeights());
     }
 
     // 3D flip handling with dynamic height
@@ -243,6 +252,11 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
       const prevHeight = shell.style.height;
       shell.style.height = 'auto';
       // ensure backFace is not interfering with layout when measuring
+      const prevDisplay = backFace.style.display;
+      const prevBackPos = backFace.style.position;
+      const prevBackTransform = backFace.style.transform;
+      const prevFrontPos = frontFace.style.position;
+
       backFace.style.display = 'block';
       backFace.style.position = 'relative';
       backFace.style.transform = 'none';
@@ -250,8 +264,10 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
       const frontH = frontFace.getBoundingClientRect().height;
       const backH = backFace.getBoundingClientRect().height;
       // restore
-      backFace.style.position = '';
-      backFace.style.transform = '';
+      backFace.style.display = prevDisplay;
+      backFace.style.position = prevBackPos;
+      backFace.style.transform = prevBackTransform;
+      frontFace.style.position = prevFrontPos;
       shell.style.height = prevHeight;
       return { front: Math.round(frontH), back: Math.round(backH) };
     }
@@ -266,57 +282,49 @@ const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
     }
 
     if (btn) {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const open = btn.getAttribute('aria-expanded') === 'true';
-        // compute heights before toggling so we can animate
-        updateHeights();
-        // next height
-        const nextHeight = open ? heights.front : heights.back || heights.front;
-        // apply flip class
-        if (open) {
-          btn.classList.remove('is-flipped');
-        } else {
-          btn.classList.add('is-flipped');
-        }
-        btn.setAttribute('aria-expanded', String(!open));
-        // animate height
-        if (shell && nextHeight) {
-          // force reflow to ensure transition
-          void shell.offsetHeight;
-          shell.style.height = `${nextHeight}px`;
-        }
-        console.debug('Flashcards: toggled', { idx, open: !open });
+        setExpanded(!open);
+        requestAnimationFrame(() => updateHeights());
       });
     }
 
     // recalc heights when images load or window resizes
-    function attachImageListeners() {
-      if (!cardImage) return;
-      cardImage.addEventListener('load', () => { updateHeights(); });
+    if (cardImage) {
+      cardImage.addEventListener('load', () => updateHeights());
     }
-    attachImageListeners();
-    window.addEventListener('resize', () => { updateHeights(); });
+    window.addEventListener('resize', () => updateHeights());
 
     // use code/key values for reliable handling
     document.addEventListener('keydown', (e) => {
       const activeIsBtn = document.activeElement === btn;
-      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; render(); btn && btn.focus(); return }
-      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus(); return }
+      if (!cards || cards.length === 0) return;
+      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; render(); btn && btn.focus(); return; }
+      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus(); return; }
 
       // space/enter toggles when the card button is focused
       if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
         e.preventDefault();
         const open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!open));
+        setExpanded(!open);
         return;
       }
     });
 
-    prev && prev.addEventListener('click', () => { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus() });
-    next && next.addEventListener('click', () => { idx = (idx + 1) % cards.length; render(); btn && btn.focus() });
+    prev && prev.addEventListener('click', () => {
+      if (!cards || cards.length === 0) return;
+      idx = (idx - 1 + cards.length) % cards.length;
+      render();
+      btn && btn.focus();
+    });
+    next && next.addEventListener('click', () => {
+      if (!cards || cards.length === 0) return;
+      idx = (idx + 1) % cards.length;
+      render();
+      btn && btn.focus();
+    });
 
     // initial load + render after fetch
     render();
-    loadCards();
   </script>
 </Layout>
