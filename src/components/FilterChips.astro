@@ -1,0 +1,26 @@
+import type { Era } from "../types/timeline";
+
+interface FilterChipsProps {
+  value: string;
+  onChange: (tag: string) => void;
+  tags: string[];
+}
+
+export default function FilterChips({ value, onChange, tags }: FilterChipsProps) {
+  return (
+    <nav className="pbv-filter-chips" aria-label="Timeline Filters">
+      {tags.map(tag => (
+        <button
+          key={tag}
+          className={`pbv-chip${value === tag ? " pbv-chip-active" : ""}`}
+          aria-pressed={value === tag}
+          onClick={() => onChange(tag)}
+          tabIndex={0}
+          style={{ borderRadius: 10, marginRight: 12, padding: '6px 18px' }}
+        >
+          {tag}
+        </button>
+      ))}
+    </nav>
+  );
+}

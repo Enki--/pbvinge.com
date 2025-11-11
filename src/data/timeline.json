@@ -1,0 +1,55 @@
+{
+  "eras": [
+    {
+      "id": "ww1",
+      "title": "World War I",
+      "range": { "start": "1914-07-28", "end": "1918-11-11" },
+      "summary": "The First World War, a global conflict centered in Europe.",
+      "tags": ["Wars"],
+      "events": [
+        { "date": "1914-07-28", "title": "War Begins", "notes": "Austria-Hungary declares war on Serbia." },
+        { "date": "1916-07-01", "title": "Battle of the Somme", "notes": "Major Western Front battle." },
+        { "date": "1918-11-11", "title": "Armistice", "notes": "End of World War I." }
+      ]
+    },
+    {
+      "id": "ww2",
+      "title": "World War II",
+      "range": { "start": "1939-09-01", "end": "1945-09-02" },
+      "summary": "The Second World War, the most widespread conflict in history.",
+      "tags": ["Wars"],
+      "events": [
+        { "date": "1939-09-01", "title": "Invasion of Poland", "notes": "Germany invades Poland." },
+        { "date": "1944-06-06", "title": "D-Day", "notes": "Allied landings in Normandy." },
+        { "date": "1945-09-02", "title": "V-J Day", "notes": "Japan surrenders." }
+      ]
+    },
+    {
+      "id": "coldwar",
+      "title": "Cold War",
+      "range": { "start": "1947-03-12", "end": "1991-12-26" },
+      "summary": "Geopolitical tension between the Soviet Union and the United States.",
+      "tags": ["Cold War"],
+      "events": [
+        { "date": "1948-06-24", "title": "Berlin Blockade", "notes": "Soviet blockade of Berlin." },
+        { "date": "1962-10-16", "title": "Cuban Missile Crisis", "notes": "Nuclear standoff." },
+        { "date": "1989-11-09", "title": "Fall of Berlin Wall", "notes": "Symbolic end of Cold War." }
+      ]
+    },
+    {
+      "id": "vietnam",
+      "title": "Vietnam War",
+      "range": { "start": "1955-01-01", "end": "1975-04-30" },
+      "summary": "Conflict in Vietnam, Laos, and Cambodia.",
+      "tags": ["Wars","Airpower"],
+      "events": [
+        { "date": "1964-08-02", "title": "Gulf of Tonkin", "notes": "Incident leads to escalation." },
+        { "dateRange": ["1965-03-02","1968-11-02"], "title": "Rolling Thunder", "notes": "US bombing campaign." },
+        { "date": "1968-01-30", "title": "Tet Offensive", "notes": "Major North Vietnamese offensive." },
+        { "dateRange": ["1972-05-09","1972-10-23"], "title": "Linebacker I", "notes": "US bombing campaign." },
+        { "dateRange": ["1972-12-18","1972-12-29"], "title": "Linebacker II", "notes": "US bombing campaign." },
+        { "date": "1973-01-27", "title": "Paris Peace Accords", "notes": "Ceasefire agreement." }
+      ]
+    }
+  ]
+}
