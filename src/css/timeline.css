@@ -7,11 +7,13 @@
 
 .pbv-timeline-header {
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .pbv-timeline-header {
     margin-bottom: 2rem;
+    text-align: center;
   }
 }
 
