@@ -1,36 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import fs from 'fs';
-import { pathToFileURL } from 'node:url';
+import flashcardsSrc from '../data/flashcards.json';
 import { marked } from 'marked';
 import createDOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 
-// Read the public JSON at build time and render answers to sanitized HTML.
-let processed = [];
-try {
-  const projectRoot = pathToFileURL(`${process.cwd()}/`);
-  const dataFile = new URL('public/data/flashcards.json', projectRoot);
-  const raw = await fs.promises.readFile(dataFile, 'utf-8');
-  const cardsSrc = JSON.parse(raw || '[]');
+// Read the JSON at build time and render answers to sanitized HTML.
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
-  const window = new JSDOM('').window;
-  const DOMPurify = createDOMPurify(window);
-
-  processed = (cardsSrc || []).map((c) => {
-    const aRaw = c.a || '';
-    let aHtml = '';
-    try {
-      aHtml = DOMPurify.sanitize(marked.parse(aRaw));
-    } catch (err) {
-      aHtml = aRaw;
-    }
-    return { ...c, aHtml };
-  });
-} catch (err) {
-  console.error('Failed to load/process flashcards.json', err);
-  processed = [];
-}
+const cardsSource = Array.isArray(flashcardsSrc) ? flashcardsSrc : [];
+const processed = cardsSource.map((c) => {
+  const aRaw = c.a || '';
+  let aHtml = '';
+  try {
+    aHtml = DOMPurify.sanitize(marked.parse(aRaw));
+  } catch (err) {
+    aHtml = aRaw;
+  }
+  return { ...c, aHtml };
+});
 
 const cardsBase64 = Buffer.from(JSON.stringify(processed)).toString('base64');
 ---
