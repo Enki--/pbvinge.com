@@ -78,17 +78,17 @@ function getStatusColor(status: string | undefined) {
         <!-- Tags will be dynamically populated -->
       </div>
       <div class="view-toggle" role="group" aria-label="Switch book layout">
-        <button type="button" class="view-button active" data-view-button data-view="tiles">
+        <button type="button" class="view-button" data-view-button data-view="tiles">
           Tiles
         </button>
-        <button type="button" class="view-button" data-view-button data-view="table">
+        <button type="button" class="view-button active" data-view-button data-view="table">
           Table
         </button>
       </div>
     </div>
 
     <div class="books-view">
-      <div class="books-grid view-panel active" id="booksGrid" data-view-panel="tiles">
+      <div class="books-grid view-panel" id="booksGrid" data-view-panel="tiles">
         {decoratedBooks.map((book) => (
         <article 
           class="book-card" 
@@ -141,7 +141,7 @@ function getStatusColor(status: string | undefined) {
       ))}
       </div>
 
-      <div class="books-table view-panel" id="booksTable" data-view-panel="table">
+      <div class="books-table view-panel active" id="booksTable" data-view-panel="table">
         <div class="table-responsive">
           <table>
             <thead>
@@ -542,7 +542,7 @@ function getStatusColor(status: string | undefined) {
   if (preferredView) {
     setView(preferredView);
   } else {
-    setView('tiles');
+    setView('table');
   }
 
   viewButtons.forEach(btn => {
