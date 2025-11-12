@@ -164,6 +164,8 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
 
     let idx = 0;
     let isFlipped = false;
+    let flipLocked = false;
+    const FLIP_COOLDOWN_MS = 250;
 
     const btn = document.getElementById('cardBtn');
     const qEl = document.getElementById('q-current');
@@ -196,6 +198,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
         return;
       }
       btn && btn.removeAttribute('disabled');
+      flipLocked = false;
 
       // wrap index if out of range
       idx = ((idx % cards.length) + cards.length) % cards.length;
@@ -271,10 +274,19 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       if (shell) shell.style.height = target ? `${target}px` : 'auto';
     }
 
+    function requestFlipState(nextState) {
+      if (!btn) return;
+      if (nextState === isFlipped) return;
+      if (flipLocked) return;
+      setExpanded(nextState);
+      flipLocked = true;
+      setTimeout(() => (flipLocked = false), FLIP_COOLDOWN_MS);
+      requestAnimationFrame(() => updateHeights());
+    }
+
     if (btn) {
       btn.addEventListener('click', () => {
-        setExpanded(!isFlipped);
-        requestAnimationFrame(() => updateHeights());
+        requestFlipState(!isFlipped);
       });
     }
 
@@ -288,13 +300,13 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     document.addEventListener('keydown', (e) => {
       const activeIsBtn = document.activeElement === btn;
       if (!cards || cards.length === 0) return;
-      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; setExpanded(false); render(); btn && btn.focus(); return; }
-      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; setExpanded(false); render(); btn && btn.focus(); return; }
+      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; flipLocked = false; setExpanded(false); render(); btn && btn.focus(); return; }
+      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; flipLocked = false; setExpanded(false); render(); btn && btn.focus(); return; }
 
       // space/enter toggles when the card button is focused
       if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
         e.preventDefault();
-        setExpanded(!isFlipped);
+        requestFlipState(!isFlipped);
         return;
       }
     });
@@ -302,6 +314,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     prev && prev.addEventListener('click', () => {
       if (!cards || cards.length === 0) return;
       idx = (idx - 1 + cards.length) % cards.length;
+      flipLocked = false;
       setExpanded(false);
       render();
       btn && btn.focus();
@@ -309,6 +322,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     next && next.addEventListener('click', () => {
       if (!cards || cards.length === 0) return;
       idx = (idx + 1) % cards.length;
+      flipLocked = false;
       setExpanded(false);
       render();
       btn && btn.focus();
