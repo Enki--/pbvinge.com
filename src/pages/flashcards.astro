@@ -5,6 +5,11 @@ import { marked } from 'marked';
 import createDOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 
+marked.setOptions({
+  mangle: false,
+  headerIds: false,
+});
+
 // Read the JSON at build time and render answers to sanitized HTML.
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
