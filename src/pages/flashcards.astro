@@ -136,6 +136,19 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       color: rgba(15, 23, 42, 0.65);
       max-width: var(--card-w);
     }
+
+    .issue-link {
+      align-self: center;
+      font-size: 0.9rem;
+      color: var(--link-color);
+      text-decoration: none;
+      margin-top: 0.25rem;
+    }
+
+    .issue-link:hover,
+    .issue-link:focus-visible {
+      text-decoration: underline;
+    }
   </style>
 
   <main class="deck">
@@ -151,6 +164,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
         <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" hidden />
         <div class="card__answer is-hidden" id="a-current-content" set:html={processed[0] ? processed[0].aHtml : ''}></div>
         <button id="toggleBtn" type="button">Show answer</button>
+        <a id="issueLink" class="issue-link" href="#" target="_blank" rel="noreferrer noopener" hidden>Suggest an edit on GitHub</a>
       </article>
 
       <div class="controls">
@@ -192,11 +206,34 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const imageEl = document.getElementById('cardImage');
+    const issueLink = document.getElementById('issueLink');
+    const ISSUE_BASE = 'https://github.com/Enki--/pbvinge.com/issues/new';
 
     function updateAnswerVisibility() {
       if (!answerEl || !toggleBtn) return;
       answerEl.classList.toggle('is-hidden', !showAnswer);
       toggleBtn.textContent = showAnswer ? 'Hide answer' : 'Show answer';
+    }
+
+    function stripHtml(input = '') {
+      return input.replace(/<[^>]+>/g, '').replace(/\\s+/g, ' ').trim();
+    }
+
+    function updateIssueLink(card) {
+      if (!issueLink) return;
+      if (!card) {
+        issueLink.hidden = true;
+        issueLink.removeAttribute('href');
+        return;
+      }
+      const titleLine = (card.q || '').split('\\n')[0] || 'Flashcard';
+      const answerText = card.aHtml ? stripHtml(card.aHtml) : (card.a || '');
+      const params = new URLSearchParams({
+        title: `Flashcard feedback: ${titleLine}`.slice(0, 256),
+        body: `Flashcard question:\\n${card.q || ''}\\n\\nCurrent answer:\\n${answerText || '(empty)'}\\n\\nCard index: ${idx + 1} of ${cards.length}`
+      });
+      issueLink.href = `${ISSUE_BASE}?${params.toString()}`;
+      issueLink.hidden = false;
     }
 
     function render() {
@@ -216,6 +253,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
         }
         showAnswer = false;
         updateAnswerVisibility();
+        updateIssueLink(null);
         return;
       }
 
@@ -251,6 +289,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       }
 
       updateAnswerVisibility();
+      updateIssueLink(current);
     }
 
     function changeCard(delta) {
