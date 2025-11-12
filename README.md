@@ -3,13 +3,13 @@
 Personal website built with Astro and Tailwind CSS, hosted on Cloudflare Pages.
 
 ## Tasks Left to Complete
-- [ ] Add all future books I'm going to read (currently on my list)
-- [ ] Automate adding a book in obsidian, to automatically adding it to pbvinge.com
-- [ ] Add all the book reports I have made so far
-- [ ] Automate deploy new book reports to pbvinge.com
-- [ ] Update obsidian template to meet deployment requirements (frontmatter)
-- [ ] Combined Obsidian Book Templates into one .md file
-- [ ] Make sure PDF highling app works and is automate to export to obsidian
+- [x] Add all future books I'm going to read (currently on my list)
+- [x] Automate adding a book in obsidian, to automatically adding it to pbvinge.com
+- [x] Add all the book reports I have made so far
+- [x] Automate deploy new book reports to pbvinge.com
+- [x] Update obsidian template to meet deployment requirements (frontmatter)
+- [x] Combined Obsidian Book Templates into one .md file
+- [x] Make sure PDF highling app works and is automate to export to obsidian
 
 ## Design Principles
 
