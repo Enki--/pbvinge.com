@@ -146,6 +146,11 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
   <script id="flashcards-data" type="application/json" set:html={cardsJson}></script>
 
   <script>
+(function () {
+  if (typeof window === 'undefined') return;
+  if (window.__pbvFlashcardsInitialized) return;
+  window.__pbvFlashcardsInitialized = true;
+
     // Parse the serialized cards data from the DOM
     const dataEl = document.getElementById('flashcards-data');
     let cards = [];
@@ -158,6 +163,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     }
 
     let idx = 0;
+    let isFlipped = false;
 
     const btn = document.getElementById('cardBtn');
     const qEl = document.getElementById('q-current');
@@ -175,6 +181,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
 
     function setExpanded(open) {
       if (!btn) return;
+      isFlipped = open;
       btn.classList.toggle('is-flipped', open);
       btn.setAttribute('aria-expanded', String(open));
     }
@@ -266,8 +273,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
 
     if (btn) {
       btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        setExpanded(!open);
+        setExpanded(!isFlipped);
         requestAnimationFrame(() => updateHeights());
       });
     }
@@ -288,8 +294,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       // space/enter toggles when the card button is focused
       if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
         e.preventDefault();
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        setExpanded(!open);
+        setExpanded(!isFlipped);
         return;
       }
     });
@@ -311,5 +316,6 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
 
     // initial load + render after fetch
     render();
+})();
   </script>
 </Layout>
