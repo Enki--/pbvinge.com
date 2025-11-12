@@ -1,11 +1,307 @@
 [
   {
-    "q": "Black Snow",
-    "a": "Black Snow traces the path from Haywood S. “Possum” Hansell Jr.’s faltering high‑altitude B‑29 raids beginning November 24, 1944, to General Curtis LeMay’s radical redesign of tactics culminating in the Tokyo firestorm of March 9–10, 1945, and the subsequent burning of Japan’s cities through the summer of 1945. Drawing on crew diaries, Japanese survivor accounts, and command correspondence, Scott reconstructs the pressures from Hap Arnold and Lauris Norstad, the constraints of weather and jet stream, the vulnerabilities of Japanese wooden housing and home industries, and the step‑by‑step planning of the Meetinghouse raid. He follows the expansion of incendiary attacks to Nagoya, Osaka, Kobe, Yokohama, and dozens of secondary cities, the mounting U.S. losses, the collapse of Japanese civil society, and the political decisions that closed the war. The epilogue contrasts Hansell’s “scalpel” with LeMay’s “sledgehammer,” tallying 178 square miles burned across sixty‑six cities in 159 days and linking the campaign’s logic to the atomic endgame.",
-    "img": "/assets/cover-7fRhEAAAQBAJ.jpg"
+    "q": "After Hegemony\nby Robert Owen Keohane",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=krurQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
   },
   {
-    "q": "What is 2 + 2?",
-    "a": "4"
+    "q": "After Victory\nby G. John Ikenberry",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=tWTYCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Against the World\nby Tara Zahra",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=i7yLEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Air Power and Armies\nby Sir John Cotesworth Slessor",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=edtTWQe9VyQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "American Airpower Strategy in Korea, 1950-1953\nby Conrad C. Crane",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=KvFxAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Analogies at War\nby Yuen Foong Khong",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=0irZ8O6jJt4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Black Snow: Curtis LeMay, the Firebombing of Tokyo, and the Road to the Atomic Bomb\nby James M. Scott",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=7fRhEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Book of Deeds of Arms and of Chivalry\nby Charity Cannon Willard, Sumner Willard",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=epXQh7B1w20C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Command Of The Air\nby General Giulio Douhet",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=1p1vCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Cry Havoc\nby Joseph Maiolo",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=9Vl6kEFKPxoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Economic Statecraft\nby David A. Baldwin",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=GZviDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Empire of the Air\nby Jenifer Van Vleck",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=yV10AQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Essence of Decision\nby Graham T. Allison, Philip Zelikow",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=9Kt7AAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "Every War Must End\nby Fred Charles Ikl\u00e9",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=H1F_X_3gV-gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Grad School Essentials\nby Zachary Shore",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=BFCbCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "How the War Was Won\nby Phillips Payson O'Brien",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=42oaCAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "How to Read a Book\nby Mortimer J. Adler, Charles Van Doren",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=Z5PpkQadm5EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Just and Unjust Wars\nby Michael Walzer",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=EuTQCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "MacArthur's Airman\nby Thomas E. Griffith",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=SuhmAAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Mahan on Naval Strategy\nby Alfred Thayer Mahan",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=BKIvBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Man, the State, and War\nby Kenneth Neal Waltz",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=i6urAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Military Strategy\nby Joseph Wylie, Jr",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=IWA9BAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "On War\nby Carl von Clausewitz",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=iY4yZEkphNgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Operational Culture and Air Power\nby Jak\u0161i\u0107, Milena A.",
+    "a": "",
+    "img": "/assets/Op Culture and Airpower.png"
+  },
+  {
+    "q": "Out of the Darkness\nby Frank Trentmann",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=zc6_EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Pacific Power Paradox\nby Van Jackson",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=uQypEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Perception and Misperception in International Politics\nby Robert Jervis",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=nQUVvgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "Power\nby Steven Lukes",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=u3atEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "Powerful and Brutal Weapons\nby Stephen P Randolph",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=BPrRWlho_h4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Red Phoenix Rising\nby Von Hardesty, Ilya Grinberg",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=gyCpEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Red Wings Over the Yalu\nby Xiaoming Zhang",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=N-0b-94OJPcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Rethinking the World\nby Jeffrey W. Legro",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=Wxw_DQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Rhetoric and Reality in Air Warfare\nby Tami Davis Biddle",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=SNcFUM7wJCMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Some Principles of Maritime Strategy\nby Julian Corbett",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=NnAvzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "Strategic Narratives\nby Alister Miskimmon, Ben O'Loughlin, Laura Roselle",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=hK3mAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Strategy\nby Hart B. H. Liddell",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=2mQHEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Art of War\nby Antoine Henri baron de Jomini",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=pW88Hd2afpEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Bombing War\nby R. J. Overy",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=nogbAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "The Candy Bombers\nby Andrei Cherny",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=9kfBAkMRl8EC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Craft of Research\nby Booth, Wayne C., et al",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=SjPqDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Evolution of Strategy\nby Beatrice Heuser",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=lB18hn9MSlEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The First World War\nby Hew Strachan",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=KZHITOPMf4gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Foundations of the Science of War\nby J F C Fuller",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=E9kJygEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "The Global Cold War\nby Odd Arne Westad",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=QhFZHRpQdu4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Heavens and the Earth\nby Walter A. McDougall",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=qp0sAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "The Landmark Thucydides\nby Thucydides",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=pjt3ZGU61wIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Limits of Air Power\nby Mark Clodfelter",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=VVHDYxYcZJAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The New Makers of Modern Strategy\nby Hal Brands",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=EMyZEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Science of Military Strategy 20\nby Xiao Tianliang",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=nfDttQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "The Sea Power of the State\nby S.G. Gorshkov",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=Uk60BQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Seven Military Classics Of Ancient China\nby Ralph D. Sawyer",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=6Ju5DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Strategy Bridge\nby Colin S. Gray",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=Wul8jgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "The Structure of Scientific Revolutions\nby Thomas S. Kuhn",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=3eP5Y_OOuzwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Tormented Alliance\nby Zach Fredman",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=CwlpEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "The Twenty Years' Crisis, 1919-1939\nby E.H. Carr",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=9ZSkDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "To Kill Nations\nby Edward Kaplan",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=ISNQzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "q": "War and Change in World Politics\nby Robert Gilpin",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=2iKL7zr3kl0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "When France Fell\nby Michael S. Neiberg",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=4_M5EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "When Right Makes Might\nby Stacie E. Goddard",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=vUVQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Why War?\nby Richard Overy",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=EDDXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "q": "Winged Defense\nby William Mitchell",
+    "a": "",
+    "img": "http://books.google.com/books/content?id=sqofv6rn7LMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
   }
 ]
