@@ -29,129 +29,146 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
   <style>
     :root {
       --card-w: min(720px, 92vw);
-      --card-h: clamp(220px, 40vh, 360px);
-      --radius: 12px;
-      --card-shadow: 0 8px 20px rgba(0,0,0,.06);
+      --radius: 14px;
+      --card-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
       --focus: hsl(212 90% 56%);
     }
 
-    /* Use site-wide variables for colors and font so the page matches Layout.astro */
     main.deck { min-height: 70vh; display:grid; place-items:center; padding: clamp(16px,3vw,48px); gap:18px }
-
     .stack { display: grid; gap: 18px; width: var(--card-w); }
 
-   /* Make card height flow with content so controls naturally sit below it. Replace 3D flip
-     with a simple cross-fade so answers can be large without fixed heights. */
-   .card { width: 100%; position: relative; }
+    .card {
+      width: 100%;
+      background: var(--background-color);
+      color: var(--text-color);
+      border-radius: var(--radius);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: var(--card-shadow);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
-   .card__btn { display:block; width:100%; padding:0; border:0; background:transparent; cursor:pointer; transition: none; border-radius:var(--radius); box-shadow:var(--card-shadow); }
-   .card__btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+    .card__eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(15, 23, 42, 0.6);
+    }
 
-   .card__face { display:grid; grid-template-rows:auto 1fr auto; align-items:start; gap:.5rem; padding:1.25rem 1.5rem; border-radius:var(--radius); background:var(--background-color); color:var(--text-color); transition: opacity .28s ease, transform .28s ease; }
+    .card__question {
+      font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+      font-weight: 600;
+      line-height: 1.5;
+    }
 
-   /* Back face visually distinct and left-aligned content for long answers */
-   .card__face--back { background: color-mix(in srgb, var(--background-color) 92%, black 6%); text-align:left }
+    .card__answer {
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      padding-top: 0.75rem;
+      line-height: 1.55;
+      font-size: 1rem;
+      color: #334155;
+    }
 
-   /* show/hide faces with opacity (front visible when closed, back when open) */
-   .card__face--front { opacity:1 }
-   .card__face--back { opacity:0; pointer-events:none }
-   .card__btn[aria-expanded="true"] .card__face--front { opacity:0; pointer-events:none }
-   .card__btn[aria-expanded="true"] .card__face--back { opacity:1; pointer-events:auto }
+    .card__answer.is-hidden {
+      display: none;
+    }
 
-    .card__eyebrow { font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; opacity:.7 }
-  .card__content { font-size: clamp(1.05rem, 1rem + .5vw, 1.25rem); align-self:center }
-  /* back face: left-align long answers and allow them to stretch */
-  .card__face--back .card__content { text-align:left; align-self:start }
-    .card__hint { font-size:.9rem; opacity:.7 }
+    .card__image {
+      max-width: min(320px, 80%);
+      border-radius: 10px;
+      align-self: center;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
+    }
 
-    .controls { display:flex; gap:12px; justify-content:center; align-items:center; width:100% }
-    .controls button { background:transparent; border:1px solid color-mix(in srgb, var(--text-color) 12%, transparent 88%); color:var(--text-color); padding:.45rem .8rem; border-radius:8px; cursor:pointer }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
 
-    @media (prefers-reduced-motion: reduce) { .card__btn { transition: none } }
+    .controls button {
+      background: rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      color: var(--text-color);
+      padding: .45rem .9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
 
-   /* Flashcard image layout: center under question and avoid cropping */
-   .card__media { display:flex; flex-direction:column; gap:.75rem; align-items:center; justify-content:flex-start }
-   .card__question-wrap { width:100%; }
-   .card__image-wrap { width:100%; display:flex; justify-content:center }
-   .card__image { display:none; width: clamp(160px, 40vw, 360px); height: auto; max-height: calc(var(--card-h) - 120px); object-fit: contain; border-radius:8px; }
+    .controls button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-   /* 3D flip shell + flipper. The shell gets an explicit height from JS so it can animate
-     while the flipper performs the rotateY transform to produce a real 3D flip. */
-   .card__shell { perspective: 1000px; width:100%; transition: height .32s ease }
-   .card__flipper { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.6,.2,1); position: relative }
-   .card__face { backface-visibility: hidden; -webkit-backface-visibility: hidden }
-   .card__face--front { transform: rotateY(0deg); }
-   .card__face--back { transform: rotateY(180deg); position: absolute; inset:0 } 
-   .card__btn.is-flipped .card__flipper { transform: rotateY(180deg) }
+    .controls button:hover:not(:disabled),
+    .controls button:focus-visible {
+      background: rgba(15, 23, 42, 0.12);
+      outline: none;
+      transform: translateY(-1px);
+    }
 
-   /* subtle content fade/slide when flipping */
-   .card__face { transition: opacity .28s ease, transform .28s ease }
-   .card__btn .card__face--front { opacity:1; transform: translateY(0) }
-   .card__btn.is-flipped .card__face--front { opacity:0; transform: translateY(-6px) }
-   .card__btn .card__face--back { opacity:0; transform: translateY(6px) }
-   .card__btn.is-flipped .card__face--back { opacity:1; transform: translateY(0) }
+    .card__meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(15, 23, 42, 0.7);
+    }
 
-  /* Markdown styling for answers */
-  .card__face--back .card__content p { margin: 0 0 .75rem; line-height:1.55 }
-  .card__face--back .card__content ul,
-  .card__face--back .card__content ol { padding-left:1.25rem; margin: .5rem 0 }
-  .card__face--back .card__content pre { background: color-mix(in srgb, var(--background-color) 92%, black 6%); padding:.75rem; border-radius:6px; overflow:auto }
-  .card__face--back .card__content code { background: color-mix(in srgb, var(--background-color) 86%, black 6%); padding:.15rem .35rem; border-radius:4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Helvetica Neue", monospace }
+    .progress {
+      min-width: 4rem;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(15, 23, 42, 0.65);
+      max-width: var(--card-w);
+    }
   </style>
 
   <main class="deck">
     <h1>Flashcards</h1>
 
     <section class="stack" aria-label="Flashcard viewer">
-      <article class="card" aria-labelledby="q-current">
-        <!-- use a unique id for the back region to avoid accidental conflicts -->
-        <button id="cardBtn" class="card__btn" type="button" aria-expanded="false" aria-controls="a-current-region">
-          <div class="card__shell">
-            <div class="card__flipper" aria-hidden="true">
-              <div class="card__face card__face--front">
-            <span class="card__eyebrow" id="eyebrow">Question</span>
-            <div class="card__media">
-              <div class="card__question-wrap">
-                <div class="card__content" id="q-current">{processed[0] ? processed[0].q : 'Loading…'}</div>
-              </div>
-              <div class="card__image-wrap" aria-hidden="true">
-                <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" />
-              </div>
-            </div>
-            <div class="card__hint">Click to reveal the answer</div>
+      <article class="card" aria-live="polite">
+        <div class="card__meta">
+          <span class="card__eyebrow" id="eyebrow">Question</span>
+          <span class="progress" id="progress">1 / —</span>
         </div>
-
-        <div class="card__face card__face--back" id="a-current-region" role="region" aria-label="Answer">
-            <span class="card__eyebrow">Answer</span>
-            <div class="card__content" id="a-current-content" set:html={processed[0] ? processed[0].aHtml : ''}></div>
-            <div class="card__hint">Click to flip back</div>
-              </div>
-            </div>
-          </div>
-        </button>
+        <div class="card__question" id="q-current">{processed[0] ? processed[0].q : 'Loading…'}</div>
+        <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" hidden />
+        <div class="card__answer is-hidden" id="a-current-content" set:html={processed[0] ? processed[0].aHtml : ''}></div>
+        <button id="toggleBtn" type="button">Show answer</button>
       </article>
 
       <div class="controls">
-  <button id="prevBtn" aria-label="Previous card">← Prev</button>
-  <!-- placeholder progress (updated client-side) -->
-  <div id="progress" style="opacity:.85">1 / —</div>
+        <button id="prevBtn" aria-label="Previous card">← Prev</button>
         <button id="nextBtn" aria-label="Next card">Next →</button>
       </div>
     </section>
 
-    <p style="opacity:.75;max-width:var(--card-w);text-align:center">Tip: Click the card, press <kbd>Space</kbd> or <kbd>Enter</kbd> to flip. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
+    <p class="hint">Tip: Press the “Show answer” button or hit <kbd>Space</kbd>/<kbd>Enter</kbd> when focused. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
   </main>
 
   <!-- serialized processed data for client -->
   <script id="flashcards-data" type="application/json" set:html={cardsJson}></script>
 
   <script>
-(function () {
-  if (typeof window === 'undefined') return;
-  if (window.__pbvFlashcardsInitialized) return;
-  window.__pbvFlashcardsInitialized = true;
+  (function () {
+    if (typeof window === 'undefined') return;
+    if (window.__pbvFlashcardsInitialized) return;
+    window.__pbvFlashcardsInitialized = true;
 
-    // Parse the serialized cards data from the DOM
     const dataEl = document.getElementById('flashcards-data');
     let cards = [];
     try {
@@ -163,173 +180,112 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     }
 
     let idx = 0;
-    let isFlipped = false;
-    let flipLocked = false;
-    const FLIP_COOLDOWN_MS = 250;
+    let showAnswer = false;
 
-    const btn = document.getElementById('cardBtn');
-    const qEl = document.getElementById('q-current');
-    const aEl = document.getElementById('a-current-content');
-    const eyebrow = document.getElementById('eyebrow');
-    const progress = document.getElementById('progress');
-    const prev = document.getElementById('prevBtn');
-    const next = document.getElementById('nextBtn');
-    const cardImage = document.getElementById('cardImage');
+    const questionEl = document.getElementById('q-current');
+    const answerEl = document.getElementById('a-current-content');
+    const eyebrowEl = document.getElementById('eyebrow');
+    const progressEl = document.getElementById('progress');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const imageEl = document.getElementById('cardImage');
 
-    // Basic sanity checks
-    if (!btn || !qEl || !aEl || !progress) {
-      console.error('Flashcards: missing required DOM elements', { btn, qEl, aEl, progress });
-    }
-
-    function setExpanded(open) {
-      if (!btn) return;
-      isFlipped = open;
-      btn.classList.toggle('is-flipped', open);
-      btn.setAttribute('aria-expanded', String(open));
+    function updateAnswerVisibility() {
+      if (!answerEl || !toggleBtn) return;
+      answerEl.classList.toggle('is-hidden', !showAnswer);
+      toggleBtn.textContent = showAnswer ? 'Hide answer' : 'Show answer';
     }
 
     function render() {
-      if (!cards || cards.length === 0) {
-        qEl && (qEl.textContent = 'No cards available');
-        aEl && (aEl.textContent = '');
-        progress && (progress.textContent = '0 / 0');
-        eyebrow && (eyebrow.textContent = 'Question');
-        btn && (btn.setAttribute('disabled', 'true'));
-        return;
-      }
-      btn && btn.removeAttribute('disabled');
-      flipLocked = false;
+      const hasCards = cards.length > 0;
+      const controls = [toggleBtn, prevBtn, nextBtn];
+      controls.forEach(btn => btn && (btn.disabled = !hasCards));
 
-      // wrap index if out of range
-      idx = ((idx % cards.length) + cards.length) % cards.length;
-
-      const c = cards[idx];
-      qEl.textContent = c.q || '';
-      // Render answer as sanitized Markdown -> HTML
-        // server produced HTML is available as `aHtml` in the payload
-        if (c.aHtml) {
-          aEl.innerHTML = c.aHtml;
-        } else {
-          aEl.textContent = c.a || '';
+      if (!hasCards) {
+        questionEl && (questionEl.textContent = 'No cards available');
+        answerEl && (answerEl.textContent = '');
+        eyebrowEl && (eyebrowEl.textContent = 'Question');
+        progressEl && (progressEl.textContent = '0 / 0');
+        if (imageEl) {
+          imageEl.hidden = true;
+          imageEl.removeAttribute('src');
+          imageEl.alt = '';
         }
-      eyebrow && (eyebrow.textContent = `Question ${idx + 1}`);
-      progress && (progress.textContent = `${idx + 1} / ${cards.length}`);
-
-      // image handling
-      if (c.img && cardImage) {
-        // Prefer https to avoid mixed-content blocking in browsers
-        let imgUrl = c.img;
-        if (imgUrl.startsWith('http://')) imgUrl = imgUrl.replace(/^http:\/\//, 'https://');
-        cardImage.src = imgUrl;
-        cardImage.alt = c.q || '';
-        // ensure the img is visible and respects its CSS sizing
-        cardImage.style.display = 'block';
-      } else if (cardImage) {
-        cardImage.removeAttribute('src');
-        cardImage.alt = '';
-        cardImage.style.display = 'none';
-      }
-
-      requestAnimationFrame(() => updateHeights());
-    }
-
-    // 3D flip handling with dynamic height
-    const shell = document.querySelector('.card__shell');
-    const flipper = document.querySelector('.card__flipper');
-    const frontFace = document.querySelector('.card__face--front');
-    const backFace = document.querySelector('.card__face--back');
-
-    function measureHeights() {
-      if (!frontFace || !backFace || !shell) return { front: 0, back: 0 };
-      // Temporarily reset shell height so natural content sizes compute correctly
-      const prevHeight = shell.style.height;
-      shell.style.height = 'auto';
-      // ensure backFace is not interfering with layout when measuring
-      const prevDisplay = backFace.style.display;
-      const prevBackPos = backFace.style.position;
-      const prevBackTransform = backFace.style.transform;
-      const prevFrontPos = frontFace.style.position;
-
-      backFace.style.display = 'block';
-      backFace.style.position = 'relative';
-      backFace.style.transform = 'none';
-      frontFace.style.position = 'relative';
-      const frontH = frontFace.getBoundingClientRect().height;
-      const backH = backFace.getBoundingClientRect().height;
-      // restore
-      backFace.style.display = prevDisplay;
-      backFace.style.position = prevBackPos;
-      backFace.style.transform = prevBackTransform;
-      frontFace.style.position = prevFrontPos;
-      shell.style.height = prevHeight;
-      return { front: Math.round(frontH), back: Math.round(backH) };
-    }
-
-    let heights = { front: 0, back: 0 };
-    function updateHeights() {
-      heights = measureHeights();
-      // set shell height to currently-visible face
-      const open = btn && btn.getAttribute('aria-expanded') === 'true';
-      const target = open ? heights.back : heights.front || heights.back || 0;
-      if (shell) shell.style.height = target ? `${target}px` : 'auto';
-    }
-
-    function requestFlipState(nextState) {
-      if (!btn) return;
-      if (nextState === isFlipped) return;
-      if (flipLocked) return;
-      setExpanded(nextState);
-      flipLocked = true;
-      setTimeout(() => (flipLocked = false), FLIP_COOLDOWN_MS);
-      requestAnimationFrame(() => updateHeights());
-    }
-
-    if (btn) {
-      btn.addEventListener('click', () => {
-        requestFlipState(!isFlipped);
-      });
-    }
-
-    // recalc heights when images load or window resizes
-    if (cardImage) {
-      cardImage.addEventListener('load', () => updateHeights());
-    }
-    window.addEventListener('resize', () => updateHeights());
-
-    // use code/key values for reliable handling
-    document.addEventListener('keydown', (e) => {
-      const activeIsBtn = document.activeElement === btn;
-      if (!cards || cards.length === 0) return;
-      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; flipLocked = false; setExpanded(false); render(); btn && btn.focus(); return; }
-      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; flipLocked = false; setExpanded(false); render(); btn && btn.focus(); return; }
-
-      // space/enter toggles when the card button is focused
-      if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
-        e.preventDefault();
-        requestFlipState(!isFlipped);
+        showAnswer = false;
+        updateAnswerVisibility();
         return;
       }
+
+      idx = ((idx % cards.length) + cards.length) % cards.length;
+      const current = cards[idx];
+
+      questionEl && (questionEl.textContent = current.q || '');
+      if (answerEl) {
+        if (current.aHtml) {
+          answerEl.innerHTML = current.aHtml;
+        } else {
+          answerEl.textContent = current.a || '';
+        }
+      }
+
+      eyebrowEl && (eyebrowEl.textContent = `Question ${idx + 1}`);
+      progressEl && (progressEl.textContent = `${idx + 1} / ${cards.length}`);
+
+      if (imageEl) {
+        if (current.img) {
+          let imgUrl = current.img;
+          if (imgUrl.startsWith('http://')) {
+            imgUrl = imgUrl.replace(/^http:\/\//, 'https://');
+          }
+          imageEl.src = imgUrl;
+          imageEl.alt = current.q || 'Flashcard image';
+          imageEl.hidden = false;
+        } else {
+          imageEl.hidden = true;
+          imageEl.removeAttribute('src');
+          imageEl.alt = '';
+        }
+      }
+
+      updateAnswerVisibility();
+    }
+
+    function changeCard(delta) {
+      if (!cards.length) return;
+      idx = (idx + delta + cards.length) % cards.length;
+      showAnswer = false;
+      render();
+      toggleBtn && toggleBtn.focus();
+    }
+
+    toggleBtn && toggleBtn.addEventListener('click', () => {
+      if (!cards.length) return;
+      showAnswer = !showAnswer;
+      updateAnswerVisibility();
     });
 
-    prev && prev.addEventListener('click', () => {
-      if (!cards || cards.length === 0) return;
-      idx = (idx - 1 + cards.length) % cards.length;
-      flipLocked = false;
-      setExpanded(false);
-      render();
-      btn && btn.focus();
-    });
-    next && next.addEventListener('click', () => {
-      if (!cards || cards.length === 0) return;
-      idx = (idx + 1) % cards.length;
-      flipLocked = false;
-      setExpanded(false);
-      render();
-      btn && btn.focus();
+    prevBtn && prevBtn.addEventListener('click', () => changeCard(-1));
+    nextBtn && nextBtn.addEventListener('click', () => changeCard(1));
+
+    document.addEventListener('keydown', (e) => {
+      if (!cards.length) return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        changeCard(1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        changeCard(-1);
+      } else if (e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
+        if (document.activeElement && document.activeElement.closest('.card')) {
+          e.preventDefault();
+          showAnswer = !showAnswer;
+          updateAnswerVisibility();
+        }
+      }
     });
 
-    // initial load + render after fetch
     render();
-})();
+  })();
   </script>
 </Layout>
