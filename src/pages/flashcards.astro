@@ -143,7 +143,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
   </main>
 
   <!-- serialized processed data for client -->
-  <script id="flashcards-data" type="application/json">{cardsJson}</script>
+  <script id="flashcards-data" type="application/json" set:html={cardsJson}></script>
 
   <script>
     // Parse the serialized cards data from the DOM
