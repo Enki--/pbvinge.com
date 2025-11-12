@@ -205,9 +205,6 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       eyebrow && (eyebrow.textContent = `Question ${idx + 1}`);
       progress && (progress.textContent = `${idx + 1} / ${cards.length}`);
 
-      // always reset to closed on render
-      setExpanded(false);
-
       // image handling
       if (c.img && cardImage) {
         // Prefer https to avoid mixed-content blocking in browsers
@@ -285,8 +282,8 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     document.addEventListener('keydown', (e) => {
       const activeIsBtn = document.activeElement === btn;
       if (!cards || cards.length === 0) return;
-      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; render(); btn && btn.focus(); return; }
-      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; render(); btn && btn.focus(); return; }
+      if (e.code === 'ArrowRight' || e.key === 'ArrowRight') { idx = (idx + 1) % cards.length; setExpanded(false); render(); btn && btn.focus(); return; }
+      if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') { idx = (idx - 1 + cards.length) % cards.length; setExpanded(false); render(); btn && btn.focus(); return; }
 
       // space/enter toggles when the card button is focused
       if (activeIsBtn && (e.code === 'Space' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter')) {
@@ -300,12 +297,14 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     prev && prev.addEventListener('click', () => {
       if (!cards || cards.length === 0) return;
       idx = (idx - 1 + cards.length) % cards.length;
+      setExpanded(false);
       render();
       btn && btn.focus();
     });
     next && next.addEventListener('click', () => {
       if (!cards || cards.length === 0) return;
       idx = (idx + 1) % cards.length;
+      setExpanded(false);
       render();
       btn && btn.focus();
     });
