@@ -11,6 +11,7 @@ publish: 2022-11-15
 pages: 409
 isbn10: "1501766031"
 isbn13: "9781501766039"
+cover: "http://books.google.com/books/content?id=yn1VEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "complete"
 created: 2025-11-13 14:10:43
 updated: 2025-11-13 14:10:43
