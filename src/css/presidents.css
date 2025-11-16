@@ -1,0 +1,162 @@
+.pbv-presidents {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #0f172a;
+}
+
+.pbv-presidents-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pbv-presidents-header h1 {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  margin-bottom: 0.5rem;
+}
+
+.pbv-presidents-header p {
+  color: #475569;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.pbv-president-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .pbv-president-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pbv-president-card {
+  border-radius: 20px;
+  border: 1px solid #d8e3ef;
+  background: linear-gradient(135deg, #fdfdfd, #f1f5f9);
+  padding: 1.5rem;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pbv-president-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.pbv-president-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pbv-president-term {
+  margin: 0.1rem 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.pbv-president-party {
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.pbv-party-dem {
+  background: #2563eb;
+}
+
+.pbv-party-gop {
+  background: #dc2626;
+}
+
+.pbv-president-summary {
+  margin: 0;
+  color: #1f2937;
+}
+
+.pbv-president-vice {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+.pbv-president-vice strong {
+  color: #0f172a;
+}
+
+.pbv-president-sections {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.pbv-president-section h3 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+}
+
+.pbv-cabinet-list,
+.pbv-president-events {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pbv-cabinet-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem;
+}
+
+.pbv-cabinet-role {
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+.pbv-cabinet-name {
+  margin: 0;
+  color: #0f172a;
+}
+
+.pbv-cabinet-notes {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.pbv-president-events li {
+  border-left: 3px solid #cbd5f5;
+  padding-left: 0.75rem;
+}
+
+.pbv-event-period {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.pbv-event-description {
+  margin: 0.2rem 0 0;
+  color: #0f172a;
+}

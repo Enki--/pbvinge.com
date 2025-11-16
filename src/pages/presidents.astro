@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PresidentsPage from "../components/PresidentsPage";
+
+const title = "U.S. Presidents Since World War I — pbvinge";
+const description = "Administrations from Woodrow Wilson to Joe Biden with key cabinet members and wars.";
+---
+
+<Layout title={title} description={description}>
+  <PresidentsPage client:load />
+</Layout>

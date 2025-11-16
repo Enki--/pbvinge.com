@@ -4,10 +4,11 @@ interface FilterChipsProps {
   value: string;
   onChange: (tag: string) => void;
   tags: string[];
+  label?: string;
 }
 
-const FilterChips: React.FC<FilterChipsProps> = ({ value, onChange, tags }) => (
-  <nav className="pbv-filter-chips" aria-label="Timeline Filters">
+const FilterChips: React.FC<FilterChipsProps> = ({ value, onChange, tags, label = "Filters" }) => (
+  <nav className="pbv-filter-chips" aria-label={label}>
     {tags.map(tag => (
       <button
         key={tag}

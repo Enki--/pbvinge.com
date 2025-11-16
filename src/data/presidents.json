@@ -1,0 +1,362 @@
+{
+  "presidents": [
+    {
+      "id": "woodrow-wilson",
+      "name": "Woodrow Wilson",
+      "term": { "start": "1913", "end": "1921" },
+      "party": "Democratic",
+      "vicePresident": "Thomas R. Marshall",
+      "summary": "Progressive academic who led the United States through World War I and tried to build a liberal international order around the League of Nations.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "William Jennings Bryan (1913-1915); Robert Lansing (1915-1920); Bainbridge Colby (1920-1921)", "notes": "Managed neutrality, then wartime diplomacy and the peace conference." },
+        { "role": "Secretary of War", "name": "Newton D. Baker", "notes": "Oversaw Selective Service, American Expeditionary Forces buildup, and war mobilization." },
+        { "role": "Secretary of the Navy", "name": "Josephus Daniels", "notes": "Managed naval expansion and convoy operations." }
+      ],
+      "events": [
+        { "period": "1913-1916", "description": "Progressive reforms, Federal Reserve Act, and declared neutrality in the opening years of World War I." },
+        { "period": "Apr 1917", "description": "Asked Congress for a declaration of war on Germany; mobilized the economy and raised the American Expeditionary Forces." },
+        { "period": "1918-1919", "description": "Issued the Fourteen Points, led the Paris Peace Conference, and advocated for the League of Nations." },
+        { "period": "1919-1920", "description": "Faced the First Red Scare and a Senate defeat of the Versailles Treaty after a national speaking tour and stroke." }
+      ]
+    },
+    {
+      "id": "warren-g-harding",
+      "name": "Warren G. Harding",
+      "term": { "start": "1921", "end": "1923" },
+      "party": "Republican",
+      "vicePresident": "Calvin Coolidge",
+      "summary": "Promised a return to normalcy after World War I, favored pro-business growth, and saw his administration rocked by scandals.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Charles Evans Hughes", "notes": "Led the Washington Naval Conference and normalized relations with Europe." },
+        { "role": "Secretary of the Treasury", "name": "Andrew Mellon", "notes": "Championed tax cuts and debt reduction." },
+        { "role": "Secretary of Commerce", "name": "Herbert Hoover", "notes": "Coordinated trade expansion and disaster relief." }
+      ],
+      "events": [
+        { "period": "1921", "description": "Budget and Accounting Act created the Bureau of the Budget and the General Accounting Office." },
+        { "period": "1921-1922", "description": "Washington Naval Conference set tonnage limits on capital ships and affirmed the Open Door in Asia." },
+        { "period": "1923", "description": "Teapot Dome bribery scandal erupted over oil leases, tainting the administration even after Harding's death." }
+      ]
+    },
+    {
+      "id": "calvin-coolidge",
+      "name": "Calvin Coolidge",
+      "term": { "start": "1923", "end": "1929" },
+      "party": "Republican",
+      "vicePresident": "Charles G. Dawes",
+      "summary": "Laissez-faire conservative who oversaw boom years, modest regulatory reforms, and restrained foreign policy involvement.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Charles Evans Hughes (1923-1925); Frank B. Kellogg (1925-1929)", "notes": "Negotiated the Dawes Plan and Kellogg-Briand Pact." },
+        { "role": "Secretary of the Treasury", "name": "Andrew Mellon", "notes": "Maintained low taxes and budget surpluses." },
+        { "role": "Secretary of Commerce", "name": "Herbert Hoover", "notes": "Managed aviation, radio, and flood relief." }
+      ],
+      "events": [
+        { "period": "1924", "description": "Johnson-Reed Immigration Act established national origins quotas." },
+        { "period": "1924", "description": "Dawes Plan restructured German reparations with American banking support." },
+        { "period": "1927", "description": "Great Mississippi Flood prompted federal relief debates." },
+        { "period": "1928", "description": "Kellogg-Briand Pact renounced war as national policy." }
+      ]
+    },
+    {
+      "id": "herbert-hoover",
+      "name": "Herbert Hoover",
+      "term": { "start": "1929", "end": "1933" },
+      "party": "Republican",
+      "vicePresident": "Charles Curtis",
+      "summary": "Engineer turned humanitarian who struggled to confront the Great Depression with voluntary cooperation and limited federal aid.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Henry L. Stimson", "notes": "Asserted nonrecognition of Japanese conquest in Manchuria." },
+        { "role": "Secretary of the Treasury", "name": "Andrew Mellon (1929-1932); Ogden Mills (1932-1933)", "notes": "Initially defended orthodox fiscal policy until late crisis." },
+        { "role": "Secretary of War", "name": "Patrick J. Hurley", "notes": "Advocated preparedness amid global instability." }
+      ],
+      "events": [
+        { "period": "Oct 1929", "description": "Stock market crash triggered the global Great Depression." },
+        { "period": "1930", "description": "Smoot-Hawley Tariff provoked retaliatory trade restrictions." },
+        { "period": "1932", "description": "Reconstruction Finance Corporation extended emergency credit to banks and railroads." },
+        { "period": "1932", "description": "Bonus Army marchers were expelled from Washington by federal troops." }
+      ]
+    },
+    {
+      "id": "franklin-d-roosevelt",
+      "name": "Franklin D. Roosevelt",
+      "term": { "start": "1933", "end": "1945" },
+      "party": "Democratic",
+      "vicePresident": "John Nance Garner; Henry A. Wallace; Harry S. Truman",
+      "summary": "Four-term leader who launched the New Deal, rearmed the nation, and steered the Allied coalition to victory in World War II.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Cordell Hull (1933-1944); Edward Stettinius Jr. (1944-1945)", "notes": "Led Good Neighbor policy and wartime alliance management." },
+        { "role": "Secretary of War", "name": "George Dern (1933-1936); Harry H. Woodring (1936-1940); Henry L. Stimson (1940-1945)", "notes": "Oversaw mobilization and coalition warfare." },
+        { "role": "Secretary of the Treasury", "name": "William Woodin (1933-1934); Henry Morgenthau Jr. (1934-1945)", "notes": "Financed New Deal and wartime spending." }
+      ],
+      "events": [
+        { "period": "1933-1936", "description": "First and Second New Deals created Social Security, the SEC, and labor protections while stabilizing banks." },
+        { "period": "1939-1941", "description": "Neutrality revisions, Lend-Lease, and the Arsenal of Democracy aided Allies prior to Pearl Harbor." },
+        { "period": "Dec 1941-1945", "description": "Led the United States during World War II in Europe and the Pacific, culminating in Yalta and the creation of the United Nations." }
+      ]
+    },
+    {
+      "id": "harry-s-truman",
+      "name": "Harry S. Truman",
+      "term": { "start": "1945", "end": "1953" },
+      "party": "Democratic",
+      "vicePresident": "Alben Barkley (1949-1953)",
+      "summary": "Finished World War II, launched the architecture of containment, and committed U.S. forces to Korea.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Edward Stettinius Jr.; James F. Byrnes; George C. Marshall; Dean Acheson", "notes": "Crafted the Marshall Plan, Truman Doctrine, and NATO." },
+        { "role": "Secretary of Defense", "name": "James Forrestal; Louis Johnson; George C. Marshall; Robert A. Lovett", "notes": "Oversaw unification of the services and Korean War mobilization." },
+        { "role": "Secretary of the Treasury", "name": "Fred Vinson; John W. Snyder", "notes": "Managed reconversion and postwar inflation." }
+      ],
+      "events": [
+        { "period": "Aug 1945", "description": "Approved atomic bombings of Hiroshima and Nagasaki and accepted Japan's surrender." },
+        { "period": "1947-1949", "description": "Truman Doctrine, Marshall Plan, Berlin Airlift, and NATO formalized containment." },
+        { "period": "1950-1953", "description": "Committed troops to the Korean War under UN command after North Korea's invasion." }
+      ]
+    },
+    {
+      "id": "dwight-d-eisenhower",
+      "name": "Dwight D. Eisenhower",
+      "term": { "start": "1953", "end": "1961" },
+      "party": "Republican",
+      "vicePresident": "Richard Nixon",
+      "summary": "Former Supreme Allied Commander who stabilized Cold War tensions with the New Look strategy and warned about the military-industrial complex.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "John Foster Dulles (1953-1959); Christian Herter (1959-1961)", "notes": "Led brinkmanship diplomacy from Dien Bien Phu to the U-2 crisis." },
+        { "role": "Secretary of Defense", "name": "Charles Erwin Wilson; Neil McElroy; Thomas S. Gates Jr.", "notes": "Implemented massive retaliation, SAC expansion, and early space programs." },
+        { "role": "Secretary of the Treasury", "name": "George M. Humphrey (1953-1957); Robert B. Anderson (1957-1961)", "notes": "Maintained balanced budgets and a strong dollar." }
+      ],
+      "events": [
+        { "period": "1953", "description": "Negotiated Korean War armistice and ended active combat." },
+        { "period": "1955", "description": "Formed SEATO and backed the Formosa Resolution to defend Taiwan." },
+        { "period": "1956", "description": "Handled the Suez Crisis while condemning Anglo-French intervention." },
+        { "period": "1957-1958", "description": "Sputnik shock spurred NASA, the National Defense Education Act, and ICBM development." }
+      ]
+    },
+    {
+      "id": "john-f-kennedy",
+      "name": "John F. Kennedy",
+      "term": { "start": "1961", "end": "1963" },
+      "party": "Democratic",
+      "vicePresident": "Lyndon B. Johnson",
+      "summary": "Cold War liberal who promoted the New Frontier, faced the most dangerous nuclear crisis, and set the moonshot goal before his assassination.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Dean Rusk", "notes": "Managed Berlin, Cuba, and early Vietnam decisions." },
+        { "role": "Secretary of Defense", "name": "Robert McNamara", "notes": "Centralized Pentagon planning, flexible response, and Vietnam advisers." },
+        { "role": "Attorney General", "name": "Robert F. Kennedy", "notes": "Led civil rights enforcement and backchannel diplomacy during crises." }
+      ],
+      "events": [
+        { "period": "1961", "description": "Bay of Pigs invasion failed, prompting distrust of CIA plans." },
+        { "period": "Oct 1962", "description": "Cuban Missile Crisis resulted in Soviet missile withdrawal and a nuclear test ban push." },
+        { "period": "1961-1963", "description": "Accelerated U.S. advisory role in Vietnam and created the Green Berets build-up." },
+        { "period": "1961-1963", "description": "Launched the Alliance for Progress and Peace Corps in Latin America." }
+      ]
+    },
+    {
+      "id": "lyndon-b-johnson",
+      "name": "Lyndon B. Johnson",
+      "term": { "start": "1963", "end": "1969" },
+      "party": "Democratic",
+      "vicePresident": "Hubert Humphrey",
+      "summary": "Master legislator who delivered landmark civil rights and welfare laws while escalating the Vietnam War and facing domestic unrest.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Dean Rusk", "notes": "Backed escalation and diplomacy over Vietnam and the Dominican Republic." },
+        { "role": "Secretary of Defense", "name": "Robert McNamara (1963-1968); Clark Clifford (1968-1969)", "notes": "Directed Rolling Thunder and troop surges." },
+        { "role": "Secretary of the Treasury", "name": "Douglas Dillon (1963-1965); Henry Fowler (1965-1968); Joseph Barr (1969)", "notes": "Financed Great Society and war spending pressures." }
+      ],
+      "events": [
+        { "period": "1964-1965", "description": "Civil Rights Act and Voting Rights Act dismantled Jim Crow and empowered federal enforcement." },
+        { "period": "1964-1968", "description": "Great Society created Medicare, Medicaid, and antipoverty programs." },
+        { "period": "1965-1968", "description": "Vietnam War escalated with Operation Rolling Thunder and 500,000 U.S. troops, culminating in the Tet Offensive." },
+        { "period": "1965", "description": "Intervened in the Dominican Republic to prevent a perceived communist takeover." }
+      ]
+    },
+    {
+      "id": "richard-nixon",
+      "name": "Richard Nixon",
+      "term": { "start": "1969", "end": "1974" },
+      "party": "Republican",
+      "vicePresident": "Spiro Agnew; Gerald Ford",
+      "summary": "Pragmatic strategist who ended the draft, opened relations with China, pursued detente, and resigned amid Watergate.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "William P. Rogers (1969-1973); Henry Kissinger (1973-1974)", "notes": "Managed China opening, SALT I, and shuttle diplomacy." },
+        { "role": "Secretary of Defense", "name": "Melvin Laird; Elliot Richardson; James Schlesinger", "notes": "Oversaw Vietnamization and the end of conscription." },
+        { "role": "Attorney General", "name": "John N. Mitchell", "notes": "Directed law-and-order agenda and was convicted for Watergate." }
+      ],
+      "events": [
+        { "period": "1969-1973", "description": "Vietnamization, Cambodia incursions, Paris Peace Accords, and POW withdrawals." },
+        { "period": "1971-1972", "description": "Ping-Pong diplomacy and the Shanghai Communique normalized ties with the PRC." },
+        { "period": "1972", "description": "SALT I and the ABM Treaty formalized detente with the Soviet Union." },
+        { "period": "1973-1974", "description": "Watergate investigations exposed abuses, leading to resignation." }
+      ]
+    },
+    {
+      "id": "gerald-ford",
+      "name": "Gerald Ford",
+      "term": { "start": "1974", "end": "1977" },
+      "party": "Republican",
+      "vicePresident": "Nelson Rockefeller",
+      "summary": "Unelected president who emphasized transparency after Watergate while managing the end of the Vietnam War and stagflation.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Henry Kissinger", "notes": "Managed Helsinki Accords and Middle East shuttle diplomacy." },
+        { "role": "Secretary of Defense", "name": "James Schlesinger (1974-1975); Donald Rumsfeld (1975-1977)", "notes": "Oversaw post-Vietnam recalibration and the Mayaguez rescue." },
+        { "role": "Chief of Staff", "name": "Donald Rumsfeld; Dick Cheney", "notes": "Coordinated domestic policy and relations with Congress." }
+      ],
+      "events": [
+        { "period": "1974", "description": "Issued a pardon for Richard Nixon, prioritizing national healing." },
+        { "period": "Apr 1975", "description": "Oversaw evacuation of Saigon and end of U.S. presence in Vietnam." },
+        { "period": "1975", "description": "Helsinki Final Act advanced human rights monitoring across the Soviet bloc." },
+        { "period": "1975", "description": "Mayaguez incident saw Marines rescue a seized merchant ship off Cambodia." }
+      ]
+    },
+    {
+      "id": "jimmy-carter",
+      "name": "Jimmy Carter",
+      "term": { "start": "1977", "end": "1981" },
+      "party": "Democratic",
+      "vicePresident": "Walter Mondale",
+      "summary": "Georgia reformer who emphasized human rights, brokered Middle East peace, and struggled with stagflation and the Iran hostage crisis.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Cyrus Vance (1977-1980); Edmund Muskie (1980-1981)", "notes": "Pursued human rights diplomacy and SALT II; resigned over the Iran rescue." },
+        { "role": "Secretary of Defense", "name": "Harold Brown", "notes": "Promoted stealth aircraft, naval expansion, and Rapid Deployment Force planning." },
+        { "role": "National Security Advisor", "name": "Zbigniew Brzezinski", "notes": "Championed normalization with China and the response to the Soviet invasion of Afghanistan." }
+      ],
+      "events": [
+        { "period": "1978", "description": "Camp David Accords produced peace between Egypt and Israel." },
+        { "period": "1979", "description": "Established full diplomatic recognition of the People's Republic of China." },
+        { "period": "1979-1981", "description": "Iranian revolution and hostage crisis dominated foreign policy, culminating in a failed rescue mission." },
+        { "period": "1979", "description": "SALT II signed with the Soviet Union but never ratified after the invasion of Afghanistan." }
+      ]
+    },
+    {
+      "id": "ronald-reagan",
+      "name": "Ronald Reagan",
+      "term": { "start": "1981", "end": "1989" },
+      "party": "Republican",
+      "vicePresident": "George H. W. Bush",
+      "summary": "Conservative icon who pursued tax cuts, defense buildup, confrontational early Cold War posture, and later negotiated arms control with Moscow.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Alexander Haig (1981-1982); George P. Shultz (1982-1989)", "notes": "Managed Lebanon, INF Treaty, and thaw with Gorbachev." },
+        { "role": "Secretary of Defense", "name": "Caspar Weinberger (1981-1987); Frank Carlucci (1987-1989)", "notes": "Directed defense buildup, SDI, and interventions in Grenada and Lebanon." },
+        { "role": "National Security Advisor", "name": "William Clark; Robert McFarlane; John Poindexter; Frank Carlucci; Colin Powell", "notes": "Coordinated Iran-Contra network and later reset policy." }
+      ],
+      "events": [
+        { "period": "1981", "description": "Economic Recovery Tax Act launched Reaganomics and the Volcker disinflation." },
+        { "period": "1983", "description": "Marine barracks bombing in Beirut led to withdrawal; Operation Urgent Fury ousted the Grenadian junta." },
+        { "period": "1986", "description": "Iran-Contra affair revealed covert arms sales funding Nicaraguan rebels." },
+        { "period": "1987", "description": "INF Treaty eliminated an entire class of nuclear missiles in Europe." }
+      ]
+    },
+    {
+      "id": "george-h-w-bush",
+      "name": "George H. W. Bush",
+      "term": { "start": "1989", "end": "1993" },
+      "party": "Republican",
+      "vicePresident": "Dan Quayle",
+      "summary": "Experienced diplomat who managed the peaceful end of the Cold War and assembled a UN-backed coalition in the Gulf War.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "James A. Baker III (1989-1992); Lawrence Eagleburger (1992-1993)", "notes": "Managed German reunification and multilateral diplomacy." },
+        { "role": "Secretary of Defense", "name": "Dick Cheney", "notes": "Commanded Just Cause in Panama and Desert Storm." },
+        { "role": "Chairman, Joint Chiefs", "name": "Colin Powell", "notes": "Executed the Powell Doctrine in the Gulf." }
+      ],
+      "events": [
+        { "period": "1989", "description": "Operation Just Cause removed Manuel Noriega in Panama." },
+        { "period": "1990-1991", "description": "Led Operation Desert Shield/Desert Storm to expel Iraq from Kuwait." },
+        { "period": "1989-1991", "description": "Managed fall of the Berlin Wall, Soviet collapse, and START I." },
+        { "period": "1991-1992", "description": "Faced recession and signed the 1990 Budget Enforcement Act raising taxes." }
+      ]
+    },
+    {
+      "id": "bill-clinton",
+      "name": "Bill Clinton",
+      "term": { "start": "1993", "end": "2001" },
+      "party": "Democratic",
+      "vicePresident": "Al Gore",
+      "summary": "New Democrat who balanced budgets, expanded trade, and used NATO power in the Balkans while surviving impeachment.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Warren Christopher (1993-1997); Madeleine Albright (1997-2001)", "notes": "Championed NATO enlargement and Kosovo intervention." },
+        { "role": "Secretary of Defense", "name": "Les Aspin; William Perry; William Cohen", "notes": "Managed drawdowns, Bosnia, and Kosovo." },
+        { "role": "National Security Advisor", "name": "Anthony Lake; Sandy Berger", "notes": "Guided Haiti intervention and counterterror initiatives." }
+      ],
+      "events": [
+        { "period": "1993-1994", "description": "NAFTA ratified and the World Trade Organization launched." },
+        { "period": "1995", "description": "Dayton Accords ended the Bosnian war under U.S. leadership." },
+        { "period": "1998-1999", "description": "Impeached over the Lewinsky scandal but acquitted by the Senate." },
+        { "period": "1999", "description": "NATO air war over Kosovo forced Serbian withdrawal from Kosovo." }
+      ]
+    },
+    {
+      "id": "george-w-bush",
+      "name": "George W. Bush",
+      "term": { "start": "2001", "end": "2009" },
+      "party": "Republican",
+      "vicePresident": "Dick Cheney",
+      "summary": "Led the United States through 9/11, launched the wars in Afghanistan and Iraq, and responded to Hurricane Katrina and the global financial crisis.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Colin Powell (2001-2005); Condoleezza Rice (2005-2009)", "notes": "Built the 9/11 coalition and later pursued freedom agendas." },
+        { "role": "Secretary of Defense", "name": "Donald Rumsfeld (2001-2006); Robert Gates (2006-2009)", "notes": "Oversaw invasions and counterinsurgency surges." },
+        { "role": "Secretary of the Treasury", "name": "Paul O'Neill; John Snow; Henry Paulson", "notes": "Managed tax cuts and the 2008 financial rescue." }
+      ],
+      "events": [
+        { "period": "Sep 11, 2001", "description": "Terrorist attacks led to the Global War on Terror and the invasion of Afghanistan." },
+        { "period": "2003", "description": "Launched the Iraq War to depose Saddam Hussein, leading to long insurgency." },
+        { "period": "2005", "description": "Hurricane Katrina exposed homeland security and disaster response failures." },
+        { "period": "2008", "description": "Financial crisis triggered TARP bank rescues and recession." }
+      ]
+    },
+    {
+      "id": "barack-obama",
+      "name": "Barack Obama",
+      "term": { "start": "2009", "end": "2017" },
+      "party": "Democratic",
+      "vicePresident": "Joe Biden",
+      "summary": "Progressive pragmatist who passed the Affordable Care Act, ended combat operations in Iraq, targeted al-Qaeda, and pursued climate and Iran nuclear agreements.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Hillary Clinton (2009-2013); John Kerry (2013-2017)", "notes": "Managed the pivot to Asia, Libya intervention, and Iran talks." },
+        { "role": "Secretary of Defense", "name": "Robert Gates; Leon Panetta; Chuck Hagel; Ash Carter", "notes": "Handled Afghanistan surge, ISIS campaign, and Syria debates." },
+        { "role": "Attorney General", "name": "Eric Holder (2009-2015); Loretta Lynch (2015-2017)", "notes": "Led civil rights enforcement and counterterror prosecutions." }
+      ],
+      "events": [
+        { "period": "2010", "description": "Affordable Care Act overhauled health insurance coverage." },
+        { "period": "2011", "description": "Ordered raid that killed Osama bin Laden and supported the NATO Libya campaign." },
+        { "period": "2015", "description": "Iran nuclear deal (JCPOA) and Paris Climate Agreement were concluded." },
+        { "period": "2014-2016", "description": "Responded to ISIS with Operation Inherent Resolve and re-engaged in Iraq and Syria." }
+      ]
+    },
+    {
+      "id": "donald-trump",
+      "name": "Donald Trump",
+      "term": { "start": "2017", "end": "2021" },
+      "party": "Republican",
+      "vicePresident": "Mike Pence",
+      "summary": "Nationalist populist who pursued tax cuts, tariff battles with China, conservative courts, and faced two impeachments during a pandemic.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Rex Tillerson (2017-2018); Mike Pompeo (2018-2021)", "notes": "Reoriented policy toward great-power competition and maximum pressure on Iran." },
+        { "role": "Secretary of Defense", "name": "Jim Mattis (2017-2018); Mark Esper (2019-2020); acting chiefs including Patrick Shanahan and Chris Miller", "notes": "Managed ISIS fight, troop withdrawals, and civil-military tensions." },
+        { "role": "Secretary of the Treasury", "name": "Steven Mnuchin", "notes": "Led 2017 tax cut implementation and pandemic relief lending facilities." }
+      ],
+      "events": [
+        { "period": "2017", "description": "Tax Cuts and Jobs Act reduced corporate rates and reshaped the tax code." },
+        { "period": "2018-2019", "description": "Trade war with China imposed tariffs and renegotiated NAFTA into USMCA." },
+        { "period": "2020", "description": "COVID-19 pandemic response combined travel bans, Operation Warp Speed, and contested public health guidance." },
+        { "period": "2020", "description": "Abraham Accords normalized relations between Israel and several Arab states." }
+      ]
+    },
+    {
+      "id": "joe-biden",
+      "name": "Joe Biden",
+      "term": { "start": "2021", "end": "Present" },
+      "party": "Democratic",
+      "vicePresident": "Kamala Harris",
+      "summary": "Veteran senator who prioritized pandemic recovery, rebuilding alliances, and confronting Russia and China.",
+      "cabinet": [
+        { "role": "Secretary of State", "name": "Antony Blinken", "notes": "Coordinated NATO responses to Russia's invasion of Ukraine and Indo-Pacific strategy." },
+        { "role": "Secretary of Defense", "name": "Lloyd Austin", "notes": "Managed Afghanistan withdrawal, Ukraine security assistance, and modernization." },
+        { "role": "Secretary of the Treasury", "name": "Janet Yellen", "notes": "Implemented the American Rescue Plan, infrastructure financing, and global minimum tax talks." }
+      ],
+      "events": [
+        { "period": "2021", "description": "American Rescue Plan and COVID-19 vaccination surge aimed to reopen the economy." },
+        { "period": "Aug 2021", "description": "Completed the withdrawal from Afghanistan after the Taliban takeover." },
+        { "period": "2022-2024", "description": "Provided extensive aid to Ukraine and expanded NATO as Finland and Sweden sought membership." },
+        { "period": "2022", "description": "CHIPS and Science Act plus Inflation Reduction Act invested in industrial policy and clean energy." }
+      ]
+    }
+  ]
+}
