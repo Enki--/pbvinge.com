@@ -15,7 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { book } = Astro.props;
-const { Content } = await book.render();
+const { Content, headings = [] } = await book.render();
+
+const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', {
@@ -43,114 +45,224 @@ const citations = {
 ---
 
 <Layout title={`${book.data.title} - Book Notes`}>
-  <article class="book-detail">
-    <header class="book-header">
-      <h1>{book.data.title}</h1>
-      {book.data.subtitle && <p class="subtitle">{book.data.subtitle}</p>}
-      
-      <p class="author">by {book.data.author.join(', ')}</p>
-      
-      <div class="book-cover mb-6">
-        {book.data.cover && (
-          <img 
-            src={book.data.cover} 
-            alt={`Cover of ${book.data.title}`} 
-            class="mx-auto max-w-[200px] rounded-lg shadow-sm border border-gray-200"
-          />
+  <div class="book-layout">
+    <aside class="book-sidebar" aria-label="Page navigation">
+      <div class="sidebar-card">
+        <p class="sidebar-label">On this page</p>
+        {tocHeadings.length ? (
+          <nav>
+            <ol class="toc-list">
+              {tocHeadings.map((heading) => (
+                <li class={`toc-item depth-${heading.depth}`}>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        ) : (
+          <p class="toc-empty">Add headings to this note to generate a table of contents.</p>
         )}
       </div>
-      
-      <div class="book-meta">
-        <div class="metadata-row">
-          <span class={`status-badge ${getStatusColor(book.data.status)}`}>
-            {book.data.status || 'To Read'}
-          </span>
-          
-          {book.data.pages && (
-            <span class="pages">{book.data.pages} pages</span>
-          )}
+    </aside>
 
-          {book.data.category && (
-            <div class="categories">
-              {book.data.category.map((cat) => (
-                <span class="category">{cat}</span>
-              ))}
-            </div>
-          )}
-          
-          <div class="tags">
-            {book.data.tags.filter(tag => tag !== '📚Book').map((tag) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-
-          {book.data.created && (
-            <span class="date">Added: {formatDate(book.data.created)}</span>
-          )}
-          {book.data.updated && book.data.updated !== book.data.created && (
-            <span class="date">Updated: {formatDate(book.data.updated)}</span>
+    <article class="book-detail" data-reading-width="standard">
+      <header class="book-header">
+        <h1>{book.data.title}</h1>
+        {book.data.subtitle && <p class="subtitle">{book.data.subtitle}</p>}
+        
+        <p class="author">by {book.data.author.join(', ')}</p>
+        
+        <div class="book-cover mb-6">
+          {book.data.cover && (
+            <img 
+              src={book.data.cover} 
+              alt={`Cover of ${book.data.title}`} 
+              class="mx-auto max-w-[200px] rounded-lg shadow-sm border border-gray-200"
+            />
           )}
         </div>
-      </div>
-    </header>
-
-    <div class="book-content prose">
-      <Content />
-    </div>
-
-    <footer class="book-footer">
-      <div class="book-metadata">
-        <h2>Book Details</h2>
-        <dl>
-          {book.data.publisher && (
-            <>
-              <dt>Publisher</dt>
-              <dd>{book.data.publisher}</dd>
-            </>
-          )}
-          {book.data.publish && (
-            <>
-              <dt>Published</dt>
-              <dd>{formatDate(book.data.publish)}</dd>
-            </>
-          )}
-          {book.data.isbn13 && (
-            <>
-              <dt>ISBN-13</dt>
-              <dd>{book.data.isbn13}</dd>
-            </>
-          )}
-          {book.data.isbn10 && (
-            <>
-              <dt>ISBN-10</dt>
-              <dd>{book.data.isbn10}</dd>
-            </>
-          )}
-        </dl>
         
-        <div class="citation-export mt-6">
-          <div class="flex items-center gap-4">
-            <select id="citationFormat" class="px-3 py-2 border rounded-lg text-sm">
+        <div class="book-meta">
+          <div class="metadata-row">
+            <span class={`status-badge ${getStatusColor(book.data.status)}`}>
+              {book.data.status || 'To Read'}
+            </span>
+            
+            {book.data.pages && (
+              <span class="pages">{book.data.pages} pages</span>
+            )}
+
+            {book.data.category && (
+              <div class="categories">
+                {book.data.category.map((cat) => (
+                  <span class="category">{cat}</span>
+                ))}
+              </div>
+            )}
+            
+            <div class="tags">
+              {book.data.tags.filter(tag => tag !== '📚Book').map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+
+            {book.data.created && (
+              <span class="date">Added: {formatDate(book.data.created)}</span>
+            )}
+            {book.data.updated && book.data.updated !== book.data.created && (
+              <span class="date">Updated: {formatDate(book.data.updated)}</span>
+            )}
+          </div>
+        </div>
+      </header>
+
+      <div class="book-content prose" data-font-size="normal">
+        <Content />
+      </div>
+
+      <footer class="book-footer">
+        <div class="book-metadata">
+          <h2>Book Details</h2>
+          <dl>
+            {book.data.publisher && (
+              <>
+                <dt>Publisher</dt>
+                <dd>{book.data.publisher}</dd>
+              </>
+            )}
+            {book.data.publish && (
+              <>
+                <dt>Published</dt>
+                <dd>{formatDate(book.data.publish)}</dd>
+              </>
+            )}
+            {book.data.isbn13 && (
+              <>
+                <dt>ISBN-13</dt>
+                <dd>{book.data.isbn13}</dd>
+              </>
+            )}
+            {book.data.isbn10 && (
+              <>
+                <dt>ISBN-10</dt>
+                <dd>{book.data.isbn10}</dd>
+              </>
+            )}
+          </dl>
+        </div>
+      </footer>
+    </article>
+
+    <aside class="book-tools" aria-label="Reading tools">
+      <div class="tools-card">
+        <p class="sidebar-label">Reading options</p>
+        <div class="option-group">
+          <span class="option-label">Font size</span>
+          <div class="option-controls">
+            <button type="button" class="option-button is-active" data-font-size="normal">A</button>
+            <button type="button" class="option-button" data-font-size="large">A+</button>
+            <button type="button" class="option-button" data-font-size="xlarge">A++</button>
+          </div>
+        </div>
+        <div class="option-group">
+          <span class="option-label">Content width</span>
+          <div class="option-controls">
+            <button type="button" class="option-button is-active" data-reading-width="standard">Comfort</button>
+            <button type="button" class="option-button" data-reading-width="wide">Wide</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools-card">
+        <p class="sidebar-label">Copy citation</p>
+        <div class="citation-export">
+          <div class="citation-controls">
+            <select id="citationFormat">
               <option value="bibtex">BibTeX</option>
               <option value="apa">APA</option>
               <option value="mla">MLA</option>
             </select>
-            <button id="copyCitation" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-colors">
-              Copy Citation
-            </button>
+            <button type="button" id="copyCitation" class="citation-copy">Copy</button>
           </div>
-          <pre id="citationPreview" class="mt-4 p-4 bg-gray-100 rounded-lg text-sm overflow-x-auto"></pre>
+          <pre id="citationPreview" class="citation-preview"></pre>
         </div>
       </div>
-    </footer>
-  </article>
+    </aside>
+  </div>
 </Layout>
 
 <style>
-  .book-detail {
-    max-width: clamp(90%, 800px, 2000px);
+  .book-layout {
+    display: grid;
+    grid-template-columns: minmax(200px, 240px) minmax(0, 760px) minmax(220px, 260px);
+    gap: 2rem;
+    align-items: start;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .book-sidebar,
+  .book-tools {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+  }
+
+  .sidebar-card,
+  .tools-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: #fafafa;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .sidebar-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .toc-item a {
+    color: #1f2933;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-block;
+    padding: 0.2rem 0;
+  }
+
+  .toc-item a:hover {
+    color: #2563eb;
+  }
+
+  .toc-item.depth-3 {
+    padding-left: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .toc-empty {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .book-detail {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 
   .book-header {
@@ -261,9 +373,26 @@ const citations = {
   }
 
   .book-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.75;
     color: #333;
+    max-width: 72ch;
+    margin: 0 auto;
+    transition: font-size 0.2s ease, max-width 0.2s ease;
+  }
+
+  .book-content[data-font-size='large'] {
+    font-size: 1.15rem;
+    line-height: 1.85;
+  }
+
+  .book-content[data-font-size='xlarge'] {
+    font-size: 1.25rem;
+    line-height: 1.95;
+  }
+
+  .book-detail[data-reading-width='wide'] .book-content {
+    max-width: 85ch;
   }
 
   .book-content :global(img) {
@@ -307,9 +436,131 @@ const citations = {
   }
 
   .book-footer {
-    margin-top: 4rem;
+    margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid #eee;
+  }
+
+  .option-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .option-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+
+  .option-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .option-button {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #1f2933;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .option-button.is-active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+  }
+
+  .citation-export {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .citation-controls {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .citation-controls select {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .citation-copy {
+    border: none;
+    border-radius: 8px;
+    padding: 0.45rem 0.9rem;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .citation-copy.is-success {
+    background: #16a34a;
+  }
+
+  .citation-preview {
+    background: #f4f4f5;
+    border-radius: 8px;
+    padding: 0.75rem;
+    min-height: 90px;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+
+  @media (max-width: 1200px) {
+    .book-layout {
+      grid-template-columns: minmax(0, 640px) minmax(200px, 260px);
+      grid-template-areas:
+        "main tools"
+        "main sidebar";
+    }
+
+    .book-detail {
+      grid-area: main;
+    }
+
+    .book-tools {
+      grid-area: tools;
+      position: static;
+    }
+
+    .book-sidebar {
+      grid-area: sidebar;
+      position: static;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .book-layout {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas:
+        "tools"
+        "main"
+        "sidebar";
+    }
+
+    .book-sidebar,
+    .book-tools {
+      position: static;
+    }
+
+    .book-detail {
+      padding: 1.5rem;
+    }
+
+    .book-content {
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 768px) {
@@ -334,6 +585,10 @@ const citations = {
 const formatSelect = document.getElementById('citationFormat');
 const copyButton = document.getElementById('copyCitation');
 const previewElement = document.getElementById('citationPreview');
+const contentElement = document.querySelector('.book-content');
+const articleElement = document.querySelector('.book-detail');
+const fontButtons = document.querySelectorAll('[data-font-size]');
+const widthButtons = document.querySelectorAll('[data-reading-width]');
 
 function updateCitationPreview() {
   if (!formatSelect || !previewElement) return;
@@ -350,18 +605,32 @@ copyButton?.addEventListener('click', async () => {
     await navigator.clipboard.writeText(previewElement.textContent);
     const originalText = copyButton.textContent;
     copyButton.textContent = 'Copied!';
-    copyButton.classList.add('bg-green-500');
-    copyButton.classList.remove('bg-blue-500');
+    copyButton.classList.add('is-success');
     
     setTimeout(() => {
       copyButton.textContent = originalText;
-      copyButton.classList.remove('bg-green-500');
-      copyButton.classList.add('bg-blue-500');
+      copyButton.classList.remove('is-success');
     }, 2000);
   } catch (err) {
     console.error('Failed to copy:', err);
     alert('Failed to copy to clipboard');
   }
+});
+
+fontButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const size = button.getAttribute('data-font-size') || 'normal';
+    contentElement?.setAttribute('data-font-size', size);
+    fontButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
+  });
+});
+
+widthButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const width = button.getAttribute('data-reading-width') || 'standard';
+    articleElement?.setAttribute('data-reading-width', width);
+    widthButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
+  });
 });
 
 // Initialize preview
