@@ -194,10 +194,10 @@ const citations = {
 <style>
   .book-layout {
     display: grid;
-    grid-template-columns: minmax(200px, 240px) minmax(0, 760px) minmax(220px, 260px);
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr) minmax(220px, 260px);
     gap: 2rem;
     align-items: start;
-    max-width: 1200px;
+    width: min(96vw, 1600px);
     margin: 0 auto;
     padding: 2rem 1.5rem;
   }
@@ -376,7 +376,8 @@ const citations = {
     font-size: 1.05rem;
     line-height: 1.75;
     color: #333;
-    max-width: 72ch;
+    max-width: clamp(72ch, 62vw, 95ch);
+    width: 100%;
     margin: 0 auto;
     transition: font-size 0.2s ease, max-width 0.2s ease;
   }
@@ -392,7 +393,7 @@ const citations = {
   }
 
   .book-detail[data-reading-width='wide'] .book-content {
-    max-width: 85ch;
+    max-width: clamp(82ch, 72vw, 110ch);
   }
 
   .book-content :global(img) {
