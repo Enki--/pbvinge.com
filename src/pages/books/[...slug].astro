@@ -222,6 +222,11 @@ const citations = {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
+  .book-sidebar .sidebar-card {
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+  }
+
   .sidebar-label {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -380,7 +385,7 @@ const citations = {
     font-size: 1.05rem;
     line-height: 1.75;
     color: #333;
-    max-width: clamp(80ch, 70vw, 110ch);
+    max-width: clamp(90ch, 80vw, 125ch);
     width: 100%;
     margin: 0 auto;
     transition: font-size 0.2s ease, max-width 0.2s ease;
@@ -397,7 +402,7 @@ const citations = {
   }
 
   .book-detail[data-reading-width='wide'] .book-content {
-    max-width: clamp(95ch, 82vw, 130ch);
+    max-width: clamp(110ch, 92vw, 150ch);
   }
 
   .book-content :global(img) {
