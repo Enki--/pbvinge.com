@@ -41,7 +41,7 @@ const { title, description = "Shrink's personal website" } = Astro.props;
         </div>
       </div>
     </nav>
-    <main class="w-full max-w-screen-xl mx-auto px-4 py-8">
+    <main class="site-main">
       <slot />
     </main>
   </body>
@@ -59,6 +59,7 @@ const { title, description = "Shrink's personal website" } = Astro.props;
     --space-5: 3rem;
     --gutter: clamp(1rem, 4vw, 2.5rem);
     --max-width: 1200px;
+    --page-max-width: 1200px;
   }
 
   * {
@@ -119,10 +120,11 @@ const { title, description = "Shrink's personal website" } = Astro.props;
     line-height: 1.3;
   }
 
-  main {
-    width: min(100%, var(--max-width));
+  .site-main {
+    width: 100%;
     margin: 0 auto;
     padding: var(--space-4) var(--gutter);
+    max-width: var(--page-max-width);
   }
 
   /* Mobile-friendly header */
