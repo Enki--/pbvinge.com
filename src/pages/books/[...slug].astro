@@ -553,7 +553,9 @@ const citations = {
     .book-tools {
       position: static;
     }
+  }
 
+  @media (max-width: 768px) {
     .book-detail {
       padding: 1.5rem;
     }
@@ -561,9 +563,7 @@ const citations = {
     .book-content {
       max-width: 100%;
     }
-  }
 
-  @media (max-width: 768px) {
     .book-header h1 {
       font-size: 2rem;
     }
@@ -576,6 +576,11 @@ const citations = {
     .categories,
     .tags {
       justify-content: center;
+    }
+
+    .book-sidebar,
+    .book-tools {
+      display: none;
     }
   }
 </style>
