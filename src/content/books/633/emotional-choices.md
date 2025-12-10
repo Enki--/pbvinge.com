@@ -29,7 +29,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Coercive diplomacy
+### **Term:** Coercive diplomacy
 
   
 
@@ -49,7 +49,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Compellence vs. deterrence
+### **Term:** Compellence vs. deterrence
 
   
 
@@ -69,7 +69,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Logic of consequences (rational choice / _homo oeconomicus_)
+### **Term:** Logic of consequences (rational choice / _homo oeconomicus_)
 
   
 
@@ -89,7 +89,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Logic of appropriateness (constructivist / _homo sociologicus_)
+### **Term:** Logic of appropriateness (constructivist / _homo sociologicus_)
 
   
 
@@ -109,7 +109,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Logic of affect / Emotional choice theory / _homo emotionalis_
+### **Term:** Logic of affect / Emotional choice theory / _homo emotionalis_
 
   
 
@@ -141,7 +141,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Emotion
+### **Term:** Emotion
 
   
 
@@ -166,7 +166,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Affect, moods, and feelings
+### **Term:** Affect, moods, and feelings
 
   
 
@@ -193,7 +193,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Emotion norms (feeling rules & display rules)
+### **Term:** Emotion norms (feeling rules & display rules)
 
   
 
@@ -218,7 +218,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Identities / Identity work / Recognition
+### **Term:** Identities / Identity work / Recognition
 
   
 
@@ -243,7 +243,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Appraisals & appraisal tendencies
+### **Term:** Appraisals & appraisal tendencies
 
   
 
@@ -274,7 +274,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Core relational themes
+### **Term:** Core relational themes
 
   
 
@@ -294,7 +294,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Five key emotions (fear, anger, hope, pride, humiliation)
+### **Term:** Five key emotions (fear, anger, hope, pride, humiliation)
 
   
 
@@ -325,7 +325,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Emotion regulation / Emotion work (surface & deep acting)
+### **Term:** Emotion regulation / Emotion work (surface & deep acting)
 
   
 
@@ -345,7 +345,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Emotional relevance typology
+### **Term:** Emotional relevance typology
 
   
 
@@ -365,7 +365,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Process analysis (and interpretive process tracing)
+### **Term:** Process analysis (and interpretive process tracing)
 
   
 
@@ -390,7 +390,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Emotion indicators (explicit/implicit, cognitive/behavioral signs)
+### **Term:** Emotion indicators (explicit/implicit, cognitive/behavioral signs)
 
   
 
@@ -410,7 +410,7 @@ This book examines coercive diplomacy and presents a theory of 'emotional choice
 
 ---
 
-**Term:** Coercer dilemma
+### **Term:** Coercer dilemma
 
   
 
