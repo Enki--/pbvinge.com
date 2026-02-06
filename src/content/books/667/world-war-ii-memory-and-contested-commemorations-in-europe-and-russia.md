@@ -14,7 +14,7 @@ isbn13: "9780198894162"
 cover: "http://books.google.com/books/content?id=V7jrEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "Complete"
 created: 2026-02-05 10:02:24
-updated: 2026-0205 10:02:24
+updated: 2026-02-05 10:02:24
 class: "667"
 sequence: "4"
 ---
