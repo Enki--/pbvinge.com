@@ -473,6 +473,11 @@ const decoratedBooks = sortedBooks.map((book) => {
     vertical-align: top;
   }
 
+  th + th,
+  td + td {
+    border-left: 1px solid #e5e7eb;
+  }
+
   .table-cover {
     width: 36px;
     height: 54px;
@@ -506,7 +511,7 @@ const decoratedBooks = sortedBooks.map((book) => {
   }
 
   .book-row:hover {
-    background: #fafafa;
+    background: #f8fafc;
   }
 
   .table-title-link {
@@ -517,6 +522,12 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .table-title-link:hover {
     color: var(--link-color);
+  }
+
+  .table-title-link:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   .table-subtitle {
