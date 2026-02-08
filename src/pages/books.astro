@@ -1,6 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import {
+  buildBookSearchString,
+  getStatusColor,
+  normalizeAuthors,
+  normalizeCategories,
+  normalizeTags
+} from '../utils/books';
 
 // Get all published and completed books from the content collection
 const books = await getCollection('books', ({ data }) => {
@@ -13,21 +20,10 @@ const sortedBooks = books.sort((a, b) =>
 );
 
 const decoratedBooks = sortedBooks.map((book) => {
-  const authors = Array.isArray(book.data.author) ? book.data.author : (book.data.author ? [book.data.author] : []);
-  const tags = Array.isArray(book.data.tags) ? book.data.tags : [];
-  const categories = Array.isArray(book.data.category) ? book.data.category : [];
+  const authors = normalizeAuthors(book.data.author);
+  const tags = normalizeTags(book.data.tags);
+  const categories = normalizeCategories(book.data.category);
   const className = book.data.class || '';
-  const searchPieces = [
-    book.slug,
-    book.data.title,
-    book.data.subtitle,
-    authors.join(' '),
-    categories.join(' '),
-    tags.join(' '),
-    className,
-    book.data.status,
-    book.data.summary,
-  ].filter(Boolean);
 
   return {
     ...book,
@@ -35,19 +31,19 @@ const decoratedBooks = sortedBooks.map((book) => {
     tags,
     categories,
     className,
-    searchString: searchPieces.join(' ').toLowerCase(),
+    searchString: buildBookSearchString({
+      slug: book.slug,
+      title: book.data.title,
+      subtitle: book.data.subtitle,
+      authors,
+      categories,
+      tags,
+      className,
+      status: book.data.status,
+      summary: book.data.summary,
+    }),
   };
 });
-
-// Function to get status badge color
-function getStatusColor(status: string | undefined) {
-  switch(status?.toLowerCase()) {
-    case 'complete': return 'bg-green-100 text-green-800';
-    case 'reading': return 'bg-blue-100 text-blue-800';
-    case 'to read': return 'bg-gray-100 text-gray-800';
-    default: return 'bg-gray-100 text-gray-800';
-  }
-}
 ---
 
 <Layout title="Book Notes - Shrink">

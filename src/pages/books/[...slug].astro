@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getCitation } from '../../utils/citations';
+import { formatLongDate, getStatusColor } from '../../utils/books';
 
 // Generate static paths for completed books only
 export async function getStaticPaths() {
@@ -19,21 +20,8 @@ const { Content, headings = [] } = await book.render();
 
 const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
-
-function getStatusColor(status: string | undefined) {
-  switch(status?.toLowerCase()) {
-    case 'complete': return 'bg-green-100 text-green-800';
-    case 'reading': return 'bg-blue-100 text-blue-800';
-    case 'to read': return 'bg-gray-100 text-gray-800';
-    default: return 'bg-gray-100 text-gray-800';
-  }
+function formatDate(dateStr: string | Date) {
+  return formatLongDate(dateStr);
 }
 
 // Pre-generate citations
