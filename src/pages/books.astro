@@ -288,18 +288,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     margin-top: var(--space-3);
   }
 
-  .view-panel {
-    display: none;
-  }
-
-  .view-panel.active {
-    display: block;
-  }
-
-  .books-grid.view-panel.active {
-    display: grid;
-  }
-
   .books-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -441,6 +429,26 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .books-table {
     padding: 0;
+  }
+
+  .view-panel {
+    display: none;
+  }
+
+  .books-grid.view-panel {
+    display: none;
+  }
+
+  .books-table.view-panel {
+    display: none;
+  }
+
+  .view-panel.active {
+    display: block;
+  }
+
+  .books-grid.view-panel.active {
+    display: grid;
   }
 
   .table-responsive {
@@ -607,11 +615,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     btn.addEventListener('click', () => setView(btn.getAttribute('data-view')));
   });
 
-  if (searchInput) searchInput.addEventListener('input', applyFilters);
-  if (classFilter) classFilter.addEventListener('change', applyFilters);
-  // initial run if query present
-  applyFilters();
-
   const tableSortState = { column: 'title', ascending: true };
 
   function applyTableSort() {
@@ -660,4 +663,9 @@ const decoratedBooks = sortedBooks.map((book) => {
     setSortedHeader(sortableHeaders[0]);
     applyTableSort();
   }
+
+  if (searchInput) searchInput.addEventListener('input', applyFilters);
+  if (classFilter) classFilter.addEventListener('change', applyFilters);
+  // initial run if query present
+  applyFilters();
 </script>
