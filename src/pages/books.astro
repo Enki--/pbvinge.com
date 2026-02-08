@@ -144,12 +144,12 @@ const decoratedBooks = sortedBooks.map((book) => {
           <table>
             <thead>
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Status</th>
-                <th scope="col">Class</th>
-                <th scope="col">Pages</th>
-                <th scope="col">Tags</th>
+                <th scope="col" data-sort="title">Title <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="author">Author <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="status">Status <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="class">Class <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="pages">Pages <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="tags">Tags <span class="sort-icon">↕</span></th>
               </tr>
             </thead>
             <tbody>
@@ -161,6 +161,9 @@ const decoratedBooks = sortedBooks.map((book) => {
                   data-search={book.searchString}
                   data-title={book.data.title.toLowerCase()}
                   data-author={book.authors.join(', ').toLowerCase()}
+                  data-status={(book.data.status || '').toLowerCase()}
+                  data-pages={book.data.pages || ''}
+                  data-tags={book.tags.filter(tag => tag !== '📚Book').join(' ').toLowerCase()}
                 >
                   <td>
                     <a href={`/books/${book.slug}`} class="table-title-link">
@@ -471,6 +474,21 @@ const decoratedBooks = sortedBooks.map((book) => {
     letter-spacing: 0.05em;
   }
 
+  th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sort-icon {
+    margin-left: 0.35rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+
+  th.is-sorted .sort-icon {
+    color: #111827;
+  }
+
   .book-row:hover {
     background: #fafafa;
   }
@@ -530,6 +548,8 @@ const decoratedBooks = sortedBooks.map((book) => {
   const viewButtons = document.querySelectorAll('[data-view-button]');
   const viewPanels = document.querySelectorAll('[data-view-panel]');
   const bookItems = document.querySelectorAll('[data-book-item]');
+  const tableBody = document.querySelector('#booksTable tbody');
+  const sortableHeaders = document.querySelectorAll('#booksTable th[data-sort]');
   const params = new URLSearchParams(window.location.search);
   const initialClass = params.get('class') || '';
   if (classFilter && initialClass) {
@@ -547,6 +567,7 @@ const decoratedBooks = sortedBooks.map((book) => {
       const matchesClass = !selectedClass || itemClass === selectedClass;
       item.style.display = matchesSearch && matchesClass ? '' : 'none';
     });
+    if (tableBody) applyTableSort();
     // update query param without reloading
     const url = new URL(window.location.href);
     if (selectedClassValue) url.searchParams.set('class', selectedClassValue); else url.searchParams.delete('class');
@@ -590,4 +611,53 @@ const decoratedBooks = sortedBooks.map((book) => {
   if (classFilter) classFilter.addEventListener('change', applyFilters);
   // initial run if query present
   applyFilters();
+
+  const tableSortState = { column: 'title', ascending: true };
+
+  function applyTableSort() {
+    if (!tableBody) return;
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+    const visible = rows.filter(row => row.style.display !== 'none');
+    const hidden = rows.filter(row => row.style.display === 'none');
+    const { column, ascending } = tableSortState;
+
+    visible.sort((a, b) => {
+      const aVal = a.getAttribute(`data-${column}`) || '';
+      const bVal = b.getAttribute(`data-${column}`) || '';
+      if (column === 'pages') {
+        const aNum = Number(aVal) || 0;
+        const bNum = Number(bVal) || 0;
+        return ascending ? aNum - bNum : bNum - aNum;
+      }
+      const cmp = aVal.localeCompare(bVal);
+      return ascending ? cmp : -cmp;
+    });
+
+    tableBody.innerHTML = '';
+    [...visible, ...hidden].forEach(row => tableBody.appendChild(row));
+  }
+
+  function setSortedHeader(header) {
+    sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
+    header.classList.add('is-sorted');
+  }
+
+  sortableHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const column = header.getAttribute('data-sort') || 'title';
+      if (tableSortState.column === column) {
+        tableSortState.ascending = !tableSortState.ascending;
+      } else {
+        tableSortState.column = column;
+        tableSortState.ascending = true;
+      }
+      setSortedHeader(header);
+      applyTableSort();
+    });
+  });
+
+  if (sortableHeaders.length) {
+    setSortedHeader(sortableHeaders[0]);
+    applyTableSort();
+  }
 </script>
