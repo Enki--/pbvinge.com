@@ -25,8 +25,8 @@ const futureReads = await getFutureReads();
       </div>
 
       <div class="flex justify-center w-full">
-        <table class="w-full max-w-5xl min-w-0 divide-y divide-gray-300 text-xs sm:text-sm md:text-base mx-auto">
-          <thead class="bg-gray-50">
+        <table class="books-table w-full max-w-5xl min-w-0 text-xs sm:text-sm md:text-base mx-auto">
+          <thead>
             <tr>
               <th scope="col" class="py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold text-gray-900 sm:pl-6">Cover</th>
               <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="title">
@@ -47,11 +47,11 @@ const futureReads = await getFutureReads();
               </th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200 bg-white" id="tableBody">
+          <tbody id="tableBody">
             {futureReads.map((book) => (
-              <tr class="hover:bg-gray-50">
+              <tr>
                 <td class="py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="w-10 sm:w-12 h-auto rounded shadow-sm border border-gray-200" />
+                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="table-cover" />
                 </td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
@@ -65,6 +65,57 @@ const futureReads = await getFutureReads();
     </div>
   </div>
 </Layout>
+
+<style>
+  .books-table {
+    border-collapse: collapse;
+  }
+
+  .books-table thead {
+    background: #f3f4f6;
+  }
+
+  .books-table th,
+  .books-table td {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .books-table th + th,
+  .books-table td + td {
+    border-left: 1px solid #e5e7eb;
+  }
+
+  .books-table tbody tr:hover {
+    background: #f8fafc;
+  }
+
+  .books-table .table-cover {
+    width: 36px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
+  }
+
+  :root[data-theme='dark'] .books-table thead {
+    background: #0f172a;
+  }
+
+  :root[data-theme='dark'] .books-table th,
+  :root[data-theme='dark'] .books-table td {
+    border-bottom-color: #1f2a44;
+  }
+
+  :root[data-theme='dark'] .books-table th + th,
+  :root[data-theme='dark'] .books-table td + td {
+    border-left-color: #1f2a44;
+  }
+
+  :root[data-theme='dark'] .books-table tbody tr:hover {
+    background: #0b1220;
+  }
+</style>
 
 <script>
   // Get DOM elements
