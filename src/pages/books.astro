@@ -310,6 +310,29 @@ const decoratedBooks = sortedBooks.map((book) => {
     border-color: #111;
   }
 
+  :root[data-theme='dark'] .class-select {
+    background: #0f172a;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  :root[data-theme='dark'] .class-select option {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  :root[data-theme='dark'] .view-button {
+    background: #0f172a;
+    border-color: #334155;
+    color: #e2e8f0;
+  }
+
+  :root[data-theme='dark'] .view-button.active {
+    background: #e2e8f0;
+    color: #0f172a;
+    border-color: #e2e8f0;
+  }
+
   .books-view {
     margin-top: var(--space-3);
   }
