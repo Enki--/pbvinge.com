@@ -154,6 +154,20 @@ const recentBooks = allBooks
     margin: 0;
   }
 
+  :root[data-theme='dark'] .bio {
+    color: var(--muted-text);
+  }
+
+  :root[data-theme='dark'] .book-card {
+    background: var(--surface-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  :root[data-theme='dark'] .book-author,
+  :root[data-theme='dark'] .book-date {
+    color: var(--muted-text);
+  }
+
   @media (max-width: 768px) {
     .book-grid {
       grid-template-columns: 1fr;
