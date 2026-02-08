@@ -146,7 +146,7 @@ const decoratedBooks = sortedBooks.map((book) => {
           <table class="pbv-table">
             <thead>
               <tr>
-                <th scope="col">Cover</th>
+                <th scope="col" class="pbv-col-cover">Cover</th>
                 <th scope="col" data-sort="title">Title <span class="pbv-sort-icon">↕</span></th>
                 <th scope="col" data-sort="author">Author <span class="pbv-sort-icon">↕</span></th>
                 <th scope="col" data-sort="status">Status <span class="pbv-sort-icon">↕</span></th>
@@ -164,7 +164,7 @@ const decoratedBooks = sortedBooks.map((book) => {
                   data-author={book.authors.join(', ').toLowerCase()}
                   data-status={(book.data.status || '').toLowerCase()}
                 >
-                  <td>
+                  <td class="pbv-col-cover">
                     <img
                       src={book.data.cover}
                       alt={`Cover of ${book.data.title}`}
