@@ -69,11 +69,6 @@ const decoratedBooks = sortedBooks.map((book) => {
             <option value={cls as string}>{cls as string}</option>
           ))}
         </select>
-        <select id="listSort" class="class-select" aria-label="Sort list view">
-          <option value="class">Sort by class</option>
-          <option value="title">Sort by title</option>
-          <option value="author">Sort by author</option>
-        </select>
       </div>
       <div class="tag-filters">
         <!-- Tags will be dynamically populated -->
@@ -81,9 +76,6 @@ const decoratedBooks = sortedBooks.map((book) => {
       <div class="view-toggle" role="group" aria-label="Switch book layout">
         <button type="button" class="view-button active" data-view-button data-view="tiles">
           Grid
-        </button>
-        <button type="button" class="view-button" data-view-button data-view="list">
-          List
         </button>
         <button type="button" class="view-button" data-view-button data-view="table">
           Table
@@ -137,50 +129,6 @@ const decoratedBooks = sortedBooks.map((book) => {
                   ))}
                 </div>
               )}
-              <div class="book-tags">
-                {book.tags.filter(tag => tag !== '📚Book').map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div class="books-list view-panel" id="booksList" data-view-panel="list">
-        {decoratedBooks.map((book) => (
-          <article
-            class="book-list-item"
-            data-book-item
-            data-class={book.className.toLowerCase()}
-            data-search={book.searchString}
-            data-title={book.data.title.toLowerCase()}
-            data-author={book.authors.join(', ').toLowerCase()}
-          >
-            <a href={`/books/${book.slug}`} class="book-list-cover">
-              <img src={book.data.cover} alt={`Cover of ${book.data.title}`} />
-            </a>
-            <div class="book-list-content">
-              <div>
-                <a href={`/books/${book.slug}`} class="book-title-link">
-                  <h2>{book.data.title}</h2>
-                </a>
-                {book.data.subtitle && (
-                  <p class="subtitle">{book.data.subtitle}</p>
-                )}
-                <p class="author">by {book.authors.join(', ')}</p>
-              </div>
-              <div class="book-list-meta">
-                <span class={`status-badge ${getStatusColor(book.data.status)}`}>
-                  {book.data.status || 'To Read'}
-                </span>
-                {book.data.class && (
-                  <span class="class-pill">{book.data.class}</span>
-                )}
-                {book.data.pages && (
-                  <span class="pages">{book.data.pages} pages</span>
-                )}
-              </div>
               <div class="book-tags">
                 {book.tags.filter(tag => tag !== '📚Book').map((tag) => (
                   <span class="tag">{tag}</span>
@@ -284,7 +232,7 @@ const decoratedBooks = sortedBooks.map((book) => {
     font-size: 1rem;
   }
 
-  .filters { display: grid; grid-template-columns: 1fr 200px 200px; gap: var(--space-2); align-items: center; max-width: 980px; margin: 0 auto var(--space-2); }
+  .filters { display: grid; grid-template-columns: 1fr 200px; gap: var(--space-2); align-items: center; max-width: 820px; margin: 0 auto var(--space-2); }
   .class-select { width: 100%; padding: 0.7rem 0.9rem; border: 2px solid #eee; border-radius: 8px; background: #fff; font-size: 1rem; }
 
   .view-toggle {
@@ -349,10 +297,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     display: grid;
   }
 
-  .books-list.view-panel.active {
-    display: grid;
-  }
-
   .books-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -409,78 +353,10 @@ const decoratedBooks = sortedBooks.map((book) => {
     gap: 0.35rem;
   }
 
-  .books-list {
-    display: grid;
-    gap: var(--space-3);
-  }
-
-  .book-list-item {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: var(--space-2);
-    padding: var(--space-2);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background: var(--surface-color);
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-  }
-
-  .book-list-cover {
-    display: block;
-    width: 90px;
-    aspect-ratio: 2 / 3;
-  }
-
-  .book-list-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #e5e5e5;
-  }
-
-  .book-list-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .book-list-content h2 {
-    font-size: 1.25rem;
-    margin: 0;
-    color: var(--text-color);
-  }
-
   .subtitle {
     font-size: 0.95rem;
     color: #666;
     margin: 0.25rem 0 0;
-  }
-
-  .author {
-    font-size: 0.95rem;
-    color: #555;
-    margin: 0.4rem 0 0;
-  }
-
-  .book-list-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    align-items: center;
-  }
-
-  .class-pill {
-    background: #eef2ff;
-    color: #4338ca;
-    padding: 0.25rem 0.65rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-  }
-
-  .pages {
-    font-size: 0.85rem;
-    color: #666;
   }
 
   .status-badge {
@@ -644,10 +520,6 @@ const decoratedBooks = sortedBooks.map((book) => {
       display: none;
     }
 
-    .book-list-item {
-      grid-template-columns: 72px 1fr;
-      padding: var(--space-1);
-    }
   }
 </style>
 
@@ -655,11 +527,9 @@ const decoratedBooks = sortedBooks.map((book) => {
   // Client-side search functionality
   const searchInput = document.getElementById('searchInput');
   const classFilter = document.getElementById('classFilter');
-  const listSort = document.getElementById('listSort');
   const viewButtons = document.querySelectorAll('[data-view-button]');
   const viewPanels = document.querySelectorAll('[data-view-panel]');
   const bookItems = document.querySelectorAll('[data-book-item]');
-  const booksList = document.getElementById('booksList');
   const params = new URLSearchParams(window.location.search);
   const initialClass = params.get('class') || '';
   if (classFilter && initialClass) {
@@ -677,28 +547,10 @@ const decoratedBooks = sortedBooks.map((book) => {
       const matchesClass = !selectedClass || itemClass === selectedClass;
       item.style.display = matchesSearch && matchesClass ? '' : 'none';
     });
-    sortList();
     // update query param without reloading
     const url = new URL(window.location.href);
     if (selectedClassValue) url.searchParams.set('class', selectedClassValue); else url.searchParams.delete('class');
     window.history.replaceState({}, '', url);
-  }
-
-  function sortList() {
-    if (!booksList) return;
-    const sortValue = listSort?.value || 'class';
-    const items = Array.from(booksList.querySelectorAll('[data-book-item]'));
-    const visibleItems = items.filter(item => item.style.display !== 'none');
-    const hiddenItems = items.filter(item => item.style.display === 'none');
-
-    visibleItems.sort((a, b) => {
-      const aVal = a.getAttribute(`data-${sortValue}`) || '';
-      const bVal = b.getAttribute(`data-${sortValue}`) || '';
-      return aVal.localeCompare(bVal);
-    });
-
-    booksList.innerHTML = '';
-    [...visibleItems, ...hiddenItems].forEach(item => booksList.appendChild(item));
   }
 
   const setView = (view) => {
@@ -736,7 +588,6 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   if (searchInput) searchInput.addEventListener('input', applyFilters);
   if (classFilter) classFilter.addEventListener('change', applyFilters);
-  if (listSort) listSort.addEventListener('change', sortList);
   // initial run if query present
   applyFilters();
 </script>
