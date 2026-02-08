@@ -82,6 +82,19 @@ function fmtDate(d?: string | Date) {
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag { background: #f0f0f0; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.85rem; color: #555; }
 
+  :root[data-theme='dark'] .subtitle,
+  :root[data-theme='dark'] .meta { color: var(--muted-text); }
+  :root[data-theme='dark'] .content { color: var(--text-color); }
+  :root[data-theme='dark'] .content :global(hr) { border-top-color: #1f2a44; }
+  :root[data-theme='dark'] .content :global(blockquote) { border-left-color: #1f2a44; background: #0f172a; }
+  :root[data-theme='dark'] .content :global(code) { background: #0f172a; color: var(--text-color); }
+  :root[data-theme='dark'] .content :global(th),
+  :root[data-theme='dark'] .content :global(td) { border-bottom-color: #1f2a44; }
+  :root[data-theme='dark'] .content :global(tr:nth-child(even)) { background: #0b1220; }
+  :root[data-theme='dark'] .page-marker { color: var(--muted-text); }
+  :root[data-theme='dark'] .footer { border-top-color: #1f2a44; }
+  :root[data-theme='dark'] .tag { background: rgba(148, 163, 184, 0.2); color: var(--muted-text); }
+
   /* Mobile tweaks */
   @media (max-width: 640px) {
     .doc { padding: 1.25rem 1rem; }

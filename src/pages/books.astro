@@ -399,6 +399,21 @@ const decoratedBooks = sortedBooks.map((book) => {
     color: #666;
   }
 
+  :root[data-theme='dark'] .intro {
+    color: var(--muted-text);
+  }
+
+  :root[data-theme='dark'] .book-meta,
+  :root[data-theme='dark'] .subtitle {
+    color: var(--muted-text);
+  }
+
+  :root[data-theme='dark'] .category,
+  :root[data-theme='dark'] .tag {
+    background: rgba(148, 163, 184, 0.2);
+    color: var(--muted-text);
+  }
+
   .read-more {
     display: inline-block;
     margin-top: 1rem;

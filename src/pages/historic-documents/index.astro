@@ -87,4 +87,11 @@ const sortedDocs = documents.sort((a, b) => {
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
   .tag { background: #f0f0f0; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.8rem; color: #555; }
   .cover-link { display: block; }
+
+  :root[data-theme='dark'] .intro { color: var(--muted-text); }
+  :root[data-theme='dark'] .cover { background: #0f172a; border-color: #1f2a44; }
+  :root[data-theme='dark'] .placeholder { background: linear-gradient(135deg, #0f172a, #1f2a44); }
+  :root[data-theme='dark'] .subtitle,
+  :root[data-theme='dark'] .meta { color: var(--muted-text); }
+  :root[data-theme='dark'] .tag { background: rgba(148, 163, 184, 0.2); color: var(--muted-text); }
 </style>

@@ -160,3 +160,41 @@
   margin: 0.2rem 0 0;
   color: #0f172a;
 }
+
+:root[data-theme='dark'] .pbv-presidents {
+  color: var(--text-color);
+}
+
+:root[data-theme='dark'] .pbv-presidents-header p,
+:root[data-theme='dark'] .pbv-president-term,
+:root[data-theme='dark'] .pbv-event-period,
+:root[data-theme='dark'] .pbv-cabinet-notes {
+  color: var(--muted-text);
+}
+
+:root[data-theme='dark'] .pbv-president-card {
+  border-color: #1f2a44;
+  background: linear-gradient(135deg, #111c2e, #0f172a);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='dark'] .pbv-president-summary,
+:root[data-theme='dark'] .pbv-president-vice,
+:root[data-theme='dark'] .pbv-cabinet-name,
+:root[data-theme='dark'] .pbv-event-description {
+  color: var(--text-color);
+}
+
+:root[data-theme='dark'] .pbv-president-vice strong,
+:root[data-theme='dark'] .pbv-president-section h3 {
+  color: var(--text-color);
+}
+
+:root[data-theme='dark'] .pbv-cabinet-item {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1f2a44;
+}
+
+:root[data-theme='dark'] .pbv-president-events li {
+  border-left-color: #334155;
+}
