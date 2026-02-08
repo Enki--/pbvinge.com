@@ -10,13 +10,13 @@
     "postinstall": "node -e \"(async()=>{try{const esbuild=require('esbuild'); if(typeof esbuild.install==='function'){await esbuild.install();} }catch(e){console.error('esbuild postinstall helper failed, continuing', e);} })()\""
   },
   "dependencies": {
+    "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.0.0",
-    "esbuild": "^0.18.17",
-    "tailwindcss": "^3.4.1"
-    ,"marked": "^5.1.1",
     "dompurify": "^2.4.0",
-  "jsdom": "^22.1.0",
-  "@astrojs/react": "^3.3.0"
+    "esbuild": "^0.18.17",
+    "jsdom": "^22.1.0",
+    "marked": "^5.1.1",
+    "tailwindcss": "^3.4.1"
   }
 }

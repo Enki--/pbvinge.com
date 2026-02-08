@@ -22,7 +22,7 @@ Personal website built with Astro and Tailwind CSS, hosted on Cloudflare Pages.
 The site uses Astro's Content Collections to manage structured content:
 
 - `src/content/books/` - Individual book notes with detailed metadata and citations
-- `src/content/futureReads/` - Reading list managed through a single Markdown file
+- `src/content/books/` - Future reading list is derived from books with status `to read`, `reading`, `tbr`, or `tbd`
 - `src/content/documents/` - Historic documents (primary sources) with minimal metadata
 
 ### Book Note Format
@@ -44,7 +44,10 @@ pages: 123  # Optional
 isbn10: "1234567890"  # Optional
 isbn13: "1234567890123"  # Optional
 cover: "URL to cover image"
-status: "to read" | "reading" | "complete"  # Optional
+status: "to read" | "reading" | "complete" | "tbr" | "tbd"  # Optional
+isPublished: true  # Optional, defaults to true
+dateCompleted: "TBR"  # Optional
+coverImage: "URL to cover image"  # Optional (fallback)
 created: YYYY-MM-DD HH:MM:SS  # Optional
 updated: YYYY-MM-DD HH:MM:SS  # Optional
 class: "Class/Category"  # Optional
@@ -54,19 +57,7 @@ sequence: "Sequence Info"  # Optional
 
 ### Future Reading List
 
-Future reading list is managed in `src/content/futureReads/index.md` with the following structure:
-
-```yaml
----
-books:
-  - title: "Book Title"
-    author: "Author Name"
-    class: "Category"
-    dateCompleted: "TBR"
-    coverImage: "path/to/cover.jpg"
-    tags: ["Tag1", "Tag2"]
----
-```
+Future reading list is derived from the `books` collection by filtering on `status` values (`to read`, `reading`, `tbr`, `tbd`). See `src/data/future-reads.ts`.
 
 ### Historic Documents
 
