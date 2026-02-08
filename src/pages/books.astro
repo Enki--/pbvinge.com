@@ -144,12 +144,11 @@ const decoratedBooks = sortedBooks.map((book) => {
           <table>
             <thead>
               <tr>
+                <th scope="col">Cover</th>
                 <th scope="col" data-sort="title">Title <span class="sort-icon">↕</span></th>
                 <th scope="col" data-sort="author">Author <span class="sort-icon">↕</span></th>
                 <th scope="col" data-sort="status">Status <span class="sort-icon">↕</span></th>
                 <th scope="col" data-sort="class">Class <span class="sort-icon">↕</span></th>
-                <th scope="col" data-sort="pages">Pages <span class="sort-icon">↕</span></th>
-                <th scope="col" data-sort="tags">Tags <span class="sort-icon">↕</span></th>
               </tr>
             </thead>
             <tbody>
@@ -162,9 +161,15 @@ const decoratedBooks = sortedBooks.map((book) => {
                   data-title={book.data.title.toLowerCase()}
                   data-author={book.authors.join(', ').toLowerCase()}
                   data-status={(book.data.status || '').toLowerCase()}
-                  data-pages={book.data.pages || ''}
-                  data-tags={book.tags.filter(tag => tag !== '📚Book').join(' ').toLowerCase()}
                 >
+                  <td>
+                    <img
+                      src={book.data.cover}
+                      alt={`Cover of ${book.data.title}`}
+                      class="table-cover"
+                      loading="lazy"
+                    />
+                  </td>
                   <td>
                     <a href={`/books/${book.slug}`} class="table-title-link">
                       {book.data.title}
@@ -180,12 +185,6 @@ const decoratedBooks = sortedBooks.map((book) => {
                     </span>
                   </td>
                   <td>{book.className || '—'}</td>
-                  <td>{book.data.pages || '—'}</td>
-                  <td class="tags-cell">
-                    {book.tags.filter(tag => tag !== '📚Book').map((tag) => (
-                      <span class="tag tag-pill">{tag}</span>
-                    ))}
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -474,6 +473,15 @@ const decoratedBooks = sortedBooks.map((book) => {
     vertical-align: top;
   }
 
+  .table-cover {
+    width: 36px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
+  }
+
   th {
     font-weight: 600;
     font-size: 0.85rem;
@@ -517,17 +525,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     font-size: 0.85rem;
   }
 
-  .tags-cell {
-    max-width: 280px;
-  }
-
-  .tag-pill {
-    display: inline-block;
-    margin: 0 0.25rem 0.25rem 0;
-    background: #eef2ff;
-    color: #4338ca;
-  }
-
   @media (max-width: 768px) {
     .filters {
       grid-template-columns: 1fr;
@@ -537,12 +534,8 @@ const decoratedBooks = sortedBooks.map((book) => {
       padding: var(--space-3) var(--gutter);
     }
 
-    th:nth-child(4),
-    td:nth-child(4),
     th:nth-child(5),
-    td:nth-child(5),
-    th:nth-child(6),
-    td:nth-child(6) {
+    td:nth-child(5) {
       display: none;
     }
 
