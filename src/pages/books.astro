@@ -79,7 +79,10 @@ const decoratedBooks = sortedBooks.map((book) => {
         <!-- Tags will be dynamically populated -->
       </div>
       <div class="view-toggle" role="group" aria-label="Switch book layout">
-        <button type="button" class="view-button active" data-view-button data-view="list">
+        <button type="button" class="view-button active" data-view-button data-view="tiles">
+          Grid
+        </button>
+        <button type="button" class="view-button" data-view-button data-view="list">
           List
         </button>
         <button type="button" class="view-button" data-view-button data-view="table">
@@ -89,7 +92,62 @@ const decoratedBooks = sortedBooks.map((book) => {
     </div>
 
     <div class="books-view">
-      <div class="books-list view-panel active" id="booksList" data-view-panel="list">
+      <div class="books-grid view-panel active" id="booksGrid" data-view-panel="tiles">
+        {decoratedBooks.map((book) => (
+          <article 
+            class="book-card" 
+            data-book-item 
+            data-class={book.className.toLowerCase()} 
+            data-search={book.searchString}
+            data-title={book.data.title.toLowerCase()}
+            data-author={book.authors.join(', ').toLowerCase()}
+          >
+            <a href={`/books/${book.slug}`} class="book-cover-link">
+              <div class="book-cover">
+                <img src={book.data.cover} alt={`Cover of ${book.data.title}`} />
+              </div>
+            </a>
+            <div class="book-content">
+              <a href={`/books/${book.slug}`} class="book-title-link">
+                <h2>{book.data.title}</h2>
+                {book.data.subtitle && (
+                  <p class="subtitle">{book.data.subtitle}</p>
+                )}
+              </a>
+              <div class="book-meta">
+                <span class="author">{book.authors.join(', ')}</span>
+                <div class="flex items-center gap-2">
+                  <span class={`status-badge ${getStatusColor(book.data.status)}`}>
+                    {book.data.status || 'To Read'}
+                  </span>
+                  {book.data.pages && (
+                    <span class="text-sm text-gray-500">
+                      {book.data.pages} pages
+                    </span>
+                  )}
+                </div>
+                {book.data.class && (
+                  <div class="text-sm text-gray-500">Class: {book.data.class}</div>
+                )}
+              </div>
+              {book.categories.length > 0 && (
+                <div class="categories">
+                  {book.categories.map((cat) => (
+                    <span class="category">{cat}</span>
+                  ))}
+                </div>
+              )}
+              <div class="book-tags">
+                {book.tags.filter(tag => tag !== '📚Book').map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="books-list view-panel" id="booksList" data-view-panel="list">
         {decoratedBooks.map((book) => (
           <article
             class="book-list-item"
@@ -264,6 +322,62 @@ const decoratedBooks = sortedBooks.map((book) => {
     display: block;
   }
 
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: clamp(var(--space-3), 4vw, var(--space-4));
+    padding: 0;
+  }
+
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    border: none;
+    background: transparent;
+    transition: transform 0.2s;
+  }
+
+  .book-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .book-cover {
+    margin-bottom: 1rem;
+    position: relative;
+    aspect-ratio: 2/3;
+  }
+
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e5e5;
+  }
+
+  .book-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .book-content h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+  }
+
+  .book-meta {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
   .books-list {
     display: grid;
     gap: var(--space-3);
@@ -398,6 +512,12 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .read-more:hover {
     text-decoration: underline;
+  }
+
+  .book-cover-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
   .book-title-link {
@@ -576,7 +696,7 @@ const decoratedBooks = sortedBooks.map((book) => {
   if (preferredView) {
     setView(preferredView);
   } else {
-    setView('list');
+    setView('tiles');
   }
 
   viewButtons.forEach(btn => {
