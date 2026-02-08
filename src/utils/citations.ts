@@ -3,7 +3,7 @@ interface BookMetadata {
   subtitle?: string;
   author: string[];
   publisher?: string;
-  publish?: string;
+  publish?: string | Date;
   pages?: number;
   isbn10?: string;
   isbn13?: string;
@@ -27,7 +27,7 @@ function formatAuthors(authors: string[], format: 'bibtex' | 'apa' | 'mla'): str
 }
 
 // Helper function to get year from publish date
-function getYear(publish?: string): string {
+function getYear(publish?: string | Date): string {
   if (!publish) return '';
   return new Date(publish).getFullYear().toString();
 }
