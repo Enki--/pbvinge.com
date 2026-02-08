@@ -466,6 +466,14 @@ const decoratedBooks = sortedBooks.map((book) => {
     background: #f3f4f6;
   }
 
+  :root[data-theme='dark'] .table-responsive {
+    border-color: #1f2a44;
+  }
+
+  :root[data-theme='dark'] thead {
+    background: #0f172a;
+  }
+
   th, td {
     padding: 0.85rem 1rem;
     text-align: left;
@@ -476,6 +484,16 @@ const decoratedBooks = sortedBooks.map((book) => {
   th + th,
   td + td {
     border-left: 1px solid #e5e7eb;
+  }
+
+  :root[data-theme='dark'] th,
+  :root[data-theme='dark'] td {
+    border-bottom-color: #1f2a44;
+  }
+
+  :root[data-theme='dark'] th + th,
+  :root[data-theme='dark'] td + td {
+    border-left-color: #1f2a44;
   }
 
   .table-cover {
@@ -512,6 +530,10 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .book-row:hover {
     background: #f8fafc;
+  }
+
+  :root[data-theme='dark'] .book-row:hover {
+    background: #0b1220;
   }
 
   .table-title-link {
