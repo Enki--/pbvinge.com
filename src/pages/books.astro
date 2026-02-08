@@ -8,6 +8,7 @@ import {
   normalizeCategories,
   normalizeTags
 } from '../utils/books';
+import '../css/tables.css';
 
 // Get all published and completed books from the content collection
 const books = await getCollection('books', ({ data }) => {
@@ -140,15 +141,15 @@ const decoratedBooks = sortedBooks.map((book) => {
       </div>
 
       <div class="books-table view-panel" id="booksTable" data-view-panel="table">
-        <div class="table-responsive">
-          <table>
+        <div class="pbv-table-wrapper">
+          <table class="pbv-table">
             <thead>
               <tr>
                 <th scope="col">Cover</th>
-                <th scope="col" data-sort="title">Title <span class="sort-icon">↕</span></th>
-                <th scope="col" data-sort="author">Author <span class="sort-icon">↕</span></th>
-                <th scope="col" data-sort="status">Status <span class="sort-icon">↕</span></th>
-                <th scope="col" data-sort="class">Class <span class="sort-icon">↕</span></th>
+                <th scope="col" data-sort="title">Title <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" data-sort="author">Author <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" data-sort="status">Status <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" data-sort="class">Class <span class="pbv-sort-icon">↕</span></th>
               </tr>
             </thead>
             <tbody>
@@ -166,7 +167,7 @@ const decoratedBooks = sortedBooks.map((book) => {
                     <img
                       src={book.data.cover}
                       alt={`Cover of ${book.data.title}`}
-                      class="table-cover"
+                      class="pbv-table-cover"
                       loading="lazy"
                     />
                   </td>
@@ -214,7 +215,7 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .intro {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--text-subtle);
     max-width: 600px;
     margin: 0 auto;
   }
@@ -319,7 +320,7 @@ const decoratedBooks = sortedBooks.map((book) => {
     object-fit: cover;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border-lighter);
   }
 
   .book-content {
@@ -337,7 +338,7 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .book-meta {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-subtle);
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -345,7 +346,7 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .subtitle {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-subtle);
     margin: 0.25rem 0 0;
   }
 
@@ -364,7 +365,7 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .summary {
     font-size: 0.95rem;
-    color: #555;
+    color: var(--text-subtle);
     margin: 0.5rem 0;
     line-height: 1.5;
   }
@@ -378,8 +379,8 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .category {
     font-size: 0.85rem;
-    color: #666;
-    background: #f5f5f5;
+    color: var(--text-subtle);
+    background: var(--surface-soft);
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
   }
@@ -392,11 +393,11 @@ const decoratedBooks = sortedBooks.map((book) => {
   }
 
   .tag {
-    background: #f0f0f0;
+    background: var(--surface-chip);
     padding: 0.2rem 0.6rem;
     border-radius: 20px;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-subtle);
   }
 
   :root[data-theme='dark'] .intro {
@@ -441,10 +442,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     color: var(--link-color);
   }
 
-  .books-table {
-    padding: 0;
-  }
-
   .view-panel {
     display: none;
   }
@@ -463,92 +460,6 @@ const decoratedBooks = sortedBooks.map((book) => {
 
   .books-grid.view-panel.active {
     display: grid;
-  }
-
-  .table-responsive {
-    overflow-x: auto;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-  }
-
-  thead {
-    background: #f3f4f6;
-  }
-
-  :root[data-theme='dark'] .table-responsive {
-    border-color: #1f2a44;
-  }
-
-  :root[data-theme='dark'] thead {
-    background: #0f172a;
-  }
-
-  th, td {
-    padding: 0.85rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #e5e7eb;
-    vertical-align: top;
-  }
-
-  th + th,
-  td + td {
-    border-left: 1px solid #e5e7eb;
-  }
-
-  :root[data-theme='dark'] th,
-  :root[data-theme='dark'] td {
-    border-bottom-color: #1f2a44;
-  }
-
-  :root[data-theme='dark'] th + th,
-  :root[data-theme='dark'] td + td {
-    border-left-color: #1f2a44;
-  }
-
-  .table-cover {
-    width: 36px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
-  }
-
-  th {
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #374151;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  th[data-sort] {
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .sort-icon {
-    margin-left: 0.35rem;
-    font-size: 0.8rem;
-    color: #9ca3af;
-  }
-
-  th.is-sorted .sort-icon {
-    color: #111827;
-  }
-
-  .book-row:hover {
-    background: #f8fafc;
-  }
-
-  :root[data-theme='dark'] .book-row:hover {
-    background: #0b1220;
   }
 
   .table-title-link {
@@ -590,123 +501,4 @@ const decoratedBooks = sortedBooks.map((book) => {
   }
 </style>
 
-<script>
-  // Client-side search functionality
-  const searchInput = document.getElementById('searchInput');
-  const classFilter = document.getElementById('classFilter');
-  const viewButtons = document.querySelectorAll('[data-view-button]');
-  const viewPanels = document.querySelectorAll('[data-view-panel]');
-  const bookItems = document.querySelectorAll('[data-book-item]');
-  const tableBody = document.querySelector('#booksTable tbody');
-  const sortableHeaders = document.querySelectorAll('#booksTable th[data-sort]');
-  const params = new URLSearchParams(window.location.search);
-  const initialClass = params.get('class') || '';
-  if (classFilter && initialClass) {
-    classFilter.value = initialClass;
-  }
-  
-  function applyFilters() {
-    const searchTerm = (searchInput?.value || '').toLowerCase();
-    const selectedClassValue = classFilter?.value || '';
-    const selectedClass = selectedClassValue.toLowerCase();
-    bookItems.forEach(item => {
-      const itemClass = item.getAttribute('data-class') || '';
-      const itemSearch = item.getAttribute('data-search') || '';
-      const matchesSearch = itemSearch.includes(searchTerm);
-      const matchesClass = !selectedClass || itemClass === selectedClass;
-      item.style.display = matchesSearch && matchesClass ? '' : 'none';
-    });
-    if (tableBody) applyTableSort();
-    // update query param without reloading
-    const url = new URL(window.location.href);
-    if (selectedClassValue) url.searchParams.set('class', selectedClassValue); else url.searchParams.delete('class');
-    window.history.replaceState({}, '', url);
-  }
-
-  const setView = (view) => {
-    viewButtons.forEach(btn => {
-      const isActive = btn.getAttribute('data-view') === view;
-      btn.classList.toggle('active', isActive);
-    });
-    viewPanels.forEach(panel => {
-      const isActive = panel.getAttribute('data-view-panel') === view;
-      panel.classList.toggle('active', isActive);
-    });
-    try {
-      localStorage.setItem('booksView', view);
-    } catch (err) {
-      // ignore storage errors
-    }
-  };
-
-  const preferredView = (() => {
-    try {
-      return localStorage.getItem('booksView');
-    } catch {
-      return null;
-    }
-  })();
-  if (preferredView) {
-    setView(preferredView);
-  } else {
-    setView('tiles');
-  }
-
-  viewButtons.forEach(btn => {
-    btn.addEventListener('click', () => setView(btn.getAttribute('data-view')));
-  });
-
-  const tableSortState = { column: 'title', ascending: true };
-
-  function applyTableSort() {
-    if (!tableBody) return;
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
-    const visible = rows.filter(row => row.style.display !== 'none');
-    const hidden = rows.filter(row => row.style.display === 'none');
-    const { column, ascending } = tableSortState;
-
-    visible.sort((a, b) => {
-      const aVal = a.getAttribute(`data-${column}`) || '';
-      const bVal = b.getAttribute(`data-${column}`) || '';
-      if (column === 'pages') {
-        const aNum = Number(aVal) || 0;
-        const bNum = Number(bVal) || 0;
-        return ascending ? aNum - bNum : bNum - aNum;
-      }
-      const cmp = aVal.localeCompare(bVal);
-      return ascending ? cmp : -cmp;
-    });
-
-    tableBody.innerHTML = '';
-    [...visible, ...hidden].forEach(row => tableBody.appendChild(row));
-  }
-
-  function setSortedHeader(header) {
-    sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
-    header.classList.add('is-sorted');
-  }
-
-  sortableHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const column = header.getAttribute('data-sort') || 'title';
-      if (tableSortState.column === column) {
-        tableSortState.ascending = !tableSortState.ascending;
-      } else {
-        tableSortState.column = column;
-        tableSortState.ascending = true;
-      }
-      setSortedHeader(header);
-      applyTableSort();
-    });
-  });
-
-  if (sortableHeaders.length) {
-    setSortedHeader(sortableHeaders[0]);
-    applyTableSort();
-  }
-
-  if (searchInput) searchInput.addEventListener('input', applyFilters);
-  if (classFilter) classFilter.addEventListener('change', applyFilters);
-  // initial run if query present
-  applyFilters();
-</script>
+<script type="module" src={Astro.resolve('../scripts/books.ts')}></script>

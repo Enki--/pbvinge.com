@@ -62,7 +62,7 @@ const recentBooks = allBooks
     object-fit: cover;
     object-position: center 20%; /* This moves the image up within the circle */
     margin-bottom: 2rem;
-    border: 3px solid #fff;
+    border: 3px solid var(--surface-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
@@ -73,7 +73,7 @@ const recentBooks = allBooks
 
   .bio {
     font-size: 1.25rem;
-    color: #555;
+    color: var(--text-subtle);
     margin: 1rem 0 2rem 0;
   }
 
@@ -111,7 +111,7 @@ const recentBooks = allBooks
     padding: 1.5rem;
     text-decoration: none;
     color: inherit;
-    background: #fff;
+    background: var(--surface-color);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -143,13 +143,13 @@ const recentBooks = allBooks
   }
 
   .book-author {
-    color: #555;
+    color: var(--text-subtle);
     margin: 0.5rem 0;
     font-size: 0.95rem;
   }
 
   .book-date {
-    color: #666;
+    color: var(--text-subtle);
     font-size: 0.9rem;
     margin: 0;
   }

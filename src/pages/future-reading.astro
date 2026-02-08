@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getFutureReads } from '../data/future-reads';
+import '../css/tables.css';
 
 const futureReads = await getFutureReads();
 ---
@@ -25,25 +26,26 @@ const futureReads = await getFutureReads();
       </div>
 
       <div class="flex justify-center w-full">
-        <table class="books-table w-full max-w-5xl min-w-0 text-xs sm:text-sm md:text-base mx-auto">
+        <div class="pbv-table-wrapper w-full max-w-5xl min-w-0 mx-auto">
+          <table class="pbv-table w-full text-xs sm:text-sm md:text-base">
           <thead>
             <tr>
               <th scope="col" class="py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold text-gray-900 sm:pl-6">Cover</th>
               <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="title">
                 Title
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
               <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="author">
                 Author
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
               <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="class">
                 Class
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
               <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="dateCompleted">
                 Status
-                <span class="sort-icon ml-1 sm:ml-2 text-gray-400">↕</span>
+                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
             </tr>
           </thead>
@@ -51,7 +53,7 @@ const futureReads = await getFutureReads();
             {futureReads.map((book) => (
               <tr>
                 <td class="py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="table-cover" />
+                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="pbv-table-cover" />
                 </td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
                 <td class="whitespace-nowrap px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
@@ -61,162 +63,19 @@ const futureReads = await getFutureReads();
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>
 </Layout>
-
 <style>
-  .books-table {
-    border-collapse: collapse;
-  }
-
-  .books-table thead {
-    background: #f3f4f6;
-  }
-
-  .books-table th,
-  .books-table td {
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .books-table th + th,
-  .books-table td + td {
-    border-left: 1px solid #e5e7eb;
-  }
-
-  .books-table tbody tr:hover {
-    background: #f8fafc;
-  }
-
-  .books-table .table-cover {
-    width: 36px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08);
-  }
-
-  :root[data-theme='dark'] .books-table thead {
-    background: #0f172a;
-  }
-
-  :root[data-theme='dark'] .books-table th,
-  :root[data-theme='dark'] .books-table td {
-    border-bottom-color: #1f2a44;
-  }
-
-  :root[data-theme='dark'] .books-table th + th,
-  :root[data-theme='dark'] .books-table td + td {
-    border-left-color: #1f2a44;
-  }
-
-  :root[data-theme='dark'] .books-table tbody tr:hover {
-    background: #0b1220;
-  }
-
-  :root[data-theme='dark'] .books-table .text-gray-900 {
+  :root[data-theme='dark'] .text-gray-900 {
     color: var(--text-color);
   }
 
-  :root[data-theme='dark'] .books-table .text-gray-500 {
+  :root[data-theme='dark'] .text-gray-500 {
     color: var(--muted-text);
   }
 </style>
 
-<script>
-  // Get DOM elements
-  const filterInput = document.getElementById('filterInput');
-  const tableBody = document.getElementById('tableBody');
-  const sortableHeaders = document.querySelectorAll('[data-sort]');
-  
-  // Current sort state
-  let currentSort = {
-    column: '',
-    ascending: true
-  };
-
-  // Convert table rows to array of objects for easier manipulation
-  function getTableData() {
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
-    return rows.map(row => ({
-      element: row,
-      title: row.children[1].textContent,
-      author: row.children[2].textContent,
-      class: row.children[3].textContent,
-      dateCompleted: row.children[4].textContent
-    }));
-  }
-
-  // Sort table data
-  function sortData(data, column) {
-    return data.sort((a, b) => {
-      const aVal = a[column].toLowerCase();
-      const bVal = b[column].toLowerCase();
-      
-      if (currentSort.ascending) {
-        return aVal.localeCompare(bVal);
-      } else {
-        return bVal.localeCompare(aVal);
-      }
-    });
-  }
-
-  // Update table with sorted/filtered data
-  function updateTable(data) {
-    tableBody.innerHTML = '';
-    data.forEach(item => {
-      tableBody.appendChild(item.element);
-    });
-  }
-
-  // Filter table data
-  function filterData(data, searchTerm) {
-    return data.filter(item => {
-      const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
-      return searchString.includes(searchTerm.toLowerCase());
-    });
-  }
-
-  // Add event listeners
-  if (filterInput && tableBody) {
-    filterInput.addEventListener('input', () => {
-      const data = getTableData();
-      const filtered = filterData(data, filterInput.value);
-      updateTable(filtered);
-    });
-  }
-
-  // Add sorting functionality
-  sortableHeaders.forEach(header => {
-    const sortIcon = header.querySelector('.sort-icon');
-    
-    header.addEventListener('click', () => {
-      const column = header.dataset.sort;
-      
-      // Remove active class from all icons
-      document.querySelectorAll('.sort-icon').forEach(icon => {
-        icon.classList.remove('text-blue-500');
-        icon.classList.add('text-gray-400');
-      });
-      
-      // Update sort state
-      if (currentSort.column === column) {
-        currentSort.ascending = !currentSort.ascending;
-      } else {
-        currentSort.column = column;
-        currentSort.ascending = true;
-      }
-      
-      // Add active class to current sort icon
-      sortIcon.classList.remove('text-gray-400');
-      sortIcon.classList.add('text-blue-500');
-      
-      // Sort and update table
-      const data = getTableData();
-      const sorted = sortData(data, column);
-      updateTable(sorted);
-    });
-  });
-</script>
+<script type="module" src={Astro.resolve('../scripts/future-reading.ts')}></script>
