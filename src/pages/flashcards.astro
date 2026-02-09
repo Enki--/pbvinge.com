@@ -123,6 +123,8 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       align-items: center;
       text-align: center;
       backface-visibility: hidden;
+      width: 100%;
+      height: 100%;
     }
 
     .card__back {
@@ -300,6 +302,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     const titleEl = document.getElementById('cardTitle');
     const authorEl = document.getElementById('cardAuthor');
     const ideasEl = document.getElementById('cardIdeas');
+    const flipEl = document.getElementById('cardFlip');
     const eyebrowEl = document.getElementById('eyebrow');
     const progressEl = document.getElementById('progress');
     const toggleBtn = document.getElementById('toggleBtn');
@@ -309,10 +312,17 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     const issueLink = document.getElementById('issueLink');
     const ISSUE_BASE = 'https://github.com/Enki--/pbvinge.com/issues/new';
 
+    function syncFlipHeight() {
+      if (!flipEl || !cardFront || !cardBack) return;
+      const frontHeight = cardFront.scrollHeight;
+      const backHeight = cardBack.scrollHeight;
+      const target = Math.max(frontHeight, backHeight, 360);
+      flipEl.style.minHeight = `${target}px`;
+    }
+
     function updateAnswerVisibility() {
-      if (!cardFront || !cardBack || !toggleBtn) return;
-      const flipEl = document.getElementById('cardFlip');
-      if (flipEl) flipEl.classList.toggle('is-flipped', showAnswer);
+      if (!cardFront || !cardBack || !toggleBtn || !flipEl) return;
+      flipEl.classList.toggle('is-flipped', showAnswer);
       toggleBtn.textContent = showAnswer ? 'Show cover' : 'Show ideas';
       eyebrowEl && (eyebrowEl.textContent = showAnswer ? 'Back' : 'Front');
     }
@@ -381,6 +391,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
           imageEl.src = imgUrl;
           imageEl.alt = current.q || 'Flashcard image';
           imageEl.hidden = false;
+          imageEl.onload = () => syncFlipHeight();
         } else {
           imageEl.hidden = true;
           imageEl.removeAttribute('src');
@@ -390,6 +401,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
 
       updateAnswerVisibility();
       updateIssueLink(current);
+      syncFlipHeight();
     }
 
     function changeCard(delta) {
