@@ -132,7 +132,7 @@ const decoratedBooks = sortedBooks.map((book) => {
               )}
               <div class="book-tags">
                 {book.tags.filter(tag => tag !== '📚Book').map((tag) => (
-                  <span class="tag">{tag}</span>
+                  <span class="pbv-tag">{tag}</span>
                 ))}
               </div>
             </div>
@@ -392,13 +392,6 @@ const decoratedBooks = sortedBooks.map((book) => {
     margin-top: 0.25rem;
   }
 
-  .tag {
-    background: var(--surface-chip);
-    padding: 0.2rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    color: var(--text-subtle);
-  }
 
   :root[data-theme='dark'] .intro {
     color: var(--muted-text);

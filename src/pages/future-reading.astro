@@ -11,7 +11,7 @@ const futureReads = await getFutureReads();
     <div class="w-full max-w-7xl px-2 sm:px-4 lg:px-8 py-8">
       <header class="text-center mb-8">
         <h1 class="text-4xl font-bold mb-4">Future Reading</h1>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p class="text-lg pbv-text-subtle max-w-2xl mx-auto">
           Books I plan to read, organized by subject area.
         </p>
       </header>
@@ -30,20 +30,20 @@ const futureReads = await getFutureReads();
           <table class="pbv-table w-full text-xs sm:text-sm md:text-base">
           <thead>
             <tr>
-              <th scope="col" class="pbv-col-cover py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold text-gray-900 sm:pl-6">Cover</th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="title">
+              <th scope="col" class="pbv-col-cover py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold pbv-text-strong sm:pl-6">Cover</th>
+              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="title">
                 Title
                 <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="author">
+              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="author">
                 Author
                 <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="class">
+              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="class">
                 Class
                 <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold text-gray-900 cursor-pointer" data-sort="dateCompleted">
+              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="dateCompleted">
                 Status
                 <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
               </th>
@@ -55,10 +55,10 @@ const futureReads = await getFutureReads();
                 <td class="pbv-col-cover py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
                   <img src={book.coverImage} alt={`Cover of ${book.title}`} class="pbv-table-cover" />
                 </td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 font-medium text-gray-900">{book.title}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.author.join(', ')}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.class}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 text-gray-500">{book.dateCompleted}</td>
+                <td class="px-2 sm:px-3 py-2 sm:py-4 font-medium pbv-text-strong">{book.title}</td>
+                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.author.join(', ')}</td>
+                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.class}</td>
+                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.dateCompleted}</td>
               </tr>
             ))}
           </tbody>
@@ -69,14 +69,6 @@ const futureReads = await getFutureReads();
   </div>
 </Layout>
 <style>
-  :root[data-theme='dark'] .text-gray-900 {
-    color: var(--text-color);
-  }
-
-  :root[data-theme='dark'] .text-gray-500 {
-    color: var(--muted-text);
-  }
-
   @media (max-width: 768px) {
     th:nth-child(4),
     td:nth-child(4) {

@@ -44,7 +44,7 @@ function fmtDate(d?: string | Date) {
       <footer class="footer">
         <div class="tags">
           {entry.data.tags.map((tag) => (
-            <span class="tag">{tag}</span>
+            <span class="pbv-tag">{tag}</span>
           ))}
         </div>
       </footer>
@@ -80,7 +80,6 @@ function fmtDate(d?: string | Date) {
   .page-marker { display: block; margin: 2rem auto 0.5rem; font-weight: 600; color: var(--text-subtle); }
   .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-light); }
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag { background: var(--surface-chip); padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.85rem; color: var(--text-subtle); }
 
   :root[data-theme='dark'] .subtitle,
   :root[data-theme='dark'] .meta { color: var(--muted-text); }
