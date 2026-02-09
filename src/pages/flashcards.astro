@@ -14,16 +14,39 @@ marked.setOptions({
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 
-const cardsSource = Array.isArray(flashcardsSrc) ? flashcardsSrc : [];
+    const cardsSource = Array.isArray(flashcardsSrc) ? flashcardsSrc : [];
 const processed = cardsSource.map((c) => {
-  const aRaw = c.a || '';
-  let aHtml = '';
+  const qRaw = (c.q || '').toString();
+  const qLines = qRaw.split('\n').map((line) => line.trim()).filter(Boolean);
+  const title = qLines[0] || 'Untitled';
+  const authorLine = qLines[1] || '';
+  const author = authorLine.replace(/^by\s+/i, '').trim();
+
+  const aRaw = (c.a || '').toString();
+  const listItems = aRaw
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('- '))
+    .map((line) => line.replace(/^- /, '').trim())
+    .filter(Boolean);
+  const fallbackItems = aRaw
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.replace(/^- /, '').trim())
+    .filter(Boolean);
+  const ideas = (listItems.length ? listItems : fallbackItems).slice(0, 2);
+  const ideasMarkdown = ideas.map((idea) => `- ${idea}`).join('\n');
+
+  let ideasHtml = '';
   try {
-    aHtml = DOMPurify.sanitize(marked.parse(aRaw));
+    ideasHtml = DOMPurify.sanitize(marked.parse(ideasMarkdown));
   } catch (err) {
-    aHtml = aRaw;
+    ideasHtml = ideas.map((idea) => `<li>${idea}</li>`).join('');
+    ideasHtml = `<ul>${ideasHtml}</ul>`;
   }
-  return { ...c, aHtml };
+
+  return { ...c, title, author, ideasHtml, q: qRaw, a: aRaw };
 });
 
 const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
@@ -62,24 +85,47 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       color: rgba(15, 23, 42, 0.6);
     }
 
-    .card__question {
-      font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
-      font-weight: 600;
-      line-height: 1.5;
+    .card__front,
+    .card__back {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
       text-align: center;
-      white-space: pre-line;
     }
 
-    .card__answer {
+    .card__front.is-hidden,
+    .card__back.is-hidden {
+      display: none;
+    }
+
+    .card__title {
+      font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .card__author {
+      font-size: 1rem;
+      color: var(--muted-text);
+    }
+
+    .card__back-title {
+      font-size: 1.1rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-text);
+    }
+
+    .card__ideas {
+      width: 100%;
+      text-align: left;
       border-top: 1px solid rgba(15, 23, 42, 0.08);
       padding-top: 0.75rem;
-      line-height: 1.55;
+      line-height: 1.6;
       font-size: 1rem;
       color: #334155;
-    }
-
-    .card__answer.is-hidden {
-      display: none;
     }
 
     .card__image {
@@ -87,6 +133,11 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       border-radius: 10px;
       align-self: center;
       box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
+    }
+
+    :root[data-theme='dark'] .card__ideas {
+      color: var(--text-color);
+      border-top-color: rgba(148, 163, 184, 0.25);
     }
 
     .controls {
@@ -162,13 +213,19 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     <section class="stack" aria-label="Flashcard viewer">
       <article class="card" aria-live="polite">
         <div class="card__meta">
-          <span class="card__eyebrow" id="eyebrow">Question</span>
+          <span class="card__eyebrow" id="eyebrow">Front</span>
           <span class="progress" id="progress">1 / —</span>
         </div>
-        <div class="card__question" id="q-current">{processed[0] ? processed[0].q : 'Loading…'}</div>
-        <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" hidden />
-        <div class="card__answer is-hidden" id="a-current-content" set:html={processed[0] ? processed[0].aHtml : ''}></div>
-        <button id="toggleBtn" type="button">Show answer</button>
+        <div class="card__front" id="cardFront">
+          <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" hidden />
+          <div class="card__title" id="cardTitle">{processed[0] ? processed[0].title : 'Loading…'}</div>
+          <div class="card__author" id="cardAuthor">{processed[0]?.author ? `by ${processed[0].author}` : ''}</div>
+        </div>
+        <div class="card__back is-hidden" id="cardBack">
+          <h2 class="card__back-title">Two Major Ideas</h2>
+          <div class="card__ideas" id="cardIdeas" set:html={processed[0] ? processed[0].ideasHtml : ''}></div>
+        </div>
+        <button id="toggleBtn" type="button">Show ideas</button>
         <a id="issueLink" class="issue-link" href="#" target="_blank" rel="noreferrer noopener" hidden>Suggest an edit on GitHub</a>
       </article>
 
@@ -178,7 +235,7 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       </div>
     </section>
 
-    <p class="hint">Tip: Press the “Show answer” button or hit <kbd>Space</kbd>/<kbd>Enter</kbd> when focused. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
+    <p class="hint">Tip: Press the “Show ideas” button or hit <kbd>Space</kbd>/<kbd>Enter</kbd> when focused. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
   </main>
 
   <!-- serialized processed data for client -->
@@ -203,8 +260,11 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     let idx = 0;
     let showAnswer = false;
 
-    const questionEl = document.getElementById('q-current');
-    const answerEl = document.getElementById('a-current-content');
+    const cardFront = document.getElementById('cardFront');
+    const cardBack = document.getElementById('cardBack');
+    const titleEl = document.getElementById('cardTitle');
+    const authorEl = document.getElementById('cardAuthor');
+    const ideasEl = document.getElementById('cardIdeas');
     const eyebrowEl = document.getElementById('eyebrow');
     const progressEl = document.getElementById('progress');
     const toggleBtn = document.getElementById('toggleBtn');
@@ -215,9 +275,11 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
     const ISSUE_BASE = 'https://github.com/Enki--/pbvinge.com/issues/new';
 
     function updateAnswerVisibility() {
-      if (!answerEl || !toggleBtn) return;
-      answerEl.classList.toggle('is-hidden', !showAnswer);
-      toggleBtn.textContent = showAnswer ? 'Hide answer' : 'Show answer';
+      if (!cardFront || !cardBack || !toggleBtn) return;
+      cardFront.classList.toggle('is-hidden', showAnswer);
+      cardBack.classList.toggle('is-hidden', !showAnswer);
+      toggleBtn.textContent = showAnswer ? 'Show cover' : 'Show ideas';
+      eyebrowEl && (eyebrowEl.textContent = showAnswer ? 'Back' : 'Front');
     }
 
     function stripHtml(input = '') {
@@ -231,11 +293,11 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
         issueLink.removeAttribute('href');
         return;
       }
-      const titleLine = (card.q || '').split('\\n')[0] || 'Flashcard';
-      const answerText = card.aHtml ? stripHtml(card.aHtml) : (card.a || '');
+      const titleLine = card.title || (card.q || '').split('\\n')[0] || 'Flashcard';
+      const answerText = card.ideasHtml ? stripHtml(card.ideasHtml) : (card.a || '');
       const params = new URLSearchParams({
         title: `Flashcard feedback: ${titleLine}`.slice(0, 256),
-        body: `Flashcard question:\\n${card.q || ''}\\n\\nCurrent answer:\\n${answerText || '(empty)'}\\n\\nCard index: ${idx + 1} of ${cards.length}`
+        body: `Flashcard front:\\n${card.title || card.q || ''}${card.author ? `\\nby ${card.author}` : ''}\\n\\nCurrent ideas:\\n${answerText || '(empty)'}\\n\\nCard index: ${idx + 1} of ${cards.length}`
       });
       issueLink.href = `${ISSUE_BASE}?${params.toString()}`;
       issueLink.hidden = false;
@@ -247,9 +309,10 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       controls.forEach(btn => btn && (btn.disabled = !hasCards));
 
       if (!hasCards) {
-        questionEl && (questionEl.textContent = 'No cards available');
-        answerEl && (answerEl.textContent = '');
-        eyebrowEl && (eyebrowEl.textContent = 'Question');
+        titleEl && (titleEl.textContent = 'No cards available');
+        authorEl && (authorEl.textContent = '');
+        ideasEl && (ideasEl.textContent = '');
+        eyebrowEl && (eyebrowEl.textContent = 'Front');
         progressEl && (progressEl.textContent = '0 / 0');
         if (imageEl) {
           imageEl.hidden = true;
@@ -265,16 +328,13 @@ const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
       idx = ((idx % cards.length) + cards.length) % cards.length;
       const current = cards[idx];
 
-      questionEl && (questionEl.textContent = current.q || '');
-      if (answerEl) {
-        if (current.aHtml) {
-          answerEl.innerHTML = current.aHtml;
-        } else {
-          answerEl.textContent = current.a || '';
-        }
+      titleEl && (titleEl.textContent = current.title || '');
+      authorEl && (authorEl.textContent = current.author ? `by ${current.author}` : '');
+      if (ideasEl) {
+        ideasEl.innerHTML = current.ideasHtml || '';
       }
 
-      eyebrowEl && (eyebrowEl.textContent = `Question ${idx + 1}`);
+      eyebrowEl && (eyebrowEl.textContent = showAnswer ? 'Back' : 'Front');
       progressEl && (progressEl.textContent = `${idx + 1} / ${cards.length}`);
 
       if (imageEl) {
