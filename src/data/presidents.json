@@ -342,7 +342,7 @@
     {
       "id": "joe-biden",
       "name": "Joe Biden",
-      "term": { "start": "2021", "end": "Present" },
+      "term": { "start": "2021", "end": "2025" },
       "party": "Democratic",
       "vicePresident": "Kamala Harris",
       "summary": "Veteran senator who prioritized pandemic recovery, rebuilding alliances, and confronting Russia and China.",
@@ -356,6 +356,20 @@
         { "period": "Aug 2021", "description": "Completed the withdrawal from Afghanistan after the Taliban takeover." },
         { "period": "2022-2024", "description": "Provided extensive aid to Ukraine and expanded NATO as Finland and Sweden sought membership." },
         { "period": "2022", "description": "CHIPS and Science Act plus Inflation Reduction Act invested in industrial policy and clean energy." }
+      ]
+    },
+    {
+      "id": "donald-trump-2",
+      "name": "Donald Trump",
+      "term": { "start": "2025", "end": "Present" },
+      "party": "Republican",
+      "vicePresident": "J.D. Vance",
+      "summary": "Returned to office as the 47th president with a second-term agenda centered on domestic renewal and a renewed America First foreign policy.",
+      "cabinet": [
+        { "role": "Cabinet", "name": "Announcements pending", "notes": "Cabinet-level appointments for the second term." }
+      ],
+      "events": [
+        { "period": "Jan 2025", "description": "Inaugurated for a second term on January 20, 2025." }
       ]
     }
   ]
