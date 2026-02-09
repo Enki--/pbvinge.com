@@ -138,6 +138,21 @@ pbvinge.com/
 - Future reading list is managed in `src/content/futureReads/index.md`
 - All content supports Obsidian-compatible Markdown formatting
 
+## Styling Conventions
+
+Reusable utility classes live in `src/layouts/Layout.astro` and `src/css/tables.css`.
+
+Shared text + tag classes:
+- `pbv-text-strong` for strong text color
+- `pbv-text-subtle` for muted text color
+- `pbv-tag` for tag/chip styling
+
+Table styles:
+- Wrap tables with `.pbv-table-wrapper`
+- Use `.pbv-table` on the table element
+- Use `.pbv-table-cover` for cover thumbnails
+- Use `.pbv-sort-icon` for sortable header icons
+
 ## Deployment
 
 The site is automatically deployed to Cloudflare Pages on push to the main branch.
