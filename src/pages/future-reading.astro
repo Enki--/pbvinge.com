@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { getFutureReads } from '../data/future-reads';
 import '../css/tables.css';
-import futureReadingScript from '../scripts/future-reading.ts?url';
 
 const futureReads = await getFutureReads();
 ---
@@ -86,4 +85,4 @@ const futureReads = await getFutureReads();
   }
 </style>
 
-<script type="module" src={futureReadingScript}></script>
+<script type="module" src="/scripts/future-reading.js"></script>

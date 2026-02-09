@@ -9,7 +9,6 @@ import {
   normalizeTags
 } from '../utils/books';
 import '../css/tables.css';
-import booksScript from '../scripts/books.ts?url';
 
 // Get all published and completed books from the content collection
 const books = await getCollection('books', ({ data }) => {
@@ -502,4 +501,4 @@ const decoratedBooks = sortedBooks.map((book) => {
   }
 </style>
 
-<script type="module" src={booksScript}></script>
+<script type="module" src="/scripts/books.js"></script>

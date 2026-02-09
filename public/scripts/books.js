@@ -1,6 +1,6 @@
 function initBooks() {
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement | null;
-  const classFilter = document.getElementById('classFilter') as HTMLSelectElement | null;
+  const searchInput = document.getElementById('searchInput');
+  const classFilter = document.getElementById('classFilter');
   const viewButtons = document.querySelectorAll('[data-view-button]');
   const viewPanels = document.querySelectorAll('[data-view-panel]');
   const bookItems = document.querySelectorAll('[data-book-item]');
@@ -18,8 +18,8 @@ function initBooks() {
   function applyTableSort() {
     if (!tableBody) return;
     const rows = Array.from(tableBody.querySelectorAll('tr'));
-    const visible = rows.filter(row => row instanceof HTMLElement && row.style.display !== 'none');
-    const hidden = rows.filter(row => row instanceof HTMLElement && row.style.display === 'none');
+    const visible = rows.filter(row => row.style.display !== 'none');
+    const hidden = rows.filter(row => row.style.display === 'none');
     const { column, ascending } = tableSortState;
 
     visible.sort((a, b) => {
@@ -33,7 +33,7 @@ function initBooks() {
     [...visible, ...hidden].forEach(row => tableBody.appendChild(row));
   }
 
-  function setSortedHeader(header: Element) {
+  function setSortedHeader(header) {
     sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
     header.classList.add('is-sorted');
   }
@@ -43,7 +43,6 @@ function initBooks() {
     const selectedClassValue = classFilter?.value || '';
     const selectedClass = selectedClassValue.toLowerCase();
     bookItems.forEach(item => {
-      if (!(item instanceof HTMLElement)) return;
       const itemClass = item.getAttribute('data-class') || '';
       const itemSearch = item.getAttribute('data-search') || '';
       const matchesSearch = itemSearch.includes(searchTerm);
@@ -57,7 +56,7 @@ function initBooks() {
     window.history.replaceState({}, '', url);
   }
 
-  const setView = (view: string | null) => {
+  const setView = (view) => {
     viewButtons.forEach(btn => {
       const isActive = btn.getAttribute('data-view') === view;
       btn.classList.toggle('active', isActive);

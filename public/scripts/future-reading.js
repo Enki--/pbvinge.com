@@ -1,5 +1,5 @@
 function initFutureReading() {
-  const filterInput = document.getElementById('filterInput') as HTMLInputElement | null;
+  const filterInput = document.getElementById('filterInput');
   const tableBody = document.getElementById('tableBody');
   const sortableHeaders = document.querySelectorAll('[data-sort]');
 
@@ -20,7 +20,7 @@ function initFutureReading() {
     }));
   }
 
-  function sortData(data: ReturnType<typeof getTableData>, column: keyof ReturnType<typeof getTableData>[number]) {
+  function sortData(data, column) {
     return data.sort((a, b) => {
       const aVal = a[column].toLowerCase();
       const bVal = b[column].toLowerCase();
@@ -28,7 +28,7 @@ function initFutureReading() {
     });
   }
 
-  function updateTable(data: ReturnType<typeof getTableData>) {
+  function updateTable(data) {
     if (!tableBody) return;
     tableBody.innerHTML = '';
     data.forEach(item => {
@@ -36,7 +36,7 @@ function initFutureReading() {
     });
   }
 
-  function filterData(data: ReturnType<typeof getTableData>, searchTerm: string) {
+  function filterData(data, searchTerm) {
     const term = searchTerm.toLowerCase();
     return data.filter(item => {
       const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
@@ -44,7 +44,7 @@ function initFutureReading() {
     });
   }
 
-  function setSortedHeader(header: Element) {
+  function setSortedHeader(header) {
     sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
     header.classList.add('is-sorted');
   }
@@ -59,7 +59,7 @@ function initFutureReading() {
 
   sortableHeaders.forEach(header => {
     header.addEventListener('click', () => {
-      const column = (header as HTMLElement).dataset.sort as keyof ReturnType<typeof getTableData>[number];
+      const column = header.dataset.sort;
       if (!column) return;
       if (currentSort.column === column) {
         currentSort.ascending = !currentSort.ascending;
