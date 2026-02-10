@@ -13,8 +13,8 @@ isbn10: "0197667384"
 isbn13: "9780197667385"
 cover: "http://books.google.com/books/content?id=8Jd8EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "Complete"
-created: 2026-01-19 10:02:24
-updated: 2026-01-19 10:02:24
+created: 2026-02-09 10:02:24
+updated: 2026-02-09 10:02:24
 class: "667"
 sequence: "6"
 ---
