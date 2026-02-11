@@ -11,7 +11,7 @@ publish: 2025-10-15
 pages: 318
 isbn10: "150178322X"
 isbn13: "9781501783227"
-cover: "http://books.google.com/books/content?id=X5p3EQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+cover: "https://images.booksense.com/images/470/783/9781501783470.jpg"
 status: "Complete"
 created: 2026-02-10 10:02:24
 updated: 2026-02-10 10:02:24
