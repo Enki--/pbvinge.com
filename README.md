@@ -117,6 +117,8 @@ pbvinge.com/
 
 ## Development
 
+Note: In this Codex environment, local Node/npm builds are not available, so commands like `npm install` or `npm run build` will fail. Use CI/Cloudflare Pages builds to validate instead.
+
 1. Clone the repository:
    ```bash
    git clone [repository-url]
