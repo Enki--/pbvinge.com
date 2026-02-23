@@ -1,6 +1,6 @@
 ---
-import Layout from '../../../../layouts/Layout.astro';
-import catalog from '../../../../data/archives/91st-catalog.json';
+import Layout from '../../../layouts/Layout.astro';
+import catalog from '../../../data/archives/91st-catalog.json';
 
 const sites = [...(catalog.sites || [])].sort((a, b) => a.site_slug.localeCompare(b.site_slug));
 ---

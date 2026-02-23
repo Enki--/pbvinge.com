@@ -1,6 +1,6 @@
 ---
-import Layout from '../../../../layouts/Layout.astro';
-import catalog from '../../../../data/archives/91st-catalog.json';
+import Layout from '../../../layouts/Layout.astro';
+import catalog from '../../../data/archives/91st-catalog.json';
 
 export function getStaticPaths() {
   return (catalog.sites || []).map((site) => ({ params: { site: site.site_slug }, props: { site } }));
