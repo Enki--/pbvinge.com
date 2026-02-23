@@ -1,0 +1,29 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import catalog from '../../../../data/archives/91st-catalog.json';
+
+export function getStaticPaths() {
+  return (catalog.sites || []).map((site) => ({ params: { site: site.site_slug }, props: { site } }));
+}
+
+const { site } = Astro.props;
+const captures = [...(site.captures || [])].sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+---
+
+<Layout title={`${site.site_slug} - 91st Archives`}>
+  <div class="container">
+    <h1>{site.site_slug}</h1>
+    <p><a href={captures[0]?.latest_path}>Open latest capture</a></p>
+    <ul>
+      {captures.map((capture) => (
+        <li>
+          <a href={capture.path}>{capture.timestamp}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .container { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; }
+</style>

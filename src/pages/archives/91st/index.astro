@@ -1,0 +1,27 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import catalog from '../../../../data/archives/91st-catalog.json';
+
+const sites = [...(catalog.sites || [])].sort((a, b) => a.site_slug.localeCompare(b.site_slug));
+---
+
+<Layout title="91st Archives">
+  <div class="container">
+    <h1>91st Archived Websites</h1>
+    <p class="intro">Recovered snapshots rehosted from Wayback captures.</p>
+    {sites.length === 0 ? (
+      <p>No archived sites yet.</p>
+    ) : (
+      <ul>
+        {sites.map((site) => (
+          <li><a href={`/archives/91st/${site.site_slug}`}>{site.site_slug}</a></li>
+        ))}
+      </ul>
+    )}
+  </div>
+</Layout>
+
+<style>
+  .container { max-width: 980px; margin: 0 auto; padding: 2rem 1rem; }
+  .intro { color: var(--text-subtle); }
+</style>

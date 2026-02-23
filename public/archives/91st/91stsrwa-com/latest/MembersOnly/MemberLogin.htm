@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>Login</title>
+<style>
+body {
+  font-family: "Trebuchet MS", serif;
+  background: #EADCAE;
+}
+
+div.Header h1 {
+  margin: 0px;
+  font-size: XX-Large;
+}
+
+div {
+  font-size: medium;
+  padding: 15px;
+}
+div.Left {
+  float: left;
+  width: 100px;
+}
+div.Middle {
+  float: left;
+  width: 450px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  border-style: solid;
+  border-color: blue;
+  padding-top: 0px;
+}
+div.Right {
+  float: left;
+  width: 100px;
+  font-weight: bold;
+}
+div.Body {
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  height: 480px;
+}
+a {text-decoration: none;
+}
+</style> </head>
+<body><div style="background:#f4f4f5;border:1px solid #d4d4d8;padding:10px;margin:12px 0;font-size:14px;font-family:system-ui,sans-serif;">Archived from Wayback capture 20170305013151 for http://91stsrwa.com/MembersOnly/MemberLogin.htm. Retrieved 2026-02-23.</div>
+<script>
+function passWord() {
+var testV = 1;
+var pass1 = prompt('Enter Password (lowercase)',' ');
+while (testV < 3) {
+if (!pass1) 
+history.go(-1);
+if (pass1.toLowerCase() == "lemay") {
+open("MemberInformation.html");
+break;
+} 
+testV+=1;
+var pass1 = 
+prompt('Error, Please Try Again.','Password');
+}
+if (pass1.toLowerCase()!="password" & testV ==3) 
+history.go(-1);
+return " ";
+} 
+</script> <center>
+<form> <br/>
+<br/>
+<br/>
+<br/>
+        Paid up members may obtain<br/>
+        the password from:<br/>
+<br/>
+        Karl Nicholson, Webmaster<br/>
+<a href="mailto:karlnicholson@aol.com" target="_top" title="karlemail">karlnicholson@aol.com</a><br/>
+        or<br/>
+        Jim Bard, Secretary<br/>
+<a href="mailto:jimbardjr@comcast.net" target="_top" title="Jimemail">jimbardjr@comcast.net</a><br/>
+<br/>
+<br/>
+<input onclick="passWord()" type="button" value="Click Here to Enter Members Only Area"/><br/>
+<br/>
+        or
+        <h3 align="center"><a href="../index.htm" target="_top" title="Home"><i><b>Click
+                here to return to home page</b></i></a></h3>
+</form>
+</center>
+</body>
+</html>
