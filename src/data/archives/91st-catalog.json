@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-23T18:35:38.900948+00:00",
+  "generated_at": "2026-02-24T18:10:42.834336+00:00",
   "sites": [
     {
       "site_slug": "91stsrwa-com",
@@ -10,8 +10,36 @@
           "title": "91stsrwa-com",
           "path": "/archives/91st/91stsrwa-com/20170305013151/index.html",
           "latest_path": "/archives/91st/91stsrwa-com/latest/index.html",
-          "retrieved_at": "2026-02-23T18:35:38.900704+00:00",
+          "retrieved_at": "2026-02-24T18:10:42.834007+00:00",
           "source_url": "http://91stsrwa.com/Index.htm"
+        }
+      ]
+    },
+    {
+      "site_slug": "b29-korean-war",
+      "source_url": "http://mywebpages.comcast.net/b29sinthekoreanwar/b29koreanwar.htm",
+      "captures": [
+        {
+          "timestamp": "20080905085643",
+          "title": "b29-korean-war",
+          "path": "/archives/91st/b29-korean-war/20080905085643/index.html",
+          "latest_path": "/archives/91st/b29-korean-war/latest/index.html",
+          "retrieved_at": "2026-02-24T18:10:42.834246+00:00",
+          "source_url": "http://mywebpages.comcast.net/b29sinthekoreanwar/b29koreanwar.htm"
+        }
+      ]
+    },
+    {
+      "site_slug": "b29-korean-war-comcast",
+      "source_url": "http://mywebpages.comcast.net/b29sinthekoreanwar/b29koreanwar.htm",
+      "captures": [
+        {
+          "timestamp": "20080905085643",
+          "title": "b29-korean-war-comcast",
+          "path": "/archives/91st/b29-korean-war-comcast/20080905085643/index.html",
+          "latest_path": "/archives/91st/b29-korean-war-comcast/latest/index.html",
+          "retrieved_at": "2026-02-24T18:10:42.834292+00:00",
+          "source_url": "http://mywebpages.comcast.net/b29sinthekoreanwar/b29koreanwar.htm"
         }
       ]
     },
@@ -24,7 +52,7 @@
           "title": "rb-29-net",
           "path": "/archives/91st/rb-29-net/20031012101807/index.html",
           "latest_path": "/archives/91st/rb-29-net/latest/index.html",
-          "retrieved_at": "2026-02-23T18:35:38.900943+00:00",
+          "retrieved_at": "2026-02-24T18:10:42.834332+00:00",
           "source_url": "http://www.rb-29.net/"
         }
       ]
