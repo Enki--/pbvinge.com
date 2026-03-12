@@ -11,7 +11,7 @@ publish: 2024-05-07
 pages: 336
 isbn10: "0262547368"
 isbn13: "9780262547369"
-cover: "https://mitpressbookstore.mit.edu/book/9780262547369"
+cover: "https://mit-press-new-us.imgix.net/covers/9780262547369.jpg?auto=format&w=298&dpr=1&q=80"
 status: "complete"
 created: 2026-03-11 20:07:16
 updated: 2026-03-11 20:07:16
