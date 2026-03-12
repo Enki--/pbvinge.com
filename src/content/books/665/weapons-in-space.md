@@ -1,39 +1,22 @@
 ---
-
 tags: [📚Book]
-
-title: “Weapons in Space”
-
-subtitle: “Technology, Politics, and the Rise and Fall of the Strategic Defense Initiative”
-
+title: "Weapons in Space"
+subtitle: "Technology, Politics, and the Rise and Fall of the Strategic Defense Initiative"
 author:
-	- “Aaron Bateman”
-    
+  - "Aaron Bateman"
 category:
-	- “History”
-    
-publisher: “The MIT Press”
-    
+  - "History"
+publisher: "The MIT Press"
 publish: 2024-05-07
-    
 pages: 336
-    
-isbn10: “0262547368”
-    
-isbn13: “9780262547369”
-    
-cover: “https://mitpressbookstore.mit.edu/book/9780262547369”
-    
-status: “Complete”
-    
+isbn10: "0262547368"
+isbn13: "9780262547369"
+cover: "https://mitpressbookstore.mit.edu/book/9780262547369"
+status: "complete"
 created: 2026-03-11 20:07:16
-    
 updated: 2026-03-11 20:07:16
-    
-class: “665”
-    
-sequence: “3”
-
+class: "665"
+sequence: "3"
 ---
 
   
