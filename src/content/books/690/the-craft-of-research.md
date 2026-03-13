@@ -7,6 +7,7 @@ cover: "http://books.google.com/books/content?id=SjPqDAAAQBAJ&printsec=frontcove
 tags: []
 isPublished: true
 created: 2024-01-01
+updated: 2024-01-01
 ---
 
 # The Craft of Research
