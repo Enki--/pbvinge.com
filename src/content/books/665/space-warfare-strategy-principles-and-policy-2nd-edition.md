@@ -11,7 +11,7 @@ publish: 2025-01-01
 pages: 325
 isbn10: ""
 isbn13: "9781032589183"
-cover: ""
+cover: "https://m.media-amazon.com/images/I/81MbKYyZ2SL._SY466_.jpg"
 status: "Complete"
 created: 2026-03-15 21:14:27
 updated: 2026-03-15 21:14:27
