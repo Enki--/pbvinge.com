@@ -10,10 +10,10 @@
   {
     "slug": "salmson-2a2",
     "imagePath": "/assets/91st-aircraft/salmson-2a2.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:1st_Aero_Squadron_Salmson_2A2_France.jpg",
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:91st_Aero_Squadron_-_Major_John_N_Reynolds.jpg",
     "license": "Public domain",
     "artist": "Air Service, United States Army",
-    "note": "Representative U.S. Army Salmson image from the same war and mission set."
+    "note": "91st-specific image with the squadron emblem visible."
   },
   {
     "slug": "breguet-14",
@@ -26,18 +26,18 @@
   {
     "slug": "dh-4",
     "imagePath": "/assets/91st-aircraft/dh-4.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Airco_DH-4.jpg",
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Airco_DH.4_of_the_91st_Observation_Squadron_at_Trier_Airfield,_Germany,_circa_in_December_1918.jpg",
     "license": "Public domain",
-    "artist": "Unknown author Unknown author",
-    "note": "Representative type image."
+    "artist": "Lt. William A. Barnhill, 91st Aero Squadron, Air Service, U.S. Army",
+    "note": "91st-specific airfield photo at Trier; the aircraft are shown on the line rather than in close-up."
   },
   {
     "slug": "spad-xiii",
     "imagePath": "/assets/91st-aircraft/spad-xiii.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:SPAD_XIII_040510-F-1234P-019.jpg",
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:91st_Aero_Squadron_Spad_XIII_1918.jpg",
     "license": "Public domain",
-    "artist": "U.S. Air Force photo",
-    "note": "Representative type image."
+    "artist": "United States Army Air Service",
+    "note": "91st-specific image."
   },
   {
     "slug": "oa-1",
@@ -98,10 +98,10 @@
   {
     "slug": "o-46",
     "imagePath": "/assets/91st-aircraft/o-46.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Douglas_O-46.jpg",
-    "license": "Public domain",
-    "artist": "USAF",
-    "note": "Exact type image."
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Douglas_O-46_flying_over_Mount_Olympus_mountain_range,_WA,_January_4,_1937.jpg",
+    "license": "No known copyright restrictions",
+    "artist": "SDASM Archives",
+    "note": "91st-specific formation photo."
   },
   {
     "slug": "o-47",
@@ -226,18 +226,18 @@
   {
     "slug": "rb-45",
     "imagePath": "/assets/91st-aircraft/rb-45.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:North_American_RB-45C_061023-F-1234S-008.jpg",
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:RB-45C-48-037-91srg.jpg",
     "license": "Public domain",
-    "artist": "US Goverment",
-    "note": "Exact type image."
+    "artist": "United States Air Force",
+    "note": "91st-specific image."
   },
   {
     "slug": "b-29",
     "imagePath": "/assets/91st-aircraft/b-29.jpg",
-    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:B-29_Superfortress_in_flight.jpg",
+    "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Boeing_B-29A,_44-61854,_Butterfly_Baby,_91st_SRW,_91st_SRS.jpg",
     "license": "Public domain",
-    "artist": "US Air Force",
-    "note": "Representative type image."
+    "artist": "San Diego Air & Space Museum Archives",
+    "note": "91st-specific image."
   },
   {
     "slug": "rf-84k",

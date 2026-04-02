@@ -162,7 +162,7 @@ export const aircraftTimeline = [
     context:
       "The squadron received Salmson 2A2s in late April 1918 and flew them operationally through the end of the war and immediate aftermath.",
     source: sourceWWI,
-    imageAlt: "Salmson 2A2 in United States Army service"
+    imageAlt: "Major John N. Reynolds beside a 91st Aero Squadron Salmson 2A2"
   }),
   withImage({
     slug: "breguet-14",
@@ -192,7 +192,7 @@ export const aircraftTimeline = [
     context:
       "The DH-4 appears in both the WWI list and the postwar observation lineup, which makes it a useful hinge between the eras.",
     source: sourceWWI,
-    imageAlt: "Airco DH-4 biplane"
+    imageAlt: "Airco DH.4 aircraft of the 91st Observation Squadron at Trier Airfield"
   }),
   withImage({
     slug: "spad-xiii",
@@ -207,7 +207,7 @@ export const aircraftTimeline = [
     context:
       "This entry, like the Breguet 14, reflects a broader late-war aircraft environment around the 91st more than a long principal assignment.",
     source: sourceWWI,
-    imageAlt: "SPAD XIII fighter"
+    imageAlt: "Lt. Everett R. Cook beside a 91st Aero Squadron SPAD XIII"
   }),
   withImage({
     slug: "oa-1",
@@ -327,7 +327,7 @@ export const aircraftTimeline = [
     context:
       "This was the squadron's most durable late-interwar assignment before the fast wartime transition accelerated.",
     source: sourceLineage,
-    imageAlt: "Douglas O-46 observation aircraft"
+    imageAlt: "Douglas O-46s of the 91st Observation Squadron over the Mount Olympus range"
   }),
   withImage({
     slug: "o-47",
@@ -567,7 +567,7 @@ export const aircraftTimeline = [
     context:
       "Its presence in the lineup shows that the squadron's early-1950s story was more technologically mixed than a single-aircraft narrative suggests.",
     source: sourceLineage,
-    imageAlt: "North American RB-45C Tornado"
+    imageAlt: "North American RB-45C Tornado of the 91st Strategic Reconnaissance Group"
   }),
   withImage({
     slug: "b-29",
@@ -582,7 +582,7 @@ export const aircraftTimeline = [
     context:
       "This is a short supporting assignment in the middle of the longer RB-29 and RB-50 period.",
     source: sourceLineage,
-    imageAlt: "Boeing B-29 Superfortress in flight"
+    imageAlt: "B-29A Butterfly Baby of the 91st Strategic Reconnaissance Squadron"
   }),
   withImage({
     slug: "rf-84k",
@@ -632,5 +632,5 @@ export const aircraftTimeline = [
 ];
 
 export const heroAircraft = aircraftTimeline.filter((entry) =>
-  ["ar-1-2", "o-46", "rb-29", "rf-4c"].includes(entry.slug)
+  ["salmson-2a2", "o-46", "rb-29", "rf-4c"].includes(entry.slug)
 );
