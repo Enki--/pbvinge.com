@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../css/aircraft-of-the-91st.css";
+import {
+  aircraftEras,
+  aircraftTimeline,
+  heroAircraft,
+  researchSources,
+} from "../data/aircraft-of-the-91st";
+
+const title = "Aircraft of the 91st - pbvinge";
+const description =
+  "A visual timeline of the aircraft flown by the 91st, from World War I observation machines to Bergstrom RF-4C Phantoms.";
+---
+
+<Layout title={title} description={description}>
+  <div class="a91-page">
+    <section class="a91-hero">
+      <div class="a91-hero-grid">
+        <div>
+          <p class="a91-eyebrow">1918 to 1991</p>
+          <h1 class="a91-title">Aircraft of the 91st</h1>
+          <p class="a91-lede">
+            From wood-and-fabric reconnaissance biplanes over France to RF-4C Phantoms at Bergstrom,
+            the 91st kept reinventing what it meant to see the battlefield first.
+          </p>
+          <div class="a91-hero-facts" aria-label="Page facts">
+            <span>33 aircraft entries</span>
+            <span>7 mission eras</span>
+            <span>Images stored locally in this project</span>
+          </div>
+        </div>
+        <div class="a91-hero-gallery">
+          {heroAircraft.map((aircraft) => (
+            <figure class="a91-hero-shot">
+              <img src={aircraft.image.imagePath} alt={aircraft.imageAlt} loading="eager" />
+              <figcaption>{aircraft.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="a91-intro">
+      <p>
+        <strong>How to read this page:</strong> the timeline follows the verified aircraft roster for the
+        squadron, grouped into eras that feel like distinct chapters rather than one long equipment list.
+      </p>
+      <p>
+        <strong>Accuracy note:</strong> where the sourced lineage summaries used approximate or overlapping
+        dates, that uncertainty stays visible here. Where no clean 91st-marked photograph surfaced, the card
+        says so and uses a representative image from the exact type or the closest aircraft family.
+      </p>
+    </section>
+
+    <div class="a91-timeline">
+      {aircraftEras.map((era) => {
+        const entries = aircraftTimeline.filter((entry) => entry.eraId === era.id);
+        return (
+          <section class="a91-era" id={era.id}>
+            <div class="a91-era-shell">
+              <header class="a91-era-head">
+                <p class="a91-era-overline">{era.eyebrow}</p>
+                <h2 class="a91-era-title">{era.title}</h2>
+                <p class="a91-era-summary">{era.summary}</p>
+              </header>
+              <div class="a91-cards">
+                {entries.map((entry) => (
+                  <article class="a91-card">
+                    <div class="a91-card-media">
+                      <img src={entry.image.imagePath} alt={entry.imageAlt} loading="lazy" />
+                      <span class="a91-card-years">{entry.years}</span>
+                    </div>
+                    <div class="a91-card-body">
+                      <div class="a91-card-mission">{entry.mission}</div>
+                      <h3 class="a91-card-title">{entry.title}</h3>
+                      {entry.aliases.length > 0 && (
+                        <p class="a91-card-aliases">Also listed as {entry.aliases.join(", ")}.</p>
+                      )}
+                      <p class="a91-card-summary">{entry.summary}</p>
+                      <div class="a91-card-links">
+                        <a href={entry.source.url} target={entry.source.url.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                          Roster source
+                        </a>
+                        <a href={entry.image.descriptionUrl} target="_blank" rel="noreferrer">
+                          Image source
+                        </a>
+                      </div>
+                      <details>
+                        <summary>Research notes</summary>
+                        <p class="a91-card-context">{entry.context}</p>
+                        <p>{entry.image.note}</p>
+                        <p>
+                          License: {entry.image.license}
+                          {entry.imageArtist ? ` - ${entry.imageArtist}` : ""}
+                        </p>
+                      </details>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+    <section class="a91-sources">
+      <h2>Research Basis</h2>
+      <p>
+        The roster/date pass leans on squadron lineage summaries for the full aircraft list and a separate
+        WWI 91st Aero Squadron source for the early observation years. Every image card also links back to
+        its own source page.
+      </p>
+      <div class="a91-source-list">
+        {researchSources.map((source) => (
+          <div class="a91-source-card">
+            <strong><a href={source.url} target={source.url.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{source.label}</a></strong>
+            <p>{source.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
