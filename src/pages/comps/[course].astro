@@ -155,7 +155,7 @@ const defaultThemes = rankedThemes.slice(0, 8);
             </div>
 
             <details class="connection-details">
-              <summary>Full connections and source notes</summary>
+              <summary>Why these books connect</summary>
               <div class="details-stack">
                 <ul>
                   {book.connectedBooks.map((connection) => (
@@ -168,25 +168,6 @@ const defaultThemes = rankedThemes.slice(0, 8);
                     </li>
                   ))}
                 </ul>
-
-                <dl class="meta-grid">
-                  <div>
-                    <dt>Source</dt>
-                    <dd>{book.primarySourceUsed}</dd>
-                  </div>
-                  <div>
-                    <dt>Source Confidence</dt>
-                    <dd>{book.sourceConfidence}</dd>
-                  </div>
-                  <div class="meta-wide">
-                    <dt>Notes Reference</dt>
-                    <dd>{book.notesFileReference}</dd>
-                  </div>
-                  <div class="meta-wide">
-                    <dt>Notes</dt>
-                    <dd>{book.notes}</dd>
-                  </div>
-                </dl>
               </div>
             </details>
           </div>
@@ -265,7 +246,6 @@ const defaultThemes = rankedThemes.slice(0, 8);
   .eyebrow,
   .panel-label,
   .block-label,
-  dt,
   .stat-label {
     margin: 0;
     text-transform: uppercase;
@@ -585,31 +565,6 @@ const defaultThemes = rankedThemes.slice(0, 8);
     margin: 0;
   }
 
-  .meta-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.65rem;
-    margin: 0;
-  }
-
-  .meta-grid div {
-    padding: 0.75rem;
-    border-radius: 14px;
-    background: rgba(15, 39, 66, 0.045);
-  }
-
-  .meta-wide {
-    grid-column: 1 / -1;
-  }
-
-  dt {
-    margin-bottom: 0.3rem;
-  }
-
-  dd {
-    margin: 0;
-  }
-
   [hidden] {
     display: none !important;
   }
@@ -672,12 +627,5 @@ const defaultThemes = rankedThemes.slice(0, 8);
       max-width: 180px;
     }
 
-    .meta-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .meta-wide {
-      grid-column: auto;
-    }
   }
 </style>
