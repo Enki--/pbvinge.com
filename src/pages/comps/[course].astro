@@ -114,9 +114,6 @@ const defaultThemes = rankedThemes.slice(0, 8);
                   {book.themes.slice(0, 3).map((theme) => (
                     <span class="tag">{theme}</span>
                   ))}
-                  {book.themes.length > 3 && (
-                    <span class="tag tag-more">+{book.themes.length - 3}</span>
-                  )}
                 </div>
               </section>
 
@@ -125,11 +122,14 @@ const defaultThemes = rankedThemes.slice(0, 8);
                 <ul class="connection-list">
                   {book.connectedBooks.map((connection) => (
                     <li class="connection-item">
-                      <div class="connection-heading">
-                        <strong>{connection.title}</strong>
-                        <span class="relation-pill">{connection.relation}</span>
+                      <span class="connection-bullet" aria-hidden="true"></span>
+                      <div class="connection-body">
+                        <div class="connection-heading">
+                          <strong>{connection.title}</strong>
+                          <span class="relation-pill">{connection.relation}</span>
+                        </div>
+                        <p class="connection-copy">{connection.explanation}</p>
                       </div>
-                      <p class="connection-copy">{connection.explanation}</p>
                     </li>
                   ))}
                 </ul>
@@ -359,6 +359,7 @@ const defaultThemes = rankedThemes.slice(0, 8);
     gap: 0.62rem;
     padding: 0.82rem;
     height: 100%;
+    align-content: start;
   }
 
   .card-primary {
@@ -438,6 +439,10 @@ const defaultThemes = rankedThemes.slice(0, 8);
     gap: 0.28rem;
   }
 
+  .ideas-block {
+    min-height: 9rem;
+  }
+
   .ideas-block li {
     color: var(--text-strong);
   }
@@ -470,19 +475,30 @@ const defaultThemes = rankedThemes.slice(0, 8);
   .card-foot {
     display: grid;
     gap: 0.58rem;
+    align-content: start;
+  }
+
+  .themes-block {
+    min-height: 3.6rem;
   }
 
   .theme-tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.4rem;
     margin-top: 0.4rem;
+    overflow: hidden;
   }
 
   .tag {
     padding: 0.34rem 0.62rem;
     border-radius: 999px;
     font-size: 0.77rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc((100% - 0.8rem) / 3);
+    flex: 0 1 auto;
   }
 
   .tag {
@@ -490,22 +506,33 @@ const defaultThemes = rankedThemes.slice(0, 8);
     color: var(--study-accent);
   }
 
-  .tag-more {
-    background: rgba(15, 39, 66, 0.08);
-  }
-
   .connection-list {
     display: grid;
-    gap: 0.55rem;
+    gap: 0.38rem;
     margin: 0.45rem 0 0;
     padding: 0;
     list-style: none;
+    align-content: start;
   }
 
   .connection-item {
-    padding: 0.52rem 0.62rem;
-    border-radius: 14px;
-    background: rgba(176, 95, 55, 0.08);
+    display: grid;
+    grid-template-columns: 0.7rem minmax(0, 1fr);
+    gap: 0.45rem;
+    align-items: start;
+  }
+
+  .connection-bullet {
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-top: 0.38rem;
+    border-radius: 999px;
+    background: var(--study-signal);
+    box-shadow: 0 0 0 4px rgba(176, 95, 55, 0.12);
+  }
+
+  .connection-body {
+    min-width: 0;
   }
 
   .connection-heading {
@@ -552,11 +579,11 @@ const defaultThemes = rankedThemes.slice(0, 8);
     border-color: rgba(148, 163, 184, 0.12);
   }
 
-  :root[data-theme='dark'] .connection-item {
-    background: rgba(251, 146, 60, 0.12);
+  :root[data-theme='dark'] .idea-bullet {
+    box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15);
   }
 
-  :root[data-theme='dark'] .idea-bullet {
+  :root[data-theme='dark'] .connection-bullet {
     box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15);
   }
 
