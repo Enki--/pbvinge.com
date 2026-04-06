@@ -26,9 +26,6 @@ const books = guide.books.map((book) => ({
   noteHref: noteHrefByTitle.get(book.canonicalTitle.trim().toLowerCase()),
 }));
 
-const totalIdeas = books.reduce((sum, book) => sum + book.mainIdeas.length, 0);
-const totalConnections = books.reduce((sum, book) => sum + book.connectedBooks.length, 0);
-
 const themeCounts = new Map<string, number>();
 
 for (const book of books) {
@@ -57,20 +54,17 @@ const defaultThemes = rankedThemes.slice(0, 8);
         </p>
       </div>
 
-      <div class="hero-stats" aria-label="Course summary">
-        <div class="stat-card">
-          <span class="stat-label">Books</span>
-          <strong>{books.length}</strong>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">Main Ideas</span>
-          <strong>{totalIdeas}</strong>
-        </div>
-        <div class="stat-card">
-          <span class="stat-label">Connections</span>
-          <strong>{totalConnections}</strong>
-        </div>
-      </div>
+      <aside class="hero-takeaways" aria-label="Key course takeaways">
+        <p class="stat-label">Key Takeaways</p>
+        <ul class="hero-takeaway-list">
+          {guide.takeaways.map((takeaway) => (
+            <li>
+              <span class="hero-bullet" aria-hidden="true"></span>
+              <span>{takeaway}</span>
+            </li>
+          ))}
+        </ul>
+      </aside>
     </header>
 
     <section class="books-grid" aria-label={`${guide.course} study books`}>
@@ -256,27 +250,43 @@ const defaultThemes = rankedThemes.slice(0, 8);
     color: var(--text-subtle);
   }
 
-  .hero-stats {
+  .hero-takeaways {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.55rem;
-    align-self: end;
-  }
-
-  .stat-card {
-    display: grid;
-    gap: 0.18rem;
-    padding: 0.6rem 0.72rem;
-    border-radius: 14px;
+    gap: 0.45rem;
+    align-self: stretch;
+    padding: 0.72rem 0.85rem;
+    border-radius: 18px;
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(15, 39, 66, 0.08);
     backdrop-filter: blur(6px);
   }
 
-  .stat-card strong {
-    font-size: clamp(1.2rem, 2vw, 1.65rem);
-    line-height: 1;
-    color: var(--study-accent);
+  .hero-takeaway-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.34rem;
+  }
+
+  .hero-takeaway-list li {
+    display: grid;
+    grid-template-columns: 0.7rem minmax(0, 1fr);
+    gap: 0.45rem;
+    align-items: start;
+    color: var(--text-strong);
+    font-size: 0.84rem;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .hero-bullet {
+    width: 0.42rem;
+    height: 0.42rem;
+    margin-top: 0.33rem;
+    border-radius: 999px;
+    background: var(--study-signal);
+    box-shadow: 0 0 0 4px rgba(176, 95, 55, 0.12);
   }
 
   .theme-panel {
@@ -570,12 +580,16 @@ const defaultThemes = rankedThemes.slice(0, 8);
     box-shadow: 0 24px 60px rgba(2, 8, 23, 0.35);
   }
 
-  :root[data-theme='dark'] .stat-card {
+  :root[data-theme='dark'] .hero-takeaways {
     background: rgba(15, 23, 42, 0.45);
     border-color: rgba(148, 163, 184, 0.12);
   }
 
   :root[data-theme='dark'] .idea-bullet {
+    box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15);
+  }
+
+  :root[data-theme='dark'] .hero-bullet {
     box-shadow: 0 0 0 4px rgba(251, 146, 60, 0.15);
   }
 
@@ -611,10 +625,6 @@ const defaultThemes = rankedThemes.slice(0, 8);
     .theme-panel-header {
       flex-direction: column;
       align-items: start;
-    }
-
-    .hero-stats {
-      grid-template-columns: 1fr;
     }
 
     .card-shell {

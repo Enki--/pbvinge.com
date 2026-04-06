@@ -27,6 +27,7 @@ export interface CourseStudyGuide {
   shortTitle: string;
   pageTitle: string;
   description: string;
+  takeaways: string[];
   books: CourseStudyBook[];
 }
 
@@ -37,6 +38,13 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
     pageTitle: 'SAASS 601 Comps Study Wall',
     description:
       'A cover-first review wall for SAASS 601 that keeps the books, core ideas, and conceptual links visible in one place.',
+    takeaways: [
+      'Strategy is an education in judgment, not a checklist.',
+      'War is enduring, and its causes are multiple.',
+      'Strategic choices are made under uncertainty by fallible humans and imperfect institutions.',
+      'History is indispensable, but its lessons must be handled critically.',
+      'Good strategy must align political purpose, moral restraint, and a plausible ending.',
+    ],
     books: [
       {
         canonicalTitle: 'The Structure of Scientific Revolutions',
