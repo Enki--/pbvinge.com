@@ -1339,11 +1339,11 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
     description:
       'A cover-first review wall for SAASS 632 focused on order, legitimacy, systemic change, and the strategic tools that shape world politics short of war.',
     takeaways: [
-      'International order rests on power, but it endures through legitimacy, restraint, and adaptation.',
-      'Structure matters, yet ideas, narratives, and domestic backlash shape how states interpret and respond to power shifts.',
-      'Revision and accommodation depend on both material change and persuasive claims about right and order.',
-      'Economic and communicative tools are real instruments of strategy, not background noise around military power.',
-      'Good strategy requires connecting world order to social legitimacy, institutional durability, and the risks of systemic change.',
+      'This is a strategist’s course, not a paradigms course.',
+      'Power is the baseline reality of international politics, but power is broader than force.',
+      'International order is not natural or permanent; it is made, contested, and remade.',
+      'Capabilities alone do not explain outcomes; perception, legitimacy, and narrative matter.',
+      'The practical takeaway is applied statecraft.',
     ],
     books: [
       {
