@@ -1339,11 +1339,11 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
     description:
       'A cover-first review wall for SAASS 627 focused on airpower theory, organizational adaptation, strategic bombing, and the political effects of aviation from World War I through the early Cold War.',
     takeaways: [
-      'Airpower theory has to be judged against evidence, not institutional promise.',
-      'Claims of independent strategic decision recur, but wartime results depend on context, adaptation, and enemy resilience.',
-      'Airpower often matters most through mobility denial, logistics, and support to wider campaigns rather than autonomous coercion alone.',
-      'Aviation is also a political instrument: it can build legitimacy, sustain order, or generate backlash.',
-      'Industrial capacity, doctrine, and organizational learning determine whether air forces succeed in long war.',
+      'Airpower is not a standalone technology story: it is part of the larger history of total war, industrial competition, and great-power rivalry in the first half of the twentieth century.',
+      'The central intellectual thread is the gap between theory and reality: the course keeps asking how sweeping claims about decisive airpower were formed, why they were persuasive, and what actual war revealed about their limits.',
+      'There is no single "airpower way."',
+      'Airpower\'s strategic value depends on context and integration.',
+      'The course\'s final message is methodological: use history to derive insights, not simplistic lessons, and apply those insights to contemporary strategic competition and strategy formation.',
     ],
     books: [
       {
@@ -1934,6 +1934,705 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
           },
         ],
         confidence: 'Medium',
+      },
+    ],
+  },
+  '628': {
+    course: 'SAASS 628',
+    shortTitle: 'Modern Airpower',
+    pageTitle: 'SAASS 628 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 628 focused on airpower after 1945, limited war, coercion, nuclear strategy, coalition politics, and the political effectiveness of force.',
+    takeaways: [
+      'Airpower defines modern war, but modern war after 1945 is usually not total war.',
+      'The key measure of airpower is political effectiveness, not just destruction.',
+      'Technology keeps expanding airpower\'s possibilities, but it never removes the strategic problem.',
+      'Airpower is usually most valuable as a coercive, shaping, and enabling arm of a broader strategy, not as a standalone war-winning formula.',
+      'The practical lesson is about strategic judgment and adaptation: airmen and policymakers repeatedly misread, overlearn, or fail to learn.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'For the Common Defense',
+        subtitle: 'A Military History of the United States from 1607 to 2012',
+        authors: ['Allan R. Millett', 'Peter Maslowski', 'William B. Feis'],
+        year: 2012,
+        sourceConfidence: 'High',
+        notes:
+          'Not in the "Course Texts" block, but clearly assigned as required reading (pp. 440-475) on 30 Oct. Verified against uploaded PDF.',
+        coverArt:
+          'https://d28hgpri8am2if.cloudfront.net/book_images/cvr9781451623536_9781451623536_hr.jpg',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Truman limited the Korean War and relieved MacArthur because widening the conflict threatened civilian control and risked general war.',
+          'Washington used the Korean crisis to drive U.S. rearmament and NATO force expansion because containment commitments exceeded available military capacity.',
+          'The war ended in armistice because U.S./UN aims shifted from victory to restoring the ROK and holding a defensible line.',
+        ],
+        themes: ['grand strategy', 'limited war', 'industrial mobilization', 'alliance politics', 'deterrence', 'civil-military relations'],
+        connectedBooks: [
+          {
+            title: 'American Airpower Strategy in Korea, 1950-1953',
+            relation: 'Extends',
+            explanation:
+              'Crane shows how limited-war policy translated into operational limits on FEAF.',
+          },
+          {
+            title: 'Red Wings over the Yalu',
+            relation: 'Extends',
+            explanation:
+              'Zhang adds Chinese and Soviet agency to the Korean crisis treated here mainly from the U.S. side.',
+          },
+          {
+            title: 'To Kill Nations',
+            relation: 'Supports',
+            explanation:
+              'Both show post-1945 U.S. strategy elevated nuclear deterrence while preserving broader mobilization and alliance commitments.',
+          },
+          {
+            title: 'Euromissiles',
+            relation: 'Extends',
+            explanation:
+              'Colbourn shows how the NATO system strengthened during Korea later generated its own crisis over deterrence and cohesion.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'American Airpower Strategy in Korea, 1950-1953',
+        authors: ['Conrad C. Crane'],
+        year: 2000,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Crane" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=KvFxAAAAMAAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 1 (PDF p. 96)',
+        mainIdeas: [
+          'FEAF improvised strategy because the USAF entered Korea without doctrine suited to limited war.',
+          'Political restrictions, sanctuary concerns, and propaganda costs blocked the destruction FEAF believed necessary for coercion.',
+          'The Air Force learned the wrong lesson from Korea because leaders treated mixed battlefield success as doctrinal validation.',
+        ],
+        themes: ['airpower', 'limited war', 'coercion', 'standard operating procedures', 'organizational adaptation', 'joint warfare'],
+        connectedBooks: [
+          {
+            title: 'Red Wings over the Yalu',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both analyze the Korean air war, but Zhang explains how the conflict built Chinese airpower while Crane shows how it exposed USAF strategic weakness.',
+          },
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Supports',
+            explanation:
+              'Both argue political restraint and faulty learning reduced airpower\'s coercive effect in Asia.',
+          },
+          {
+            title: 'To Kill Nations',
+            relation: 'Shares framework',
+            explanation:
+              'Both show atomic-age assumptions shaped how American air leaders interpreted conventional war.',
+          },
+          {
+            title: 'For the Common Defense',
+            relation: 'Extends',
+            explanation:
+              'Crane turns a broad Cold War narrative into a detailed case of containment under combat conditions.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Red Wings over the Yalu',
+        subtitle: 'China, the Soviet Union, and the Air War in Korea',
+        authors: ['Xiaoming Zhang'],
+        year: 2002,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Zhang" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=N-0b-94OJPcC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 2 (PDF p. 97)',
+        mainIdeas: [
+          'Beijing treated U.S. air superiority as a strategic threat, so airpower heavily shaped China\'s decision to intervene and defend the Yalu region.',
+          'Soviet aircraft, training, and operational cover made Chinese participation possible because the PLAAF lacked modern equipment and combat experience.',
+          'Korean combat accelerated PLAAF development because repeated losses and limited combat exposure forced rapid organizational adaptation.',
+        ],
+        themes: ['decision-making', 'airpower', 'technological change', 'organizational adaptation', 'limited war', 'military innovation'],
+        connectedBooks: [
+          {
+            title: 'American Airpower Strategy in Korea, 1950-1953',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'The same war yields a Chinese adaptation story in Zhang and a USAF frustration story in Crane.',
+          },
+          {
+            title: 'Hanoi\'s War',
+            relation: 'Shares framework',
+            explanation:
+              'Both use communist-side sources to show U.S. air campaigns confronted deliberate adversary strategy rather than passive targets.',
+          },
+          {
+            title: 'For the Common Defense',
+            relation: 'Extends',
+            explanation:
+              'Zhang adds Chinese and Soviet decision-making to a U.S.-centered survey of the early Cold War.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'To Kill Nations',
+        subtitle: 'American Strategy in the Air-Atomic Age and the Rise of Mutually Assured Destruction',
+        authors: ['Edward Kaplan'],
+        year: 2015,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Kaplan" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?id=ISNQzQEACAAJ&img=1&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 3 (PDF p. 98)',
+        mainIdeas: [
+          'Early U.S. nuclear strategy preserved the logic of strategic bombing because atomic weapons seemed to make decisive destruction feasible.',
+          'Air-atomic doctrine emerged from the interaction of technological change, Air Force institutional preferences, and presidential choices because none alone determined strategy.',
+          'Pressure for flexible response grew because massive integrated strike plans narrowed civilian options and weakened controlled deterrence.',
+        ],
+        themes: ['airpower', 'deterrence', 'grand strategy', 'civil-military relations', 'bureaucratic politics', 'technological change'],
+        connectedBooks: [
+          {
+            title: 'For the Common Defense',
+            relation: 'Supports',
+            explanation:
+              'Both show nuclear deterrence became central because U.S. leaders sought security without permanent mass mobilization.',
+          },
+          {
+            title: '...The Heavens and the Earth',
+            relation: 'Shares framework',
+            explanation:
+              'Both trace how technological change and state institutions generated new strategic behavior.',
+          },
+          {
+            title: 'Euromissiles',
+            relation: 'Extends',
+            explanation:
+              'Colbourn shows how nuclear strategy later destabilized alliance politics in Europe.',
+          },
+          {
+            title: 'American Airpower Strategy in Korea, 1950-1953',
+            relation: 'Extends',
+            explanation:
+              'Crane shows how atomic-age assumptions shaped U.S. thinking in a conventional Asian war.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: '...The Heavens and the Earth',
+        noteTitle: 'The Heavens and the Earth',
+        subtitle: 'A Political History of the Space Age',
+        authors: ['Walter A. McDougall'],
+        year: 1997,
+        sourceConfidence: 'High',
+        notes:
+          'Title page retains the leading ellipsis; this is the 1997 Johns Hopkins paperback edition of a work originally published in 1985. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?id=qp0sAAAAYAAJ&img=1&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 4 (PDF p. 99)',
+        mainIdeas: [
+          'The space race institutionalized technocracy because both superpowers organized science and industry for strategic competition.',
+          'Space competition intensified because leaders misread technological milestones as direct measures of strategic vulnerability and prestige.',
+          'The space age transformed state power because military, industrial, and academic institutions became mutually reinforcing engines of technological change.',
+        ],
+        themes: ['space power', 'technological change', 'grand strategy', 'misperception', 'institutions', 'ideational change'],
+        connectedBooks: [
+          {
+            title: 'To Kill Nations',
+            relation: 'Shares framework',
+            explanation:
+              'Both argue technological change altered strategy through institutional choices, not through physics alone.',
+          },
+          {
+            title: 'The Making of the Unipolar Moment',
+            relation: 'Shares framework',
+            explanation:
+              'Both explain major order shifts as the product of structural change filtered through policy choice.',
+          },
+          {
+            title: 'For the Common Defense',
+            relation: 'Extends',
+            explanation:
+              'McDougall deepens the Cold War survey by tracing how space competition reshaped state power.',
+          },
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Extends',
+            explanation:
+              'Lambeth describes an operational transformation built on the technological and institutional dynamics McDougall identifies.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Limits of Air Power',
+        subtitle: 'The American Bombing of North Vietnam',
+        authors: ['Mark Clodfelter'],
+        year: '1989 / 2006',
+        sourceConfidence: 'Medium',
+        notes:
+          'Clear book identity, but the syllabus lists The Limits of Airpower (Nebraska, 2006) while the uploaded PDF is the 1989 Free Press edition and title page spells Air Power as two words. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=VVHDYxYcZJAC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 6 (PDF p. 100)',
+        mainIdeas: [
+          'Rolling Thunder failed because Johnson tried to use graduated bombing to achieve expansive political aims without risking wider war.',
+          'Linebacker produced greater effect because Nixon aligned bombing more closely with a conventional North Vietnamese offensive and accepted broader targeting.',
+          'Even in 1972 bombing could not decide the war because Hanoi\'s willingness to absorb punishment limited compellence and pushed outcomes back to war-termination politics.',
+        ],
+        themes: ['airpower', 'compellence', 'war termination', 'escalation', 'decision-making', 'limited war'],
+        connectedBooks: [
+          {
+            title: 'Powerful and Brutal Weapons',
+            relation: 'Extends',
+            explanation:
+              'Randolph provides the operational mechanics behind Clodfelter\'s contrast between Rolling Thunder and Linebacker.',
+          },
+          {
+            title: 'Hanoi\'s War',
+            relation: 'Challenges',
+            explanation:
+              'Nguyen shows Hanoi absorbed air attack because its leadership subordinated diplomacy to a long-war strategy.',
+          },
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Lambeth stresses post-Vietnam improvement, whereas Clodfelter highlights enduring political limits.',
+          },
+          {
+            title: 'The Air War Against the Islamic State',
+            relation: 'Supports',
+            explanation:
+              'Both show airpower\'s results are set by political objectives and the ground context it supports.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Powerful and Brutal Weapons',
+        subtitle: 'Nixon, Kissinger, and the Easter Offensive',
+        authors: ['Stephen P. Randolph'],
+        year: 2007,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Randolph" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=BPrRWlho_h4C&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 7 (PDF p. 101)',
+        mainIdeas: [
+          'Nixon centralized command of the 1972 air war because he distrusted the bureaucracy and tied air operations directly to diplomatic strategy.',
+          'U.S. airpower generated major operational gains in 1972 because mining, B-52 strikes, interdiction, and improved precision were coordinated against the Easter Offensive.',
+          'Those gains did not secure a durable political settlement because war termination still depended on negotiations, South Vietnamese performance, and Hanoi\'s strategic persistence.',
+        ],
+        themes: ['decision-making', 'airpower', 'operational art', 'friction', 'war termination', 'civil-military relations'],
+        connectedBooks: [
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Extends',
+            explanation:
+              'Randolph supplies the 1972 case detail that underpins Clodfelter\'s comparison between Rolling Thunder and Linebacker.',
+          },
+          {
+            title: 'Hanoi\'s War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Randolph highlights temporary U.S. operational recovery, whereas Nguyen shows Hanoi still shaped the war\'s political settlement.',
+          },
+          {
+            title: 'Strategic Air Power in Desert Storm',
+            relation: 'Shares framework',
+            explanation:
+              'Both judge air campaigns by whether operational success produced political results.',
+          },
+          {
+            title: 'American Airpower Strategy in Korea, 1950-1953',
+            relation: 'Supports',
+            explanation:
+              'Both show command friction and political restraint diluted airpower in Asian limited wars.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Hanoi\'s War',
+        subtitle: 'An International History of the War for Peace in Vietnam',
+        authors: ['Lien-Hang T. Nguyen'],
+        year: 2012,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Nguyen" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=lbwObDP_hJ0C&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 8 (PDF p. 102)',
+        mainIdeas: [
+          'Le Duan dominated Hanoi\'s strategy because he centralized party power and subordinated rivals, diplomacy, and battlefield choices to reunification.',
+          'Hanoi coordinated offensives and negotiations because expelling the United States mattered more than immediate battlefield settlement.',
+          'U.S. bombing failed to force strategic compromise because Hanoi accepted high costs inside a long-war strategy.',
+        ],
+        themes: ['decision-making', 'grand strategy', 'war termination', 'escalation', 'power politics', 'coercion'],
+        connectedBooks: [
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Challenges',
+            explanation:
+              'Nguyen shows why U.S. coercive logic failed by demonstrating that Hanoi defined the political contest differently.',
+          },
+          {
+            title: 'Powerful and Brutal Weapons',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Randolph emphasizes U.S. operational gains in 1972, whereas Nguyen shows Hanoi still shaped the war\'s political settlement.',
+          },
+          {
+            title: 'Red Wings over the Yalu',
+            relation: 'Shares framework',
+            explanation:
+              'Both use communist-side sources to recover adversary strategy and adaptation.',
+          },
+          {
+            title: 'American Airpower Strategy in Korea, 1950-1953',
+            relation: 'Supports',
+            explanation:
+              'Both show adversaries under heavy air attack adapted politically and organizationally rather than capitulating.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Euromissiles',
+        subtitle: 'The Nuclear Weapons That Nearly Destroyed NATO',
+        authors: ['Susan Colbourn'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes: 'Syllabus capitalizes "Nato"; title page uses NATO. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=yn1VEAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 9 (PDF p. 103)',
+        mainIdeas: [
+          'The Euromissile crisis threatened NATO because deployment decisions activated deep domestic and alliance divisions.',
+          'The dual-track decision linked deployment and arms control because NATO needed to reinforce deterrence without breaking cohesion.',
+          'The crisis ended when Soviet political change and sustained alliance bargaining altered the negotiating environment, not when NATO solved its internal contradictions.',
+        ],
+        themes: ['deterrence', 'alliance politics', 'legitimacy', 'escalation', 'grand strategy', 'institutions'],
+        connectedBooks: [
+          {
+            title: 'To Kill Nations',
+            relation: 'Extends',
+            explanation:
+              'Colbourn shows how nuclear strategy migrated from war planning to alliance management and domestic contestation.',
+          },
+          {
+            title: 'The Making of the Unipolar Moment',
+            relation: 'Supports',
+            explanation:
+              'Both show strategic order depended on political choices inside the Western alliance as much as on raw power.',
+          },
+          {
+            title: 'NATO\'s Gamble',
+            relation: 'Shares framework',
+            explanation:
+              'Both explain NATO strategy through alliance bargaining rather than military capability alone.',
+          },
+          {
+            title: 'For the Common Defense',
+            relation: 'Extends',
+            explanation:
+              'Late Cold War NATO tensions grew out of the collective security system created after 1945.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Making of the Unipolar Moment',
+        noteTitle: 'Making the Unipolar Moment',
+        subtitle: 'U.S. Foreign Policy and the Rise of the Post-Cold War Order',
+        authors: ['Hal Brands'],
+        year: 2016,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Brands" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=AQ-eDgAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 10 (PDF p. 104)',
+        mainIdeas: [
+          'The unipolar moment emerged through long-term interaction between structural change and deliberate U.S. statecraft, not from sudden Soviet collapse alone.',
+          'U.S. leaders from Carter through Bush restored American power by exploiting globalization, democratic change, and Soviet weakness across multiple arenas.',
+          'Post-Cold War primacy endured because Washington used institutions, norms, and selective force to lock in an international order favorable to U.S. power.',
+        ],
+        themes: ['grand strategy', 'international system', 'international order', 'institutions', 'ideational change', 'power politics'],
+        connectedBooks: [
+          {
+            title: '...The Heavens and the Earth',
+            relation: 'Shares framework',
+            explanation:
+              'Both explain major order shifts as the product of structural change filtered through policy choice.',
+          },
+          {
+            title: 'Euromissiles',
+            relation: 'Supports',
+            explanation:
+              'Late Cold War alliance bargaining helped create the favorable strategic environment Brands says U.S. leaders exploited.',
+          },
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Extends',
+            explanation:
+              'Post-Vietnam airpower reform provided a military instrument for enforcing primacy once bipolarity ended.',
+          },
+          {
+            title: 'NATO\'s Gamble',
+            relation: 'Extends',
+            explanation:
+              'Kosovo shows how unipolar power still operated through coalition politics and legitimacy constraints.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Transformation of American Air Power',
+        authors: ['Benjamin S. Lambeth'],
+        year: 2000,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Lambeth" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=g28yvaf3988C&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 11 (PDF p. 105)',
+        mainIdeas: [
+          'Post-Vietnam reform transformed U.S. airpower because realistic training, stealth, precision weapons, and C4ISR were integrated into a new operational system.',
+          'Centralized joint air planning increased campaign coherence because the JFACC model linked dispersed assets to theater objectives.',
+          'Desert Storm demonstrated this transformation at the operational level because airpower could suppress defenses, isolate the battlefield, and attrit fielded forces before the ground offensive.',
+        ],
+        themes: ['airpower', 'military innovation', 'technological change', 'organizational adaptation', 'operational art', 'joint warfare'],
+        connectedBooks: [
+          {
+            title: 'Strategic Air Power in Desert Storm',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Lambeth treats Desert Storm as proof of transformation, whereas Olsen argues strategic paralysis remained incomplete.',
+          },
+          {
+            title: 'NATO\'s Gamble',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Kosovo exposed coalition and political limits to the capabilities Lambeth treats as transformative.',
+          },
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Challenges',
+            explanation:
+              'Clodfelter shows political objectives can still negate advances in air capability.',
+          },
+          {
+            title: 'The Air War Against the Islamic State',
+            relation: 'Extends',
+            explanation:
+              'OIR shows transformed airpower became an enabling instrument within partner-based campaigns rather than an independently decisive one.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Strategic Air Power in Desert Storm',
+        authors: ['John Andreas Olsen'],
+        year: 2003,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Olsen" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=Djn_AQAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 12 (PDF p. 106)',
+        mainIdeas: [
+          'Desert Storm\'s air campaign generated severe Iraqi dislocation but did not deliver the full strategic paralysis often claimed.',
+          'The campaign fell short strategically because U.S. leaders never linked operational air success to a clear national war-termination concept.',
+          'Airpower assessment must measure political effect, not damage totals, because operational brilliance can obscure unresolved strategic problems.',
+        ],
+        themes: ['airpower', 'operational art', 'friction', 'war termination', 'decision-making', 'joint warfare'],
+        connectedBooks: [
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Olsen accepts major operational gains but rejects Desert Storm as conclusive proof of strategic decisiveness.',
+          },
+          {
+            title: 'Powerful and Brutal Weapons',
+            relation: 'Shares framework',
+            explanation:
+              'Both judge air campaigns by whether operational success produced political results.',
+          },
+          {
+            title: 'NATO\'s Gamble',
+            relation: 'Supports',
+            explanation:
+              'Henriksen likewise argues airpower underperforms when political objectives remain underdeveloped.',
+          },
+          {
+            title: 'The Making of the Unipolar Moment',
+            relation: 'Extends',
+            explanation:
+              'Desert Storm demonstrates the early coercive style of U.S. primacy.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'NATO\'s Gamble',
+        subtitle: 'Combining Diplomacy and Airpower in the Kosovo Crisis, 1998-1999',
+        authors: ['Dag Henriksen'],
+        year: '2007 / 2013',
+        sourceConfidence: 'Medium',
+        notes:
+          'Clear book identity, but the syllabus misspells the surname as Henrikson and the calendar as Henrickson; uploaded PDF title page shows Dag Henriksen and first publication in 2007, while syllabus lists 2013. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?id=KjF_0QEACAAJ&img=1&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 13 (PDF p. 107)',
+        mainIdeas: [
+          'NATO began Operation Allied Force without coherent strategic guidance because alliance members could not agree on aims, risks, or escalation thresholds.',
+          'Expectations that limited airstrikes would compel Milosevic quickly distorted campaign design because leaders substituted optimism for a fully developed strategy.',
+          'The campaign adapted only under pressure because alliance bargaining and civil-military tension forced NATO to revise its approach.',
+        ],
+        themes: ['alliance politics', 'compellence', 'legitimacy', 'strategy', 'decision-making', 'civil-military relations'],
+        connectedBooks: [
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Kosovo exposed the political limits of the capabilities Lambeth treats as transformative.',
+          },
+          {
+            title: 'Strategic Air Power in Desert Storm',
+            relation: 'Supports',
+            explanation:
+              'Both argue air campaigns require defined political end states before operational design can be effective.',
+          },
+          {
+            title: 'Euromissiles',
+            relation: 'Shares framework',
+            explanation:
+              'NATO power depends on alliance bargaining and domestic legitimacy, not on capability alone.',
+          },
+          {
+            title: 'The Making of the Unipolar Moment',
+            relation: 'Extends',
+            explanation:
+              'Kosovo shows how the post-Cold War order used force to enforce norms while constraining escalation and coalition cohesion.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'See It/Shoot It',
+        subtitle: 'The Secret History of the CIA\'s Lethal Drone Program',
+        authors: ['Christopher J. Fuller'],
+        year: 2017,
+        sourceConfidence: 'High',
+        notes: 'Calendar shorthand "Fuller" merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=4iSMDgAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 14 (PDF p. 108)',
+        mainIdeas: [
+          'The CIA drone program emerged because counterterrorism policy and institutional entrepreneurship converged around a platform that promised persistent surveillance and remote precision strike.',
+          'Drone warfare expanded because technological change solved earlier persistence and targeting problems while reducing the political costs of force.',
+          'Tactical strike success generated enduring strategic liabilities because secrecy, civilian harm, and sovereignty disputes undermined legitimacy.',
+        ],
+        themes: ['airpower', 'technological change', 'organizational adaptation', 'civil-military relations', 'ethics', 'legitimacy'],
+        connectedBooks: [
+          {
+            title: 'The Air War Against the Islamic State',
+            relation: 'Shares framework',
+            explanation:
+              'Persistent ISR and precision strike expand options but still depend on a larger campaign design.',
+          },
+          {
+            title: 'The Making of the Unipolar Moment',
+            relation: 'Extends',
+            explanation:
+              'Fuller shows how the post-Cold War search for politically sustainable force matured into covert remote strike.',
+          },
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Extends',
+            explanation:
+              'The technological and organizational reforms Lambeth describes made later persistent precision strike feasible.',
+          },
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both show efficient strike systems do not automatically generate durable political outcomes, but Fuller applies that problem to covert counterterrorism rather than interstate bombing.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Air War Against the Islamic State',
+        subtitle: 'The Role of Airpower in Operation Inherent Resolve',
+        authors: [
+          'Becca Wasser',
+          'Stacie L. Pettyjohn',
+          'Jeffrey Martini',
+          'Alexandra T. Evans',
+          'Karl P. Mueller',
+          'Nathaniel Edenfield',
+          'Gabrielle Tarini',
+          'Ryan Haberman',
+          'Jalen Zeman',
+        ],
+        year: 2021,
+        sourceConfidence: 'High',
+        notes:
+          'Stand-alone RAND monograph/report listed in Course Texts; calendar shorthand "Wasser et al." merged here. Verified against uploaded PDF.',
+        coverArt:
+          'https://books.google.com/books/content?id=j746zgEACAAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 15 (PDF p. 109)',
+        mainIdeas: [
+          'Airpower was indispensable in OIR because it enabled a "by, with, and through" campaign fought by local ground partners.',
+          'More aggressive bombing would not have accelerated victory decisively because partner readiness and capacity, not sortie availability, set campaign tempo.',
+          'OIR placed modern U.S. airpower in an enabling role because coalition strategy depended on joint integration and partner ground forces to translate strikes into territorial gains.',
+        ],
+        themes: ['airpower', 'indirect approach', 'alliance politics', 'operational art', 'joint warfare', 'strategy'],
+        connectedBooks: [
+          {
+            title: 'See It/Shoot It',
+            relation: 'Shares framework',
+            explanation:
+              'ISR-rich precision strike expands options but does not remove the need for a larger political strategy.',
+          },
+          {
+            title: 'The Limits of Air Power',
+            relation: 'Supports',
+            explanation:
+              'Airpower\'s effect remained bounded by political aims and the character of the ground campaign.',
+          },
+          {
+            title: 'NATO\'s Gamble',
+            relation: 'Supports',
+            explanation:
+              'Coalition politics and limited political objectives shaped how airpower could be used.',
+          },
+          {
+            title: 'The Transformation of American Air Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Transformed airpower produced major operational leverage, but OIR shows that leverage often served coalition strategy rather than independent decisiveness.',
+          },
+        ],
+        confidence: 'High',
       },
     ],
   },
