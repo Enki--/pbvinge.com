@@ -1,0 +1,670 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { courseStudyGuides } from '../../data/comps';
+
+export async function getStaticPaths() {
+  return Object.keys(courseStudyGuides).map((course) => ({
+    params: { course },
+  }));
+}
+
+const { course } = Astro.params;
+const guide = course ? courseStudyGuides[course] : undefined;
+
+if (!guide) {
+  throw new Error(`Unknown comps course: ${course}`);
+}
+
+const noteBooks = await getCollection('books', ({ data }) => data.class === course && data.status === 'complete');
+const noteHrefByTitle = new Map(
+  noteBooks.map((book) => [book.data.title.trim().toLowerCase(), `/books/${book.slug}`]),
+);
+
+const books = guide.books.map((book) => ({
+  ...book,
+  noteHref: noteHrefByTitle.get(book.canonicalTitle.trim().toLowerCase()),
+}));
+
+const totalIdeas = books.reduce((sum, book) => sum + book.mainIdeas.length, 0);
+const totalConnections = books.reduce((sum, book) => sum + book.connectedBooks.length, 0);
+
+const themeCounts = new Map<string, number>();
+
+for (const book of books) {
+  for (const theme of book.themes) {
+    themeCounts.set(theme, (themeCounts.get(theme) || 0) + 1);
+  }
+}
+
+const rankedThemes = Array.from(themeCounts.entries())
+  .sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    return a[0].localeCompare(b[0]);
+  });
+
+const defaultThemes = rankedThemes.slice(0, 8);
+
+function confidenceClass(confidence: string) {
+  switch (confidence) {
+    case 'High':
+      return 'confidence-high';
+    case 'Medium':
+      return 'confidence-medium';
+    default:
+      return 'confidence-low';
+  }
+}
+---
+
+<Layout title={`${guide.pageTitle} - Shrink`} description={guide.description}>
+  <section class="study-wall">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">{guide.course}</p>
+        <h1>{guide.pageTitle}</h1>
+        <p class="lede">
+          Cover-first for fast recall, with each book distilled into three main ideas and expandable connection notes.
+        </p>
+      </div>
+
+      <div class="hero-stats" aria-label="Course summary">
+        <div class="stat-card">
+          <span class="stat-label">Books</span>
+          <strong>{books.length}</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Main Ideas</span>
+          <strong>{totalIdeas}</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Connections</span>
+          <strong>{totalConnections}</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="theme-panel" aria-labelledby="theme-heading">
+      <div class="theme-panel-header">
+        <div>
+          <p class="panel-label">Recurring themes</p>
+          <h2 id="theme-heading">Filter the wall by concept.</h2>
+        </div>
+        <button class="theme-chip theme-chip-active" type="button" data-theme-filter="all" aria-pressed="true">
+          All books
+        </button>
+      </div>
+
+      <div class="theme-row">
+        {defaultThemes.map(([theme, count]) => (
+          <button type="button" class="theme-chip" data-theme-filter={theme} aria-pressed="false">
+            <span>{theme}</span>
+            <span class="theme-count">{count}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <section class="books-grid" aria-label={`${guide.course} study books`}>
+      {books.map((book) => (
+        <article class="study-card" data-study-card data-themes={book.themes.join('|').toLowerCase()}>
+          <div class="card-shell">
+            <div class="cover-column">
+              <img src={book.coverArt} alt={`Cover of ${book.canonicalTitle}`} loading="lazy" />
+            </div>
+
+            <div class="content-column">
+              <div class="card-topline">
+                <span class="year-chip">{book.year}</span>
+                <span class={`confidence-pill ${confidenceClass(book.confidence)}`}>
+                  {book.confidence} confidence
+                </span>
+              </div>
+
+              <header class="card-header">
+                {book.noteHref ? (
+                  <a href={book.noteHref} class="title-link">
+                    <h3>{book.canonicalTitle}</h3>
+                  </a>
+                ) : (
+                  <h3>{book.canonicalTitle}</h3>
+                )}
+                {book.subtitle && <p class="subtitle">{book.subtitle}</p>}
+                <p class="authors">{book.authors.join(' · ')}</p>
+              </header>
+
+              <section class="ideas-block">
+                <p class="block-label">3 main ideas</p>
+                <ol>
+                  {book.mainIdeas.map((idea) => (
+                    <li>{idea}</li>
+                  ))}
+                </ol>
+              </section>
+
+              <section class="themes-block">
+                <p class="block-label">Themes</p>
+                <div class="theme-tags">
+                  {book.themes.map((theme) => (
+                    <span class="tag">{theme}</span>
+                  ))}
+                </div>
+              </section>
+
+              <section class="connections-block">
+                <p class="block-label">Connected books</p>
+                <div class="connection-tags">
+                  {book.connectedBooks.map((connection) => (
+                    <span class="connection-tag">{connection.title}</span>
+                  ))}
+                </div>
+
+                <details class="connection-details">
+                  <summary>Why these connections hold</summary>
+                  <ul>
+                    {book.connectedBooks.map((connection) => (
+                      <li>
+                        <div class="connection-heading">
+                          <strong>{connection.title}</strong>
+                          <span class="relation-pill">{connection.relation}</span>
+                        </div>
+                        <p>{connection.explanation}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </section>
+
+              <dl class="meta-grid">
+                <div>
+                  <dt>Source</dt>
+                  <dd>{book.primarySourceUsed}</dd>
+                </div>
+                <div>
+                  <dt>Source Confidence</dt>
+                  <dd>{book.sourceConfidence}</dd>
+                </div>
+                <div class="meta-wide">
+                  <dt>Notes Reference</dt>
+                  <dd>{book.notesFileReference}</dd>
+                </div>
+                <div class="meta-wide">
+                  <dt>Notes</dt>
+                  <dd>{book.notes}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+  </section>
+
+  <script is:inline>
+    const filterButtons = Array.from(document.querySelectorAll('[data-theme-filter]'));
+    const studyCards = Array.from(document.querySelectorAll('[data-study-card]'));
+
+    function setThemeFilter(selectedTheme) {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.themeFilter === selectedTheme;
+        button.classList.toggle('theme-chip-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      studyCards.forEach((card) => {
+        const themes = card.dataset.themes || '';
+        const matches = selectedTheme === 'all' || themes.includes(selectedTheme.toLowerCase());
+        card.toggleAttribute('hidden', !matches);
+      });
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setThemeFilter(button.dataset.themeFilter || 'all');
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  .study-wall {
+    --study-accent: #0f2742;
+    --study-accent-soft: #dbe6f4;
+    --study-signal: #b05f37;
+    --study-signal-soft: #f7e4db;
+    --study-surface: color-mix(in srgb, var(--surface-color) 92%, #f7f0e8 8%);
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .hero,
+  .theme-panel,
+  .study-card {
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    background: var(--study-surface);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background:
+      radial-gradient(circle at top left, rgba(176, 95, 55, 0.18), transparent 35%),
+      linear-gradient(135deg, rgba(15, 39, 66, 0.1), transparent 50%),
+      var(--study-surface);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  .eyebrow,
+  .panel-label,
+  .block-label,
+  dt,
+  .stat-label {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.76rem;
+    color: var(--muted-text);
+  }
+
+  h1 {
+    margin: 0;
+    max-width: 11ch;
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    line-height: 0.94;
+    font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  }
+
+  .lede {
+    max-width: 58ch;
+    margin: 1rem 0 0;
+    font-size: 1.06rem;
+    color: var(--text-subtle);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-self: end;
+  }
+
+  .stat-card {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(15, 39, 66, 0.08);
+    backdrop-filter: blur(6px);
+  }
+
+  .stat-card strong {
+    font-size: clamp(1.75rem, 4vw, 2.3rem);
+    line-height: 1;
+    color: var(--study-accent);
+  }
+
+  .theme-panel {
+    padding: 1.2rem 1.3rem;
+  }
+
+  .theme-panel-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 0.2rem 0 0;
+    font-size: 1.45rem;
+  }
+
+  .theme-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .theme-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 0.95rem;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: var(--background-color);
+    color: var(--text-color);
+    font: inherit;
+    cursor: pointer;
+    transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
+  }
+
+  .theme-chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(176, 95, 55, 0.35);
+  }
+
+  .theme-chip-active {
+    background: var(--study-accent);
+    border-color: var(--study-accent);
+    color: #f8fafc;
+  }
+
+  .theme-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: rgba(15, 39, 66, 0.08);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .theme-chip-active .theme-count {
+    background: rgba(248, 250, 252, 0.14);
+  }
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .study-card {
+    overflow: clip;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  }
+
+  .card-shell {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    gap: 1.2rem;
+    padding: 1.2rem;
+    height: 100%;
+  }
+
+  .cover-column {
+    display: flex;
+    align-items: start;
+  }
+
+  .cover-column img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 39, 66, 0.08);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.16);
+    background: var(--surface-muted-color);
+  }
+
+  .content-column {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .card-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .year-chip,
+  .confidence-pill,
+  .relation-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .year-chip {
+    padding: 0.42rem 0.7rem;
+    background: var(--study-accent-soft);
+    color: var(--study-accent);
+  }
+
+  .confidence-pill,
+  .relation-pill {
+    padding: 0.42rem 0.75rem;
+  }
+
+  .confidence-high {
+    background: rgba(22, 163, 74, 0.12);
+    color: #166534;
+  }
+
+  .confidence-medium {
+    background: rgba(245, 158, 11, 0.16);
+    color: #9a6700;
+  }
+
+  .confidence-low {
+    background: rgba(220, 38, 38, 0.12);
+    color: #991b1b;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.08;
+  }
+
+  .title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .title-link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+  }
+
+  .subtitle,
+  .authors {
+    margin: 0.3rem 0 0;
+  }
+
+  .subtitle {
+    color: var(--text-strong);
+    font-size: 0.95rem;
+  }
+
+  .authors {
+    color: var(--text-subtle);
+  }
+
+  .ideas-block ol {
+    margin: 0.55rem 0 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .ideas-block li,
+  .connection-details li p,
+  dd {
+    color: var(--text-strong);
+  }
+
+  .theme-tags,
+  .connection-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
+  }
+
+  .tag,
+  .connection-tag {
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    font-size: 0.84rem;
+  }
+
+  .tag {
+    background: var(--study-accent-soft);
+    color: var(--study-accent);
+  }
+
+  .connection-tag {
+    background: var(--study-signal-soft);
+    color: #8a4520;
+  }
+
+  .connection-details {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .connection-details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--study-accent);
+  }
+
+  .connection-details ul {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .connection-heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.35rem;
+  }
+
+  .relation-pill {
+    background: rgba(15, 39, 66, 0.08);
+    color: var(--study-accent);
+  }
+
+  .connection-details li p {
+    margin: 0;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 0;
+    padding-top: 0.2rem;
+  }
+
+  .meta-grid div {
+    padding: 0.9rem;
+    border-radius: 18px;
+    background: rgba(15, 39, 66, 0.045);
+  }
+
+  .meta-wide {
+    grid-column: 1 / -1;
+  }
+
+  dt {
+    margin-bottom: 0.3rem;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  :root[data-theme='dark'] .study-wall {
+    --study-accent: #bfdbfe;
+    --study-accent-soft: rgba(147, 197, 253, 0.18);
+    --study-signal-soft: rgba(251, 146, 60, 0.18);
+    --study-surface: color-mix(in srgb, var(--surface-color) 90%, #111827 10%);
+  }
+
+  :root[data-theme='dark'] .hero {
+    box-shadow: 0 24px 60px rgba(2, 8, 23, 0.35);
+  }
+
+  :root[data-theme='dark'] .stat-card {
+    background: rgba(15, 23, 42, 0.45);
+    border-color: rgba(148, 163, 184, 0.12);
+  }
+
+  :root[data-theme='dark'] .confidence-high {
+    color: #86efac;
+    background: rgba(34, 197, 94, 0.18);
+  }
+
+  :root[data-theme='dark'] .confidence-medium {
+    color: #fcd34d;
+    background: rgba(245, 158, 11, 0.22);
+  }
+
+  :root[data-theme='dark'] .confidence-low {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.18);
+  }
+
+  :root[data-theme='dark'] .connection-tag {
+    color: #fed7aa;
+  }
+
+  @media (max-width: 1100px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .books-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .theme-panel-header {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .card-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .cover-column {
+      justify-content: center;
+    }
+
+    .cover-column img {
+      max-width: 180px;
+    }
+
+    .meta-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .meta-wide {
+      grid-column: auto;
+    }
+  }
+</style>
