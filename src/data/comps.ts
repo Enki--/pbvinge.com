@@ -1332,6 +1332,611 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
       },
     ],
   },
+  '627': {
+    course: 'SAASS 627',
+    shortTitle: 'Airpower History',
+    pageTitle: 'SAASS 627 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 627 focused on airpower theory, organizational adaptation, strategic bombing, and the political effects of aviation from World War I through the early Cold War.',
+    takeaways: [
+      'Airpower theory has to be judged against evidence, not institutional promise.',
+      'Claims of independent strategic decision recur, but wartime results depend on context, adaptation, and enemy resilience.',
+      'Airpower often matters most through mobility denial, logistics, and support to wider campaigns rather than autonomous coercion alone.',
+      'Aviation is also a political instrument: it can build legitimacy, sustain order, or generate backlash.',
+      'Industrial capacity, doctrine, and organizational learning determine whether air forces succeed in long war.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'The First World War',
+        authors: ['Hew Strachan'],
+        year: 2004,
+        sourceConfidence: 'High',
+        notes:
+          'Uploaded PDF is the 2004 first American/Viking edition; syllabus assigns a 2005 Penguin edition. Same work.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=KZHITOPMf4gC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 1',
+        mainIdeas: [
+          'Imperial rivalry and alliance commitments converted a Balkan crisis into a general war.',
+          'The war\'s decisive dynamics were global, linking European fronts to imperial theaters, blockade, and industrial mobilization.',
+          'Attrition, blockade, and domestic breakdown terminated the war by collapsing the Central Powers.',
+        ],
+        themes: ['war causation', 'alliance politics', 'balance of power', 'total war', 'industrial mobilization', 'war termination'],
+        connectedBooks: [
+          {
+            title: 'Winged Defense',
+            relation: 'Extends',
+            explanation:
+              'Mitchell turns limited wartime aviation evidence into a program for independent airpower.',
+          },
+          {
+            title: 'Cry Havoc',
+            relation: 'Extends',
+            explanation:
+              'Maiolo traces how the unresolved crisis of power and mobilization after 1918 regenerated general war.',
+          },
+          {
+            title: 'Rhetoric and Reality in Air Warfare',
+            relation: 'Extends',
+            explanation:
+              'Biddle shows how selective readings of 1914-1918 shaped later bombing doctrine.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Extends',
+            explanation:
+              'Overy shows how total war logic and beliefs about civilian vulnerability matured into strategic bombing practice.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Winged Defense',
+        subtitle: 'The Development and Possibilities of Modern Air Power-Economic and Military',
+        authors: ['William Mitchell'],
+        year: 1925,
+        sourceConfidence: 'Medium',
+        notes:
+          'Syllabus assigns a 2010 Alabama edition; uploaded PDF is an earlier reprint of the 1925 work.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=sqofv6rn7LMC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 1',
+        mainIdeas: [
+          'Airpower can independently decide wars rather than merely support land and sea forces.',
+          'Air superiority determines the effectiveness of landpower and seapower.',
+          'Because aircraft erase geographic barriers, states must reorganize national defense around centralized air institutions.',
+        ],
+        themes: ['airpower', 'strategy', 'technological change', 'military innovation', 'ideational change', 'institutions'],
+        connectedBooks: [
+          {
+            title: 'The First World War',
+            relation: 'Extends',
+            explanation:
+              'Mitchell generalizes far beyond what World War I aviation had actually demonstrated.',
+          },
+          {
+            title: 'Rhetoric and Reality in Air Warfare',
+            relation: 'Challenges',
+            explanation:
+              'Biddle shows that Mitchell-era claims rested on weak evidence and institutional incentive.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Challenges',
+            explanation:
+              'Overy shows that bombing rarely produced the autonomous strategic decision Mitchell promised.',
+          },
+          {
+            title: 'How the War Was Won',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'O\'Brien gives airpower strategic primacy through integrated air-sea control of mobility, not autonomous bombing.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Empire of the Air',
+        subtitle: 'Aviation and the American Ascendancy',
+        authors: ['Jenifer Van Vleck'],
+        year: 2013,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=yV10AQAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 2',
+        mainIdeas: [
+          'Aviation built American global reach through routes, commerce, and culture rather than formal conquest.',
+          'U.S. policymakers and airlines used civil aviation networks and international rules to translate route control into American strategic influence.',
+          'Crises in the jet age exposed the limits of an American-led aviation order.',
+        ],
+        themes: ['airpower', 'grand strategy', 'legitimacy', 'international order', 'institutions', 'ideational change'],
+        connectedBooks: [
+          {
+            title: 'Winged Defense',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat aviation as a transformative instrument of national power.',
+          },
+          {
+            title: 'The First World War',
+            relation: 'Extends',
+            explanation:
+              'Van Vleck shows how aviation moved from wartime novelty to a peacetime instrument of state power and order.',
+          },
+          {
+            title: 'The Tormented Alliance',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Aviation-enabled American reach generated influence in some settings, while Fredman shows it generating resentment in China.',
+          },
+          {
+            title: 'The Candy Bombers',
+            relation: 'Extends',
+            explanation:
+              'Cherny shows postwar airpower converting global reach into political legitimacy.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Cry Havoc',
+        subtitle: 'How the Arms Race Drove the World to War, 1931-1941',
+        authors: ['Joseph Maiolo'],
+        year: 2010,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=9Vl6kEFKPxoC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 3',
+        mainIdeas: [
+          'Rearmament from 1931 to 1941 became a self-reinforcing international process that narrowed leaders\' choices.',
+          'Action-reaction competition turned efforts at security into greater insecurity.',
+          'Democratic delay and Axis preventive-war logic accelerated general war.',
+        ],
+        themes: ['war causation', 'security dilemma', 'balance of power', 'international system', 'industrial mobilization', 'uncertainty'],
+        connectedBooks: [
+          {
+            title: 'The First World War',
+            relation: 'Extends',
+            explanation:
+              'Maiolo carries the power-political and mobilization crises of 1914-1918 into the interwar decade.',
+          },
+          {
+            title: 'Operational Culture and Airpower Employment in the Luftwaffe',
+            relation: 'Supports',
+            explanation:
+              'Luftwaffe force design reflects the short-war assumptions produced by rearmament politics.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Extends',
+            explanation:
+              'Overy shows how wartime capacity and resilience reflected the mobilization race Maiolo reconstructs.',
+          },
+          {
+            title: 'How the War Was Won',
+            relation: 'Shares framework',
+            explanation:
+              'Both explain outcomes through production systems and movement rather than single battles.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Operational Culture and Airpower Employment in the Luftwaffe',
+        noteTitle: 'Operational Culture and Air Power',
+        subtitle: 'A Case Study on Bomber Employment during the Battle of France and Operation Barbarossa (1939-1941)',
+        authors: ['Milena A. Jaksic Gil'],
+        year: 2021,
+        sourceConfidence: 'Medium',
+        notes:
+          'Assigned dissertation; PDF title page gives Milena A. Jaksic Gil, Potsdam 2021; syllabus shortens author and lists 2022.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 4',
+        mainIdeas: [
+          'Luftwaffe doctrine subordinated airpower to Army-centered operational decision rather than independent strategic bombing.',
+          'Versailles-era clandestine development and continental geography locked the service into short-war assumptions.',
+          'That force design produced early battlefield success but failed in prolonged attritional war.',
+        ],
+        themes: ['airpower', 'operational art', 'landpower', 'joint warfare', 'organizational behavior', 'organizational adaptation'],
+        connectedBooks: [
+          {
+            title: 'Rhetoric and Reality in Air Warfare',
+            relation: 'Challenges',
+            explanation:
+              'Biddle reconstructs Anglo-American faith in independent strategic bombing; Jaksic shows the Luftwaffe built a different airpower logic.',
+          },
+          {
+            title: 'Red Phoenix Rising',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both embed airpower in land war, but the VVS adapted to attrition while the Luftwaffe did not.',
+          },
+          {
+            title: 'MacArthur\'s Airman',
+            relation: 'Shares framework',
+            explanation:
+              'Both explain air employment through theater-specific operational art and joint warfare rather than autonomous bombing.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Extends',
+            explanation:
+              'Overy analyzes the strategic bombing campaigns the Luftwaffe was not organized to wage effectively.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Rhetoric and Reality in Air Warfare',
+        subtitle: 'The Evolution of British and American Ideas About Strategic Bombing, 1914-1945',
+        authors: ['Tami Davis Biddle'],
+        year: 2002,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=SNcFUM7wJCMC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 6',
+        mainIdeas: [
+          'Interwar British and American bombing doctrine emerged from cognitive bias and organizational interest more than hard evidence.',
+          'Industrial Fabric Theory and the self-defending bomber thesis overstated what bombing could achieve.',
+          'Wartime evidence disconfirmed these claims, but organizations revised doctrine slowly and incompletely.',
+        ],
+        themes: ['airpower', 'cognitive bias', 'misperception', 'organizational behavior', 'ideational change', 'technological change'],
+        connectedBooks: [
+          {
+            title: 'The First World War',
+            relation: 'Extends',
+            explanation:
+              'Biddle traces how selective lessons from 1914-1918 shaped interwar bombing thought.',
+          },
+          {
+            title: 'Winged Defense',
+            relation: 'Challenges',
+            explanation:
+              'Mitchell\'s confidence in decisive bombing rests on the weak evidentiary base Biddle dissects.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Supports',
+            explanation:
+              'Overy measures the wartime results of the assumptions Biddle reconstructs.',
+          },
+          {
+            title: 'Black Snow',
+            relation: 'Extends',
+            explanation:
+              'Scott shows how the failure of precision theory in Japan forced a later doctrinal rupture.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Bombing War',
+        subtitle: 'Europe, 1939-1945',
+        authors: ['Richard Overy'],
+        year: 2013,
+        sourceConfidence: 'High',
+        notes:
+          'Uploaded PDF appears to be the 2013 edition; syllabus assigns 2014 Penguin. Same work.',
+        coverArt:
+          'https://books.google.com/books/content?id=nogbAAAACAAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 7',
+        mainIdeas: [
+          'Strategic bombing failed to break civilian morale or industrial output in the decisive way planners expected.',
+          'Bombing mattered chiefly by forcing Germany to divert fighters, labor, and industry into air defense and recovery.',
+          'Bombing became war-terminating only when it coincided with Allied advance and the collapse of German fuel and transport systems.',
+        ],
+        themes: ['airpower', 'coercion', 'total war', 'industrial mobilization', 'ethics', 'organizational behavior'],
+        connectedBooks: [
+          {
+            title: 'Rhetoric and Reality in Air Warfare',
+            relation: 'Supports',
+            explanation:
+              'Overy\'s wartime evidence confirms Biddle\'s critique of prewar bombing claims.',
+          },
+          {
+            title: 'Winged Defense',
+            relation: 'Challenges',
+            explanation:
+              'Bombing failed to produce the autonomous strategic decision Mitchell forecast.',
+          },
+          {
+            title: 'How the War Was Won',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'O\'Brien gives airpower greater causal primacy by measuring mobility loss rather than coercive collapse.',
+          },
+          {
+            title: 'Black Snow',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both assess whether city bombing can coerce surrender, but Scott assigns greater war-terminating effect to Japan\'s firebombing context than Overy assigns to Europe.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Red Phoenix Rising',
+        subtitle: 'The Soviet Air Force in World War II',
+        authors: ['Von Hardesty', 'Ilya Grinberg'],
+        year: 2012,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=gyCpEAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 8',
+        mainIdeas: [
+          'The VVS recovered from 1941 collapse through industrial relocation, centralized command, and force reform.',
+          'Soviet airpower became effective by supporting land offensives, interdiction, and operational depth rather than seeking independent strategic decision.',
+          'Sustained organizational adaptation converted Soviet scale into operational superiority over the Luftwaffe.',
+        ],
+        themes: ['airpower', 'landpower', 'operational art', 'organizational adaptation', 'industrial mobilization', 'joint warfare'],
+        connectedBooks: [
+          {
+            title: 'Operational Culture and Airpower Employment in the Luftwaffe',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both treat airpower as part of land campaigns, but Soviet institutions adapted to long war while the Luftwaffe remained short-war oriented.',
+          },
+          {
+            title: 'MacArthur\'s Airman',
+            relation: 'Shares framework',
+            explanation:
+              'Both attribute air effectiveness to command reform and adaptation inside theater war.',
+          },
+          {
+            title: 'Cry Havoc',
+            relation: 'Extends',
+            explanation:
+              'Maiolo\'s rearmament story explains both Soviet vulnerability in 1941 and the industrial base for later recovery.',
+          },
+          {
+            title: 'How the War Was Won',
+            relation: 'Supports',
+            explanation:
+              'Soviet success reinforces O\'Brien\'s claim that movement destruction and production capacity determined victory.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'MacArthur\'s Airman',
+        subtitle: 'General George C. Kenney and the War in the Southwest Pacific',
+        authors: ['Thomas E. Griffith Jr.'],
+        year: 1998,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align; punctuation normalized.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=SuhmAAAAMAAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 9',
+        mainIdeas: [
+          'Kenney made airpower decisive in the Southwest Pacific by redesigning doctrine, aircraft employment, and command for theater conditions.',
+          'Kenney centralized control of dispersed air assets and removed ineffective leaders, converting airpower into MacArthur\'s operational instrument.',
+          'By combining air superiority, interdiction, and strike support, Kenney isolated Japanese forces and accelerated MacArthur\'s advance.',
+        ],
+        themes: ['airpower', 'operational art', 'joint warfare', 'organizational adaptation', 'military innovation', 'logistics and sustainment'],
+        connectedBooks: [
+          {
+            title: 'Red Phoenix Rising',
+            relation: 'Shares framework',
+            explanation:
+              'Both attribute air effectiveness to command reform and adaptation inside theater war.',
+          },
+          {
+            title: 'Operational Culture and Airpower Employment in the Luftwaffe',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both integrate airpower with land campaigns, but Kenney adapted faster and more flexibly.',
+          },
+          {
+            title: 'How the War Was Won',
+            relation: 'Supports',
+            explanation:
+              'Kenney\'s campaign operationalizes O\'Brien\'s argument that immobilizing the enemy produces strategic effect.',
+          },
+          {
+            title: 'Black Snow',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Griffith makes theater airpower decisive by isolating fielded forces, whereas Scott studies direct coercive bombing of the enemy homeland.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'The Tormented Alliance',
+        subtitle: 'American Servicemen and the Occupation of China, 1941-1949',
+        authors: ['Zach Fredman'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes: 'PDF title page and syllabus align.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=CwlpEAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 10',
+        mainIdeas: [
+          'The U.S.-China wartime alliance operated in practice as an occupation relationship, not an equal partnership.',
+          'Everyday American practices eroded Nationalist legitimacy and intensified anti-Americanism.',
+          'Those legitimacy costs strengthened Communist political narratives and undercut U.S. strategy in China.',
+        ],
+        themes: ['alliance politics', 'legitimacy', 'power politics', 'organizational behavior', 'perception'],
+        connectedBooks: [
+          {
+            title: 'Empire of the Air',
+            relation: 'Challenges',
+            explanation:
+              'Van Vleck\'s aviation-enabled American reach produced coercive local effects in Fredman\'s China.',
+          },
+          {
+            title: 'The Candy Bombers',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'U.S. presence in Berlin generated legitimacy, while U.S. presence in China generated resentment.',
+          },
+          {
+            title: 'Black Snow',
+            relation: 'Extends',
+            explanation:
+              'Scott\'s B-29 campaign depended on the Chinese basing and labor environment Fredman shows was politically corrosive.',
+          },
+          {
+            title: 'MacArthur\'s Airman',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Operationally effective U.S. airpower in the Pacific did not prevent alliance failure and legitimacy loss in China.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Black Snow',
+        noteTitle: 'Black Snow: Curtis LeMay, the Firebombing of Tokyo, and the Road to the Atomic Bomb',
+        subtitle: 'Curtis LeMay, the Firebombing of Tokyo, and the Road to the Atomic Bomb',
+        authors: ['James M. Scott'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes: 'Syllabus and uploaded PDF front matter align on title/subtitle/author.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=7fRhEAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 11',
+        mainIdeas: [
+          'High-altitude precision bombing over Japan failed because weather, range, and target structure defeated prewar assumptions.',
+          'LeMay shifted to low-level incendiary attacks to generate compellent pressure and validate airpower\'s strategic utility.',
+          'The firebombing campaign normalized mass urban destruction as a means of war termination in 1945.',
+        ],
+        themes: ['airpower', 'decision-making', 'escalation', 'compellence', 'war termination', 'ethics'],
+        connectedBooks: [
+          {
+            title: 'Rhetoric and Reality in Air Warfare',
+            relation: 'Supports',
+            explanation:
+              'Hansell\'s failed precision campaign reproduces the doctrinal weaknesses Biddle identifies.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Scott assigns stronger war-terminating effect to urban firebombing in Japan than Overy assigns to Europe\'s bombing campaigns.',
+          },
+          {
+            title: 'Winged Defense',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat airpower as capable of producing decisive strategic results against the enemy homeland, though Scott shows the wartime costs of that logic.',
+          },
+          {
+            title: 'The Tormented Alliance',
+            relation: 'Extends',
+            explanation:
+              'The B-29 offensive depended on Chinese bases and labor arrangements that Fredman shows undermined alliance legitimacy.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'How the War Was Won',
+        subtitle: 'Air-Sea Power and Allied Victory in World War II',
+        authors: ['Phillips Payson O\'Brien'],
+        year: 2015,
+        sourceConfidence: 'High',
+        notes: 'OCR/copyright material and syllabus support this as the assigned work.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=42oaCAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 12',
+        mainIdeas: [
+          'Allied victory resulted from destroying Axis mobility rather than from decisive land battles alone.',
+          'Airpower and seapower produced that result by attacking shipping, fuel, transport, and production across the entire war system.',
+          'Axis defeat followed when losses in movement and materiel outpaced replacement, making continued resistance militarily untenable.',
+        ],
+        themes: ['airpower', 'seapower', 'grand strategy', 'industrial mobilization', 'logistics and sustainment', 'war termination'],
+        connectedBooks: [
+          {
+            title: 'The Bombing War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'O\'Brien gives airpower greater causal weight because he measures mobility loss rather than coercive collapse.',
+          },
+          {
+            title: 'MacArthur\'s Airman',
+            relation: 'Supports',
+            explanation:
+              'Kenney\'s theater campaign demonstrates how isolating and immobilizing the enemy produces strategic effect.',
+          },
+          {
+            title: 'Red Phoenix Rising',
+            relation: 'Supports',
+            explanation:
+              'Soviet air-ground campaigns reinforce the primacy of movement destruction over isolated tactical victories.',
+          },
+          {
+            title: 'Winged Defense',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both assign airpower strategic importance, but O\'Brien locates decisiveness in integrated control of mobility rather than autonomous bombing.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'The Candy Bombers',
+        subtitle: 'The Untold Story of the Berlin Airlift and America\'s Finest Hour',
+        authors: ['Andrei Cherny'],
+        year: 2008,
+        sourceConfidence: 'High',
+        notes:
+          'PDF title page uses "The Candy Bombers" and 2008; syllabus lists "The Candybombers" and a 2009 Caliber edition. Same work.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=9kfBAkMRl8EC&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 627 Day 13',
+        mainIdeas: [
+          'The Berlin Airlift converted airpower from coercive destruction into sustained relief.',
+          'Tunner\'s operational system turned aerial logistics into a credible answer to the Soviet blockade.',
+          'The airlift generated Western legitimacy in Berlin and reshaped the early Cold War order.',
+        ],
+        themes: ['airpower', 'legitimacy', 'alliance politics', 'logistics and sustainment', 'organizational adaptation', 'international order'],
+        connectedBooks: [
+          {
+            title: 'Empire of the Air',
+            relation: 'Extends',
+            explanation:
+              'Cherny turns Van Vleck\'s aviation-based American reach into postwar political legitimacy.',
+          },
+          {
+            title: 'The Tormented Alliance',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'U.S. presence in Berlin generated consent, whereas U.S. presence in China generated resentment.',
+          },
+          {
+            title: 'The Bombing War',
+            relation: 'Challenges',
+            explanation:
+              'The airlift shows airpower producing strategic effect through logistics and legitimacy rather than coercive destruction.',
+          },
+          {
+            title: 'Black Snow',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both center airpower over cities for political effect, but one sustains civilians while the other targets them.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+    ],
+  },
   '632': {
     course: 'SAASS 632',
     shortTitle: 'World Order',

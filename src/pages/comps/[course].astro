@@ -20,7 +20,10 @@ function normalizeLookupTitle(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
-const noteBooks = await getCollection('books', ({ data }) => data.class === course && data.status === 'complete');
+const noteBooks = await getCollection(
+  'books',
+  ({ data }) => data.class === course && data.status.toLowerCase() === 'complete',
+);
 const noteBookByTitle = new Map(
   noteBooks.map((book) => [normalizeLookupTitle(book.data.title), book]),
 );
