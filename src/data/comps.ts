@@ -475,11 +475,11 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
     description:
       'A cover-first review wall for SAASS 600 built around the course classics, their core arguments, and the debates that connect them.',
     takeaways: [
-      'Strategy is a contest among rival theories, not a settled checklist.',
-      'Political purpose must govern how force is organized, employed, and restrained.',
-      'Indirect shaping, control of communications, and control of escalation often matter more than destruction alone.',
-      'Single-domain theories explain something important, but never the whole of strategy.',
-      'Theory matters when it educates judgment across history, technology, institutions, and uncertainty.',
+      'War and strategy have to be understood at the level of first principles.',
+      'War is always tied to politics, so strategy is about purpose before method.',
+      'No single theorist is sufficient; good strategists learn by comparing rival theories.',
+      'New domains and new technologies change warfare, but they do not erase enduring strategic problems.',
+      'The end state of the course is your own evidence-based theory of war.',
     ],
     books: [
       {
