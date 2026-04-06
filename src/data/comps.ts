@@ -1124,7 +1124,8 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'High',
         notes:
           'Official syllabus book; uploaded PDF confirms fuller credit line. Analytical columns are scoped to the assigned Paret, Shy, and Bond/Alexander chapters used in the course.',
-        coverArt: '/assets/placeholder-book.png',
+        coverArt:
+          'https://books.google.com/books/content?id=IunBwgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         primarySourceUsed: 'PDF',
         notesFileReference: 'Consolidated Notes.pdf PDF p. 49 (internal p. 42)',
         mainIdeas: [
@@ -1169,7 +1170,8 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'Medium',
         notes:
           'Clearly used: the syllabus assigns Heuser’s chapter "Christine de Pizan, the First Modern Strategist" from this book. Analytical columns are scoped to that assigned chapter, not the full book.',
-        coverArt: '/assets/placeholder-book.png',
+        coverArt:
+          'https://books.google.com/books/content?id=ZrOLnQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         primarySourceUsed: 'Syllabus',
         notesFileReference: 'Consolidated Notes.pdf PDF p. 45 (internal p. 38, background mention)',
         mainIdeas: [
@@ -1212,7 +1214,8 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'High',
         notes:
           'Clearly used: the syllabus assigns Hittle’s introduction to Jomini from this volume. Analytical columns are scoped to that assigned introduction, not the full volume.',
-        coverArt: '/assets/placeholder-book.png',
+        coverArt:
+          'https://books.google.com/books/content?id=H_sZFmdEMEEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         primarySourceUsed: 'PDF',
         notesFileReference: 'Consolidated Notes.pdf PDF p. 53 (internal p. 46)',
         mainIdeas: [
@@ -1295,7 +1298,8 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'Medium',
         notes:
           'Clearly used: the syllabus assigns Edward Warner’s chapter on Douhet, Mitchell, and Seversky from this volume. Analytical columns are scoped to that assigned chapter, not the full anthology.',
-        coverArt: '/assets/placeholder-book.png',
+        coverArt:
+          'https://books.google.com/books/content?id=CXUMAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
         primarySourceUsed: 'Syllabus',
         notesFileReference: '-',
         mainIdeas: [
