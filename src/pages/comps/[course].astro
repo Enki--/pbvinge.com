@@ -82,7 +82,13 @@ const defaultThemes = rankedThemes.slice(0, 8);
           <div class="card-shell">
             <div class="card-primary">
               <div class="cover-column">
-                <img src={book.coverArt} alt={`Cover of ${book.canonicalTitle}`} loading="lazy" />
+                {book.noteHref ? (
+                  <a href={book.noteHref} class="cover-link" aria-label={`Open notes for ${book.canonicalTitle}`}>
+                    <img src={book.coverArt} alt={`Cover of ${book.canonicalTitle}`} loading="lazy" />
+                  </a>
+                ) : (
+                  <img src={book.coverArt} alt={`Cover of ${book.canonicalTitle}`} loading="lazy" />
+                )}
               </div>
 
               <header class="card-header">
@@ -393,6 +399,11 @@ const defaultThemes = rankedThemes.slice(0, 8);
     align-items: start;
   }
 
+  .cover-link {
+    display: block;
+    border-radius: 18px;
+  }
+
   .cover-column img {
     width: 100%;
     aspect-ratio: 2 / 3;
@@ -401,6 +412,13 @@ const defaultThemes = rankedThemes.slice(0, 8);
     border: 1px solid rgba(15, 39, 66, 0.08);
     box-shadow: 0 18px 35px rgba(15, 23, 42, 0.16);
     background: var(--surface-muted-color);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .cover-link:hover img,
+  .cover-link:focus-visible img {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 38px rgba(15, 23, 42, 0.2);
   }
 
   .relation-pill {
