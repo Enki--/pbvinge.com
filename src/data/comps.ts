@@ -1693,7 +1693,7 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'High',
         notes: '-',
         primarySourceUsed: 'PDF',
-        notesFileReference: 'Consolidated Notes.pdf - Day 8 section (p. 114)',
+        notesFileReference: 'Consolidated Notes.pdf - Day 8 section (p. 115)',
         mainIdeas: [
           'Great powers judge rising states through legitimation strategies as well as capabilities.',
           'Accommodation is more likely when a rising power frames its aims as limited and consistent with existing rules; confrontation is more likely when it frames them as revolutionary.',
@@ -1732,41 +1732,41 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         canonicalTitle: 'Strategic Narratives',
         subtitle: 'Communication Power and the New World Order',
         authors: ['Alister Miskimmon', "Ben O'Loughlin", 'Laura Roselle'],
-        year: 2014,
-        sourceConfidence: 'High',
-        notes: '-',
+        year: '2014 / 2013',
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus lists 2014; uploaded PDF states first published 2013.',
         primarySourceUsed: 'PDF',
-        notesFileReference: 'Consolidated Notes.pdf - Day 9 section (p. 115)',
+        notesFileReference: 'Consolidated Notes.pdf - Day 8 section (p. 116)',
         mainIdeas: [
-          'Strategic narratives are purposeful stories about the system, identities, and issues that shape how audiences understand politics and possibility.',
-          'Narrative power works through formation, projection, and reception inside contested media environments rather than through message transmission alone.',
-          'Communication affects both behavior and identity, so saying can legitimate, entrap, or undermine policy depending on credibility and audience fit.',
+          'Political actors use system, identity, and issue narratives to shape how audiences interpret the past, present, and future.',
+          'Narrative power depends on formation, projection, and reception across contested media environments.',
+          'Narratives affect policy because they legitimize action, structure expectations, and can trap leaders inside their own stories.',
         ],
-        themes: ['strategic communication', 'perception', 'legitimacy', 'ideational change', 'international order'],
+        themes: ['perception', 'legitimacy', 'grand strategy', 'international order', 'ideational change'],
         connectedBooks: [
+          {
+            title: 'When Right Makes Might',
+            relation: 'Supports',
+            explanation:
+              'Goddard’s legitimation strategies depend on the narrative resonance and reception mechanisms this book identifies.',
+          },
           {
             title: 'Power',
             relation: 'Extends',
             explanation:
-              'Lukes provides the abstract theory of preference-shaping that Strategic Narratives operationalizes through communication and audience reception.',
-          },
-          {
-            title: 'When Right Makes Might',
-            relation: 'Shares framework',
-            explanation:
-              'Goddard and Strategic Narratives both show how rhetoric and audience interpretation shape political outcomes under uncertainty.',
+              'Lukes explains hidden influence in general; Miskimmon, O’Loughlin, and Roselle specify a communicative mechanism that shapes beliefs and behavior.',
           },
           {
             title: 'Rethinking the World',
             relation: 'Supports',
             explanation:
-              'Legro’s strategic orthodoxies depend on the narrative formation and contestation mechanisms this book specifies.',
+              'Legro’s collective ideas become politically consequential when elites can form, project, and entrench them narratively.',
           },
           {
             title: 'Pacific Power Paradox',
             relation: 'Extends',
             explanation:
-              'Jackson argues that preserving Asian peace requires a better strategic narrative about what actually sustains order.',
+              'Jackson shows that official stories about U.S. stabilizing power can misidentify the actual causes of peace in Asia.',
           },
         ],
         confidence: 'High',
@@ -1777,39 +1777,40 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         authors: ['David A. Baldwin'],
         year: 2020,
         sourceConfidence: 'High',
-        notes: 'Official syllabus book; uploaded PDF is the 2020 new edition.',
+        notes:
+          'Uploaded PDF is New Edition (2020); Ethan B. Kapstein contributes new-edition/afterword material.',
         primarySourceUsed: 'PDF',
-        notesFileReference: 'Consolidated Notes.pdf - Day 10 section (p. 116)',
+        notesFileReference: 'Consolidated Notes.pdf - Day 9 section (p. 117)',
         mainIdeas: [
-          'Economic statecraft is a general means of influence that works by altering incentives, signaling intentions, and shaping expectations short of force.',
-          'Its utility is often underestimated because analysts confuse effectiveness with efficiency and judge outcomes too crudely as success or failure.',
-          'Economic tools can help prevent, delay, or communicate in crises by scaling pressure more gradually than military force.',
+          'Economic instruments are normal tools of power politics rather than secondary substitutes for force.',
+          'Their effectiveness must be judged relative to goals, costs, and alternatives rather than binary success or failure.',
+          'Sanctions, aid, trade, and finance alter behavior by reshaping incentives, capabilities, and bargaining leverage.',
         ],
-        themes: ['economic statecraft', 'coercion', 'decision-making', 'signaling', 'international order'],
+        themes: ['coercion', 'deterrence', 'compellence', 'decision-making', 'power politics'],
         connectedBooks: [
           {
             title: 'After Hegemony',
             relation: 'Shares framework',
             explanation:
-              'Keohane and Baldwin both show how states shape behavior through incentives, information, and institutional context short of force.',
-          },
-          {
-            title: 'Power',
-            relation: 'Extends',
-            explanation:
-              'Baldwin turns Lukes’s abstract account of influence into concrete tools states use to change others’ choices.',
-          },
-          {
-            title: 'Strategic Narratives',
-            relation: 'Shares framework',
-            explanation:
-              'Both books stress signaling, audience interpretation, and nonmilitary leverage as central to strategic interaction.',
+              'Keohane and Baldwin both analyze nonmilitary tools that alter incentives and behavior without direct force.',
           },
           {
             title: 'Pacific Power Paradox',
             relation: 'Extends',
             explanation:
-              'Jackson’s regional strategy depends on shaping the environment with calibrated tools and risks, not just military postures.',
+              'Jackson’s account of Asian peace includes nonmilitary statecraft and interdependence that Baldwin treats as causal tools.',
+          },
+          {
+            title: 'Power',
+            relation: 'Extends',
+            explanation:
+              'Baldwin operationalizes power through concrete instruments that shape others’ choices short of war.',
+          },
+          {
+            title: 'Strategic Narratives',
+            relation: 'Extends',
+            explanation:
+              'Strategic Narratives shows how states communicate intentions; Baldwin shows how sanctions, aid, trade, and finance carry those signals in practice.',
           },
         ],
         confidence: 'High',
@@ -1820,39 +1821,39 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         authors: ['Odd Arne Westad'],
         year: 2005,
         sourceConfidence: 'High',
-        notes: '-',
+        notes: 'Uploaded PDF states first published 2005.',
         primarySourceUsed: 'PDF',
-        notesFileReference: 'Consolidated Notes.pdf - Day 11 section (p. 117)',
+        notesFileReference: 'Consolidated Notes.pdf - Day 10 section (p. 118)',
         mainIdeas: [
-          'The defining contests of the Cold War played out in the Global South, where both superpowers tried to universalize rival visions of modernity.',
-          'American and Soviet interventions were ideological and developmental projects as much as geopolitical ones, yet they reproduced imperial patterns of domination.',
-          'Local agency mattered, but Cold War interventions devastated societies and helped create enduring political conflicts that outlived the superpower rivalry itself.',
+          'The Cold War’s decisive struggles unfolded in the Third World, where superpower rivalry intersected with decolonization.',
+          'U.S. and Soviet interventions were driven by universalist ideologies that justified expansive foreign commitments.',
+          'These interventions transformed local conflicts, generated enduring violence, and helped produce the later crises of both superpowers.',
         ],
-        themes: ['intervention', 'ideology', 'international order', 'grand strategy', 'decolonization'],
+        themes: ['grand strategy', 'legitimacy', 'power politics', 'international order', 'coercion', 'ideational change'],
         connectedBooks: [
           {
             title: 'Against the World',
             relation: 'Extends',
             explanation:
-              'Zahra shows how mass politics and anti-global backlash emerged in the interwar era; Westad shows how later interventions deepened those fractures in the Global South.',
+              'Zahra and Westad both show how ideology and social upheaval reshape world politics beyond elite diplomacy.',
           },
           {
-            title: 'War and Change in World Politics',
-            relation: 'Extends',
-            explanation:
-              'Gilpin explains systemic rivalry at the level of power transition, while Westad shows how that rivalry was fought through interventions in weaker states.',
-          },
-          {
-            title: 'Pacific Power Paradox',
+            title: 'Strategic Narratives',
             relation: 'Supports',
             explanation:
-              'Jackson’s account of Asian order depends on understanding how Cold War choices and interventions shaped the regional environment after 1979.',
+              'Strategic Narratives identifies the communicative mechanism by which universalist stories legitimize intervention.',
           },
           {
             title: "The Twenty Years' Crisis, 1919-1939",
             relation: 'Shares framework',
             explanation:
-              'Carr and Westad both insist that universal moral claims often mask the exercise of power through historically specific orders.',
+              'Carr likewise treats moral language as inseparable from struggles over power.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Extends',
+            explanation:
+              'Gilpin’s system-level competition appears here in practice as rival powers contest order through intervention in the Third World.',
           },
         ],
         confidence: 'High',
@@ -1865,37 +1866,37 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
         sourceConfidence: 'High',
         notes: '-',
         primarySourceUsed: 'PDF',
-        notesFileReference: 'Consolidated Notes.pdf - Day 12 section (p. 118)',
+        notesFileReference: 'Consolidated Notes.pdf - Day 11 section (p. 119)',
         mainIdeas: [
-          'The Asian peace since 1979 rests on multiple reinforcing causes rather than U.S. hegemony alone.',
-          'U.S. statecraft has been both a stabilizing bulwark and a source of risk, depending on how presidents wagered against the region’s known drivers of peace.',
-          'Preserving order requires a more accurate narrative of what actually sustains stability amid Sino-U.S. rivalry, not reflexive faith in primacy.',
+          'Asian peace since 1979 emerged from a layered regional order rather than U.S. hegemony alone.',
+          'U.S. statecraft has alternately reinforced and undermined peace through its military presence, alliance management, coercive diplomacy, and institutional choices.',
+          'Strategy should be judged by whether it preserves the multiple conditions of peace rather than by whether it demonstrates primacy.',
         ],
-        themes: ['grand strategy', 'international order', 'power politics', 'alliances', 'decision-making'],
+        themes: ['grand strategy', 'alliance politics', 'coercion', 'deterrence', 'institutions', 'international order'],
         connectedBooks: [
           {
             title: 'After Victory',
-            relation: 'Extends',
+            relation: 'Similar case, different conclusion',
             explanation:
-              'Ikenberry explains how durable order can be built through restraint and institutions; Jackson tests what that logic looks like in the Asian regional order.',
+              'Ikenberry sees durable order emerging from restrained leadership, whereas Jackson shows U.S. leadership can also erode the peace it claims to sustain.',
           },
           {
-            title: 'Rethinking the World',
+            title: 'After Hegemony',
             relation: 'Supports',
             explanation:
-              'Legro’s focus on grand-strategic orthodoxy helps explain why flawed narratives about primacy can persist despite changing conditions.',
+              'Keohane shows why institutions and interdependence can stabilize behavior independently of hegemonic force, which matches Jackson’s multi-causal account of Asian peace.',
           },
           {
             title: 'War and Change in World Politics',
             relation: 'Challenges',
             explanation:
-              'Gilpin expects major order change to track power disequilibrium, while Jackson emphasizes layered regional peace and policy choice within rivalry.',
+              'Jackson rejects Gilpin-style monocausal accounts that collapse regional order into hegemonic power alone.',
           },
           {
             title: 'Strategic Narratives',
-            relation: 'Supports',
+            relation: 'Extends',
             explanation:
-              'Jackson argues that a more faithful Pacific-power narrative is a prerequisite for better strategy.',
+              'Strategic Narratives helps explain how U.S. claims to be Asia’s stabilizer can drive policy even when those claims misdescribe causal reality.',
           },
         ],
         confidence: 'High',
