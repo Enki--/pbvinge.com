@@ -1332,4 +1332,574 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
       },
     ],
   },
+  '632': {
+    course: 'SAASS 632',
+    shortTitle: 'World Order',
+    pageTitle: 'SAASS 632 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 632 focused on order, legitimacy, systemic change, and the strategic tools that shape world politics short of war.',
+    takeaways: [
+      'International order rests on power, but it endures through legitimacy, restraint, and adaptation.',
+      'Structure matters, yet ideas, narratives, and domestic backlash shape how states interpret and respond to power shifts.',
+      'Revision and accommodation depend on both material change and persuasive claims about right and order.',
+      'Economic and communicative tools are real instruments of strategy, not background noise around military power.',
+      'Good strategy requires connecting world order to social legitimacy, institutional durability, and the risks of systemic change.',
+    ],
+    books: [
+      {
+        canonicalTitle: "The Twenty Years' Crisis, 1919-1939",
+        subtitle: '',
+        authors: ['E. H. Carr'],
+        year: 2016,
+        sourceConfidence: 'High',
+        notes: 'Syllabus lists Michael Cox as editor; uploaded PDF frames Cox as author of a new preface.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 1 section (p. 106)',
+        mainIdeas: [
+          'Utopianism misreads international politics because it treats moral aspirations as separable from power politics.',
+          'Dominant states universalize their particular interests, so legitimacy claims often reflect underlying power relations.',
+          'Stable international order requires peaceful adjustment between existing rules and shifts in the balance of power.',
+        ],
+        themes: ['power politics', 'legitimacy', 'balance of power', 'international order', 'ideational change'],
+        connectedBooks: [
+          {
+            title: 'Man, the State, and War',
+            relation: 'Shares framework',
+            explanation:
+              'Waltz and Carr both privilege structural power constraints over moral aspiration.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Extends',
+            explanation:
+              'Gilpin formalizes the mechanism of international-order change that Carr diagnoses.',
+          },
+          {
+            title: 'Against the World',
+            relation: 'Supports',
+            explanation:
+              'Zahra identifies the mass-political shocks that drove the breakdown of the interwar order Carr critiques.',
+          },
+          {
+            title: 'After Victory',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Ikenberry also studies order after systemic rupture but argues institutions and restraint can stabilize power more durably.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Man, the State, and War',
+        subtitle: 'A Theoretical Analysis',
+        authors: ['Kenneth N. Waltz'],
+        year: 2001,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 2 section (p. 107)',
+        mainIdeas: [
+          'Explanations of war fall into three images: human nature, domestic order, and the international system.',
+          'The anarchic international system generates insecurity and self-help regardless of the character of particular states.',
+          'First- and second-image factors shape who fights and when, but third-image structure explains why war recurs.',
+        ],
+        themes: ['war causation', 'international system', 'security dilemma', 'balance of power', 'uncertainty'],
+        connectedBooks: [
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Shares framework',
+            explanation:
+              'Carr and Waltz both subordinate moral aspiration to structural power constraints.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Extends',
+            explanation:
+              'Gilpin adds a dynamic account of when shifts in relative power transform the international system Waltz treats as enduringly anarchic.',
+          },
+          {
+            title: 'After Hegemony',
+            relation: 'Challenges',
+            explanation:
+              'Keohane shows that regimes can change state calculations enough to sustain cooperation even under the anarchy Waltz treats as war-generating.',
+          },
+          {
+            title: 'Rethinking the World',
+            relation: 'Extends',
+            explanation:
+              'Legro adds collective ideas and domestic pressures to Waltz’s structural account of grand strategy.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Power',
+        subtitle: 'A Radical View',
+        authors: ['Steven Lukes'],
+        year: '2005 / 2021',
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus lists 2nd ed. (2005); uploaded PDF is 3rd ed. (2021).',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 2 section (p. 108)',
+        mainIdeas: [
+          'Power operates through three dimensions: overt decision-making, agenda control, and preference-shaping.',
+          'The deepest dimension of power prevents conflict by shaping perceptions, beliefs, and desires before grievances become political demands.',
+          'Domination endures when subordinates accept existing arrangements as natural or legitimate rather than contestable.',
+        ],
+        themes: ['decision-making', 'perception', 'legitimacy', 'ideational change'],
+        connectedBooks: [
+          {
+            title: 'When Right Makes Might',
+            relation: 'Extends',
+            explanation:
+              'Goddard turns hidden influence into a state-to-state mechanism through legitimation strategies that shape audience judgment.',
+          },
+          {
+            title: 'Strategic Narratives',
+            relation: 'Extends',
+            explanation:
+              'Miskimmon, O\'Loughlin, and Roselle specify narrative as a communicative mechanism of perception- and preference-shaping power.',
+          },
+          {
+            title: 'Economic Statecraft',
+            relation: 'Extends',
+            explanation:
+              'Baldwin translates abstract influence into concrete nonmilitary instruments that alter others’ choices without direct force.',
+          },
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Shares framework',
+            explanation:
+              'Carr likewise argues that dominant actors present particular interests as universal moral claims.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'After Hegemony',
+        subtitle: 'Cooperation and Discord in the World Political Economy',
+        authors: ['Robert O. Keohane'],
+        year: '2004 / 1984',
+        sourceConfidence: 'Medium',
+        notes:
+          'Syllabus assigns 2004 Princeton edition; uploaded PDF appears to be the 1984 original edition.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 3 section (p. 109)',
+        mainIdeas: [
+          'Cooperation persists after hegemonic decline because regimes remain useful to self-interested states.',
+          'Institutions foster cooperation by reducing uncertainty, lowering transaction costs, and supplying information for reciprocity.',
+          'Because institutions are harder to create than to maintain, posthegemonic order usually changes through adaptation rather than collapse.',
+        ],
+        themes: ['international system', 'institutions', 'international order', 'uncertainty'],
+        connectedBooks: [
+          {
+            title: 'After Victory',
+            relation: 'Supports',
+            explanation:
+              'Ikenberry’s durable postwar orders depend on the same uncertainty-reducing institutions Keohane treats as functionally valuable.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Challenges',
+            explanation:
+              'Gilpin expects hegemonic decline to drive systemic revision; Keohane argues cooperation can survive that decline when institutions remain useful.',
+          },
+          {
+            title: 'Man, the State, and War',
+            relation: 'Challenges',
+            explanation:
+              'Waltz’s structural pessimism is narrowed because regimes can sustain cooperation under anarchy by updating expectations and reducing uncertainty.',
+          },
+          {
+            title: 'Economic Statecraft',
+            relation: 'Shares framework',
+            explanation:
+              'Baldwin and Keohane both show that states can influence others through institutional and economic incentives short of force.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Against the World',
+        subtitle: 'Anti-Globalism and Mass Politics Between the World Wars',
+        authors: ['Tara Zahra'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 4 section (p. 110)',
+        mainIdeas: [
+          'Interwar anti-globalism expanded because war, migration, disease, and economic crisis created mass demand for protection.',
+          'Mass backlash redirected state decision-making toward restriction, autarky, and exclusion.',
+          'Because backlash made laissez-faire openness politically unsustainable, post-1945 cooperation had to pair openness with social protection.',
+        ],
+        themes: ['decision-making', 'perception', 'ideational change', 'international order'],
+        connectedBooks: [
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Supports',
+            explanation:
+              'Zahra identifies the social shocks that caused the interwar liberal project Carr critiques to unravel.',
+          },
+          {
+            title: 'After Victory',
+            relation: 'Extends',
+            explanation:
+              'Ikenberry’s post-1945 order becomes politically viable because it embeds protection and legitimacy after the backlash Zahra documents.',
+          },
+          {
+            title: 'Rethinking the World',
+            relation: 'Shares framework',
+            explanation:
+              'Legro likewise treats crisis-driven shifts in collective ideas as drivers of state strategy.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'War and Change in World Politics',
+        subtitle: '',
+        authors: ['Robert Gilpin'],
+        year: 1981,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 5 section (p. 111)',
+        mainIdeas: [
+          'States seek revision when expected benefits of changing the system exceed expected costs.',
+          'Uneven growth creates disequilibrium between the distribution of power and the structure of international order.',
+          'Systemic disequilibrium is usually resolved by hegemonic war that resets the rules and hierarchy around a new balance of power.',
+        ],
+        themes: ['power politics', 'balance of power', 'international system', 'international order', 'war causation'],
+        connectedBooks: [
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Extends',
+            explanation:
+              'Gilpin supplies the causal mechanism of system change that Carr treats more polemically.',
+          },
+          {
+            title: 'After Hegemony',
+            relation: 'Challenges',
+            explanation:
+              'Keohane argues institutions can preserve cooperation after hegemonic decline instead of collapsing into revision.',
+          },
+          {
+            title: 'After Victory',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Ikenberry also studies postwar settlement but emphasizes strategic restraint rather than equilibrium restored through war alone.',
+          },
+          {
+            title: 'When Right Makes Might',
+            relation: 'Extends',
+            explanation:
+              'Goddard adds legitimacy signaling to Gilpin’s material account of whether rising powers are accommodated or resisted.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Rethinking the World',
+        subtitle: 'Great Power Strategies and International Order',
+        authors: ['Jeffrey W. Legro'],
+        year: 2005,
+        sourceConfidence: 'High',
+        notes: 'Syllabus punctuation differs slightly from the uploaded PDF subtitle line.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 6 section (p. 112)',
+        mainIdeas: [
+          'Grand-strategic change requires both collapse of an old orthodoxy and consolidation of a credible replacement.',
+          'Policy orthodoxies change when events discredit prevailing ideas and create openings for alternatives.',
+          'New orthodoxies endure when they align with strategic circumstances, attract social support, and appear effective early.',
+        ],
+        themes: ['grand strategy', 'perception', 'decision-making', 'ideational change', 'international order'],
+        connectedBooks: [
+          {
+            title: 'Man, the State, and War',
+            relation: 'Extends',
+            explanation:
+              'Legro adds ideational change and domestic pressures to Waltz’s structural account of strategy.',
+          },
+          {
+            title: 'When Right Makes Might',
+            relation: 'Supports',
+            explanation:
+              'Goddard likewise argues that interpretation and legitimation, not raw capability alone, shape responses to rising powers.',
+          },
+          {
+            title: 'Strategic Narratives',
+            relation: 'Shares framework',
+            explanation:
+              'Strategic Narratives explains how elites form, project, and contest the ideas Legro shows can become dominant orthodoxies.',
+          },
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Shares framework',
+            explanation:
+              'Carr and Legro both treat prevailing ideas about order as causal forces that can collapse under pressure.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'After Victory',
+        subtitle: 'Institutions, Strategic Restraint, and the Rebuilding of Order after Major Wars',
+        authors: ['G. John Ikenberry'],
+        year: 2019,
+        sourceConfidence: 'High',
+        notes: 'Uploaded PDF is labeled New Edition (2019).',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 7 section (p. 114)',
+        mainIdeas: [
+          'Victorious states can turn wartime power into durable order by exercising strategic restraint instead of pure domination.',
+          'Institutions make restraint credible by locking in rules, voice opportunities, and exit costs for weaker states.',
+          'Durable postwar order depends on how power is organized after victory, not on material victory alone.',
+        ],
+        themes: ['grand strategy', 'legitimacy', 'international order', 'institutions', 'uncertainty'],
+        connectedBooks: [
+          {
+            title: 'After Hegemony',
+            relation: 'Supports',
+            explanation:
+              'Keohane explains why the institutions Ikenberry emphasizes remain valuable after hegemonic peaks.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Gilpin expects order to track shifts in relative power more tightly than Ikenberry’s argument about durable restraint.',
+          },
+          {
+            title: 'Against the World',
+            relation: 'Extends',
+            explanation:
+              'Zahra explains why post-1945 order builders had to promise protection and legitimacy, not just openness.',
+          },
+          {
+            title: 'Pacific Power Paradox',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Jackson argues U.S. leadership in Asia can erode peace rather than simply stabilize it through restrained order-building.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'When Right Makes Might',
+        subtitle: 'Rising Powers and World Order',
+        authors: ['Stacie E. Goddard'],
+        year: 2018,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 8 section (p. 114)',
+        mainIdeas: [
+          'Great powers judge rising states through legitimation strategies as well as capabilities.',
+          'Accommodation is more likely when a rising power frames its aims as limited and consistent with existing rules; confrontation is more likely when it frames them as revolutionary.',
+          'Legitimation shapes responses because audiences interpret signals through institutional vulnerability and multivocal rhetoric.',
+        ],
+        themes: ['legitimacy', 'perception', 'grand strategy', 'uncertainty', 'international order'],
+        connectedBooks: [
+          {
+            title: 'Strategic Narratives',
+            relation: 'Supports',
+            explanation:
+              'Strategic Narratives supplies the communication mechanisms through which legitimation strategies reach and shape audiences.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Extends',
+            explanation:
+              'Goddard adds a legitimacy filter to Gilpin’s material account of power transition.',
+          },
+          {
+            title: 'Power',
+            relation: 'Extends',
+            explanation:
+              'Lukes’s third dimension of power helps explain how rhetoric shapes what audiences accept as limited or revisionist aims.',
+          },
+          {
+            title: 'Rethinking the World',
+            relation: 'Shares framework',
+            explanation:
+              'Legro likewise shows that ideas and interpretation redirect strategic behavior.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Strategic Narratives',
+        subtitle: 'Communication Power and the New World Order',
+        authors: ['Alister Miskimmon', "Ben O'Loughlin", 'Laura Roselle'],
+        year: 2014,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 9 section (p. 115)',
+        mainIdeas: [
+          'Strategic narratives are purposeful stories about the system, identities, and issues that shape how audiences understand politics and possibility.',
+          'Narrative power works through formation, projection, and reception inside contested media environments rather than through message transmission alone.',
+          'Communication affects both behavior and identity, so saying can legitimate, entrap, or undermine policy depending on credibility and audience fit.',
+        ],
+        themes: ['strategic communication', 'perception', 'legitimacy', 'ideational change', 'international order'],
+        connectedBooks: [
+          {
+            title: 'Power',
+            relation: 'Extends',
+            explanation:
+              'Lukes provides the abstract theory of preference-shaping that Strategic Narratives operationalizes through communication and audience reception.',
+          },
+          {
+            title: 'When Right Makes Might',
+            relation: 'Shares framework',
+            explanation:
+              'Goddard and Strategic Narratives both show how rhetoric and audience interpretation shape political outcomes under uncertainty.',
+          },
+          {
+            title: 'Rethinking the World',
+            relation: 'Supports',
+            explanation:
+              'Legro’s strategic orthodoxies depend on the narrative formation and contestation mechanisms this book specifies.',
+          },
+          {
+            title: 'Pacific Power Paradox',
+            relation: 'Extends',
+            explanation:
+              'Jackson argues that preserving Asian peace requires a better strategic narrative about what actually sustains order.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Economic Statecraft',
+        subtitle: 'New Edition',
+        authors: ['David A. Baldwin'],
+        year: 2020,
+        sourceConfidence: 'High',
+        notes: 'Official syllabus book; uploaded PDF is the 2020 new edition.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 10 section (p. 116)',
+        mainIdeas: [
+          'Economic statecraft is a general means of influence that works by altering incentives, signaling intentions, and shaping expectations short of force.',
+          'Its utility is often underestimated because analysts confuse effectiveness with efficiency and judge outcomes too crudely as success or failure.',
+          'Economic tools can help prevent, delay, or communicate in crises by scaling pressure more gradually than military force.',
+        ],
+        themes: ['economic statecraft', 'coercion', 'decision-making', 'signaling', 'international order'],
+        connectedBooks: [
+          {
+            title: 'After Hegemony',
+            relation: 'Shares framework',
+            explanation:
+              'Keohane and Baldwin both show how states shape behavior through incentives, information, and institutional context short of force.',
+          },
+          {
+            title: 'Power',
+            relation: 'Extends',
+            explanation:
+              'Baldwin turns Lukes’s abstract account of influence into concrete tools states use to change others’ choices.',
+          },
+          {
+            title: 'Strategic Narratives',
+            relation: 'Shares framework',
+            explanation:
+              'Both books stress signaling, audience interpretation, and nonmilitary leverage as central to strategic interaction.',
+          },
+          {
+            title: 'Pacific Power Paradox',
+            relation: 'Extends',
+            explanation:
+              'Jackson’s regional strategy depends on shaping the environment with calibrated tools and risks, not just military postures.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Global Cold War',
+        subtitle: 'Third World Interventions and the Making of Our Times',
+        authors: ['Odd Arne Westad'],
+        year: 2005,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 11 section (p. 117)',
+        mainIdeas: [
+          'The defining contests of the Cold War played out in the Global South, where both superpowers tried to universalize rival visions of modernity.',
+          'American and Soviet interventions were ideological and developmental projects as much as geopolitical ones, yet they reproduced imperial patterns of domination.',
+          'Local agency mattered, but Cold War interventions devastated societies and helped create enduring political conflicts that outlived the superpower rivalry itself.',
+        ],
+        themes: ['intervention', 'ideology', 'international order', 'grand strategy', 'decolonization'],
+        connectedBooks: [
+          {
+            title: 'Against the World',
+            relation: 'Extends',
+            explanation:
+              'Zahra shows how mass politics and anti-global backlash emerged in the interwar era; Westad shows how later interventions deepened those fractures in the Global South.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Extends',
+            explanation:
+              'Gilpin explains systemic rivalry at the level of power transition, while Westad shows how that rivalry was fought through interventions in weaker states.',
+          },
+          {
+            title: 'Pacific Power Paradox',
+            relation: 'Supports',
+            explanation:
+              'Jackson’s account of Asian order depends on understanding how Cold War choices and interventions shaped the regional environment after 1979.',
+          },
+          {
+            title: "The Twenty Years' Crisis, 1919-1939",
+            relation: 'Shares framework',
+            explanation:
+              'Carr and Westad both insist that universal moral claims often mask the exercise of power through historically specific orders.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Pacific Power Paradox',
+        subtitle: 'American Statecraft and the Fate of the Asian Peace',
+        authors: ['Van Jackson'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: '-',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - Day 12 section (p. 118)',
+        mainIdeas: [
+          'The Asian peace since 1979 rests on multiple reinforcing causes rather than U.S. hegemony alone.',
+          'U.S. statecraft has been both a stabilizing bulwark and a source of risk, depending on how presidents wagered against the region’s known drivers of peace.',
+          'Preserving order requires a more accurate narrative of what actually sustains stability amid Sino-U.S. rivalry, not reflexive faith in primacy.',
+        ],
+        themes: ['grand strategy', 'international order', 'power politics', 'alliances', 'decision-making'],
+        connectedBooks: [
+          {
+            title: 'After Victory',
+            relation: 'Extends',
+            explanation:
+              'Ikenberry explains how durable order can be built through restraint and institutions; Jackson tests what that logic looks like in the Asian regional order.',
+          },
+          {
+            title: 'Rethinking the World',
+            relation: 'Supports',
+            explanation:
+              'Legro’s focus on grand-strategic orthodoxy helps explain why flawed narratives about primacy can persist despite changing conditions.',
+          },
+          {
+            title: 'War and Change in World Politics',
+            relation: 'Challenges',
+            explanation:
+              'Gilpin expects major order change to track power disequilibrium, while Jackson emphasizes layered regional peace and policy choice within rivalry.',
+          },
+          {
+            title: 'Strategic Narratives',
+            relation: 'Supports',
+            explanation:
+              'Jackson argues that a more faithful Pacific-power narrative is a prerequisite for better strategy.',
+          },
+        ],
+        confidence: 'High',
+      },
+    ],
+  },
 };
