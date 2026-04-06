@@ -16,15 +16,24 @@ if (!guide) {
   throw new Error(`Unknown comps course: ${course}`);
 }
 
+function normalizeLookupTitle(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
 const noteBooks = await getCollection('books', ({ data }) => data.class === course && data.status === 'complete');
-const noteHrefByTitle = new Map(
-  noteBooks.map((book) => [book.data.title.trim().toLowerCase(), `/books/${book.slug}`]),
+const noteBookByTitle = new Map(
+  noteBooks.map((book) => [normalizeLookupTitle(book.data.title), book]),
 );
 
-const books = guide.books.map((book) => ({
-  ...book,
-  noteHref: noteHrefByTitle.get(book.canonicalTitle.trim().toLowerCase()),
-}));
+const books = guide.books.map((book) => {
+  const noteBook = noteBookByTitle.get(normalizeLookupTitle(book.noteTitle ?? book.canonicalTitle));
+
+  return {
+    ...book,
+    coverArt: book.coverArt || noteBook?.data.cover || '/assets/placeholder-book.png',
+    noteHref: noteBook ? `/books/${noteBook.slug}` : undefined,
+  };
+});
 
 const themeCounts = new Map<string, number>();
 
@@ -50,7 +59,7 @@ const defaultThemes = rankedThemes.slice(0, 8);
         <p class="eyebrow">{guide.course}</p>
         <h1>{guide.pageTitle}</h1>
         <p class="lede">
-          Cover-first for fast recall, with each book distilled into three main ideas and expandable connection notes.
+          Cover-first for fast recall, with each book distilled into three main ideas and compact connection notes.
         </p>
       </div>
 
