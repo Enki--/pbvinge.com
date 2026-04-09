@@ -3207,4 +3207,2709 @@ export const courseStudyGuides: Record<string, CourseStudyGuide> = {
       },
     ],
   },
+  '633': {
+    course: 'SAASS 633',
+    shortTitle: 'Coercion & Deterrence',
+    pageTitle: 'SAASS 633 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 633 focused on coercion, deterrence, compellence, escalation, alliance credibility, and the political and psychological limits of force.',
+    takeaways: [
+      'Strategy is fundamentally about shaping another actor’s choices.',
+      'Effective coercion is hard, and success depends on mechanism, not just force.',
+      'Coercion and deterrence operate across the full competition continuum, not only in nuclear crises.',
+      'Coercive outcomes are shaped by perception, signaling, psychology, and culture, not just material power.',
+      'There is no one-size-fits-all theory of victory in coercion.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'The Russian Way of Deterrence',
+        subtitle: 'Strategic Culture, Coercion, and War',
+        authors: ['Dmitry (Dima) Adamsky'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes:
+          'Year follows the title page, not the filename; grounded in the book and Day 7 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 7',
+        mainIdeas: [
+          'Russian strategic deterrence fuses deterrence, compellence, and limited force into a single coercive practice across peace and war.',
+          'Russian strategic culture causes this broader, action-oriented approach to coercion.',
+          'Applying Western deterrence categories to Russian practice produces misperception and raises escalation risk.',
+        ],
+        themes: [
+          'coercion',
+          'deterrence',
+          'compellence',
+          'escalation',
+          'information warfare',
+          'misperception',
+        ],
+        connectedBooks: [
+          {
+            title: 'Arms and Influence',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Schelling separates deterrence and compellence, while Adamsky shows Russian practice fuses them.',
+          },
+          {
+            title: 'Strategy in the Missile Age',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat deterrence under the nuclear shadow as a central strategic problem.',
+          },
+          {
+            title: 'The Case for U.S. Nuclear Weapons in the 21st Century',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Roberts defends a U.S. tailored deterrence model, while Adamsky shows Russia defines deterrence more broadly.',
+          },
+          {
+            title: "China's Gambit",
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both analyze non-Western coercion, but Zhang explains selectivity through cost-balancing rather than strategic culture.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Strategy in the Missile Age',
+        authors: ['Bernard Brodie'],
+        year: 1959,
+        sourceConfidence: 'High',
+        notes:
+          'Uploaded PDF is a later RAND public-release scan of the 1959 book; grounded in the book and Day 1 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 1',
+        mainIdeas: [
+          'Nuclear weapons shift the central strategic problem from winning war to preventing catastrophe.',
+          'Stable deterrence requires survivable retaliatory forces because vulnerability to first strike destabilizes crisis behavior.',
+          'Nuclear conditions make limited war more difficult because escalation risk persists throughout a conflict.',
+        ],
+        themes: ['deterrence', 'escalation', 'limited war', 'strategy', 'uncertainty'],
+        connectedBooks: [
+          {
+            title: 'Arms and Influence',
+            relation: 'Shares framework',
+            explanation:
+              'Both recast strategy around deterrence and coercion in the nuclear age.',
+          },
+          {
+            title: 'The Case for U.S. Nuclear Weapons in the 21st Century',
+            relation: 'Extends',
+            explanation:
+              'Roberts updates Brodie’s deterrence problem for regional challengers and allies.',
+          },
+          {
+            title: 'The Russian Way of Deterrence',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Adamsky shows a non-Western deterrence logic that Brodie’s classical model does not predict.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Dynamics of Coercion',
+        subtitle: 'American Foreign Policy and the Limits of Military Might',
+        authors: ['Daniel L. Byman', 'Matthew C. Waxman'],
+        year: 2002,
+        sourceConfidence: 'Medium',
+        notes:
+          'No standalone uploaded PDF or dedicated notes section; row remains anchored to the syllabus framing for Dec 9.',
+        coverArt:
+          'http://books.google.com/books/content?id=L_0ImO7Y1d8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'Syllabus',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The end of the Cold War changed the international system, so coercive diplomacy must be reassessed for new strategic conditions.',
+          'Guerrilla and nonstate adversaries reduce the effectiveness of military coercion because they are harder to target and harder to compel.',
+          'Military power influences coercive outcomes only when it is matched to the adversary and the political context.',
+        ],
+        themes: ['coercion', 'compellence', 'limited war', 'insurgency', 'international system'],
+        connectedBooks: [
+          {
+            title: 'Air Power as a Coercive Instrument',
+            relation: 'Supports',
+            explanation:
+              'The backup text operationalizes the same post-Cold War coercion problem.',
+          },
+          {
+            title: 'Bombing to Win',
+            relation: 'Extends',
+            explanation:
+              'Pape isolates one mechanism of military coercion inside a broader post-Cold War debate.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat coercion as bargaining shaped by leverage and credibility.',
+          },
+        ],
+        confidence: 'Low',
+      },
+      {
+        canonicalTitle: 'Air Power as a Coercive Instrument',
+        authors: ['Daniel L. Byman', 'Matthew C. Waxman', 'Eric Larson'],
+        year: 1999,
+        sourceConfidence: 'High',
+        notes: 'Backup reading in the syllabus and clearly used in the course notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 4',
+        mainIdeas: [
+          'Air power coerces most effectively when it secures escalation dominance and raises costs without enabling effective counterescalation.',
+          'Air power coerces best when it denies the adversary’s military strategy rather than merely punishing civilians.',
+          'Coalition politics, domestic constraints, and insurgent adversaries reduce coercive leverage by constraining escalation and targetability.',
+        ],
+        themes: ['coercion', 'airpower', 'escalation', 'alliance politics', 'insurgency'],
+        connectedBooks: [
+          {
+            title: 'Bombing to Win',
+            relation: 'Shares framework',
+            explanation:
+              'Both make denial central to coercive air power.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Extends',
+            explanation:
+              'Schelling’s bargaining logic becomes operational air strategy.',
+          },
+          {
+            title: 'The Dynamics of Coercion',
+            relation: 'Supports',
+            explanation:
+              'Air Power develops the operational side of Byman and Waxman’s broader coercion argument.',
+          },
+          {
+            title: 'Emotional Choices',
+            relation: 'Extends',
+            explanation:
+              'Markwica shows why targets still defy coercive air power despite material vulnerability.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Emotional Choices',
+        subtitle: 'How the Logic of Affect Shapes Coercive Diplomacy',
+        authors: ['Robin Markwica'],
+        year: 2018,
+        sourceConfidence: 'High',
+        notes: 'Grounded in the book and Day 5 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 5',
+        mainIdeas: [
+          'Leaders’ emotional states causally shape coercive decisions and can override standard cost-benefit logic.',
+          'Fear, anger, hope, pride, and humiliation systematically alter risk assessment and response tendencies.',
+          'Emotional choice theory explains both defiance and concession in coercive diplomacy better than purely rationalist models.',
+        ],
+        themes: ['decision-making', 'perception', 'misperception', 'bounded rationality', 'coercion'],
+        connectedBooks: [
+          {
+            title: 'Arms and Influence',
+            relation: 'Extends',
+            explanation:
+              'Markwica supplies leader-level decision-making mechanisms beneath Schelling’s bargaining model.',
+          },
+          {
+            title: 'The Dynamics of Coercion',
+            relation: 'Extends',
+            explanation:
+              'Markwica adds leader-level causes of coercive success and failure to a broader coercive diplomacy framework.',
+          },
+          {
+            title: 'Bombing to Win',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Pape emphasizes military vulnerability, while Markwica shows leaders’ emotions can override it.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Bombing to Win',
+        subtitle: 'Air Power and Coercion in War',
+        authors: ['Robert A. Pape'],
+        year: 1996,
+        sourceConfidence: 'High',
+        notes: 'Grounded in the book and Day 3 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 3',
+        mainIdeas: [
+          'Conventional coercion succeeds when air power denies the enemy’s military strategy, not when it punishes civilians.',
+          'Punishment and risk strategies usually fail because states endure civilian pain while they still believe victory remains possible.',
+          'Air power coerces only when target selection matches the adversary’s concrete military vulnerabilities.',
+        ],
+        themes: ['airpower', 'coercion', 'compellence', 'limited war', 'strategy'],
+        connectedBooks: [
+          {
+            title: 'Air Power as a Coercive Instrument',
+            relation: 'Supports',
+            explanation:
+              'Byman, Waxman, and Larson reinforce denial and escalation dynamics.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Challenges',
+            explanation:
+              'Pape rejects punishment and risk as the main mechanisms of conventional coercion.',
+          },
+          {
+            title: 'The Dynamics of Coercion',
+            relation: 'Extends',
+            explanation:
+              'Pape sharpens one mechanism inside broader coercive diplomacy.',
+          },
+          {
+            title: 'Emotional Choices',
+            relation: 'Extends',
+            explanation:
+              'Markwica explains why leaders may endure denial and punishment longer than material models predict.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Case for U.S. Nuclear Weapons in the 21st Century',
+        authors: ['Brad Roberts'],
+        year: 2016,
+        sourceConfidence: 'High',
+        notes:
+          'Year follows the title page; assurance is central in both the book and Day 6 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 6',
+        mainIdeas: [
+          'U.S. nuclear weapons remain necessary because they deter nuclear-armed challengers, assure allies, and help manage escalation.',
+          'Credible regional deterrence requires tailored theories of victory and integrated nuclear and nonnuclear architectures, not generic Cold War formulas.',
+          'Extended deterrence succeeds only if allies believe U.S. resolve remains credible despite homeland vulnerability and regional coercion.',
+        ],
+        themes: ['deterrence', 'assurance', 'alliance politics', 'escalation', 'grand strategy'],
+        connectedBooks: [
+          {
+            title: 'Strategy in the Missile Age',
+            relation: 'Extends',
+            explanation:
+              'Roberts updates Brodie’s deterrence problem for regional challengers and allies.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Shares framework',
+            explanation:
+              'Credible threats, bargaining, and escalation remain central.',
+          },
+          {
+            title: 'The Russian Way of Deterrence',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both address nuclear coercion, but Roberts defends a U.S. tailored deterrence model while Adamsky shows Russia collapses deterrence and compellence.',
+          },
+          {
+            title: "A Small State's Guide to Influence in World Politics",
+            relation: 'Supports',
+            explanation:
+              'Alliance politics and assurance matter because smaller allies judge patron credibility.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Arms and Influence',
+        authors: ['Thomas C. Schelling'],
+        year: 1966,
+        sourceConfidence: 'High',
+        notes:
+          'Uploaded PDF is a later Veritas reissue of the 1966 work; grounded in the book and Day 2 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 2',
+        mainIdeas: [
+          'The power to hurt becomes bargaining power when adversaries can avoid that hurt through accommodation.',
+          'Deterrence and compellence are distinct forms of coercion because each structures bargaining, commitment, and risk differently.',
+          'In the nuclear age, military force matters most as an instrument of influence rather than as a tool of outright victory.',
+        ],
+        themes: ['coercion', 'deterrence', 'compellence', 'escalation', 'strategy'],
+        connectedBooks: [
+          {
+            title: 'Strategy in the Missile Age',
+            relation: 'Shares framework',
+            explanation:
+              'Both recast strategy around deterrence and escalation in the nuclear age.',
+          },
+          {
+            title: 'Bombing to Win',
+            relation: 'Challenges',
+            explanation:
+              'Pape argues punishment rarely coerces in conventional war.',
+          },
+          {
+            title: 'Emotional Choices',
+            relation: 'Extends',
+            explanation:
+              'Markwica specifies leader-level mechanisms beneath Schelling’s bargaining model.',
+          },
+          {
+            title: 'The Russian Way of Deterrence',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Schelling differentiates deterrence and compellence, while Adamsky shows Russian practice fuses them.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: "China's Gambit",
+        subtitle: 'The Calculus of Coercion',
+        authors: ['Ketian Zhang'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes:
+          'Grounded in the book and Day 8 notes; economic statecraft is central to the argument.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 8',
+        mainIdeas: [
+          'China coerces selectively because it balances reputational benefits against economic and geopolitical costs.',
+          'Rising power growth does not automatically produce more military coercion because high backlash costs shift China toward nonmilitary and gray-zone tools.',
+          'China’s target selection and timing change because alliance backlash and economic exposure alter the expected cost of coercion.',
+        ],
+        themes: [
+          'coercion',
+          'power politics',
+          'alliance politics',
+          'balance of power',
+          'international system',
+          'economic statecraft',
+        ],
+        connectedBooks: [
+          {
+            title: "A Small State's Guide to Influence in World Politics",
+            relation: 'Shares framework',
+            explanation:
+              'Asymmetry shapes options and bargaining.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Extends',
+            explanation:
+              'Zhang adapts bargaining logic to economic interdependence and selective coercion.',
+          },
+          {
+            title: 'The Russian Way of Deterrence',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Adamsky ties coercion to strategic culture, while Zhang ties it to cost-balancing.',
+          },
+          {
+            title: 'The Dynamics of Coercion',
+            relation: 'Extends',
+            explanation:
+              'Zhang revises military coercion debates by showing why China often prefers nonmilitary coercion.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: "A Small State's Guide to Influence in World Politics",
+        authors: ['Tom Long'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes: 'Grounded in the book and Day 9 notes.',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 633 Day 9',
+        mainIdeas: [
+          'Small states can achieve influence because asymmetrical relationships constrain outcomes but do not determine them.',
+          'Small-state success depends on matching tactics to divergence, salience, and preference cohesion in specific asymmetrical relationships.',
+          'Small states shape larger actors by leveraging particular-intrinsic, derivative, and collective power.',
+        ],
+        themes: [
+          'institutions',
+          'alliance politics',
+          'power politics',
+          'international order',
+          'economic statecraft',
+        ],
+        connectedBooks: [
+          {
+            title: "China's Gambit",
+            relation: 'Shares framework',
+            explanation:
+              'Asymmetry shapes options, target selection, and bargaining.',
+          },
+          {
+            title: 'Arms and Influence',
+            relation: 'Extends',
+            explanation:
+              'Long explains how weaker states influence stronger ones without relying on brute force.',
+          },
+          {
+            title: 'The Case for U.S. Nuclear Weapons in the 21st Century',
+            relation: 'Supports',
+            explanation:
+              'Alliance politics and patron credibility shape smaller states’ security choices.',
+          },
+          {
+            title: 'The Dynamics of Coercion',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Long shows weaker states can gain influence without depending on military coercion.',
+          },
+        ],
+        confidence: 'High',
+      },
+    ],
+  },
+  '644': {
+    course: 'SAASS 644',
+    shortTitle: 'Irregular Warfare',
+    pageTitle: 'SAASS 644 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 644 focused on irregular warfare, strategic competition below war, population control, partner politics, and the political meaning of force.',
+    takeaways: [
+      'Irregular warfare is not peripheral to “real war”; it is a central arena of modern strategic competition.',
+      'Irregular warfare is fundamentally a political struggle over people, information, influence, and control, not just a fight over battlefield destruction.',
+      'The course rejects simple binaries like state/nonstate and conventional/irregular.',
+      'Strategic success in irregular warfare depends on aligning force with political objectives, partner behavior, and local conditions over time.',
+      'The course uses theory plus comparative history to show that irregular warfare changes form, but not its core logic.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'Winning Without Fighting',
+        subtitle: 'Irregular Warfare and Strategic Competition in the 21st Century',
+        authors: ['Rebecca Patterson', 'Susan Bryant', 'Ken Gleiman', 'Mark Troutman'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes: 'Syllabus uses “et al.”; full author list verified in the uploaded PDF.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 141',
+        mainIdeas: [
+          'Strategic competition is decided largely below open war because rivals use irregular warfare to shift influence and legitimacy without triggering U.S. conventional advantages.',
+          'A viable U.S. response requires a grand strategy that integrates military, economic, information, and resilience instruments rather than treating irregular warfare as a niche military activity.',
+          'Leaders need explicit measures of power, influence, and legitimacy because effort and activity do not reliably indicate strategic effect.',
+        ],
+        themes: ['grand strategy', 'economic statecraft', 'information warfare', 'legitimacy', 'power politics'],
+        connectedBooks: [
+          {
+            title: 'Russia and the Changing Character of Conflict',
+            relation: 'Supports',
+            explanation:
+              'German identifies the Russian toolkit of information, proxy, and deniable competition that Patterson et al. argue the United States must counter below war.',
+          },
+          {
+            title: 'War from the Ground Up',
+            relation: 'Shares framework',
+            explanation:
+              'Simpson makes political effect and audience interpretation the mechanism of success, matching Patterson et al.’s emphasis on influence and legitimacy as strategic variables.',
+          },
+          {
+            title: 'The Forgotten Front',
+            relation: 'Extends',
+            explanation:
+              'Ladwig shows that campaigns through partners succeed only when leverage reshapes partner behavior, giving Patterson et al.’s whole-of-government IW approach an operational mechanism.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Nonstate Warfare',
+        subtitle: 'The Military Methods of Guerillas, Warlords, and Militias',
+        authors: ['Stephen Biddle'],
+        year: 2021,
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus year 2022; uploaded PDF copyright year 2021.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 142',
+        mainIdeas: [
+          'Nonstate actors choose military methods on a Fabian-Napoleonic continuum, so “guerrilla” is not a stable category.',
+          'Technological change alters the firepower-cover tradeoff and pushes many actors toward midspectrum methods.',
+          'Internal politics and institutional maturity determine whether actors can exploit the method that is militarily optimal under their constraints.',
+        ],
+        themes: ['strategy', 'operational art', 'technological change', 'institutions', 'organizational adaptation'],
+        connectedBooks: [
+          {
+            title: 'How ISIS Fights',
+            relation: 'Supports',
+            explanation:
+              'Ashour supplies a direct case of a nonstate actor moving across the method spectrum and using innovation to exploit midspectrum opportunities.',
+          },
+          {
+            title: 'The Logic of Violence in Civil War',
+            relation: 'Shares framework',
+            explanation:
+              'Kalyvas and Biddle both explain irregular conflict through incentives, control, and institutional constraints rather than essentialist categories.',
+          },
+          {
+            title: 'On Protracted War',
+            relation: 'Shares framework',
+            explanation:
+              'Mao explains how a weaker actor sequences methods over time to offset material inferiority, paralleling Biddle’s focus on method choice under constraint.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Logic of Violence in Civil War',
+        authors: ['Stathis N. Kalyvas'],
+        year: 2006,
+        sourceConfidence: 'High',
+        notes: '—',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 143',
+        mainIdeas: [
+          'Fragmented sovereignty makes civilian collaboration the key mechanism of irregular civil war.',
+          'Selective violence concentrates where armed actors hold dominant but incomplete control because they need local information to police defection.',
+          'Local rivalries and denunciations co-produce violence, so macro political labels conceal micro motives and interactions.',
+        ],
+        themes: ['coercion', 'uncertainty', 'institutions', 'insurgency', 'population control'],
+        connectedBooks: [
+          {
+            title: 'Pacification in Algeria',
+            relation: 'Shares framework',
+            explanation:
+              'Galula’s method requires persistent civilian control and local information, the same mechanism Kalyvas identifies as decisive under fragmented sovereignty.',
+          },
+          {
+            title: 'Revolutionary Warfare',
+            relation: 'Extends',
+            explanation:
+              'Peterson shows how French pacification reorganized civilians because control over collaboration determined wartime outcomes.',
+          },
+          {
+            title: 'Afgantsy',
+            relation: 'Extends',
+            explanation:
+              'Braithwaite’s Soviet failure is illuminated by Kalyvas’s logic of shifting local collaboration, denunciation, and control.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'On Protracted War',
+        noteTitle: 'On the Protracted War',
+        authors: ['Mao Tse-Tung'],
+        year: '1967 ed.',
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus variant “On Protracted Warfare”; uploaded PDF is a 1967 edition of 1938 lectures.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 144',
+        mainIdeas: [
+          'A weaker belligerent defeats a stronger one by converting time into a weapon and trading space for time.',
+          'Victory requires a staged strategy that links strategic defense, stalemate, and counteroffensive to different mixes of guerrilla, mobile, and positional warfare.',
+          'Political mobilization of the population generates endurance, manpower, and relative strength over time, converting national resistance into military advantage.',
+        ],
+        themes: ['strategy', 'indirect approach', 'insurgency', 'total war', 'landpower'],
+        connectedBooks: [
+          {
+            title: 'Maoism',
+            relation: 'Supports',
+            explanation:
+              'Lovell traces the transnational spread of the strategic logic Mao systematizes here.',
+          },
+          {
+            title: 'Nonstate Warfare',
+            relation: 'Shares framework',
+            explanation:
+              'Biddle and Mao both show how weaker actors select and sequence methods to offset inferiority over time.',
+          },
+          {
+            title: 'How ISIS Fights',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both examine weaker actors facing stronger enemies, but Ashour shows rapid mode-switching rather than Mao’s staged, population-based protraction.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Maoism',
+        subtitle: 'A Global History',
+        authors: ['Julia Lovell'],
+        year: 2019,
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus year 2020; uploaded PDF title/copyright year 2019.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 145',
+        mainIdeas: [
+          'Maoism operates as a portable political-military toolkit rather than a fixed Chinese doctrine.',
+          'Its influence comes from fusing party discipline, peasant mobilization, and armed struggle into a repertoire that links insurgency to state-building.',
+          'The PRC’s export of Maoism transformed it into a transnational strategy that mutates across cases and survives Mao.',
+        ],
+        themes: ['ideational change', 'insurgency', 'institutions', 'legitimacy', 'international system'],
+        connectedBooks: [
+          {
+            title: 'On Protracted War',
+            relation: 'Supports',
+            explanation:
+              'Mao’s wartime theory supplies the strategic grammar that Lovell follows across later Maoist movements.',
+          },
+          {
+            title: 'Revolutionary Warfare',
+            relation: 'Shares framework',
+            explanation:
+              'Both books treat warfare as a means of remaking political order and building authority, not merely defeating enemy forces.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Pacification in Algeria',
+        noteTitle: 'Pacification in Algeria, 1956-1958',
+        subtitle: '1956-1958',
+        authors: ['David Galula'],
+        year: 2006,
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus year 2002; uploaded RAND PDF is the 2006 edition, originally published 1963.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 146',
+        mainIdeas: [
+          'Counterinsurgency succeeds only when the counterinsurgent controls and organizes the population, because military attrition alone does not shift political allegiance.',
+          'Pacification requires permanent presence, census and movement controls, and dismantling insurgent cells to convert local security into political order.',
+          'Tactical success collapses when political authorities fail to convert local control into a legitimate and durable political order.',
+        ],
+        themes: ['counterinsurgency', 'population control', 'legitimacy', 'coercion', 'ethics'],
+        connectedBooks: [
+          {
+            title: 'Revolutionary Warfare',
+            relation: 'Challenges',
+            explanation:
+              'Peterson argues Galula’s pacification was armed colonial reform, overturning Galula’s self-presentation of the campaign.',
+          },
+          {
+            title: 'The Logic of Violence in Civil War',
+            relation: 'Shares framework',
+            explanation:
+              'Kalyvas and Galula both make civilian control and information the mechanism that drives wartime success.',
+          },
+          {
+            title: 'War from the Ground Up',
+            relation: 'Extends',
+            explanation:
+              'Simpson explains why Galula’s local gains could not become strategic success once political meaning and higher-level policy diverged.',
+          },
+          {
+            title: 'The Forgotten Front',
+            relation: 'Extends',
+            explanation:
+              'Ladwig reaches a similar conclusion in indirect counterinsurgency: military effort fails when the governing structure that should convert it into legitimacy does not change.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Revolutionary Warfare',
+        subtitle: 'How the Algerian War Made Modern Counterinsurgency',
+        authors: ['Terrence G. Peterson'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes: '—',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 147',
+        mainIdeas: [
+          'French pacification in Algeria was a proactive project of armed colonial reform, not a purely reactive anti-insurgent campaign.',
+          'Counterinsurgency functioned through social engineering that fused coercion, welfare, and administration to remake civilian life.',
+          'Military dominance accelerated strategic defeat because coercive reform deepened the illegitimacy of continued French rule.',
+        ],
+        themes: ['counterinsurgency', 'population control', 'legitimacy', 'civil-military relations', 'coercion'],
+        connectedBooks: [
+          {
+            title: 'Pacification in Algeria',
+            relation: 'Challenges',
+            explanation:
+              'Peterson recasts Galula’s pacification as coercive colonial reform and revises the normative lessons drawn from Galula.',
+          },
+          {
+            title: 'The Logic of Violence in Civil War',
+            relation: 'Shares framework',
+            explanation:
+              'Kalyvas explains why reorganizing civilians and policing collaboration became the operational center of French strategy.',
+          },
+          {
+            title: 'War from the Ground Up',
+            relation: 'Shares framework',
+            explanation:
+              'Simpson’s insistence that combat generates political meaning explains why French operational dominance intensified strategic failure.',
+          },
+          {
+            title: 'The Forgotten Front',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Peterson studies direct colonial rule while Ladwig examines indirect patronage, but both show that governance structure determines counterinsurgency effectiveness.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'War from the Ground Up',
+        noteTitle: 'War From the Ground Up',
+        subtitle: 'Twenty-First-Century Combat as Politics',
+        authors: ['Emile Simpson'],
+        year: 2013,
+        sourceConfidence: 'Medium',
+        notes: 'Syllabus year 2018; uploaded Oxford PDF title/copyright year 2013.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 148',
+        mainIdeas: [
+          'Contemporary conflict often uses force to produce immediate political effects rather than merely setting conditions for later diplomacy.',
+          'Strategy fails when policy and tactics are separated; it must remain a continuous dialogue between political intent and local reality.',
+          'Multiple audiences make narrative interpretation a causal variable in military success or failure.',
+        ],
+        themes: ['strategy', 'perception', 'uncertainty', 'decision-making', 'operational art'],
+        connectedBooks: [
+          {
+            title: 'Winning Without Fighting',
+            relation: 'Shares framework',
+            explanation:
+              'Both books judge success by political effect across multiple audiences rather than battlefield metrics.',
+          },
+          {
+            title: 'Afgantsy',
+            relation: 'Supports',
+            explanation:
+              'Braithwaite’s Soviet case shows that tactical adaptation fails when political meaning and military action pull apart.',
+          },
+          {
+            title: 'Revolutionary Warfare',
+            relation: 'Extends',
+            explanation:
+              'Peterson’s Algeria case demonstrates Simpson’s claim that military activity is judged by the political order it produces, not just battlefield dominance.',
+          },
+          {
+            title: 'Russia and the Changing Character of Conflict',
+            relation: 'Shares framework',
+            explanation:
+              'German describes a competitor that explicitly treats perception and cognitive effect as operational variables.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Afgantsy',
+        subtitle: 'The Russians in Afghanistan, 1979-89',
+        authors: ['Rodric Braithwaite'],
+        year: 2011,
+        sourceConfidence: 'High',
+        notes: 'OCR and non-OCR uploads duplicate the same book.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 149',
+        mainIdeas: [
+          'Soviet leaders intervened without a clear political end state and therefore turned a limited mission into an open-ended commitment.',
+          'Tactical adaptation could not compensate for elite misperception, institutional inertia, and the failure to align military action with Afghan political realities.',
+          'The war became strategically unwinnable because it destroyed legitimacy at home and abroad while offering no clean path to termination.',
+        ],
+        themes: ['decision-making', 'misperception', 'bureaucratic politics', 'war termination', 'civil-military relations'],
+        connectedBooks: [
+          {
+            title: 'War from the Ground Up',
+            relation: 'Supports',
+            explanation:
+              'Simpson’s framework explains why Soviet combat generated no durable political effect and therefore no usable strategy.',
+          },
+          {
+            title: 'The Logic of Violence in Civil War',
+            relation: 'Extends',
+            explanation:
+              'Kalyvas’s collaboration logic explains why Soviet gains stayed shallow in a war of fluid local loyalties.',
+          },
+          {
+            title: 'The Forgotten Front',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both examine great powers operating through local governments, but Ladwig identifies conditions for leverage whereas Braithwaite shows what happens when the external power cannot realign its client.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Forgotten Front',
+        subtitle: 'Patron-Client Relationships in Counterinsurgency',
+        authors: ['Walter C. Ladwig III'],
+        year: 2017,
+        sourceConfidence: 'High',
+        notes: 'Syllabus shortens author as Walter C. Ladwig; uploaded title page gives Walter C. Ladwig III.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 150',
+        mainIdeas: [
+          'In indirect counterinsurgency, the partner regime often blocks success because its survival incentives diverge from the patron’s war aims.',
+          'Aid generates leverage only when tied to credible conditions and deadlines; unconditional support creates moral hazard and client shirking.',
+          'Patrons must judge partner willingness before partner capacity because reform-resistant clients convert assistance into strategic failure.',
+        ],
+        themes: ['alliance politics', 'compellence', 'coercion', 'counterinsurgency', 'institutions'],
+        connectedBooks: [
+          {
+            title: 'Winning Without Fighting',
+            relation: 'Extends',
+            explanation:
+              'Ladwig supplies the mechanism by which a grand strategy of competition through partners either succeeds or fails.',
+          },
+          {
+            title: 'Nonstate Warfare',
+            relation: 'Shares framework',
+            explanation:
+              'Biddle and Ladwig both treat institutions and incentives, not raw capability, as the drivers of wartime behavior.',
+          },
+          {
+            title: 'Afgantsy',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both involve external powers backing vulnerable regimes, but Braithwaite shows entrapment while Ladwig specifies when leverage can still work.',
+          },
+          {
+            title: 'Pacification in Algeria',
+            relation: 'Shares framework',
+            explanation:
+              'Both show that military effort matters only when it reshapes governance and legitimacy.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'How ISIS Fights',
+        subtitle: 'Military Tactics in Iraq, Syria, Libya and Egypt',
+        authors: ['Omar Ashour'],
+        year: 2021,
+        sourceConfidence: 'High',
+        notes: '—',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 151',
+        mainIdeas: [
+          'ISIS gained and held territory by switching across conventional, guerrilla, and terrorist modes rather than committing to one form of warfare.',
+          'Tactical innovation, especially combined methods like SVBIED-enabled assaults, converted weakness into localized operational overmatch.',
+          'Territorial defeat does not end ISIS because the organization preserves combat power by exporting know-how and reverting to insurgency and terrorism.',
+        ],
+        themes: ['strategy', 'operational art', 'insurgency', 'military innovation', 'organizational adaptation'],
+        connectedBooks: [
+          {
+            title: 'Nonstate Warfare',
+            relation: 'Supports',
+            explanation:
+              'ISIS is a direct case of Biddle’s method spectrum and institutionally enabled adaptation.',
+          },
+          {
+            title: 'On Protracted War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both explain how weaker actors survive stronger foes, but ISIS favors rapid switching and innovation over Mao’s staged protraction.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Russia and the Changing Character of Conflict',
+        authors: ['Tracey German'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: 'Syllabus uses Tracey C. German; uploaded title page uses Tracey German.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf p. 152',
+        mainIdeas: [
+          'Russian military thought treats contemporary conflict as a contest that blends precision strike with information and cognitive methods.',
+          'Russia seeks strategic effect by degrading an adversary’s will and cohesion before or alongside kinetic operations.',
+          'Russian approaches emerged through iterative learning from Western wars and Russia’s own campaigns, producing a hybrid toolkit of technology, proxies, and deniable methods.',
+        ],
+        themes: ['information warfare', 'indirect approach', 'military innovation', 'technological change', 'cyber power'],
+        connectedBooks: [
+          {
+            title: 'Winning Without Fighting',
+            relation: 'Supports',
+            explanation:
+              'German identifies the toolkit of information, proxy, and deniable competition that makes Patterson et al.’s call for persistent IW strategy urgent.',
+          },
+          {
+            title: 'War from the Ground Up',
+            relation: 'Shares framework',
+            explanation:
+              'Both books treat perception and narrative as causal variables rather than byproducts of combat.',
+          },
+          {
+            title: 'The Forgotten Front',
+            relation: 'Extends',
+            explanation:
+              'Ladwig explains one channel through which Russia’s indirect approach can work: competition through partners and proxies.',
+          },
+        ],
+        confidence: 'High',
+      },
+    ],
+  },
+  '660': {
+    course: 'SAASS 660',
+    shortTitle: 'Military Innovation',
+    pageTitle: 'SAASS 660 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 660 focused on force employment, military innovation, organizational learning, defense-industrial systems, and the institutions that turn technology into military power.',
+    takeaways: [
+      'Military innovation is never just about better technology.',
+      'Battlefield advantage usually comes from learning and adaptation more than hardware alone.',
+      'Military technology is socially and politically constructed.',
+      'Future military power will depend increasingly on linking civilian innovation to military need.',
+      'The core strategic challenge is distinguishing enduring truths about war from genuine military revolutions.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'Military Power',
+        subtitle: 'Explaining Victory and Defeat in Modern Battle',
+        authors: ['Stephen Biddle'],
+        year: 2004,
+        sourceConfidence: 'High',
+        notes:
+          'Syllabus-listed; uploaded PDF is a 2006 paperback printing of the 2004 book.',
+        coverArt:
+          'http://books.google.com/books/content?id=UjRY3kti18UC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Modern battle outcomes turn on force employment, not materiel alone.',
+          'The modern system, cover, concealment, dispersion, suppression, small-unit maneuver, combined arms, depth, and reserves, reduces vulnerability to modern firepower.',
+          'Numerical preponderance matters only when armies can exploit it through modern-system employment.',
+        ],
+        themes: [
+          'landpower',
+          'operational art',
+          'friction',
+          'military innovation',
+          'organizational adaptation',
+        ],
+        connectedBooks: [
+          {
+            title: 'Learning War',
+            relation: 'Supports',
+            explanation:
+              'Iterative doctrine and force employment generate combat effectiveness.',
+          },
+          {
+            title: 'Winning the Next War',
+            relation: 'Shares framework',
+            explanation:
+              'Organizational choices shape military performance more than technology alone.',
+          },
+          {
+            title: 'The Origins of Victory',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both reject simple materialism, but Krepinevich emphasizes disruptive shifts whereas Biddle emphasizes continuity in battle dynamics.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Applies organizational and doctrinal adaptation to post-Cold War armies.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Scientists at War',
+        subtitle: 'The Ethics of Cold War Weapons Research',
+        authors: ['Sarah Bridger'],
+        year: 2015,
+        sourceConfidence: 'High',
+        notes: 'Verified from uploaded PDF title/copyright pages.',
+        coverArt:
+          'http://books.google.com/books/content?id=A_y7BwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The Vietnam War shifted scientific ethics from individual conscience toward institutional critique.',
+          'Scientists’ political influence depended on advisory access, university-defense ties, and the structure of the Cold War research establishment.',
+          'Claims of scientific neutrality broke down when weapons research became inseparable from Cold War and Vietnam policy.',
+        ],
+        themes: [
+          'ethics',
+          'civil-military relations',
+          'institutions',
+          'ideational change',
+          'technological change',
+        ],
+        connectedBooks: [
+          {
+            title: 'Inventing Accuracy',
+            relation: 'Shares framework',
+            explanation:
+              'Military technology is produced inside political and scientific institutions.',
+          },
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Extends',
+            explanation:
+              'Shifts the problem of expert complicity from Cold War scientists to the contemporary military-tech complex.',
+          },
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Challenges',
+            explanation:
+              'Tighter civil-military technological integration carries ethical and institutional costs.',
+          },
+          {
+            title: 'The Pursuit of Power',
+            relation: 'Extends',
+            explanation:
+              'Places scientific ethics inside the broader interaction of technology, armed force, and society.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+        subtitle: 'A New Paradigm for Military Innovation?',
+        authors: ['Yoram Evron', 'Richard A. Bitzinger'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes:
+          'Subtitle and middle initial verified from uploaded PDF. Analytical emphasis now centers on the book’s treatment of an integrated national industrial base and national innovation system.',
+        coverArt:
+          'http://books.google.com/books/content?id=Dre9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Commercial 4IR technologies are becoming decisive inputs to military effectiveness and advantage.',
+          'Military-civil fusion seeks to create a shared technology well connecting defense and civilian R&D through state coordination and partnership.',
+          'Effective MCF depends on national institutions, market structures, and cooperation across an integrated industrial and technological base.',
+        ],
+        themes: [
+          'technological change',
+          'military innovation',
+          'defense-industrial base',
+          'political economy',
+          'institutions',
+          'civil-military relations',
+        ],
+        connectedBooks: [
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Supports',
+            explanation:
+              'Civilian tech ecosystems now shape military advantage.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Moves post-Cold War transformation toward 4IR-era innovation networks.',
+          },
+          {
+            title: 'The Pursuit of Power',
+            relation: 'Shares framework',
+            explanation:
+              'Economic and technological systems condition military power.',
+          },
+          {
+            title: 'The Hand Behind Unmanned',
+            relation: 'Supports',
+            explanation:
+              'Civilian technologies and defense institutions jointly shape new arsenals.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Transforming Military Power since the Cold War',
+        subtitle: 'Britain, France, and the United States, 1991–2012',
+        authors: ['Theo Farrell', 'Sten Rynning', 'Terry Terriff'],
+        year: 2013,
+        sourceConfidence: 'High',
+        notes: 'Subtitle verified from uploaded PDF.',
+        coverArt:
+          'http://books.google.com/books/content?id=8fXXAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Army transformation after the Cold War was driven by strategic and socio-technological change, not by a single universal model.',
+          'Organizational interests, emerging ideas, and entrepreneurial leaders jointly shaped the direction of reform.',
+          'Operational experience, budget constraints, and technology maturation repeatedly redirected transformation programs.',
+        ],
+        themes: [
+          'military innovation',
+          'organizational adaptation',
+          'bureaucratic politics',
+          'institutions',
+          'strategy',
+        ],
+        connectedBooks: [
+          {
+            title: 'Winning the Next War',
+            relation: 'Extends',
+            explanation:
+              'Tests innovation theory against recent army transformation.',
+          },
+          {
+            title: 'Learning War',
+            relation: 'Shares framework',
+            explanation:
+              'Military change depends on institutions that absorb feedback.',
+          },
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Extends',
+            explanation:
+              'Traces the move from post-Cold War reform to technology-networked transformation.',
+          },
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Extends',
+            explanation:
+              'Moves from post-Cold War organizational reform to AI-enabled force redesign.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Flying Camelot',
+        subtitle: 'The F-15, the F-16, and the Weaponization of Fighter Pilot Nostalgia',
+        authors: ['Michael W. Hankins'],
+        year: 2021,
+        sourceConfidence: 'Medium',
+        notes:
+          'Syllabus lists 2023, but uploaded PDF says first published 2021. Analytical revisions emphasize fighter-pilot culture and nostalgia as the book’s causal core.',
+        coverArt:
+          'http://books.google.com/books/content?id=uOciEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Fighter aircraft design followed fighter-pilot identity and nostalgia, not operational requirements alone.',
+          'The F-15 and F-16 embodied competing visions of air combat and the “true fighter.”',
+          'The Fighter Mafia turned service-cultural beliefs into procurement influence by framing maneuverability and pilot autonomy as doctrinal truth.',
+        ],
+        themes: [
+          'airpower',
+          'service culture',
+          'ideational change',
+          'bureaucratic politics',
+          'technological change',
+          'military innovation',
+        ],
+        connectedBooks: [
+          {
+            title: 'The Hand Behind Unmanned',
+            relation: 'Shares framework',
+            explanation:
+              'Service beliefs and identities shape platform adoption.',
+          },
+          {
+            title: 'Winning the Next War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both examine innovation, but Hankins emphasizes culture and nostalgia more than promotion and organizational mechanisms.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Supports',
+            explanation:
+              'Ideas and entrepreneurial actors redirect military reform.',
+          },
+          {
+            title: 'The Origins of Victory',
+            relation: 'Challenges',
+            explanation:
+              'Disruptive technological change is still mediated by service culture and inherited beliefs.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Learning War',
+        subtitle: 'The Evolution of Fighting Doctrine in the U.S. Navy, 1898–1945',
+        authors: ['Trent Hone'],
+        year: 2018,
+        sourceConfidence: 'High',
+        notes:
+          'Subtitle and publication year verified from uploaded PDF. Analytical wording tightened to reflect the book’s emphasis on a Navy learning system, experimentation, feedback, and doctrinal revision.',
+        coverArt:
+          'http://books.google.com/books/content?id=oCRZDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The U.S. Navy built an institutionalized learning system that converted experimentation and feedback into doctrine.',
+          'Pacific victory rested on adaptive doctrine and organizational learning, not on a sudden post-Pearl Harbor conversion.',
+          'Flexible doctrine and safe-to-fail experimentation increased combat effectiveness under wartime stress.',
+        ],
+        themes: [
+          'seapower',
+          'organizational learning',
+          'standard operating procedures',
+          'military innovation',
+          'operational art',
+          'strategy',
+        ],
+        connectedBooks: [
+          {
+            title: 'Military Power',
+            relation: 'Supports',
+            explanation:
+              'Doctrine and force employment determine combat outcomes.',
+          },
+          {
+            title: 'Winning the Next War',
+            relation: 'Shares framework',
+            explanation:
+              'Innovation depends on building organizations that can learn before and during war.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Shows how later armies institutionalized adaptation under new conditions.',
+          },
+          {
+            title: 'The Pursuit of Power',
+            relation: 'Extends',
+            explanation:
+              'Links long-run naval power to specific mechanisms of doctrinal change.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'AI, Automation, and War',
+        subtitle: 'The Rise of a Military-Tech Complex',
+        authors: ['Anthony King'],
+        year: 2025,
+        sourceConfidence: 'High',
+        notes:
+          'Subtitle verified from uploaded PDF. Analytical revisions emphasize the military-tech complex, organizational context, and expert human ensembles rather than autonomous replacement.',
+        coverArt:
+          'http://books.google.com/books/content?id=qpJIEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'AI’s military value depends on the organizations that build, integrate, and sustain it, not on algorithms alone.',
+          'A military-tech complex linking armed forces, ministries, and civilian firms is necessary to field military AI at scale.',
+          'AI reconfigures planning, targeting, cyber operations, and command through expert human ensembles rather than replacing human military judgment.',
+        ],
+        themes: [
+          'technological change',
+          'military innovation',
+          'defense-industrial base',
+          'decision-making',
+          'cyber power',
+          'organizational adaptation',
+        ],
+        connectedBooks: [
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Supports',
+            explanation:
+              'Civilian 4IR technologies and state coordination are preconditions for military advantage.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Moves from post-Cold War transformation to AI-enabled force design.',
+          },
+          {
+            title: 'Military Power',
+            relation: 'Shares framework',
+            explanation:
+              'Organizational competence mediates the effects of technology on war.',
+          },
+          {
+            title: 'The Hand Behind Unmanned',
+            relation: 'Extends',
+            explanation:
+              'Takes unmanned systems into the AI era of human-machine teaming and target processing.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Origins of Victory',
+        subtitle: 'How Disruptive Military Innovation Determines the Fates of Great Powers',
+        authors: ['Andrew F. Krepinevich, Jr.'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes:
+          'Syllabus omits “Jr.”; uploaded PDF includes it. Main Idea 3 tightened around faster exploitation of disruptive military innovation.',
+        coverArt:
+          'http://books.google.com/books/content?id=202qEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Military revolutions create periods of disruptive change that can reorder great-power hierarchies.',
+          'The precision-warfare regime is maturing even as a successor revolution emerges from new technologies.',
+          'Great powers gain disproportionate advantage when they identify and exploit disruptive military innovation faster than rivals.',
+        ],
+        themes: [
+          'military innovation',
+          'technological change',
+          'strategy',
+          'deterrence',
+          'power politics',
+          'international system',
+        ],
+        connectedBooks: [
+          {
+            title: 'Winning the Next War',
+            relation: 'Extends',
+            explanation:
+              'Shifts from innovation inside services to disruptive innovation in great-power rivalry.',
+          },
+          {
+            title: 'Military Power',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both critique material determinism, but Biddle emphasizes enduring battlefield constraints while Krepinevich emphasizes revolutionary discontinuities.',
+          },
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Supports',
+            explanation:
+              '4IR technologies may underpin the next military revolution.',
+          },
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Supports',
+            explanation:
+              'AI is one of the disruptive technologies shaping the successor regime to precision warfare.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Inventing Accuracy',
+        subtitle: 'A Historical Sociology of Nuclear Missile Guidance',
+        authors: ['Donald MacKenzie'],
+        year: 1993,
+        sourceConfidence: 'Medium',
+        notes:
+          'Uploaded PDF shows original copyright 1990 and first MIT Press paperback edition 1993; syllabus uses 1993. Syllabus spells surname “Mackenzie,” but uploaded PDF title page uses “MacKenzie.” Theme set adjusted to reflect the book’s emphasis on laboratories, corporations, political and military leaders, and organizations.',
+        coverArt:
+          'http://books.google.com/books/publisher/content?id=Br5NEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE70Z6xlLouV5xUveSTh97PWzCzgGt5qdhoHIzj8MG_bnshRL6EQruZdlfoIS5VoPFatUiXis3uZhFW38z51jWgiQF1yMAzcirgCdQI9xlG7kXDHBVfmTEs38zlfu5WJ5y6Sjo78g&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Missile accuracy was produced through organizational, political, and technical struggles rather than linear technological progress.',
+          'Improved accuracy made counterforce strategy increasingly plausible by linking guidance advances to nuclear targeting options.',
+          '“Technical facts” about guidance and accuracy were socially constructed within defense and scientific institutions.',
+        ],
+        themes: [
+          'technological change',
+          'deterrence',
+          'bureaucratic politics',
+          'institutions',
+          'defense-industrial base',
+        ],
+        connectedBooks: [
+          {
+            title: 'Scientists at War',
+            relation: 'Shares framework',
+            explanation:
+              'Scientific expertise and military technology are socially and politically constituted.',
+          },
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Shares framework',
+            explanation:
+              'Technology does not move autonomously but through state-industry institutions.',
+          },
+          {
+            title: 'The Pursuit of Power',
+            relation: 'Extends',
+            explanation:
+              'Connects a specific weapons system to long-run patterns linking technology and armed force.',
+          },
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both reject technological determinism, but MacKenzie centers nuclear guidance whereas King centers AI-enabled military organizations.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Pursuit of Power',
+        subtitle: 'Technology, Armed Force, and Society since A.D. 1000',
+        authors: ['William H. McNeill'],
+        year: 1982,
+        sourceConfidence: 'High',
+        notes:
+          'Subtitle verified from uploaded PDF. Analytical emphasis now includes political economy, consistent with the book’s focus on the business of war and the politicization of economics.',
+        coverArt:
+          'http://books.google.com/books/content?id=ydcnAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Long-run shifts in great-power position followed changes in the interaction of technology, armed force, and social organization.',
+          'States that mobilized economic and administrative resources for war more effectively gained durable strategic advantages.',
+          'Military power and social order coevolved through the interaction of markets, administration, and war.',
+        ],
+        themes: [
+          'technological change',
+          'industrial mobilization',
+          'logistics and sustainment',
+          'political economy',
+          'grand strategy',
+          'power politics',
+        ],
+        connectedBooks: [
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Shares framework',
+            explanation:
+              'Economic and technological systems shape military strength.',
+          },
+          {
+            title: 'Learning War',
+            relation: 'Extends',
+            explanation:
+              'Macro systemic pressures are mediated by service-level learning.',
+          },
+          {
+            title: 'Inventing Accuracy',
+            relation: 'Extends',
+            explanation:
+              'Narrows McNeill’s macrohistory to one strategic technology and its consequences.',
+          },
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Shows how similar interactions persist in post-Cold War institutional reform.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Winning the Next War',
+        subtitle: 'Innovation and the Modern Military',
+        authors: ['Stephen Peter Rosen'],
+        year: 1991,
+        sourceConfidence: 'High',
+        notes: 'Subtitle verified from uploaded PDF.',
+        coverArt:
+          'http://books.google.com/books/content?id=ncLRUf-q-XYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Military innovation is primarily an organizational and bureaucratic problem, not a simple product of technology or defeat.',
+          'Peacetime, wartime, and technological innovation follow different mechanisms and should not be treated as one process.',
+          'Successful innovation requires senior leaders to redirect promotions and resources toward a new way of war before combat proves its value.',
+        ],
+        themes: [
+          'military innovation',
+          'organizational adaptation',
+          'bureaucratic politics',
+          'strategy',
+          'uncertainty',
+        ],
+        connectedBooks: [
+          {
+            title: 'Transforming Military Power since the Cold War',
+            relation: 'Extends',
+            explanation:
+              'Applies Rosen’s innovation logic to post-Cold War reform.',
+          },
+          {
+            title: 'Learning War',
+            relation: 'Shares framework',
+            explanation:
+              'Military organizations innovate when they institutionalize adaptation.',
+          },
+          {
+            title: 'Military Power',
+            relation: 'Shares framework',
+            explanation:
+              'Nonmaterial factors drive battlefield performance.',
+          },
+          {
+            title: 'Flying Camelot',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Rosen stresses organizational and promotion structures, Hankins stresses service culture and nostalgia.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Hand Behind Unmanned',
+        subtitle: 'Origins of the U.S. Autonomous Military Arsenal',
+        authors: ['Jacquelyn Schneider', 'Julia MacDonald'],
+        year: 2025,
+        sourceConfidence: 'Medium',
+        notes:
+          'Included because it appears in the syllabus’s required book list; no matching uploaded PDF was available, so the analytical columns remain syllabus-grounded and provisional.',
+        coverArt:
+          'http://books.google.com/books/publisher/content?id=VdE_EQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE719Ec0Q1gdyfcl8NcHLWo4UwEpvB00ku7szqJHyBx9i3HaGmLJaFsEIdGpvSwhI-E0gQdW7awXg9uj812-hiddOclYomzrtFkNjPrgBrdp8w-2rr-cFps2w0HelTf1uW1293V3s&source=gbs_api',
+        primarySourceUsed: 'Syllabus',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The U.S. unmanned arsenal emerged from exogenous shocks interacting with preexisting service beliefs and identities.',
+          'Competing coalitions of military-revolution advocates and force-protection advocates steered different unmanned investments.',
+          'Policy entrepreneurs and wartime pressures shaped which autonomous capabilities the U.S. military fielded.',
+        ],
+        themes: [
+          'military innovation',
+          'technological change',
+          'ideational change',
+          'bureaucratic politics',
+          'service culture',
+        ],
+        connectedBooks: [
+          {
+            title: 'Flying Camelot',
+            relation: 'Shares framework',
+            explanation:
+              'Service culture and identity shape platform adoption.',
+          },
+          {
+            title: 'Winning the Next War',
+            relation: 'Extends',
+            explanation:
+              'Innovation depends on actors and institutions, but Schneider and MacDonald emphasize policy entrepreneurs and advocacy coalitions.',
+          },
+          {
+            title: 'AI, Automation, and War',
+            relation: 'Extends',
+            explanation:
+              'Unmanned systems create the organizational and technological basis for later AI-enabled warfare.',
+          },
+          {
+            title: 'The Fourth Industrial Revolution and Military–Civil Fusion',
+            relation: 'Supports',
+            explanation:
+              'Civilian technologies and defense institutions co-produce new military capabilities.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+    ],
+  },
+  '665': {
+    course: 'SAASS 665',
+    shortTitle: 'Space Power',
+    pageTitle: 'SAASS 665 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 665 focused on space strategy, command of space, military and commercial infrastructure, international order, and the legal and political foundations of competition beyond Earth.',
+    takeaways: [
+      'Space is not a separate, apolitical realm of science; it is a domain of national interest, national security, and power politics.',
+      'Modern military and economic power now depends on space infrastructure, which makes space central to conflict even when the fighting is on Earth.',
+      'The core strategic problem is how to reconcile competition and warfighting with peaceful use, legal order, and international stability.',
+      'Commercial space is no longer peripheral; it is now a major source of capability, innovation, leverage, and vulnerability.',
+      'The course is ultimately about U.S. strategy in great-power competition, especially with China, and how the United States should lead in space without losing control of escalation or the broader international order.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'AU-18 Space Primer',
+        noteTitle: 'AU-18 Space Primer 2023',
+        authors: [
+          'Air Command and Staff College (ACSC) Schriever Space Scholars',
+          'Air War College (AWC) West Space Seminar',
+        ],
+        year: 2023,
+        sourceConfidence: 'Medium',
+        notes:
+          'No uploaded primer PDF; analytical claims are conservative and drawn from the syllabus’s use of the primer in the course opening block on Space Force, strategy, and current space strategy.',
+        coverArt:
+          'https://www.airuniversity.af.edu/Portals/10/AUPress/Books/AU-18_Space_Primer_2023.jpg',
+        primarySourceUsed: 'Syllabus',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Space capabilities create operational advantage only when joint commanders deliberately integrate them into campaign planning and execution.',
+          'Military operations must plan for contested access to space services rather than assume uninterrupted support.',
+          'The Space Force contributes to deterrence and warfighting through space control, resilient enablement, and domain expertise for the joint force.',
+        ],
+        themes: ['strategy', 'joint warfare', 'deterrence', 'space power', 'operational art'],
+        connectedBooks: [
+          {
+            title: 'Space Warfare',
+            relation: 'Supports',
+            explanation:
+              'Translates the primer’s planner-facing claims into a full strategic theory of command, communication, and joint operations.',
+          },
+          {
+            title: 'The Oxford Handbook of Space Security',
+            relation: 'Extends',
+            explanation:
+              'Broadens the primer’s operational focus into statecraft, institutions, and space security debates.',
+          },
+          {
+            title: 'The Woomera Manual',
+            relation: 'Extends',
+            explanation:
+              'Specifies the legal thresholds governing the operations and counterspace actions the primer treats in practical terms.',
+          },
+          {
+            title: 'Weapons in Space',
+            relation: 'Supports',
+            explanation:
+              'Shows historically why US planners moved from benign-support assumptions toward a contested-domain mindset.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Astropolitik',
+        subtitle: 'Classical Geopolitics in the Space Age',
+        authors: ['Everett C. Dolman'],
+        year: 2002,
+        sourceConfidence: 'High',
+        notes:
+          'Grounded in the book’s introduction, realist framing, and policy prescription for control of low-Earth orbit.',
+        coverArt:
+          'https://books.google.com/books/content?id=QiSOzQEACAAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/astropolitik-classical-geopolitics-in-the-space-age/',
+        mainIdeas: [
+          'Control of low-Earth orbit yields decisive geopolitical leverage over near-Earth space and terrestrial politics.',
+          'The existing space regime suppresses competition and should be replaced by a sovereignty/property order backed by US control of low-Earth orbit.',
+          'Classical geopolitics and realist grand strategy apply to space because states will compete for dominance rather than sustain durable cooperation.',
+        ],
+        themes: [
+          'grand strategy',
+          'power politics',
+          'balance of power',
+          'historical analogy',
+          'space power',
+        ],
+        connectedBooks: [
+          {
+            title: 'Space Warfare',
+            relation: 'Shares framework',
+            explanation:
+              'Both derive space strategy from earlier domains, though Klein rejects Dolman’s emphasis on decisive dominance.',
+          },
+          {
+            title: 'Original Sin',
+            relation: 'Challenges',
+            explanation:
+              'Bowen rejects high-ground determinism and replaces it with the cosmic coastline model.',
+          },
+          {
+            title: 'The Province of All Mankind',
+            relation: 'Challenges',
+            explanation:
+              'Buono’s order-building and province-of-all-mankind framing conflicts with Dolman’s control-first prescription.',
+          },
+          {
+            title: 'Weapons in Space',
+            relation: 'Extends',
+            explanation:
+              'Bateman supplies the Cold War policy history behind later arguments for freedom of action and space control.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Original Sin',
+        subtitle: 'Power, Technology and War in Outer Space',
+        authors: ['Bleddyn E. Bowen'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes:
+          'Grounded in Bowen’s explicit statement of the book’s three arguments and his technopolitical account of infrastructure and power.',
+        coverArt:
+          'https://www.hurstpublishers.com/wp-content/uploads/2022/10/9781787387775.jpg',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/original-sin-power-technology-and-war-in-outer-space/',
+        mainIdeas: [
+          'Space technologies were developed to meet military-political objectives, not for humankind in the abstract.',
+          'The Global Space Age is global, infrastructural, and politically constructed rather than a simple bipolar US-Soviet story.',
+          'Earth orbit is a cosmic coastline, so command of space is relational and tied to terrestrial power rather than to absolute high-ground dominance.',
+        ],
+        themes: [
+          'power politics',
+          'political economy',
+          'technological change',
+          'space infrastructure',
+          'space power',
+        ],
+        connectedBooks: [
+          {
+            title: 'Astropolitik',
+            relation: 'Challenges',
+            explanation:
+              'Bowen rejects dominance/high-ground logic and replaces it with a coastline model.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat command of space as relational and reject sanctuary assumptions.',
+          },
+          {
+            title: 'Weapons in Space',
+            relation: 'Supports',
+            explanation:
+              'Both treat militarization as longstanding and rooted in Cold War choices rather than a recent break.',
+          },
+          {
+            title: 'When the Heavens Went on Sale',
+            relation: 'Extends',
+            explanation:
+              'Vance shows the commercial and infrastructural layer of the technopolitical order Bowen theorizes.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Oxford Handbook of Space Security',
+        authors: ['Saadia M. Pekkanen', 'P.J. Blount (eds.)'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes:
+          'Edited volume; row captures the editor-framed architecture around peaceful purposes, state competition, and legal-governance questions rather than a single monographic thesis.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=PPsC0AEACAAJ&img=1&imgtk=AFLRE72yt3NL6YBIP4X00TAF40ThSGW3luuET-VrhiPi9MKE4mKFkWFHtVqPxAsqHfhqZgjLGq1_fJVxuFi9FCk9W3BGF87N9tYCAvzz-3IY7KjYR6keS-2JoVTFcCax5YlGDbELFOg4&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'Space security is an international-relations problem shaped by state competition, changing technology, and contested meanings of peaceful purposes.',
+          'Security in space, through space, and from space is interconnected because the same systems generate military, economic, and political effects.',
+          'Peaceful outcomes depend on institutions, international law, and strategy that manage competition rather than assume space is exceptional.',
+        ],
+        themes: [
+          'international order',
+          'institutions',
+          'international law',
+          'power politics',
+          'technological change',
+        ],
+        connectedBooks: [
+          {
+            title: 'The Woomera Manual',
+            relation: 'Extends',
+            explanation:
+              'Translates broad governance questions into rules for military operations.',
+          },
+          {
+            title: 'Original Sin',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat space as political and technological, not exceptional or purely technical.',
+          },
+          {
+            title: 'The Province of All Mankind',
+            relation: 'Supports',
+            explanation:
+              'Both center peaceful purposes and the making of international order.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Extends',
+            explanation:
+              'Narrows broad space-security debates into a strategic theory of command and communications.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'The Province of All Mankind',
+        subtitle: 'How Outer Space Became American Foreign Policy',
+        authors: ['Stephen Buono'],
+        year: 2025,
+        sourceConfidence: 'Medium',
+        notes:
+          'No uploaded PDF; analytical claims are deliberately limited to the title, subtitle, and syllabus framing.',
+        coverArt:
+          'https://books.google.com/books/publisher/content?edge=curl&id=DdI-EQAAQBAJ&img=1&imgtk=AFLRE73YlctV1eKB0yNDtyMWQFhuAzlEEoobW_7EGlBnC7wBzuzTtTjowBlQXtJHxI7VGE9kdKe_XwG1veCjPA_pQ10WIqUp8QnTihPtziOWxwCvSKcLAhK7rQB4nS-4xhTgcW6JjAPO&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'Syllabus',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The book traces how “the province of all mankind” became a category of American foreign policy for outer space.',
+          'It centers peaceful-use and legal-order language as part of the making of US space policy.',
+          'It treats outer space as a site where universalist claims and national strategy interact.',
+        ],
+        themes: [
+          'international order',
+          'international law',
+          'legitimacy',
+          'ideational change',
+          'power politics',
+        ],
+        connectedBooks: [
+          {
+            title: 'Astropolitik',
+            relation: 'Challenges',
+            explanation:
+              'Universalist order language conflicts with Dolman’s dominance prescription.',
+          },
+          {
+            title: 'The Woomera Manual',
+            relation: 'Extends',
+            explanation:
+              'Operationalizes the legal consequences of the order this book appears to historicize.',
+          },
+          {
+            title: 'Weapons in Space',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both engage Cold War space politics, but Bateman emphasizes military-technical contestation more directly.',
+          },
+          {
+            title: 'The Oxford Handbook of Space Security',
+            relation: 'Shares framework',
+            explanation:
+              'Both foreground peaceful purposes, law, and order-building.',
+          },
+        ],
+        confidence: 'Low',
+      },
+      {
+        canonicalTitle: 'Rocket Dreams',
+        subtitle: 'Musk, Bezos and the Trillion-Dollar Space Race',
+        authors: ['Christian Davenport'],
+        year: 2025,
+        sourceConfidence: 'Medium',
+        notes:
+          'Reported narrative; claims are distilled from Davenport’s framing of a race among states, firms, and billionaires over prestige, military superiority, and resource-driven economies.',
+        coverArt: '/assets/cover-9780593594117.jpg',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/rocket-dreams/',
+        mainIdeas: [
+          'The new space race links states, companies, and billionaires in a contest over military advantage, prestige, and economic opportunity.',
+          'Reusable launch and commercially produced systems change the cost structure of access to space and widen what both states and firms can attempt.',
+          'Lunar competition is presented as a struggle over who builds the infrastructure, secures the logistics, and sets the rules around resources and access.',
+        ],
+        themes: [
+          'political economy',
+          'technological change',
+          'defense-industrial base',
+          'logistics and sustainment',
+          'space infrastructure',
+        ],
+        connectedBooks: [
+          {
+            title: 'When the Heavens Went on Sale',
+            relation: 'Supports',
+            explanation:
+              'Both show private firms becoming the builders of strategic space infrastructure.',
+          },
+          {
+            title: 'Original Sin',
+            relation: 'Extends',
+            explanation:
+              'Davenport narrates the commercial-industrial layer of Bowen’s technopolitical argument.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Extends',
+            explanation:
+              'Provides the launch, cislunar, and logistics context that gives Klein’s strategic framework contemporary stakes.',
+          },
+          {
+            title: 'The Oxford Handbook of Space Security',
+            relation: 'Extends',
+            explanation:
+              'The handbook supplies the governance and security vocabulary for the race over access, rules, and economic leverage.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Space Warfare',
+        subtitle: 'Strategy, Principles and Policy',
+        authors: ['John J. Klein'],
+        year: 2025,
+        sourceConfidence: 'Medium',
+        notes:
+          'Grounded in Klein’s explicit Corbettian framing, command-of-space logic, and emphasis on movement, dispersal, and integrated operations.',
+        coverArt:
+          'https://books.google.com/books/content?id=FjfU0AEACAAJ&img=1&imgtk=AFLRE73rilv3PxpTyTKsNjCctNZ9tG07Aq5IHlBaY_VJdlOazPZCMeIyWVGOWHGwFWBOFchSWGpBU1WlJIoLHzYndOgdrYO8uedjwBOtEuwsgyM9NIHeiyREzhi54oRlNtMQO19bs9FC&printsec=frontcover&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/space-warfare-strategy-principles-and-policy-2nd-edition',
+        mainIdeas: [
+          'Maritime strategy, especially Corbett, provides the best general framework for understanding space warfare because space strategy turns on lines of communication and command rather than territorial conquest.',
+          'Command of space is relational, limited, and contingent; it is secured by protecting and contesting celestial lines of communication rather than by assuming permanent dominance.',
+          'Effective space strategy combines offensive preparation, defensive resilience, dispersal, and joint integration rather than assuming inherent offense dominance or a decisive first move.',
+        ],
+        themes: [
+          'strategy',
+          'historical analogy',
+          'space power',
+          'operational art',
+          'limited war',
+          'joint warfare',
+        ],
+        connectedBooks: [
+          {
+            title: 'Astropolitik',
+            relation: 'Shares framework',
+            explanation:
+              'Both seek a general strategic theory of space through analogy to earlier domains.',
+          },
+          {
+            title: 'Original Sin',
+            relation: 'Shares framework',
+            explanation:
+              'Bowen’s cosmic coastline and Klein’s Corbettian logic converge on relational command rather than sanctuary.',
+          },
+          {
+            title: 'The Woomera Manual',
+            relation: 'Extends',
+            explanation:
+              'Provides the legal thresholds surrounding the coercion and force Klein theorizes.',
+          },
+          {
+            title: 'AU-18 Space Primer',
+            relation: 'Supports',
+            explanation:
+              'Converts Klein’s strategic logic into planner-facing guidance for joint commanders.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'The Woomera Manual',
+        noteTitle: 'The Woomera Manual on the International Law of Military Space Operations',
+        subtitle: 'on the International Law of Military Space Activities and Operations',
+        authors: ['Jack M. Beard and Dale Stephens (eds.)', 'with David A. Koplow'],
+        year: 2024,
+        sourceConfidence: 'Medium',
+        notes:
+          'Grounded in the preface and methodology: lex lata only, state practice as method, and legal clarification aimed at safer and more predictable military space operations.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=JhcBEQAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/the-woomera-manual-on-the-international-law-of-military-space-operations/',
+        mainIdeas: [
+          'Existing international law already governs military space activities across peacetime, crisis, and armed conflict.',
+          'State practice is the key method for identifying, interpreting, and developing the rules that apply to military space operations.',
+          'Clarifying thresholds on due regard, harmful interference, force, armed attack, and self-defence can reduce miscalculation and escalation.',
+        ],
+        themes: [
+          'international law',
+          'institutions',
+          'escalation',
+          'legitimacy',
+          'international order',
+        ],
+        connectedBooks: [
+          {
+            title: 'The Oxford Handbook of Space Security',
+            relation: 'Supports',
+            explanation:
+              'Both treat space security as a governance and order problem.',
+          },
+          {
+            title: 'The Province of All Mankind',
+            relation: 'Extends',
+            explanation:
+              'Gives operational legal content to the order-building and peaceful-purposes language in Buono’s framing.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Extends',
+            explanation:
+              'Specifies the legal boundaries around coercion, command, and force.',
+          },
+          {
+            title: 'Weapons in Space',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Bateman tracks how military competition strained arms control, while Woomera shows how law still structures present operations.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Weapons in Space',
+        subtitle: 'Technology, Politics, and the Rise and Fall of the Strategic Defense Initiative',
+        authors: ['Aaron Bateman'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes:
+          'Grounded in the introduction’s account of the 1970s shift, the entanglement of missile defense and ASAT technologies, and the politics of freedom of action in space.',
+        coverArt:
+          'https://mit-press-new-us.imgix.net/covers/9780262547369.jpg?auto=format&dpr=1&q=80&w=298',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/weapons-in-space/',
+        mainIdeas: [
+          'The decisive US turn toward treating space as a contested military arena occurred in the mid-to-late 1970s, before Reagan, as space systems became integral to combat forces.',
+          'SDI tied missile defense, ASAT technology, and freedom of action in space into a single strategic project.',
+          'Debates over space security were political struggles over military legitimacy, arms control, and the future order of the domain, not merely technical disputes.',
+        ],
+        themes: [
+          'technological change',
+          'military innovation',
+          'deterrence',
+          'security dilemma',
+          'international order',
+        ],
+        connectedBooks: [
+          {
+            title: 'Original Sin',
+            relation: 'Supports',
+            explanation:
+              'Both treat militarization as longstanding rather than novel.',
+          },
+          {
+            title: 'Astropolitik',
+            relation: 'Extends',
+            explanation:
+              'Bateman provides the historical policy pathway to later freedom-of-action and control arguments.',
+          },
+          {
+            title: 'The Province of All Mankind',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both examine Cold War space politics, but Bateman centers strategy, SDI, and arms-control entanglement.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Extends',
+            explanation:
+              'Explains the historical origins of the contested-domain assumptions that Klein theorizes.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'When the Heavens Went on Sale',
+        subtitle: 'The Misfits and Geniuses Racing to Put Space Within Reach',
+        authors: ['Ashlee Vance'],
+        year: 2023,
+        sourceConfidence: 'Medium',
+        notes:
+          'Reported narrative; claims are drawn from Vance’s account of cheap launch, constant access to orbit, private infrastructure, and the emergence of a “computing shell” around Earth.',
+        coverArt:
+          'https://books.google.com/books/content?edge=curl&id=PieCEAAAQBAJ&img=1&printsec=frontcover&source=gbs_api&zoom=1',
+        primarySourceUsed: 'PDF',
+        notesFileReference: 'pbvinge/books/665/when-the-heavens-went-on-sale/',
+        mainIdeas: [
+          'Cheap launch, small satellites, and venture capital are turning low Earth orbit into commercially operated infrastructure rather than a state monopoly.',
+          'Private firms become strategic actors because governments and militaries increasingly depend on their launch, imagery, and communications services.',
+          'The commercial boom expands access to space while intensifying congestion, governance gaps, and geopolitical rivalry.',
+        ],
+        themes: [
+          'political economy',
+          'technological change',
+          'space infrastructure',
+          'power politics',
+          'defense-industrial base',
+        ],
+        connectedBooks: [
+          {
+            title: 'Rocket Dreams',
+            relation: 'Supports',
+            explanation:
+              'Both show commercial firms reshaping the strategic structure of space.',
+          },
+          {
+            title: 'Original Sin',
+            relation: 'Extends',
+            explanation:
+              'Provides the commercial-infrastructural layer of Bowen’s technopolitical story.',
+          },
+          {
+            title: 'The Oxford Handbook of Space Security',
+            relation: 'Extends',
+            explanation:
+              'Supplies the governance and security concepts that explain why commercial infrastructure matters politically.',
+          },
+          {
+            title: 'Space Warfare',
+            relation: 'Extends',
+            explanation:
+              'Private constellations and launch systems become concrete strategic enablers and vulnerabilities in Klein’s framework.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+    ],
+  },
+  '667': {
+    course: 'SAASS 667',
+    shortTitle: 'Info Competition',
+    pageTitle: 'SAASS 667 Comps Study Wall',
+    description:
+      'A cover-first review wall for SAASS 667 focused on propaganda, narrative competition, cyber strategy, digital governance, and the political struggle to shape legitimacy in modern rivalry.',
+    takeaways: [
+      'Power now turns heavily on shaping information, not just applying force.',
+      'Modern conflict is fought inside societies as much as between armies.',
+      'Data and digital systems are political instruments that redistribute power.',
+      'Cyberspace is a domain of persistent, ambiguous competition below the threshold of war.',
+      'Good strategy now requires integrating cyber and information tools with wider statecraft, resilience, and alliances.',
+    ],
+    books: [
+      {
+        canonicalTitle: 'Total Cold War',
+        subtitle: "Eisenhower's Secret Propaganda Battle at Home and Abroad",
+        authors: ['Kenneth Osgood'],
+        year: 2006,
+        sourceConfidence: 'High',
+        notes:
+          'Day 1 required reading; notes emphasize the domestic-international propaganda nexus.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 1 (p. 148)',
+        mainIdeas: [
+          'Eisenhower made psychological warfare a central instrument of U.S. grand strategy rather than a supporting afterthought.',
+          'U.S. propaganda worked through a state-private network that fused overt messaging, covert action, and symbolic policy initiatives.',
+          'The Cold War’s “total” character collapsed foreign and domestic audiences into one battlespace, forcing Washington to manage legitimacy at home and abroad.',
+        ],
+        themes: [
+          'grand strategy',
+          'narrative competition',
+          'information warfare',
+          'total war',
+          'legitimacy',
+          'coercion',
+        ],
+        connectedBooks: [
+          {
+            title: 'Subversion',
+            relation: 'Extends',
+            explanation:
+              'Networked narrative warfare updates Osgood’s propaganda logic for the digital age.',
+          },
+          {
+            title: 'Spin Dictators',
+            relation: 'Shares framework',
+            explanation:
+              'Both show rulers manufacturing consent by managing information.',
+          },
+          {
+            title: 'World War II Memory and Contested Commemorations in Europe and Russia',
+            relation: 'Supports',
+            explanation:
+              'Both show political actors curating symbols and history to legitimize present policy.',
+          },
+          {
+            title: 'New Cold Wars',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both analyze systemic rivalry, but Sanger’s contest is structured more by technology and interdependence than by bipolar ideology alone.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Subversion',
+        subtitle: 'The Strategic Weaponization of Narratives',
+        authors: ['Andreas Krieg'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: 'Day 2 required reading.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 2 (p. 149)',
+        mainIdeas: [
+          'Subversion weaponizes narratives to erode a target society’s internal cohesion below the threshold of war.',
+          'Narrative campaigns achieve strategic effects by exploiting preexisting grievances, identities, and institutional mistrust rather than by direct force.',
+          'Strategic effects emerge when actors orchestrate narratives across media and political networks to alter how audiences interpret events, legitimacy, and action.',
+        ],
+        themes: [
+          'narrative competition',
+          'information warfare',
+          'legitimacy',
+          'perception',
+          'ideational change',
+        ],
+        connectedBooks: [
+          {
+            title: 'Total Cold War',
+            relation: 'Extends',
+            explanation:
+              'Updates Cold War propaganda into networked narrative warfare.',
+          },
+          {
+            title: 'Spin Dictators',
+            relation: 'Supports',
+            explanation:
+              'Shows how modern autocrats operationalize narrative manipulation to sustain rule.',
+          },
+          {
+            title: 'World War II Memory and Contested Commemorations in Europe and Russia',
+            relation: 'Shares framework',
+            explanation:
+              'Both analyze actors weaponizing public meaning to alter legitimacy and identity.',
+          },
+          {
+            title: 'How Data Happened',
+            relation: 'Supports',
+            explanation:
+              'Shows the infrastructures that scale narrative targeting.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'How Data Happened',
+        subtitle: 'A History from the Age of Reason to the Age of Algorithms',
+        authors: ['Chris Wiggins', 'Matthew L. Jones'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: 'Day 3 required reading.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 3 (p. 150)',
+        mainIdeas: [
+          'Data systems are political constructions that classify people and problems according to institutional choices, not neutral facts.',
+          'States, militaries, and firms built data infrastructures that redistributed authority by determining what could be measured, compared, governed, and automated.',
+          'The move from statistics to algorithms shifted decision authority toward opaque technical systems and the organizations that own them.',
+        ],
+        themes: [
+          'digital governance',
+          'political economy',
+          'decision-making',
+          'institutions',
+          'technological change',
+        ],
+        connectedBooks: [
+          {
+            title: 'Digital Empires',
+            relation: 'Extends',
+            explanation:
+              'Turns the history of data institutions into a geopolitical struggle over regulating digital markets.',
+          },
+          {
+            title: 'Subversion',
+            relation: 'Supports',
+            explanation:
+              'Shows how data-rich platforms make targeted influence operations possible at scale.',
+          },
+          {
+            title: 'Age of Deception',
+            relation: 'Shares framework',
+            explanation:
+              'Both reject technological determinism and foreground institutions in digital power.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Supports',
+            explanation:
+              'Shows that dense software dependence creates common points of failure and exploitation.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'World War II Memory and Contested Commemorations in Europe and Russia',
+        authors: ['Jennifer A. Yoder'],
+        year: 2024,
+        sourceConfidence: 'High',
+        notes:
+          'Day 4 required reading; title normalized from syllabus shorthand.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 4 (p. 152)',
+        mainIdeas: [
+          'States and political entrepreneurs actively contest World War II memory because control over the past redistributes legitimacy in the present.',
+          'Commemorations, monuments, and education stabilize preferred narratives by assigning societies the roles of hero, victim, or perpetrator.',
+          'Memory challengers use grievance and historical equivalence to revise dominant narratives for domestic mobilization and interstate advantage.',
+        ],
+        themes: [
+          'narrative competition',
+          'legitimacy',
+          'ideational change',
+          'historical analogy',
+          'institutions',
+        ],
+        connectedBooks: [
+          {
+            title: 'Subversion',
+            relation: 'Shares framework',
+            explanation:
+              'Both show political actors reshaping collective meaning to alter present legitimacy.',
+          },
+          {
+            title: 'Spin Dictators',
+            relation: 'Supports',
+            explanation:
+              'Curated history reinforces contemporary authoritarian legitimacy.',
+          },
+          {
+            title: 'New Cold Wars',
+            relation: 'Extends',
+            explanation:
+              'Russian memory politics feeds current geopolitical confrontation.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Spin Dictators',
+        subtitle: 'The Changing Face of Tyranny in the 21st Century',
+        authors: ['Sergei Guriev', 'Daniel Treisman'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes: 'Day 5 required reading.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 5 (p. 153)',
+        mainIdeas: [
+          'Modern autocrats survive by manufacturing popularity and plausible competence more often than by relying on mass terror alone.',
+          'Controlled media, selective censorship, and electoral theater protect regime legitimacy while hiding coercion in the background.',
+          'Globalization and digital communications let rulers substitute managed perceptions and selective repression for mass terror while preserving authoritarian control.',
+        ],
+        themes: [
+          'narrative competition',
+          'legitimacy',
+          'perception',
+          'organizational adaptation',
+          'institutions',
+        ],
+        connectedBooks: [
+          {
+            title: 'Subversion',
+            relation: 'Supports',
+            explanation:
+              'Narrative weaponization is a core mechanism of modern authoritarian rule.',
+          },
+          {
+            title: 'Digital Empires',
+            relation: 'Extends',
+            explanation:
+              'Platform governance and digital infrastructure shape the tools available to spin dictators.',
+          },
+          {
+            title: 'How Data Happened',
+            relation: 'Supports',
+            explanation:
+              'Data collection and platform mediation furnish the instruments with which modern autocrats manufacture consent.',
+          },
+          {
+            title: 'World War II Memory and Contested Commemorations in Europe and Russia',
+            relation: 'Supports',
+            explanation:
+              'Curated historical narratives strengthen regime legitimacy.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Offensive Cyber Operations',
+        subtitle: 'Understanding Intangible Warfare',
+        authors: ['Daniel Moore'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes:
+          'Day 6 required reading; syllabus edition metadata differs from the uploaded PDF.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 6 (p. 154)',
+        mainIdeas: [
+          'Offensive cyber operations belong to a broader tradition of intangible warfare rather than constituting a wholly autonomous revolution in war.',
+          'Presence-based operations and event-based operations have distinct operational logics, effects, and command implications.',
+          'Cyber operations create the most value when integrated with broader campaigns because they rarely deliver decisive strategic outcomes on their own.',
+        ],
+        themes: [
+          'cyber power',
+          'strategy',
+          'joint warfare',
+          'military innovation',
+          'technological change',
+        ],
+        connectedBooks: [
+          {
+            title: 'Age of Deception',
+            relation: 'Shares framework',
+            explanation:
+              'Both reject effortless digital offense and tie outcomes to organization, access, and intelligence.',
+          },
+          {
+            title: 'Escalation Dynamics in Cyberspace',
+            relation: 'Supports',
+            explanation:
+              'If cyber effects are limited and hard to sustain, escalation pressure usually remains bounded.',
+          },
+          {
+            title: 'Cyber Persistence Theory',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Moore assigns cyber a narrower supporting role than CPT does.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Extends',
+            explanation:
+              'Perlroth explains the exploit market that supplies the tools Moore categorizes.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Age of Deception',
+        subtitle: 'Cybersecurity as Secret Statecraft',
+        authors: ['Jon R. Lindsay'],
+        year: 2025,
+        sourceConfidence: 'High',
+        notes:
+          'Day 7 required reading; syllabus subtitle differs from the uploaded PDF.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 7 (p. 155)',
+        mainIdeas: [
+          'Cybersecurity is a problem of secret statecraft in which actors exploit cooperative institutions for intelligence advantage.',
+          'Intelligence performance turns on the interaction between vulnerable institutions and clandestine organizations that can create and preserve secret channels to valuable targets.',
+          'The same institutional complexity that enables cyber exploitation degrades control and limits the independent coercive value of cyber operations.',
+        ],
+        themes: [
+          'intelligence contest',
+          'cyber power',
+          'institutions',
+          'organizational behavior',
+          'uncertainty',
+        ],
+        connectedBooks: [
+          {
+            title: 'Offensive Cyber Operations',
+            relation: 'Shares framework',
+            explanation:
+              'Both tie cyber effectiveness to organization, access, and campaign integration rather than to hype about offense.',
+          },
+          {
+            title: 'Cyber Persistence Theory',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both center exploitation and access, but Lindsay treats cyber as secret statecraft constrained by complexity whereas CPT treats persistent campaigning as a route to cumulative strategic gain.',
+          },
+          {
+            title: 'Escalation Dynamics in Cyberspace',
+            relation: 'Supports',
+            explanation:
+              'Secrecy, intelligence value, and limited control weaken escalation incentives.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Extends',
+            explanation:
+              'Perlroth traces the market and policy choices that furnish the exploits secret statecraft requires.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Escalation Dynamics in Cyberspace',
+        authors: ['Erica D. Lonergan', 'Shawn W. Lonergan'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: 'Day 8 required reading.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 8 (p. 156)',
+        mainIdeas: [
+          'Cyber operations usually dampen escalation because their effects are limited, reversible, and hard to interpret quickly.',
+          'Secrecy, attribution problems, and intelligence tradeoffs create time and incentives for restraint, weakening pressure for kinetic retaliation.',
+          'The most dangerous escalation pathway appears when cyber operations threaten nuclear or critical conventional command-and-control systems during wartime.',
+        ],
+        themes: [
+          'cyber power',
+          'escalation',
+          'intelligence contest',
+          'deterrence',
+          'uncertainty',
+        ],
+        connectedBooks: [
+          {
+            title: 'Cyber Persistence Theory',
+            relation: 'Supports',
+            explanation:
+              'Both treat below-threshold competition as the normal condition of cyber rivalry.',
+          },
+          {
+            title: 'Age of Deception',
+            relation: 'Supports',
+            explanation:
+              'Intelligence value and secrecy restrain open escalation.',
+          },
+          {
+            title: 'Offensive Cyber Operations',
+            relation: 'Shares framework',
+            explanation:
+              'Both assign cyber limited independent coercive power.',
+          },
+          {
+            title: 'New Cold Wars',
+            relation: 'Extends',
+            explanation:
+              'Ukraine illustrates that cyber matters in war but rarely decides escalation on its own.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'This Is How They Tell Me the World Ends',
+        subtitle: 'The Cyberweapons Arms Race',
+        authors: ['Nicole Perlroth'],
+        year: 2021,
+        sourceConfidence: 'High',
+        notes:
+          'Day 9 required reading; capitalization/hyphenation normalized from syllabus.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 9 (p. 157)',
+        mainIdeas: [
+          'U.S. policy choices helped create and legitimize a global market for zero-day exploits and offensive cyber capability.',
+          'Once exploits circulate through brokers, contractors, and leaks, offensive tools inevitably proliferate beyond state control.',
+          'Stockpiling vulnerabilities for intelligence and offense creates systemic defensive blowback because the same weaknesses remain available to adversaries and criminals.',
+        ],
+        themes: [
+          'cyber power',
+          'intelligence contest',
+          'political economy',
+          'technological change',
+          'institutions',
+        ],
+        connectedBooks: [
+          {
+            title: 'Offensive Cyber Operations',
+            relation: 'Extends',
+            explanation:
+              'Shows the commercial supply chain behind the offensive techniques Moore describes.',
+          },
+          {
+            title: 'Age of Deception',
+            relation: 'Supports',
+            explanation:
+              'Demonstrates the material basis of the secret accesses and exploits Lindsay treats as instruments of statecraft.',
+          },
+          {
+            title: 'Cyber Persistence Theory',
+            relation: 'Challenges',
+            explanation:
+              'Perlroth highlights the defensive blowback of persistent exploitation.',
+          },
+          {
+            title: 'Digital Empires',
+            relation: 'Shares framework',
+            explanation:
+              'Both show private firms and state policy jointly structuring the strategic environment.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+      {
+        canonicalTitle: 'Digital Empires',
+        subtitle: 'The Global Battle to Regulate Technology',
+        authors: ['Anu Bradford'],
+        year: 2023,
+        sourceConfidence: 'High',
+        notes: 'Day 10 required reading.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 10 (p. 158)',
+        mainIdeas: [
+          'The digital order is structured by competition among American market-driven, Chinese state-driven, and European rights-driven regulatory models that allocate power differently across states, firms, and citizens.',
+          'Regulation is a geopolitical instrument because control over standards, platform rules, and market access redistributes power across borders.',
+          'The struggle over technology turns on who governs data, infrastructure, and firms, not only on who invents the best products.',
+        ],
+        themes: [
+          'digital governance',
+          'political economy',
+          'international order',
+          'economic statecraft',
+          'technological change',
+        ],
+        connectedBooks: [
+          {
+            title: 'How Data Happened',
+            relation: 'Extends',
+            explanation:
+              'Turns the history of data institutions into a struggle over who governs digital power.',
+          },
+          {
+            title: 'Spin Dictators',
+            relation: 'Supports',
+            explanation:
+              'Shows how different regulatory models expand or constrain authoritarian control.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Shares framework',
+            explanation:
+              'Both show private firms and state policy jointly shaping the strategic terrain of technology competition.',
+          },
+          {
+            title: 'New Cold Wars',
+            relation: 'Supports',
+            explanation:
+              'Technology ecosystems and economic interdependence are central fronts in contemporary great-power rivalry.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'Cyber Persistence Theory',
+        subtitle: 'Redefining National Security in Cyberspace',
+        authors: ['Michael P. Fischerkeller', 'Emily O. Goldman', 'Richard J. Harknett'],
+        year: 2022,
+        sourceConfidence: 'High',
+        notes:
+          'Day 11 required reading; Paul M. Nakasone contributes the foreword but is not a listed author.',
+        primarySourceUsed: 'Notes',
+        notesFileReference: 'Consolidated Notes.pdf - SAASS 667 Day 11 (p. 159)',
+        mainIdeas: [
+          'Cyberspace is a strategic environment of continuous contact and exploitation rather than episodic crisis punctuated by rare attacks.',
+          'States gain advantage through initiative persistence and defend forward because deterrence alone cannot stop exploitation.',
+          'Security in cyberspace depends on campaigns that impose friction, constrain adversary freedom of action, and build resilience across the broader national ecosystem.',
+        ],
+        themes: [
+          'cyber power',
+          'strategy',
+          'friction',
+          'intelligence contest',
+          'institutions',
+        ],
+        connectedBooks: [
+          {
+            title: 'Escalation Dynamics in Cyberspace',
+            relation: 'Supports',
+            explanation:
+              'Both see below-threshold competition as the normal condition of cyber rivalry.',
+          },
+          {
+            title: 'Age of Deception',
+            relation: 'Shares framework',
+            explanation:
+              'Both treat exploitation and access as more central than decisive coercion.',
+          },
+          {
+            title: 'Offensive Cyber Operations',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Moore sees cyber as mainly a supporting military capability, while CPT assigns persistent cyber competition broader strategic utility.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Challenges',
+            explanation:
+              'Perlroth shows the societal costs of exploit stockpiling that persistent engagement can intensify.',
+          },
+        ],
+        confidence: 'High',
+      },
+      {
+        canonicalTitle: 'New Cold Wars',
+        subtitle: "China's Rise, Russia's Invasion, and America's Struggle to Defend the West",
+        authors: ['David E. Sanger', 'with Mary K. Brooks'],
+        year: 2024,
+        sourceConfidence: 'Medium',
+        notes:
+          'Used in the course paper prompt rather than as a daily assigned reading.',
+        coverArt:
+          'http://books.google.com/books/content?id=QRW-0AEACAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        primarySourceUsed: 'PDF',
+        notesFileReference: '-',
+        mainIdeas: [
+          'The post-Cold War bet that economic interdependence would socialize Russia and China into a stable liberal order failed.',
+          'Contemporary rivalry turns economic interdependence itself into a field of competition across technology, finance, information, and military pressure.',
+          'The United States can compete effectively only by combining alliance leadership, economic strategy, and technological resilience while managing escalation risks.',
+        ],
+        themes: [
+          'grand strategy',
+          'alliance politics',
+          'power politics',
+          'international order',
+          'economic statecraft',
+        ],
+        connectedBooks: [
+          {
+            title: 'Digital Empires',
+            relation: 'Supports',
+            explanation:
+              'Regulatory and technological competition is a central front in the new cold wars.',
+          },
+          {
+            title: 'This Is How They Tell Me the World Ends',
+            relation: 'Extends',
+            explanation:
+              'Cyber insecurity and private-sector vulnerability intensify strategic competition among major powers.',
+          },
+          {
+            title: 'Escalation Dynamics in Cyberspace',
+            relation: 'Supports',
+            explanation:
+              'Ukraine shows cyber’s utility inside broader war without proving that cyber alone drives escalation.',
+          },
+          {
+            title: 'Total Cold War',
+            relation: 'Similar case, different conclusion',
+            explanation:
+              'Both analyze systemic rivalry, but Sanger describes a multipolar techno-economic contest rather than a primarily bipolar ideological one.',
+          },
+        ],
+        confidence: 'Medium',
+      },
+    ],
+  },
 };
