@@ -101,30 +101,35 @@ const guides = Object.entries(courseStudyGuides).map(([courseKey, guide]) => {
   }
 
   .guide-card {
+    --card-accent: 123, 164, 214;
+    --card-accent-strong: #466794;
     display: grid;
-    gap: 1rem;
+    gap: 1.15rem;
     padding: 1.5rem;
     border-radius: 24px;
-    border: 1px solid var(--border-color);
-    background: var(--surface-color);
+    border: 1px solid rgba(var(--card-accent), 0.28);
+    background:
+      linear-gradient(180deg, rgba(var(--card-accent), 0.18), rgba(255, 255, 255, 0.94) 38%),
+      var(--surface-color);
     color: inherit;
     text-decoration: none;
     box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
     transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    text-align: center;
+    align-content: start;
   }
 
   .guide-card:hover {
     transform: translateY(-4px);
     text-decoration: none;
-    border-color: rgba(176, 95, 55, 0.4);
+    border-color: rgba(var(--card-accent), 0.48);
     box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
   }
 
   .card-topline {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
   }
 
   .course-code {
@@ -137,20 +142,25 @@ const guides = Object.entries(courseStudyGuides).map(([courseKey, guide]) => {
   .pill {
     padding: 0.32rem 0.7rem;
     border-radius: 999px;
-    background: rgba(176, 95, 55, 0.14);
-    color: #8a4520;
+    background: rgba(var(--card-accent), 0.18);
+    color: var(--card-accent-strong);
     font-size: 0.82rem;
     font-weight: 600;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
 
   h2 {
     margin: 0;
     font-size: 1.35rem;
+    text-wrap: balance;
   }
 
   .card-copy {
     margin: 0;
     color: var(--text-subtle);
+    text-wrap: pretty;
   }
 
   .stats {
@@ -161,23 +171,57 @@ const guides = Object.entries(courseStudyGuides).map(([courseKey, guide]) => {
   }
 
   .stats div {
-    padding: 0.9rem 0.95rem;
+    min-width: 0;
+    min-height: 6.75rem;
+    padding: 0.9rem 0.8rem;
     border-radius: 18px;
-    background: var(--surface-muted-color);
+    border: 1px solid rgba(var(--card-accent), 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 0.3rem;
   }
 
   dt {
     margin: 0;
-    font-size: 0.78rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--muted-text);
+    line-height: 1.35;
+    text-wrap: balance;
   }
 
   dd {
-    margin: 0.3rem 0 0;
+    margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
+  }
+
+  .guide-card:nth-child(5n + 1) {
+    --card-accent: 128, 157, 219;
+    --card-accent-strong: #445fa6;
+  }
+
+  .guide-card:nth-child(5n + 2) {
+    --card-accent: 121, 176, 160;
+    --card-accent-strong: #2d6f63;
+  }
+
+  .guide-card:nth-child(5n + 3) {
+    --card-accent: 208, 160, 118;
+    --card-accent-strong: #8d5327;
+  }
+
+  .guide-card:nth-child(5n + 4) {
+    --card-accent: 203, 145, 162;
+    --card-accent-strong: #92526a;
+  }
+
+  .guide-card:nth-child(5n + 5) {
+    --card-accent: 162, 150, 211;
+    --card-accent-strong: #5d4fa0;
   }
 
   :root[data-theme='dark'] .hero {
@@ -188,12 +232,21 @@ const guides = Object.entries(courseStudyGuides).map(([courseKey, guide]) => {
   }
 
   :root[data-theme='dark'] .guide-card {
+    border-color: rgba(var(--card-accent), 0.32);
+    background:
+      linear-gradient(180deg, rgba(var(--card-accent), 0.2), rgba(17, 28, 46, 0.94) 38%),
+      var(--surface-color);
     box-shadow: 0 18px 45px rgba(2, 8, 23, 0.35);
   }
 
   :root[data-theme='dark'] .pill {
-    color: #fed7aa;
-    background: rgba(251, 146, 60, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(var(--card-accent), 0.22);
+  }
+
+  :root[data-theme='dark'] .stats div {
+    background: rgba(15, 23, 42, 0.38);
+    border-color: rgba(var(--card-accent), 0.22);
   }
   
   @media (max-width: 720px) {
