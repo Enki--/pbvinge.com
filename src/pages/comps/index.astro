@@ -2,18 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 import { courseStudyGuides } from '../../data/comps';
 
-const guides = Object.entries(courseStudyGuides).map(([courseKey, guide]) => {
-  const ideaCount = guide.books.reduce((sum, book) => sum + book.mainIdeas.length, 0);
-  const linkCount = guide.books.reduce((sum, book) => sum + book.connectedBooks.length, 0);
+const guideOrder = ['SAASS 601', 'SAASS 600', 'SAASS 627', 'SAASS 628', 'SAASS 632', 'SAASS 633', 'SAASS 660', 'SAASS 644', 'SAASS 667'];
 
-  return {
-    courseKey,
-    ...guide,
-    bookCount: guide.books.length,
-    ideaCount,
-    linkCount,
-  };
-});
+const orderLookup = new Map(guideOrder.map((course, index) => [course, index]));
+
+const guides = Object.entries(courseStudyGuides)
+  .map(([courseKey, guide]) => {
+    const ideaCount = guide.books.reduce((sum, book) => sum + book.mainIdeas.length, 0);
+    const linkCount = guide.books.reduce((sum, book) => sum + book.connectedBooks.length, 0);
+
+    return {
+      courseKey,
+      ...guide,
+      bookCount: guide.books.length,
+      ideaCount,
+      linkCount,
+    };
+  })
+  .sort((a, b) => {
+    const aOrder = orderLookup.get(a.course) ?? Number.MAX_SAFE_INTEGER;
+    const bOrder = orderLookup.get(b.course) ?? Number.MAX_SAFE_INTEGER;
+
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+
+    return a.course.localeCompare(b.course);
+  });
 ---
 
 <Layout title="Comps Study Guides - Shrink" description="Course-by-course study guides for comps prep.">
