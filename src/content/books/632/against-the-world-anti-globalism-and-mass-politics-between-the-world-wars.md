@@ -17,6 +17,7 @@ created: 2025-10-09 12:41:30
 updated: 2025-10-09 12:41:30
 class: "632"
 sequence: "5"
+notes: "Mixed: historical account combining realist constraints, liberal internationalism's failures, and constructivist identity and mass politics."
 ---
 
 # Against the World

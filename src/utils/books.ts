@@ -47,6 +47,7 @@ export function buildBookSearchString(input: {
   className?: string;
   status?: string;
   summary?: string;
+  notes?: string;
 }): string {
   const searchPieces = [
     input.slug,
@@ -58,6 +59,7 @@ export function buildBookSearchString(input: {
     input.className,
     input.status,
     input.summary,
+    input.notes,
   ].filter(Boolean);
 
   return searchPieces.join(" ").toLowerCase();

@@ -17,6 +17,7 @@ created: 2025-10-20 12:58:30
 updated: 2025-10-20 12:58:30
 class: "632"
 sequence: "11"
+notes: "Eclectic: bridges realism and liberalism; treats economic statecraft as an instrument of influence through incentives, costs, and signals."
 ---
 
 # Economic Statecraft

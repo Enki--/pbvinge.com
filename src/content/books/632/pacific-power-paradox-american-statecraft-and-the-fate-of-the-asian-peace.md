@@ -17,6 +17,7 @@ created: 2025-10-23 14:11:24
 updated: 2025-10-23 14:11:24
 class: "632"
 sequence: "13"
+notes: "Eclectic/critical: layered peace uses realist power, liberal institutions/interdependence, and constructivist norms; not a single-school text."
 ---
 
 # Pacific Power Paradox

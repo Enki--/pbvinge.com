@@ -18,6 +18,7 @@ created: 2025-10-06 18:09:19
 updated: 2025-10-06 18:09:19
 class: "632"
 sequence: "3"
+notes: "Constructivism-adjacent: broader social theory of power; preference and belief formation explain invisible domination."
 ---
 
 # Power

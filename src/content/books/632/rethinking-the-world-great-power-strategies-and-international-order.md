@@ -17,6 +17,7 @@ created: 2025-10-15 19:01:07
 updated: 2025-10-15 19:01:07
 class: "632"
 sequence: "7"
+notes: "Constructivism: ideational change in great-power strategy, with realist power and liberal domestic/institutional inputs."
 ---
 
 # Rethinking the World

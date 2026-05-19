@@ -25,6 +25,7 @@ const decoratedBooks = sortedBooks.map((book) => {
   const tags = normalizeTags(book.data.tags);
   const categories = normalizeCategories(book.data.category);
   const className = book.data.class || '';
+  const notes = book.data.notes?.trim() || '';
 
   return {
     ...book,
@@ -32,6 +33,7 @@ const decoratedBooks = sortedBooks.map((book) => {
     tags,
     categories,
     className,
+    notes,
     searchString: buildBookSearchString({
       slug: book.slug,
       title: book.data.title,
@@ -42,6 +44,7 @@ const decoratedBooks = sortedBooks.map((book) => {
       className,
       status: book.data.status,
       summary: book.data.summary,
+      notes,
     }),
   };
 });
@@ -122,6 +125,9 @@ const decoratedBooks = sortedBooks.map((book) => {
                 {book.data.class && (
                   <div class="text-sm text-gray-500">Class: {book.data.class}</div>
                 )}
+                {book.notes && (
+                  <p class="book-note">{book.notes}</p>
+                )}
               </div>
               {book.categories.length > 0 && (
                 <div class="categories">
@@ -148,8 +154,9 @@ const decoratedBooks = sortedBooks.map((book) => {
                 <th scope="col" class="pbv-col-cover">Cover</th>
                 <th scope="col" data-sort="title">Title <span class="pbv-sort-icon">↕</span></th>
                 <th scope="col" data-sort="author">Author <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" data-sort="status">Status <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" data-sort="class">Class <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" class="pbv-col-status" data-sort="status">Status <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" class="pbv-col-class" data-sort="class">Class <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" class="pbv-col-notes" data-sort="notes">Notes <span class="pbv-sort-icon">↕</span></th>
               </tr>
             </thead>
             <tbody>
@@ -162,6 +169,7 @@ const decoratedBooks = sortedBooks.map((book) => {
                   data-title={book.data.title.toLowerCase()}
                   data-author={book.authors.join(', ').toLowerCase()}
                   data-status={(book.data.status || '').toLowerCase()}
+                  data-notes={book.notes.toLowerCase()}
                 >
                   <td class="pbv-col-cover">
                     <img
@@ -186,6 +194,7 @@ const decoratedBooks = sortedBooks.map((book) => {
                     </span>
                   </td>
                   <td>{book.className || '—'}</td>
+                  <td class="book-table-note">{book.notes || '—'}</td>
                 </tr>
               ))}
             </tbody>
@@ -344,6 +353,17 @@ const decoratedBooks = sortedBooks.map((book) => {
     gap: 0.35rem;
   }
 
+  .book-note,
+  .book-table-note {
+    color: var(--text-color);
+    line-height: 1.45;
+  }
+
+  .book-note {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+  }
+
   .subtitle {
     font-size: 0.95rem;
     color: var(--text-subtle);
@@ -477,6 +497,26 @@ const decoratedBooks = sortedBooks.map((book) => {
     font-size: 0.85rem;
   }
 
+  .books-table .pbv-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .books-table .pbv-table {
+    min-width: 980px;
+  }
+
+  .pbv-col-status {
+    width: 120px;
+  }
+
+  .pbv-col-class {
+    width: 90px;
+  }
+
+  .pbv-col-notes {
+    width: 30%;
+  }
+
   @media (max-width: 768px) {
     .filters {
       grid-template-columns: 1fr;
@@ -486,9 +526,17 @@ const decoratedBooks = sortedBooks.map((book) => {
       padding: var(--space-3) var(--gutter);
     }
 
+    th:nth-child(1),
+    td:nth-child(1),
+    th:nth-child(4),
+    td:nth-child(4),
     th:nth-child(5),
     td:nth-child(5) {
       display: none;
+    }
+
+    .books-table .pbv-table {
+      min-width: 640px;
     }
 
   }

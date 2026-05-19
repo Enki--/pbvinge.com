@@ -17,6 +17,7 @@ created: 2025-10-13 17:32:31
 updated: 2025-10-13 17:32:31
 class: "632"
 sequence: "6"
+notes: "Realism: political economy realism; uneven growth, prestige gaps, and hegemonic war drive systemic change."
 ---
 
 # War and Change in World Politics

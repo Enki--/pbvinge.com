@@ -23,6 +23,7 @@ export const collections = {
       updated: z.coerce.date().optional(),
       class: z.string().optional(),
       sequence: z.any().optional(),
+      notes: z.string().optional(),
       isPublished: z.boolean().default(true),
       dateCompleted: z.string().optional(),
       coverImage: z.string().optional()

@@ -17,6 +17,7 @@ created: 2025-10-19 10:35:59
 updated: 2025-10-19 10:35:59
 class: "632"
 sequence: "9"
+notes: "Constructivism: legitimation, rhetoric, resonance, and institutional meaning shape responses to rising powers."
 ---
 
 # When Right Makes Might

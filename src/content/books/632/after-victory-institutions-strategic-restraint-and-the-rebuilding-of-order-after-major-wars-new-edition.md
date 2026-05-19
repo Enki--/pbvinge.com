@@ -17,6 +17,7 @@ created: 2025-10-16 16:13:47
 updated: 2025-10-16 16:13:47
 class: "632"
 sequence: "8"
+notes: "Liberalism: liberal institutionalism; durable order comes from institutions, strategic restraint, credible commitments, and democratic self-binding."
 ---
 
 # After Victory

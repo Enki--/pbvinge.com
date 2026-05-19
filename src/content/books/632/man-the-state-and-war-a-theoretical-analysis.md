@@ -17,6 +17,7 @@ created: 2025-10-05 19:14:37
 updated: 2025-10-05 19:14:37
 class: "632"
 sequence: "2"
+notes: "Realism: classical/structural realist roots; anarchy, self-help, and the security dilemma make war recurrent."
 ---
 
 # Man, the State, and War

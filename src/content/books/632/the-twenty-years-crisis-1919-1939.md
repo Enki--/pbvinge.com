@@ -17,6 +17,7 @@ created: 2025-10-05 18:09:14
 updated: 2025-10-05 18:09:14
 class: "632"
 sequence: "1"
+notes: "Realism: classical realist critique of utopian liberalism; power and interest discipline international morality and institutions."
 ---
 
 # The Twenty Years' Crisis, 1919-1939

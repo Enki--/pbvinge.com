@@ -17,6 +17,7 @@ created: 2025-10-08 19:19:40
 updated: 2025-10-08 19:19:40
 class: "632"
 sequence: "4"
+notes: "Liberalism: neoliberal institutionalism; cooperation under anarchy through regimes, information, reciprocity, and reputation."
 ---
 
 # After Hegemony

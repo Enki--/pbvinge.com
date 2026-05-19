@@ -17,6 +17,7 @@ created: 2025-10-23 05:28:05
 updated: 2025-10-23 05:28:05
 class: "632"
 sequence: "12"
+notes: "Constructivism-adjacent history: Cold War interventions are driven by universalist ideologies, modernity projects, and local identities."
 ---
 
 # The Global Cold War

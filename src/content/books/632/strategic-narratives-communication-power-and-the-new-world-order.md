@@ -17,6 +17,7 @@ created: 2025-10-19 10:36:33
 updated: 2025-10-19 10:36:33
 class: "632"
 sequence: "10"
+notes: "Constructivism: strategic narratives, identity, norms, and discourse shape international order and behavior."
 ---
 
 # Strategic Narratives
