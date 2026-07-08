@@ -690,8 +690,8 @@
 
 @media print {
   @page {
-    size: landscape;
-    margin: 0.25in;
+    size: letter landscape;
+    margin: 0.2in;
   }
 
   nav,
@@ -702,58 +702,207 @@
     display: none !important;
   }
 
+  html,
+  body {
+    width: 10.6in;
+    height: 8.1in;
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+  }
+
   .site-main {
     max-width: none !important;
     padding: 0 !important;
   }
 
+  .pbv-ribbon {
+    width: 10.6in;
+    height: 8.1in;
+    overflow: hidden;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   .ribbon-scroll {
     overflow: visible;
     padding: 0;
+    width: 10.6in;
+    height: 8.1in;
   }
 
   .ribbon-sheet {
+    display: flex;
+    flex-direction: column;
     min-width: 0;
-    width: 100%;
+    width: 10.6in;
+    height: 8.1in;
+    overflow: hidden;
     border-width: 1px;
-    font-size: 8px;
+    font-size: 7px;
+    line-height: 1.05;
   }
 
   .ribbon-sheet input,
   .ribbon-sheet select,
   .ribbon-sheet textarea {
     border-radius: 0;
-    font-size: 8px;
+    font-size: 7px;
+    line-height: 1.05;
     padding: 1px 2px;
   }
 
   .ribbon-sheet-header {
     grid-template-columns: 54px minmax(0, 1fr);
+    flex: 0 0 0.64in;
+    gap: 0.06in;
+    padding: 0.03in 0.04in;
   }
 
   .ribbon-badge {
-    width: 48px;
-    height: 48px;
+    width: 0.52in;
+    height: 0.52in;
     border-width: 3px;
   }
 
   .ribbon-badge span {
-    width: 28px;
-    height: 28px;
+    width: 0.3in;
+    height: 0.3in;
     font-size: 0.75rem;
   }
 
-  .ribbon-title-row h2 {
-    font-size: 14px;
+  .ribbon-title-block {
+    gap: 0.02in;
   }
 
-  .ribbon-panel h2,
-  .ribbon-opr-panel h2 {
-    font-size: 11px;
+  .ribbon-title-row h2 {
+    font-size: 13px;
+  }
+
+  .ribbon-identity-row {
+    grid-template-columns: 0.65in minmax(0, 1fr) 1.15in 1.15in 0.82in;
+  }
+
+  .ribbon-identity-row-secondary {
+    grid-template-columns: minmax(0, 1fr) 0.82in;
+  }
+
+  .ribbon-eligibility-row {
+    gap: 0.45in;
+    padding: 0;
+  }
+
+  .ribbon-eligibility-row legend {
+    font-size: 10px;
+  }
+
+  .ribbon-check-tile {
+    min-height: 0.15in;
+    padding: 0.02in 0.04in;
+  }
+
+  .ribbon-check-tile input {
+    width: 0.09in;
+    height: 0.09in;
+  }
+
+  .ribbon-timeline-grid {
+    flex: 0 0 2in;
+    grid-template-columns: 0.72in repeat(10, minmax(0, 1fr));
+  }
+
+  .ribbon-timeline-label,
+  .ribbon-year-cell,
+  .ribbon-cell-input {
+    min-height: 0;
+    height: 0.2in;
+    padding: 0;
+  }
+
+  .ribbon-vector-track {
+    min-height: 0;
+    height: 0.28in;
   }
 
   .ribbon-vector-segment {
     top: 1px;
     bottom: 1px;
+    border-width: 1px;
+  }
+
+  .ribbon-vector-handle {
+    display: none;
+  }
+
+  .ribbon-lower-grid {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 4.08in;
+  }
+
+  .ribbon-panel h2,
+  .ribbon-opr-panel h2 {
+    font-size: 9px;
+    padding: 0.02in 0.04in;
+  }
+
+  .ribbon-panel h3,
+  .ribbon-row-label {
+    font-size: 7px;
+    padding: 0.01in;
+  }
+
+  .ribbon-panel-row,
+  .ribbon-education-row,
+  .ribbon-special-programs,
+  .ribbon-job-columns {
+    min-height: 0;
+  }
+
+  .ribbon-job-columns > div {
+    grid-template-columns: 0.62in 1fr;
+  }
+
+  .ribbon-highlights-panel {
+    grid-template-rows: auto repeat(3, minmax(0, 1fr));
+  }
+
+  .ribbon-highlights-panel label {
+    min-height: 0;
+  }
+
+  .ribbon-highlights-panel label span {
+    padding: 0.01in 0.03in;
+  }
+
+  .ribbon-highlights-panel textarea {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .ribbon-special-programs {
+    grid-template-columns: 0.95in repeat(3, minmax(0, 1fr));
+  }
+
+  .ribbon-opr-panel {
+    flex: 0 0 1.05in;
+    min-height: 0;
+  }
+
+  .ribbon-opr-grid {
+    grid-template-columns: 0.42in minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ribbon-opr-heading {
+    min-height: 0;
+    height: 0.14in;
+  }
+
+  .ribbon-opr-grid input,
+  .ribbon-opr-grid textarea {
+    min-height: 0;
+    height: 0.3in;
   }
 }
