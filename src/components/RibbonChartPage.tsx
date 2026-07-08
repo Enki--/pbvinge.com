@@ -15,11 +15,33 @@ const SCOD_BY_RANK: Record<string, string> = {
   "1st Lt": "31 Oct",
   Capt: "31 Aug",
   Maj: "31 May",
-  "Maj(s)": "31 May",
   "Lt Col": "31 May",
-  "Lt Col(s)": "31 May",
-  Col: "28 Feb",
-  "Col(s)": "28 Feb"
+  Col: "28 Feb"
+};
+const BASE_RANK_BY_OPTION: Record<string, string> = {
+  "2d Lt": "2d Lt",
+  "1st Lt": "1st Lt",
+  Capt: "Capt",
+  Maj: "Maj",
+  "Maj(s)": "Maj",
+  "Lt Col": "Lt Col",
+  "Lt Col(s)": "Lt Col",
+  Col: "Col",
+  "Col(s)": "Col"
+};
+const RANK_ORDER: Record<string, number> = {
+  "2d Lt": 1,
+  "1st Lt": 2,
+  Capt: 3,
+  Maj: 4,
+  "Lt Col": 5,
+  Col: 6
+};
+const PROMOTION_RANK_BY_LABEL: Record<string, string> = {
+  "IPZ Capt": "Capt",
+  "IPZ Maj": "Maj",
+  "IPZ Lt Col": "Lt Col",
+  "IPZ Col": "Col"
 };
 
 const IDE_OPTIONS = [
@@ -217,7 +239,23 @@ const clampStartingYear = (value: number) => clamp(Number.isFinite(value) ? Math
 const colorFor = (colorId: VectorColorId) => VECTOR_COLORS.find((color) => color.id === colorId) ?? VECTOR_COLORS[0];
 
 const yearsFor = (startingYear: number) => Array.from({ length: YEAR_COUNT }, (_, index) => startingYear + index);
-const getScodForRank = (rank: string) => SCOD_BY_RANK[rank] ?? "31 May";
+const normalizeRank = (rank: string) => BASE_RANK_BY_OPTION[rank] ?? "Maj";
+const getScodForRank = (rank: string) => SCOD_BY_RANK[normalizeRank(rank)] ?? "31 May";
+const getScodTimeline = (startingRank: string, promotionRow: string[]) => {
+  let effectiveRank = normalizeRank(startingRank);
+
+  return promotionRow.map((promotionLabel) => {
+    const promotedRank = PROMOTION_RANK_BY_LABEL[promotionLabel.trim()];
+    if (promotedRank && RANK_ORDER[promotedRank] > RANK_ORDER[effectiveRank]) {
+      effectiveRank = promotedRank;
+    }
+
+    return {
+      rank: effectiveRank,
+      scod: getScodForRank(effectiveRank)
+    };
+  });
+};
 
 const setLabelForYear = (row: string[], years: number[], targetYear: number, label: string) => {
   const index = years.findIndex((year) => year === targetYear);
@@ -522,6 +560,10 @@ const RibbonChartPage: React.FC = () => {
 
   const years = useMemo(() => yearsFor(chart.timeline.startingYear), [chart.timeline.startingYear]);
   const rankScod = getScodForRank(chart.identity.rank);
+  const scodTimeline = useMemo(
+    () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
+    [chart.identity.rank, chart.timeline.promotion]
+  );
   const timelineStart = chart.timeline.startingYear;
   const timelineEnd = chart.timeline.startingYear + YEAR_COUNT;
 
@@ -960,7 +1002,14 @@ const RibbonChartPage: React.FC = () => {
             {years.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
 
             <div className="ribbon-timeline-label ribbon-scod-label">SCOD</div>
-            {years.map((year) => <div key={`scod-${year}`} className="ribbon-scod-cell">{rankScod}</div>)}
+            {years.map((year, index) => {
+              const scodEntry = scodTimeline[index] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
+              return (
+                <div key={`scod-${year}`} className="ribbon-scod-cell" title={`${scodEntry.rank} SCOD`}>
+                  {scodEntry.scod}
+                </div>
+              );
+            })}
 
             {chart.vectors.map((row) => (
               <React.Fragment key={row.id}>
