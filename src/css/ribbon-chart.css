@@ -250,6 +250,29 @@
   font-weight: 700;
 }
 
+.ribbon-rank-cell {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.ribbon-rank-cell select {
+  border-bottom: 0;
+}
+
+.ribbon-scod-pill {
+  display: grid;
+  place-items: center;
+  min-height: 1.2rem;
+  border: 1px solid #111827;
+  background: #fff7ed;
+  color: #7c2d12;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 .ribbon-eligibility-row {
   display: flex;
   align-items: center;
@@ -309,6 +332,7 @@
 
 .ribbon-timeline-label,
 .ribbon-year-cell,
+.ribbon-scod-cell,
 .ribbon-cell-input,
 .ribbon-vector-track {
   min-height: 2.05rem;
@@ -317,7 +341,8 @@
 }
 
 .ribbon-timeline-label,
-.ribbon-year-cell {
+.ribbon-year-cell,
+.ribbon-scod-cell {
   display: grid;
   place-items: center;
   background: #f3f4f6;
@@ -328,6 +353,19 @@
 
 .ribbon-year-cell {
   background: #ffffff;
+}
+
+.ribbon-scod-label,
+.ribbon-scod-cell {
+  background: #fff7ed;
+  color: #7c2d12;
+}
+
+.ribbon-scod-cell {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .ribbon-cell-input {
@@ -789,6 +827,11 @@
     grid-template-columns: minmax(0, 1fr) 0.82in;
   }
 
+  .ribbon-scod-pill {
+    min-height: 0.12in;
+    font-size: 5.5px;
+  }
+
   .ribbon-eligibility-row {
     gap: 0.45in;
     padding: 0;
@@ -809,21 +852,22 @@
   }
 
   .ribbon-timeline-grid {
-    flex: 0 0 2in;
+    flex: 0 0 2.08in;
     grid-template-columns: 0.72in repeat(10, minmax(0, 1fr));
   }
 
   .ribbon-timeline-label,
   .ribbon-year-cell,
+  .ribbon-scod-cell,
   .ribbon-cell-input {
     min-height: 0;
-    height: 0.2in;
+    height: 0.18in;
     padding: 0;
   }
 
   .ribbon-vector-track {
     min-height: 0;
-    height: 0.28in;
+    height: 0.25in;
   }
 
   .ribbon-vector-segment {
