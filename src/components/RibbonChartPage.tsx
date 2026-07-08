@@ -831,20 +831,37 @@ const RibbonChartPage: React.FC = () => {
           <h1>Cyber Operations Officer Ribbon Chart</h1>
         </div>
         <div className="ribbon-actions" aria-label="Ribbon chart actions">
-          <label className="ribbon-year-control">
-            <span>Start Year</span>
-            <select
-              value={chart.timeline.startingYear}
-              onChange={(event) => updateTimelineStart(Number(event.currentTarget.value))}
-            >
-              {STARTING_YEAR_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
-            </select>
-          </label>
-          <button type="button" onClick={populateTimeline}>Populate Timeline</button>
-          <button type="button" onClick={saveChart}>Save</button>
-          <button type="button" onClick={() => fileInputRef.current?.click()}>Load</button>
-          <button type="button" onClick={() => window.print()}>Print</button>
-          <button type="button" onClick={resetChart}>Reset</button>
+          <div className="ribbon-populate-group" aria-label="Timeline setup">
+            <span className="ribbon-populate-title">Timeline Setup</span>
+            <label className="ribbon-year-control">
+              <span>Start Year</span>
+              <select
+                value={chart.timeline.startingYear}
+                onChange={(event) => updateTimelineStart(Number(event.currentTarget.value))}
+              >
+                {STARTING_YEAR_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
+              </select>
+            </label>
+            <label className="ribbon-year-control">
+              <span>YG</span>
+              <select value={chart.identity.yearGroup} onChange={(event) => updateIdentity("yearGroup", event.currentTarget.value)}>
+                {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
+              </select>
+            </label>
+            <label className="ribbon-year-control">
+              <span>Adj YG</span>
+              <select value={chart.identity.adjustedYearGroup} onChange={(event) => updateIdentity("adjustedYearGroup", event.currentTarget.value)}>
+                {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
+              </select>
+            </label>
+            <button type="button" className="ribbon-populate-button" onClick={populateTimeline}>Populate Timeline</button>
+          </div>
+          <div className="ribbon-file-actions">
+            <button type="button" onClick={saveChart}>Save</button>
+            <button type="button" onClick={() => fileInputRef.current?.click()}>Load</button>
+            <button type="button" onClick={() => window.print()}>Print</button>
+            <button type="button" onClick={resetChart}>Reset</button>
+          </div>
           <input
             ref={fileInputRef}
             className="ribbon-file-input"

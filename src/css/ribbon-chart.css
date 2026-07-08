@@ -34,6 +34,33 @@
   gap: 0.5rem;
 }
 
+.ribbon-populate-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.55rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-muted-color);
+  padding: 0.55rem;
+}
+
+.ribbon-populate-title {
+  align-self: center;
+  color: var(--text-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ribbon-file-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.5rem;
+}
+
 .ribbon-actions button,
 .ribbon-delete-button {
   min-height: 2.25rem;
@@ -55,6 +82,19 @@
   outline: none;
 }
 
+.ribbon-actions .ribbon-populate-button {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.ribbon-actions .ribbon-populate-button:hover,
+.ribbon-actions .ribbon-populate-button:focus-visible {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
 .ribbon-year-control {
   display: grid;
   gap: 0.2rem;
@@ -66,7 +106,7 @@
 
 .ribbon-year-control input,
 .ribbon-year-control select {
-  width: 6rem;
+  width: 6.5rem;
   min-height: 2.25rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -640,6 +680,11 @@
 
   .ribbon-actions {
     justify-content: flex-start;
+  }
+
+  .ribbon-populate-group,
+  .ribbon-file-actions {
+    width: 100%;
   }
 }
 
