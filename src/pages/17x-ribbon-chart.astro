@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import RibbonChartPage from "../components/RibbonChartPage";
+
+const title = "17X Ribbon Chart - pbvinge";
+const description = "Client-side 17X cyber operations officer ribbon chart editor.";
+---
+
+<Layout title={title} description={description}>
+  <RibbonChartPage client:load />
+</Layout>
+
+<style is:global>
+  .site-main {
+    max-width: 1480px;
+  }
+</style>
