@@ -231,6 +231,11 @@ interface SelectedSegment {
   segment: VectorSegment;
 }
 
+interface TimelineCellInfo {
+  title: string;
+  milestones: string[][];
+}
+
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 const snapHalfYear = (value: number) => Math.round(value * 2) / 2;
 const blankRow = () => Array.from({ length: YEAR_COUNT }, () => "");
@@ -274,6 +279,88 @@ const getDevelopmentalEducationCycle = (label: string, year: number) => {
       ["Public / field announcement", `Expected late Jun ${year}; verify annual PSDM/MyFSS schedule`]
     ]
   };
+};
+const promotionRankFromLabel = (label: string) => {
+  const normalized = label.trim().replace(/\s+/g, " ").replace(/^IPZ\s+/i, "").toLowerCase();
+  const rankByLabel: Record<string, string> = {
+    "2d lt": "2d Lt",
+    "2nd lt": "2d Lt",
+    "second lieutenant": "2d Lt",
+    "1st lt": "1st Lt",
+    "first lieutenant": "1st Lt",
+    capt: "Capt",
+    captain: "Capt",
+    maj: "Maj",
+    major: "Maj",
+    "lt col": "Lt Col",
+    ltcol: "Lt Col",
+    "lieutenant colonel": "Lt Col",
+    col: "Col",
+    colonel: "Col"
+  };
+
+  return rankByLabel[normalized] ?? null;
+};
+const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null => {
+  const trimmed = label.trim();
+  const targetRank = promotionRankFromLabel(trimmed);
+  if (!targetRank) return null;
+
+  const priorYear = year - 1;
+
+  if (targetRank === "2d Lt") {
+    return {
+      title: `${trimmed} - accession / initial grade`,
+      milestones: [
+        ["DOR start point", "Commissioning or extended active duty date"],
+        ["Used for", "Starts the clock for first lieutenant timing"],
+        ["Next promotion", "First lieutenant normally after 2 years TIG as a 2d Lt"]
+      ]
+    };
+  }
+
+  if (targetRank === "1st Lt") {
+    return {
+      title: `${trimmed} - promotion to first lieutenant`,
+      milestones: [
+        ["Eligibility", "2 years TIG as a 2d Lt"],
+        ["Pin-on timing", `${year}, if this cell is the officer's 2d Lt DOR + 2 years`],
+        ["Process note", "No central promotion board; NQP or delay actions are handled separately"]
+      ]
+    };
+  }
+
+  if (targetRank === "Capt") {
+    return {
+      title: `${trimmed} - promotion to captain`,
+      milestones: [
+        ["Eligibility", "2 years TIG as a 1st Lt"],
+        ["IPZ consideration", `Quarterly cycle in ${priorYear}, one year before expected pin-on`],
+        ["A-cycle", `1 Jan-31 Mar ${priorYear} -> Jan-Mar ${year} promotions`],
+        ["B-cycle", `1 Apr-30 Jun ${priorYear} -> Apr-Jun ${year} promotions`],
+        ["C-cycle", `1 Jul-30 Sep ${priorYear} -> Jul-Sep ${year} promotions`],
+        ["D-cycle", `1 Oct-31 Dec ${priorYear} -> Oct-Dec ${year} promotions`],
+        ["Results", "Selections announced by email about 60-90 days after cycle closeout"]
+      ]
+    };
+  }
+
+  return {
+    title: `${trimmed} - promotion to ${targetRank}`,
+    milestones: [
+      ["Board announcement", "About 150 days before the central board convenes"],
+      ["Eligibility products", "MEL about Day -150; OPB about Day -140; PRF notice about Day -120"],
+      ["Minimum TIG", "Capt, Maj, and Lt Col need at least 3 years TIG as of board convening"],
+      ["Central board", "Annual board date is set by that year's PSDM/MyFSS schedule"],
+      ["Public release", "AFPC establishes release after SecDef signs the nomination scroll"],
+      ["Pin-on timing", `${year} by monthly sequence-number increments after Senate confirmation`]
+    ]
+  };
+};
+const getTimelineCellInfo = (key: keyof Omit<TimelineData, "startingYear">, label: string, year: number) => {
+  if (key === "promotion") return getPromotionCycle(label, year);
+  if (key === "developmentalEducation") return getDevelopmentalEducationCycle(label, year);
+  return null;
 };
 
 const setLabelForYear = (row: string[], years: number[], targetYear: number, label: string) => {
@@ -884,9 +971,9 @@ const RibbonChartPage: React.FC = () => {
 
   const renderTimelineCell = (label: string, key: keyof Omit<TimelineData, "startingYear">, value: string, index: number) => {
     const year = years[index];
-    const cycleInfo = key === "developmentalEducation" ? getDevelopmentalEducationCycle(value, year) : null;
+    const cellInfo = getTimelineCellInfo(key, value, year);
 
-    if (!cycleInfo) {
+    if (!cellInfo) {
       return (
         <input
           key={`${key}-${year}`}
@@ -910,15 +997,15 @@ const RibbonChartPage: React.FC = () => {
         <button
           type="button"
           className="ribbon-cycle-info-button"
-          aria-label={`${value} board cycle dates`}
+          aria-label={`${value} timeline dates`}
           aria-describedby={tooltipId}
         >
           i
         </button>
         <div id={tooltipId} className="ribbon-cycle-popover" role="tooltip">
-          <strong>{cycleInfo.title}</strong>
+          <strong>{cellInfo.title}</strong>
           <dl>
-            {cycleInfo.milestones.map(([milestone, timing]) => (
+            {cellInfo.milestones.map(([milestone, timing]) => (
               <div key={milestone}>
                 <dt>{milestone}</dt>
                 <dd>{timing}</dd>
