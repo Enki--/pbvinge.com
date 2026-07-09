@@ -47,7 +47,7 @@ const PROMOTION_RANK_BY_LABEL: Record<string, string> = {
 const IDE_OPTIONS = [
   "IDE Programs", "ACSC", "ACSC_PAS", "AFIT PhD", "AF_Legis", "AFIT Masters", "Army_CS", "ASAM",
   "AU_FELLOW_A", "AU_FELLOW_B", "AU_FELLOW_C", "CNCS", "CSAF Presitgous Capt PhD",
-  "CSAF Presitgous Capt Prog", "CSAF_HVD", "CSAF_JHU", "CSAF_PRIN", "DARPA", "DOE", "EQ Credit",
+  "CSAF Presitgous Capt Prog", "CSAF_BH", "CSAF_HVD", "CSAF_JHU", "CSAF_PRIN", "DARPA", "DOE", "EQ Credit",
   "FGN_BRAZIL_IDE", "FGN_CAN", "FGN_CHILE", "FGN_COLOM", "FGN_GERM", "FGN_NORW", "FGN_SPAIN",
   "FGN_UKCS", "FGN_WHISC", "JTMOBFEL", "Lincoln", "McConn", "NIU", "NLTFP_ARG_IDE",
   "NLTFP_IDA_IDE", "NLTFP_LAW_IDE", "NLTFP_LOS_IDE", "NLTFP_OAK_IDE", "NLTFP_SAN_IDE",
