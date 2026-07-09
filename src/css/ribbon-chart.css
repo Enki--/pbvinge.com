@@ -334,6 +334,7 @@
 .ribbon-year-cell,
 .ribbon-scod-cell,
 .ribbon-cell-input,
+.ribbon-info-cell,
 .ribbon-vector-track {
   min-height: 2.05rem;
   border-right: 2px solid #111827;
@@ -374,6 +375,110 @@
   border-radius: 0;
   text-align: center;
   font-weight: 700;
+}
+
+.ribbon-info-cell {
+  position: relative;
+  background: #ffffff;
+}
+
+.ribbon-info-cell .ribbon-cell-input {
+  height: 100%;
+  border: 0;
+  padding-right: 1.55rem;
+}
+
+.ribbon-cycle-info-button {
+  position: absolute;
+  top: 0.22rem;
+  right: 0.22rem;
+  display: grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #1d4ed8;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1e3a8a;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ribbon-cycle-info-button:hover,
+.ribbon-cycle-info-button:focus-visible {
+  background: #1d4ed8;
+  color: #ffffff;
+  outline: none;
+}
+
+.ribbon-cycle-popover {
+  position: absolute;
+  z-index: 25;
+  top: calc(100% + 0.32rem);
+  left: 50%;
+  display: none;
+  width: min(22rem, 36vw);
+  transform: translateX(-50%);
+  border: 1px solid #1e3a8a;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+  color: #111827;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  padding: 0.7rem;
+  text-align: left;
+}
+
+.ribbon-cycle-popover::before {
+  position: absolute;
+  top: -0.42rem;
+  left: calc(50% - 0.35rem);
+  width: 0.7rem;
+  height: 0.7rem;
+  border-top: 1px solid #1e3a8a;
+  border-left: 1px solid #1e3a8a;
+  background: #ffffff;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.ribbon-cycle-popover strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #0f172a;
+  font-size: 0.85rem;
+}
+
+.ribbon-cycle-popover dl {
+  display: grid;
+  gap: 0.38rem;
+  margin: 0;
+}
+
+.ribbon-cycle-popover dl div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.9fr) minmax(0, 1fr);
+  gap: 0.5rem;
+}
+
+.ribbon-cycle-popover dt {
+  color: #334155;
+  font-weight: 800;
+}
+
+.ribbon-cycle-popover dd {
+  margin: 0;
+  color: #0f172a;
+}
+
+.ribbon-info-cell:hover .ribbon-cycle-popover,
+.ribbon-info-cell:focus-within .ribbon-cycle-popover {
+  display: block;
 }
 
 .ribbon-vector-label {
@@ -859,10 +964,20 @@
   .ribbon-timeline-label,
   .ribbon-year-cell,
   .ribbon-scod-cell,
-  .ribbon-cell-input {
+  .ribbon-cell-input,
+  .ribbon-info-cell {
     min-height: 0;
     height: 0.18in;
     padding: 0;
+  }
+
+  .ribbon-info-cell .ribbon-cell-input {
+    padding-right: 2px;
+  }
+
+  .ribbon-cycle-info-button,
+  .ribbon-cycle-popover {
+    display: none !important;
   }
 
   .ribbon-vector-track {

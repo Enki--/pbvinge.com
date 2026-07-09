@@ -256,6 +256,25 @@ const getScodTimeline = (startingRank: string, promotionRow: string[]) => {
     };
   });
 };
+const getDevelopmentalEducationCycle = (label: string, year: number) => {
+  const trimmed = label.trim();
+  const cycleType = trimmed.startsWith("IDE") ? "IDE" : trimmed.startsWith("SDE") ? "SDE" : "";
+  if (!cycleType) return null;
+
+  const priorYear = year - 1;
+  return {
+    title: `${trimmed} - ${year} ${cycleType} school-selection cycle`,
+    milestones: [
+      ["Senior rater accountability", `1 Nov ${priorYear}`],
+      ["ODP-DE / nomination window", `Dec ${priorYear}-Jan ${year}`],
+      ["Central PME board activity", `Feb-Mar ${year}`],
+      ["Development Teams vector", `Mar-Jun ${year}`],
+      ["School Match Board", `Around 1 Jun ${year}`],
+      ["DEDB / school designation", `Late Jun-Jul ${year}`],
+      ["Public / field announcement", `Expected late Jun ${year}; verify annual PSDM/MyFSS schedule`]
+    ]
+  };
+};
 
 const setLabelForYear = (row: string[], years: number[], targetYear: number, label: string) => {
   const index = years.findIndex((year) => year === targetYear);
@@ -863,18 +882,58 @@ const RibbonChartPage: React.FC = () => {
     setImportMessage("Reset chart.");
   };
 
-  const renderTimelineRow = (label: string, key: keyof Omit<TimelineData, "startingYear">) => (
-    <>
-      <div className="ribbon-timeline-label">{label}</div>
-      {chart.timeline[key].map((value, index) => (
+  const renderTimelineCell = (label: string, key: keyof Omit<TimelineData, "startingYear">, value: string, index: number) => {
+    const year = years[index];
+    const cycleInfo = key === "developmentalEducation" ? getDevelopmentalEducationCycle(value, year) : null;
+
+    if (!cycleInfo) {
+      return (
         <input
-          key={`${key}-${years[index]}`}
+          key={`${key}-${year}`}
           className="ribbon-cell-input"
           value={value}
           onChange={(event) => updateTimelineCell(key, index, event.currentTarget.value)}
-          aria-label={`${label} ${years[index]}`}
+          aria-label={`${label} ${year}`}
         />
-      ))}
+      );
+    }
+
+    const tooltipId = `${key}-${year}-cycle-info`;
+    return (
+      <div key={`${key}-${year}`} className="ribbon-info-cell">
+        <input
+          className="ribbon-cell-input"
+          value={value}
+          onChange={(event) => updateTimelineCell(key, index, event.currentTarget.value)}
+          aria-label={`${label} ${year}`}
+        />
+        <button
+          type="button"
+          className="ribbon-cycle-info-button"
+          aria-label={`${value} board cycle dates`}
+          aria-describedby={tooltipId}
+        >
+          i
+        </button>
+        <div id={tooltipId} className="ribbon-cycle-popover" role="tooltip">
+          <strong>{cycleInfo.title}</strong>
+          <dl>
+            {cycleInfo.milestones.map(([milestone, timing]) => (
+              <div key={milestone}>
+                <dt>{milestone}</dt>
+                <dd>{timing}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    );
+  };
+
+  const renderTimelineRow = (label: string, key: keyof Omit<TimelineData, "startingYear">) => (
+    <>
+      <div className="ribbon-timeline-label">{label}</div>
+      {chart.timeline[key].map((value, index) => renderTimelineCell(label, key, value, index))}
     </>
   );
 
