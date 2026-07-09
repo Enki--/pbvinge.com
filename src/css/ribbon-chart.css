@@ -420,7 +420,9 @@
   top: calc(100% + 0.32rem);
   left: 50%;
   display: none;
-  width: min(22rem, 36vw);
+  width: min(34rem, 72vw);
+  max-height: min(34rem, 70vh);
+  overflow: auto;
   transform: translateX(-50%);
   border: 1px solid #1e3a8a;
   border-radius: 8px;

@@ -231,9 +231,21 @@ interface SelectedSegment {
   segment: VectorSegment;
 }
 
+type TimelineMilestone = [string, string];
+type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
+type PromotionYearOffset = -1 | 0;
+
 interface TimelineCellInfo {
   title: string;
-  milestones: string[][];
+  milestones: TimelineMilestone[];
+}
+
+interface FieldGradePromotionSchedule {
+  boardPrefix: "P04" | "P05" | "P06";
+  gradeName: string;
+  aPopulation: string;
+  bPopulation: string;
+  rows: Array<[string, string, PromotionYearOffset, string, PromotionYearOffset]>;
 }
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
@@ -244,6 +256,14 @@ const clampStartingYear = (value: number) => clamp(Number.isFinite(value) ? Math
 const colorFor = (colorId: VectorColorId) => VECTOR_COLORS.find((color) => color.id === colorId) ?? VECTOR_COLORS[0];
 
 const yearsFor = (startingYear: number) => Array.from({ length: YEAR_COUNT }, (_, index) => startingYear + index);
+const shortYear = (year: number) => String(year).slice(-2).padStart(2, "0");
+const dateForBoardYear = (monthDay: string, boardYear: number, offset: PromotionYearOffset) => `${monthDay} ${boardYear + offset}`;
+const boardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number, suffix: "A" | "B") => (
+  `${prefix}${shortYear(year)}${suffix}`
+);
+const medicalBoardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number) => (
+  `M${prefix.slice(1)}${shortYear(year)}A`
+);
 const normalizeRank = (rank: string) => BASE_RANK_BY_OPTION[rank] ?? "Maj";
 const getScodForRank = (rank: string) => SCOD_BY_RANK[normalizeRank(rank)] ?? "31 May";
 const getScodTimeline = (startingRank: string, promotionRow: string[]) => {
@@ -261,7 +281,59 @@ const getScodTimeline = (startingRank: string, promotionRow: string[]) => {
     };
   });
 };
-const getDevelopmentalEducationCycle = (label: string, year: number) => {
+const FIELD_GRADE_PROMOTION_SCHEDULES: Record<FieldGradePromotionRank, FieldGradePromotionSchedule> = {
+  Maj: {
+    boardPrefix: "P04",
+    gradeName: "Major",
+    aPopulation: "Major, LAF-A/C/F/I/N and LAF-J/CHAP",
+    bPopulation: "Major, NC/MSC/BSC and MC/DC",
+    rows: [
+      ["PRF accounting date", "Aug 9", -1, "Aug 23", -1],
+      ["PRF cutoff date", "Nov 7", -1, "Nov 14", -1],
+      ["AF-level PRFs due", "Dec 2", -1, "Dec 9", -1],
+      ["Remaining PRFs due AFPC", "Dec 7", -1, "Dec 14", -1],
+      ["Letters received by AFPC", "Dec 27", -1, "Jan 10", 0],
+      ["Central board convenes", "Jan 6", 0, "Jan 20", 0]
+    ]
+  },
+  "Lt Col": {
+    boardPrefix: "P05",
+    gradeName: "Lieutenant Colonel",
+    aPopulation: "Lt Col, LAF-A/C/F/I/N/X",
+    bPopulation: "Lt Col, LAF-J/CHAP/NC/MSC/BSC and MC/DC",
+    rows: [
+      ["PRF accounting date", "Jun 6", 0, "Jul 4", 0],
+      ["OPBs flow", "Jun 11", 0, "Jul 9", 0],
+      ["MPF OPB suspense", "Jun 21", 0, "Jul 19", 0],
+      ["Senior-rater RIP/DQHB flows", "Jul 7", 0, "Aug 4", 0],
+      ["AFPC opt-out cutoff", "Jul 11", 0, "Aug 8", 0],
+      ["AF Student MLR", "Aug 25", 0, "Sep 22", 0],
+      ["Final allocation date", "Aug 28", 0, "Sep 25", 0],
+      ["PRF cutoff date", "Sep 4", 0, "Oct 2", 0],
+      ["ML MLR complete / codes updated", "Sep 24", 0, "Oct 22", 0],
+      ["AF-level PRFs and MELs due", "Sep 29", 0, "Oct 27", 0],
+      ["Remaining PRFs due AFPC", "Oct 4", 0, "Nov 1", 0],
+      ["AF-level MLR", "Oct 6", 0, "Nov 3", 0],
+      ["Letters received by AFPC", "Oct 24", 0, "Nov 21", 0],
+      ["Central board convenes", "Nov 3", 0, "Dec 1", 0]
+    ]
+  },
+  Col: {
+    boardPrefix: "P06",
+    gradeName: "Colonel",
+    aPopulation: "Colonel, LAF-A/C/F/I/N/X",
+    bPopulation: "Colonel, LAF-J/CHAP/NC/MSC/BSC and MC/DC",
+    rows: [
+      ["PRF accounting date", "Oct 4", -1, "Oct 18", -1],
+      ["PRF cutoff date", "Jan 2", 0, "Jan 16", 0],
+      ["AF-level PRFs due", "Jan 27", 0, "Feb 10", 0],
+      ["Remaining PRFs due AFPC", "Feb 1", 0, "Feb 15", 0],
+      ["Letters received by AFPC", "Feb 21", 0, "Mar 7", 0],
+      ["Central board convenes", "Mar 3", 0, "Mar 17", 0]
+    ]
+  }
+};
+const getDevelopmentalEducationCycle = (label: string, year: number): TimelineCellInfo | null => {
   const trimmed = label.trim();
   const cycleType = trimmed.startsWith("IDE") ? "IDE" : trimmed.startsWith("SDE") ? "SDE" : "";
   if (!cycleType) return null;
@@ -300,6 +372,27 @@ const promotionRankFromLabel = (label: string) => {
   };
 
   return rankByLabel[normalized] ?? null;
+};
+const getFieldGradePromotionCycle = (label: string, targetRank: FieldGradePromotionRank, year: number): TimelineCellInfo => {
+  const schedule = FIELD_GRADE_PROMOTION_SCHEDULES[targetRank];
+  const aBoard = boardCode(schedule.boardPrefix, year, "A");
+  const bBoard = `${boardCode(schedule.boardPrefix, year, "B")} / ${medicalBoardCode(schedule.boardPrefix, year)}`;
+  const boardRows = schedule.rows.map<TimelineMilestone>(([milestone, aDate, aOffset, bDate, bOffset]) => [
+    milestone,
+    `${aBoard}: ${dateForBoardYear(aDate, year, aOffset)}; ${bBoard}: ${dateForBoardYear(bDate, year, bOffset)}`
+  ]);
+
+  return {
+    title: `${label} - CY${shortYear(year)} ${schedule.gradeName} board milestones`,
+    milestones: [
+      ["A-board population", `${aBoard}: ${schedule.aPopulation}`],
+      ["B/M-board population", `${bBoard}: ${schedule.bPopulation}`],
+      ...boardRows,
+      ["PRF accounting", "AFPC matches eligibles to senior raters using MilPDS unit assignment data"],
+      ["PRF cutoff", "Senior raters sign on or after this date; it is not the final submission deadline"],
+      ["Source note", "Dates roll from the CY26 milestone schedule; verify exact annual PSDM/MyFSS weekend and holiday shifts"]
+    ]
+  };
 };
 const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null => {
   const trimmed = label.trim();
@@ -345,17 +438,11 @@ const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null
     };
   }
 
-  return {
-    title: `${trimmed} - promotion to ${targetRank}`,
-    milestones: [
-      ["Board announcement", "About 150 days before the central board convenes"],
-      ["Eligibility products", "MEL about Day -150; OPB about Day -140; PRF notice about Day -120"],
-      ["Minimum TIG", "Capt, Maj, and Lt Col need at least 3 years TIG as of board convening"],
-      ["Central board", "Annual board date is set by that year's PSDM/MyFSS schedule"],
-      ["Public release", "AFPC establishes release after SecDef signs the nomination scroll"],
-      ["Pin-on timing", `${year} by monthly sequence-number increments after Senate confirmation`]
-    ]
-  };
+  if (targetRank === "Maj" || targetRank === "Lt Col" || targetRank === "Col") {
+    return getFieldGradePromotionCycle(trimmed, targetRank, year);
+  }
+
+  return null;
 };
 const getTimelineCellInfo = (key: keyof Omit<TimelineData, "startingYear">, label: string, year: number) => {
   if (key === "promotion") return getPromotionCycle(label, year);
