@@ -352,6 +352,36 @@ const getDevelopmentalEducationCycle = (label: string, year: number): TimelineCe
     ]
   };
 };
+const getCommandSelectionCycle = (label: string, year: number): TimelineCellInfo | null => {
+  const trimmed = label.trim();
+  if (!trimmed) return null;
+
+  const normalized = trimmed.toUpperCase();
+  const isCommandOrDoCell = (
+    normalized.includes("COMMAND") ||
+    normalized.includes("GP/CD") ||
+    normalized.includes("SQ/DO") ||
+    /\bCC\b/.test(normalized) ||
+    /\bDO\b/.test(normalized)
+  );
+  if (!isCommandOrDoCell) return null;
+
+  return {
+    title: `${trimmed} - ${year} 17X command / DO cycle`,
+    milestones: [
+      ["MyVector Candidate SOI opens", `14 Jan ${year}`],
+      ["Non-17X add cutoff", `21 Jan ${year}`],
+      ["Records freeze", `25 Jan ${year}`],
+      ["MyVector Candidate SOI closes", `4 Feb ${year}`],
+      ["Endorsement window closes", `18 Feb ${year}`],
+      ["17X Spring DT", `13-17 Apr ${year}`],
+      ["Command Candidate List PSDM", `Summer ${year}`],
+      ["Consolidated Command Selection PSDM", `Fall ${year}`],
+      ["17X Gp/CD and Sq/DO Selection PSDM", `Fall ${year}`],
+      ["Source note", "Dates are shifted from the 2026 schedule; verify exact annual MyVector/PSDM dates"]
+    ]
+  };
+};
 const promotionRankFromLabel = (label: string) => {
   const normalized = label.trim().replace(/\s+/g, " ").replace(/^IPZ\s+/i, "").toLowerCase();
   const rankByLabel: Record<string, string> = {
@@ -446,6 +476,7 @@ const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null
 };
 const getTimelineCellInfo = (key: keyof Omit<TimelineData, "startingYear">, label: string, year: number) => {
   if (key === "promotion") return getPromotionCycle(label, year);
+  if (key === "leadership") return getCommandSelectionCycle(label, year);
   if (key === "developmentalEducation") return getDevelopmentalEducationCycle(label, year);
   return null;
 };
