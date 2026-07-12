@@ -1494,9 +1494,15 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-education-row">
                 <CheckTile label="IDE" checked={chart.education.ide} onChange={(checked) => updateEducation("ide", checked)} />
-                <select value={chart.education.ideProgram} onChange={(event) => updateEducation("ideProgram", event.currentTarget.value)}>
-                  {IDE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
+                <input
+                  list="ribbon-ide-program-options"
+                  value={chart.education.ideProgram}
+                  onChange={(event) => updateEducation("ideProgram", event.currentTarget.value)}
+                  placeholder="IDE program"
+                />
+                <datalist id="ribbon-ide-program-options">
+                  {IDE_OPTIONS.map((option) => <option key={option} value={option} />)}
+                </datalist>
                 <CheckTile label="DG" checked={chart.education.ideDg} onChange={(checked) => updateEducation("ideDg", checked)} />
               </div>
               <div className="ribbon-education-row">
@@ -1505,9 +1511,15 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-education-row">
                 <CheckTile label="SDE" checked={chart.education.sde} onChange={(checked) => updateEducation("sde", checked)} />
-                <select value={chart.education.sdeProgram} onChange={(event) => updateEducation("sdeProgram", event.currentTarget.value)}>
-                  {SDE_OPTIONS.map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
+                <input
+                  list="ribbon-sde-program-options"
+                  value={chart.education.sdeProgram}
+                  onChange={(event) => updateEducation("sdeProgram", event.currentTarget.value)}
+                  placeholder="SDE program"
+                />
+                <datalist id="ribbon-sde-program-options">
+                  {SDE_OPTIONS.map((option) => <option key={option} value={option} />)}
+                </datalist>
                 <CheckTile label="DG" checked={chart.education.sdeDg} onChange={(checked) => updateEducation("sdeDg", checked)} />
               </div>
               <div className="ribbon-special-programs">
