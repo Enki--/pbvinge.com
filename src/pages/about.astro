@@ -8,6 +8,13 @@ import Layout from '../layouts/Layout.astro';
     <p>
       I'm Patrick "Shrink" Vinge, a lifelong learner and technology enthusiast based in Minneapolis, Minnesota. With a background in both the military and academia, I'm passionate about bridging the gap between strategy, technology, and leadership. I enjoy tackling complex problems, building meaningful connections, and sharing knowledge with others. When I'm not working, you'll find me reading, exploring new ideas, or spending time outdoors with my German Shorthair Pointers.
     </p>
+
+    <section class="contact-note" aria-labelledby="requests-heading">
+      <h2 id="requests-heading">Requests and Corrections</h2>
+      <p>
+        This site is maintained in the spirit of study, synthesis, and good-faith intellectual exchange. If any note, excerpt, or attribution warrants correction, raises a concern, or should be removed from public view, please send a concise request to <a href="mailto:shrink@pbvinge.com">shrink@pbvinge.com</a>. Thoughtful feedback, source clarifications, and takedown requests are welcome and will be reviewed with appropriate care.
+      </p>
+    </section>
     
     <h2>Connect</h2>
     <ul class="social-links">
@@ -37,6 +44,16 @@ import Layout from '../layouts/Layout.astro';
   p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
+  }
+
+  .contact-note {
+    border-left: 3px solid var(--border-color);
+    margin: 2.5rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .contact-note p {
+    color: var(--muted-text);
   }
 
   .social-links {
