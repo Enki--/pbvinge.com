@@ -788,12 +788,37 @@
 .ribbon-special-programs > span {
   display: grid;
   place-items: center;
-  grid-row: span 2;
+  grid-row: span 3;
   border: 1px solid #111827;
   background: #f3f4f6;
   padding: 0.25rem;
   font-weight: 700;
   text-align: center;
+}
+
+.ribbon-special-programs-other {
+  display: grid;
+  grid-column: 2 / -1;
+  grid-template-columns: 72px minmax(0, 1fr);
+  min-height: 2.6rem;
+  border: 1px solid #111827;
+  border-left: 0;
+}
+
+.ribbon-special-programs-other span {
+  display: grid;
+  place-items: center;
+  border-right: 1px solid #111827;
+  background: #f3f4f6;
+  padding: 0.2rem 0.35rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.ribbon-special-programs-other textarea {
+  min-height: 2.6rem;
+  border: 0;
+  resize: vertical;
 }
 
 .ribbon-opb-panel h2 {
@@ -1065,6 +1090,20 @@
 
   .ribbon-special-programs {
     grid-template-columns: 0.95in repeat(3, minmax(0, 1fr));
+  }
+
+  .ribbon-special-programs-other {
+    grid-template-columns: 0.48in minmax(0, 1fr);
+    min-height: 0.32in;
+  }
+
+  .ribbon-special-programs-other span {
+    padding: 0.01in 0.03in;
+  }
+
+  .ribbon-special-programs-other textarea {
+    min-height: 0.32in;
+    resize: none;
   }
 
   .ribbon-opb-panel {

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 2;
+const SAVE_SCHEMA_VERSION = 3;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
 
@@ -185,6 +185,7 @@ interface EducationAchievements {
   wic: boolean;
   wicDg: boolean;
   cnodp: boolean;
+  specialProgramsOther: string;
 }
 
 interface OpbEntry {
@@ -645,7 +646,8 @@ const createDefaultChart = (): ChartData => {
       asg: false,
       wic: false,
       wicDg: false,
-      cnodp: false
+      cnodp: false,
+      specialProgramsOther: ""
     },
     opbs: [
       { year: "2023", bottomLineRater: "", bottomLineAdditionalRater: "" },
@@ -1533,6 +1535,14 @@ const RibbonChartPage: React.FC = () => {
                 <CheckTile label="WIC" checked={chart.education.wic} onChange={(checked) => updateEducation("wic", checked)} />
                 <CheckTile label="WIC DG" checked={chart.education.wicDg} onChange={(checked) => updateEducation("wicDg", checked)} />
                 <CheckTile label="CNODP" checked={chart.education.cnodp} onChange={(checked) => updateEducation("cnodp", checked)} />
+                <label className="ribbon-special-programs-other">
+                  <span>Other</span>
+                  <textarea
+                    value={chart.education.specialProgramsOther}
+                    onChange={(event) => updateEducation("specialProgramsOther", event.currentTarget.value)}
+                    placeholder="List other special programs"
+                  />
+                </label>
               </div>
             </section>
           </div>
