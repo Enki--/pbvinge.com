@@ -449,6 +449,26 @@
   transform: rotate(45deg);
 }
 
+.ribbon-info-cell-left-edge .ribbon-cycle-popover {
+  left: 0.35rem;
+  transform: none;
+}
+
+.ribbon-info-cell-left-edge .ribbon-cycle-popover::before {
+  left: 0.7rem;
+}
+
+.ribbon-info-cell-right-edge .ribbon-cycle-popover {
+  right: 0.35rem;
+  left: auto;
+  transform: none;
+}
+
+.ribbon-info-cell-right-edge .ribbon-cycle-popover::before {
+  right: 0.7rem;
+  left: auto;
+}
+
 .ribbon-cycle-popover strong {
   display: block;
   margin-bottom: 0.45rem;
@@ -646,7 +666,7 @@
 }
 
 .ribbon-panel h2,
-.ribbon-opr-panel h2 {
+.ribbon-opb-panel h2 {
   margin: 0;
   border-bottom: 2px solid #111827;
   background: #d1d5db;
@@ -776,17 +796,17 @@
   text-align: center;
 }
 
-.ribbon-opr-panel h2 {
+.ribbon-opb-panel h2 {
   background: #b9f6f2;
   font-size: 1.2rem;
 }
 
-.ribbon-opr-grid {
+.ribbon-opb-grid {
   display: grid;
   grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1fr);
 }
 
-.ribbon-opr-heading {
+.ribbon-opb-heading {
   display: grid;
   place-items: center;
   min-height: 1.4rem;
@@ -795,12 +815,12 @@
   font-weight: 700;
 }
 
-.ribbon-opr-heading:nth-child(3) {
+.ribbon-opb-heading:nth-child(3) {
   border-right: 0;
 }
 
-.ribbon-opr-grid input,
-.ribbon-opr-grid textarea {
+.ribbon-opb-grid input,
+.ribbon-opb-grid textarea {
   min-height: 2.7rem;
   border-top: 0;
   border-left: 0;
@@ -809,11 +829,11 @@
   border-radius: 0;
 }
 
-.ribbon-opr-grid textarea {
+.ribbon-opb-grid textarea {
   resize: vertical;
 }
 
-.ribbon-opr-grid textarea:nth-child(3n) {
+.ribbon-opb-grid textarea:nth-child(3n) {
   border-right: 0;
 }
 
@@ -1004,7 +1024,7 @@
   }
 
   .ribbon-panel h2,
-  .ribbon-opr-panel h2 {
+  .ribbon-opb-panel h2 {
     font-size: 9px;
     padding: 0.02in 0.04in;
   }
@@ -1047,22 +1067,22 @@
     grid-template-columns: 0.95in repeat(3, minmax(0, 1fr));
   }
 
-  .ribbon-opr-panel {
+  .ribbon-opb-panel {
     flex: 0 0 1.05in;
     min-height: 0;
   }
 
-  .ribbon-opr-grid {
+  .ribbon-opb-grid {
     grid-template-columns: 0.42in minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .ribbon-opr-heading {
+  .ribbon-opb-heading {
     min-height: 0;
     height: 0.14in;
   }
 
-  .ribbon-opr-grid input,
-  .ribbon-opr-grid textarea {
+  .ribbon-opb-grid input,
+  .ribbon-opb-grid textarea {
     min-height: 0;
     height: 0.3in;
   }

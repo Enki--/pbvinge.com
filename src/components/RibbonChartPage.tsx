@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 1;
+const SAVE_SCHEMA_VERSION = 2;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
 
@@ -187,7 +187,7 @@ interface EducationAchievements {
   cnodp: boolean;
 }
 
-interface OprEntry {
+interface OpbEntry {
   year: string;
   bottomLineRater: string;
   bottomLineAdditionalRater: string;
@@ -201,7 +201,7 @@ interface ChartData {
   jobExperiences: JobExperiences;
   highlights: Highlights;
   education: EducationAchievements;
-  oprs: OprEntry[];
+  opbs: OpbEntry[];
 }
 
 interface RibbonSaveFile {
@@ -647,7 +647,7 @@ const createDefaultChart = (): ChartData => {
       wicDg: false,
       cnodp: false
     },
-    oprs: [
+    opbs: [
       { year: "2023", bottomLineRater: "", bottomLineAdditionalRater: "" },
       { year: "2022", bottomLineRater: "", bottomLineAdditionalRater: "" },
       { year: "2021", bottomLineRater: "", bottomLineAdditionalRater: "" }
@@ -696,6 +696,8 @@ const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[]
 const normalizeChart = (input: Partial<ChartData>): ChartData => {
   const base = createDefaultChart();
   const timelineStart = typeof input.timeline?.startingYear === "number" ? clampStartingYear(input.timeline.startingYear) : base.timeline.startingYear;
+  const legacyInput = input as Partial<ChartData> & { oprs?: OpbEntry[] };
+  const incomingOpbs = Array.isArray(input.opbs) ? input.opbs : legacyInput.oprs;
 
   return {
     identity: { ...base.identity, ...input.identity },
@@ -716,9 +718,9 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
     jobExperiences: { ...base.jobExperiences, ...input.jobExperiences },
     highlights: { ...base.highlights, ...input.highlights },
     education: { ...base.education, ...input.education },
-    oprs: Array.isArray(input.oprs) && input.oprs.length
-      ? input.oprs.slice(0, 3).map((opr, index) => ({ ...base.oprs[index], ...opr }))
-      : base.oprs
+    opbs: Array.isArray(incomingOpbs) && incomingOpbs.length
+      ? incomingOpbs.slice(0, 3).map((opb, index) => ({ ...base.opbs[index], ...opb }))
+      : base.opbs
   };
 };
 
@@ -908,8 +910,8 @@ const RibbonChartPage: React.FC = () => {
         ...current.timeline,
         ...buildTimelineRows(current.timeline.startingYear, Number(current.identity.adjustedYearGroup))
       },
-      oprs: current.oprs.map((opr, index) => ({
-        ...opr,
+      opbs: current.opbs.map((opb, index) => ({
+        ...opb,
         year: String(current.timeline.startingYear - index - 1)
       }))
     }));
@@ -927,11 +929,11 @@ const RibbonChartPage: React.FC = () => {
     updateChart((current) => ({ ...current, education: { ...current.education, [key]: value } }));
   };
 
-  const updateOpr = (index: number, key: keyof OprEntry, value: string) => {
+  const updateOpb = (index: number, key: keyof OpbEntry, value: string) => {
     updateChart((current) => {
-      const oprs = current.oprs.slice();
-      oprs[index] = { ...oprs[index], [key]: value };
-      return { ...current, oprs };
+      const opbs = current.opbs.slice();
+      opbs[index] = { ...opbs[index], [key]: value };
+      return { ...current, opbs };
     });
   };
 
@@ -1104,8 +1106,9 @@ const RibbonChartPage: React.FC = () => {
     }
 
     const tooltipId = `${key}-${year}-cycle-info`;
+    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= YEAR_COUNT - 2 ? " ribbon-info-cell-right-edge" : "";
     return (
-      <div key={`${key}-${year}`} className="ribbon-info-cell">
+      <div key={`${key}-${year}`} className={`ribbon-info-cell${edgeClass}`}>
         <input
           className="ribbon-cell-input"
           value={value}
@@ -1259,7 +1262,7 @@ const RibbonChartPage: React.FC = () => {
           <div className="ribbon-timeline-grid">
             {renderTimelineRow("Promotion [i]", "promotion")}
             {renderTimelineRow("Leadership", "leadership")}
-            {renderTimelineRow("Developmental Edu", "developmentalEducation")}
+            {renderTimelineRow("PME", "developmentalEducation")}
             {renderTimelineRow("Career Field Edu", "careerFieldEducation")}
 
             <div className="ribbon-timeline-label">Calendar Year</div>
@@ -1534,17 +1537,17 @@ const RibbonChartPage: React.FC = () => {
             </section>
           </div>
 
-          <section className="ribbon-opr-panel">
-            <h2>Last 3 OPRs</h2>
-            <div className="ribbon-opr-grid">
-              <div className="ribbon-opr-heading">Year</div>
-              <div className="ribbon-opr-heading">Bottom line + Rater</div>
-              <div className="ribbon-opr-heading">Bottom line + Additional Rater</div>
-              {chart.oprs.map((opr, index) => (
-                <React.Fragment key={`opr-${index}`}>
-                  <input value={opr.year} onChange={(event) => updateOpr(index, "year", event.currentTarget.value)} aria-label={`OPR ${index + 1} year`} />
-                  <textarea value={opr.bottomLineRater} onChange={(event) => updateOpr(index, "bottomLineRater", event.currentTarget.value)} aria-label={`OPR ${index + 1} bottom line and rater`} />
-                  <textarea value={opr.bottomLineAdditionalRater} onChange={(event) => updateOpr(index, "bottomLineAdditionalRater", event.currentTarget.value)} aria-label={`OPR ${index + 1} bottom line and additional rater`} />
+          <section className="ribbon-opb-panel">
+            <h2>Last 3 OPBs</h2>
+            <div className="ribbon-opb-grid">
+              <div className="ribbon-opb-heading">Year</div>
+              <div className="ribbon-opb-heading">Bottom line + Rater</div>
+              <div className="ribbon-opb-heading">Bottom line + Additional Rater</div>
+              {chart.opbs.map((opb, index) => (
+                <React.Fragment key={`opb-${index}`}>
+                  <input value={opb.year} onChange={(event) => updateOpb(index, "year", event.currentTarget.value)} aria-label={`OPB ${index + 1} year`} />
+                  <textarea value={opb.bottomLineRater} onChange={(event) => updateOpb(index, "bottomLineRater", event.currentTarget.value)} aria-label={`OPB ${index + 1} bottom line and rater`} />
+                  <textarea value={opb.bottomLineAdditionalRater} onChange={(event) => updateOpb(index, "bottomLineAdditionalRater", event.currentTarget.value)} aria-label={`OPB ${index + 1} bottom line and additional rater`} />
                 </React.Fragment>
               ))}
             </div>
