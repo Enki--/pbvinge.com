@@ -12,21 +12,14 @@ export interface FutureRead {
 }
 
 export async function getFutureReads(): Promise<FutureRead[]> {
-  const booksCollection = await getCollection('books');
-  
-  // Filter books that are not complete (to read, reading, tbr, tbd)
-  const futureReads = booksCollection.filter(book => {
-    const status = book.data.status?.toLowerCase();
-    return status && ['to read', 'reading', 'tbr', 'tbd'].includes(status);
-  });
-  
-  // Convert to FutureRead format
-  return futureReads.map(book => ({
+  const futureReadsCollection = await getCollection('futureReads');
+
+  return futureReadsCollection.sort((a, b) => a.id.localeCompare(b.id)).map(book => ({
     title: book.data.title,
     author: book.data.author,
-    class: book.data.class || '',
-    dateCompleted: book.data.dateCompleted || book.data.status || 'TBR',
-    coverImage: book.data.coverImage || book.data.cover,
+    class: book.data.class,
+    dateCompleted: book.data.dateCompleted,
+    coverImage: book.data.coverImage,
     tags: book.data.tags || [],
     slug: book.slug,
     notes: book.data.notes
