@@ -754,7 +754,20 @@
 }
 
 .ribbon-staff-row {
-  grid-template-columns: auto repeat(7, minmax(0, 1fr));
+  grid-template-columns: 96px minmax(0, 1fr);
+}
+
+.ribbon-staff-options {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.ribbon-staff-options .ribbon-check-tile:nth-child(-n + 4) {
+  grid-column: span 3;
+}
+
+.ribbon-staff-options .ribbon-check-tile:nth-child(n + 5) {
+  grid-column: span 4;
 }
 
 .ribbon-highlights-panel {
@@ -1098,6 +1111,10 @@
 
   .ribbon-job-columns > div {
     grid-template-columns: 0.62in 1fr;
+  }
+
+  .ribbon-staff-row {
+    grid-template-columns: 0.62in minmax(0, 1fr);
   }
 
   .ribbon-highlights-panel {

@@ -1463,13 +1463,15 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-panel-row ribbon-staff-row">
                 <span className="ribbon-row-label">Staff</span>
-                <CheckTile label="Joint" checked={chart.jobExperiences.staffJoint} onChange={(checked) => updateJobExperience("staffJoint", checked)} />
-                <CheckTile label="HAF" checked={chart.jobExperiences.staffHaf} onChange={(checked) => updateJobExperience("staffHaf", checked)} />
-                <CheckTile label="MAJCOM" checked={chart.jobExperiences.staffMajcom} onChange={(checked) => updateJobExperience("staffMajcom", checked)} />
-                <CheckTile label="NAF" checked={chart.jobExperiences.staffNaf} onChange={(checked) => updateJobExperience("staffNaf", checked)} />
-                <CheckTile label="JT Qualified [i]" checked={chart.jobExperiences.jtQualified} onChange={(checked) => updateJobExperience("jtQualified", checked)} />
-                <CheckTile label="JPME I" checked={chart.jobExperiences.jpmeI} onChange={(checked) => updateJobExperience("jpmeI", checked)} />
-                <CheckTile label="JPME II" checked={chart.jobExperiences.jpmeIi} onChange={(checked) => updateJobExperience("jpmeIi", checked)} />
+                <div className="ribbon-staff-options">
+                  <CheckTile label="Joint" checked={chart.jobExperiences.staffJoint} onChange={(checked) => updateJobExperience("staffJoint", checked)} />
+                  <CheckTile label="HAF" checked={chart.jobExperiences.staffHaf} onChange={(checked) => updateJobExperience("staffHaf", checked)} />
+                  <CheckTile label="MAJCOM" checked={chart.jobExperiences.staffMajcom} onChange={(checked) => updateJobExperience("staffMajcom", checked)} />
+                  <CheckTile label="NAF" checked={chart.jobExperiences.staffNaf} onChange={(checked) => updateJobExperience("staffNaf", checked)} />
+                  <CheckTile label="JT Qualified [i]" checked={chart.jobExperiences.jtQualified} onChange={(checked) => updateJobExperience("jtQualified", checked)} />
+                  <CheckTile label="JPME I" checked={chart.jobExperiences.jpmeI} onChange={(checked) => updateJobExperience("jpmeI", checked)} />
+                  <CheckTile label="JPME II" checked={chart.jobExperiences.jpmeIi} onChange={(checked) => updateJobExperience("jpmeIi", checked)} />
+                </div>
               </div>
               <div className="ribbon-panel-row">
                 <CheckTile label="Sq/CC Tours" checked={chart.jobExperiences.sqCcTours} onChange={(checked) => updateJobExperience("sqCcTours", checked)} />
