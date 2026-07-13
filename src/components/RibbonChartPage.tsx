@@ -1445,10 +1445,10 @@ const RibbonChartPage: React.FC = () => {
                 <div>
                   <h3>Leadership</h3>
                   <CheckTile label="Crew CC" checked={chart.jobExperiences.crewCc} onChange={(checked) => updateJobExperience("crewCc", checked)} />
-                  <CheckTile label="Team Lead" checked={chart.jobExperiences.teamLead} onChange={(checked) => updateJobExperience("teamLead", checked)} />
+                  <CheckTile label="CMF Team Lead" checked={chart.jobExperiences.teamLead} onChange={(checked) => updateJobExperience("teamLead", checked)} />
                   <CheckTile label="Flt CC" checked={chart.jobExperiences.fltCc} onChange={(checked) => updateJobExperience("fltCc", checked)} />
                   <CheckTile label="Msn CC" checked={chart.jobExperiences.msnCc} onChange={(checked) => updateJobExperience("msnCc", checked)} />
-                  <CheckTile label="DO" checked={chart.jobExperiences.directorOfOperations} onChange={(checked) => updateJobExperience("directorOfOperations", checked)} />
+                  <CheckTile label="Sq/DO" checked={chart.jobExperiences.directorOfOperations} onChange={(checked) => updateJobExperience("directorOfOperations", checked)} />
                   <CheckTile label="Det CC" checked={chart.jobExperiences.detCc} onChange={(checked) => updateJobExperience("detCc", checked)} />
                 </div>
               </div>
