@@ -2,14 +2,14 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 3;
+const SAVE_SCHEMA_VERSION = 4;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
 
 const RANK_OPTIONS = ["Col", "Col(s)", "Lt Col", "Lt Col(s)", "Maj", "Maj(s)", "Capt", "1st Lt", "2d Lt"];
 const YEAR_GROUP_OPTIONS = Array.from({ length: 29 }, (_, index) => String(2025 - index));
 const STARTING_YEAR_OPTIONS = Array.from({ length: 32 }, (_, index) => 2024 + index);
-const VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"] as const;
+const DEFAULT_VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"];
 const SCOD_BY_RANK: Record<string, string> = {
   "2d Lt": "31 Oct",
   "1st Lt": "31 Oct",
@@ -76,7 +76,6 @@ const VECTOR_COLORS = [
 ] as const;
 
 type VectorColorId = (typeof VECTOR_COLORS)[number]["id"];
-type VectorRowLabel = (typeof VECTOR_ROW_LABELS)[number];
 type DragMode = "move" | "resize-left" | "resize-right";
 
 interface ChartIdentity {
@@ -119,7 +118,7 @@ interface VectorSegment {
 
 interface VectorRow {
   id: string;
-  label: VectorRowLabel;
+  label: string;
   segments: VectorSegment[];
 }
 
@@ -667,14 +666,18 @@ const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[]
   if (!Array.isArray(value)) return base;
 
   const timelineEnd = timelineStart + YEAR_COUNT;
-  return VECTOR_ROW_LABELS.map((label, rowIndex) => {
-    const incoming = value.find((row) => typeof row === "object" && row !== null && (row as Partial<VectorRow>).label === label) as Partial<VectorRow> | undefined;
+  return DEFAULT_VECTOR_ROW_LABELS.map((defaultLabel, rowIndex) => {
     const fallback = base[rowIndex];
+    const incoming = value.find((row) => {
+      if (typeof row !== "object" || row === null) return false;
+      const candidate = row as Partial<VectorRow>;
+      return candidate.id === fallback.id || candidate.label === defaultLabel;
+    }) as Partial<VectorRow> | undefined;
     const segments = Array.isArray(incoming?.segments) ? incoming.segments : fallback.segments;
 
     return {
       id: typeof incoming?.id === "string" ? incoming.id : fallback.id,
-      label,
+      label: typeof incoming?.label === "string" ? incoming.label : defaultLabel,
       segments: segments
         .map((segment, segmentIndex) => {
           const partial = segment as Partial<VectorSegment>;
@@ -997,6 +1000,13 @@ const RibbonChartPage: React.FC = () => {
     }
   };
 
+  const updateVectorRowLabel = (rowId: string, label: string) => {
+    updateChart((current) => ({
+      ...current,
+      vectors: current.vectors.map((row) => row.id === rowId ? { ...row, label } : row)
+    }));
+  };
+
   const addSegmentToRow = (row: VectorRow) => {
     const ordered = row.segments.slice().sort((a, b) => a.startYear - b.startYear);
     const boundaries = [
@@ -1280,10 +1290,16 @@ const RibbonChartPage: React.FC = () => {
               );
             })}
 
-            {chart.vectors.map((row) => (
+            {chart.vectors.map((row, rowIndex) => (
               <React.Fragment key={row.id}>
                 <div className="ribbon-timeline-label ribbon-vector-label">
-                  <span>{row.label}</span>
+                  <input
+                    className="ribbon-vector-name-input"
+                    value={row.label}
+                    onChange={(event) => updateVectorRowLabel(row.id, event.currentTarget.value)}
+                    placeholder={`Vec ${rowIndex + 1}`}
+                    aria-label={`Vector ${rowIndex + 1} name`}
+                  />
                   <button type="button" onClick={() => addSegmentToRow(row)}>Add block</button>
                 </div>
                 <div
