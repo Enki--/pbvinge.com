@@ -416,6 +416,12 @@
   font-weight: 700;
 }
 
+.ribbon-cell-input-outside:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  opacity: 1;
+}
+
 .ribbon-info-cell {
   position: relative;
   background: #ffffff;

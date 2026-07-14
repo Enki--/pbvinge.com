@@ -2,7 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 8;
+const SAVE_SCHEMA_VERSION = 9;
+const DEFAULT_EAD_YEAR = 2014;
+const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
 const MAX_TIMELINE_YEARS = 20;
 const TIMELINE_VIEW_OPTIONS = [10, 20] as const;
@@ -11,7 +13,7 @@ const FAMILY_KID_COUNT = 3;
 
 const RANK_OPTIONS = ["Col", "Col(s)", "Lt Col", "Lt Col(s)", "Maj", "Maj(s)", "Capt", "1st Lt", "2d Lt"];
 const YEAR_GROUP_OPTIONS = Array.from({ length: 29 }, (_, index) => String(2025 - index));
-const STARTING_YEAR_OPTIONS = Array.from({ length: 32 }, (_, index) => 2024 + index);
+const TIMELINE_YEAR_OPTIONS = Array.from({ length: 76 }, (_, index) => 1980 + index);
 const DEFAULT_VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"];
 const GRADE_OPTIONS = [
   { value: -1, label: "Pre-K" },
@@ -109,6 +111,7 @@ interface EligibilityState {
 }
 
 interface TimelineData {
+  eadYear: number;
   startingYear: number;
   promotion: string[];
   leadership: string[];
@@ -255,6 +258,7 @@ interface SelectedSegment {
 
 type TimelineMilestone = [string, string];
 type TimelineViewYears = typeof TIMELINE_VIEW_OPTIONS[number];
+type TimelineRowKey = keyof Omit<TimelineData, "eadYear" | "startingYear">;
 type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
 type PromotionYearOffset = -1 | 0;
 
@@ -274,11 +278,15 @@ interface FieldGradePromotionSchedule {
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 const snapHalfYear = (value: number) => Math.round(value * 2) / 2;
 const blankRow = () => Array.from({ length: MAX_TIMELINE_YEARS }, () => "");
-const clampStartingYear = (value: number) => clamp(Number.isFinite(value) ? Math.round(value) : 2024, 2024, 2055);
+const clampTimelineYear = (value: number) => clamp(Number.isFinite(value) ? Math.round(value) : DEFAULT_STARTING_YEAR, 1980, 2055);
 
 const colorFor = (colorId: VectorColorId) => VECTOR_COLORS.find((color) => color.id === colorId) ?? VECTOR_COLORS[0];
 
 const yearsFor = (startingYear: number, count = MAX_TIMELINE_YEARS) => Array.from({ length: count }, (_, index) => startingYear + index);
+const timelineDataIndexForYear = (eadYear: number, year: number) => {
+  const index = year - eadYear;
+  return index >= 0 && index < MAX_TIMELINE_YEARS ? index : null;
+};
 const shortYear = (year: number) => String(year).slice(-2).padStart(2, "0");
 const dateForBoardYear = (monthDay: string, boardYear: number, offset: PromotionYearOffset) => `${monthDay} ${boardYear + offset}`;
 const boardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number, suffix: "A" | "B") => (
@@ -497,7 +505,7 @@ const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null
 
   return null;
 };
-const getTimelineCellInfo = (key: keyof Omit<TimelineData, "startingYear">, label: string, year: number) => {
+const getTimelineCellInfo = (key: TimelineRowKey, label: string, year: number) => {
   if (key === "promotion") return getPromotionCycle(label, year);
   if (key === "leadership") return getCommandSelectionCycle(label, year);
   if (key === "developmentalEducation") return getDevelopmentalEducationCycle(label, year);
@@ -517,8 +525,8 @@ const setLabelForRange = (row: string[], years: number[], startYear: number, end
   }
 };
 
-const buildTimelineRows = (startingYear: number, adjustedYearGroup: number) => {
-  const years = yearsFor(startingYear);
+const buildTimelineRows = (eadYear: number, adjustedYearGroup: number) => {
+  const years = yearsFor(eadYear);
   const promotion = blankRow();
   const leadership = blankRow();
   const developmentalEducation = blankRow();
@@ -572,9 +580,10 @@ const normalizeGrade = (value: unknown) => {
 };
 
 const createDefaultChart = (): ChartData => {
-  const startingYear = 2024;
+  const eadYear = DEFAULT_EAD_YEAR;
+  const startingYear = DEFAULT_STARTING_YEAR;
   const adjustedYearGroup = 2012;
-  const rows = buildTimelineRows(startingYear, adjustedYearGroup);
+  const rows = buildTimelineRows(eadYear, adjustedYearGroup);
 
   return {
     identity: {
@@ -592,6 +601,7 @@ const createDefaultChart = (): ChartData => {
       sqCc: { select: false, candidate: false }
     },
     timeline: {
+      eadYear,
       startingYear,
       ...rows,
       personal: blankRow()
@@ -781,7 +791,8 @@ const normalizeJobExperiences = (value: unknown, base: JobExperiences): JobExper
 
 const normalizeChart = (input: Partial<ChartData>): ChartData => {
   const base = createDefaultChart();
-  const timelineStart = typeof input.timeline?.startingYear === "number" ? clampStartingYear(input.timeline.startingYear) : base.timeline.startingYear;
+  const timelineStart = typeof input.timeline?.startingYear === "number" ? clampTimelineYear(input.timeline.startingYear) : base.timeline.startingYear;
+  const timelineEad = typeof input.timeline?.eadYear === "number" ? clampTimelineYear(input.timeline.eadYear) : timelineStart;
   const legacyInput = input as Partial<ChartData> & { oprs?: OpbEntry[] };
   const incomingOpbs = Array.isArray(input.opbs) ? input.opbs : legacyInput.oprs;
 
@@ -793,6 +804,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
       sqCc: { ...base.eligibility.sqCc, ...input.eligibility?.sqCc }
     },
     timeline: {
+      eadYear: timelineEad,
       startingYear: timelineStart,
       promotion: normalizeStringArray(input.timeline?.promotion, MAX_TIMELINE_YEARS),
       leadership: normalizeStringArray(input.timeline?.leadership, MAX_TIMELINE_YEARS),
@@ -800,7 +812,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
       careerFieldEducation: normalizeStringArray(input.timeline?.careerFieldEducation, MAX_TIMELINE_YEARS),
       personal: normalizeStringArray(input.timeline?.personal, MAX_TIMELINE_YEARS)
     },
-    vectors: normalizeVectorRows(input.vectors, timelineStart),
+    vectors: normalizeVectorRows(input.vectors, timelineEad),
     familyKids: normalizeFamilyKids(input.familyKids),
     jobExperiences: normalizeJobExperiences(input.jobExperiences, base.jobExperiences),
     highlights: { ...base.highlights, ...input.highlights },
@@ -885,8 +897,12 @@ const RibbonChartPage: React.FC = () => {
     () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
     [chart.identity.rank, chart.timeline.promotion]
   );
+  const careerStart = chart.timeline.eadYear;
+  const careerEnd = chart.timeline.eadYear + MAX_TIMELINE_YEARS;
   const timelineStart = chart.timeline.startingYear;
   const timelineEnd = chart.timeline.startingYear + timelineViewYears;
+  const visibleCareerStart = Math.max(timelineStart, careerStart);
+  const visibleCareerEnd = Math.min(timelineEnd, careerEnd);
   const ribbonSheetStyle = {
     "--ribbon-year-count": timelineViewYears,
     "--ribbon-sheet-min-width": timelineViewYears === 20 ? "2160px" : "1180px"
@@ -992,7 +1008,7 @@ const RibbonChartPage: React.FC = () => {
     }));
   };
 
-  const updateTimelineCell = (key: keyof Omit<TimelineData, "startingYear">, index: number, value: string) => {
+  const updateTimelineCell = (key: TimelineRowKey, index: number, value: string) => {
     updateChart((current) => {
       const row = current.timeline[key].slice();
       row[index] = value;
@@ -1001,14 +1017,25 @@ const RibbonChartPage: React.FC = () => {
   };
 
   const updateTimelineStart = (value: number) => {
-    const nextYear = clampStartingYear(value);
+    const nextYear = clampTimelineYear(value);
     updateChart((current) => {
       const deltaYears = nextYear - current.timeline.startingYear;
       return {
         ...current,
         timeline: { ...current.timeline, startingYear: nextYear },
-        vectors: shiftVectorRows(current.vectors, deltaYears),
         familyKids: shiftFamilyKids(current.familyKids, deltaYears)
+      };
+    });
+  };
+
+  const updateTimelineEad = (value: number) => {
+    const nextYear = clampTimelineYear(value);
+    updateChart((current) => {
+      const deltaYears = nextYear - current.timeline.eadYear;
+      return {
+        ...current,
+        timeline: { ...current.timeline, eadYear: nextYear },
+        vectors: shiftVectorRows(current.vectors, deltaYears)
       };
     });
   };
@@ -1018,7 +1045,7 @@ const RibbonChartPage: React.FC = () => {
       ...current,
       timeline: {
         ...current.timeline,
-        ...buildTimelineRows(current.timeline.startingYear, Number(current.identity.adjustedYearGroup))
+        ...buildTimelineRows(current.timeline.eadYear, Number(current.identity.adjustedYearGroup))
       },
       opbs: current.opbs.map((opb, index) => ({
         ...opb,
@@ -1056,7 +1083,7 @@ const RibbonChartPage: React.FC = () => {
     const track = trackRefs.current[row.id];
     if (!track) return;
     const rect = track.getBoundingClientRect();
-    const neighbors = findSegmentNeighbors(row, segment.id, timelineStart, timelineEnd);
+    const neighbors = findSegmentNeighbors(row, segment.id, careerStart, careerEnd);
 
     event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
@@ -1091,7 +1118,7 @@ const RibbonChartPage: React.FC = () => {
 
   const updateSelectedSegmentBounds = (key: "startYear" | "endYear", value: number) => {
     if (!selectedSegment) return;
-    const neighbors = findSegmentNeighbors(selectedSegment.row, selectedSegment.segment.id, timelineStart, timelineEnd);
+    const neighbors = findSegmentNeighbors(selectedSegment.row, selectedSegment.segment.id, careerStart, careerEnd);
     const snapped = snapHalfYear(value);
 
     if (key === "startYear") {
@@ -1134,14 +1161,22 @@ const RibbonChartPage: React.FC = () => {
   };
 
   const addSegmentToRow = (row: VectorRow) => {
+    if (visibleCareerEnd - visibleCareerStart < 1) {
+      setImportMessage("Move Start Year inside the EAD 20-year window before adding a vector block.");
+      return;
+    }
+
     const ordered = row.segments.slice().sort((a, b) => a.startYear - b.startYear);
     const boundaries = [
-      { start: timelineStart, end: ordered[0]?.startYear ?? timelineEnd },
+      { start: visibleCareerStart, end: ordered[0]?.startYear ?? visibleCareerEnd },
       ...ordered.map((segment, index) => ({
         start: segment.endYear,
-        end: ordered[index + 1]?.startYear ?? timelineEnd
+        end: ordered[index + 1]?.startYear ?? visibleCareerEnd
       }))
-    ];
+    ].map((candidate) => ({
+      start: Math.max(candidate.start, visibleCareerStart),
+      end: Math.min(candidate.end, visibleCareerEnd)
+    }));
     const gap = boundaries.find((candidate) => candidate.end - candidate.start >= 1);
 
     if (!gap) {
@@ -1227,8 +1262,23 @@ const RibbonChartPage: React.FC = () => {
     setImportMessage("Reset chart.");
   };
 
-  const renderTimelineCell = (label: string, key: keyof Omit<TimelineData, "startingYear">, value: string, index: number) => {
-    const year = years[index];
+  const renderTimelineCell = (label: string, key: TimelineRowKey, year: number, index: number) => {
+    const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
+    if (dataIndex === null) {
+      return (
+        <input
+          key={`${key}-${year}`}
+          className="ribbon-cell-input ribbon-cell-input-outside"
+          value=""
+          placeholder="-"
+          disabled
+          readOnly
+          aria-label={`${label} ${year} outside EAD window`}
+        />
+      );
+    }
+
+    const value = chart.timeline[key][dataIndex] ?? "";
     const cellInfo = getTimelineCellInfo(key, value, year);
 
     if (!cellInfo) {
@@ -1237,7 +1287,7 @@ const RibbonChartPage: React.FC = () => {
           key={`${key}-${year}`}
           className="ribbon-cell-input"
           value={value}
-          onChange={(event) => updateTimelineCell(key, index, event.currentTarget.value)}
+          onChange={(event) => updateTimelineCell(key, dataIndex, event.currentTarget.value)}
           aria-label={`${label} ${year}`}
         />
       );
@@ -1250,7 +1300,7 @@ const RibbonChartPage: React.FC = () => {
         <input
           className="ribbon-cell-input"
           value={value}
-          onChange={(event) => updateTimelineCell(key, index, event.currentTarget.value)}
+          onChange={(event) => updateTimelineCell(key, dataIndex, event.currentTarget.value)}
           aria-label={`${label} ${year}`}
         />
         <button
@@ -1276,10 +1326,10 @@ const RibbonChartPage: React.FC = () => {
     );
   };
 
-  const renderTimelineRow = (label: string, key: keyof Omit<TimelineData, "startingYear">) => (
+  const renderTimelineRow = (label: string, key: TimelineRowKey) => (
     <>
       <div className="ribbon-timeline-label">{label}</div>
-      {chart.timeline[key].slice(0, timelineViewYears).map((value, index) => renderTimelineCell(label, key, value, index))}
+      {years.map((year, index) => renderTimelineCell(label, key, year, index))}
     </>
   );
 
@@ -1294,12 +1344,21 @@ const RibbonChartPage: React.FC = () => {
           <div className="ribbon-populate-group" aria-label="Timeline setup">
             <span className="ribbon-populate-title">Timeline Setup</span>
             <label className="ribbon-year-control">
+              <span>EAD</span>
+              <select
+                value={chart.timeline.eadYear}
+                onChange={(event) => updateTimelineEad(Number(event.currentTarget.value))}
+              >
+                {TIMELINE_YEAR_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
+              </select>
+            </label>
+            <label className="ribbon-year-control">
               <span>Start Year</span>
               <select
                 value={chart.timeline.startingYear}
                 onChange={(event) => updateTimelineStart(Number(event.currentTarget.value))}
               >
-                {STARTING_YEAR_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
+                {TIMELINE_YEAR_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>
             <label className="ribbon-year-control">
@@ -1423,11 +1482,12 @@ const RibbonChartPage: React.FC = () => {
             {years.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
 
             <div className="ribbon-timeline-label ribbon-scod-label">SCOD</div>
-            {years.map((year, index) => {
-              const scodEntry = scodTimeline[index] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
+            {years.map((year) => {
+              const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
+              const scodEntry = dataIndex === null ? null : scodTimeline[dataIndex] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
               return (
-                <div key={`scod-${year}`} className="ribbon-scod-cell" title={`${scodEntry.rank} SCOD`}>
-                  {scodEntry.scod}
+                <div key={`scod-${year}`} className="ribbon-scod-cell" title={scodEntry ? `${scodEntry.rank} SCOD` : "Outside EAD window"}>
+                  {scodEntry?.scod ?? "-"}
                 </div>
               );
             })}
@@ -1526,7 +1586,7 @@ const RibbonChartPage: React.FC = () => {
                   <input
                     type="number"
                     step={0.5}
-                    min={timelineStart}
+                    min={careerStart}
                     max={selectedSegment.segment.endYear - MIN_SEGMENT_YEARS}
                     value={selectedSegment.segment.startYear}
                     onChange={(event) => updateSelectedSegmentBounds("startYear", Number(event.currentTarget.value))}
@@ -1538,7 +1598,7 @@ const RibbonChartPage: React.FC = () => {
                     type="number"
                     step={0.5}
                     min={selectedSegment.segment.startYear + MIN_SEGMENT_YEARS}
-                    max={timelineEnd}
+                    max={careerEnd}
                     value={selectedSegment.segment.endYear}
                     onChange={(event) => updateSelectedSegmentBounds("endYear", Number(event.currentTarget.value))}
                   />
