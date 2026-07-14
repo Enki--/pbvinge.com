@@ -1653,11 +1653,11 @@ const RibbonChartPage: React.FC = () => {
                 <CheckTile label="Honors" checked={chart.education.honors} onChange={(checked) => updateEducation("honors", checked)} />
               </div>
               <div className="ribbon-education-row">
-                <CheckTile label="Cyber 200 [i]" checked={chart.education.cyber200} onChange={(checked) => updateEducation("cyber200", checked)} />
+                <CheckTile label="Cyber 200" checked={chart.education.cyber200} onChange={(checked) => updateEducation("cyber200", checked)} />
                 <input value={chart.education.cyber200Details} onChange={(event) => updateEducation("cyber200Details", event.currentTarget.value)} />
               </div>
               <div className="ribbon-education-row">
-                <CheckTile label="Cyber 300 [i]" checked={chart.education.cyber300} onChange={(checked) => updateEducation("cyber300", checked)} />
+                <CheckTile label="Cyber 300" checked={chart.education.cyber300} onChange={(checked) => updateEducation("cyber300", checked)} />
                 <input value={chart.education.cyber300Details} onChange={(event) => updateEducation("cyber300Details", event.currentTarget.value)} />
               </div>
               <div className="ribbon-education-row">
