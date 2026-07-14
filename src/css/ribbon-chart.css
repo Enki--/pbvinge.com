@@ -95,6 +95,44 @@
   border-color: #1d4ed8;
 }
 
+.ribbon-view-toggle {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--muted-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ribbon-view-toggle div {
+  display: inline-flex;
+  min-height: 2.25rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+}
+
+.ribbon-actions .ribbon-view-toggle button {
+  min-height: 0;
+  border: 0;
+  border-right: 1px solid var(--border-color);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.ribbon-actions .ribbon-view-toggle button:last-child {
+  border-right: 0;
+}
+
+.ribbon-actions .ribbon-view-toggle button.is-selected {
+  background: #0f172a;
+  color: #ffffff;
+}
+
 .ribbon-year-control {
   display: grid;
   gap: 0.2rem;
@@ -132,7 +170,7 @@
 }
 
 .ribbon-sheet {
-  min-width: 1180px;
+  min-width: var(--ribbon-sheet-min-width, 1180px);
   border: 2px solid #111827;
   background: #ffffff;
   color: #111827;
@@ -325,7 +363,7 @@
 
 .ribbon-timeline-grid {
   display: grid;
-  grid-template-columns: 95px repeat(10, minmax(0, 1fr));
+  grid-template-columns: 95px repeat(var(--ribbon-year-count, 10), minmax(0, 1fr));
   border-top: 2px solid #111827;
   border-left: 2px solid #111827;
 }
@@ -561,7 +599,7 @@
 }
 
 .ribbon-vector-track {
-  grid-column: span 10;
+  grid-column: span var(--ribbon-year-count, 10);
   position: relative;
   min-height: 2.6rem;
   background:
@@ -1118,7 +1156,7 @@
 
   .ribbon-timeline-grid {
     flex: 0 0 2.08in;
-    grid-template-columns: 0.72in repeat(10, minmax(0, 1fr));
+    grid-template-columns: 0.72in repeat(var(--ribbon-year-count, 10), minmax(0, 1fr));
   }
 
   .ribbon-timeline-label,

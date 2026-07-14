@@ -2,8 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 7;
-const YEAR_COUNT = 10;
+const SAVE_SCHEMA_VERSION = 8;
+const DEFAULT_TIMELINE_VIEW_YEARS = 10;
+const MAX_TIMELINE_YEARS = 20;
+const TIMELINE_VIEW_OPTIONS = [10, 20] as const;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
 
@@ -252,6 +254,7 @@ interface SelectedSegment {
 }
 
 type TimelineMilestone = [string, string];
+type TimelineViewYears = typeof TIMELINE_VIEW_OPTIONS[number];
 type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
 type PromotionYearOffset = -1 | 0;
 
@@ -270,12 +273,12 @@ interface FieldGradePromotionSchedule {
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 const snapHalfYear = (value: number) => Math.round(value * 2) / 2;
-const blankRow = () => Array.from({ length: YEAR_COUNT }, () => "");
+const blankRow = () => Array.from({ length: MAX_TIMELINE_YEARS }, () => "");
 const clampStartingYear = (value: number) => clamp(Number.isFinite(value) ? Math.round(value) : 2024, 2024, 2055);
 
 const colorFor = (colorId: VectorColorId) => VECTOR_COLORS.find((color) => color.id === colorId) ?? VECTOR_COLORS[0];
 
-const yearsFor = (startingYear: number) => Array.from({ length: YEAR_COUNT }, (_, index) => startingYear + index);
+const yearsFor = (startingYear: number, count = MAX_TIMELINE_YEARS) => Array.from({ length: count }, (_, index) => startingYear + index);
 const shortYear = (year: number) => String(year).slice(-2).padStart(2, "0");
 const dateForBoardYear = (monthDay: string, boardYear: number, offset: PromotionYearOffset) => `${monthDay} ${boardYear + offset}`;
 const boardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number, suffix: "A" | "B") => (
@@ -727,7 +730,7 @@ const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[]
   const base = createDefaultChart().vectors;
   if (!Array.isArray(value)) return base;
 
-  const timelineEnd = timelineStart + YEAR_COUNT;
+  const timelineEnd = timelineStart + MAX_TIMELINE_YEARS;
   return DEFAULT_VECTOR_ROW_LABELS.map((defaultLabel, rowIndex) => {
     const fallback = base[rowIndex];
     const incoming = value.find((row) => {
@@ -791,11 +794,11 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
     },
     timeline: {
       startingYear: timelineStart,
-      promotion: normalizeStringArray(input.timeline?.promotion, YEAR_COUNT),
-      leadership: normalizeStringArray(input.timeline?.leadership, YEAR_COUNT),
-      developmentalEducation: normalizeStringArray(input.timeline?.developmentalEducation, YEAR_COUNT),
-      careerFieldEducation: normalizeStringArray(input.timeline?.careerFieldEducation, YEAR_COUNT),
-      personal: normalizeStringArray(input.timeline?.personal, YEAR_COUNT)
+      promotion: normalizeStringArray(input.timeline?.promotion, MAX_TIMELINE_YEARS),
+      leadership: normalizeStringArray(input.timeline?.leadership, MAX_TIMELINE_YEARS),
+      developmentalEducation: normalizeStringArray(input.timeline?.developmentalEducation, MAX_TIMELINE_YEARS),
+      careerFieldEducation: normalizeStringArray(input.timeline?.careerFieldEducation, MAX_TIMELINE_YEARS),
+      personal: normalizeStringArray(input.timeline?.personal, MAX_TIMELINE_YEARS)
     },
     vectors: normalizeVectorRows(input.vectors, timelineStart),
     familyKids: normalizeFamilyKids(input.familyKids),
@@ -868,6 +871,7 @@ const CheckTile: React.FC<{
 
 const RibbonChartPage: React.FC = () => {
   const [chart, setChart] = useState<ChartData>(() => createDefaultChart());
+  const [timelineViewYears, setTimelineViewYears] = useState<TimelineViewYears>(DEFAULT_TIMELINE_VIEW_YEARS);
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
   const [dirty, setDirty] = useState(false);
   const [importMessage, setImportMessage] = useState("");
@@ -875,14 +879,18 @@ const RibbonChartPage: React.FC = () => {
   const trackRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const dragRef = useRef<DragState | null>(null);
 
-  const years = useMemo(() => yearsFor(chart.timeline.startingYear), [chart.timeline.startingYear]);
+  const years = useMemo(() => yearsFor(chart.timeline.startingYear, timelineViewYears), [chart.timeline.startingYear, timelineViewYears]);
   const rankScod = getScodForRank(chart.identity.rank);
   const scodTimeline = useMemo(
     () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
     [chart.identity.rank, chart.timeline.promotion]
   );
   const timelineStart = chart.timeline.startingYear;
-  const timelineEnd = chart.timeline.startingYear + YEAR_COUNT;
+  const timelineEnd = chart.timeline.startingYear + timelineViewYears;
+  const ribbonSheetStyle = {
+    "--ribbon-year-count": timelineViewYears,
+    "--ribbon-sheet-min-width": timelineViewYears === 20 ? "2160px" : "1180px"
+  } as React.CSSProperties;
 
   const selectedSegment = useMemo<SelectedSegment | null>(() => {
     if (!selectedSegmentId) return null;
@@ -892,6 +900,16 @@ const RibbonChartPage: React.FC = () => {
     }
     return null;
   }, [chart.vectors, selectedSegmentId]);
+
+  useEffect(() => {
+    if (!selectedSegmentId) return;
+    const visibleSegments = chart.vectors.flatMap((row) => (
+      row.segments.filter((segment) => segment.endYear > timelineStart && segment.startYear < timelineEnd)
+    ));
+    if (!visibleSegments.some((segment) => segment.id === selectedSegmentId)) {
+      setSelectedSegmentId(visibleSegments[0]?.id ?? null);
+    }
+  }, [chart.vectors, selectedSegmentId, timelineStart, timelineEnd]);
 
   useEffect(() => {
     if (!dirty) return undefined;
@@ -1226,7 +1244,7 @@ const RibbonChartPage: React.FC = () => {
     }
 
     const tooltipId = `${key}-${year}-cycle-info`;
-    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= YEAR_COUNT - 2 ? " ribbon-info-cell-right-edge" : "";
+    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= timelineViewYears - 2 ? " ribbon-info-cell-right-edge" : "";
     return (
       <div key={`${key}-${year}`} className={`ribbon-info-cell${edgeClass}`}>
         <input
@@ -1261,7 +1279,7 @@ const RibbonChartPage: React.FC = () => {
   const renderTimelineRow = (label: string, key: keyof Omit<TimelineData, "startingYear">) => (
     <>
       <div className="ribbon-timeline-label">{label}</div>
-      {chart.timeline[key].map((value, index) => renderTimelineCell(label, key, value, index))}
+      {chart.timeline[key].slice(0, timelineViewYears).map((value, index) => renderTimelineCell(label, key, value, index))}
     </>
   );
 
@@ -1296,6 +1314,22 @@ const RibbonChartPage: React.FC = () => {
                 {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>
+            <div className="ribbon-view-toggle" role="group" aria-label="Timeline years shown">
+              <span>View</span>
+              <div>
+                {TIMELINE_VIEW_OPTIONS.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    className={timelineViewYears === option ? "is-selected" : ""}
+                    aria-pressed={timelineViewYears === option}
+                    onClick={() => setTimelineViewYears(option)}
+                  >
+                    {option} yr
+                  </button>
+                ))}
+              </div>
+            </div>
             <button type="button" className="ribbon-populate-button" onClick={populateTimeline}>Populate Timeline</button>
           </div>
           <div className="ribbon-file-actions">
@@ -1321,7 +1355,7 @@ const RibbonChartPage: React.FC = () => {
       {importMessage && <p className="ribbon-status">{importMessage}</p>}
 
       <div className="ribbon-scroll">
-        <section className="ribbon-sheet" aria-label="Cyber Operations Officer Ribbon Chart editor">
+        <section className="ribbon-sheet" style={ribbonSheetStyle} aria-label="Cyber Operations Officer Ribbon Chart editor">
           <header className="ribbon-sheet-header">
             <div className="ribbon-badge" aria-hidden="true">
               <span>17X</span>
@@ -1414,13 +1448,17 @@ const RibbonChartPage: React.FC = () => {
                   className="ribbon-vector-track"
                   ref={(node) => { trackRefs.current[row.id] = node; }}
                   style={{
-                    backgroundSize: `${100 / YEAR_COUNT}% 100%`
+                    gridColumn: `span ${timelineViewYears}`,
+                    backgroundSize: `${100 / timelineViewYears}% 100%`
                   }}
                 >
                   {row.segments.map((segment) => {
                     const color = colorFor(segment.color);
-                    const left = ((segment.startYear - timelineStart) / YEAR_COUNT) * 100;
-                    const width = ((segment.endYear - segment.startYear) / YEAR_COUNT) * 100;
+                    const visibleStart = Math.max(segment.startYear, timelineStart);
+                    const visibleEnd = Math.min(segment.endYear, timelineEnd);
+                    if (visibleEnd <= timelineStart || visibleStart >= timelineEnd) return null;
+                    const left = ((visibleStart - timelineStart) / timelineViewYears) * 100;
+                    const width = ((visibleEnd - visibleStart) / timelineViewYears) * 100;
                     return (
                       <div
                         key={segment.id}
