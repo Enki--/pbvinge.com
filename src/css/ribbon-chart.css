@@ -335,6 +335,7 @@
 .ribbon-scod-cell,
 .ribbon-cell-input,
 .ribbon-info-cell,
+.ribbon-family-cell,
 .ribbon-vector-track {
   min-height: 2.05rem;
   border-right: 2px solid #111827;
@@ -503,6 +504,28 @@
   display: block;
 }
 
+.ribbon-family-cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.08rem 0.22rem;
+  background: #ffffff;
+  padding: 0.12rem 0.2rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ribbon-family-cell span {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
 .ribbon-vector-label {
   display: flex;
   flex-direction: column;
@@ -633,6 +656,48 @@
 }
 
 .ribbon-segment-editor label {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.ribbon-family-editor {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) repeat(3, minmax(210px, 1fr));
+  align-items: end;
+  gap: 0.45rem;
+  border-bottom: 2px solid #111827;
+  background: #f8fafc;
+  padding: 0.5rem;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.ribbon-family-editor-heading {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.ribbon-family-editor-heading strong {
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.ribbon-family-editor-heading span,
+.ribbon-family-kid-editor label span {
+  color: #334155;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ribbon-family-kid-editor {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 78px;
+  align-items: end;
+  gap: 0.35rem;
+}
+
+.ribbon-family-kid-editor label {
   display: grid;
   gap: 0.15rem;
 }
@@ -917,6 +982,7 @@
   .ribbon-toolbar,
   .ribbon-status,
   .ribbon-segment-editor,
+  .ribbon-family-editor,
   .ribbon-vector-label button {
     display: none !important;
   }
@@ -1041,10 +1107,20 @@
   .ribbon-year-cell,
   .ribbon-scod-cell,
   .ribbon-cell-input,
-  .ribbon-info-cell {
+  .ribbon-info-cell,
+  .ribbon-family-cell {
     min-height: 0;
     height: 0.18in;
     padding: 0;
+  }
+
+  .ribbon-family-cell {
+    gap: 0 0.02in;
+    flex-wrap: nowrap;
+  }
+
+  .ribbon-family-cell span {
+    font-size: 5.5px;
   }
 
   .ribbon-info-cell .ribbon-cell-input {

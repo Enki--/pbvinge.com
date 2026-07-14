@@ -2,14 +2,21 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 4;
+const SAVE_SCHEMA_VERSION = 5;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
+const FAMILY_KID_COUNT = 3;
 
 const RANK_OPTIONS = ["Col", "Col(s)", "Lt Col", "Lt Col(s)", "Maj", "Maj(s)", "Capt", "1st Lt", "2d Lt"];
 const YEAR_GROUP_OPTIONS = Array.from({ length: 29 }, (_, index) => String(2025 - index));
 const STARTING_YEAR_OPTIONS = Array.from({ length: 32 }, (_, index) => 2024 + index);
 const DEFAULT_VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"];
+const GRADE_OPTIONS = [
+  { value: -1, label: "Pre-K" },
+  { value: 0, label: "K" },
+  ...Array.from({ length: 12 }, (_, index) => ({ value: index + 1, label: `${index + 1}${["st", "nd", "rd"][index] ?? "th"}` })),
+  { value: 13, label: "Grad" }
+];
 const SCOD_BY_RANK: Record<string, string> = {
   "2d Lt": "31 Oct",
   "1st Lt": "31 Oct",
@@ -122,6 +129,13 @@ interface VectorRow {
   segments: VectorSegment[];
 }
 
+interface FamilyKid {
+  id: string;
+  enabled: boolean;
+  label: string;
+  startGrade: number;
+}
+
 interface JobExperiences {
   deployment: boolean;
   deployments: string;
@@ -198,6 +212,7 @@ interface ChartData {
   eligibility: EligibilityState;
   timeline: TimelineData;
   vectors: VectorRow[];
+  familyKids: FamilyKid[];
   jobExperiences: JobExperiences;
   highlights: Highlights;
   education: EducationAchievements;
@@ -527,6 +542,27 @@ const buildTimelineRows = (startingYear: number, adjustedYearGroup: number) => {
   return { promotion, leadership, developmentalEducation, careerFieldEducation };
 };
 
+const createDefaultFamilyKids = (): FamilyKid[] => (
+  Array.from({ length: FAMILY_KID_COUNT }, (_, index) => ({
+    id: `kid-${index + 1}`,
+    enabled: false,
+    label: "",
+    startGrade: 0
+  }))
+);
+
+const gradeLabelFor = (grade: number) => {
+  if (grade <= -1) return "Pre-K";
+  if (grade === 0) return "K";
+  if (grade >= 13) return "Grad";
+  return GRADE_OPTIONS.find((option) => option.value === grade)?.label ?? String(grade);
+};
+
+const normalizeGrade = (value: unknown) => {
+  const grade = typeof value === "number" && Number.isFinite(value) ? Math.round(value) : 0;
+  return clamp(grade, -1, 13);
+};
+
 const createDefaultChart = (): ChartData => {
   const startingYear = 2024;
   const adjustedYearGroup = 2012;
@@ -586,6 +622,7 @@ const createDefaultChart = (): ChartData => {
         ]
       }
     ],
+    familyKids: createDefaultFamilyKids(),
     jobExperiences: {
       deployment: false,
       deployments: "",
@@ -661,6 +698,21 @@ const normalizeStringArray = (value: unknown, length: number) => {
   return Array.from({ length }, (_, index) => (typeof source[index] === "string" ? source[index] : ""));
 };
 
+const normalizeFamilyKids = (value: unknown): FamilyKid[] => {
+  const source = Array.isArray(value) ? value : [];
+  const base = createDefaultFamilyKids();
+
+  return base.map((fallback, index) => {
+    const incoming = source[index] as Partial<FamilyKid> | undefined;
+    return {
+      id: typeof incoming?.id === "string" ? incoming.id : fallback.id,
+      enabled: typeof incoming?.enabled === "boolean" ? incoming.enabled : fallback.enabled,
+      label: typeof incoming?.label === "string" ? incoming.label : fallback.label,
+      startGrade: normalizeGrade(incoming?.startGrade)
+    };
+  });
+};
+
 const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[] => {
   const base = createDefaultChart().vectors;
   if (!Array.isArray(value)) return base;
@@ -720,6 +772,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
       personal: normalizeStringArray(input.timeline?.personal, YEAR_COUNT)
     },
     vectors: normalizeVectorRows(input.vectors, timelineStart),
+    familyKids: normalizeFamilyKids(input.familyKids),
     jobExperiences: { ...base.jobExperiences, ...input.jobExperiences },
     highlights: { ...base.highlights, ...input.highlights },
     education: { ...base.education, ...input.education },
@@ -763,6 +816,13 @@ const shiftVectorRows = (rows: VectorRow[], deltaYears: number): VectorRow[] => 
       startYear: snapHalfYear(segment.startYear + deltaYears),
       endYear: snapHalfYear(segment.endYear + deltaYears)
     }))
+  }))
+);
+
+const shiftFamilyKids = (kids: FamilyKid[], deltaYears: number): FamilyKid[] => (
+  kids.map((kid) => ({
+    ...kid,
+    startGrade: normalizeGrade(kid.startGrade + deltaYears)
   }))
 );
 
@@ -903,7 +963,8 @@ const RibbonChartPage: React.FC = () => {
       return {
         ...current,
         timeline: { ...current.timeline, startingYear: nextYear },
-        vectors: shiftVectorRows(current.vectors, deltaYears)
+        vectors: shiftVectorRows(current.vectors, deltaYears),
+        familyKids: shiftFamilyKids(current.familyKids, deltaYears)
       };
     });
   };
@@ -1005,6 +1066,27 @@ const RibbonChartPage: React.FC = () => {
       ...current,
       vectors: current.vectors.map((row) => row.id === rowId ? { ...row, label } : row)
     }));
+  };
+
+  const updateFamilyKid = <K extends keyof FamilyKid>(index: number, key: K, value: FamilyKid[K]) => {
+    updateChart((current) => {
+      const familyKids = current.familyKids.slice();
+      familyKids[index] = { ...familyKids[index], [key]: value };
+      return { ...current, familyKids };
+    });
+  };
+
+  const renderFamilyCell = (index: number) => {
+    return (
+      <div key={`family-${years[index]}`} className="ribbon-family-cell" aria-label={`Kids grades ${years[index]}`}>
+        {chart.familyKids.map((kid, kidIndex) => {
+          if (!kid.enabled) return null;
+          const label = kid.label.trim() || `Kid ${kidIndex + 1}`;
+          const grade = gradeLabelFor(kid.startGrade + index);
+          return <span key={kid.id} title={`${label}: ${grade}`}>{label}: {grade}</span>;
+        })}
+      </div>
+    );
   };
 
   const addSegmentToRow = (row: VectorRow) => {
@@ -1360,16 +1442,8 @@ const RibbonChartPage: React.FC = () => {
               </React.Fragment>
             ))}
 
-            <div className="ribbon-timeline-label">Personal [i]</div>
-            {chart.timeline.personal.map((value, index) => (
-              <input
-                key={`personal-${years[index]}`}
-                className="ribbon-cell-input"
-                value={value}
-                onChange={(event) => updateTimelineCell("personal", index, event.currentTarget.value)}
-                aria-label={`Personal ${years[index]}`}
-              />
-            ))}
+            <div className="ribbon-timeline-label ribbon-family-label">Kids Grades</div>
+            {years.map((_, index) => renderFamilyCell(index))}
           </div>
 
           <section className="ribbon-segment-editor" aria-label="Selected vector block">
@@ -1422,6 +1496,39 @@ const RibbonChartPage: React.FC = () => {
             ) : (
               <p>No vector block selected.</p>
             )}
+          </section>
+
+          <section className="ribbon-family-editor" aria-label="Kids grade tracker">
+            <div className="ribbon-family-editor-heading">
+              <strong>Kids Grade Tracker</strong>
+              <span>Set each kid's grade for fall {chart.timeline.startingYear}; each year increments by one.</span>
+            </div>
+            {chart.familyKids.map((kid, index) => (
+              <div key={kid.id} className="ribbon-family-kid-editor">
+                <CheckTile
+                  label={`Kid ${index + 1}`}
+                  checked={kid.enabled}
+                  onChange={(checked) => updateFamilyKid(index, "enabled", checked)}
+                />
+                <label>
+                  <span>Name</span>
+                  <input
+                    value={kid.label}
+                    onChange={(event) => updateFamilyKid(index, "label", event.currentTarget.value)}
+                    placeholder="Initials or name"
+                  />
+                </label>
+                <label>
+                  <span>Fall {chart.timeline.startingYear}</span>
+                  <select
+                    value={kid.startGrade}
+                    onChange={(event) => updateFamilyKid(index, "startGrade", Number(event.currentTarget.value))}
+                  >
+                    {GRADE_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                  </select>
+                </label>
+              </div>
+            ))}
           </section>
 
           <div className="ribbon-lower-grid">
