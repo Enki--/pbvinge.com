@@ -4,10 +4,8 @@
 }
 
 .ribbon-toolbar {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  gap: 0.65rem;
   margin-bottom: 1rem;
 }
 
@@ -28,17 +26,19 @@
 
 .ribbon-actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: end;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .ribbon-populate-group {
   display: flex;
-  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
   align-items: end;
-  gap: 0.55rem;
+  gap: 0.45rem;
+  overflow-x: auto;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background: var(--surface-muted-color);
@@ -46,17 +46,20 @@
 }
 
 .ribbon-populate-title {
+  flex: 0 0 auto;
   align-self: center;
   color: var(--text-strong);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .ribbon-file-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
   align-items: end;
   gap: 0.5rem;
 }
@@ -83,10 +86,12 @@
 }
 
 .ribbon-actions .ribbon-populate-button {
+  flex: 0 0 auto;
   background: #0f172a;
   border-color: #0f172a;
   color: #ffffff;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .ribbon-actions .ribbon-populate-button:hover,
@@ -97,6 +102,7 @@
 
 .ribbon-view-toggle {
   display: grid;
+  flex: 0 0 auto;
   gap: 0.2rem;
   color: var(--muted-text);
   font-size: 0.78rem;
@@ -135,6 +141,7 @@
 
 .ribbon-year-control {
   display: grid;
+  flex: 0 0 auto;
   gap: 0.2rem;
   color: var(--muted-text);
   font-size: 0.78rem;
@@ -144,7 +151,7 @@
 
 .ribbon-year-control input,
 .ribbon-year-control select {
-  width: 6.5rem;
+  width: 5.7rem;
   min-height: 2.25rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -197,6 +204,12 @@
   padding: 0.25rem 0.35rem;
   font-size: 0.86rem;
   line-height: 1.2;
+}
+
+.ribbon-sheet .ribbon-linked-field {
+  background: #f3f4f6;
+  font-weight: 700;
+  text-align: center;
 }
 
 .ribbon-sheet textarea {
@@ -1021,16 +1034,20 @@
 @media (max-width: 860px) {
   .ribbon-toolbar {
     align-items: stretch;
-    flex-direction: column;
   }
 
   .ribbon-actions {
+    flex-wrap: wrap;
     justify-content: flex-start;
   }
 
   .ribbon-populate-group,
   .ribbon-file-actions {
     width: 100%;
+  }
+
+  .ribbon-file-actions {
+    flex-wrap: wrap;
   }
 }
 

@@ -1442,18 +1442,14 @@ const RibbonChartPage: React.FC = () => {
                 </label>
                 <label>
                   <span>YG</span>
-                  <select value={chart.identity.yearGroup} onChange={(event) => updateIdentity("yearGroup", event.currentTarget.value)}>
-                    {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
-                  </select>
+                  <input className="ribbon-linked-field" value={chart.identity.yearGroup} readOnly aria-label="Year group from Timeline Setup" />
                 </label>
               </div>
               <div className="ribbon-identity-row ribbon-identity-row-secondary">
                 <input value={chart.identity.jobLocation} onChange={(event) => updateIdentity("jobLocation", event.currentTarget.value)} aria-label="Job and duty location" />
                 <label>
                   <span>Adj YG</span>
-                  <select value={chart.identity.adjustedYearGroup} onChange={(event) => updateIdentity("adjustedYearGroup", event.currentTarget.value)}>
-                    {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
-                  </select>
+                  <input className="ribbon-linked-field" value={chart.identity.adjustedYearGroup} readOnly aria-label="Adjusted year group from Timeline Setup" />
                 </label>
               </div>
               <div className="ribbon-eligibility-row">
