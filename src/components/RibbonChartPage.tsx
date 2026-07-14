@@ -1565,9 +1565,9 @@ const RibbonChartPage: React.FC = () => {
                   <CheckTile label="Det CC" checked={chart.jobExperiences.detCc} onChange={(checked) => updateJobExperience("detCc", checked)} />
                 </div>
               </div>
-              <div className="ribbon-panel-row">
-                <CheckTile label="CAG / Exec / Aide" checked={chart.jobExperiences.cagExecAide} onChange={(checked) => updateJobExperience("cagExecAide", checked)} />
-                <input value={chart.jobExperiences.cagExecAideText} onChange={(event) => updateJobExperience("cagExecAideText", event.currentTarget.value)} />
+              <div className="ribbon-panel-row ribbon-job-text-row">
+                <CheckTile label="Sq/CC Tours" checked={chart.jobExperiences.sqCcTours} onChange={(checked) => updateJobExperience("sqCcTours", checked)} />
+                <input value={chart.jobExperiences.sqCcToursText} onChange={(event) => updateJobExperience("sqCcToursText", event.currentTarget.value)} />
               </div>
               <div className="ribbon-panel-row">
                 <span className="ribbon-row-label">Instructor</span>
@@ -1586,9 +1586,9 @@ const RibbonChartPage: React.FC = () => {
                   <CheckTile label="JPME II" checked={chart.jobExperiences.jpmeIi} onChange={(checked) => updateJobExperience("jpmeIi", checked)} />
                 </div>
               </div>
-              <div className="ribbon-panel-row">
-                <CheckTile label="Sq/CC Tours" checked={chart.jobExperiences.sqCcTours} onChange={(checked) => updateJobExperience("sqCcTours", checked)} />
-                <input value={chart.jobExperiences.sqCcToursText} onChange={(event) => updateJobExperience("sqCcToursText", event.currentTarget.value)} />
+              <div className="ribbon-panel-row ribbon-job-text-row">
+                <CheckTile label="CAG / Exec / Aide" checked={chart.jobExperiences.cagExecAide} onChange={(checked) => updateJobExperience("cagExecAide", checked)} />
+                <input value={chart.jobExperiences.cagExecAideText} onChange={(event) => updateJobExperience("cagExecAideText", event.currentTarget.value)} />
               </div>
             </section>
 

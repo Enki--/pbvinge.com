@@ -778,6 +778,10 @@
   border-bottom: 1px solid #111827;
 }
 
+.ribbon-job-text-row {
+  grid-template-columns: 96px minmax(0, 1fr);
+}
+
 .ribbon-panel-row > *,
 .ribbon-education-row > * {
   border-radius: 0;
@@ -1190,6 +1194,10 @@
   }
 
   .ribbon-staff-row {
+    grid-template-columns: 0.62in minmax(0, 1fr);
+  }
+
+  .ribbon-job-text-row {
     grid-template-columns: 0.62in minmax(0, 1fr);
   }
 
