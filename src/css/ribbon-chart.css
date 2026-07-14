@@ -882,7 +882,7 @@
 .ribbon-special-programs > span {
   display: grid;
   place-items: center;
-  grid-row: span 3;
+  grid-row: span 4;
   border: 1px solid #111827;
   background: #f3f4f6;
   padding: 0.25rem;

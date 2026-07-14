@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 5;
+const SAVE_SCHEMA_VERSION = 6;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
@@ -198,6 +198,9 @@ interface EducationAchievements {
   wic: boolean;
   wicDg: boolean;
   cnodp: boolean;
+  darpa: boolean;
+  ldc: boolean;
+  c2wac: boolean;
   specialProgramsOther: string;
 }
 
@@ -683,6 +686,9 @@ const createDefaultChart = (): ChartData => {
       wic: false,
       wicDg: false,
       cnodp: false,
+      darpa: false,
+      ldc: false,
+      c2wac: false,
       specialProgramsOther: ""
     },
     opbs: [
@@ -1660,6 +1666,9 @@ const RibbonChartPage: React.FC = () => {
                 <CheckTile label="WIC" checked={chart.education.wic} onChange={(checked) => updateEducation("wic", checked)} />
                 <CheckTile label="WIC DG" checked={chart.education.wicDg} onChange={(checked) => updateEducation("wicDg", checked)} />
                 <CheckTile label="CNODP" checked={chart.education.cnodp} onChange={(checked) => updateEducation("cnodp", checked)} />
+                <CheckTile label="DARPA" checked={chart.education.darpa} onChange={(checked) => updateEducation("darpa", checked)} />
+                <CheckTile label="LDC" checked={chart.education.ldc} onChange={(checked) => updateEducation("ldc", checked)} />
+                <CheckTile label="C2WAC" checked={chart.education.c2wac} onChange={(checked) => updateEducation("c2wac", checked)} />
                 <label className="ribbon-special-programs-other">
                   <span>Other</span>
                   <textarea
