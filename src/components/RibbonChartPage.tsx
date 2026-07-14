@@ -1354,7 +1354,7 @@ const RibbonChartPage: React.FC = () => {
           </header>
 
           <div className="ribbon-timeline-grid">
-            {renderTimelineRow("Promotion [i]", "promotion")}
+            {renderTimelineRow("Promotion", "promotion")}
             {renderTimelineRow("Leadership", "leadership")}
             {renderTimelineRow("PME", "developmentalEducation")}
             {renderTimelineRow("Career Field Edu", "careerFieldEducation")}
