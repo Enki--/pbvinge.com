@@ -782,6 +782,11 @@
   grid-template-columns: 96px minmax(0, 1fr);
 }
 
+.ribbon-job-text-row input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
 .ribbon-panel-row > *,
 .ribbon-education-row > * {
   border-radius: 0;

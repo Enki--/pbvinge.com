@@ -643,7 +643,7 @@ const createDefaultChart = (): ChartData => {
       directorOfOperations: false,
       detCc: false,
       cagExecAide: false,
-      cagExecAideText: "Please enter location and rank of add'l rater",
+      cagExecAideText: "",
       instructorUctCyberWic: false,
       instructorSosBmtOts: false,
       staffJoint: false,
@@ -654,7 +654,7 @@ const createDefaultChart = (): ChartData => {
       jpmeI: false,
       jpmeIi: false,
       sqCcTours: false,
-      sqCcToursText: "List sq commanded"
+      sqCcToursText: ""
     },
     highlights: {
       operational: "",
@@ -1567,7 +1567,11 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-panel-row ribbon-job-text-row">
                 <CheckTile label="Sq/CC Tours" checked={chart.jobExperiences.sqCcTours} onChange={(checked) => updateJobExperience("sqCcTours", checked)} />
-                <input value={chart.jobExperiences.sqCcToursText} onChange={(event) => updateJobExperience("sqCcToursText", event.currentTarget.value)} />
+                <input
+                  value={chart.jobExperiences.sqCcToursText}
+                  onChange={(event) => updateJobExperience("sqCcToursText", event.currentTarget.value)}
+                  placeholder="List sq commanded"
+                />
               </div>
               <div className="ribbon-panel-row">
                 <span className="ribbon-row-label">Instructor</span>
@@ -1588,7 +1592,11 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-panel-row ribbon-job-text-row">
                 <CheckTile label="CAG / Exec / Aide" checked={chart.jobExperiences.cagExecAide} onChange={(checked) => updateJobExperience("cagExecAide", checked)} />
-                <input value={chart.jobExperiences.cagExecAideText} onChange={(event) => updateJobExperience("cagExecAideText", event.currentTarget.value)} />
+                <input
+                  value={chart.jobExperiences.cagExecAideText}
+                  onChange={(event) => updateJobExperience("cagExecAideText", event.currentTarget.value)}
+                  placeholder="Level / Role"
+                />
               </div>
             </section>
 
