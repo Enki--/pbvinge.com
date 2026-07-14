@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 6;
+const SAVE_SCHEMA_VERSION = 7;
 const YEAR_COUNT = 10;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
@@ -154,7 +154,9 @@ interface JobExperiences {
   detCc: boolean;
   cagExecAide: boolean;
   cagExecAideText: string;
-  instructorUctCyberWic: boolean;
+  instructorUct: boolean;
+  instructorCyber200Cyber300: boolean;
+  instructorWic: boolean;
   instructorSosBmtOts: boolean;
   staffJoint: boolean;
   staffHaf: boolean;
@@ -644,7 +646,9 @@ const createDefaultChart = (): ChartData => {
       detCc: false,
       cagExecAide: false,
       cagExecAideText: "",
-      instructorUctCyberWic: false,
+      instructorUct: false,
+      instructorCyber200Cyber300: false,
+      instructorWic: false,
       instructorSosBmtOts: false,
       staffJoint: false,
       staffHaf: false,
@@ -756,6 +760,22 @@ const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[]
   });
 };
 
+const normalizeJobExperiences = (value: unknown, base: JobExperiences): JobExperiences => {
+  const incoming = value && typeof value === "object"
+    ? value as Partial<JobExperiences> & { instructorUctCyberWic?: boolean }
+    : {};
+  const { instructorUctCyberWic, ...current } = incoming;
+  const legacyInstructor = instructorUctCyberWic === true;
+
+  return {
+    ...base,
+    ...current,
+    instructorUct: current.instructorUct ?? legacyInstructor,
+    instructorCyber200Cyber300: current.instructorCyber200Cyber300 ?? legacyInstructor,
+    instructorWic: current.instructorWic ?? legacyInstructor
+  };
+};
+
 const normalizeChart = (input: Partial<ChartData>): ChartData => {
   const base = createDefaultChart();
   const timelineStart = typeof input.timeline?.startingYear === "number" ? clampStartingYear(input.timeline.startingYear) : base.timeline.startingYear;
@@ -779,7 +799,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
     },
     vectors: normalizeVectorRows(input.vectors, timelineStart),
     familyKids: normalizeFamilyKids(input.familyKids),
-    jobExperiences: { ...base.jobExperiences, ...input.jobExperiences },
+    jobExperiences: normalizeJobExperiences(input.jobExperiences, base.jobExperiences),
     highlights: { ...base.highlights, ...input.highlights },
     education: { ...base.education, ...input.education },
     opbs: Array.isArray(incomingOpbs) && incomingOpbs.length
@@ -1573,10 +1593,14 @@ const RibbonChartPage: React.FC = () => {
                   placeholder="List sq commanded"
                 />
               </div>
-              <div className="ribbon-panel-row">
+              <div className="ribbon-panel-row ribbon-instructor-row">
                 <span className="ribbon-row-label">Instructor</span>
-                <CheckTile label="UCT / Cyber 200 / Cyber 300 / WIC" checked={chart.jobExperiences.instructorUctCyberWic} onChange={(checked) => updateJobExperience("instructorUctCyberWic", checked)} />
-                <CheckTile label="SOS / BMT / OTS" checked={chart.jobExperiences.instructorSosBmtOts} onChange={(checked) => updateJobExperience("instructorSosBmtOts", checked)} />
+                <div className="ribbon-instructor-options">
+                  <CheckTile label="UCT" checked={chart.jobExperiences.instructorUct} onChange={(checked) => updateJobExperience("instructorUct", checked)} />
+                  <CheckTile label="Cyber 200 / 300" checked={chart.jobExperiences.instructorCyber200Cyber300} onChange={(checked) => updateJobExperience("instructorCyber200Cyber300", checked)} />
+                  <CheckTile label="WIC" checked={chart.jobExperiences.instructorWic} onChange={(checked) => updateJobExperience("instructorWic", checked)} />
+                  <CheckTile label="SOS / BMT / OTS" checked={chart.jobExperiences.instructorSosBmtOts} onChange={(checked) => updateJobExperience("instructorSosBmtOts", checked)} />
+                </div>
               </div>
               <div className="ribbon-panel-row ribbon-staff-row">
                 <span className="ribbon-row-label">Staff</span>

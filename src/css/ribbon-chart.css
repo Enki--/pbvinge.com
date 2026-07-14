@@ -787,6 +787,15 @@
   opacity: 1;
 }
 
+.ribbon-instructor-row {
+  grid-template-columns: 96px minmax(0, 1fr);
+}
+
+.ribbon-instructor-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .ribbon-panel-row > *,
 .ribbon-education-row > * {
   border-radius: 0;
@@ -1203,6 +1212,10 @@
   }
 
   .ribbon-job-text-row {
+    grid-template-columns: 0.62in minmax(0, 1fr);
+  }
+
+  .ribbon-instructor-row {
     grid-template-columns: 0.62in minmax(0, 1fr);
   }
 
