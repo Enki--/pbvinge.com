@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 9;
+const SAVE_SCHEMA_VERSION = 10;
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -222,6 +222,7 @@ interface ChartData {
   eligibility: EligibilityState;
   timeline: TimelineData;
   vectors: VectorRow[];
+  familyTrackerEnabled: boolean;
   familyKids: FamilyKid[];
   jobExperiences: JobExperiences;
   highlights: Highlights;
@@ -640,6 +641,7 @@ const createDefaultChart = (): ChartData => {
         ]
       }
     ],
+    familyTrackerEnabled: true,
     familyKids: createDefaultFamilyKids(),
     jobExperiences: {
       deployment: false,
@@ -813,6 +815,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
       personal: normalizeStringArray(input.timeline?.personal, MAX_TIMELINE_YEARS)
     },
     vectors: normalizeVectorRows(input.vectors, timelineEad),
+    familyTrackerEnabled: typeof input.familyTrackerEnabled === "boolean" ? input.familyTrackerEnabled : base.familyTrackerEnabled,
     familyKids: normalizeFamilyKids(input.familyKids),
     jobExperiences: normalizeJobExperiences(input.jobExperiences, base.jobExperiences),
     highlights: { ...base.highlights, ...input.highlights },
@@ -1139,6 +1142,10 @@ const RibbonChartPage: React.FC = () => {
     }));
   };
 
+  const updateFamilyTrackerEnabled = (enabled: boolean) => {
+    updateChart((current) => ({ ...current, familyTrackerEnabled: enabled }));
+  };
+
   const updateFamilyKid = <K extends keyof FamilyKid>(index: number, key: K, value: FamilyKid[K]) => {
     updateChart((current) => {
       const familyKids = current.familyKids.slice();
@@ -1389,6 +1396,15 @@ const RibbonChartPage: React.FC = () => {
                 ))}
               </div>
             </div>
+            <label className="ribbon-feature-toggle">
+              <span>Kids</span>
+              <input
+                type="checkbox"
+                checked={chart.familyTrackerEnabled}
+                onChange={(event) => updateFamilyTrackerEnabled(event.currentTarget.checked)}
+              />
+              <i aria-hidden="true" />
+            </label>
             <button type="button" className="ribbon-populate-button" onClick={populateTimeline}>Populate Timeline</button>
           </div>
           <div className="ribbon-file-actions">
@@ -1562,8 +1578,12 @@ const RibbonChartPage: React.FC = () => {
               </React.Fragment>
             ))}
 
-            <div className="ribbon-timeline-label ribbon-family-label">Kids Grades</div>
-            {years.map((_, index) => renderFamilyCell(index))}
+            {chart.familyTrackerEnabled && (
+              <>
+                <div className="ribbon-timeline-label ribbon-family-label">Kids Grades</div>
+                {years.map((_, index) => renderFamilyCell(index))}
+              </>
+            )}
           </div>
 
           <section className="ribbon-segment-editor" aria-label="Selected vector block">
@@ -1618,38 +1638,40 @@ const RibbonChartPage: React.FC = () => {
             )}
           </section>
 
-          <section className="ribbon-family-editor" aria-label="Kids grade tracker">
-            <div className="ribbon-family-editor-heading">
-              <strong>Kids Grade Tracker</strong>
-              <span>Set each kid's grade for fall {chart.timeline.startingYear}; each year increments by one.</span>
-            </div>
-            {chart.familyKids.map((kid, index) => (
-              <div key={kid.id} className="ribbon-family-kid-editor">
-                <CheckTile
-                  label={`Kid ${index + 1}`}
-                  checked={kid.enabled}
-                  onChange={(checked) => updateFamilyKid(index, "enabled", checked)}
-                />
-                <label>
-                  <span>Name</span>
-                  <input
-                    value={kid.label}
-                    onChange={(event) => updateFamilyKid(index, "label", event.currentTarget.value)}
-                    placeholder="Initials or name"
-                  />
-                </label>
-                <label>
-                  <span>Fall {chart.timeline.startingYear}</span>
-                  <select
-                    value={kid.startGrade}
-                    onChange={(event) => updateFamilyKid(index, "startGrade", Number(event.currentTarget.value))}
-                  >
-                    {GRADE_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-                  </select>
-                </label>
+          {chart.familyTrackerEnabled && (
+            <section className="ribbon-family-editor" aria-label="Kids grade tracker">
+              <div className="ribbon-family-editor-heading">
+                <strong>Kids Grade Tracker</strong>
+                <span>Set each kid's grade for fall {chart.timeline.startingYear}; each year increments by one.</span>
               </div>
-            ))}
-          </section>
+              {chart.familyKids.map((kid, index) => (
+                <div key={kid.id} className="ribbon-family-kid-editor">
+                  <CheckTile
+                    label={`Kid ${index + 1}`}
+                    checked={kid.enabled}
+                    onChange={(checked) => updateFamilyKid(index, "enabled", checked)}
+                  />
+                  <label>
+                    <span>Name</span>
+                    <input
+                      value={kid.label}
+                      onChange={(event) => updateFamilyKid(index, "label", event.currentTarget.value)}
+                      placeholder="Initials or name"
+                    />
+                  </label>
+                  <label>
+                    <span>Fall {chart.timeline.startingYear}</span>
+                    <select
+                      value={kid.startGrade}
+                      onChange={(event) => updateFamilyKid(index, "startGrade", Number(event.currentTarget.value))}
+                    >
+                      {GRADE_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                    </select>
+                  </label>
+                </div>
+              ))}
+            </section>
+          )}
 
           <div className="ribbon-lower-grid">
             <section className="ribbon-panel ribbon-job-panel">

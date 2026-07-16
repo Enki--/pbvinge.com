@@ -139,6 +139,55 @@
   color: #ffffff;
 }
 
+.ribbon-feature-toggle {
+  position: relative;
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.2rem;
+  color: var(--muted-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ribbon-feature-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ribbon-feature-toggle i {
+  position: relative;
+  display: block;
+  width: 3.2rem;
+  height: 2.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface-color);
+}
+
+.ribbon-feature-toggle i::before {
+  content: "";
+  position: absolute;
+  top: 0.26rem;
+  left: 0.28rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: #94a3b8;
+  transition: transform 0.16s ease, background-color 0.16s ease;
+}
+
+.ribbon-feature-toggle input:checked + i::before {
+  transform: translateX(1.02rem);
+  background: #16a34a;
+}
+
+.ribbon-feature-toggle input:focus-visible + i {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
 .ribbon-year-control {
   display: grid;
   flex: 0 0 auto;
