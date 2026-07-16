@@ -1124,6 +1124,165 @@
   border-right: 0;
 }
 
+.ribbon-career-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.72);
+  padding: 1rem;
+}
+
+.ribbon-career-dialog {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(1600px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.ribbon-career-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--surface-muted-color);
+  padding: 0.85rem 1rem;
+}
+
+.ribbon-career-header h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  line-height: 1.15;
+}
+
+.ribbon-career-header span {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.ribbon-career-header button {
+  min-height: 2.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.ribbon-career-header button:hover,
+.ribbon-career-header button:focus-visible {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.ribbon-career-body {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.75rem;
+}
+
+.ribbon-career-grid {
+  width: 100%;
+  grid-template-columns: minmax(70px, 0.72fr) repeat(var(--ribbon-year-count, 20), minmax(0, 1fr));
+  font-size: clamp(0.48rem, 0.58vw, 0.72rem);
+}
+
+.ribbon-career-grid .ribbon-timeline-label,
+.ribbon-career-grid .ribbon-year-cell,
+.ribbon-career-grid .ribbon-scod-cell,
+.ribbon-career-grid .ribbon-cell-input,
+.ribbon-career-grid .ribbon-info-cell,
+.ribbon-career-grid .ribbon-family-cell,
+.ribbon-career-grid .ribbon-vector-track {
+  min-height: 1.75rem;
+}
+
+.ribbon-career-grid .ribbon-timeline-label,
+.ribbon-career-grid .ribbon-year-cell,
+.ribbon-career-grid .ribbon-scod-cell,
+.ribbon-career-grid .ribbon-cell-input,
+.ribbon-career-grid .ribbon-vector-name-input {
+  font-size: inherit;
+}
+
+.ribbon-career-grid .ribbon-timeline-label {
+  padding: 0.08rem;
+}
+
+.ribbon-career-grid .ribbon-cell-input {
+  padding: 0.08rem 0.12rem;
+}
+
+.ribbon-career-grid .ribbon-info-cell .ribbon-cell-input {
+  padding-right: 1.05rem;
+}
+
+.ribbon-career-grid .ribbon-promotion-cell.has-promotion .ribbon-cell-input {
+  padding-left: 1.55rem;
+}
+
+.ribbon-career-grid .ribbon-cycle-info-button {
+  top: 0.18rem;
+  right: 0.18rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  font-size: 0.55rem;
+}
+
+.ribbon-career-grid .ribbon-promotion-drag-handle {
+  top: 0.18rem;
+  bottom: 0.18rem;
+  left: 0.16rem;
+  width: 1.25rem;
+  font-size: 0.42rem;
+}
+
+.ribbon-career-grid .ribbon-vector-label {
+  gap: 0.12rem;
+}
+
+.ribbon-career-grid .ribbon-vector-label button {
+  padding: 0.08rem 0.1rem;
+  font-size: 0.58rem;
+}
+
+.ribbon-career-grid .ribbon-vector-track {
+  min-height: 2rem;
+}
+
+.ribbon-career-grid .ribbon-vector-segment {
+  top: 0.15rem;
+  bottom: 0.15rem;
+  min-width: 0;
+  border-width: 1px;
+  font-size: 0.68rem;
+}
+
+.ribbon-career-grid .ribbon-vector-segment span {
+  max-width: calc(100% - 0.9rem);
+}
+
+.ribbon-career-grid .ribbon-vector-handle {
+  width: 0.45rem;
+}
+
 @media (max-width: 860px) {
   .ribbon-toolbar {
     align-items: stretch;
@@ -1153,6 +1312,7 @@
   nav,
   .ribbon-toolbar,
   .ribbon-status,
+  .ribbon-career-modal,
   .ribbon-segment-editor,
   .ribbon-family-editor,
   .ribbon-vector-label button {

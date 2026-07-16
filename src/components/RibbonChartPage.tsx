@@ -3,12 +3,11 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.1";
+const RIBBON_CHART_VERSION = "2.2";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
 const MAX_TIMELINE_YEARS = 20;
-const TIMELINE_VIEW_OPTIONS = [10, 20] as const;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
 
@@ -259,7 +258,7 @@ interface SelectedSegment {
 }
 
 type TimelineMilestone = [string, string];
-type TimelineViewYears = typeof TIMELINE_VIEW_OPTIONS[number];
+type TimelineViewYears = 10 | 20;
 type TimelineRowKey = keyof Omit<TimelineData, "eadYear" | "startingYear">;
 type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
 type PromotionYearOffset = -1 | 0;
@@ -887,7 +886,8 @@ const CheckTile: React.FC<{
 
 const RibbonChartPage: React.FC = () => {
   const [chart, setChart] = useState<ChartData>(() => createDefaultChart());
-  const [timelineViewYears, setTimelineViewYears] = useState<TimelineViewYears>(DEFAULT_TIMELINE_VIEW_YEARS);
+  const timelineViewYears: TimelineViewYears = DEFAULT_TIMELINE_VIEW_YEARS;
+  const [isCareerViewOpen, setCareerViewOpen] = useState(false);
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
   const [draggedPromotionIndex, setDraggedPromotionIndex] = useState<number | null>(null);
   const [promotionDropIndex, setPromotionDropIndex] = useState<number | null>(null);
@@ -898,6 +898,7 @@ const RibbonChartPage: React.FC = () => {
   const dragRef = useRef<DragState | null>(null);
 
   const years = useMemo(() => yearsFor(chart.timeline.startingYear, timelineViewYears), [chart.timeline.startingYear, timelineViewYears]);
+  const careerYears = useMemo(() => yearsFor(chart.timeline.eadYear, MAX_TIMELINE_YEARS), [chart.timeline.eadYear]);
   const rankScod = getScodForRank(chart.identity.rank);
   const scodTimeline = useMemo(
     () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
@@ -911,7 +912,7 @@ const RibbonChartPage: React.FC = () => {
   const visibleCareerEnd = Math.min(timelineEnd, careerEnd);
   const ribbonSheetStyle = {
     "--ribbon-year-count": timelineViewYears,
-    "--ribbon-sheet-min-width": timelineViewYears === 20 ? "2160px" : "1180px"
+    "--ribbon-sheet-min-width": "1180px"
   } as React.CSSProperties;
 
   const selectedSegment = useMemo<SelectedSegment | null>(() => {
@@ -925,13 +926,15 @@ const RibbonChartPage: React.FC = () => {
 
   useEffect(() => {
     if (!selectedSegmentId) return;
+    const selectionStart = isCareerViewOpen ? careerStart : timelineStart;
+    const selectionEnd = isCareerViewOpen ? careerEnd : timelineEnd;
     const visibleSegments = chart.vectors.flatMap((row) => (
-      row.segments.filter((segment) => segment.endYear > timelineStart && segment.startYear < timelineEnd)
+      row.segments.filter((segment) => segment.endYear > selectionStart && segment.startYear < selectionEnd)
     ));
     if (!visibleSegments.some((segment) => segment.id === selectedSegmentId)) {
       setSelectedSegmentId(visibleSegments[0]?.id ?? null);
     }
-  }, [chart.vectors, selectedSegmentId, timelineStart, timelineEnd]);
+  }, [careerEnd, careerStart, chart.vectors, isCareerViewOpen, selectedSegmentId, timelineEnd, timelineStart]);
 
   useEffect(() => {
     if (!dirty) return undefined;
@@ -942,6 +945,21 @@ const RibbonChartPage: React.FC = () => {
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [dirty]);
+
+  useEffect(() => {
+    if (!isCareerViewOpen) return undefined;
+    const priorOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setCareerViewOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = priorOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isCareerViewOpen]);
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {
@@ -1105,9 +1123,12 @@ const RibbonChartPage: React.FC = () => {
     event: React.PointerEvent<HTMLElement>,
     row: VectorRow,
     segment: VectorSegment,
-    mode: DragMode
+    mode: DragMode,
+    displayStart = timelineStart,
+    displayEnd = timelineEnd,
+    trackKey = row.id
   ) => {
-    const track = trackRefs.current[row.id];
+    const track = trackRefs.current[trackKey];
     if (!track) return;
     const rect = track.getBoundingClientRect();
     const neighbors = findSegmentNeighbors(row, segment.id, careerStart, careerEnd);
@@ -1126,8 +1147,8 @@ const RibbonChartPage: React.FC = () => {
       initialEnd: segment.endYear,
       lowerBound: neighbors.lowerBound,
       upperBound: neighbors.upperBound,
-      timelineStart,
-      timelineEnd
+      timelineStart: displayStart,
+      timelineEnd: displayEnd
     };
     document.body.classList.add("ribbon-is-dragging");
   };
@@ -1178,35 +1199,39 @@ const RibbonChartPage: React.FC = () => {
     });
   };
 
-  const renderFamilyCell = (index: number) => {
+  const renderFamilyCell = (year: number) => {
+    const gradeOffset = year - chart.timeline.startingYear;
     return (
-      <div key={`family-${years[index]}`} className="ribbon-family-cell" aria-label={`Kids grades ${years[index]}`}>
+      <div key={`family-${year}`} className="ribbon-family-cell" aria-label={`Kids grades ${year}`}>
         {chart.familyKids.map((kid, kidIndex) => {
           if (!kid.enabled) return null;
           const label = kid.label.trim() || `Kid ${kidIndex + 1}`;
-          const grade = gradeLabelFor(kid.startGrade + index);
+          const grade = gradeLabelFor(kid.startGrade + gradeOffset);
           return <span key={kid.id} title={`${label}: ${grade}`}>{label}: {grade}</span>;
         })}
       </div>
     );
   };
 
-  const addSegmentToRow = (row: VectorRow) => {
-    if (visibleCareerEnd - visibleCareerStart < 1) {
+  const addSegmentToRow = (row: VectorRow, displayStart = visibleCareerStart, displayEnd = visibleCareerEnd) => {
+    const addStart = Math.max(displayStart, careerStart);
+    const addEnd = Math.min(displayEnd, careerEnd);
+
+    if (addEnd - addStart < 1) {
       setImportMessage("Move Start Year inside the EAD 20-year window before adding a vector block.");
       return;
     }
 
     const ordered = row.segments.slice().sort((a, b) => a.startYear - b.startYear);
     const boundaries = [
-      { start: visibleCareerStart, end: ordered[0]?.startYear ?? visibleCareerEnd },
+      { start: addStart, end: ordered[0]?.startYear ?? addEnd },
       ...ordered.map((segment, index) => ({
         start: segment.endYear,
-        end: ordered[index + 1]?.startYear ?? visibleCareerEnd
+        end: ordered[index + 1]?.startYear ?? addEnd
       }))
     ].map((candidate) => ({
-      start: Math.max(candidate.start, visibleCareerStart),
-      end: Math.min(candidate.end, visibleCareerEnd)
+      start: Math.max(candidate.start, addStart),
+      end: Math.min(candidate.end, addEnd)
     }));
     const gap = boundaries.find((candidate) => candidate.end - candidate.start >= 1);
 
@@ -1293,10 +1318,10 @@ const RibbonChartPage: React.FC = () => {
     setImportMessage("Reset chart.");
   };
 
-  const renderTimelineCell = (label: string, key: TimelineRowKey, year: number, index: number) => {
+  const renderTimelineCell = (label: string, key: TimelineRowKey, year: number, index: number, yearCount: number) => {
     const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
     if (key === "promotion") {
-      return renderPromotionCell(label, year, index, dataIndex);
+      return renderPromotionCell(label, year, index, yearCount, dataIndex);
     }
 
     if (dataIndex === null) {
@@ -1329,7 +1354,7 @@ const RibbonChartPage: React.FC = () => {
     }
 
     const tooltipId = `${key}-${year}-cycle-info`;
-    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= timelineViewYears - 2 ? " ribbon-info-cell-right-edge" : "";
+    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= yearCount - 2 ? " ribbon-info-cell-right-edge" : "";
     return (
       <div key={`${key}-${year}`} className={`ribbon-info-cell${edgeClass}`}>
         <input
@@ -1361,7 +1386,7 @@ const RibbonChartPage: React.FC = () => {
     );
   };
 
-  const renderPromotionCell = (label: string, year: number, index: number, dataIndex: number | null) => {
+  const renderPromotionCell = (label: string, year: number, index: number, yearCount: number, dataIndex: number | null) => {
     if (dataIndex === null) {
       return (
         <input
@@ -1379,7 +1404,7 @@ const RibbonChartPage: React.FC = () => {
     const value = chart.timeline.promotion[dataIndex] ?? "";
     const cellInfo = getTimelineCellInfo("promotion", value, year);
     const tooltipId = `promotion-${year}-cycle-info`;
-    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= timelineViewYears - 2 ? " ribbon-info-cell-right-edge" : "";
+    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= yearCount - 2 ? " ribbon-info-cell-right-edge" : "";
     const cellClass = [
       "ribbon-info-cell",
       "ribbon-promotion-cell",
@@ -1480,12 +1505,126 @@ const RibbonChartPage: React.FC = () => {
     );
   };
 
-  const renderTimelineRow = (label: string, key: TimelineRowKey) => (
+  const renderTimelineRow = (label: string, key: TimelineRowKey, displayYears: number[]) => (
     <>
       <div className="ribbon-timeline-label">{label}</div>
-      {years.map((year, index) => renderTimelineCell(label, key, year, index))}
+      {displayYears.map((year, index) => renderTimelineCell(label, key, year, index, displayYears.length))}
     </>
   );
+
+  const renderTimelineGrid = (displayYears: number[], className = "", scope = "main") => {
+    const yearCount = displayYears.length;
+    const displayStart = displayYears[0] ?? timelineStart;
+    const displayEnd = displayStart + yearCount;
+    const gridStyle = { "--ribbon-year-count": yearCount } as React.CSSProperties;
+
+    return (
+      <div className={`ribbon-timeline-grid ${className}`} style={gridStyle}>
+        {renderTimelineRow("Promotion", "promotion", displayYears)}
+        {renderTimelineRow("Leadership", "leadership", displayYears)}
+        {renderTimelineRow("PME", "developmentalEducation", displayYears)}
+        {renderTimelineRow("Career Field Edu", "careerFieldEducation", displayYears)}
+
+        <div className="ribbon-timeline-label">Calendar Year</div>
+        {displayYears.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
+
+        <div className="ribbon-timeline-label ribbon-scod-label">SCOD</div>
+        {displayYears.map((year) => {
+          const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
+          const scodEntry = dataIndex === null ? null : scodTimeline[dataIndex] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
+          return (
+            <div key={`scod-${year}`} className="ribbon-scod-cell" title={scodEntry ? `${scodEntry.rank} SCOD` : "Outside EAD window"}>
+              {scodEntry?.scod ?? "-"}
+            </div>
+          );
+        })}
+
+        {chart.vectors.map((row, rowIndex) => {
+          const trackKey = `${scope}-${row.id}`;
+          return (
+            <React.Fragment key={row.id}>
+              <div className="ribbon-timeline-label ribbon-vector-label">
+                <input
+                  className="ribbon-vector-name-input"
+                  value={row.label}
+                  onChange={(event) => updateVectorRowLabel(row.id, event.currentTarget.value)}
+                  placeholder={`Vec ${rowIndex + 1}`}
+                  aria-label={`Vector ${rowIndex + 1} name`}
+                />
+                <button type="button" onClick={() => addSegmentToRow(row, displayStart, displayEnd)}>Add block</button>
+              </div>
+              <div
+                className="ribbon-vector-track"
+                ref={(node) => { trackRefs.current[trackKey] = node; }}
+                style={{
+                  gridColumn: `span ${yearCount}`,
+                  backgroundSize: `${100 / yearCount}% 100%`
+                }}
+              >
+                {row.segments.map((segment) => {
+                  const color = colorFor(segment.color);
+                  const visibleStart = Math.max(segment.startYear, displayStart);
+                  const visibleEnd = Math.min(segment.endYear, displayEnd);
+                  if (visibleEnd <= displayStart || visibleStart >= displayEnd) return null;
+                  const left = ((visibleStart - displayStart) / yearCount) * 100;
+                  const width = ((visibleEnd - visibleStart) / yearCount) * 100;
+                  return (
+                    <div
+                      key={segment.id}
+                      className={`ribbon-vector-segment ${selectedSegmentId === segment.id ? "is-selected" : ""}`}
+                      style={{
+                        left: `${left}%`,
+                        width: `${width}%`,
+                        backgroundColor: color.background,
+                        color: color.foreground
+                      }}
+                      onPointerDown={(event) => beginSegmentDrag(event, row, segment, "move", displayStart, displayEnd, trackKey)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${row.label} ${segment.label} ${segment.startYear} to ${segment.endYear}`}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          setSelectedSegmentId(segment.id);
+                        }
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className="ribbon-vector-handle ribbon-vector-handle-left"
+                        aria-label={`Resize start for ${segment.label}`}
+                        onPointerDown={(event) => {
+                          event.stopPropagation();
+                          beginSegmentDrag(event, row, segment, "resize-left", displayStart, displayEnd, trackKey);
+                        }}
+                      />
+                      <span>{segment.label}</span>
+                      <button
+                        type="button"
+                        className="ribbon-vector-handle ribbon-vector-handle-right"
+                        aria-label={`Resize end for ${segment.label}`}
+                        onPointerDown={(event) => {
+                          event.stopPropagation();
+                          beginSegmentDrag(event, row, segment, "resize-right", displayStart, displayEnd, trackKey);
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </React.Fragment>
+          );
+        })}
+
+        {chart.familyTrackerEnabled && (
+          <>
+            <div className="ribbon-timeline-label ribbon-family-label">Kids Grades</div>
+            {displayYears.map((year) => renderFamilyCell(year))}
+          </>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="pbv-ribbon">
@@ -1530,17 +1669,12 @@ const RibbonChartPage: React.FC = () => {
             <div className="ribbon-view-toggle" role="group" aria-label="Timeline years shown">
               <span>View</span>
               <div>
-                {TIMELINE_VIEW_OPTIONS.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    className={timelineViewYears === option ? "is-selected" : ""}
-                    aria-pressed={timelineViewYears === option}
-                    onClick={() => setTimelineViewYears(option)}
-                  >
-                    {option} yr
-                  </button>
-                ))}
+                <button type="button" className="is-selected" aria-pressed="true">
+                  10 yr
+                </button>
+                <button type="button" aria-haspopup="dialog" onClick={() => setCareerViewOpen(true)}>
+                  20 yr
+                </button>
               </div>
             </div>
             <label className="ribbon-feature-toggle">
@@ -1631,107 +1765,7 @@ const RibbonChartPage: React.FC = () => {
             </div>
           </header>
 
-          <div className="ribbon-timeline-grid">
-            {renderTimelineRow("Promotion", "promotion")}
-            {renderTimelineRow("Leadership", "leadership")}
-            {renderTimelineRow("PME", "developmentalEducation")}
-            {renderTimelineRow("Career Field Edu", "careerFieldEducation")}
-
-            <div className="ribbon-timeline-label">Calendar Year</div>
-            {years.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
-
-            <div className="ribbon-timeline-label ribbon-scod-label">SCOD</div>
-            {years.map((year) => {
-              const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
-              const scodEntry = dataIndex === null ? null : scodTimeline[dataIndex] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
-              return (
-                <div key={`scod-${year}`} className="ribbon-scod-cell" title={scodEntry ? `${scodEntry.rank} SCOD` : "Outside EAD window"}>
-                  {scodEntry?.scod ?? "-"}
-                </div>
-              );
-            })}
-
-            {chart.vectors.map((row, rowIndex) => (
-              <React.Fragment key={row.id}>
-                <div className="ribbon-timeline-label ribbon-vector-label">
-                  <input
-                    className="ribbon-vector-name-input"
-                    value={row.label}
-                    onChange={(event) => updateVectorRowLabel(row.id, event.currentTarget.value)}
-                    placeholder={`Vec ${rowIndex + 1}`}
-                    aria-label={`Vector ${rowIndex + 1} name`}
-                  />
-                  <button type="button" onClick={() => addSegmentToRow(row)}>Add block</button>
-                </div>
-                <div
-                  className="ribbon-vector-track"
-                  ref={(node) => { trackRefs.current[row.id] = node; }}
-                  style={{
-                    gridColumn: `span ${timelineViewYears}`,
-                    backgroundSize: `${100 / timelineViewYears}% 100%`
-                  }}
-                >
-                  {row.segments.map((segment) => {
-                    const color = colorFor(segment.color);
-                    const visibleStart = Math.max(segment.startYear, timelineStart);
-                    const visibleEnd = Math.min(segment.endYear, timelineEnd);
-                    if (visibleEnd <= timelineStart || visibleStart >= timelineEnd) return null;
-                    const left = ((visibleStart - timelineStart) / timelineViewYears) * 100;
-                    const width = ((visibleEnd - visibleStart) / timelineViewYears) * 100;
-                    return (
-                      <div
-                        key={segment.id}
-                        className={`ribbon-vector-segment ${selectedSegmentId === segment.id ? "is-selected" : ""}`}
-                        style={{
-                          left: `${left}%`,
-                          width: `${width}%`,
-                          backgroundColor: color.background,
-                          color: color.foreground
-                        }}
-                        onPointerDown={(event) => beginSegmentDrag(event, row, segment, "move")}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${row.label} ${segment.label} ${segment.startYear} to ${segment.endYear}`}
-                        onKeyDown={(event) => {
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            setSelectedSegmentId(segment.id);
-                          }
-                        }}
-                      >
-                        <button
-                          type="button"
-                          className="ribbon-vector-handle ribbon-vector-handle-left"
-                          aria-label={`Resize start for ${segment.label}`}
-                          onPointerDown={(event) => {
-                            event.stopPropagation();
-                            beginSegmentDrag(event, row, segment, "resize-left");
-                          }}
-                        />
-                        <span>{segment.label}</span>
-                        <button
-                          type="button"
-                          className="ribbon-vector-handle ribbon-vector-handle-right"
-                          aria-label={`Resize end for ${segment.label}`}
-                          onPointerDown={(event) => {
-                            event.stopPropagation();
-                            beginSegmentDrag(event, row, segment, "resize-right");
-                          }}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </React.Fragment>
-            ))}
-
-            {chart.familyTrackerEnabled && (
-              <>
-                <div className="ribbon-timeline-label ribbon-family-label">Kids Grades</div>
-                {years.map((_, index) => renderFamilyCell(index))}
-              </>
-            )}
-          </div>
+          {renderTimelineGrid(years)}
 
           <section className="ribbon-segment-editor" aria-label="Selected vector block">
             {selectedSegment ? (
@@ -1993,6 +2027,30 @@ const RibbonChartPage: React.FC = () => {
           </section>
         </section>
       </div>
+
+      {isCareerViewOpen && (
+        <div
+          className="ribbon-career-modal"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setCareerViewOpen(false);
+          }}
+        >
+          <section className="ribbon-career-dialog" role="dialog" aria-modal="true" aria-labelledby="ribbon-career-title">
+            <header className="ribbon-career-header">
+              <div>
+                <p className="ribbon-eyebrow">20 Year View</p>
+                <h2 id="ribbon-career-title">Full Career Timeline</h2>
+                <span>{chart.timeline.eadYear} - {chart.timeline.eadYear + MAX_TIMELINE_YEARS - 1}</span>
+              </div>
+              <button type="button" onClick={() => setCareerViewOpen(false)}>Close</button>
+            </header>
+            <div className="ribbon-career-body">
+              {renderTimelineGrid(careerYears, "ribbon-career-grid", "career")}
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   );
 };
