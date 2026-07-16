@@ -1165,12 +1165,38 @@
   line-height: 1.15;
 }
 
-.ribbon-career-header span {
+.ribbon-career-range {
   display: block;
   margin-top: 0.15rem;
   color: var(--muted-text);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.ribbon-career-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+.ribbon-career-anchor-toggle {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--muted-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ribbon-career-anchor-toggle > div {
+  display: inline-flex;
+  min-height: 2.25rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
 }
 
 .ribbon-career-header button {
@@ -1183,6 +1209,26 @@
   font: inherit;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+.ribbon-career-header .ribbon-career-anchor-toggle button {
+  min-height: 0;
+  border: 0;
+  border-right: 1px solid var(--border-color);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.ribbon-career-header .ribbon-career-anchor-toggle button:last-child {
+  border-right: 0;
+}
+
+.ribbon-career-header .ribbon-career-anchor-toggle button.is-selected {
+  background: #0f172a;
+  color: #ffffff;
 }
 
 .ribbon-career-header button:hover,

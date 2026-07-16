@@ -3,7 +3,7 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.2";
+const RIBBON_CHART_VERSION = "2.3";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -259,6 +259,7 @@ interface SelectedSegment {
 
 type TimelineMilestone = [string, string];
 type TimelineViewYears = 10 | 20;
+type CareerViewAnchor = "ead" | "view";
 type TimelineRowKey = keyof Omit<TimelineData, "eadYear" | "startingYear">;
 type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
 type PromotionYearOffset = -1 | 0;
@@ -888,6 +889,7 @@ const RibbonChartPage: React.FC = () => {
   const [chart, setChart] = useState<ChartData>(() => createDefaultChart());
   const timelineViewYears: TimelineViewYears = DEFAULT_TIMELINE_VIEW_YEARS;
   const [isCareerViewOpen, setCareerViewOpen] = useState(false);
+  const [careerViewAnchor, setCareerViewAnchor] = useState<CareerViewAnchor>("ead");
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
   const [draggedPromotionIndex, setDraggedPromotionIndex] = useState<number | null>(null);
   const [promotionDropIndex, setPromotionDropIndex] = useState<number | null>(null);
@@ -898,7 +900,6 @@ const RibbonChartPage: React.FC = () => {
   const dragRef = useRef<DragState | null>(null);
 
   const years = useMemo(() => yearsFor(chart.timeline.startingYear, timelineViewYears), [chart.timeline.startingYear, timelineViewYears]);
-  const careerYears = useMemo(() => yearsFor(chart.timeline.eadYear, MAX_TIMELINE_YEARS), [chart.timeline.eadYear]);
   const rankScod = getScodForRank(chart.identity.rank);
   const scodTimeline = useMemo(
     () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
@@ -908,6 +909,9 @@ const RibbonChartPage: React.FC = () => {
   const careerEnd = chart.timeline.eadYear + MAX_TIMELINE_YEARS;
   const timelineStart = chart.timeline.startingYear;
   const timelineEnd = chart.timeline.startingYear + timelineViewYears;
+  const careerDisplayStart = careerViewAnchor === "ead" ? chart.timeline.eadYear : chart.timeline.startingYear;
+  const careerDisplayEnd = careerDisplayStart + MAX_TIMELINE_YEARS;
+  const careerYears = useMemo(() => yearsFor(careerDisplayStart, MAX_TIMELINE_YEARS), [careerDisplayStart]);
   const visibleCareerStart = Math.max(timelineStart, careerStart);
   const visibleCareerEnd = Math.min(timelineEnd, careerEnd);
   const ribbonSheetStyle = {
@@ -926,15 +930,15 @@ const RibbonChartPage: React.FC = () => {
 
   useEffect(() => {
     if (!selectedSegmentId) return;
-    const selectionStart = isCareerViewOpen ? careerStart : timelineStart;
-    const selectionEnd = isCareerViewOpen ? careerEnd : timelineEnd;
+    const selectionStart = isCareerViewOpen ? careerDisplayStart : timelineStart;
+    const selectionEnd = isCareerViewOpen ? careerDisplayEnd : timelineEnd;
     const visibleSegments = chart.vectors.flatMap((row) => (
       row.segments.filter((segment) => segment.endYear > selectionStart && segment.startYear < selectionEnd)
     ));
     if (!visibleSegments.some((segment) => segment.id === selectedSegmentId)) {
       setSelectedSegmentId(visibleSegments[0]?.id ?? null);
     }
-  }, [careerEnd, careerStart, chart.vectors, isCareerViewOpen, selectedSegmentId, timelineEnd, timelineStart]);
+  }, [careerDisplayEnd, careerDisplayStart, chart.vectors, isCareerViewOpen, selectedSegmentId, timelineEnd, timelineStart]);
 
   useEffect(() => {
     if (!dirty) return undefined;
@@ -2040,10 +2044,33 @@ const RibbonChartPage: React.FC = () => {
             <header className="ribbon-career-header">
               <div>
                 <p className="ribbon-eyebrow">20 Year View</p>
-                <h2 id="ribbon-career-title">Full Career Timeline</h2>
-                <span>{chart.timeline.eadYear} - {chart.timeline.eadYear + MAX_TIMELINE_YEARS - 1}</span>
+                <h2 id="ribbon-career-title">20 Year Timeline</h2>
+                <span className="ribbon-career-range">{careerDisplayStart} - {careerDisplayEnd - 1}</span>
               </div>
-              <button type="button" onClick={() => setCareerViewOpen(false)}>Close</button>
+              <div className="ribbon-career-header-actions">
+                <div className="ribbon-career-anchor-toggle" role="group" aria-label="20 year timeline start">
+                  <span>Range</span>
+                  <div>
+                    <button
+                      type="button"
+                      className={careerViewAnchor === "ead" ? "is-selected" : ""}
+                      aria-pressed={careerViewAnchor === "ead"}
+                      onClick={() => setCareerViewAnchor("ead")}
+                    >
+                      EAD + 19
+                    </button>
+                    <button
+                      type="button"
+                      className={careerViewAnchor === "view" ? "is-selected" : ""}
+                      aria-pressed={careerViewAnchor === "view"}
+                      onClick={() => setCareerViewAnchor("view")}
+                    >
+                      View Year + 19
+                    </button>
+                  </div>
+                </div>
+                <button type="button" className="ribbon-career-close-button" onClick={() => setCareerViewOpen(false)}>Close</button>
+              </div>
             </header>
             <div className="ribbon-career-body">
               {renderTimelineGrid(careerYears, "ribbon-career-grid", "career")}
