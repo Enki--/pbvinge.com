@@ -3,7 +3,7 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.0";
+const RIBBON_CHART_VERSION = "2.1";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -889,6 +889,8 @@ const RibbonChartPage: React.FC = () => {
   const [chart, setChart] = useState<ChartData>(() => createDefaultChart());
   const [timelineViewYears, setTimelineViewYears] = useState<TimelineViewYears>(DEFAULT_TIMELINE_VIEW_YEARS);
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
+  const [draggedPromotionIndex, setDraggedPromotionIndex] = useState<number | null>(null);
+  const [promotionDropIndex, setPromotionDropIndex] = useState<number | null>(null);
   const [dirty, setDirty] = useState(false);
   const [importMessage, setImportMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -1017,6 +1019,27 @@ const RibbonChartPage: React.FC = () => {
       const row = current.timeline[key].slice();
       row[index] = value;
       return { ...current, timeline: { ...current.timeline, [key]: row } };
+    });
+  };
+
+  const movePromotionMilestone = (sourceIndex: number, targetIndex: number) => {
+    if (
+      sourceIndex === targetIndex ||
+      sourceIndex < 0 ||
+      sourceIndex >= MAX_TIMELINE_YEARS ||
+      targetIndex < 0 ||
+      targetIndex >= MAX_TIMELINE_YEARS
+    ) {
+      return;
+    }
+
+    updateChart((current) => {
+      const promotion = current.timeline.promotion.slice();
+      const moving = promotion[sourceIndex];
+      if (!moving) return current;
+      promotion[sourceIndex] = promotion[targetIndex] ?? "";
+      promotion[targetIndex] = moving;
+      return { ...current, timeline: { ...current.timeline, promotion } };
     });
   };
 
@@ -1272,6 +1295,10 @@ const RibbonChartPage: React.FC = () => {
 
   const renderTimelineCell = (label: string, key: TimelineRowKey, year: number, index: number) => {
     const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
+    if (key === "promotion") {
+      return renderPromotionCell(label, year, index, dataIndex);
+    }
+
     if (dataIndex === null) {
       return (
         <input
@@ -1330,6 +1357,125 @@ const RibbonChartPage: React.FC = () => {
             ))}
           </dl>
         </div>
+      </div>
+    );
+  };
+
+  const renderPromotionCell = (label: string, year: number, index: number, dataIndex: number | null) => {
+    if (dataIndex === null) {
+      return (
+        <input
+          key={`promotion-${year}`}
+          className="ribbon-cell-input ribbon-cell-input-outside"
+          value=""
+          placeholder="-"
+          disabled
+          readOnly
+          aria-label={`${label} ${year} outside EAD window`}
+        />
+      );
+    }
+
+    const value = chart.timeline.promotion[dataIndex] ?? "";
+    const cellInfo = getTimelineCellInfo("promotion", value, year);
+    const tooltipId = `promotion-${year}-cycle-info`;
+    const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= timelineViewYears - 2 ? " ribbon-info-cell-right-edge" : "";
+    const cellClass = [
+      "ribbon-info-cell",
+      "ribbon-promotion-cell",
+      edgeClass,
+      value ? "has-promotion" : "",
+      promotionDropIndex === dataIndex ? "is-drop-target" : ""
+    ].filter(Boolean).join(" ");
+
+    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      const transferIndex = Number(event.dataTransfer.getData("application/x-ribbon-promotion-index"));
+      const sourceIndex = Number.isInteger(transferIndex) ? transferIndex : draggedPromotionIndex;
+      if (sourceIndex !== null) {
+        movePromotionMilestone(sourceIndex, dataIndex);
+      }
+      setDraggedPromotionIndex(null);
+      setPromotionDropIndex(null);
+    };
+
+    return (
+      <div
+        key={`promotion-${year}`}
+        className={cellClass}
+        onDragEnter={(event) => {
+          event.preventDefault();
+          setPromotionDropIndex(dataIndex);
+        }}
+        onDragOver={(event) => {
+          event.preventDefault();
+          event.dataTransfer.dropEffect = "move";
+          setPromotionDropIndex(dataIndex);
+        }}
+        onDragLeave={() => {
+          if (promotionDropIndex === dataIndex) setPromotionDropIndex(null);
+        }}
+        onDrop={handleDrop}
+      >
+        <input
+          className="ribbon-cell-input"
+          value={value}
+          onChange={(event) => updateTimelineCell("promotion", dataIndex, event.currentTarget.value)}
+          aria-label={`${label} ${year}`}
+        />
+        {value && (
+          <button
+            type="button"
+            className="ribbon-promotion-drag-handle"
+            draggable
+            aria-label={`Move ${value}`}
+            title="Drag to move promotion year. Arrow keys move one year."
+            onDragStart={(event) => {
+              setDraggedPromotionIndex(dataIndex);
+              event.dataTransfer.effectAllowed = "move";
+              event.dataTransfer.setData("application/x-ribbon-promotion-index", String(dataIndex));
+            }}
+            onDragEnd={() => {
+              setDraggedPromotionIndex(null);
+              setPromotionDropIndex(null);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                movePromotionMilestone(dataIndex, dataIndex - 1);
+              }
+              if (event.key === "ArrowRight") {
+                event.preventDefault();
+                movePromotionMilestone(dataIndex, dataIndex + 1);
+              }
+            }}
+          >
+            Drag
+          </button>
+        )}
+        {cellInfo && (
+          <>
+            <button
+              type="button"
+              className="ribbon-cycle-info-button"
+              aria-label={`${value} timeline dates`}
+              aria-describedby={tooltipId}
+            >
+              i
+            </button>
+            <div id={tooltipId} className="ribbon-cycle-popover" role="tooltip">
+              <strong>{cellInfo.title}</strong>
+              <dl>
+                {cellInfo.milestones.map(([milestone, timing]) => (
+                  <div key={milestone}>
+                    <dt>{milestone}</dt>
+                    <dd>{timing}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </>
+        )}
       </div>
     );
   };
