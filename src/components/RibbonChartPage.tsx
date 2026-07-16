@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
-const SAVE_SCHEMA_VERSION = 10;
+const SAVE_SCHEMA_VERSION = 11;
+const RIBBON_CHART_VERSION = "2.0";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -641,7 +642,7 @@ const createDefaultChart = (): ChartData => {
         ]
       }
     ],
-    familyTrackerEnabled: true,
+    familyTrackerEnabled: false,
     familyKids: createDefaultFamilyKids(),
     jobExperiences: {
       deployment: false,
@@ -1438,7 +1439,7 @@ const RibbonChartPage: React.FC = () => {
             <div className="ribbon-title-block">
               <div className="ribbon-title-row">
                 <h2>Cyber Operations Officer Ribbon Chart</h2>
-                <span>Version 1.9.0</span>
+                <span>Version {RIBBON_CHART_VERSION}</span>
               </div>
               <div className="ribbon-identity-row">
                 <div className="ribbon-rank-cell">
