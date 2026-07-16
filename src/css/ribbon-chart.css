@@ -110,33 +110,21 @@
   text-transform: uppercase;
 }
 
-.ribbon-view-toggle div {
-  display: inline-flex;
-  min-height: 2.25rem;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background: var(--surface-color);
-}
-
-.ribbon-actions .ribbon-view-toggle button {
-  min-height: 0;
-  border: 0;
-  border-right: 1px solid var(--border-color);
-  border-radius: 0;
-  background: transparent;
-  padding: 0.35rem 0.55rem;
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.ribbon-actions .ribbon-view-toggle button:last-child {
-  border-right: 0;
-}
-
-.ribbon-actions .ribbon-view-toggle button.is-selected {
-  background: #0f172a;
+.ribbon-actions .ribbon-career-open-button {
+  min-height: 2.35rem;
+  border-color: #1d4ed8;
+  background: #2563eb;
   color: #ffffff;
+  padding-inline: 0.85rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+}
+
+.ribbon-actions .ribbon-career-open-button:hover,
+.ribbon-actions .ribbon-career-open-button:focus-visible {
+  border-color: #93c5fd;
+  background: #1d4ed8;
 }
 
 .ribbon-feature-toggle {
@@ -1141,10 +1129,10 @@
   width: min(1600px, calc(100vw - 2rem));
   max-height: calc(100vh - 2rem);
   overflow: hidden;
-  border: 1px solid var(--border-color);
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
-  background: var(--surface-color);
-  color: var(--text-color);
+  background: #f8fafc;
+  color: #111827;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
@@ -1153,14 +1141,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--surface-muted-color);
+  border-bottom: 1px solid #cbd5e1;
+  background: #e2e8f0;
   padding: 0.85rem 1rem;
+}
+
+.ribbon-career-header .ribbon-eyebrow {
+  color: #475569;
 }
 
 .ribbon-career-header h2 {
   margin: 0;
-  color: var(--text-strong);
+  color: #0f172a;
   font-size: clamp(1.15rem, 2vw, 1.65rem);
   line-height: 1.15;
 }
@@ -1168,7 +1160,7 @@
 .ribbon-career-range {
   display: block;
   margin-top: 0.15rem;
-  color: var(--muted-text);
+  color: #334155;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -1184,7 +1176,7 @@
 .ribbon-career-anchor-toggle {
   display: grid;
   gap: 0.2rem;
-  color: var(--muted-text);
+  color: #475569;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1194,17 +1186,17 @@
   display: inline-flex;
   min-height: 2.25rem;
   overflow: hidden;
-  border: 1px solid var(--border-color);
+  border: 1px solid #94a3b8;
   border-radius: 8px;
-  background: var(--surface-color);
+  background: #ffffff;
 }
 
 .ribbon-career-header button {
   min-height: 2.25rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid #94a3b8;
   border-radius: 8px;
-  background: var(--surface-color);
-  color: var(--text-color);
+  background: #ffffff;
+  color: #0f172a;
   padding: 0.45rem 0.7rem;
   font: inherit;
   font-size: 0.9rem;
@@ -1214,9 +1206,10 @@
 .ribbon-career-header .ribbon-career-anchor-toggle button {
   min-height: 0;
   border: 0;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid #94a3b8;
   border-radius: 0;
   background: transparent;
+  color: #0f172a;
   padding: 0.35rem 0.55rem;
   font-size: 0.82rem;
   font-weight: 800;
@@ -1227,13 +1220,13 @@
 }
 
 .ribbon-career-header .ribbon-career-anchor-toggle button.is-selected {
-  background: #0f172a;
+  background: #1d4ed8;
   color: #ffffff;
 }
 
 .ribbon-career-header button:hover,
 .ribbon-career-header button:focus-visible {
-  border-color: #2563eb;
+  border-color: #1d4ed8;
   outline: none;
 }
 
@@ -1241,13 +1234,16 @@
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  background: #f8fafc;
   padding: 0.75rem;
 }
 
 .ribbon-career-grid {
   width: 100%;
   grid-template-columns: minmax(70px, 0.72fr) repeat(var(--ribbon-year-count, 20), minmax(0, 1fr));
-  font-size: clamp(0.48rem, 0.58vw, 0.72rem);
+  background: #ffffff;
+  color: #111827;
+  font-size: clamp(0.62rem, 0.72vw, 0.82rem);
 }
 
 .ribbon-career-grid .ribbon-timeline-label,
@@ -1269,15 +1265,45 @@
 }
 
 .ribbon-career-grid .ribbon-timeline-label {
+  background: #e5e7eb;
+  color: #111827;
   padding: 0.08rem;
 }
 
+.ribbon-career-grid .ribbon-year-cell {
+  background: #ffffff;
+  color: #111827;
+}
+
+.ribbon-career-grid .ribbon-scod-label,
+.ribbon-career-grid .ribbon-scod-cell {
+  background: #fed7aa;
+  color: #7c2d12;
+}
+
 .ribbon-career-grid .ribbon-cell-input {
+  background: #ffffff;
+  color: #111827;
   padding: 0.08rem 0.12rem;
+}
+
+.ribbon-career-grid .ribbon-cell-input-outside:disabled {
+  background: #e5e7eb;
+  color: #64748b;
+}
+
+.ribbon-career-grid .ribbon-info-cell,
+.ribbon-career-grid .ribbon-family-cell {
+  background: #ffffff;
+  color: #111827;
 }
 
 .ribbon-career-grid .ribbon-info-cell .ribbon-cell-input {
   padding-right: 1.05rem;
+}
+
+.ribbon-career-grid .ribbon-promotion-cell.has-promotion {
+  background: #bfdbfe;
 }
 
 .ribbon-career-grid .ribbon-promotion-cell.has-promotion .ribbon-cell-input {
@@ -1311,6 +1337,9 @@
 
 .ribbon-career-grid .ribbon-vector-track {
   min-height: 2rem;
+  background:
+    linear-gradient(to right, rgba(15, 23, 42, 0.34) 1px, transparent 1px),
+    #cbd5e1;
 }
 
 .ribbon-career-grid .ribbon-vector-segment {
@@ -1318,7 +1347,9 @@
   bottom: 0.15rem;
   min-width: 0;
   border-width: 1px;
-  font-size: 0.68rem;
+  border-color: #0f172a;
+  font-size: 0.74rem;
+  font-weight: 800;
 }
 
 .ribbon-career-grid .ribbon-vector-segment span {

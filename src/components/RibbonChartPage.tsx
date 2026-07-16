@@ -3,7 +3,7 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.3";
+const RIBBON_CHART_VERSION = "2.4";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -1670,16 +1670,11 @@ const RibbonChartPage: React.FC = () => {
                 {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>
-            <div className="ribbon-view-toggle" role="group" aria-label="Timeline years shown">
+            <div className="ribbon-view-toggle">
               <span>View</span>
-              <div>
-                <button type="button" className="is-selected" aria-pressed="true">
-                  10 yr
-                </button>
-                <button type="button" aria-haspopup="dialog" onClick={() => setCareerViewOpen(true)}>
-                  20 yr
-                </button>
-              </div>
+              <button type="button" className="ribbon-career-open-button" aria-haspopup="dialog" onClick={() => setCareerViewOpen(true)}>
+                Open 20 Year View
+              </button>
             </div>
             <label className="ribbon-feature-toggle">
               <span>Kids</span>
