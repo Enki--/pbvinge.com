@@ -3,7 +3,7 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.4";
+const RIBBON_CHART_VERSION = "2.5";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -12,7 +12,7 @@ const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
 
 const RANK_OPTIONS = ["Col", "Col(s)", "Lt Col", "Lt Col(s)", "Maj", "Maj(s)", "Capt", "1st Lt", "2d Lt"];
-const YEAR_GROUP_OPTIONS = Array.from({ length: 29 }, (_, index) => String(2025 - index));
+const YEAR_GROUP_OPTIONS = Array.from({ length: 30 }, (_, index) => String(2026 - index));
 const TIMELINE_YEAR_OPTIONS = Array.from({ length: 76 }, (_, index) => 1980 + index);
 const DEFAULT_VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"];
 const GRADE_OPTIONS = [
@@ -54,6 +54,12 @@ const PROMOTION_RANK_BY_LABEL: Record<string, string> = {
   "IPZ Lt Col": "Lt Col",
   "IPZ Col": "Col"
 };
+const PROMOTION_YEAR_GROUP_MILESTONES = [
+  { label: "IPZ Capt", offset: 4 },
+  { label: "IPZ Maj", offset: 9 },
+  { label: "IPZ Lt Col", offset: 14 },
+  { label: "IPZ Col", offset: 20 }
+] as const;
 
 const IDE_OPTIONS = [
   "IDE Programs", "ACSC", "ACSC_PAS", "AFIT PhD", "AF_Legis", "AFIT Masters", "Army_CS", "ASAM",
@@ -534,10 +540,9 @@ const buildTimelineRows = (eadYear: number, adjustedYearGroup: number) => {
   const developmentalEducation = blankRow();
   const careerFieldEducation = blankRow();
 
-  setLabelForYear(promotion, years, adjustedYearGroup + 4, "IPZ Capt");
-  setLabelForYear(promotion, years, adjustedYearGroup + 8, "IPZ Maj");
-  setLabelForYear(promotion, years, adjustedYearGroup + 13, "IPZ Lt Col");
-  setLabelForYear(promotion, years, adjustedYearGroup + 20, "IPZ Col");
+  PROMOTION_YEAR_GROUP_MILESTONES.forEach(({ label, offset }) => {
+    setLabelForYear(promotion, years, adjustedYearGroup + offset, label);
+  });
 
   setLabelForRange(careerFieldEducation, years, adjustedYearGroup + 6, adjustedYearGroup + 8, "Cyber 200");
   setLabelForRange(careerFieldEducation, years, adjustedYearGroup + 12, adjustedYearGroup + 15, "Cyber 300");
@@ -1026,6 +1031,17 @@ const RibbonChartPage: React.FC = () => {
     updateChart((current) => ({ ...current, identity: { ...current.identity, [key]: value } }));
   };
 
+  const updateYearGroup = (value: string) => {
+    updateChart((current) => ({
+      ...current,
+      identity: {
+        ...current.identity,
+        yearGroup: value,
+        adjustedYearGroup: value
+      }
+    }));
+  };
+
   const updateEligibility = (group: keyof EligibilityState, key: keyof EligibilityGroup, value: boolean) => {
     updateChart((current) => ({
       ...current,
@@ -1322,10 +1338,17 @@ const RibbonChartPage: React.FC = () => {
     setImportMessage("Reset chart.");
   };
 
-  const renderTimelineCell = (label: string, key: TimelineRowKey, year: number, index: number, yearCount: number) => {
+  const renderTimelineCell = (
+    label: string,
+    key: TimelineRowKey,
+    year: number,
+    index: number,
+    yearCount: number,
+    isCareerOverview = false
+  ) => {
     const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
     if (key === "promotion") {
-      return renderPromotionCell(label, year, index, yearCount, dataIndex);
+      return renderPromotionCell(label, year, index, yearCount, dataIndex, isCareerOverview);
     }
 
     if (dataIndex === null) {
@@ -1344,6 +1367,19 @@ const RibbonChartPage: React.FC = () => {
 
     const value = chart.timeline[key][dataIndex] ?? "";
     const cellInfo = getTimelineCellInfo(key, value, year);
+
+    if (isCareerOverview) {
+      return (
+        <textarea
+          key={`${key}-${year}`}
+          className="ribbon-cell-input ribbon-career-cell-textarea"
+          rows={2}
+          value={value}
+          onChange={(event) => updateTimelineCell(key, dataIndex, event.currentTarget.value)}
+          aria-label={`${label} ${year}`}
+        />
+      );
+    }
 
     if (!cellInfo) {
       return (
@@ -1390,7 +1426,14 @@ const RibbonChartPage: React.FC = () => {
     );
   };
 
-  const renderPromotionCell = (label: string, year: number, index: number, yearCount: number, dataIndex: number | null) => {
+  const renderPromotionCell = (
+    label: string,
+    year: number,
+    index: number,
+    yearCount: number,
+    dataIndex: number | null,
+    isCareerOverview = false
+  ) => {
     if (dataIndex === null) {
       return (
         <input
@@ -1407,6 +1450,20 @@ const RibbonChartPage: React.FC = () => {
 
     const value = chart.timeline.promotion[dataIndex] ?? "";
     const cellInfo = getTimelineCellInfo("promotion", value, year);
+
+    if (isCareerOverview) {
+      return (
+        <textarea
+          key={`promotion-${year}`}
+          className={`ribbon-cell-input ribbon-career-cell-textarea ribbon-career-promotion-cell${value ? " has-promotion" : ""}`}
+          rows={2}
+          value={value}
+          onChange={(event) => updateTimelineCell("promotion", dataIndex, event.currentTarget.value)}
+          aria-label={`${label} ${year}`}
+        />
+      );
+    }
+
     const tooltipId = `promotion-${year}-cycle-info`;
     const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= yearCount - 2 ? " ribbon-info-cell-right-edge" : "";
     const cellClass = [
@@ -1509,10 +1566,10 @@ const RibbonChartPage: React.FC = () => {
     );
   };
 
-  const renderTimelineRow = (label: string, key: TimelineRowKey, displayYears: number[]) => (
+  const renderTimelineRow = (label: string, key: TimelineRowKey, displayYears: number[], isCareerOverview = false) => (
     <>
       <div className="ribbon-timeline-label">{label}</div>
-      {displayYears.map((year, index) => renderTimelineCell(label, key, year, index, displayYears.length))}
+      {displayYears.map((year, index) => renderTimelineCell(label, key, year, index, displayYears.length, isCareerOverview))}
     </>
   );
 
@@ -1520,14 +1577,15 @@ const RibbonChartPage: React.FC = () => {
     const yearCount = displayYears.length;
     const displayStart = displayYears[0] ?? timelineStart;
     const displayEnd = displayStart + yearCount;
+    const isCareerOverview = scope === "career";
     const gridStyle = { "--ribbon-year-count": yearCount } as React.CSSProperties;
 
     return (
       <div className={`ribbon-timeline-grid ${className}`} style={gridStyle}>
-        {renderTimelineRow("Promotion", "promotion", displayYears)}
-        {renderTimelineRow("Leadership", "leadership", displayYears)}
-        {renderTimelineRow("PME", "developmentalEducation", displayYears)}
-        {renderTimelineRow("Career Field Edu", "careerFieldEducation", displayYears)}
+        {renderTimelineRow("Promotion", "promotion", displayYears, isCareerOverview)}
+        {renderTimelineRow("Leadership", "leadership", displayYears, isCareerOverview)}
+        {renderTimelineRow("PME", "developmentalEducation", displayYears, isCareerOverview)}
+        {renderTimelineRow("Career Field Edu", "careerFieldEducation", displayYears, isCareerOverview)}
 
         <div className="ribbon-timeline-label">Calendar Year</div>
         {displayYears.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
@@ -1660,7 +1718,7 @@ const RibbonChartPage: React.FC = () => {
             </label>
             <label className="ribbon-year-control">
               <span>YG</span>
-              <select value={chart.identity.yearGroup} onChange={(event) => updateIdentity("yearGroup", event.currentTarget.value)}>
+              <select value={chart.identity.yearGroup} onChange={(event) => updateYearGroup(event.currentTarget.value)}>
                 {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>

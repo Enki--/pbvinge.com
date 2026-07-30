@@ -1232,18 +1232,18 @@
 
 .ribbon-career-body {
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
   background: #f8fafc;
   padding: 0.75rem;
 }
 
 .ribbon-career-grid {
   width: 100%;
-  grid-template-columns: minmax(70px, 0.72fr) repeat(var(--ribbon-year-count, 20), minmax(0, 1fr));
+  min-width: 1540px;
+  grid-template-columns: 100px repeat(var(--ribbon-year-count, 20), minmax(72px, 1fr));
   background: #ffffff;
   color: #111827;
-  font-size: clamp(0.62rem, 0.72vw, 0.82rem);
+  font-size: clamp(0.7rem, 0.76vw, 0.84rem);
 }
 
 .ribbon-career-grid .ribbon-timeline-label,
@@ -1253,7 +1253,7 @@
 .ribbon-career-grid .ribbon-info-cell,
 .ribbon-career-grid .ribbon-family-cell,
 .ribbon-career-grid .ribbon-vector-track {
-  min-height: 1.75rem;
+  min-height: 3rem;
 }
 
 .ribbon-career-grid .ribbon-timeline-label,
@@ -1282,9 +1282,23 @@
 }
 
 .ribbon-career-grid .ribbon-cell-input {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
   background: #ffffff;
   color: #111827;
+  font: inherit;
+  font-weight: 700;
   padding: 0.08rem 0.12rem;
+}
+
+.ribbon-career-grid .ribbon-career-cell-textarea {
+  field-sizing: content;
+  overflow: hidden;
+  resize: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.12;
 }
 
 .ribbon-career-grid .ribbon-cell-input-outside:disabled {
@@ -1303,6 +1317,10 @@
 }
 
 .ribbon-career-grid .ribbon-promotion-cell.has-promotion {
+  background: #bfdbfe;
+}
+
+.ribbon-career-grid .ribbon-career-promotion-cell.has-promotion {
   background: #bfdbfe;
 }
 
@@ -1330,13 +1348,26 @@
   gap: 0.12rem;
 }
 
+.ribbon-career-grid .ribbon-vector-name-input {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #111827;
+  padding: 0.05rem 0.1rem;
+  font: inherit;
+  font-weight: 800;
+  text-align: center;
+}
+
 .ribbon-career-grid .ribbon-vector-label button {
   padding: 0.08rem 0.1rem;
-  font-size: 0.58rem;
+  font-size: 0.68rem;
 }
 
 .ribbon-career-grid .ribbon-vector-track {
-  min-height: 2rem;
+  min-height: 2.8rem;
   background:
     linear-gradient(to right, rgba(15, 23, 42, 0.34) 1px, transparent 1px),
     #cbd5e1;
@@ -1354,6 +1385,12 @@
 
 .ribbon-career-grid .ribbon-vector-segment span {
   max-width: calc(100% - 0.9rem);
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.08;
+  text-align: center;
 }
 
 .ribbon-career-grid .ribbon-vector-handle {
