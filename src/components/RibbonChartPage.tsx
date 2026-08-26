@@ -3,11 +3,11 @@ import "../css/ribbon-chart.css";
 
 const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
 const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.5";
+const RIBBON_CHART_VERSION = "2.6";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
-const MAX_TIMELINE_YEARS = 20;
+const MAX_TIMELINE_YEARS = 30;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
 
@@ -364,9 +364,17 @@ const FIELD_GRADE_PROMOTION_SCHEDULES: Record<FieldGradePromotionRank, FieldGrad
     bPopulation: "Colonel, LAF-J/CHAP/NC/MSC/BSC and MC/DC",
     rows: [
       ["PRF accounting date", "Oct 4", -1, "Oct 18", -1],
+      ["OPBs flow", "Oct 9", -1, "Oct 23", -1],
+      ["MPF OPB suspense", "Oct 19", -1, "Nov 2", -1],
+      ["Senior-rater RIP/DQHB flows", "Nov 4", -1, "Nov 18", -1],
+      ["AFPC opt-out cutoff", "Nov 8", -1, "Nov 22", -1],
+      ["AF Student MLR", "Nov 18", -1, "Jan 6", 0],
+      ["Final allocation date", "Dec 26", -1, "Jan 9", 0],
       ["PRF cutoff date", "Jan 2", 0, "Jan 16", 0],
+      ["ML MLR complete / codes updated", "Jan 22", 0, "Feb 5", 0],
       ["AF-level PRFs due", "Jan 27", 0, "Feb 10", 0],
       ["Remaining PRFs due AFPC", "Feb 1", 0, "Feb 15", 0],
+      ["AF-level MLR", "Feb 3", 0, "Feb 17", 0],
       ["Letters received by AFPC", "Feb 21", 0, "Mar 7", 0],
       ["Central board convenes", "Mar 3", 0, "Mar 17", 0]
     ]
@@ -459,6 +467,8 @@ const getFieldGradePromotionCycle = (label: string, targetRank: FieldGradePromot
       ...boardRows,
       ["PRF accounting", "AFPC matches eligibles to senior raters using MilPDS unit assignment data"],
       ["PRF cutoff", "Senior raters sign on or after this date; it is not the final submission deadline"],
+      ["IPZ eligibility", "SecAF sets the IPZ annually for each competitive category; confirm against the current board announcement/MyFSS record"],
+      ["Minimum eligibility", "At least 3 years in the current grade by the board convening date, unless waived for authorized BPZ consideration"],
       ["Source note", "Dates roll from the CY26 milestone schedule; verify exact annual PSDM/MyFSS weekend and holiday shifts"]
     ]
   };
@@ -1238,7 +1248,7 @@ const RibbonChartPage: React.FC = () => {
     const addEnd = Math.min(displayEnd, careerEnd);
 
     if (addEnd - addStart < 1) {
-      setImportMessage("Move Start Year inside the EAD 20-year window before adding a vector block.");
+      setImportMessage("Move Start Year inside the EAD 30-year window before adding a vector block.");
       return;
     }
 
@@ -1731,7 +1741,7 @@ const RibbonChartPage: React.FC = () => {
             <div className="ribbon-view-toggle">
               <span>View</span>
               <button type="button" className="ribbon-career-open-button" aria-haspopup="dialog" onClick={() => setCareerViewOpen(true)}>
-                Open 20 Year View
+                Open 30 Year View
               </button>
             </div>
             <label className="ribbon-feature-toggle">
@@ -2096,12 +2106,12 @@ const RibbonChartPage: React.FC = () => {
           <section className="ribbon-career-dialog" role="dialog" aria-modal="true" aria-labelledby="ribbon-career-title">
             <header className="ribbon-career-header">
               <div>
-                <p className="ribbon-eyebrow">20 Year View</p>
-                <h2 id="ribbon-career-title">20 Year Timeline</h2>
+                <p className="ribbon-eyebrow">30 Year View</p>
+                <h2 id="ribbon-career-title">30 Year Timeline</h2>
                 <span className="ribbon-career-range">{careerDisplayStart} - {careerDisplayEnd - 1}</span>
               </div>
               <div className="ribbon-career-header-actions">
-                <div className="ribbon-career-anchor-toggle" role="group" aria-label="20 year timeline start">
+                <div className="ribbon-career-anchor-toggle" role="group" aria-label="30 year timeline start">
                   <span>Range</span>
                   <div>
                     <button
@@ -2110,7 +2120,7 @@ const RibbonChartPage: React.FC = () => {
                       aria-pressed={careerViewAnchor === "ead"}
                       onClick={() => setCareerViewAnchor("ead")}
                     >
-                      EAD + 19
+                      EAD + 29
                     </button>
                     <button
                       type="button"
@@ -2118,7 +2128,7 @@ const RibbonChartPage: React.FC = () => {
                       aria-pressed={careerViewAnchor === "view"}
                       onClick={() => setCareerViewAnchor("view")}
                     >
-                      View Year + 19
+                      View Year + 29
                     </button>
                   </div>
                 </div>

@@ -1231,6 +1231,7 @@
 }
 
 .ribbon-career-body {
+  min-width: 0;
   min-height: 0;
   overflow: auto;
   background: #f8fafc;
