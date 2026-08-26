@@ -576,6 +576,15 @@
 }
 
 @media (max-width: 520px) {
+  .join-editor-link {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 auto;
+    align-self: stretch;
+    text-align: center;
+    white-space: normal;
+  }
+
   .join-upload-panel,
   .join-comparison {
     border-radius: 13px;
@@ -584,6 +593,25 @@
 
   .join-upload-card {
     min-height: 155px;
+  }
+
+  .join-upload-copy h2 {
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .join-upload-meta span:first-child {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .join-upload-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .join-upload-actions .join-button {
+    width: 100%;
   }
 
   .join-view-controls,
