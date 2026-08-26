@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
+import { extractRibbonChartData, RIBBON_SAVE_SCHEMA } from "../utils/ribbonChartFile";
 
-const SAVE_SCHEMA = "pbvinge-17x-ribbon-chart";
+const SAVE_SCHEMA = RIBBON_SAVE_SCHEMA;
 const SAVE_SCHEMA_VERSION = 11;
 const RIBBON_CHART_VERSION = "2.6";
 const DEFAULT_EAD_YEAR = 2014;
@@ -1323,11 +1324,8 @@ const RibbonChartPage: React.FC = () => {
     reader.onload = () => {
       try {
         const parsed = JSON.parse(String(reader.result)) as unknown;
-        if (!parsed || typeof parsed !== "object") throw new Error("Invalid chart file");
-        const candidate = parsed as Partial<RibbonSaveFile> | Partial<ChartData>;
-        const data = "schema" in candidate && candidate.schema === SAVE_SCHEMA ? (candidate as Partial<RibbonSaveFile>).data : candidate;
-        if (!data) throw new Error("Missing chart data");
-        const normalized = normalizeChart(data as Partial<ChartData>);
+        const data = extractRibbonChartData(parsed);
+        const normalized = normalizeChart(data as unknown as Partial<ChartData>);
         setChart(normalized);
         setSelectedSegmentId(normalized.vectors.flatMap((row) => row.segments)[0]?.id ?? null);
         setDirty(false);
@@ -1704,6 +1702,7 @@ const RibbonChartPage: React.FC = () => {
         <div>
           <p className="ribbon-eyebrow">17X Ribbon Chart</p>
           <h1>Cyber Operations Officer Ribbon Chart</h1>
+          <a className="ribbon-related-link" href="/17x-join-spouse">Compare two careers in the Join Spouse planner</a>
         </div>
         <div className="ribbon-actions" aria-label="Ribbon chart actions">
           <div className="ribbon-populate-group" aria-label="Timeline setup">

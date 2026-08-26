@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import JoinSpouseRibbonChartPage from "../components/JoinSpouseRibbonChartPage";
+
+const title = "Join Spouse Career Planner - pbvinge";
+const description = "Compare two military career ribbon charts by calendar year and export a shareable PDF.";
+---
+
+<Layout title={title} description={description}>
+  <JoinSpouseRibbonChartPage client:load />
+</Layout>
+
+<style is:global>
+  .site-main {
+    max-width: 1600px;
+  }
+</style>
