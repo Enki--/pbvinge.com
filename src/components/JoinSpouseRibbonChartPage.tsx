@@ -4,7 +4,8 @@ import {
   parseRibbonComparisonChart,
   ribbonTimelineValue,
   type RibbonComparisonChart,
-  type RibbonComparisonSegment
+  type RibbonComparisonSegment,
+  type RibbonComparisonVector
 } from "../utils/ribbonChartFile";
 import { buildJoinSpousePdf, joinSpousePdfFilename } from "../utils/joinSpousePdf";
 
@@ -120,11 +121,12 @@ const timelineCell = (chart: RibbonComparisonChart, key: "promotion" | "developm
 
 const VectorTrack: React.FC<{
   chart: RibbonComparisonChart;
+  vector: RibbonComparisonVector;
   startYear: number;
   rangeYears: RangeYears;
-}> = ({ chart, startYear, rangeYears }) => {
+}> = ({ chart, vector, startYear, rangeYears }) => {
   const endYear = startYear + rangeYears;
-  const visibleSegments = chart.vectorOne.segments.flatMap((segment: RibbonComparisonSegment) => {
+  const visibleSegments = vector.segments.flatMap((segment: RibbonComparisonSegment) => {
     const visibleStart = Math.max(segment.startYear, startYear);
     const visibleEnd = Math.min(segment.endYear, endYear);
     return visibleEnd > visibleStart ? [{ segment, visibleStart, visibleEnd }] : [];
@@ -134,7 +136,7 @@ const VectorTrack: React.FC<{
     <div
       className="join-vector-track"
       style={{ backgroundSize: `${100 / rangeYears}% 100%` }}
-      aria-label={`${chart.identity.name} ${chart.vectorOne.label}`}
+      aria-label={`${chart.identity.name} ${vector.label}`}
     >
       {visibleSegments.map(({ segment, visibleStart, visibleEnd }) => {
         const segmentColor = VECTOR_COLORS[segment.color] ?? VECTOR_COLORS.green;
@@ -178,8 +180,12 @@ const MemberTimeline: React.FC<{
     <div className="join-row-label">PME</div>
     {years.map((year) => timelineCell(chart, "developmentalEducation", year))}
 
-    <div className="join-row-label">{chart.vectorOne.label || "Vec 1"}</div>
-    <VectorTrack chart={chart} startYear={startYear} rangeYears={rangeYears} />
+    {chart.vectors.map((vector, index) => (
+      <React.Fragment key={vector.id}>
+        <div className="join-row-label">{vector.label || `Vec ${index + 1}`}</div>
+        <VectorTrack chart={chart} vector={vector} startYear={startYear} rangeYears={rangeYears} />
+      </React.Fragment>
+    ))}
   </>
 );
 
@@ -249,7 +255,7 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
           <p className="join-eyebrow">17X Ribbon Chart</p>
           <h1>Join Spouse Career Planner</h1>
           <p className="join-lede">
-            Place two career plans on one calendar to see promotion, PME, and primary assignment timing together.
+            Place two career plans on one calendar to see promotion, PME, and all three career vector options together.
           </p>
         </div>
         <a className="join-editor-link" href="/17x-ribbon-chart">Open individual ribbon chart</a>

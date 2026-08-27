@@ -30,7 +30,7 @@ export interface RibbonComparisonVector {
 export interface RibbonComparisonChart {
   identity: RibbonComparisonIdentity;
   timeline: RibbonComparisonTimeline;
-  vectorOne: RibbonComparisonVector;
+  vectors: RibbonComparisonVector[];
 }
 
 type UnknownRecord = Record<string, unknown>;
@@ -78,7 +78,7 @@ export const extractRibbonChartData = (input: unknown): UnknownRecord => {
   return input;
 };
 
-const comparisonSegments = (value: unknown, eadYear: number): RibbonComparisonSegment[] => {
+const comparisonSegments = (value: unknown, eadYear: number, vectorId: string): RibbonComparisonSegment[] => {
   if (!Array.isArray(value)) return [];
   const careerEnd = eadYear + RIBBON_TIMELINE_YEARS;
 
@@ -95,7 +95,7 @@ const comparisonSegments = (value: unknown, eadYear: number): RibbonComparisonSe
     if (endYear <= startYear) return [];
 
     return [{
-      id: stringValue(entry.id, `vec-1-segment-${index + 1}`),
+      id: stringValue(entry.id, `${vectorId}-segment-${index + 1}`),
       label: stringValue(entry.label, "Career block"),
       startYear,
       endYear,
@@ -104,17 +104,27 @@ const comparisonSegments = (value: unknown, eadYear: number): RibbonComparisonSe
   }).sort((a, b) => a.startYear - b.startYear);
 };
 
-const comparisonVectorOne = (value: unknown, eadYear: number): RibbonComparisonVector => {
+const comparisonVectors = (value: unknown, eadYear: number): RibbonComparisonVector[] => {
   const rows = Array.isArray(value) ? value.filter(isRecord) : [];
-  const row = rows.find((candidate) => candidate.id === "vec-1")
-    ?? rows.find((candidate) => stringValue(candidate.label).trim().toLowerCase() === "vec 1")
-    ?? rows[0];
+  const recognizedRows = rows.some((candidate) => {
+    const id = stringValue(candidate.id).trim().toLowerCase();
+    const label = stringValue(candidate.label).trim().toLowerCase();
+    return ["vec-1", "vec-2", "vec-3"].includes(id) || ["vec 1", "vec 2", "vec 3"].includes(label);
+  });
 
-  return {
-    id: stringValue(row?.id, "vec-1"),
-    label: stringValue(row?.label, "Vec 1"),
-    segments: comparisonSegments(row?.segments, eadYear)
-  };
+  return [1, 2, 3].map((vectorNumber, index) => {
+    const defaultId = `vec-${vectorNumber}`;
+    const defaultLabel = `Vec ${vectorNumber}`;
+    const row = rows.find((candidate) => candidate.id === defaultId)
+      ?? rows.find((candidate) => stringValue(candidate.label).trim().toLowerCase() === defaultLabel.toLowerCase())
+      ?? (recognizedRows ? undefined : rows[index]);
+
+    return {
+      id: stringValue(row?.id, defaultId).trim() || defaultId,
+      label: stringValue(row?.label, defaultLabel).trim() || defaultLabel,
+      segments: comparisonSegments(row?.segments, eadYear, defaultId)
+    };
+  });
 };
 
 export const parseRibbonComparisonChart = (input: unknown): RibbonComparisonChart => {
@@ -142,7 +152,7 @@ export const parseRibbonComparisonChart = (input: unknown): RibbonComparisonChar
       promotion: stringArray(timeline.promotion),
       developmentalEducation: stringArray(timeline.developmentalEducation)
     },
-    vectorOne: comparisonVectorOne(data.vectors, eadYear)
+    vectors: comparisonVectors(data.vectors, eadYear)
   };
 };
 

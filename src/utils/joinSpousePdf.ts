@@ -1,4 +1,4 @@
-import type { RibbonComparisonChart, RibbonComparisonSegment } from "./ribbonChartFile";
+import type { RibbonComparisonChart, RibbonComparisonSegment, RibbonComparisonVector } from "./ribbonChartFile";
 import { ribbonTimelineValue } from "./ribbonChartFile";
 
 export interface JoinSpousePdfOptions {
@@ -184,7 +184,7 @@ const drawCellRow = (
   values.forEach((value, index) => {
     const cellX = x + labelWidth + index * cellWidth;
     canvas.rect(cellX, y, cellWidth, rowHeight, value ? activeFill : COLORS.white);
-    if (value) canvas.textBox(value, cellX, y, cellWidth, rowHeight, { fontSize: 7.2, bold: true, maxLines: 4 });
+    if (value) canvas.textBox(value, cellX, y, cellWidth, rowHeight, { fontSize: 6.8, bold: true, maxLines: 3 });
   });
 };
 
@@ -198,7 +198,7 @@ const visibleSegments = (segments: RibbonComparisonSegment[], startYear: number,
 
 const drawVectorRow = (
   canvas: PdfCanvas,
-  chart: RibbonComparisonChart,
+  vector: RibbonComparisonVector,
   startYear: number,
   x: number,
   y: number,
@@ -208,20 +208,20 @@ const drawVectorRow = (
 ) => {
   const endYear = startYear + YEARS_PER_PAGE;
   canvas.rect(x, y, labelWidth, rowHeight, COLORS.pale);
-  canvas.textBox(chart.vectorOne.label || "Vec 1", x, y, labelWidth, rowHeight, { fontSize: 8, bold: true, maxLines: 2, align: "left" });
+  canvas.textBox(vector.label, x, y, labelWidth, rowHeight, { fontSize: 8, bold: true, maxLines: 2, align: "left" });
 
   for (let index = 0; index < YEARS_PER_PAGE; index += 1) {
     canvas.rect(x + labelWidth + index * cellWidth, y, cellWidth, rowHeight, COLORS.white);
   }
 
-  visibleSegments(chart.vectorOne.segments, startYear, endYear).forEach(({ segment, visibleStart, visibleEnd }) => {
+  visibleSegments(vector.segments, startYear, endYear).forEach(({ segment, visibleStart, visibleEnd }) => {
     const segmentX = x + labelWidth + (visibleStart - startYear) * cellWidth;
     const segmentWidth = (visibleEnd - visibleStart) * cellWidth;
     const segmentColor = VECTOR_COLORS[segment.color] ?? VECTOR_COLORS.green;
-    canvas.rect(segmentX, y + 7, segmentWidth, rowHeight - 14, segmentColor.background, COLORS.ink, 0.7);
+    canvas.rect(segmentX, y + 5, segmentWidth, rowHeight - 10, segmentColor.background, COLORS.ink, 0.7);
     if (segmentWidth >= 24) {
-      canvas.textBox(segment.label, segmentX, y + 7, segmentWidth, rowHeight - 14, {
-        fontSize: 7,
+      canvas.textBox(segment.label, segmentX, y + 5, segmentWidth, rowHeight - 10, {
+        fontSize: 6.5,
         bold: true,
         fill: segmentColor.foreground,
         maxLines: 2
@@ -242,9 +242,9 @@ const drawMember = (
 ) => {
   const accent = memberNumber === 1 ? COLORS.memberOne : COLORS.memberTwo;
   const tableWidth = labelWidth + cellWidth * YEARS_PER_PAGE;
-  const headerHeight = 28;
-  const rowHeight = 54;
-  const vectorHeight = 50;
+  const headerHeight = 26;
+  const rowHeight = 40;
+  const vectorHeight = 34;
   const years = Array.from({ length: YEARS_PER_PAGE }, (_, index) => pageStart + index);
 
   canvas.rect(x, y, tableWidth, headerHeight, accent, accent);
@@ -281,8 +281,10 @@ const drawMember = (
     COLORS.pme
   );
 
-  drawVectorRow(canvas, chart, pageStart, x, pmeY + rowHeight, labelWidth, cellWidth, vectorHeight);
-  return headerHeight + rowHeight * 2 + vectorHeight;
+  chart.vectors.forEach((vector, index) => {
+    drawVectorRow(canvas, vector, pageStart, x, pmeY + rowHeight + index * vectorHeight, labelWidth, cellWidth, vectorHeight);
+  });
+  return headerHeight + rowHeight * 2 + vectorHeight * chart.vectors.length;
 };
 
 const createPageContent = (
@@ -305,7 +307,7 @@ const createPageContent = (
     fill: COLORS.muted,
     align: "right"
   });
-  canvas.text("Promotion, professional military education, and primary career vector", tableX, 49, 8.5, { fill: COLORS.muted });
+  canvas.text("Promotion, professional military education, and three career vector options", tableX, 49, 8.5, { fill: COLORS.muted });
 
   const calendarY = 70;
   const calendarHeight = 26;
