@@ -1494,6 +1494,10 @@
     padding: 1px 2px;
   }
 
+  .ribbon-sheet textarea {
+    resize: none;
+  }
+
   .ribbon-sheet-header {
     grid-template-columns: 54px minmax(0, 1fr);
     flex: 0 0 0.64in;
@@ -1697,7 +1701,8 @@
   }
 
   .ribbon-opb-panel {
-    flex: 0 0 1.05in;
+    /* Reserve the heading and all three rows before the middle panel flexes. */
+    flex: 0 0 auto;
     min-height: 0;
   }
 

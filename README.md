@@ -128,10 +128,11 @@ Local development is available on the Mac mini at
 [`docs/MAC-DEVELOPMENT.txt`](docs/MAC-DEVELOPMENT.txt) for the verified runtime,
 installation commands, and restart procedure, and
 [`docs/MAC-SETUP-STATUS.txt`](docs/MAC-SETUP-STATUS.txt) for acceptance results.
-The approved Astro 7/Tailwind 4 candidate is documented in
+The approved Astro 7/Tailwind 4 upgrade is documented in
 [`docs/FRAMEWORK-UPGRADE-2026-10-12.txt`](docs/FRAMEWORK-UPGRADE-2026-10-12.txt).
-The npm lockfile and dependency choices are feature-branch work pending
-comparison with the existing Cloudflare Pages configuration.
+[`docs/RELEASE-2026-10-12.txt`](docs/RELEASE-2026-10-12.txt) records final local
+checks and deployment status. The feature branch must pass its Cloudflare
+preview and online verification before production promotion.
 
 1. Clone the repository:
    ```bash

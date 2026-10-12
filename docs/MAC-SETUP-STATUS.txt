@@ -1,4 +1,15 @@
-LATEST FRAMEWORK UPGRADE CANDIDATE — OCTOBER 12, 2026
+LATEST RELEASE CHECKPOINT — OCTOBER 12, 2026
+
+Stabilization and the approved framework upgrade are integrated on the canonical
+feature branch. All 28 Node groups, 10 helper tests, full Astro checking and the
+149-page build pass; dependency audit reports zero advisories. Additional native
+save cancellation/race protection and print-footer fixes are included. See
+docs/RELEASE-2026-10-12.txt for verification and current deployment status.
+Production is unchanged at this checkpoint: the upgraded Cloudflare preview
+requires build-log diagnosis after dashboard sign-in. Existing authorization
+already covers completing the fixes, pushing and live verification.
+
+PRIOR FRAMEWORK UPGRADE CANDIDATE — OCTOBER 12, 2026
 
 The approved Astro 7/React integration 7/Tailwind 4 upgrade is tested in an
 isolated feature worktree. See docs/FRAMEWORK-UPGRADE-2026-10-12.txt for versions,

@@ -1,0 +1,93 @@
+pbvinge.com release checkpoint — October 12, 2026
+
+User authorization: complete all reviewed fixes, push them and verify the live site.
+Canonical checkout: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Feature branch: codex/mac-mini-transfer
+
+LOCAL CODE AND CONTENT
+
+The stabilization checkpoint is committed at 7444be7; the separately approved
+framework upgrade is fd48fb4. The project runtime pin/development guidance is
+fe86a0a. The confirmed-save protection fix is 8cff34a. The print footer correction
+reserves its intrinsic height for the heading and all three OPB rows; the middle
+panel flexes around it. Textarea resize handles are hidden in print output.
+The final browser print recheck remains part of the release verification.
+
+Versions: Astro 7.3.8, React integration 7.0.1, Tailwind/Vite integration 4.3.3,
+React 19.2.8, checker 0.9.10 and TypeScript 5.9.3. .nvmrc pins tested Node 24.20.0.
+No machine defaults changed. Clean npm ci with scripts disabled succeeds and the
+current locked dependency advisory inventory reports zero vulnerabilities.
+
+Confirmed native saves clear unsaved protection only after write/close succeeds
+for the unchanged chart revision. Cancellation and failures retain the chart.
+Edits, replacements and resets during an outstanding save cannot be marked
+saved by that earlier operation. Fallback downloads keep existing unsaved
+protection because browser completion cannot be observed by the application.
+
+FINAL LOCAL VERIFICATION
+
+- Full Astro check: 47 files, zero errors/warnings; one intentional deprecated
+  returnValue hint for legacy beforeunload compatibility.
+- npm test: 28 groups pass, including 22 original planner checks and 10 added
+  React save-interaction scenarios.
+- Python synthetic helpers: 10 pass; no content cleanup or migration executed.
+- Static build: 149 pages. Reading verification: 120 note routes/cards, 9 planned.
+- Local links/fragments: 8,196 references, zero missing targets/fragments.
+- Independent upgrade comparison: all 149 routes and 121 Markdown subtrees,
+  4,639 book heading IDs, 4,020 fragment links and card/citation JSON preserved.
+- All 2,487 protected archive files and original MAC-HANDOFF remain unchanged.
+
+Browser checks confirm upgraded React hydration; 390px document/toolbar/dialog
+containment; dialog focus/isolation/restoration; native field backgrounds in
+light/dark; mobile book tools/TOC; title italics and successful citation Copy;
+reading search/reset and keyboard sorting; flashcard hiding/reveal/navigation.
+The actual browser-created chart file passes the schema-12 import validator.
+The native picker cancellation retains the edited chart and reports cancellation.
+
+DEPLOYMENT CHECKPOINT
+
+Cloudflare successfully deployed stabilization preview 7444be7:
+  https://9e935c6b.pbvinge-com.pages.dev
+All 149 routes returned HTTP 200 with matching bundles; 148 main-content text
+signatures matched. The remaining difference was an Added/Updated timezone
+shift, now repaired with deterministic UTC display during the framework upgrade.
+
+The upgraded preview fd48fb4 failed. GitHub exposes no underlying error text or
+annotations; the dashboard is signed out, so the exact cause is unconfirmed.
+A supported .nvmrc pin was added and preview fe86a0a was retried. Its last
+observed status was building for roughly 20 minutes. Production main has not
+been changed by this release at this checkpoint. The existing live site is not
+claimed to contain these changes until production deployment and online checks
+confirm the final revision. Dashboard access was requested from the user.
+
+Cloudflare supports root .nvmrc/.node-version runtime overrides and does not
+select a v3 runtime from package.json engines. This source configuration does
+not prove the actual account environment/settings values:
+  https://developers.cloudflare.com/pages/configuration/build-image/
+
+NEXT RELEASE ACTIONS
+
+Inspect the current Cloudflare build log/settings after normal sign-in; resolve
+its actual failure if any. Push the final feature revision, verify its successful
+preview and all 149 routes against the local content and bundle signatures.
+Only then fast-forward main with the user's existing release authorization;
+verify the production check, pbvinge.com content/assets and representative live
+browser controls. No force push, host restart, new publisher or schedule.
+
+Run Astro check/sync/build sequentially because they share a content-store cache.
+Astro 7 preview runs in the background; stop with npm run preview -- stop and
+verify npm run preview -- status. Temporary previews belong to this task.
+
+EVIDENCE AND REMAINING SCOPE
+
+Ignored local evidence: .local/release/ (build/check/tests/links logs, preview
+comparison, browser-saved schema-12 fixture and copied framework evidence).
+See docs/STABILIZATION-2026-10-12.txt and docs/FRAMEWORK-UPGRADE-2026-10-12.txt for
+historical details. Source-only retired workflow snapshots preserve their
+original whitespace. They are historical data, not active code checks.
+
+Actual Pages settings, Obsidian publisher ownership, laptop-only preservation
+and remote-client recovery remain separate checks. Unsupported PDF glyphs beyond
+WinAnsi now fail explicitly; expanded font support and a full copyright-page
+edition audit are not claimed. Tailwind 4's documented browser floor is Safari
+16.4+, Chrome 111+ and Firefox 128+.

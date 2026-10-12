@@ -15,7 +15,8 @@ Approved figure restoration, content completion, dated snapshot, workflow
 retirement and licensing work is recorded at D06-D09 below; the broader
 stabilization changes are now implemented locally, with the approved full Astro
 checker and dependency cleanup verified. See docs/STABILIZATION-2026-10-12.txt
-for current verification and remaining limitations.
+for the completed stabilization checkpoint and docs/RELEASE-2026-10-12.txt
+for the subsequent tested framework/save/print work and deployment status.
 
 Initial review verification and coverage
 =======================================
@@ -384,6 +385,9 @@ D05 Framework/dependency modernization scope.
   User decision, 12 October 2026: APPROVED the framework upgrade after
   stabilization, as a separate tested change. Astro stays on major 4 for the
   stabilization work; Pages compatibility checks remain open.
+  Subsequent implementation: the separate Astro 7/Tailwind 4 upgrade passes
+  local checks and reports zero dependency advisories; existing routes/anchors
+  are preserved. Production verification is tracked in the release checkpoint.
   Primary maintainer references for the inventory distinctions:
     https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2
     https://github.com/withastro/astro/security/advisories/GHSA-x3h8-62x9-952g
@@ -501,7 +505,7 @@ No publishing or additional publisher/schedule is authorized. Full remote-client
 disconnect/reconnect recovery also remains unverified.
 Checkpoint: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/MAC-SETUP-STATUS.txt
 
-Original implementation sequence (stabilization completed; upgrade follows separately)
+Original implementation sequence (local implementation complete; release checkpoint tracks deployment)
 ==============================================================================
 1. Publication/serialization safeguards, chart import and data-preservation fixes,
    date correctness, optional-field guards, and their regression tests (F01–F09).
