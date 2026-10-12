@@ -5,7 +5,7 @@ import { isPublishedBookNote } from '../utils/books';
 import { buildNoteFlashcard, type NoteFlashcard } from '../utils/flashcards';
 
 const books = await getCollection('books', ({ data }) => isPublishedBookNote(data));
-const cards = books.sort((a, b) => a.data.title.localeCompare(b.data.title) || a.slug.localeCompare(b.slug))
+const cards = books.sort((a, b) => a.data.title.localeCompare(b.data.title) || a.id.localeCompare(b.id))
   .map(buildNoteFlashcard).filter((card): card is NoteFlashcard => card !== null);
 // Exact source units remain on the server; the client only receives displayed text.
 const displayedCards = cards.map(({ ideas, ...card }) => ({

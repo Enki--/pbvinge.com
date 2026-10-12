@@ -1,0 +1,133 @@
+pbvinge.com — approved framework upgrade candidate
+October 12, 2026
+
+SCOPE AND STATUS
+
+The user authorized completing stabilization, the separately reviewed framework
+upgrade and publication. This candidate was implemented in the managed isolated
+worktree pbvinge-framework-upgrade, starting at passing stabilization 7444be7.
+No source Markdown, content data, protected archive or historical workflow
+snapshot was edited. This report confirms local candidate validation. Browser
+QA, Cloudflare feature preview and final production release remain root-owned
+checks after integration; this report does not claim those have completed.
+
+VERSIONS AND INSTALLATION
+
+Pinned runtime dependencies:
+  astro                       7.3.8
+  @astrojs/react              7.0.1
+  @astrojs/markdown-remark    7.3.2
+  @tailwindcss/vite           4.3.3
+  tailwindcss                 4.3.3
+  github-slugger              2.0.0
+  react and react-dom        19.2.8 (unchanged)
+Pinned checker/types:
+  @astrojs/check              0.9.10
+  typescript                  5.9.3
+  @types/react/dom          19.3.0
+Existing jsdom 22.1.0 remains a development regression dependency.
+
+Versions/engines/peers were verified from the public npm registry. Astro's
+minimum is Node 22.12.0 / npm 9.6.5. Tested runtime: Homebrew Node 24.20.0 and
+npm 11.19.0. Shared defaults were not changed. No forced peers, blanket audit
+fix or dependency lifecycle scripts were used. The retired @astrojs/tailwind
+integration is absent from the final dependency tree. npm ls --depth=0 passes.
+
+A clean npm ci --ignore-scripts --no-audit --no-fund succeeds. The version-3
+lockfile retains 94 OS/CPU-specific optional package records, including Linux,
+macOS and Windows; actual execution here verifies macOS ARM64 only. A successful
+Cloudflare candidate preview must establish the existing Linux build pipeline.
+No Pages settings, global packages or runtime pins were changed by this work.
+
+COMPATIBILITY CHANGES
+
+Content Layer schemas/loaders now live in src/content.config.ts. Explicit file
+loaders retain raw note bodies, exclude underscore-prefixed content paths, and
+keep the previous nested URLs through legacyContentId. Consumers use entry.id
+and render(entry). The supported unified Markdown processor preserves the
+existing pipeline, with compressHTML:true retaining HTML-aware inline spaces.
+
+The current Markdown heading collector no longer removes one trailing hyphen.
+Whole-output comparison caught 50 changed existing heading URLs on seven notes.
+A bounded rehype plugin reuses the current exported collector and restores the
+old suffix handling only for generated IDs. Explicit author IDs and duplicate
+ordering remain intact. The built-in collector then generates matching TOC data.
+
+Tailwind now uses its supported Vite plugin, with explicit src-only scanning.
+Compatibility CSS preserves the used v3 palette, border/placeholder defaults,
+button cursors, select text transform and search appearance. Cover shadow-sm
+became its equivalent shadow-xs. The planning inputs/selects explicitly retain
+native system Field backgrounds after baseline browser inspection by root.
+Custom application CSS stays unlayered. No archive content is scanned for CSS.
+
+Book Added/Updated labels now use UTC calendar formatting. This repairs the
+verified Mini/Cloudflare date drift without changing stored timestamps or their
+sorting. Equal created/updated instants no longer print a redundant Updated
+label. The checker wrapper resolves Astro's published CLI bin instead of the
+removed astro.js filename. Active development guidance reflects these changes.
+
+LOCAL VALIDATION
+
+  Clean npm ci, scripts disabled: PASS
+  npm run check:types: 46 files, 0 errors, 0 warnings, 1 intentional hint
+    The hint concerns the retained beforeunload returnValue compatibility line.
+  Strict tsc --noEmit: PASS
+  npm test: 27 groups PASS, including 22 sequential planner checks
+  Python synthetic helper tests: 10 PASS
+  Static build: 149 pages PASS; initial clean build 11.04 seconds
+    Final compatibility build: 3.87 seconds
+  Generated reading audit: 120 published notes, 120 cards, nine planned books
+  Local URL/fragment audit: 8,196 references, zero missing targets/fragments
+  npm audit --json: zero reported vulnerabilities on this date
+
+The audit result is a current dependency advisory inventory, not a proof of
+absence of every security defect. The site remains a static build without SSR,
+actions, an adapter or a publicly bound development service.
+
+Independent generated-DOM review confirms all 149 normalized main trees and all
+121 rendered Markdown subtrees match the stabilization baseline, after allowing
+compiler assets, the deliberate timestamp fixes, equivalent cover-shadow class
+and paired React-generated prefixes. All application/json payloads match.
+All 4,639 book heading IDs and 4,020 fragment links are preserved.
+
+Hash comparison verifies 2,618 original content/archive files unchanged,
+including all 2,487 protected archive files and all 131 original content files.
+The migrated schema is application code and is excluded from that content hash
+comparison. All archive copies in dist also match original bytes. MAC-HANDOFF
+SHA-256 remains f651ab3e5833256b9196cb52de6376dc5556a5d741849acb8be244ecb25ca853.
+No task-owned server or browser was started; no push or deployment was performed
+by the candidate worker.
+
+RELEASE CHECKS AND LIMITS
+
+Root will validate actual browser hydration, desktop/mobile and light/dark
+appearance, controls, print and PDF exports after integration, then validate the
+existing Cloudflare feature preview before production. Check book rules/cover
+shadow, search placeholders, navigation and native planning field backgrounds.
+Actual Pages Node/npm/build settings remain unverified from dashboard access;
+local success does not establish their values. Tailwind 4 targets Safari 16.4+,
+Chrome 111+ and Firefox 128+; older browser support is outside this upgrade.
+Obsidian ownership, laptop-only content preservation and remote recovery remain
+separate cutover checks rather than conclusions from this framework build.
+
+Ignored evidence is under .local/framework-upgrade/ in the isolated worktree:
+  baseline.json and baseline/dist/; install.log; ci.log; audit.json;
+  check-final.log; tests-final.log; tsc.log; helpers.log; build.log;
+  reading.json; links.json; preservation.json; verify-preservation.py
+Independent reviewer evidence remains under its assigned ignored review folder.
+
+PRIMARY REFERENCES
+
+https://registry.npmjs.org/astro/7.3.8
+https://registry.npmjs.org/@astrojs%2freact/7.0.1
+https://registry.npmjs.org/@astrojs%2fmarkdown-remark/7.3.2
+https://registry.npmjs.org/@tailwindcss%2fvite/4.3.3
+https://registry.npmjs.org/tailwindcss/4.3.3
+https://docs.astro.build/en/guides/upgrade-to/v5/
+https://docs.astro.build/en/guides/upgrade-to/v6/
+https://docs.astro.build/en/guides/upgrade-to/v7/
+https://docs.astro.build/en/reference/content-loader-reference/
+https://docs.astro.build/en/guides/integrations-guide/react/
+https://tailwindcss.com/docs/upgrade-guide
+https://tailwindcss.com/docs/detecting-classes-in-source-files
+https://tailwindcss.com/docs/functions-and-directives

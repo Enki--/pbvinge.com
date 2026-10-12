@@ -1,8 +1,8 @@
 /** Flashcards quote the published study note, rather than adding new book claims. */
 import { contributorCredit, contributorNames, type BookMetadata } from './citations';
 export interface FlashcardBook {
-  slug: string;
-  body: string;
+  id: string;
+  body?: string;
   data: BookMetadata & { cover?: string };
 }
 export interface NoteIdea {
@@ -110,14 +110,14 @@ export function extractNoteIdeas(body: string, limit = 2): NoteIdea[] {
 }
 
 export function buildNoteFlashcard(book: FlashcardBook): NoteFlashcard | null {
-  const ideas = extractNoteIdeas(book.body);
+  const ideas = extractNoteIdeas(book.body ?? '');
   if (!ideas.length) return null;
   return {
     title: book.data.title,
     author: contributorNames(book.data).join(', '),
     credit: contributorCredit(book.data),
     img: (book.data.cover || '').replace(/^http:\/\//, 'https://'),
-    sourceHref: `/books/${book.slug}`,
+    sourceHref: `/books/${book.id}`,
     ideas,
   };
 }

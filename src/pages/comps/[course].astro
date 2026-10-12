@@ -35,7 +35,7 @@ const books = guide.books.map((book) => {
   return {
     ...book,
     coverArt: book.coverArt || noteBook?.data.cover || '/assets/placeholder-book.png',
-    noteHref: noteBook ? `/books/${noteBook.slug}` : undefined,
+    noteHref: noteBook ? `/books/${noteBook.id}` : undefined,
   };
 });
 

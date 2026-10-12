@@ -40,7 +40,10 @@ export function checkSource(projectRoot, { javascriptOnly = false, noSync = fals
     throw new Error('Install the locked development dependencies before running the Astro source check.');
   }
   const astroDirectory = path.dirname(require.resolve('astro/package.json'));
-  const args = [path.join(astroDirectory, 'astro.js'), 'check',
+  const astroPackage = JSON.parse(fs.readFileSync(path.join(astroDirectory, 'package.json'), 'utf8'));
+  const astroBin = typeof astroPackage.bin === 'string' ? astroPackage.bin : astroPackage.bin?.astro;
+  if (!astroBin) throw new Error('The installed Astro package has no CLI entry point.');
+  const args = [path.resolve(astroDirectory, astroBin), 'check',
     '--tsconfig', path.join(projectRoot, 'tsconfig.json')];
   if (noSync) args.push('--noSync');
   const result = spawnSync(process.execPath, args, {

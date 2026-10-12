@@ -31,7 +31,7 @@ const decoratedBooks = sortedBooks.map((book) => {
     className,
     notes,
     searchString: buildBookSearchString({
-      slug: book.slug,
+      slug: book.id,
       title: book.data.title,
       subtitle: book.data.subtitle,
       authors,
@@ -95,13 +95,13 @@ const decoratedBooks = sortedBooks.map((book) => {
             data-title={book.data.title.toLowerCase()}
             data-author={book.authors.join(', ').toLowerCase()}
           >
-            <a href={`/books/${book.slug}`} class="book-cover-link">
+            <a href={`/books/${book.id}`} class="book-cover-link">
               <div class="book-cover">
                 <img src={book.data.cover} alt={`Cover of ${book.data.title}`} />
               </div>
             </a>
             <div class="book-content">
-              <a href={`/books/${book.slug}`} class="book-title-link">
+              <a href={`/books/${book.id}`} class="book-title-link">
                 <h2>{book.data.title}</h2>
                 {book.data.subtitle && (
                   <p class="subtitle">{book.data.subtitle}</p>
@@ -177,7 +177,7 @@ const decoratedBooks = sortedBooks.map((book) => {
                     />
                   </td>
                   <td>
-                    <a href={`/books/${book.slug}`} class="table-title-link">
+                    <a href={`/books/${book.id}`} class="table-title-link">
                       {book.data.title}
                     </a>
                     {book.data.subtitle && (

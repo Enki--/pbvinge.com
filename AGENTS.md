@@ -7,13 +7,15 @@ handoff is preserved byte-for-byte in `docs/MAC-HANDOFF.txt`.
 
 - Preserve the entire `public/archives/91st` source directory.
 - Use a feature branch. Pushes to `main` may deploy Cloudflare Pages; this
-  migration does not authorize publishing, merging, or changing Pages settings.
+  publish only when the user explicitly authorizes the release. Pages settings
+  remain a separate change requiring verified configuration evidence.
 - This branch uses npm with `package-lock.json`. Install with
   `npm ci --ignore-scripts --no-audit --no-fund`; the verified build needs no
-  dependency lifecycle scripts. Do not use the existing root postinstall helper
-  as proof that native dependencies were repaired.
-- Keep Astro on major 4 during the migration. Compare the package manager and
-  runtime with actual Pages settings before integrating tooling changes.
+  dependency lifecycle scripts. No root postinstall repair helper is required.
+- The approved framework upgrade uses pinned Astro 7, React integration 7 and
+  Tailwind 4. Preserve collection IDs and the unified Markdown processor; read
+  `docs/FRAMEWORK-UPGRADE-2026-10-12.txt` before changing these compatibility
+  choices. Compare Pages runtime/build evidence before production integration.
 - Disable Astro telemetry for task processes with `ASTRO_TELEMETRY_DISABLED=1`.
   Keep shared Node defaults unchanged and bind development servers to loopback.
 - Audio transcription and historical book migration are retired. Their original

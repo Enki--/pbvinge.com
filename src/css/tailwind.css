@@ -1,0 +1,28 @@
+@import "tailwindcss" source(none);
+@config "../../tailwind.config.mjs";
+@source "../";
+
+/* Preserve the v3 colors used by the existing website. */
+@theme {
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-800: #1f2937;
+  --color-green-100: #dcfce7;
+  --color-green-800: #166534;
+  --color-blue-100: #dbeafe;
+  --color-blue-800: #1e40af;
+}
+
+/* Keep the preflight defaults relied on by published notes and planners. */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-gray-200);
+  }
+  input::placeholder, textarea::placeholder { color: var(--color-gray-400); }
+  button, select { text-transform: none; }
+  button, [role="button"] { cursor: pointer; }
+  :disabled { cursor: default; }
+  [type="search"] { -webkit-appearance: textfield; outline-offset: -2px; }
+}

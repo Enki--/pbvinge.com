@@ -1,10 +1,13 @@
-import { defineCollection, z } from 'astro:content';
-import { normalizePublicationDate } from '../utils/dates';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
+import { legacyContentId } from './utils/contentId';
+import { normalizePublicationDate } from './utils/dates';
 
 const publicationDate = z.union([z.number(), z.string(), z.date()]).transform((value, context) => {
   const normalized = normalizePublicationDate(value);
   if (normalized === undefined) {
-    context.addIssue({ code: z.ZodIssueCode.custom, message: 'Use a publication year, YYYY-MM, or an ISO date.' });
+    context.addIssue({ code: 'custom', message: 'Use a publication year, YYYY-MM, or an ISO date.' });
     return z.NEVER;
   }
   return normalized;
@@ -17,7 +20,12 @@ const contributor = z.union([
 
 export const collections = {
   books: defineCollection({
-    type: 'content',
+    loader: glob({
+      base: './src/content/books',
+      pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'],
+      generateId: legacyContentId,
+      retainBody: true,
+    }),
     schema: z.object({
       tags: z.array(z.string()),
       title: z.string(),
@@ -54,10 +62,15 @@ export const collections = {
       coverImage: z.string().optional()
     }),
   }),
-  
+
   // Historic documents collection
   documents: defineCollection({
-    type: 'content',
+    loader: glob({
+      base: './src/content/documents',
+      pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'],
+      generateId: legacyContentId,
+      retainBody: true,
+    }),
     schema: z.object({
       title: z.string(),
       subtitle: z.string().optional(),
@@ -66,7 +79,7 @@ export const collections = {
       date: publicationDate.optional(),
       tags: z.array(z.string()).default([]),
       cover: z.string().optional(),
-      externalUrl: z.string().url().optional(),
+      externalUrl: z.url().optional(),
       isPublished: z.boolean().default(true),
       created: z.coerce.date().optional(),
       updated: z.coerce.date().optional()

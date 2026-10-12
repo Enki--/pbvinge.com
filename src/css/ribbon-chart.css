@@ -1729,7 +1729,8 @@
 .ribbon-planning-panel summary { cursor: pointer; font-weight: 700; }
 .ribbon-planning-entry { display: flex; flex-wrap: wrap; gap: .6rem; align-items: end; margin-block: .6rem; }
 .ribbon-planning-entry label { display: grid; gap: .2rem; min-width: 0; font-size: .85rem; }
-.ribbon-planning-entry input, .ribbon-planning-entry select { max-width: 100%; min-width: 0; padding: .35rem; }
+/* Preserve the native light/dark field background reset by Tailwind 4. */
+.ribbon-planning-entry input, .ribbon-planning-entry select { max-width: 100%; min-width: 0; padding: .35rem; background-color: Field; }
 .ribbon-planning-panel button { padding: .4rem .65rem; border: 1px solid var(--border-color); border-radius: 6px; }
 @media (max-width: 480px) {
   .ribbon-populate-group { width: 100%; flex-basis: 100%; }

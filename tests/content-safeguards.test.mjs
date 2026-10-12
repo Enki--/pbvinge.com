@@ -20,8 +20,8 @@ test('only published complete notes enter public note routes and generated study
 });
 
 test('missing timestamps have a stable order and unavailable dates are omitted', () => {
-  const input = [{ slug: 'z', data: {} }, { slug: 'a', data: {} }, { slug: 'new', data: { created: new Date('2026-10-12') } }];
-  assert.deepEqual(input.sort(books.compareBookRecency).map(book => book.slug), ['new', 'a', 'z']);
+  const input = [{ id: 'z', data: {} }, { id: 'a', data: {} }, { id: 'new', data: { created: new Date('2026-10-12') } }];
+  assert.deepEqual(input.sort(books.compareBookRecency).map(book => book.id), ['new', 'a', 'z']);
   assert.equal(dates.formatCalendarDate(), '');
   assert.equal(dates.timestampValue('invalid'), 0);
 });

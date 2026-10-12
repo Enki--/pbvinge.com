@@ -13,8 +13,8 @@ const { flashcardFeedback } = require(path.join(compiled, 'utils/flashcards-clie
 const { isPublishedBookNote, isPublishedPlannedBook } = require(path.join(compiled, 'utils/books.js'));
 const root = process.env.PBV_TEST_ROOT || process.cwd();
 test('published complete notes generate source-backed cards; planned and hidden records stay excluded', () => {
-  const book={slug:'course/synthetic',data:{title:'Synthetic Book',author:['Test Author'],status:'complete',isPublished:true},body:'## Main Thesis\n- A useful exact source idea connects strategy, political aims, and available means. (p. 8)\n- A second useful exact idea tests assumptions against evidence and alternatives. (p. 9)\n'};
-  const records=[book,{...book,slug:'hidden',data:{...book.data,isPublished:false}},{...book,slug:'planned',data:{...book.data,status:'to read'}}];
+  const book={id:'course/synthetic',data:{title:'Synthetic Book',author:['Test Author'],status:'complete',isPublished:true},body:'## Main Thesis\n- A useful exact source idea connects strategy, political aims, and available means. (p. 8)\n- A second useful exact idea tests assumptions against evidence and alternatives. (p. 9)\n'};
+  const records=[book,{...book,id:'hidden',data:{...book.data,isPublished:false}},{...book,id:'planned',data:{...book.data,status:'to read'}}];
   const cards=records.filter(entry=>isPublishedBookNote(entry.data)).map(buildNoteFlashcard);
   assert.equal(cards.length,1);
   assert.equal(cards[0].sourceHref,'/books/course/synthetic');
@@ -31,7 +31,7 @@ test('card extraction skips description, biography, fenced code and editorial pl
   assert(ideas[0].text.includes('(p. 8)'));
   assert(ideas[1].text.includes('(p. 9)'));
   assert(ideas.every(idea=>!idea.text.includes('DESCRIPTION')&&!idea.text.includes('BIOGRAPHY')&&!idea.text.includes('CODE')&&!idea.text.includes('PLACEHOLDER')));
-  assert.equal(buildNoteFlashcard({slug:'empty',body:'# Title\nThis book is on my reading list.',data:{title:'Empty',author:['Synthetic']}}),null);
+  assert.equal(buildNoteFlashcard({id:'empty',body:'# Title\nThis book is on my reading list.',data:{title:'Empty',author:['Synthetic']}}),null);
 });
 
 test('flashcard feedback uses real newline separators and normalizes whitespace', () => {

@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { citationParts, contributorCredit } from '../../utils/citations';
 import { formatLongDate, getStatusColor, isPublishedBookNote } from '../../utils/books';
+import { formatCalendarDate, timestampValue } from '../../utils/dates';
 import { serializeJsonForHtml } from '../../utils/htmlData';
 
 // Generate static paths for completed books only
@@ -11,18 +12,18 @@ export async function getStaticPaths() {
     return isPublishedBookNote(data);
   });
   return books.map(book => ({
-    params: { slug: book.slug },
+    params: { slug: book.id },
     props: { book },
   }));
 }
 
 const { book } = Astro.props;
-const { Content, headings = [] } = await book.render();
+const { Content, headings = [] } = await render(book);
 
 const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 
 function formatTimestamp(date: Date) {
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  return formatCalendarDate(date);
 }
 
 // Pre-generate citations
@@ -67,7 +68,7 @@ const citationsJson = serializeJsonForHtml(citations);
             <img 
               src={book.data.cover} 
               alt={`Cover of ${book.data.title}`} 
-              class="mx-auto max-w-[200px] rounded-lg shadow-sm border border-gray-200"
+              class="mx-auto max-w-[200px] rounded-lg shadow-xs border border-gray-200"
             />
           )}
         </div>
@@ -99,7 +100,7 @@ const citationsJson = serializeJsonForHtml(citations);
             {book.data.created && (
               <span class="date">Added: {formatTimestamp(book.data.created)}</span>
             )}
-            {book.data.updated && book.data.updated !== book.data.created && (
+            {book.data.updated && timestampValue(book.data.updated) !== timestampValue(book.data.created) && (
               <span class="date">Updated: {formatTimestamp(book.data.updated)}</span>
             )}
           </div>

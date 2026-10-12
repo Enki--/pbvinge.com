@@ -30,7 +30,7 @@ const recentBooks = allBooks
     </div>
     <div class="book-grid">
       {recentBooks.map((book) => (
-        <a href={`/books/${book.slug}`} class="book-card">
+        <a href={`/books/${book.id}`} class="book-card">
           <img src={book.data.cover} alt={`Cover of ${book.data.title}`} class="book-cover" />
           <div class="book-info">
             <h3>{book.data.title}</h3>

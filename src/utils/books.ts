@@ -13,11 +13,11 @@ export function isPublishedPlannedBook(data: PublicationState): boolean {
 }
 
 export function compareBookRecency(
-  a: { slug: string; data: { created?: Date; updated?: Date } },
-  b: { slug: string; data: { created?: Date; updated?: Date } },
+  a: { id: string; data: { created?: Date; updated?: Date } },
+  b: { id: string; data: { created?: Date; updated?: Date } },
 ): number {
   return timestampValue(b.data.created ?? b.data.updated) - timestampValue(a.data.created ?? a.data.updated)
-    || a.slug.localeCompare(b.slug);
+    || a.id.localeCompare(b.id);
 }
 
 export function normalizeAuthors(author: unknown): string[] {

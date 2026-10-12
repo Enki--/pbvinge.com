@@ -98,7 +98,8 @@ Routes:
 ```
 pbvinge.com/
 ├── src/
-│   ├── content/          # Content collections (books, future reads)
+│   ├── content.config.ts # Content Layer schemas and file loaders
+│   ├── content/          # Books and historic document Markdown
 │   ├── data/            # Data management and utilities
 │   ├── layouts/         # Page layouts
 │   ├── pages/           # Route components
@@ -127,7 +128,9 @@ Local development is available on the Mac mini at
 [`docs/MAC-DEVELOPMENT.txt`](docs/MAC-DEVELOPMENT.txt) for the verified runtime,
 installation commands, and restart procedure, and
 [`docs/MAC-SETUP-STATUS.txt`](docs/MAC-SETUP-STATUS.txt) for acceptance results.
-The npm lockfile and dependency choices are local migration-branch work pending
+The approved Astro 7/Tailwind 4 candidate is documented in
+[`docs/FRAMEWORK-UPGRADE-2026-10-12.txt`](docs/FRAMEWORK-UPGRADE-2026-10-12.txt).
+The npm lockfile and dependency choices are feature-branch work pending
 comparison with the existing Cloudflare Pages configuration.
 
 1. Clone the repository:

@@ -51,29 +51,31 @@ No Python model packages or virtual environment are needed for site development.
 
 DEPENDENCIES
 
-Exact direct versions resolved by npm 11.19.0:
-  astro                 4.16.19
-  @astrojs/react        3.6.3
-  @astrojs/tailwind     5.1.5
-  react                19.2.8
-  react-dom            19.2.8
-  tailwindcss           3.4.19
+Exact direct versions resolved by npm 11.19.0 for the approved upgrade candidate:
+  astro                       7.3.8
+  @astrojs/react              7.0.1
+  @astrojs/markdown-remark    7.3.2
+  @tailwindcss/vite           4.3.3
+  tailwindcss                 4.3.3
+  github-slugger              2.0.0
+  react                      19.2.8
+  react-dom                  19.2.8
 Development:
-  @astrojs/check        0.9.4
-  typescript            5.9.3
-  jsdom                22.1.0
+  @astrojs/check              0.9.10
+  @types/react              19.3.0
+  @types/react-dom          19.3.0
+  typescript                  5.9.3
+  jsdom                      22.1.0
 
-package-lock.json records every resolved dependency version and integrity.
-The known laptop Astro/integration/React versions were retained and pinned in
-package.json. React/React DOM are now direct dependencies. The remaining
-original manifest ranges were retained and their resolutions frozen in the lock.
-No dependency lifecycle scripts were executed. Native esbuild, sharp, and
-fsevents checks passed. The ineffective root postinstall was removed during stabilization.
-The initial install reports four upstream deprecation notices. Unused direct
-dompurify, marked and esbuild were removed with explicit user approval; jsdom is
-used only for development regression tests. The approved lockfile was verified
-with clean npm ci, scripts disabled; full Astro source checking passes. See
-docs/STABILIZATION-2026-10-12.txt for this pre-upgrade checkpoint.
+Astro requires Node >=22.12.0 and npm >=9.6.5; the recorded Homebrew Node 24
+pair satisfies these requirements. package-lock.json records all resolutions,
+platform-specific optional packages and integrity values. A clean npm ci with
+lifecycle scripts disabled passes, as do the full source check and static build.
+No shared runtime defaults changed. The Tailwind Astro integration was replaced
+by the supported Tailwind Vite plugin. Content Layer loaders keep legacy nested
+public IDs; the unified processor preserves the established Markdown pipeline.
+See docs/FRAMEWORK-UPGRADE-2026-10-12.txt for evidence and release limitations.
+The older versions in setup/stabilization reports describe historical checkpoints.
 
 ACTIVE STABILIZATION CHECKS
 
@@ -86,14 +88,14 @@ ACTIVE STABILIZATION CHECKS
   python3 scripts/verify-site-links.py --build-log BUILD_LOG --dist dist
 
 Capture the build output to BUILD_LOG for the local-route/fragment audit. The
-Node tests run 24 groups, including 22 sequential chart checks. Helper tests use
+Node tests run 27 groups, including 22 sequential chart checks. Helper tests use
 only synthetic temporary files and Python stdlib; they do not run migration or
 cleanup on real notes. tsc checks TS/TSX under the strict source configuration.
 
 npm run check:types checks .astro templates as well as TS/TSX and application
-JavaScript syntax, using pinned @astrojs/check 0.9.4 and TypeScript 5.9.3. The
+JavaScript syntax, using pinned @astrojs/check 0.9.10 and TypeScript 5.9.3. The
 user approved the lockfile update and publication after the initial review
-rejection. The framework upgrade is a separate change after stabilization.
+rejection. The framework upgrade follows the preserved stabilization checkpoint.
 
 RETAINED MARKDOWN HELPER
 
@@ -118,10 +120,11 @@ by git bundle verify. It preserves this Mini's source history, not unobserved
 laptop files or ignored laptop dependencies.
 
 Read docs/MAC-SETUP-STATUS.txt before resuming. Recheck git status and upstream
-before editing. This branch is local only; main and live hosting are unchanged.
-Cloudflare Pages settings, preview policy, package manager, runtime, and last
-successful build log remain to be checked before integration. No runtime pin
-file or packageManager field was added pending that hosting evidence.
+before editing. The initial transfer was local only; the user later authorized
+publishing. Release status must be verified separately from these local commands.
+Actual Pages settings and runtime versions remain unverified; validate the
+approved candidate through the existing feature preview pipeline before release.
+No runtime pin file or packageManager field was added without hosting evidence.
 
 References:
   https://github.com/nodejs/Release

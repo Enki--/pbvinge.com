@@ -1,3 +1,11 @@
+LATEST FRAMEWORK UPGRADE CANDIDATE — OCTOBER 12, 2026
+
+The approved Astro 7/React integration 7/Tailwind 4 upgrade is tested in an
+isolated feature worktree. See docs/FRAMEWORK-UPGRADE-2026-10-12.txt for versions,
+149 preserved routes, source/archive hash checks, regression and audit results.
+This local candidate does not by itself confirm production deployment or actual
+Pages runtime/settings. The stabilization evidence below remains historical.
+
 LATEST LOCAL CHECKPOINT — OCTOBER 12 STABILIZATION
 
 The original setup evidence below is historical. The approved stabilization is

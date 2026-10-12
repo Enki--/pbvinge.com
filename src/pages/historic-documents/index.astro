@@ -29,7 +29,7 @@ const sortedDocs = documents.sort((a, b) => {
       <div class="grid">
         {sortedDocs.map((doc) => (
           <article class="card">
-            <a href={`/historic-documents/${doc.slug}`} class="cover-link">
+            <a href={`/historic-documents/${doc.id}`} class="cover-link">
               <div class="cover">
                 {doc.data.cover ? (
                   <img src={doc.data.cover} alt={`Cover of ${doc.data.title}`} />
@@ -39,7 +39,7 @@ const sortedDocs = documents.sort((a, b) => {
               </div>
             </a>
             <div class="content">
-              <a href={`/historic-documents/${doc.slug}`} class="title-link">
+              <a href={`/historic-documents/${doc.id}`} class="title-link">
                 <h2>{doc.data.title}</h2>
                 {doc.data.subtitle && <p class="subtitle">{doc.data.subtitle}</p>}
               </a>
