@@ -5,9 +5,17 @@ feature branch. All 28 Node groups, 10 helper tests, full Astro checking and the
 149-page build pass; dependency audit reports zero advisories. Additional native
 save cancellation/race protection and print-footer fixes are included. See
 docs/RELEASE-2026-10-12.txt for verification and current deployment status.
-Production is unchanged at this checkpoint: the upgraded Cloudflare preview
-requires build-log diagnosis after dashboard sign-in. Existing authorization
-already covers completing the fixes, pushing and live verification.
+The application release 5bfaeb3 is pushed to the feature branch and main, and
+Cloudflare production succeeded at 21:10:13 UTC. All 149 actual pbvinge.com routes
+match local content and application bundles; Cloudflare email masking is decoded
+for the exact About comparison and its contact is visible in the browser.
+Live flashcards, reading search/reset and planner controls pass. The final preview
+also confirms a completed native chart write and the complete one-page print.
+The temporary upgrade worktree is archived and no local preview server is running.
+All 99 selected production asset/archive status and MIME checks pass; four
+sampled figure/archive downloads match the local build's exact hashes and sizes.
+Exact Pages account settings, Obsidian ownership, laptop-only preservation and
+remote-client recovery remain separate checks; see the current release record.
 
 PRIOR FRAMEWORK UPGRADE CANDIDATE — OCTOBER 12, 2026
 
@@ -17,7 +25,7 @@ isolated feature worktree. See docs/FRAMEWORK-UPGRADE-2026-10-12.txt for version
 This local candidate does not by itself confirm production deployment or actual
 Pages runtime/settings. The stabilization evidence below remains historical.
 
-LATEST LOCAL CHECKPOINT — OCTOBER 12 STABILIZATION
+PRIOR LOCAL CHECKPOINT — OCTOBER 12 STABILIZATION
 
 The original setup evidence below is historical. The approved stabilization is
 implemented locally on codex/mac-mini-transfer. See

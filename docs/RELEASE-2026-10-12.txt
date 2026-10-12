@@ -11,7 +11,8 @@ framework upgrade is fd48fb4. The project runtime pin/development guidance is
 fe86a0a. The confirmed-save protection fix is 8cff34a. The print footer correction
 reserves its intrinsic height for the heading and all three OPB rows; the middle
 panel flexes around it. Textarea resize handles are hidden in print output.
-The final browser print recheck remains part of the release verification.
+The final deployed-preview print recheck confirms one page with all three OPB
+rows fully visible; the print dialog was cancelled without physical printing.
 
 Versions: Astro 7.3.8, React integration 7.0.1, Tailwind/Vite integration 4.3.3,
 React 19.2.8, checker 0.9.10 and TypeScript 5.9.3. .nvmrc pins tested Node 24.20.0.
@@ -44,7 +45,43 @@ reading search/reset and keyboard sorting; flashcard hiding/reveal/navigation.
 The actual browser-created chart file passes the schema-12 import validator.
 The native picker cancellation retains the edited chart and reports cancellation.
 
-DEPLOYMENT CHECKPOINT
+PRODUCTION RELEASE VERIFIED
+
+Application release: 5bfaeb37ea851a9e0b78d73d7f230156994252e6.
+The feature branch and main were pushed with the user's explicit authorization;
+main advanced by fast-forward, without force pushing. Cloudflare's final feature
+preview succeeded:
+  https://0ccb846e.pbvinge-com.pages.dev
+All 149 preview routes match local main-content text and application bundle URLs.
+The browser's native picker completed a real write/close of a schema-12 chart;
+the busy indicator remained active until completion and then reported saved.
+
+Cloudflare production deployment succeeded at 2026-10-12T21:10:13Z:
+  GitHub success check: 115009627769
+  Deployment: 6b1b12f6-a9ed-432d-a205-991cc03ffaf0
+  Immutable deployment URL: https://6b1b12f6.pbvinge-com.pages.dev
+  Actual public domain: https://pbvinge.com/
+Cloudflare created a new success check; its earlier building check 115009231212
+was left unchanged. Verify the latest check for the commit, not only that old ID.
+
+At 2026-10-12T21:19:50Z, all 149 actual-domain routes returned HTTP 200 with
+matching main-content text and application bundle URLs. The comparison decodes
+Cloudflare's email masking on About before matching the exact email text; the
+browser independently displays the correct shrink@pbvinge.com contact.
+Live browser checks confirm the academic-use notice, 120-card deck reveal and
+next-card reset, future-reading search (1 of 9) and clear (9 of 9), React planner
+hydration, Populate Timeline, and the 30-year dialog's focus/Escape restoration.
+No application console errors were observed in these live checks. Older Zotero
+extension errors in the reused tab are unrelated to the application.
+
+At 2026-10-12T21:22:49Z, 99 asset/archive HEAD checks passed with HTTP 200 and
+the expected MIME type: 17 scripts/styles, all 74 restored figure PNG/WebP files,
+six unique captured/latest archive entry paths and two archive PDFs. Four bounded
+GET checks (the largest restored figure, its preview and both PDFs) match the
+local build's exact SHA-256 and size, totaling 14,595,422 bytes. This is sampled
+remote-byte verification; all 2,487 archive source files were preserved locally.
+
+EARLIER DEPLOYMENT HISTORY
 
 Cloudflare successfully deployed stabilization preview 7444be7:
   https://9e935c6b.pbvinge-com.pages.dev
@@ -54,25 +91,22 @@ shift, now repaired with deterministic UTC display during the framework upgrade.
 
 The upgraded preview fd48fb4 failed. GitHub exposes no underlying error text or
 annotations; the dashboard is signed out, so the exact cause is unconfirmed.
-A supported .nvmrc pin was added and preview fe86a0a was retried. Its last
-observed status was building for roughly 20 minutes. Production main has not
-been changed by this release at this checkpoint. The existing live site is not
-claimed to contain these changes until production deployment and online checks
-confirm the final revision. Dashboard access was requested from the user.
+A supported .nvmrc pin was added and preview fe86a0a was retried. Its building
+status was initially observed for roughly 20 minutes. The final preview and
+production release above subsequently succeeded. The dashboard sign-in request
+was withdrawn; no account settings were changed.
 
 Cloudflare supports root .nvmrc/.node-version runtime overrides and does not
 select a v3 runtime from package.json engines. This source configuration does
 not prove the actual account environment/settings values:
   https://developers.cloudflare.com/pages/configuration/build-image/
 
-NEXT RELEASE ACTIONS
+DEVELOPMENT AFTER RELEASE
 
-Inspect the current Cloudflare build log/settings after normal sign-in; resolve
-its actual failure if any. Push the final feature revision, verify its successful
-preview and all 149 routes against the local content and bundle signatures.
-Only then fast-forward main with the user's existing release authorization;
-verify the production check, pbvinge.com content/assets and representative live
-browser controls. No force push, host restart, new publisher or schedule.
+Continue on a feature branch using the pinned runtime and lockfile. The temporary
+upgrade worktree is archived with a recoverable Git snapshot; its verification
+evidence was copied into the canonical checkout. No local preview server is
+running. No host restart, new publisher or schedule was introduced.
 
 Run Astro check/sync/build sequentially because they share a content-store cache.
 Astro 7 preview runs in the background; stop with npm run preview -- stop and
@@ -80,8 +114,11 @@ verify npm run preview -- status. Temporary previews belong to this task.
 
 EVIDENCE AND REMAINING SCOPE
 
-Ignored local evidence: .local/release/ (build/check/tests/links logs, preview
-comparison, browser-saved schema-12 fixture and copied framework evidence).
+Ignored local evidence: .local/release/ (build/check/tests/links logs, preview and
+production comparisons, production asset/MIME/hash results, browser-saved
+schema-12 fixture, print-preview-proof.png, live-proof.png and copied framework
+evidence). The initial production mismatch report is retained before exact
+Cloudflare email normalization; this was a comparison issue, not a source patch.
 See docs/STABILIZATION-2026-10-12.txt and docs/FRAMEWORK-UPGRADE-2026-10-12.txt for
 historical details. Source-only retired workflow snapshots preserve their
 original whitespace. They are historical data, not active code checks.

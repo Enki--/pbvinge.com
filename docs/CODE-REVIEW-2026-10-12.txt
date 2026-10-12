@@ -1,7 +1,7 @@
 pbvinge.com code review — 12 October 2026
 
-Assessment
-==========
+Original assessment
+===================
 The Mac development baseline works, but a stabilization pass should precede
 new features. The most consequential findings concern chart data preservation,
 publication controls, metadata escaping, and incorrect bibliographic dates.
@@ -17,6 +17,9 @@ stabilization changes are now implemented locally, with the approved full Astro
 checker and dependency cleanup verified. See docs/STABILIZATION-2026-10-12.txt
 for the completed stabilization checkpoint and docs/RELEASE-2026-10-12.txt
 for the subsequent tested framework/save/print work and deployment status.
+The application release 5bfaeb3 is now pushed and verified on production:
+149 matching actual-domain routes, passing live controls and unchanged archives.
+The findings below preserve their initial evidence; all F01-F28 are resolved.
 
 Initial review verification and coverage
 =======================================
@@ -302,9 +305,10 @@ F27 [P3] Improve repository hygiene and remove misleading setup behavior.
 
 F28 [P3] Correct workflow documentation after the decisions below.
   Unified/generated reading documentation now matches the implemented system.
-  Corrected during workflow retirement, 12 October 2026: README now identifies
-  the active futureReads collection and labels the approved consolidation as
-  pending stabilization. Retired commands and archived tests are distinguished
+  At workflow retirement, 12 October 2026, README identified the then-active
+  futureReads collection and the approved consolidation as pending stabilization.
+  Stabilization subsequently completed consolidation into unified books data.
+  Retired commands and archived tests are distinguished
   from active tooling. Initial finding: README pointed to a nonexistent index
   and described unified behavior that current routes did not implement.
   Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/README.md:146
@@ -384,7 +388,9 @@ D05 Framework/dependency modernization scope.
   DOMPurify bypass was demonstrated; its flagged optional modes are unused here.
   User decision, 12 October 2026: APPROVED the framework upgrade after
   stabilization, as a separate tested change. Astro stays on major 4 for the
-  stabilization work; Pages compatibility checks remain open.
+  stabilization work. Exact Pages account settings/runtime values remain
+  uninspected; successful preview/production compatibility is now verified in
+  the release checkpoint.
   Subsequent implementation: the separate Astro 7/Tailwind 4 upgrade passes
   local checks and reports zero dependency advisories; existing routes/anchors
   are preserved. Production verification is tracked in the release checkpoint.
@@ -472,7 +478,8 @@ D08 Support or retire optional Python workflows.
   before imports, input processing or writes. Active setup/migration instructions
   and test guidance are updated; compiled Python caches are removed and ignored.
   Book notes continue to be maintained directly in the books content collection.
-  The separate add-book and document-cleanup helper findings remain pending.
+  The separate add-book and document-cleanup helpers were subsequently repaired
+  during stabilization; their synthetic safety checks pass.
   Verification: four archived originals match HEAD, recorded hashes and sizes;
   five retired-command smoke checks exit safely without writing files. The
   website still builds 150 pages; archive and original handoff bytes are unchanged.
@@ -496,27 +503,29 @@ D09 Confirm licensing intent.
   Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/LICENSE
     /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/about.astro
 
-Existing integration checks still open
-=====================================
-The prior Mac migration did not establish actual Cloudflare Pages build settings,
-preview behavior/runtime/package manager, Obsidian publisher ownership, laptop-only
-content preservation, or final content cutover. These are separate from code fixes.
-No publishing or additional publisher/schedule is authorized. Full remote-client
-disconnect/reconnect recovery also remains unverified.
+Remaining integration checks
+============================
+The user explicitly authorized this release. Its Cloudflare preview and production
+deployments now succeed, with all 149 production routes matching the tested build.
+Exact account build-settings/runtime/package-manager values, Obsidian publisher
+ownership and laptop-only content preservation were not inspected. Those separate
+checks do not negate the verified release. No additional publisher or schedule was
+introduced. Full remote-client disconnect/reconnect recovery remains unverified.
 Checkpoint: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/MAC-SETUP-STATUS.txt
 
-Original implementation sequence (local implementation complete; release checkpoint tracks deployment)
-==============================================================================
+Original proposed implementation sequence (historical plan)
+===========================================================
 1. Publication/serialization safeguards, chart import and data-preservation fixes,
    date correctness, optional-field guards, and their regression tests (F01–F09).
 2. Restore list/link behavior, fix drag/PDF/mobile/accessibility issues (F10–F17),
    and establish clean source checks (F18–F20).
 3. Complete smaller usability/hygiene fixes, repair retained helpers, and update
    documentation (F21–F28). Make the content/model decisions before migrations.
-4. Extract pure planner/import/date functions from the 2,147-line RibbonChartPage
-   once behavior is protected, so future features can be reviewed and tested easily.
-5. A separate framework upgrade and final production integration after D05 and
-   the external setup/cutover checks are resolved.
+4. Future refactor: expand the existing pure planner/import helpers to extract
+   remaining component date calculations as future feature work requires.
+5. The separate framework upgrade and final production integration are complete
+   under the user's explicit release authorization. The separate setup/cutover
+   checks above remain uninspected.
 
 Evidence retained locally (ignored, synthetic where identified)
 ==============================================================
