@@ -6,7 +6,7 @@ Read `docs/MAC-SETUP-STATUS.txt` for the current checkpoint and
 handoff is preserved byte-for-byte in `docs/MAC-HANDOFF.txt`.
 
 - Preserve the entire `public/archives/91st` source directory.
-- Use a feature branch. Pushes to `main` may deploy Cloudflare Pages; this
+- Use a feature branch. Pushes to `main` may deploy Cloudflare Pages;
   publish only when the user explicitly authorizes the release. Pages settings
   remain a separate change requiring verified configuration evidence.
 - This branch uses npm with `package-lock.json`. Install with
@@ -18,6 +18,9 @@ handoff is preserved byte-for-byte in `docs/MAC-HANDOFF.txt`.
   choices. Compare Pages runtime/build evidence before production integration.
 - Disable Astro telemetry for task processes with `ASTRO_TELEMETRY_DISABLED=1`.
   Keep shared Node defaults unchanged and bind development servers to loopback.
+- Run Astro check/sync/build sequentially; they share a content-store cache.
+  Astro 7 preview is a background process: stop a task-owned preview with
+  `npm run preview -- stop`, then verify `npm run preview -- status`.
 - Audio transcription and historical book migration are retired. Their original
   code and timestamp tests are preserved as text in `docs/retired-workflows/`;
   do not install their model dependencies or run archived content helpers as tests.

@@ -14,6 +14,9 @@ Use this PATH in each shell for the recorded versions; shared defaults were
 not changed. The bundled Codex Node v24.19.0 is also present, but has no
 accompanying npm executable in its bin directory. The native Homebrew pair was
 chosen for this fresh install. Node 24 is a supported LTS release line.
+The repository .nvmrc pins 24.20.0 for version managers and Cloudflare Pages;
+this does not change the Mac's shared Node defaults. package.json engines
+describe minimum compatibility rather than choosing Cloudflare's runtime.
 
 RESTART IN A NEW TERMINAL
 
@@ -38,6 +41,12 @@ With the same environment:
 Open http://127.0.0.1:4321/ from the Mini's browser. The loopback address belongs
 to the Mini; remote access clients need their existing supported access route.
 Build output is dist/. Dependencies and output are regeneratable and ignored.
+Astro 7 preview starts a background process and returns to the shell. Ctrl-C
+does not stop it after that command exits. Use:
+  npm run preview -- status
+  npm run preview -- logs
+  npm run preview -- stop
+Verify status after stopping. The dev command above remains a foreground server.
 
 RETIRED PYTHON WORKFLOWS
 
@@ -96,6 +105,10 @@ npm run check:types checks .astro templates as well as TS/TSX and application
 JavaScript syntax, using pinned @astrojs/check 0.9.10 and TypeScript 5.9.3. The
 user approved the lockfile update and publication after the initial review
 rejection. The framework upgrade follows the preserved stabilization checkpoint.
+Run check:types (including its Astro sync) and build sequentially. They write
+the same node_modules/.astro content-store cache; concurrent runs reproduced an
+ENOENT atomic-rename race on October 12. Stop the task-owned preview before
+rebuilding and reload browser tabs after a new static build.
 
 RETAINED MARKDOWN HELPER
 
