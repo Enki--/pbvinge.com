@@ -1,0 +1,105 @@
+Book-note study applications — completed October 12, 2026
+Checkout: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Branch: codex/mac-mini-transfer; changes remain local.
+
+The user authorized completing the five unfinished study sections independently.
+Each section now provides a concrete research question, bounded cases, working
+thesis, evidence plan, outline, and methodological limit. These are finished
+research applications, with proposed arguments separated from sourced findings.
+
+Completed notes and research directions
+======================================
+src/content/books/667/spin-dictators.md
+  Media control and electoral accountability: Russia's 2003 State Duma campaign
+  and Hungary's 2018 parliamentary campaign. Authors' theory and official ODIHR
+  observations supply distinct forms of evidence.
+
+src/content/books/667/how-data-happened.md
+  Statistical authority and curation, 1896–1899: Hoffman, the Du Bois and Miller
+  critiques, and The Philadelphia Negro. Methodological validity is separated
+  from evidence of institutional uptake or changes in practice.
+
+src/content/books/667/world-war-ii-memory-and-contested-commemorations-in-europe-and-russia.md
+  Competing WWII responsibility narratives, September 2019–June 2020: European
+  Parliament and Russian presidency, with the Polish response treated separately.
+  Explicit responses are distinguished from parallel messaging and audience effects.
+
+src/content/books/667/total-cold-war.md
+  Psychological objectives and substantive policy, 1953–1955: Atoms for Peace
+  and Open Skies. Intent, implementation, bureaucratic disagreement and reception
+  are separate questions. A missing book bibliography is now supplied.
+
+src/content/books/667/subversion.md
+  Narrative circulation and observable action: the IRA's 2016 US-election activity
+  and the 2014–2015 UK Muslim Brotherhood Review. UAE influence is a proposition
+  to test, not a premise; Saudi-specific parliamentary findings remain distinct.
+  A missing bibliography is supplied. Georgetown's record confirms 252 pages for
+  the existing hardcover ISBN 9781647123352, replacing the erroneous value 5300.
+
+Editorial and layout changes
+============================
+Removed assignment-template variables, missing-chat/PDF-search status, generation
+quotas and instructions from the five notes. Preserved seminar questions, existing
+candidate arguments, evidence blocks, quotation banks and substantive source limits.
+Updated note modification timestamps. Framed Osgood's classification-access limits
+at publication and avoided a deterministic memory-escalation claim.
+
+Long unbroken terms in inherited nested lists caused mobile overflow. The book
+template now allows content to wrap within its available width. Navigation markup
+and behavior are unchanged.
+
+Sources and verification boundary
+=================================
+New source links are embedded beside the relevant additions. Main sources include:
+  https://spindictators.com/
+  https://www.aeaweb.org/articles?id=10.1257/jep.33.4.100
+  https://odihr.osce.org/sites/default/files/f/documents/b/8/21482.pdf
+  https://odihr.osce.org/odihr/elections/hungary/385959
+  https://wwnorton.co.uk/books/9781324006732-how-data-happened
+  https://archives.upenn.edu/exhibits/penn-people/biography/william-edward-burghardt-du-bois/
+  https://www.loc.gov/item/09024191/
+  https://academic.oup.com/book/55282/chapter/428681529
+  https://www.europarl.europa.eu/doceo/document/TA-9-2019-0021_EN.html
+  https://eng.sectsco.org/20200619/658741.html
+  https://kansaspress.ku.edu/9780700615902/
+  https://www.eisenhowerlibrary.gov/research/online-documents/atoms-peace
+  https://history.state.gov/historicaldocuments/frus1955-57v20/d48
+  https://press.georgetown.edu/Book/Subversion
+  https://www.gov.uk/government/publications/muslim-brotherhood-review-main-findings
+  https://publications.parliament.uk/pa/cm201617/cmselect/cmfaff/118/11811.htm
+
+Publisher descriptions and accessible abstracts verify their limited book-framework
+claims and bibliography. Primary reports and records support the proposed historical
+corpora. Restricted full text and intermittent source access are documented in local
+source notes. No new book quotations or book page numbers were invented. The original
+full-book files were not available here; inherited quotation/page-reference accuracy
+is not claimed as freshly verified. Other edition/pagination questions remain within
+the review's separate bibliographic-metadata work.
+
+Validation
+==========
+Astro build: PASS, 150 pages in 11.13 seconds; telemetry disabled.
+Content: PASS, all five routes render, all 70 numbered sections exist, no assignment
+placeholders remain, and 107 internal navigation links resolve uniquely.
+Preservation: all five original quotation banks match their pre-edit bytes.
+Browser: all five pages fit a 390px viewport without horizontal overflow; desktop
+representative page is 1280px wide at a 1280px viewport.
+Archives: all 2,487 source files retain tree hash
+  979d57273d264c1ba8fd9ab45f3ee5548f2c56af3f4ad20397d2092be36541f3
+Git diff whitespace check: PASS.
+Task-owned browser tab closed, viewport reset, and loopback server stopped.
+
+Local evidence: .local/note-completion/ (ignored)
+  before-manifest.json and *-before.md — exact source backups
+  validation.json and mobile-checks.json — final artifact checks
+  editorial-audit.txt and *-review.txt — independent editorial/source review
+  planner-note-completion-sources.json and route-audit-source-notes.md — source scope
+  build.log and completed-paper-application-*.jpg — build and browser evidence
+
+Later review decisions: the Presidents page is now a dated October 12 snapshot,
+and audio transcription/historical book migration are retired. See
+docs/PRESIDENTS-SNAPSHOT-2026-10-12.txt and docs/retired-workflows/README.md.
+Code-only MIT licensing was subsequently approved and added, alongside an
+academic-use notice on About. See docs/LICENSE-AND-ACADEMIC-USE-2026-10-12.txt.
+Broader stabilization and the subsequent framework upgrade remain pending;
+this completion does not publish.

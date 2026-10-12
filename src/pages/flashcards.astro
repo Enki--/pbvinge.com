@@ -1,444 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import flashcardsSrc from '../data/flashcards.json';
-import { marked } from 'marked';
-import createDOMPurify from 'dompurify';
-import { JSDOM } from 'jsdom';
+import { getCollection } from 'astro:content';
+import { isPublishedBookNote } from '../utils/books';
+import { buildNoteFlashcard, type NoteFlashcard } from '../utils/flashcards';
 
-marked.setOptions({
-  mangle: false,
-  headerIds: false,
-});
-
-// Read the JSON at build time and render answers to sanitized HTML.
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
-
-    const cardsSource = Array.isArray(flashcardsSrc) ? flashcardsSrc : [];
-const processed = cardsSource.map((c) => {
-  const qRaw = (c.q || '').toString();
-  const qLines = qRaw.split('\n').map((line) => line.trim()).filter(Boolean);
-  const title = qLines[0] || 'Untitled';
-  const authorLine = qLines[1] || '';
-  const author = authorLine.replace(/^by\s+/i, '').trim();
-
-  const aRaw = (c.a || '').toString();
-  const listItems = aRaw
-    .split('\n')
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith('- '))
-    .map((line) => line.replace(/^- /, '').trim())
-    .filter(Boolean);
-  const fallbackItems = aRaw
-    .split('\n')
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => line.replace(/^- /, '').trim())
-    .filter(Boolean);
-  const ideas = (listItems.length ? listItems : fallbackItems).slice(0, 2);
-  const ideasMarkdown = ideas.map((idea) => `- ${idea}`).join('\n');
-
-  let ideasHtml = '';
-  try {
-    ideasHtml = DOMPurify.sanitize(marked.parse(ideasMarkdown));
-  } catch (err) {
-    ideasHtml = ideas.map((idea) => `<li>${idea}</li>`).join('');
-    ideasHtml = `<ul>${ideasHtml}</ul>`;
-  }
-
-  return { ...c, title, author, ideasHtml, q: qRaw, a: aRaw };
-});
-
-const cardsJson = JSON.stringify(processed).replace(/</g, '\\u003C');
+const books = await getCollection('books', ({ data }) => isPublishedBookNote(data));
+const cards = books.sort((a, b) => a.data.title.localeCompare(b.data.title) || a.slug.localeCompare(b.slug))
+  .map(buildNoteFlashcard).filter((card): card is NoteFlashcard => card !== null);
+// Exact source units remain on the server; the client only receives displayed text.
+const displayedCards = cards.map(({ ideas, ...card }) => ({
+  ...card, ideas: ideas.map(({ text, section }) => ({ text, section })),
+}));
+const first = displayedCards[0];
+const cardsJson = JSON.stringify(displayedCards).replace(/</g, '\\u003C');
 ---
 
-<Layout>
-
-  <style>
-    :root {
-      --card-w: min(720px, 92vw);
-      --radius: 14px;
-      --card-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-      --focus: hsl(212 90% 56%);
-    }
-
-    main.deck { min-height: 70vh; display:grid; place-items:center; padding: clamp(16px,3vw,48px); gap:24px }
-    .stack { display: grid; gap: 18px; width: var(--card-w); }
-
-    .deck-header {
-      text-align: center;
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .deck-header h1 {
-      font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
-      margin: 0;
-    }
-
-    .deck-subtitle {
-      margin: 0;
-      color: var(--muted-text);
-      font-size: 1rem;
-    }
-
-    .card {
-      width: 100%;
-      background: var(--background-color);
-      color: var(--text-color);
-      border-radius: var(--radius);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      box-shadow: var(--card-shadow);
-      padding: clamp(1.25rem, 3vw, 2rem);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      perspective: 1200px;
-    }
-
-    .card__eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(15, 23, 42, 0.6);
-    }
-
-    .card__flip {
-      position: relative;
-      min-height: 360px;
-      transform-style: preserve-3d;
-      transition: transform 0.5s ease;
-    }
-
-    .card__flip.is-flipped {
-      transform: rotateY(180deg);
-    }
-
-    .card__face {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      align-items: center;
-      text-align: center;
-      backface-visibility: hidden;
-      width: 100%;
-      height: 100%;
-    }
-
-    .card__back {
-      transform: rotateY(180deg);
-    }
-
-    .card__title {
-      font-size: clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .card__author {
-      font-size: 1rem;
-      color: var(--muted-text);
-    }
-
-    .card__back-title {
-      font-size: 1.1rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted-text);
-    }
-
-    .card__ideas {
-      width: 100%;
-      text-align: left;
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-      padding-top: 0.75rem;
-      line-height: 1.6;
-      font-size: 1rem;
-      color: #334155;
-    }
-
-    .card__image {
-      max-width: min(320px, 80%);
-      border-radius: 10px;
-      align-self: center;
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
-    }
-
-    :root[data-theme='dark'] .card__ideas {
-      color: var(--text-color);
-      border-top-color: rgba(148, 163, 184, 0.25);
-    }
-
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-
-    .controls button {
-      background: rgba(15, 23, 42, 0.05);
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      color: var(--text-color);
-      padding: .45rem .9rem;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background .2s ease, transform .2s ease;
-    }
-
-    .controls button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .controls button:hover:not(:disabled),
-    .controls button:focus-visible {
-      background: rgba(15, 23, 42, 0.12);
-      outline: none;
-      transform: translateY(-1px);
-    }
-
-    .card__meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: rgba(15, 23, 42, 0.7);
-    }
-
-    .progress {
-      min-width: 4rem;
-      text-align: center;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .hint {
-      text-align: center;
-      font-size: 0.85rem;
-      color: rgba(15, 23, 42, 0.65);
-      max-width: var(--card-w);
-    }
-
-    .issue-link {
-      align-self: center;
-      font-size: 0.9rem;
-      color: var(--link-color);
-      text-decoration: none;
-      margin-top: 0.25rem;
-    }
-
-    .issue-link:hover,
-    .issue-link:focus-visible {
-      text-decoration: underline;
-    }
-  </style>
-
-  <main class="deck">
+<Layout title="Flashcards - Shrink">
+  <section class="deck" aria-labelledby="deckTitle">
     <header class="deck-header">
-      <h1>Flashcards</h1>
-      <p class="deck-subtitle">Two key ideas from every book you read.</p>
+      <h1 id="deckTitle">Flashcards</h1>
+      <p>Recall two ideas from each published book note.</p>
+      <p class="source-note">Excerpts come from the study notes. Follow the source to read their context and references.</p>
     </header>
-
-    <section class="stack" aria-label="Flashcard viewer">
-      <article class="card" aria-live="polite">
-        <div class="card__meta">
-          <span class="card__eyebrow" id="eyebrow">Front</span>
-          <span class="progress" id="progress">1 / —</span>
+    <div class="stack">
+      <article class="card" aria-labelledby="cardTitle">
+        <div class="card-meta">
+          <span id="eyebrow">Recall</span>
+          <span id="progress" role="status">{first ? `1 / ${cards.length}` : '0 / 0'}</span>
         </div>
-        <div class="card__flip" id="cardFlip">
-          <div class="card__face card__front" id="cardFront">
-            <img id="cardImage" src="" alt="" loading="lazy" decoding="async" width="320" height="240" class="card__image" hidden />
-            <div class="card__title" id="cardTitle">{processed[0] ? processed[0].title : 'Loading…'}</div>
-            <div class="card__author" id="cardAuthor">{processed[0]?.author ? `by ${processed[0].author}` : ''}</div>
-          </div>
-          <div class="card__face card__back" id="cardBack">
-            <h2 class="card__back-title">Two Major Ideas</h2>
-            <div class="card__ideas" id="cardIdeas" set:html={processed[0] ? processed[0].ideasHtml : ''}></div>
-          </div>
+        <h2 id="cardTitle">{first?.title || 'No published notes available'}</h2>
+        <p id="cardAuthor">{first?.credit || ''}</p>
+        <div id="cardFront">
+          {first?.img && <img id="cardImage" src={first.img} alt={`Cover of ${first.title}`} loading="lazy" />}
+          <p>Which two ideas do these study notes emphasize?</p>
         </div>
-        <button id="toggleBtn" type="button">Show ideas</button>
-        <a id="issueLink" class="issue-link" href="#" target="_blank" rel="noreferrer noopener" hidden>Suggest an edit on GitHub</a>
+        <div id="cardBack" hidden inert>
+          <h3>Ideas from the note</h3>
+          <ul id="cardIdeas">
+            {first?.ideas.map(idea => <li><p>{idea.text}</p><small>From: {idea.section || 'Study notes'}</small></li>)}
+          </ul>
+        </div>
+        <button id="toggleBtn" type="button" aria-expanded="false" aria-controls="cardBack" disabled={!first}>Show ideas</button>
+        <a id="sourceLink" href={first?.sourceHref || '/books'}>Read the source note</a>
+        <a id="issueLink" class="issue-link" href="https://github.com/Enki--/pbvinge.com/issues/new" target="_blank" rel="noreferrer noopener">Suggest an edit on GitHub</a>
       </article>
-
-      <div class="controls">
-        <button id="prevBtn" aria-label="Previous card">← Prev</button>
-        <button id="nextBtn" aria-label="Next card">Next →</button>
+      <div class="controls" role="group" aria-label="Flashcard navigation">
+        <button id="prevBtn" type="button" disabled={!first}>← Previous card</button>
+        <button id="nextBtn" type="button" disabled={!first}>Next card →</button>
       </div>
-    </section>
-
-    <p class="hint">Tip: Press the “Show ideas” button or hit <kbd>Space</kbd>/<kbd>Enter</kbd> when focused. Use <kbd>←</kbd>/<kbd>→</kbd> to move between cards.</p>
-  </main>
-
-  <!-- serialized processed data for client -->
+    </div>
+    <p class="hint">Use the buttons with Enter or Space. Left and right arrows move between cards when a deck button has focus.</p>
+    <noscript><p>The first card is shown above. Enable JavaScript to reveal ideas and browse the full deck, or <a href="/books">read the book notes</a>.</p></noscript>
+  </section>
   <script id="flashcards-data" type="application/json" set:html={cardsJson}></script>
-
-  <script>
-  (function () {
-    if (typeof window === 'undefined') return;
-    if (window.__pbvFlashcardsInitialized) return;
-    window.__pbvFlashcardsInitialized = true;
-
-    const dataEl = document.getElementById('flashcards-data');
-    let cards = [];
-    try {
-      const json = dataEl ? (dataEl.textContent || '').trim() : '';
-      cards = json ? JSON.parse(json) : [];
-    } catch (err) {
-      console.error('Failed to parse flashcards data', err);
-      cards = [];
-    }
-
-    let idx = 0;
-    let showAnswer = false;
-
-    const cardFront = document.getElementById('cardFront');
-    const cardBack = document.getElementById('cardBack');
-    const titleEl = document.getElementById('cardTitle');
-    const authorEl = document.getElementById('cardAuthor');
-    const ideasEl = document.getElementById('cardIdeas');
-    const flipEl = document.getElementById('cardFlip');
-    const eyebrowEl = document.getElementById('eyebrow');
-    const progressEl = document.getElementById('progress');
-    const toggleBtn = document.getElementById('toggleBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const imageEl = document.getElementById('cardImage');
-    const issueLink = document.getElementById('issueLink');
-    const ISSUE_BASE = 'https://github.com/Enki--/pbvinge.com/issues/new';
-
-    function syncFlipHeight() {
-      if (!flipEl || !cardFront || !cardBack) return;
-      const frontHeight = cardFront.scrollHeight;
-      const backHeight = cardBack.scrollHeight;
-      const target = Math.max(frontHeight, backHeight, 360);
-      flipEl.style.minHeight = `${target}px`;
-    }
-
-    function updateAnswerVisibility() {
-      if (!cardFront || !cardBack || !toggleBtn || !flipEl) return;
-      flipEl.classList.toggle('is-flipped', showAnswer);
-      toggleBtn.textContent = showAnswer ? 'Show cover' : 'Show ideas';
-      eyebrowEl && (eyebrowEl.textContent = showAnswer ? 'Back' : 'Front');
-    }
-
-    function stripHtml(input = '') {
-      return input.replace(/<[^>]+>/g, '').replace(/\\s+/g, ' ').trim();
-    }
-
-    function updateIssueLink(card) {
-      if (!issueLink) return;
-      if (!card) {
-        issueLink.hidden = true;
-        issueLink.removeAttribute('href');
-        return;
-      }
-      const titleLine = card.title || (card.q || '').split('\\n')[0] || 'Flashcard';
-      const answerText = card.ideasHtml ? stripHtml(card.ideasHtml) : (card.a || '');
-      const params = new URLSearchParams({
-        title: `Flashcard feedback: ${titleLine}`.slice(0, 256),
-        body: `Flashcard front:\\n${card.title || card.q || ''}${card.author ? `\\nby ${card.author}` : ''}\\n\\nCurrent ideas:\\n${answerText || '(empty)'}\\n\\nCard index: ${idx + 1} of ${cards.length}`
-      });
-      issueLink.href = `${ISSUE_BASE}?${params.toString()}`;
-      issueLink.hidden = false;
-    }
-
-    function render() {
-      const hasCards = cards.length > 0;
-      const controls = [toggleBtn, prevBtn, nextBtn];
-      controls.forEach(btn => btn && (btn.disabled = !hasCards));
-
-      if (!hasCards) {
-        titleEl && (titleEl.textContent = 'No cards available');
-        authorEl && (authorEl.textContent = '');
-        ideasEl && (ideasEl.textContent = '');
-        eyebrowEl && (eyebrowEl.textContent = 'Front');
-        progressEl && (progressEl.textContent = '0 / 0');
-        if (imageEl) {
-          imageEl.hidden = true;
-          imageEl.removeAttribute('src');
-          imageEl.alt = '';
-        }
-        showAnswer = false;
-        updateAnswerVisibility();
-        updateIssueLink(null);
-        return;
-      }
-
-      idx = ((idx % cards.length) + cards.length) % cards.length;
-      const current = cards[idx];
-
-      titleEl && (titleEl.textContent = current.title || '');
-      authorEl && (authorEl.textContent = current.author ? `by ${current.author}` : '');
-      if (ideasEl) {
-        ideasEl.innerHTML = current.ideasHtml || '';
-      }
-
-      eyebrowEl && (eyebrowEl.textContent = showAnswer ? 'Back' : 'Front');
-      progressEl && (progressEl.textContent = `${idx + 1} / ${cards.length}`);
-
-      if (imageEl) {
-        if (current.img) {
-          let imgUrl = current.img;
-          if (imgUrl.startsWith('http://')) {
-            imgUrl = imgUrl.replace(/^http:\/\//, 'https://');
-          }
-          imageEl.src = imgUrl;
-          imageEl.alt = current.q || 'Flashcard image';
-          imageEl.hidden = false;
-          imageEl.onload = () => syncFlipHeight();
-        } else {
-          imageEl.hidden = true;
-          imageEl.removeAttribute('src');
-          imageEl.alt = '';
-        }
-      }
-
-      updateAnswerVisibility();
-      updateIssueLink(current);
-      syncFlipHeight();
-    }
-
-    function changeCard(delta) {
-      if (!cards.length) return;
-      idx = (idx + delta + cards.length) % cards.length;
-      showAnswer = false;
-      render();
-      toggleBtn && toggleBtn.focus();
-    }
-
-    toggleBtn && toggleBtn.addEventListener('click', () => {
-      if (!cards.length) return;
-      showAnswer = !showAnswer;
-      updateAnswerVisibility();
-    });
-
-    prevBtn && prevBtn.addEventListener('click', () => changeCard(-1));
-    nextBtn && nextBtn.addEventListener('click', () => changeCard(1));
-
-    document.addEventListener('keydown', (e) => {
-      if (!cards.length) return;
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        changeCard(1);
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        changeCard(-1);
-      } else if (e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
-        if (document.activeElement && document.activeElement.closest('.card')) {
-          e.preventDefault();
-          showAnswer = !showAnswer;
-          updateAnswerVisibility();
-        }
-      }
-    });
-
-    render();
-  })();
-  </script>
 </Layout>
+
+<style>
+  .deck { min-height: 70vh; padding: clamp(1rem, 3vw, 3rem); display: grid; justify-items: center; gap: 1.5rem; }
+  .deck-header { text-align: center; max-width: 45rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); }
+  .source-note, .hint { color: var(--text-subtle); }
+  .stack { width: min(100%, 45rem); display: grid; gap: 1rem; min-width: 0; }
+  .card { border: 1px solid var(--border-light); border-radius: 1rem; padding: clamp(1rem, 3vw, 2rem); background: var(--background-color); display: grid; gap: 1rem; }
+  .card-meta { display: flex; justify-content: space-between; gap: 1rem; color: var(--text-subtle); }
+  h2 { font-size: clamp(1.3rem, 4vw, 1.8rem); overflow-wrap: anywhere; }
+  #cardAuthor { color: var(--text-subtle); }
+  #cardFront { text-align: center; }
+  #cardImage { max-width: min(100%, 240px); max-height: 330px; object-fit: contain; margin: 0 auto 1rem; border-radius: .5rem; }
+  #cardIdeas { padding-left: 1.25rem; line-height: 1.6; }
+  #cardIdeas :global(li + li) { margin-top: 1rem; }
+  #cardIdeas :global(small) { color: var(--text-subtle); }
+  .controls { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+  button { border: 1px solid var(--border-light); border-radius: .5rem; padding: .65rem 1rem; background: var(--surface-subtle); color: var(--text-color); cursor: pointer; }
+  button:disabled { opacity: .6; cursor: default; }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--link-color); outline-offset: 3px; }
+  a { color: var(--link-color); text-decoration: underline; overflow-wrap: anywhere; }
+  .hint { max-width: 45rem; text-align: center; font-size: .9rem; }
+  [hidden] { display: none !important; }
+</style>
+<script>
+  import { initFlashcards } from '../utils/flashcards-client';
+  initFlashcards();
+</script>

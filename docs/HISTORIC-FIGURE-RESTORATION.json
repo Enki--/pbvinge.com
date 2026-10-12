@@ -1,0 +1,1452 @@
+{
+  "document": "src/content/documents/1943-us-strategic-bombing-survey.md",
+  "restored_on": "2026-10-12",
+  "edition": "Aircraft Division Industry Report, second edition, January 1947",
+  "edition_corroboration": "https://tile.loc.gov/storage-services/service/gdc/gdcfindingaidpdfs/gc013002/gc013002.pdf",
+  "sources": [
+    {
+      "id": "michigan-1947",
+      "library": "University of Michigan",
+      "catalog_url": "https://hdl.handle.net/2027/mdp.39015008565429",
+      "retrieved_from": "https://drive.google.com/file/d/1foI3Drt7X5r1veSA6jJLQhXHJxwFyNDl/view",
+      "mirror_index": "https://pacificwararchive.wordpress.com/2019/02/24/us-strategic-bombing-survey-europe/",
+      "pdf_sha256": "a506359161c08de1ead2e0249ebabc9cf4a28c4c873f25e5e78c2c535bbc0148",
+      "pdf_pages": 285,
+      "verification": "Title page visually confirms January 1947 second edition; University of Michigan markings and HathiTrust producer are present. Each accepted plate was visually inspected."
+    },
+    {
+      "id": "indiana-1947",
+      "library": "Indiana University",
+      "catalog_url": "https://books.google.com/books/about/Aircraft_Division_Industry_Report.html?id=c8wnG5kKSVEC",
+      "retrieved_from": "https://books.google.com/books?id=c8wnG5kKSVEC",
+      "pdf_sha256": "f2b81f0e1b104aa1532425bf852d67fcf575983efe8d1dfe18456450d7c86782",
+      "pdf_pages": 311,
+      "verification": "Catalog identifies second edition, 1947, Indiana University original, digitized January 6, 2023. Title page and each accepted plate were visually inspected."
+    }
+  ],
+  "original_transcription_sha256": "3d55f7bb440d43e26c1a3896f06f01fa47bc616f324805a22c784528499bb15b",
+  "image_policy": "Only verified complete chart/map/diagram content is restored. Full-resolution PNG scans are extracted without redrawing, resampling, contrast enhancement or invented data. Rotations are lossless. WebP display previews are resized and compressed; each links to its unchanged full-resolution PNG. Existing scan defects are disclosed.",
+  "counts": {
+    "restored": 37,
+    "gaps": 0
+  },
+  "figures": [
+    {
+      "figure": "I-1",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 24,
+      "caption": "The German Aircraft Industry under Allied Air Attack",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "The narrative also refers to this schematic as Figure 1. The scanned plate is labeled I-1.",
+      "embedded_image_name": "JxCCN.jp2",
+      "embedded_pdf_stream_sha256": "d49c7545819d7809b2727cdf177de27a82cc46e70bcfd2125be84f1f7b11ac37",
+      "original_dimensions": [
+        2187,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-i-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-i-1.png",
+      "asset_sha256": "8c56f9a5210a20741d6f348bb8edc04f7d92145238b72f5d68360d932db65f67",
+      "asset_dimensions": [
+        3027,
+        2187
+      ],
+      "asset_bytes": 1645946,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-i-1.webp",
+      "preview_dimensions": [
+        1600,
+        1156
+      ],
+      "preview_sha256": "0b1192a5baabdacf46e66364a3a425fb6205b54e8bdc96377dee2a2bc3c4b9f4",
+      "preview_bytes": 222496,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-1",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 56,
+      "caption": "Principal Plants Of German Aircraft Industry Prior To 1939",
+      "exact_visible_label": "FIGURE II-1",
+      "exact_visible_caption": "PRINCIPAL PLANTS OF GERMAN AIRCRAFT INDUSTRY PRIOR TO 1939",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete unfolded map, map frame, scale, factories, title, figure label and German Air Ministry source line. Small map labels are legible in the full native image. Binding strip and page holder remain outside the map content.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA21",
+      "google_catalog_pid": "PA21",
+      "source_page_mapping": "Saved catalog order + 2 equals physical PDF page; verified against title/plate OCR and exact direct TOC targets for III-1 and III-3.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "c1af661a4f77d0883ca753b5d08c314233786bff0739c1c9ec487d34410f9b1f",
+      "original_dimensions": [
+        4104,
+        3140
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-1.png",
+      "asset_sha256": "e7b90b7b4620785488f3afa917d8587ccb364fb0943df14e8f30fda515797c99",
+      "asset_dimensions": [
+        4104,
+        3140
+      ],
+      "asset_bytes": 6340239,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-1.webp",
+      "preview_dimensions": [
+        1600,
+        1224
+      ],
+      "preview_sha256": "2a04878c3d34e256dd7d9fa7344dedcb3833f2987eba403fb73ed7f3527d160e",
+      "preview_bytes": 150222,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-2",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 58,
+      "caption": "Dispersal Of Airframe Manufacture-1944",
+      "exact_visible_label": "FIGURE II-2",
+      "exact_visible_caption": "DISPERSAL OF AIRFRAME MANUFACTURE-1944",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete unfolded map, full factory-symbol legend, scale, factories, title, figure label and German Air Ministry source line. Binding and page holder are outside the map content.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA23",
+      "google_catalog_pid": "PA23",
+      "source_page_mapping": "Saved catalog order + 2 equals physical PDF page; verified against title/plate OCR and exact direct TOC targets for III-1 and III-3.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "b38e2d6ad08fcd055862b56d15ff0c5b115b25da058b8969aaf2758b901cf9c7",
+      "original_dimensions": [
+        4064,
+        3142
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-2.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-2.png",
+      "asset_sha256": "7f967259f5a8712a0f894a8466dbbfd91166960a656628dbed2a6cc4410c4952",
+      "asset_dimensions": [
+        4064,
+        3142
+      ],
+      "asset_bytes": 9611185,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-2.webp",
+      "preview_dimensions": [
+        1600,
+        1237
+      ],
+      "preview_sha256": "dca9e48cfa80ff3fa3e312e229f0bce1d568376ed60ab1016c6774792498783d",
+      "preview_bytes": 254322,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-3",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 51,
+      "caption": "Erla Maschinenwerk GmbH, Leipzig, Flow Chart, January-February-March 1945",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Complete flow chart, arrows, columns and labels. Original scan wear is retained.",
+      "embedded_image_name": "IxCDO.tiff",
+      "embedded_pdf_stream_sha256": "d795fe004172df4758935223bc110ff8c45e0de181bf4804e2042bc6ffafb4e4",
+      "original_dimensions": [
+        4436,
+        6054
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-3.png",
+      "asset_sha256": "96af74d4e4bdfc2df12a92673bb6b3ee6d526195b3824fdb135ba40e9fe76648",
+      "asset_dimensions": [
+        6054,
+        4436
+      ],
+      "asset_bytes": 165824,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-3.webp",
+      "preview_dimensions": [
+        1600,
+        1172
+      ],
+      "preview_sha256": "6d64cdc3ec0567766380f941802884c2fc125932aa76fac12cbff18000f4745e",
+      "preview_bytes": 198120,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-4",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 52,
+      "caption": "Geographical Dispersal as of January-February-March 1945; Erla Maschine Works",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete map and legend, including the original figure label.",
+      "embedded_image_name": "IxCDP.tiff",
+      "embedded_pdf_stream_sha256": "a8aaae78df8abbd62c9016d9edb34ebce5212eb24bffe4803d97fb5d8ff87c11",
+      "original_dimensions": [
+        4436,
+        6054
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-4.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-4.png",
+      "asset_sha256": "20d7d88fbfd254e77d3bd8635d5faf4da06c096ffc5f869e6158e8f1bb5ae7b3",
+      "asset_dimensions": [
+        4436,
+        6054
+      ],
+      "asset_bytes": 119950,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-4.webp",
+      "preview_dimensions": [
+        1172,
+        1600
+      ],
+      "preview_sha256": "020f02b642d5332507eb16a091095c2054d4b1ae4fa1669f3d46e9de187b22ad",
+      "preview_bytes": 120878,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-5",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 62,
+      "caption": "Heinkel Flugzeug Werke Oranienburg, Arrangement of Factory Building",
+      "exact_visible_label": "FIGURE II-5",
+      "exact_visible_caption": "HEINKEL FLUGZEUG WERKE ORANIENBURG / ARRANGEMENT OF FACTORY BUILDING",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Complete factory plan, numbered building legend, compass, title and footer. Original scan wear is retained.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA27",
+      "google_catalog_pid": "PA27",
+      "source_page_mapping": "Physical PDF page equals saved Google catalog order + 2; captions/labels independently verified in native bitmap.",
+      "embedded_image_name": "J2i0.png",
+      "embedded_pdf_stream_sha256": "28981e5177365866e115ec77b4076de3157cf1fdf3249e440e8d99108cfc6bca",
+      "original_dimensions": [
+        4320,
+        6080
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-5.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-5.png",
+      "asset_sha256": "d2f9cd474812bdee4df08bc303032e26a0cf37cd86c56828aded2f46f1b7566c",
+      "asset_dimensions": [
+        6080,
+        4320
+      ],
+      "asset_bytes": 137588,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-5.webp",
+      "preview_dimensions": [
+        1600,
+        1137
+      ],
+      "preview_sha256": "c49da1c3fac448cde6d296bc0e85ff16a52d714f764dd6f1ae91609f41ddc42c",
+      "preview_bytes": 161174,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-6",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 63,
+      "caption": "Dispersal of Me 109 Airplane Production",
+      "exact_visible_label": "FIGURE II-6",
+      "exact_visible_caption": "DISPERSAL OF ME 109 AIRPLANE PRODUCTION",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Complete graph, airplane-count axis, 1942\u20131944 time axis, space-area annotations, title and footer. Original scan wear is retained.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA28",
+      "google_catalog_pid": "PA28",
+      "source_page_mapping": "Physical PDF page equals saved Google catalog order + 2; captions/labels independently verified in native bitmap.",
+      "embedded_image_name": "J2i0.png",
+      "embedded_pdf_stream_sha256": "634d1ce4cdb248d8a0af46905ed60eb31655b2beab1686dc92460466cff6f8b2",
+      "original_dimensions": [
+        4288,
+        6096
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-6.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-6.png",
+      "asset_sha256": "4cff7140e7a5a835fe234ec40229a8eb5bacda8349d65dde56ded3e3d8289297",
+      "asset_dimensions": [
+        6096,
+        4288
+      ],
+      "asset_bytes": 111201,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-6.webp",
+      "preview_dimensions": [
+        1600,
+        1125
+      ],
+      "preview_sha256": "5fdc3cab09e37f6e0a74442723c1542f4170dec6039d4b4a58d8b00874acc4dd",
+      "preview_bytes": 133408,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-7",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 64,
+      "caption": "Dispersal Network Of The Messerschmitt Production Complexes",
+      "exact_visible_label": "FIG. II-7",
+      "exact_visible_caption": "DISPERSAL NETWORK OF THE MESSERSCHMITT PRODUCTION COMPLEXES",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete unfolded dispersal network, map frame, all transport lines and visible title block. Dense small city/component labels require opening the full-resolution image. A strip of the facing page is visible at far left, outside the figure frame.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA29",
+      "google_catalog_pid": "PA29",
+      "source_page_mapping": "Saved catalog order + 2 equals physical PDF page; verified against title/plate OCR and exact direct TOC targets for III-1 and III-3.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "34f1eea3d0a636aa9dd45fef439305cc9a07acd690452fcbb3ec3923865567ed",
+      "original_dimensions": [
+        4075,
+        3155
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-7.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-7.png",
+      "asset_sha256": "c8d5af9adb12ea76c506064eb2173e408e21b011e4502f8b2c1f3c7b4ada92a1",
+      "asset_dimensions": [
+        4075,
+        3155
+      ],
+      "asset_bytes": 8624525,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-7.webp",
+      "preview_dimensions": [
+        1600,
+        1239
+      ],
+      "preview_sha256": "6c065d489bd38654698b88a66a0aae8148a613b7cf3f707541f0fe07aa383edb",
+      "preview_bytes": 217018,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "II-8",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 57,
+      "caption": "Typical Forest Dispersal, Messerschmitt, Kuno AG. I",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Full site plan, buildings, roads, flight strip, scale and figure label.",
+      "embedded_image_name": "JxCDU.jp2",
+      "embedded_pdf_stream_sha256": "bb71bb3517ad0fa98dfcf12977c2a6bca5b7c61bc95d643c935d016130828833",
+      "original_dimensions": [
+        2218,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ii-8.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-8.png",
+      "asset_sha256": "91aa523631642c4a59806cf233e31d1fb5645a94a418ff2f5ea078fc42e8f588",
+      "asset_dimensions": [
+        3027,
+        2218
+      ],
+      "asset_bytes": 1830969,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ii-8.webp",
+      "preview_dimensions": [
+        1600,
+        1172
+      ],
+      "preview_sha256": "09a008caafc5457ab07cc07c38e3b5e3499be79bc4aca055f12c4b364ca4f31b",
+      "preview_bytes": 265250,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "III-1",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 86,
+      "caption": "Organization Chart German Governmental Controls For Aircraft Production",
+      "exact_visible_label": "FIGURE III-1",
+      "exact_visible_caption": "ORGANIZATION CHART GERMAN GOVERNMENTAL CONTROLS FOR AIRCRAFT PRODUCTION",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Entire wide organization chart visible: all boxes, labels, branches, title and figure label. Original narrow vertical tear from the top edge breaks the upper border and reaches a diagonal connector near the Hitler/German Air Ministry branch; it does not hide a box or label. Preserve this source damage and do not reconstruct the line.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA45-IA6",
+      "google_catalog_pid": "PA45-IA6",
+      "source_page_mapping": "Saved catalog order + 2 equals physical PDF page; verified against title/plate OCR and exact direct TOC targets for III-1 and III-3.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "1c69fea0b5cef5615e2bc03ca0c1a6cecc3bcfc08eb8a3908f929aaae0e214e9",
+      "original_dimensions": [
+        6381,
+        3160
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-iii-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-1.png",
+      "asset_sha256": "59e6661f4df14a039892977633274607e5653da0bd6c0e847f0a4e34ae24ad23",
+      "asset_dimensions": [
+        6381,
+        3160
+      ],
+      "asset_bytes": 13420443,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-1.webp",
+      "preview_dimensions": [
+        1600,
+        792
+      ],
+      "preview_sha256": "a948b81ef7a504c243b7e3a92fd78a260662034bdacd70353352619b0a76b9f7",
+      "preview_bytes": 148942,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "III-2",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 79,
+      "caption": "Organization Chart, Main Airframe Committee",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Complete chart, boxes, connectors and figure label.",
+      "embedded_image_name": "IxCEQ.tiff",
+      "embedded_pdf_stream_sha256": "cce402503c547c6ca6967a0e49ec4410d6abf819590118e3f8a65ca56b602c9d",
+      "original_dimensions": [
+        4494,
+        6056
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-iii-2.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-2.png",
+      "asset_sha256": "09f5f30ed4fa6a1491dd27d9626764f41fc5e4c0f082d9c58dbea5e0f5eaec18",
+      "asset_dimensions": [
+        6056,
+        4494
+      ],
+      "asset_bytes": 112864,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-2.webp",
+      "preview_dimensions": [
+        1600,
+        1187
+      ],
+      "preview_sha256": "bcaf54af722eb93ca1c4676e24d06e8ac1d3d79d3afbd2937de346d5844c476d",
+      "preview_bytes": 147324,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "III-3",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 90,
+      "caption": "German Airplane Programs And Production / All Models / Jan. 1941 - Mar. 1945",
+      "exact_visible_label": "EXHIBIT III-3",
+      "exact_visible_caption": "GERMAN AIRPLANE PROGRAMS AND PRODUCTION / ALL MODELS / JAN. 1941 - MAR. 1945",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete unfolded chart: both number axes, time axis through 1945, full program legend, plotted curves, source notes and title block. The scanned plate explicitly calls itself EXHIBIT III-3 although the figure table lists it as III-3; retain the visible source label in provenance.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA45-IA10",
+      "google_catalog_pid": "PA45-IA10",
+      "source_page_mapping": "Saved catalog order + 2 equals physical PDF page; verified against title/plate OCR and exact direct TOC targets for III-1 and III-3.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "f613cc71f88e16d5e136fd421837821c96573d3b2c42664476b60fe5de0ea11b",
+      "original_dimensions": [
+        4753,
+        3173
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-iii-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-3.png",
+      "asset_sha256": "339d84f13987f82c08dd4dd82f4ad348734494c995c3e9847cb0c936d946eda7",
+      "asset_dimensions": [
+        4753,
+        3173
+      ],
+      "asset_bytes": 10029698,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-iii-3.webp",
+      "preview_dimensions": [
+        1600,
+        1068
+      ],
+      "preview_sha256": "a56ba4d349852739c8b85c9021813c32d1c94075672db4db202f8004eb372cbf",
+      "preview_bytes": 162560,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-1",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 131,
+      "caption": "German Airplane Production by Type and by Year, 1933 through 1944",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGQ.jp2",
+      "embedded_pdf_stream_sha256": "fe5d0d7fd50145d869bcf5bef788061f5de15653c4d869f560883279de32c220",
+      "original_dimensions": [
+        2250,
+        3030
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-1.png",
+      "asset_sha256": "a91b095cb3dd3a40fd79d14005e61302c72cb0f7fa21f711a743e340232ea1f9",
+      "asset_dimensions": [
+        3030,
+        2250
+      ],
+      "asset_bytes": 1462961,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-1.webp",
+      "preview_dimensions": [
+        1600,
+        1188
+      ],
+      "preview_sha256": "661331e686d2d87736b56d15c8d33ac4f5632b3163c27ca8ec08a00d9d6a9a3b",
+      "preview_bytes": 210330,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-2",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 132,
+      "caption": "German Airplane Production: Airframe Weight, Number of Airplanes and Average Unit Weight (Including Spare Parts), Jan.1941-Dec.1944",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGR.jp2",
+      "embedded_pdf_stream_sha256": "00bfc771ebf53addf68ab76f4452745798372180fa85a5e6b71f1c56eac50cb3",
+      "original_dimensions": [
+        2183,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-2.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-2.png",
+      "asset_sha256": "0b1328cdac544b185bd09f0274e90930da81933127cb0dd5010e35d7fe36c008",
+      "asset_dimensions": [
+        2183,
+        3027
+      ],
+      "asset_bytes": 1444161,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-2.webp",
+      "preview_dimensions": [
+        1154,
+        1600
+      ],
+      "preview_sha256": "8413d6c90b13941a216eb1a7bc355be585e622fa699790f3c0c2ce81f6ff84cf",
+      "preview_bytes": 189268,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-3",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 133,
+      "caption": "German Airplane Production: Percent Distribution of Airframe Weight Output by Major Type Classification, 1941-1944",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGS.jp2",
+      "embedded_pdf_stream_sha256": "203cb0bb6d368635eb6583666820b72ddc106a5b7e3c825bb3c9039ea83f20b4",
+      "original_dimensions": [
+        2207,
+        3029
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-3.png",
+      "asset_sha256": "e474f2131c83c97857ce671237f41e08c69142de65bf190ee7b0eb60172f584b",
+      "asset_dimensions": [
+        2207,
+        3029
+      ],
+      "asset_bytes": 2094844,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-3.webp",
+      "preview_dimensions": [
+        1166,
+        1600
+      ],
+      "preview_sha256": "34905f60973f4e29e13a2c72ecf307cf39f669b08605c5525e00570e5d4650dc",
+      "preview_bytes": 329870,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-4",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 134,
+      "caption": "Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (P-51, Me-109, P-47, FW-190)",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "IxCGT.tiff",
+      "embedded_pdf_stream_sha256": "e1cd2ba8b625cd8119c6c4e626e808f01c2b5990e3198654fa36cac92bd357f8",
+      "original_dimensions": [
+        4414,
+        6058
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-4.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-4.png",
+      "asset_sha256": "c46ba6119ceeab6c9b0ade70177ca403ee488c619079d76184674f6a7f01d332",
+      "asset_dimensions": [
+        4414,
+        6058
+      ],
+      "asset_bytes": 94016,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-4.webp",
+      "preview_dimensions": [
+        1166,
+        1600
+      ],
+      "preview_sha256": "0d7042c5576b820e0d76766cc68fd425059d236da7137eee2b0b4ddf5a827056",
+      "preview_bytes": 107892,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-5",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 135,
+      "caption": "Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (B-25, Ju-88, B-17, He-177)",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "IxCGU.tiff",
+      "embedded_pdf_stream_sha256": "f99848d082ad163bb8c0db7d59d7d2e88665f96b925357b120ded18a21be408f",
+      "original_dimensions": [
+        4500,
+        6060
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-5.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-5.png",
+      "asset_sha256": "35811e96d39b5ed0888fe0d2b15ffcaf3fb4a1249befc899680884f1448be959",
+      "asset_dimensions": [
+        4500,
+        6060
+      ],
+      "asset_bytes": 100172,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-5.webp",
+      "preview_dimensions": [
+        1188,
+        1600
+      ],
+      "preview_sha256": "b4a863e1b2d33cc6dfcd13f3019a10286c267cecf38ea5f38484be351c7577af",
+      "preview_bytes": 116666,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-6",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 136,
+      "caption": "Comparison of United States & Germany Airplane Production, January1941-December1944",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "IxCGV.tiff",
+      "embedded_pdf_stream_sha256": "196d338ba672668abf4a46d88730edb9c0900c9183e0f33088ff0b772cdc55fd",
+      "original_dimensions": [
+        4366,
+        6054
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-6.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-6.png",
+      "asset_sha256": "99c3854999b6f9de06b30d0ce126844efe8f26f0bbb230cbcfbf4949a2543d3f",
+      "asset_dimensions": [
+        4366,
+        6054
+      ],
+      "asset_bytes": 138839,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-6.webp",
+      "preview_dimensions": [
+        1154,
+        1600
+      ],
+      "preview_sha256": "244a4e33ac77beb57403c7749eeab66c91b2471a860270258c3eb9fcaa52f05a",
+      "preview_bytes": 162496,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-7",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 137,
+      "caption": "German Airplane Program & Production, Jan41-Jan45 (one-engine fighters, two-engine fighters, two-engine bombers, four-engine bombers)",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGW.jp2",
+      "embedded_pdf_stream_sha256": "83b62a14f78ed527c08bb664310340f513dcf38064f1ad350d7b2fc6f4fda8dc",
+      "original_dimensions": [
+        2250,
+        3030
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-7.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-7.png",
+      "asset_sha256": "465f3b56689fe006db6396d57a1d65da3e76db3da344e70113fd21c513784620",
+      "asset_dimensions": [
+        2250,
+        3030
+      ],
+      "asset_bytes": 1429358,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-7.webp",
+      "preview_dimensions": [
+        1188,
+        1600
+      ],
+      "preview_sha256": "c491f6a6e608e68b5fcfa3799833e58da9ad9b504887e48982a77e5d6f85e52f",
+      "preview_bytes": 176468,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-8",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 138,
+      "caption": "German Airplane Program & Production, Jan1941-Jan1945 (one-engine bombers, transports, trainers, NEC & gliders)",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGX.jp2",
+      "embedded_pdf_stream_sha256": "6cea7735f9f9b681c6b80bb60d2068baad4b50299d47f9cb8672222198678545",
+      "original_dimensions": [
+        2183,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-8.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-8.png",
+      "asset_sha256": "dcbe461f984dea9176be3bad13f82dc82b153bde01762ee68c8e0770a5597b05",
+      "asset_dimensions": [
+        2183,
+        3027
+      ],
+      "asset_bytes": 1456574,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-8.webp",
+      "preview_dimensions": [
+        1154,
+        1600
+      ],
+      "preview_sha256": "1d91dd5f3cabcc41efef867be976c2a0c7aad4c8a6d530178a52898e0dbd98b7",
+      "preview_bytes": 185206,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-9",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 139,
+      "caption": "German Airplane Programs and Production, Four Principal Models: Me-109, FW-190, Ju-88/188/388 and Me-262, January1941-January1945",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "IxCGY.tiff",
+      "embedded_pdf_stream_sha256": "ba1c09148506a120ad31baf2f89e4f082688eac9236efafd1bd60e0adc9a6f98",
+      "original_dimensions": [
+        4366,
+        6054
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-9.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-9.png",
+      "asset_sha256": "4639f64a7083d7e034829ac8290394b290630922c038f6532b0f096545f15f8e",
+      "asset_dimensions": [
+        4366,
+        6054
+      ],
+      "asset_bytes": 122821,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-9.webp",
+      "preview_dimensions": [
+        1154,
+        1600
+      ],
+      "preview_sha256": "1a7cc9a7a8531fdf5e8be05e4b93d4677efc0d5cd1867034076addb25394dbc6",
+      "preview_bytes": 182526,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-10",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 140,
+      "caption": "German Airplane Programs & Production, All Types, Jan1941-Jan1945",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "JxCGZ.jp2",
+      "embedded_pdf_stream_sha256": "5771696ecf69f5787b51493d3a8b5642052ea2d55f770e9932117be5094bf925",
+      "original_dimensions": [
+        2250,
+        3030
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-10.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-10.png",
+      "asset_sha256": "43d7d587d1fce4a82741406a91bdfb7e54ee2105e0b058900748b79ff0a8823a",
+      "asset_dimensions": [
+        2250,
+        3030
+      ],
+      "asset_bytes": 1166993,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-10.webp",
+      "preview_dimensions": [
+        1188,
+        1600
+      ],
+      "preview_sha256": "5da102445dad6862a2ec50a087df14949bc6151ed90c9c52d0add43e7573fb10",
+      "preview_bytes": 135308,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-11",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 141,
+      "caption": "German Airplane Production: Airframe Weight Produced (Including Spares), Number of Employees in Airframe Industry and Average Airframe Weight Output per Employee per Working Day",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Main axes, curves, inset, title and figure label visible. Left outer border/margin has scan fading; no missing plot data identified.",
+      "embedded_image_name": "JxCHA.jp2",
+      "embedded_pdf_stream_sha256": "22bf3375a21d6813af2353a362ef3c1c59b1496c53488fbd0588dbd96690ec15",
+      "original_dimensions": [
+        2183,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-11.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-11.png",
+      "asset_sha256": "b867961a6a8d66383da2c08ba204cfb97975a87a2e2628d2fdeebdffd9bba97f",
+      "asset_dimensions": [
+        2183,
+        3027
+      ],
+      "asset_bytes": 1241021,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-11.webp",
+      "preview_dimensions": [
+        1154,
+        1600
+      ],
+      "preview_sha256": "0527343e37b6a9a3405f465bc211c1dd2f05921e115d731392d9c89e31cbfc05",
+      "preview_bytes": 151978,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VI-12",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 142,
+      "caption": "Relative Efficiency of American and German Aircraft Industries (July1941-July1944)",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Original scan lettering and paper wear are retained; all chart or diagram panels are visible.",
+      "embedded_image_name": "IxCHB.tiff",
+      "embedded_pdf_stream_sha256": "c54c068d37e6198e26b73616889dcd05ec8b09e0fc2548a3496a86b5e6b05db6",
+      "original_dimensions": [
+        4500,
+        6060
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vi-12.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-12.png",
+      "asset_sha256": "f7d9f4cca87f43faa5d18726de400b3fd33b2acc5a28eea82291d1a6c4e49228",
+      "asset_dimensions": [
+        6060,
+        4500
+      ],
+      "asset_bytes": 71007,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vi-12.webp",
+      "preview_dimensions": [
+        1600,
+        1188
+      ],
+      "preview_sha256": "c62e8860d8aeea6e75b1b8b78d7154c0012fa786d3d83dfe3c92375d5830114c",
+      "preview_bytes": 80704,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-1",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 162,
+      "caption": "Principal Aero Engine Factories Prior to 1939",
+      "exact_visible_label": "FIGURE VII-1",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "The complete unfolded map includes the plant names, scale and figure label. Small source lettering benefits from full-resolution viewing. Original paper tone and wear are retained.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA1",
+      "google_catalog_pid": "PA102-IA1",
+      "source_page_mapping": "Catalog order plus two matches the physical PDF page; this plate was also observed directly in the Google Books viewer.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "2ed3bd2477b1a266e64e4aefee4bb97fe53af2a0d756f0d463dc6f8bef52bda6",
+      "original_dimensions": [
+        4101,
+        3174
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-1.png",
+      "asset_sha256": "60659a105a12992429cef19c21ea688b477566cc4d0594c3ecbc2483f65bfd0f",
+      "asset_dimensions": [
+        4101,
+        3174
+      ],
+      "asset_bytes": 7389048,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-1.webp",
+      "preview_dimensions": [
+        1600,
+        1238
+      ],
+      "preview_sha256": "e9f8a15ee08080a9ff9d8f9e49b9bca368533d2b4fd4356ef113519db7c1a4d5",
+      "preview_bytes": 162940,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-2",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 164,
+      "caption": "Aero-Engine Factory Dispersal-1944",
+      "exact_visible_label": "FIGURE VII-2",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Full unfolded Germany/central Europe map, scale, six-manufacturer symbol legend, plant names, title block and figure label visible. Main map and legend are complete; paper wear and minor margin marks remain.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA3",
+      "google_catalog_pid": "PA102-IA3",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "6d020317c20cdfe3e1b48626746ef717ba6bbef347bfa485908e23994690b260",
+      "original_dimensions": [
+        4057,
+        3164
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-2.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-2.png",
+      "asset_sha256": "62fc1ed964c0d3fc8fe484545e64ef27273c236b7887a8b4411c91b9eb7a3c5f",
+      "asset_dimensions": [
+        4057,
+        3164
+      ],
+      "asset_bytes": 8374009,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-2.webp",
+      "preview_dimensions": [
+        1600,
+        1248
+      ],
+      "preview_sha256": "152b6c795a8903f38254dfef9fe6228f1cc9f5523ca8bdc0fd6d10170fc3d4a1",
+      "preview_bytes": 212664,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-3",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 166,
+      "caption": "German Aircraft Engine Production; Principal Types - By Model & By Months; Sept. 1939-Dec. 1944",
+      "exact_visible_label": "FIGURE VII-3",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Entire stacked production chart, model labels, both number-of-engines axes, monthly timeline, heading and footer label are visible. Source has paper tone/wear; no missing chart panel identified.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA5",
+      "google_catalog_pid": "PA102-IA5",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "be05568c0e26b18a1855b573a91b27aad609bfdcec79da76ddb85f3d55bb1ef8",
+      "original_dimensions": [
+        4109,
+        3166
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-3.png",
+      "asset_sha256": "5a2982be0ec59158812a913781db899b22cba60bd19516a6ffe96b3bd8690e83",
+      "asset_dimensions": [
+        4109,
+        3166
+      ],
+      "asset_bytes": 10238090,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-3.webp",
+      "preview_dimensions": [
+        1600,
+        1233
+      ],
+      "preview_sha256": "fd06dde01c9936d81dbd952bb5929d9256e2f11bb133f75c3db8708ae00c6f48",
+      "preview_bytes": 248444,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-4",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 168,
+      "caption": "German Aircraft Engine Production vs Requirements, Principal Engine Types Only (Exclusive of Spare Parts)",
+      "exact_visible_label": "FIGURE VII-4",
+      "exact_visible_caption": "GERMAN AIRCRAFT ENGINE PRODUCTION VS REQUIREMENTS / PRINCIPAL ENGINE TYPES ONLY* / (EXCLUSIVE OF SPARE PARTS)",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete production and requirement curves, surplus/deficit inset, axes and engine-list footnote. The final digit 4 touches the heavy right border and has minor edge interference.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA7",
+      "google_catalog_pid": "PA102-IA7",
+      "source_page_mapping": "Physical PDF page equals saved Google catalog order + 2; captions/labels independently verified in native bitmap.",
+      "embedded_image_name": "J2i0.png",
+      "embedded_pdf_stream_sha256": "26e4ed7455ed5e4e02ff70ada5bdff7237dc254c19ecbf5410afe67a01b2e3f9",
+      "original_dimensions": [
+        4256,
+        6096
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-4.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-4.png",
+      "asset_sha256": "fec9aab4004042af5b30e769f9acb9d52bff48965a1ddeac89721428fe3f428a",
+      "asset_dimensions": [
+        4256,
+        6096
+      ],
+      "asset_bytes": 121075,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-4.webp",
+      "preview_dimensions": [
+        1117,
+        1600
+      ],
+      "preview_sha256": "09f06d6906047e079a43aa13fbc0dda2052c39407f18a6c79833653c3bec54eb",
+      "preview_bytes": 173676,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-5",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 170,
+      "caption": "German Aircraft Engine Production; BMW Model 801; By Plant By Month Sept. 39-Dec. 44",
+      "exact_visible_label": "FIGURE VII-5",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete production chart with plant labels, stacked patterns, both axes, timeline, heading and figure label. Source paper tone/wear retained; no plot clipping identified.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA9",
+      "google_catalog_pid": "PA102-IA9",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "e55d6eda1c0266743fd8aaa6cc5138e3940f9034fdb9339f370340024d509688",
+      "original_dimensions": [
+        4081,
+        3178
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-5.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-5.png",
+      "asset_sha256": "297ebd990ae0582c6018cc75fefc1827d9eda966c2e107e4259fd79be88a7e70",
+      "asset_dimensions": [
+        4081,
+        3178
+      ],
+      "asset_bytes": 8767999,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-5.webp",
+      "preview_dimensions": [
+        1600,
+        1246
+      ],
+      "preview_sha256": "3dec9bfd1a79e8d1eddb3caa93a87890229f5158129b31a21a4d71f3eca3e865",
+      "preview_bytes": 217410,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-6",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 172,
+      "caption": "German Aircraft Engine Production; DB 605; By Plant By Month Sept. 39-Dec. 44",
+      "exact_visible_label": "FIGURE VII-6",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete production chart, five-plant legend (Bussing, Henschel, Manfred, Steyr, Genshagen), stacked patterns, axes, timeline, heading and figure label. Wide blank right margin and scanner holder are outside the chart.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA11",
+      "google_catalog_pid": "PA102-IA11",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "09a2b70fe2686d636a564b3584959942ad3ba12ce747025b1e59c2a2dd4696e6",
+      "original_dimensions": [
+        4731,
+        3155
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-6.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-6.png",
+      "asset_sha256": "a68077a7e0d38c18e545073bccb6830b0d49ec09d15c80edc11df895d9c61167",
+      "asset_dimensions": [
+        4731,
+        3155
+      ],
+      "asset_bytes": 9361500,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-6.webp",
+      "preview_dimensions": [
+        1600,
+        1067
+      ],
+      "preview_sha256": "fadde082e4c2b202f9b5e70cec06d436b167fc9ceabafc43dce1368b23be0790",
+      "preview_bytes": 183432,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VII-7",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 174,
+      "caption": "German Aircraft Engine Production; Jumo 211; By Plant Sept. 39-Dec. 44",
+      "exact_visible_label": "FIGURE VII-7",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Full Jumo 211 curve, both axes, timeline, heading and footer label visible. Blank right margin and scanner holder are outside the chart; no missing plot panel identified.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA102-IA13",
+      "google_catalog_pid": "PA102-IA13",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "7d89f8a69a825b657cf4395376b8de7431a7b919f739de98cb65afcec2bb8be2",
+      "original_dimensions": [
+        4721,
+        3168
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-vii-7.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-7.png",
+      "asset_sha256": "fd40ffaad49a2352a9809af8e09d8882e2da55b5c8f0d252ec775246b45be5c0",
+      "asset_dimensions": [
+        4721,
+        3168
+      ],
+      "asset_bytes": 7734457,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-vii-7.webp",
+      "preview_dimensions": [
+        1600,
+        1074
+      ],
+      "preview_sha256": "f3b0b0c25f8529bafdd2345ca808c6e310048a94abf46ff6d00e2b7cab8ad4e9",
+      "preview_bytes": 108496,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VIII-1",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 184,
+      "caption": "Expansion and Dispersal Chart for V.D.M.-A.G. and Continentale Metall Aktiengesellschaft",
+      "exact_visible_label": "FIG. VIII-1",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete unfolded organization/dispersal diagram. All visible year rows from 1934 through 1945, all plant/component boxes, connecting arrows, title and footer label lie within the intact diagram border. Small hand-lettered text benefits from full-resolution viewing; no folded or missing panel remains. A paper nick and scanner holder are outside the diagram.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA110-IA1",
+      "google_catalog_pid": "PA110-IA1",
+      "source_page_mapping": "Catalog order + 2 physical PDF page offset, calibrated by root against title PDF10/PP9 and VII-1 PDF162/PA102-IA1 and observed VII-2 PDF164/PA102-IA3. This candidate PDF plate has a visually verified figure label; PID is catalog-mapped, not separately browser-observed by this agent.",
+      "embedded_image_name": "CTi0.jp2",
+      "embedded_pdf_stream_sha256": "838cce3f4efb9378bed8035196d82c54bed95a1a283251e7561c119b803679f7",
+      "original_dimensions": [
+        4731,
+        3158
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-viii-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-1.png",
+      "asset_sha256": "4a3c023742df9e35dbf39e06571edfcc6ecbc5b447f699bdd2f6645a770e20f2",
+      "asset_dimensions": [
+        4731,
+        3158
+      ],
+      "asset_bytes": 9705528,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-1.webp",
+      "preview_dimensions": [
+        1600,
+        1068
+      ],
+      "preview_sha256": "a06e05879c60c18d383867d0be91a3da0c20792d46b64311b84387de38f8732b",
+      "preview_bytes": 187432,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VIII-2",
+      "status": "restored",
+      "source_id": "indiana-1947",
+      "pdf_page_1_based": 186,
+      "caption": "Production of Propeller Blades, Continental Metall-VDM",
+      "exact_visible_label": "FIGURE VIII2",
+      "exact_visible_caption": "PRODUCTION OF PROPELLER BLADES / CONTINENTAL METALL-VDM",
+      "rotation_clockwise_degrees": 0,
+      "quality_note": "Complete propeller-blade chart, numbered axis and monthly/year labels for 1942\u20131944. The footer reads VIII2, with no distinct hyphen; its final digit touches the heavy right border.",
+      "source_page_url": "https://books.google.com/books?id=c8wnG5kKSVEC&pg=PA110-IA3",
+      "google_catalog_pid": "PA110-IA3",
+      "source_page_mapping": "Physical PDF page equals saved Google catalog order + 2; captions/labels independently verified in native bitmap.",
+      "embedded_image_name": "J2i0.png",
+      "embedded_pdf_stream_sha256": "e94023970a57ecee10158dad3001b97b85195366b5ea612ed8cbe9d77d301782",
+      "original_dimensions": [
+        4336,
+        6096
+      ],
+      "operations": [
+        "Extract embedded scan bitmap"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-viii-2.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-2.png",
+      "asset_sha256": "5c88e0a4f53a04edcd92ddda5de1f74524faac26da396643a3d8df7fc535ea43",
+      "asset_dimensions": [
+        4336,
+        6096
+      ],
+      "asset_bytes": 167983,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-2.webp",
+      "preview_dimensions": [
+        1138,
+        1600
+      ],
+      "preview_sha256": "381ac49d2cbc8f70cd5953791359d31589e9ddfe5bd4cad67234affefbf8efd1",
+      "preview_bytes": 212982,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "VIII-3",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "quality_note": "The production curve and axes are complete; the original scan has minor clipping at the footer/title-block edge.",
+      "pdf_page_1_based": 178,
+      "caption": "Production Of Aircraft Landing Wheels / Continentale Mettall,A.G.-Vdm",
+      "rotation_clockwise_degrees": 90,
+      "embedded_image_name": "IxCIL.tiff",
+      "embedded_pdf_stream_sha256": "9eb600b62adc18675df8ce58eabeee907ccad27b7f1abf78c27784e66cfd659c",
+      "original_dimensions": [
+        4360,
+        6066
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-viii-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-3.png",
+      "asset_sha256": "e1b817307d629566bec5de816148152e9d126e52e33f87aac1af2985241bbb53",
+      "asset_dimensions": [
+        6066,
+        4360
+      ],
+      "asset_bytes": 59467,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-viii-3.webp",
+      "preview_dimensions": [
+        1600,
+        1150
+      ],
+      "preview_sha256": "44973def814bd266a31f6fdff318e8a91f0623e253e80c749fc9c53e6ca5cdb2",
+      "preview_bytes": 63792,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "IX-1",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 194,
+      "caption": "V-1 Flying Bomb",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Full weapon and inset/labels visible; small lower-left paper tear is outside drawing.",
+      "embedded_image_name": "JxCJB.jp2",
+      "embedded_pdf_stream_sha256": "5807aa17d9deef151d005c550461ee57d9d4d183343446827ae4fd4a157f4afc",
+      "original_dimensions": [
+        2183,
+        3027
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ix-1.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-1.png",
+      "asset_sha256": "68ffa8d312a985f5b8222085180b4bc4509526cc4e4b49c1b3b14fd531a12996",
+      "asset_dimensions": [
+        3027,
+        2183
+      ],
+      "asset_bytes": 1711138,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-1.webp",
+      "preview_dimensions": [
+        1600,
+        1154
+      ],
+      "preview_sha256": "4ed35b16772183657d6e8fc67c8dcd42589342d8e780065666c3df0bfdeced5b",
+      "preview_bytes": 190718,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "IX-2A",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 197,
+      "caption": "A-4 Long-Range Rocket",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "The original transcription linked this cutaway as IX-2; the source plate is explicitly labeled IX-2A.",
+      "embedded_image_name": "JxCJE.jp2",
+      "embedded_pdf_stream_sha256": "fac517793b6c0792fafe4f7a0cfbb87d3eef62df4bb923fed1810bb18829cba6",
+      "original_dimensions": [
+        2239,
+        3032
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ix-2a.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-2a.png",
+      "asset_sha256": "d3b1bb133123f44bc8392891689699c553c1f54de776d7b4c4ec351e352578bd",
+      "asset_dimensions": [
+        3032,
+        2239
+      ],
+      "asset_bytes": 5969229,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-2a.webp",
+      "preview_dimensions": [
+        1600,
+        1182
+      ],
+      "preview_sha256": "5082837697438823995781ccce78691686fc08213ccd8dffad711664384c77ec",
+      "preview_bytes": 351272,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    },
+    {
+      "figure": "IX-3",
+      "status": "restored",
+      "source_id": "michigan-1947",
+      "pdf_page_1_based": 198,
+      "caption": "Mittelwerke (plan; TOC: Plant Layout, Mittelwerke, Nordhausen)",
+      "rotation_clockwise_degrees": 90,
+      "quality_note": "Complete twin-tunnel plan with chamber labels, cross-sections, scale and title block.",
+      "embedded_image_name": "IxCJF.tiff",
+      "embedded_pdf_stream_sha256": "07902f83872181203240bbc12e5d9f8ca38198307302a8840eb77f2c63b81400",
+      "original_dimensions": [
+        4478,
+        6064
+      ],
+      "operations": [
+        "Extract embedded scan bitmap",
+        "Rotate 90 degrees clockwise, without resampling"
+      ],
+      "asset": "public/assets/historic-documents/aircraft-division-industry-report/figure-ix-3.png",
+      "asset_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-3.png",
+      "asset_sha256": "0570b4dd436eb5ec580ed1e2e689b688dc22e02e67dce3234ea4bf5c97efe9c5",
+      "asset_dimensions": [
+        6064,
+        4478
+      ],
+      "asset_bytes": 158988,
+      "preview_url": "/assets/historic-documents/aircraft-division-industry-report/figure-ix-3.webp",
+      "preview_dimensions": [
+        1600,
+        1182
+      ],
+      "preview_sha256": "0ad8331ef4cb849b55f088d17c68da5417ae77855fea86c84a418b7eae8e1bc2",
+      "preview_bytes": 175382,
+      "preview_operations": [
+        "Resize display derivative to at most 1600 pixels on the longest edge; encode WebP at quality 90. Full-resolution PNG remains linked."
+      ]
+    }
+  ]
+}

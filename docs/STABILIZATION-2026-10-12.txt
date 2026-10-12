@@ -1,0 +1,168 @@
+pbvinge.com local stabilization checkpoint — October 12, 2026
+
+Checkout: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Branch: codex/mac-mini-transfer
+Scope: approved local code/content stabilization, preserving prior work.
+This stabilization checkpoint precedes publishing. The user subsequently
+authorized finishing all fixes, pushing and checking the live site; see the
+release checkpoint for the later upgrade/deployment result.
+
+COMPLETED
+
+F01/F02/F08/F09 — Citation data uses escaped JSON and safe text nodes. Public
+consumers share publication/status predicates. Missing optional fields have
+stable fallbacks. Numeric years retain year precision; date-only values use
+UTC/calendar formatting. Genuine created/updated timestamps remain timestamps.
+
+F03-F07/F12 — Chart imports validate schemas, required sections, types, dates,
+limits, IDs and colors before replacing state. Invalid imports and canceled dirty
+loads retain work. Stale reads cannot win over newer selections or removal.
+Grade anchors survive reversible Start Year changes. Career ranges outside the
+window are retained with an explanation, instead of invented display intervals.
+Promotion drops require matching internal MIME/index/drag state; keyboard moves
+remain available. Current saves use schema 12; full prior 11 and legitimate legacy
+raw formats are validated under their supported contracts.
+
+F10/F11/F15/F16/F21/F22 — Future Reading retains its complete dataset through
+search/sort/reset. Catalog targets, Mahan links and report chapter/table anchors
+resolve. Inactive flashcard answers are hidden/inert. Sorting and timeline
+accordions use native keyboard controls with state/controlled-panel labels.
+Book tools and TOC remain available on mobile. Titles/feedback use literal text
+and real newlines, without interpreting a title as Markdown/HTML.
+
+F13/F14/F17 — PDF export preserves WinAnsi accented Latin text, rejects unsupported
+characters explicitly and uses safe color lookup. Both members' three-vector
+layout and 1/2/3 landscape-Letter pages are checked. Ribbon toolbar stays inside a
+390px viewport; the wide chart retains its internal scroll area. The 30-year
+dialog isolates the background, moves/traps focus and restores its opener.
+
+F18/F20/F23 — Book helper safely serializes quotes/newlines/Unicode, rejects blank
+authors/filename stems and protects existing files. Markdown cleanup has no
+import-time I/O. It defaults to a diff-only preview; replacing a source requires a
+reviewed preview and both exact hashes, preserves a backup and stages atomically.
+Missing/ambiguous TOC boundaries are rejected without dropping the document tail.
+Synthetic Node/Python regression commands are available; no real content cleanup
+or transcription was run as a test.
+
+F24-F26 remain resolved by the previously approved workflow retirement.
+F27: environment variants, venvs and bytecode are ignored; tracked caches were
+removed. The ineffective root postinstall was removed. Unused direct dompurify,
+marked and esbuild were removed; existing jsdom moved to development usage.
+F28: README and BOOKS_SYSTEM describe the actual unified collection, generated
+deck and retired commands. Historical setup results are labeled as checkpoints.
+
+APPROVED PRODUCT CHOICES IMPLEMENTED
+
+D01: All 129 book records share books; 120 completed notes and 9 planned records.
+Four legacy Future Reading records moved with metadata/body preserved. Craft of
+Research contained only a reading-list placeholder and is now to read; other
+metadata/body were preserved. Generated cards cover all 120 completed notes with
+240 exact substantive source blocks. Thesis/argument/overview passages take
+priority; descriptions, quotation banks, questions and placeholders are excluded.
+The old manual card JSON is retained as reference.
+
+D02/D03: The rank selector means current held grade. Dated pin-on history and
+board estimates are separate in editor/comparison/PDF. Entered or estimated
+pin-ons provide rank anchors; missing historical grades stay unknown. Published
+recurring SCOD dates carry the explicit 17 February 2022 AFPC source, phase-in and
+promotion-select applicability caveats. A year-end grade reference is not an
+individual evaluation-closeout calculation. Unverified annual CY26 dates are no
+longer rolled forward. Board/school/command planning dates are editable estimates.
+Source: https://www.afpc.af.mil/News/Article-Display/Article/2938590/air-force-announces-officer-performance-report-static-closeout-dates-beginning/
+Accessible primary sources did not permit verification of current annual board
+schedules; no current official schedule is claimed.
+
+D04: APA 7/MLA 9 name, multi-author, editor/translator, title-italics, edition and
+no-author/no-date rules implemented; BibTeX fields/names/edition are escaped and
+formatted independently. The existing corpus has reviewed sentence-case titles
+and explicit ambiguous-name overrides. Structured citation metadata can override
+inferred display names for future entries. The cited year comes from the record's
+edition; originalYear is separate. This is not a verification of every read
+edition against its full copyright page.
+
+Sixteen frontmatter records were corrected without changing their note bodies:
+explicit known multi-author lists replace combined strings; Tom Long's duplicate
+alias is removed; four editor-only records/translated-work roles are explicit;
+Strategy uses B. H. Liddell Hart and its stored second revised edition; Hand Behind
+Unmanned's title/authors/copyright year match the record's existing print ISBN.
+Other stored publication years/ISBNs were retained, including the 2010 Book of
+Deeds ebook record, instead of replacing them with a different-format edition.
+Primary metadata sources:
+  https://academic.oup.com/book/58870
+  https://academic.oup.com/book/58870/chapter-abstract/492641737
+  https://academic.oup.com/book/41372
+  https://academic.oup.com/edited-volume/56003
+  https://academic.oup.com/oxford-law-pro/book/57847
+  https://www.psupress.org/books/titles/0-271-01880-1.html
+  https://kissinger.sais.jhu.edu/research/
+  https://www.penguinrandomhouse.com/books/324765/strategy-by-hart-b-h-liddell/
+Style sources:
+  https://apastyle.apa.org/style-grammar-guidelines/references/examples/book-references
+  https://apastyle.apa.org/style-grammar-guidelines/references/elements-list-entry
+  https://apastyle.apa.org/style-grammar-guidelines/references/basic-principles
+  https://style.mla.org/works-cited/citations-by-format/books/
+  https://tug.ctan.org/biblio/bibtex/base/btxdoc.pdf
+  https://tug.ctan.org/biblio/bibtex/base/plain.bst
+
+D05: Astro stays 4.16.19. Framework/integration upgrades remain a separate change
+after stabilization and comparison with actual Pages settings.
+D06-D09: previously approved figure restoration, note completion, October 12
+Presidents snapshot, workflow retirement and About/MIT scope remain preserved.
+The takedown/correction contact is shrink@pbvinge.com; no email was sent.
+
+VERIFICATION
+
+- Build PASS: 149 generated application pages.
+- npm test PASS: 24 Node test groups, including 22 sequential chart/PDF/UI checks
+  and one nested runner smoke. All fixtures are synthetic/local.
+- Python helper tests PASS: 10.
+- TypeScript tsc --noEmit PASS under the strict source-scoped configuration.
+- Full Astro source check PASS: 46 files, 0 errors, 0 warnings, 1 informational
+  hint for the intentionally retained legacy beforeunload returnValue fallback.
+- Clean npm ci with dependency scripts disabled PASS after the approved lock
+  update. @astrojs/check 0.9.4 and TypeScript 5.9.3 are pinned dev dependencies.
+- Generated reading verification PASS: 120 completed routes/cards and 9 planned.
+- Local link/fragment audit PASS: 149 pages, 8,196 local references, 0 missing targets
+  and 0 missing fragment targets. Captured archive source is excluded as a page
+  source; its files are preserved.
+- Browser PASS:search reset to 9/9, keyboard sort/reveal/navigation, semantic
+  answer hiding, substantive first-card sources, successful citation copy/title
+  italics, mobile book tools/TOC, 390px chart/document containment, dialog focus/
+  isolation/restoration, keyboard milestone move, invalid-file rejection and Save.
+- PDF synthetic fixtures:strict parsing, accented text and visual checks passed.
+  Browser print-dialog/output was not exercised in this pass.
+- Protected 2,487 archive files retain tree SHA256:
+  979d57273d264c1ba8fd9ab45f3ee5548f2c56af3f4ad20397d2092be36541f3
+- Original MAC-HANDOFF retains SHA256:
+  f651ab3e5833256b9196cb52de6376dc5556a5d741849acb8be244ecb25ca853
+- Task-owned preview/browser are stopped/closed after checks.
+
+TOOLING APPROVAL COMPLETED
+
+F19 is resolved. The user's explicit approval superseded the earlier npm-install
+review rejection. The prepared package proposal and lock update were applied
+with scripts disabled, followed by a clean npm ci and successful full Astro
+source check. No approval remains for these tooling changes.
+
+The refreshed Astro 4 dependency inventory reports 21 affected package entries
+(1 critical, 9 high, 11 moderate). These are inventory severities, not a finding
+of 21 exploitable production vulnerabilities. The separately approved framework
+upgrade follows this passing stabilization checkpoint before production release.
+
+PRODUCTION CHECKS STILL SEPARATE
+
+Cloudflare Pages runtime/package-manager/preview settings and build log,
+Obsidian publisher ownership, laptop-only content preservation/final cutover and
+remote-client disconnect/reconnect recovery remain unverified. No production
+readiness or deployment is inferred from local passing checks. PDF glyphs outside
+WinAnsi require font support in a later change; they now produce useful errors.
+
+LOCAL EVIDENCE
+.local/stabilization/{before/,build-final.log,tests-final.log,python-tests.log,
+  tsc-final.log,links-final.json,preservation.json,browser-results.json,
+  flashcards-proof.png,package-proposal.json}
+.local/stabilization/{reading/,planner/,tooling/} contain isolated candidate,
+regression, provenance and PDF validation evidence.
+Approved-tooling verification: {ci-approved.log,checker-install-approved.log,
+astro-check-approved.log,tests-approved.log,python-approved.log,build-approved.log,
+audit-approved.json} under .local/stabilization/.

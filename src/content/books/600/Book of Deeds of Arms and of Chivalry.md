@@ -1,9 +1,9 @@
 ---
 tags: [📚Book]
 title: "Book of Deeds of Arms and of Chivalry"
-subtitle: "By Christine de Pizan"
+subtitle: ""
 author:
-- "Charity Cannon Willard, Sumner Willard"
+- "Christine de Pizan"
 category:
 - "History"
 publisher: "Penn State Press"
@@ -17,6 +17,7 @@ created: 2025-07-20 11:49:57
 updated: 2025-07-20 11:49:57
 class: "600"
 sequence: "2"
+citation: {"editors": [{"family": "Willard", "given": "Charity Cannon"}], "translators": [{"family": "Willard", "given": "Sumner"}]}
 ---
 
 # Book of Deeds of Arms and of Chivalry

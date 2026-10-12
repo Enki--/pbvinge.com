@@ -1716,3 +1716,24 @@
     height: 0.3in;
   }
 }
+
+/* Keep the wide sheet inside its own scroller, including narrow mobile viewports. */
+.pbv-ribbon, .ribbon-toolbar, .ribbon-actions, .ribbon-populate-group, .ribbon-scroll { min-width: 0; max-width: 100%; }
+.ribbon-actions { flex-wrap: wrap; }
+.ribbon-populate-group { flex-wrap: wrap; overflow-x: visible; box-sizing: border-box; }
+.ribbon-file-actions { flex-wrap: wrap; }
+.ribbon-planning-panel { margin-block: 1rem; padding: .85rem; border: 1px solid var(--border-color); border-radius: 8px; overflow-wrap: anywhere; }
+.ribbon-planning-panel h2 { margin: 0; font-size: 1.05rem; }
+.ribbon-planning-panel p { font-size: .85rem; }
+.ribbon-planning-panel details { margin-block: .7rem; }
+.ribbon-planning-panel summary { cursor: pointer; font-weight: 700; }
+.ribbon-planning-entry { display: flex; flex-wrap: wrap; gap: .6rem; align-items: end; margin-block: .6rem; }
+.ribbon-planning-entry label { display: grid; gap: .2rem; min-width: 0; font-size: .85rem; }
+.ribbon-planning-entry input, .ribbon-planning-entry select { max-width: 100%; min-width: 0; padding: .35rem; }
+.ribbon-planning-panel button { padding: .4rem .65rem; border: 1px solid var(--border-color); border-radius: 6px; }
+@media (max-width: 480px) {
+  .ribbon-populate-group { width: 100%; flex-basis: 100%; }
+  .ribbon-actions .ribbon-career-open-button { white-space: normal; }
+  .ribbon-planning-entry label { flex: 1 1 140px; }
+}
+@media print { .ribbon-planning-panel { display: none; } }

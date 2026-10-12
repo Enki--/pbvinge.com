@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { contributorCredit } from '../utils/citations';
+import { compareBookRecency, isPublishedBookNote } from '../utils/books';
 
 // Get completed books and sort by created date
 const allBooks = await getCollection('books');
 const recentBooks = allBooks
-  .filter(book => book.data.status === "complete")
-  .sort((a, b) => b.data.created.getTime() - a.data.created.getTime())
+  .filter(book => isPublishedBookNote(book.data))
+  .sort(compareBookRecency)
   .slice(0, 2);
 ---
 
@@ -32,13 +34,13 @@ const recentBooks = allBooks
           <img src={book.data.cover} alt={`Cover of ${book.data.title}`} class="book-cover" />
           <div class="book-info">
             <h3>{book.data.title}</h3>
-            <p class="book-author">by {book.data.author.join(', ')}</p>
-            <p class="book-date">
-              {new Date(book.data.created).toLocaleDateString('en-US', { 
+            {contributorCredit(book.data) && <p class="book-author">{contributorCredit(book.data)}</p>}
+            {book.data.created && <p class="book-date">
+              {book.data.created.toLocaleDateString('en-US', {
                 month: 'long',
                 year: 'numeric'
               })}
-            </p>
+            </p>}
           </div>
         </a>
       ))}

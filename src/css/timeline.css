@@ -348,3 +348,10 @@
 :root[data-theme='dark'] .pbv-event-notes {
   color: var(--muted-text);
 }
+
+/* Native disclosure button retains the timeline card presentation. */
+.pbv-era-heading { margin: 0; font-size: inherit; }
+button.pbv-era-header { box-sizing: border-box; width: 100%; border: 0; text-align: left; font: inherit; color: inherit; }
+.pbv-era-label, .pbv-era-name, .pbv-era-range { display: block; }
+.pbv-era-body[hidden] { display: none; }
+.pbv-era-header:focus-visible { outline-offset: -3px; }

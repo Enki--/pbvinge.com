@@ -1,4 +1,19 @@
 import { defineCollection, z } from 'astro:content';
+import { normalizePublicationDate } from '../utils/dates';
+
+const publicationDate = z.union([z.number(), z.string(), z.date()]).transform((value, context) => {
+  const normalized = normalizePublicationDate(value);
+  if (normalized === undefined) {
+    context.addIssue({ code: z.ZodIssueCode.custom, message: 'Use a publication year, YYYY-MM, or an ISO date.' });
+    return z.NEVER;
+  }
+  return normalized;
+});
+
+const contributor = z.union([
+  z.object({ family: z.string().min(1), given: z.string().optional(), suffix: z.string().optional() }),
+  z.object({ literal: z.string().min(1) }),
+]);
 
 export const collections = {
   books: defineCollection({
@@ -8,9 +23,18 @@ export const collections = {
       title: z.string(),
       subtitle: z.string().optional(),
       author: z.array(z.string()),
+      citation: z.object({
+        authors: z.array(contributor).optional(),
+        editors: z.array(contributor).optional(),
+        translators: z.array(contributor).optional(),
+        title: z.string().optional(),
+        apaTitle: z.string().optional(),
+        edition: z.string().optional(),
+        originalYear: z.number().int().positive().optional(),
+      }).optional(),
       category: z.array(z.string()).optional(),
       publisher: z.string().optional(),
-      publish: z.coerce.date().optional(),
+      publish: publicationDate.optional(),
       pages: z.number().optional(),
       isbn10: z.string().optional(),
       isbn13: z.string().optional(),
@@ -24,25 +48,13 @@ export const collections = {
       class: z.string().optional(),
       sequence: z.any().optional(),
       notes: z.string().optional(),
+      summary: z.string().optional(),
       isPublished: z.boolean().default(true),
       dateCompleted: z.string().optional(),
       coverImage: z.string().optional()
     }),
   }),
   
-  futureReads: defineCollection({
-    type: 'content',
-    schema: z.object({
-      title: z.string(),
-      author: z.array(z.string()),
-      class: z.string(),
-      dateCompleted: z.string(),
-      coverImage: z.string(),
-      tags: z.array(z.string()).optional(),
-      notes: z.string().optional()
-    })
-  }),
-
   // Historic documents collection
   documents: defineCollection({
     type: 'content',
@@ -51,7 +63,7 @@ export const collections = {
       subtitle: z.string().optional(),
       authors: z.array(z.string()).optional(),
       origin: z.string().optional(),
-      date: z.coerce.date().optional(),
+      date: publicationDate.optional(),
       tags: z.array(z.string()).default([]),
       cover: z.string().optional(),
       externalUrl: z.string().url().optional(),

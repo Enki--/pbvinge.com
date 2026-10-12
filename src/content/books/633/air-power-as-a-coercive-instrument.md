@@ -3,7 +3,12 @@ tags: [📚Book]
 title: "Air Power as a Coercive Instrument"
 subtitle: ""
 author:
-- "Daniel Byman, John G. McGinn, Keith Crane, Seth G. Jones, Rollie Lal, Ian O. Lesser"
+- "Daniel Byman"
+- "John G. McGinn"
+- "Keith Crane"
+- "Seth G. Jones"
+- "Rollie Lal"
+- "Ian O. Lesser"
 category:
 - "Political Science"
 publisher: "Rand Corporation"

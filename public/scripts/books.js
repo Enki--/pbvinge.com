@@ -34,8 +34,9 @@ function initBooks() {
   }
 
   function setSortedHeader(header) {
-    sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
+    sortableHeaders.forEach(h => { h.classList.remove('is-sorted'); h.setAttribute('aria-sort', 'none'); });
     header.classList.add('is-sorted');
+    header.setAttribute('aria-sort', tableSortState.ascending ? 'ascending' : 'descending');
   }
 
   function applyFilters() {
@@ -47,7 +48,8 @@ function initBooks() {
       const itemSearch = item.getAttribute('data-search') || '';
       const matchesSearch = itemSearch.includes(searchTerm);
       const matchesClass = !selectedClass || itemClass === selectedClass;
-      item.style.display = matchesSearch && matchesClass ? '' : 'none';
+      item.hidden = !(matchesSearch && matchesClass);
+      item.style.display = item.hidden ? 'none' : '';
     });
     if (tableBody) applyTableSort();
     const url = new URL(window.location.href);
@@ -60,6 +62,7 @@ function initBooks() {
     viewButtons.forEach(btn => {
       const isActive = btn.getAttribute('data-view') === view;
       btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
     });
     viewPanels.forEach(panel => {
       const isActive = panel.getAttribute('data-view-panel') === view;
@@ -91,7 +94,7 @@ function initBooks() {
   });
 
   sortableHeaders.forEach(header => {
-    header.addEventListener('click', () => {
+    header.querySelector('[data-sort-button]')?.addEventListener('click', () => {
       const column = header.getAttribute('data-sort') || 'title';
       if (tableSortState.column === column) {
         tableSortState.ascending = !tableSortState.ascending;

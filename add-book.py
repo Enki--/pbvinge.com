@@ -1,105 +1,125 @@
 #!/usr/bin/env python3
+"""Create one book note interactively; no transcription or migration packages."""
+import json
 import os
 import re
-import json
+import tempfile
+import unicodedata
+from datetime import date
 from pathlib import Path
-from datetime import datetime
+
 
 def create_safe_filename(title):
-    """Create a safe filename from book title"""
-    # Remove special characters and replace spaces with hyphens
-    safe_title = re.sub(r'[^a-zA-Z0-9\s]', '', title)
-    safe_title = re.sub(r'\s+', '-', safe_title)
-    return safe_title.lower()
+    """Keep Unicode letters/numbers and reject titles without a useful stem."""
+    normalized = unicodedata.normalize("NFKC", title).strip().lower()
+    stem = re.sub(r"[\W_]+", "-", normalized, flags=re.UNICODE).strip("-")
+    if not stem:
+        raise ValueError("Title must contain a letter or number for the filename.")
+    return stem
 
-def add_book():
-    """Interactive script to add a new book"""
-    print("=== Add New Book ===\n")
-    
-    # Get book details
-    title = input("Book title: ").strip()
+
+def build_book_content(*, title, authors, status, cover_image, tags=(),
+                       class_name="", created=None):
+    """Serialize all string metadata as JSON-compatible YAML scalars."""
+    title = title.strip()
     if not title:
-        print("Title is required!")
-        return
-    
-    author_input = input("Author(s) (comma-separated): ").strip()
-    authors = [a.strip() for a in author_input.split(',') if a.strip()]
-    
-    class_name = input("Class (e.g., 600, 601, 690): ").strip()
-    
-    print("\nStatus options:")
-    print("1. complete - Book is finished")
-    print("2. reading - Currently reading")
-    print("3. to read - Plan to read")
-    
-    status_choice = input("Status (1-3): ").strip()
-    status_map = {
-        '1': 'complete',
-        '2': 'reading', 
-        '3': 'to read'
+        raise ValueError("Title is required.")
+    create_safe_filename(title)
+    authors = [author.strip() for author in authors if author.strip()]
+    if not authors:
+        raise ValueError("At least one author is required.")
+    if status not in {"complete", "reading", "to read"}:
+        raise ValueError("Choose complete, reading, or to read.")
+    data = {
+        "title": title,
+        "author": authors,
+        "status": status,
+        "cover": cover_image.strip(),
+        "tags": [tag.strip() for tag in tags if tag.strip()],
+        "isPublished": True,
     }
-    status = status_map.get(status_choice, 'to read')
-    
-    cover_image = input("Cover image URL: ").strip()
-    
-    tags_input = input("Tags (comma-separated): ").strip()
-    tags = [t.strip() for t in tags_input.split(',') if t.strip()]
-    
-    # Create filename
-    safe_title = create_safe_filename(title)
-    filename = f"{safe_title}.md"
-    filepath = Path('src/content/books') / filename
-    
-    # Check if file already exists
-    if filepath.exists():
-        print(f"\nWarning: {filename} already exists!")
-        overwrite = input("Overwrite? (y/N): ").strip().lower()
-        if overwrite != 'y':
-            print("Book not added.")
-            return
-    
-    # Create frontmatter
-    frontmatter_lines = [
-        '---',
-        f'title: "{title}"',
-        f'author: {json.dumps(authors)}',
-        f'status: "{status}"',
-        f'cover: "{cover_image}"',
-        f'tags: {json.dumps(tags)}',
-        f'isPublished: true'
-    ]
-    
-    if class_name:
-        frontmatter_lines.append(f'class: "{class_name}"')
-    
-    if status == 'complete':
-        frontmatter_lines.append(f'created: {datetime.now().strftime("%Y-%m-%d")}')
-    
-    frontmatter_lines.append('---')
-    frontmatter_lines.append('')
-    frontmatter_lines.append(f'# {title}')
-    frontmatter_lines.append('')
-    frontmatter_lines.append(f'**Author:** {", ".join(authors)}')
-    if class_name:
-        frontmatter_lines.append(f'**Class:** {class_name}')
-    frontmatter_lines.append(f'**Status:** {status}')
-    frontmatter_lines.append('')
-    
-    if status == 'complete':
-        frontmatter_lines.append('Add your book review and notes here.')
-    else:
-        frontmatter_lines.append('This book is on my reading list.')
-    
-    # Write the file
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(frontmatter_lines))
-    
-    print(f"\n✅ Book added successfully: {filename}")
-    print(f"Location: {filepath}")
-    print(f"\nNext steps:")
-    print(f"1. Edit the file to add your review (if completed)")
-    print(f"2. Update the cover image URL if needed")
-    print(f"3. Add more tags if desired")
+    if class_name.strip():
+        data["class"] = class_name.strip()
+    if status == "complete":
+        data["created"] = (created or date.today()).isoformat()
+    frontmatter = ["---"]
+    frontmatter.extend(
+        key + ": " + json.dumps(value, ensure_ascii=True)
+        for key, value in data.items()
+    )
+    frontmatter.extend(["---", "", "# " + title, "",
+                        "**Author:** " + ", ".join(authors)])
+    if class_name.strip():
+        frontmatter.append("**Class:** " + class_name.strip())
+    frontmatter.extend(["**Status:** " + status, "",
+                        "Add your book review and notes here." if status == "complete"
+                        else "This book is on my reading list.", ""])
+    return "\n".join(frontmatter)
+
+
+def save_book(path, content, *, expected_existing=None):
+    """Create exclusively, or replace only the exact bytes reviewed by the user."""
+    path = Path(path)
+    if path.is_symlink():
+        raise ValueError("Refusing to replace a symlink.")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    encoded = content.encode("utf-8")
+    if expected_existing is None:
+        with path.open("xb") as handle:
+            handle.write(encoded)
+        return
+    if path.read_bytes() != expected_existing:
+        raise ValueError("Book changed after overwrite confirmation; review it again.")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as handle:
+            temporary = Path(handle.name)
+            os.fchmod(handle.fileno(), path.stat().st_mode & 0o777)
+            handle.write(encoded)
+            handle.flush()
+            os.fsync(handle.fileno())
+        if path.is_symlink() or path.read_bytes() != expected_existing:
+            raise ValueError("Book changed after overwrite confirmation; review it again.")
+        os.replace(temporary, path)
+        temporary = None
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def add_book(*, book_dir=None, input_fn=input, output_fn=print):
+    """Collect/validate metadata before creating any file or directory."""
+    output_fn("=== Add New Book ===")
+    try:
+        title = input_fn("Book title: ").strip()
+        authors = input_fn("Author(s) (comma-separated): ").split(",")
+        class_name = input_fn("Class (e.g., 600, 601, 690): ").strip()
+        output_fn("1. complete  2. reading  3. to read")
+        choice = input_fn("Status (1-3): ").strip()
+        status = {"1": "complete", "2": "reading", "3": "to read"}.get(choice)
+        cover = input_fn("Cover image URL: ").strip()
+        tags = input_fn("Tags (comma-separated): ").split(",")
+        content = build_book_content(
+            title=title, authors=authors, status=status, cover_image=cover,
+            tags=tags, class_name=class_name,
+        )
+        folder = Path(book_dir) if book_dir is not None else Path(__file__).resolve().parent / "src/content/books"
+        path = folder / (create_safe_filename(title) + ".md")
+        expected = None
+        if path.exists():
+            if path.is_symlink():
+                raise ValueError("Refusing to replace a symlink.")
+            expected = path.read_bytes()
+            if input_fn("Overwrite existing " + path.name + "? (y/N): ").strip().lower() != "y":
+                output_fn("Book not added.")
+                return 1
+        save_book(path, content, expected_existing=expected)
+        output_fn("Book added: " + str(path))
+        return 0
+    except (ValueError, OSError, EOFError) as error:
+        output_fn("Book not added: " + str(error))
+        return 1
+
 
 if __name__ == "__main__":
-    add_book() 
+    raise SystemExit(add_book())

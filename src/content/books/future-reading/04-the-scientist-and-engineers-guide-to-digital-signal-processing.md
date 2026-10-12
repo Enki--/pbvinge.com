@@ -8,4 +8,7 @@ coverImage: "https://covers.openlibrary.org/b/id/730624-L.jpg"
 tags:
   - "Engineering"
   - "Signal Processing"
+cover: "https://covers.openlibrary.org/b/id/730624-L.jpg"
+status: "to read"
+isPublished: true
 ---

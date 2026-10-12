@@ -3,7 +3,8 @@ tags: [📚Book]
 title: "The Dynamics of Coercion"
 subtitle: "American Foreign Policy and the Limits of Military Might"
 author:
-- "Daniel Byman, Matthew Waxman"
+- "Daniel Byman"
+- "Matthew Waxman"
 category:
 - "Political Science"
 publisher: "Cambridge University Press"

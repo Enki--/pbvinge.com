@@ -2,7 +2,11 @@
 
 Personal website built with Astro and Tailwind CSS, hosted on Cloudflare Pages.
 
-## Tasks Left to Complete
+## Historical project checklist
+
+These entries record earlier work. The current Obsidian publisher and production
+cutover have not been verified on this Mac; see `docs/MAC-SETUP-STATUS.txt`.
+
 - [x] Add all future books I'm going to read (currently on my list)
 - [x] Automate adding a book in obsidian, to automatically adding it to pbvinge.com
 - [x] Add all the book reports I have made so far
@@ -22,7 +26,7 @@ Personal website built with Astro and Tailwind CSS, hosted on Cloudflare Pages.
 The site uses Astro's Content Collections to manage structured content:
 
 - `src/content/books/` - Individual book notes with detailed metadata and citations
-- `src/content/books/` - Future reading list is derived from books with status `to read`, `reading`, `tbr`, or `tbd`
+- Planned reading uses the same `src/content/books/` collection, filtered by status
 - `src/content/documents/` - Historic documents (primary sources) with minimal metadata
 
 ### Book Note Format
@@ -39,7 +43,7 @@ author:
 category:
   - "Category"  # Optional
 publisher: "Publisher Name"  # Optional
-publish: YYYY-MM-DD  # Optional, date format
+publish: 2025  # Optional year, YYYY-MM, or ISO date for the cited edition
 pages: 123  # Optional
 isbn10: "1234567890"  # Optional
 isbn13: "1234567890123"  # Optional
@@ -57,7 +61,10 @@ sequence: "Sequence Info"  # Optional
 
 ### Future Reading List
 
-Future reading list is derived from the `books` collection by filtering on `status` values (`to read`, `reading`, `tbr`, `tbd`). See `src/data/future-reads.ts`.
+Future Reading reads published `reading`, `to read`, `tbr` and `tbd` records from
+the unified `books` collection through `src/data/future-reads.ts`. Completed notes
+are listed on Books. Generated flashcards use substantive excerpts from those
+published notes. See [BOOKS_SYSTEM.md](BOOKS_SYSTEM.md) for metadata and citations.
 
 ### Historic Documents
 
@@ -104,15 +111,13 @@ pbvinge.com/
 
 - 📚 Book Notes with:
   - Cover art display
-  - Star ratings
   - Tag system
-  - Full text search
+  - Metadata search
   - Citation export (BibTeX/APA/MLA)
 - 📖 Future Reading List with:
   - Sortable table view
   - Search functionality
   - Category organization
-- 🔍 Content search across all sections
 - 📱 Responsive design
 
 ## Development
@@ -137,14 +142,20 @@ comparison with the existing Cloudflare Pages configuration.
 
 3. Start development server:
    ```bash
-   npm run dev
+   ASTRO_TELEMETRY_DISABLED=1 npm run dev -- --host 127.0.0.1
    ```
 
 ## Content Management
 
 - Book notes go in `src/content/books/` as individual .md files
-- Future reading list is managed in `src/content/futureReads/index.md`
+- Planned and completed reading both live in `src/content/books/`, filtered by status and publication flag
 - All content supports Obsidian-compatible Markdown formatting
+
+Audio transcription and the old book-list migration were retired on October 12,
+2026. Their original code is preserved in
+[`docs/retired-workflows/`](docs/retired-workflows/README.md). Their former commands
+stop with a retirement message; Python transcription dependencies are no longer
+part of setup.
 
 ## Styling Conventions
 
@@ -167,4 +178,11 @@ The site is automatically deployed to Cloudflare Pages on push to the main branc
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+Original website application code, styles, and supporting build/configuration/
+maintenance code are licensed under the [MIT License](LICENSE), within the scope
+stated in that file. Study notes, quotations, bibliographies and other content
+data, scans, images, and third-party archives are excluded from this grant.
+Third-party code and media retain their own licenses or public-domain status.
+
+The [About page](https://pbvinge.com/about) describes the academic-use approach
+and provides a contact for corrections and takedown requests.

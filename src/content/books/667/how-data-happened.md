@@ -3,7 +3,8 @@ tags: [📚Book]
 title: "How Data Happened"
 subtitle: "A History from the Age of Reason to the Age of Algorithms"
 author:
-- "Chris Wiggins, Matthew L. Jones"
+- "Chris Wiggins"
+- "Matthew L. Jones"
 category:
 - "Technology & Engineering"
 publisher: "W. W. Norton & Company"
@@ -14,7 +15,7 @@ isbn13: "9781324006749"
 cover: "http://books.google.com/books/content?id=xXxwEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 status: "Complete"
 created: 2026-02-04 06:27:20
-updated: 2026-02-04 06:27:20
+updated: 2026-10-12T17:23:08Z
 class: "667"
 sequence: "3"
 ---
@@ -26,14 +27,14 @@ sequence: "3"
 “Fascinating.” —Jill Lepore, The New Yorker A sweeping history of data and its technical, political, and ethical impact on our world. From facial recognition—capable of checking people into flights or identifying undocumented residents—to automated decision systems that inform who gets loans and who receives bail, each of us moves through a world determined by data-empowered algorithms. But these technologies didn’t just appear: they are part of a history that goes back centuries, from the census enshrined in the US Constitution to the birth of eugenics in Victorian Britain to the development of Google search. Expanding on the popular course they created at Columbia University, Chris Wiggins and Matthew L. Jones illuminate the ways in which data has long been used as a tool and a weapon in arguing for what is true, as well as a means of rearranging or defending power. They explore how data was created and curated, as well as how new mathematical and computational techniques developed to contend with that data serve to shape people, ideas, society, military operations, and economies. Although technology and mathematics are at its heart, the story of data ultimately concerns an unstable game among states, corporations, and people. How were new technical and scientific capabilities developed; who supported, advanced, or funded these capabilities or transitions; and how did they change who could do what, from what, and to whom? Wiggins and Jones focus on these questions as they trace data’s historical arc, and look to the future. By understanding the trajectory of data—where it has been and where it might yet go—Wiggins and Jones argue that we can understand how to bend it to ends that we collectively choose, with intentionality and purpose.
   
 
-## **1) Citation (Chicago-ish)**
+## **1) Citation**
 
 - Wiggins, Chris, and Matthew L. Jones. _How Data Happened: A History from the Age of Reason to the Age of Algorithms_. New York: W. W. Norton & Company, 2023. (pp. 2, 384)
     
 
   
 
-## **2) Executive Summary (10 bullets, all cited)**
+## **2) Executive Summary**
 
 - The authors define **“data”** broadly as shorthand for the surrounding ecosystem of **data-driven algorithmic decision-making systems**, and aim to explain how these systems were made (collection/curation) and how their analytic techniques evolved. (p. 6)
     
@@ -58,9 +59,9 @@ sequence: "3"
 
   
 
-## **3) Central Thesis + Purpose (cited)**
+## **3) Central Thesis + Purpose**
 
-- Thesis (1–3 sentences, cited)
+- Thesis
     
     - Data-driven algorithmic systems are historically produced socio-technical arrangements that shape “truth and power,” and their central political consequence is persistent **rearrangement of power** among corporations, states, and people. (pp. 6–7)
         
@@ -82,7 +83,7 @@ sequence: "3"
 
   
 
-## **4) Argument Spine (5–9 steps, cited)**
+## **4) Argument Spine**
 
 1. Modern life is saturated with algorithmic decision systems (“data”), so analysis must cover how they’re built and how their claims become authoritative. (p. 6)
     
@@ -105,7 +106,7 @@ sequence: "3"
 
   
 
-## **5) Key Concepts & Definitions (12–20 items, each cited)**
+## **5) Key Concepts & Definitions**
 
 - **Data:** shorthand for the “expanse of data-driven algorithmic decision-making systems” that surround us. (p. 6)
     
@@ -210,7 +211,7 @@ sequence: "3"
 
   
 
-## **6) Mechanisms / Causal Logic (cited)**
+## **6) Mechanisms / Causal Logic**
 
 - Mechanism 1: **Quantification → reification → authority → governance**
     
@@ -269,7 +270,7 @@ sequence: "3"
 
   
 
-## **7) Evidence, Cases, and Illustrations (cited)**
+## **7) Evidence, Cases, and Illustrations**
 
 - **FAIR/Accountability/Transparency and data availability bias:** Hanna Wallach warns algorithmic systems reflect values/assumptions and that “social data” is plentiful but systematically missing key human factors (e.g., “happiness,” “drive”), risking biased models. (pp. 12–13)
     
@@ -386,7 +387,7 @@ sequence: "3"
 
   
 
-## **8) Chapter/Section Map (high-yield, cited)**
+## **8) Chapter/Section Map**
 
 - **Prologue (sets the problem + framework):**
     
@@ -544,13 +545,13 @@ sequence: "3"
 
   
 
-## **9) Answers to Seminar Questions (use my pasted questions verbatim)**
+## **9) Answers to Seminar Questions**
 
   
 
 How important is it to understand the source of data and how it was curated?
 
-- **Direct answer (3–6 bullets, cited)**
+- **Direct answer**
     
     - Central: the authors explicitly include “how data was created and curated” as part of what must be explained—not just algorithms. (p. 6)
         
@@ -563,19 +564,19 @@ How important is it to understand the source of data and how it was curated?
     - At scale, institutional power determines whether audits of data/algorithms have effect; “It isn’t enough to be right.” (p. 61)
         
     
-- **Best supporting passage (paraphrase + cite; optional short quote ≤25 words)**
+- **Supporting passage**
     
     - Paraphrase: The book frames its scope as explaining both curation and technique, implying the data’s origin is constitutive of the system’s power. (p. 6)
         
     - Short quote: “We explore how data was created and curated…” (p. 6)
         
     
-- **Limitation/counterpoint grounded in the text (cited)**
+- **Limitation/counterpoint**
     
     - The authors note their material focuses primarily on the United States, so “source/curation” lessons are demonstrated mainly through US-centric institutions and histories. (p. 10)
         
     
-- **One discussion question I can ask the room**
+- **Discussion question**
     
     - If “curation” is a power lever, what institutional arrangements (military or civilian) make curation auditable without compromising operational security?
         
@@ -585,7 +586,7 @@ How important is it to understand the source of data and how it was curated?
 
 In what way does data rearrange power?
 
-- **Direct answer (3–6 bullets, cited)**
+- **Direct answer**
     
     - The authors’ explicit claim: data rearranges power among corporations, states, and people; this is the book’s organizing goal. (p. 7)
         
@@ -598,19 +599,19 @@ In what way does data rearrange power?
     - The present and future are framed as contests among powers, shaped by law and collective action—not tech determinism. (pp. 256, 268–274)
         
     
-- **Best supporting passage (paraphrase + cite; optional short quote ≤25 words)**
+- **Supporting passage**
     
     - Paraphrase: The prologue states the objective is a framework for data’s “persistent role” in rearranging the triad of powers. (p. 7)
         
     - Short quote: “rearranging power: corporate power, state power, and people power.” (p. 7)
         
     
-- **Limitation/counterpoint grounded in the text (cited)**
+- **Limitation/counterpoint**
     
     - The authors acknowledge that knowing/analysis (e.g., audits) doesn’t automatically produce change; effects require configurations of power/publicity. (p. 61)
         
     
-- **One discussion question I can ask the room**
+- **Discussion question**
     
     - Which form of power (state, corporate, people) is currently the key “swing player” in your domain—and what evidence would change your assessment?
         
@@ -620,7 +621,7 @@ In what way does data rearrange power?
 
 How does the pursuit of a solution drive data versus data enabling the development of various solutions?
 
-- **Direct answer (3–6 bullets, cited)**
+- **Direct answer**
     
     - The authors repeatedly show solution-seeking drives method and data practice: Gosset builds significance testing to make profitable brewing decisions under small-sample constraints. (pp. 81–83)
         
@@ -633,19 +634,19 @@ How does the pursuit of a solution drive data versus data enabling the developme
     - The authors treat “solutions” as value-laden: optimizing a KPI is a choice that privileges some outcomes (engagement/growth) over others (justice, intelligibility). (pp. 181, 254)
         
     
-- **Best supporting passage (paraphrase + cite; optional short quote ≤25 words)**
+- **Supporting passage**
     
     - Paraphrase: Bletchley is presented as a shift where data becomes “engineering and problem-solving,” not academic truth-seeking. (p. 100)
         
     - Short quote (≤25 words): “marks a watershed… when data leapt to a pragmatic new existence defined by engineering and problem-solving.” (p. 100)
         
     
-- **Limitation/counterpoint grounded in the text (cited)**
+- **Limitation/counterpoint**
     
     - The book also emphasizes that infrastructures for collecting/making data public are a separate “hard work” track from methods; not all “solution pursuit” is algorithmic—sometimes it is institution-building. (p. 8)
         
     
-- **One discussion question I can ask the room**
+- **Discussion question**
     
     - In military planning, where do we see “KPI-ification” of objectives—and what important outcomes become invisible when the metric becomes the mission?
         
@@ -655,7 +656,7 @@ How does the pursuit of a solution drive data versus data enabling the developme
 
 Does it matter why a leader, nation, or strategist seeks data and how does that affect its use?
 
-- **Direct answer (3–6 bullets, cited)**
+- **Direct answer**
     
     - Yes: the book contrasts motivations—profit (Guinness), war (Bletchley/NSA), governance (state statistics), persuasion (platform advertising)—and shows they shape methods, values, and acceptable trade-offs. (pp. 81–83, 100–102, 248–250)
         
@@ -668,17 +669,17 @@ Does it matter why a leader, nation, or strategist seeks data and how does that 
     - Ethical commitments often collide with profit motives; corporate “ethics teams” can become “fig leaf” structures when incentives and power align against critique. (p. 258)
         
     
-- **Best supporting passage (paraphrase + cite; optional short quote ≤25 words)**
+- **Supporting passage**
     
     - Paraphrase: The NSA example explicitly frames mission-driven analytics where a “COMSEC point of view” renders some statistical approaches impractical; values drive method choice. (p. 112)
         
     
-- **Limitation/counterpoint grounded in the text (cited)**
+- **Limitation/counterpoint**
     
     - The authors caution against assuming persuasive technologies work as claimed; on political manipulation (e.g., Cambridge Analytica), they note there is “no consensus on the ultimate effects.” (p. 250)
         
     
-- **One discussion question I can ask the room**
+- **Discussion question**
     
     - How do we institutionalize “motivation audits” (why we seek data) in strategic organizations without turning them into box-checking exercises?
         
@@ -688,7 +689,7 @@ Does it matter why a leader, nation, or strategist seeks data and how does that 
 
 How does this reading affect the way you may consider the military’s pursuit of data for decision making, both today and in the future?
 
-- **Direct answer (3–6 bullets, cited)**
+- **Direct answer**
     
     - The book situates military/intelligence as foundational in scaling data collection and computation (Bletchley → NSA), suggesting the military’s data pursuit is historically a major driver of capabilities that later diffuse widely. (pp. 100–103, 112–114)
         
@@ -701,17 +702,17 @@ How does this reading affect the way you may consider the military’s pursuit o
     - The future is framed as contestable: organizations can choose alternatives to opaque or unethical systems; “tech fixes” alone won’t solve legitimacy and justice problems. (pp. 274, 229)
         
     
-- **Best supporting passage (paraphrase + cite; optional short quote ≤25 words)**
+- **Supporting passage**
     
     - Paraphrase: NSA work illustrates how mission demands prioritize scalable Bayesian testing, with huge experiment volume and attention to computational cost; this is a distinct model of “data for decision.” (p. 112)
         
     
-- **Limitation/counterpoint grounded in the text (cited)**
+- **Limitation/counterpoint**
     
     - Classified domains restrict visibility and critique; the authors explicitly rely on “a small number of declassified works,” implying our understanding of military data practice is inherently partial. (p. 112)
         
     
-- **One discussion question I can ask the room**
+- **Discussion question**
     
     - If “ethics without power may be inert,” what does “powerful ethics” look like inside military data pipelines—procurement, model validation, deployment, and post-deployment oversight? (p. 230)
         
@@ -719,7 +720,7 @@ How does this reading affect the way you may consider the military’s pursuit o
 
   
 
-## **10) Strengths / Weaknesses / Gaps (cited where applicable)**
+## **10) Strengths / Weaknesses / Gaps**
 
   
 
@@ -756,7 +757,7 @@ How does this reading affect the way you may consider the military’s pursuit o
 
   
 
-## **11) “So What?” for Strategy + This Course (cited)**
+## **11) “So What?” for Strategy + This Course**
 
 - Treat “data” as a **strategic capability stack** (collection/curation + methods + institutions), not a commodity: power accrues to those who control infrastructure and the rules of inference/decision. (pp. 6, 8)
     
@@ -781,20 +782,38 @@ How does this reading affect the way you may consider the military’s pursuit o
 
   
 
-## **12) Paper Seed: How I Can Use This Book (cited)**
+## **12) Paper Seed: How I Can Use This Book**
 
   
 
-Tailor to {{PAPER_PROMPT}} and {{MY_CASES}}:
+**Selected focus: statistical authority and the politics of curation in the United States, 1896–1899.** This research design develops the book's account of data as a means of making truth claims and redistributing power. It turns the existing discussion of Hoffman, Du Bois, proxies, and accountability into a bounded historical comparison. The argument below is a working thesis for the paper; the book supplies the conceptual framework. [Publisher's account of the book](https://wwnorton.co.uk/books/9781324006732-how-data-happened).
 
-- Working paper prompt / research question: Not provided by user in chat.
-    
-- My likely case(s)/actors/region(s): Not provided by user in chat.
-    
+**Research question:** How did competing statistical accounts of Black mortality and urban life turn choices about data, categories, and comparison populations into claims of authority, and what distinguished correcting a statistical argument from changing institutional practice?
 
-  
+**Cases and scope:** Compare Frederick L. Hoffman's *Race Traits and Tendencies of the American Negro* (1896) with W. E. B. Du Bois's review of that work (1897); use Du Bois's *The Philadelphia Negro* (1899) as a third text showing an alternative research design. The Philadelphia investigation provides a local case alongside the broader claims disputed in the Hoffman exchange. Keep the core analysis within 1896–1899 and distinguish publication dates from the earlier periods covered by each dataset. [Hoffman's original publication](https://www.jstor.org/stable/2560438), [Du Bois's review](https://journals.sagepub.com/doi/10.1177/000271629700900108), [Penn's account of the Philadelphia investigation](https://archives.upenn.edu/exhibits/penn-people/biography/william-edward-burghardt-du-bois/).
 
-### **3–5 candidate thesis statements I could write**
+**Unit of comparison:** The unit is a published statistical claim and its route to authority: the population counted, source and denominator, category or proxy, comparison group, causal explanation, institutional affiliation, intended audience, and proposed intervention. The texts cover different populations and scales, so their numerical results cannot be treated as matched samples.
+
+**Working thesis:** Statistical authority depended on the organization of inquiry and the institutions able to circulate and act on its conclusions. Claims that treated racial categories as sufficient explanations could turn recorded inequalities into apparently natural facts; criticism could challenge that move by scrutinizing coverage, comparison groups, and social conditions. The paper will test whether this methodological challenge also altered institutional practice. A rebuttal's validity and its practical influence require separate evidence.
+
+**Evidence plan:**
+
+- Build a comparison matrix from the three texts' tables, methodological statements, causal explanations, and recommendations. Trace a small set of mortality and living-condition claims back to their cited census, health, or survey sources; record missing observations and incompatible denominators.
+- Add Kelly Miller's contemporary review as an independent critique, checking where it agrees with or differs from Du Bois. The [Library of Congress digitization](https://www.loc.gov/item/09024191/) establishes an accessible primary source rather than relying only on later summaries.
+- Examine contemporary reviews and institutional publications for circulation, endorsement, or documented changes in practice. Claims about insurance decisions need insurer records, rules, or correspondence; repeated citation alone cannot establish a policy effect.
+
+**Paper structure:**
+
+1. Explain the contested problem and introduce curation, proxy choice, and reification as analytical tools.
+2. Reconstruct one or two of Hoffman's consequential statistical claims and their evidentiary chain.
+3. Compare the Du Bois and Miller critiques, then assess the Philadelphia study's different scale and method.
+4. Separate methodological authority from institutional uptake and draw a limited implication for contemporary audits of data-driven decisions.
+
+**Limitation and counterargument:** Better contextualization does not eliminate every measurement problem, and Du Bois's local study is not a representative substitute for national statistics. Published texts can establish competing methods and arguments more securely than changes in underwriting or public policy. If institutional records do not establish uptake, the conclusion should remain about the production and contestation of authority.
+
+**Connection to the material below:** Candidate thesis 2 supplies the core argument about curation and reification; candidate 4 supplies the question of whether accountability has enforcement power. The curation, proxy, and audit evidence blocks provide the corresponding analytical chain. The intelligence, metric-optimization, and platform arguments remain useful extensions for discussing why data advantage requires scrutiny of sources, objectives, and institutional authority, without treating the nineteenth-century cases as direct equivalents of modern algorithms.
+
+### **Alternative paper arguments**
 
 1. **Thesis:** Data-driven decision systems are a form of cyber power because they institutionalize a “data as engineering” logic that privileges speed/scale/secrecy, reshaping what counts as actionable truth in security organizations. (p. 112)
     
@@ -807,7 +826,7 @@ Tailor to {{PAPER_PROMPT}} and {{MY_CASES}}:
         - The book’s frame treats data as rearranging power among state/corporate/people power—security organizations sit inside that triad. (p. 7)
             
         
-    - Likely counterarguments (label inference if not in book)
+    - Analytical counterarguments
         
         - **Inference:** In some security contexts, secrecy and speed are necessary; ethical transparency requirements may be strategically infeasible.
             
@@ -911,7 +930,7 @@ Tailor to {{PAPER_PROMPT}} and {{MY_CASES}}:
 
   
 
-### **“Evidence blocks” (bullet form, not full prose)**
+### **“Evidence blocks”**
 
 - **Claim:** Data curation choices are political levers. → **Evidence:** authors foreground “created and curated” data as part of what matters. → **Warrant:** what gets measured and how shapes what can be decided. → **Implication:** treat data pipelines as strategic terrain, not neutral inputs. (p. 6)
     
@@ -928,7 +947,7 @@ Tailor to {{PAPER_PROMPT}} and {{MY_CASES}}:
 
   
 
-## **13) Quote Bank (10–20 quotes, each ≤25 words, each cited)**
+## **13) Quote Bank**
 
 - “We use ‘data’ here as shorthand for the expanse of data-driven algorithmic decision-making systems surrounding us nearly everywhere.” (p. 6)
     
@@ -957,7 +976,7 @@ Tailor to {{PAPER_PROMPT}} and {{MY_CASES}}:
 
   
 
-## **14) Quick-Reference Index (for future retrieval)**
+## **14) Quick-Reference Index**
 
 - Topics → best pages (cited)
     

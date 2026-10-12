@@ -1,4 +1,8 @@
 {
+  "snapshot": {
+    "asOf": "2026-10-12",
+    "scope": "Selected roles and events; current administration checked at the snapshot date. Updated manually."
+  },
   "presidents": [
     {
       "id": "woodrow-wilson",
@@ -354,22 +358,96 @@
       "events": [
         { "period": "2021", "description": "American Rescue Plan and COVID-19 vaccination surge aimed to reopen the economy." },
         { "period": "Aug 2021", "description": "Completed the withdrawal from Afghanistan after the Taliban takeover." },
-        { "period": "2022-2024", "description": "Provided extensive aid to Ukraine and expanded NATO as Finland and Sweden sought membership." },
+        {
+          "period": "2022-2024",
+          "description": "Provided extensive aid to Ukraine after Russia's full-scale invasion. Finland joined NATO on April 4, 2023, and Sweden on March 7, 2024.",
+          "sources": [{ "label": "NATO member countries", "url": "https://www.nato.int/en/about-us/organization/nato-member-countries" }]
+        },
         { "period": "2022", "description": "CHIPS and Science Act plus Inflation Reduction Act invested in industrial policy and clean energy." }
       ]
     },
     {
       "id": "donald-trump-2",
       "name": "Donald Trump",
-      "term": { "start": "2025", "end": "Present" },
+      "term": { "start": "2025" },
       "party": "Republican",
-      "vicePresident": "J.D. Vance",
-      "summary": "Returned to office as the 47th president with a second-term agenda centered on domestic renewal and a renewed America First foreign policy.",
+      "vicePresident": "JD Vance",
+      "summary": "Returned as the 47th president for a second, nonconsecutive term, pursuing changes to immigration, trade, taxes, and foreign policy.",
+      "sources": [{ "label": "White House administration", "url": "https://www.whitehouse.gov/Administration/" }],
       "cabinet": [
-        { "role": "Cabinet", "name": "Announcements pending", "notes": "Cabinet-level appointments for the second term." }
+        {
+          "role": "Secretary of State",
+          "name": "Marco Rubio",
+          "notes": "Leads the State Department and U.S. diplomacy.",
+          "sources": [{ "label": "White House cabinet", "url": "https://www.whitehouse.gov/administration/cabinet/" }]
+        },
+        {
+          "role": "Secretary of War",
+          "name": "Pete Hegseth",
+          "notes": "The White House uses this public title under the September 2025 order establishing it as a secondary title to Secretary of Defense.",
+          "sources": [
+            { "label": "White House cabinet", "url": "https://www.whitehouse.gov/administration/cabinet/" },
+            { "label": "Executive Order 14347", "url": "https://www.whitehouse.gov/presidential-actions/2025/09/restoring-the-united-states-department-of-war/" }
+          ]
+        },
+        {
+          "role": "Secretary of the Treasury",
+          "name": "Scott Bessent",
+          "notes": "Leads the Treasury Department and federal economic and financial policy.",
+          "sources": [{ "label": "Treasury biography", "url": "https://home.treasury.gov/about/general-information/officials/scott-bessent" }]
+        }
       ],
       "events": [
-        { "period": "Jan 2025", "description": "Inaugurated for a second term on January 20, 2025." }
+        {
+          "period": "Jan 20, 2025",
+          "description": "Inaugurated for a second term with JD Vance as vice president.",
+          "sources": [{ "label": "Inaugural address", "url": "https://www.whitehouse.gov/remarks/2025/01/the-inaugural-address/" }]
+        },
+        {
+          "period": "Jun 21-22, 2025",
+          "description": "Ordered Operation Midnight Hammer, U.S. strikes on Iran's Fordow, Natanz, and Isfahan nuclear facilities during the Israel-Iran conflict.",
+          "sources": [{ "label": "Pentagon briefing, June 22", "url": "https://www.defense.gov/News/Transcripts/Transcript/Article/4222543/secretary-of-defense-pete-hegseth-and-chairman-of-the-joint-chiefs-of-staff-gen/" }]
+        },
+        {
+          "period": "Jul 4, 2025",
+          "description": "Signed H.R. 1 into law as Public Law 119-21, tax and spending reconciliation legislation.",
+          "sources": [{ "label": "GovInfo enacted law", "url": "https://www.govinfo.gov/app/details/PLAW-119publ21" }]
+        },
+        {
+          "period": "Oct 2025-Sep 2026",
+          "description": "U.S., Egyptian, Qatari, and Turkish mediation produced a Gaza ceasefire effective October 10, 2025. In September 2026, the UN reported continued Israeli strikes, transitional bodies not yet operating in Gaza, and disarmament of Hamas and other armed groups not implemented.",
+          "sources": [{ "label": "UN September 2026 report", "url": "https://www.un.org/unispal/document/unsco-report-to-the-ad-hoc-liaison-committee-september-2026/" }]
+        },
+        {
+          "period": "Jan 3, 2026",
+          "description": "U.S. forces carried out Operation Absolute Resolve in Caracas, capturing Nicolás Maduro and Cilia Flores and transferring them to the United States for prosecution.",
+          "sources": [
+            { "label": "Presidential report to Congress", "url": "https://www.govinfo.gov/content/pkg/CDOC-119hdoc124/pdf/CDOC-119hdoc124.pdf" },
+            { "label": "January 3 press conference", "url": "https://www.govinfo.gov/content/pkg/DCPD-202600003/html/DCPD-202600003.htm" }
+          ]
+        },
+        {
+          "period": "Feb 20-24, 2026",
+          "description": "The Supreme Court held that IEEPA did not authorize presidential tariffs. Trump ordered the listed IEEPA duties discontinued, with collection ending for covered entries on February 24. Other tariff authorities were unaffected by that order.",
+          "sources": [
+            { "label": "Supreme Court opinion", "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_new_3135.pdf" },
+            { "label": "Executive Order 14389", "url": "https://www.whitehouse.gov/presidential-actions/2026/02/ending-certain-tariff-actions/" },
+            { "label": "CBP implementation notice", "url": "https://content.govdelivery.com/accounts/USDHSCBP/bulletins/40b11c9" }
+          ]
+        },
+        {
+          "period": "Feb-Oct 2026",
+          "description": "U.S. and Israeli forces began military operations against Iran on February 28; the U.S. campaign was designated Operation Epic Fury. An April ceasefire reduced combat, but strikes resumed. CRS reported on October 5 that conditions remained fluid.",
+          "sources": [{ "label": "CRS October 5 report (mirror)", "url": "https://www.everycrsreport.com/files/2026-10-05_IN12692_f0152f8e83153c905f5e21e0d4aaa04d6b1dd8e6.pdf" }]
+        },
+        {
+          "period": "Sep 23-25, 2026",
+          "description": "Hosted Chinese President Xi Jinping for a state visit to Washington, including talks on trade and international security.",
+          "sources": [
+            { "label": "White House visit report", "url": "https://www.whitehouse.gov/releases/2026/09/president-trump-first-lady-conclude-historic-china-state-visit/" },
+            { "label": "White House discussion summary", "url": "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-advances-a-fair-and-reciprocal-relationship-with-china-while-hosting-historic-state-visit/" }
+          ]
+        }
       ]
     }
   ]

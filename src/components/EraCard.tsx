@@ -17,27 +17,29 @@ const resolveTheme = (era: Era): string => {
 };
 
 const EraCard: React.FC<EraCardProps> = ({ era, isOpen, onToggle }) => {
+  const panelId = React.useId();
   const theme = resolveTheme(era);
   const rangeLabel = formatRange(era.range.start, era.range.end);
   const sortedEvents = sortEvents(era.events);
 
   return (
     <section className={`pbv-era-card${isOpen ? " is-open" : ""}`} data-theme={theme}>
-      <header
-        className="pbv-era-header"
-        tabIndex={0}
-        aria-expanded={isOpen}
-        onClick={onToggle}
-        onKeyDown={e => (e.key === "Enter" || e.key === " ") && onToggle()}
-      >
-        <div>
-          <p className="pbv-era-name">{era.title}</p>
-          <p className="pbv-era-range">{rangeLabel}</p>
-        </div>
-        <span className="pbv-era-toggle" aria-hidden="true" />
-      </header>
-      {isOpen && (
-        <div className="pbv-era-body">
+      <h2 className="pbv-era-heading">
+        <button
+          type="button"
+          className="pbv-era-header"
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          onClick={onToggle}
+        >
+          <span className="pbv-era-label">
+            <span className="pbv-era-name">{era.title}</span>
+            <span className="pbv-era-range">{rangeLabel}</span>
+          </span>
+          <span className="pbv-era-toggle" aria-hidden="true" />
+        </button>
+      </h2>
+      <div className="pbv-era-body" id={panelId} hidden={!isOpen}>
           {era.summary && <p className="pbv-era-summary">{era.summary}</p>}
           {era.tags && (
             <div className="pbv-era-tags">
@@ -53,8 +55,7 @@ const EraCard: React.FC<EraCardProps> = ({ era, isOpen, onToggle }) => {
               </li>
             ))}
           </ul>
-        </div>
-      )}
+      </div>
     </section>
   );
 };

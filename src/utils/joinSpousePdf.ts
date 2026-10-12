@@ -1,4 +1,5 @@
 import type { RibbonComparisonChart, RibbonComparisonSegment, RibbonComparisonVector } from "./ribbonChartFile";
+import { pinOnTimelineValue } from "./ribbonPlanning";
 import { ribbonTimelineValue } from "./ribbonChartFile";
 
 export interface JoinSpousePdfOptions {
@@ -49,18 +50,28 @@ const number = (value: number) => {
 
 const rgbCommand = (value: Rgb) => value.map(number).join(" ");
 
-const ascii = (value: string) => value
-  .normalize("NFKD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[\u2010-\u2015]/g, "-")
-  .replace(/[\u2018\u2019]/g, "'")
-  .replace(/[\u201c\u201d]/g, "\"")
-  .replace(/[^\x20-\x7e]/g, "?");
-
-const pdfEscape = (value: string) => ascii(value).replace(/([\\()])/g, "\\$1");
+const WINANSI = new Map<number, number>([
+  [0x20ac, 0x80], [0x201a, 0x82], [0x0192, 0x83], [0x201e, 0x84], [0x2026, 0x85],
+  [0x2020, 0x86], [0x2021, 0x87], [0x02c6, 0x88], [0x2030, 0x89], [0x0160, 0x8a],
+  [0x2039, 0x8b], [0x0152, 0x8c], [0x017d, 0x8e], [0x2018, 0x91], [0x2019, 0x92],
+  [0x201c, 0x93], [0x201d, 0x94], [0x2022, 0x95], [0x2013, 0x96], [0x2014, 0x97],
+  [0x02dc, 0x98], [0x2122, 0x99], [0x0161, 0x9a], [0x203a, 0x9b], [0x0153, 0x9c],
+  [0x017e, 0x9e], [0x0178, 0x9f]
+]);
+const winAnsiByte = (character: string) => {
+  const point = character.codePointAt(0)!;
+  return point >= 0x20 && point <= 0x7e || point >= 0xa0 && point <= 0xff ? point : WINANSI.get(point);
+};
+const pdfText = (value: string) => {
+  const normalized = value.normalize("NFC").replace(/\s+/g, " ");
+  const missing = [...new Set([...normalized].filter((character) => winAnsiByte(character) === undefined))];
+  if (missing.length) throw new Error(`PDF font does not support ${missing.slice(0, 8).map((c) => `${c} (U+${c.codePointAt(0)!.toString(16).toUpperCase()})`).join(", ")}. Use the browser's Print to PDF for these characters; no text was replaced.`);
+  return normalized;
+};
+const pdfHex = (value: string) => [...pdfText(value)].map((c) => winAnsiByte(c)!.toString(16).padStart(2, "0")).join("");
 
 const estimatedWidth = (value: string, fontSize: number, bold = false) => {
-  const units = ascii(value).split("").reduce((total, character) => {
+  const units = pdfText(value).split("").reduce((total, character) => {
     if (" ilI1.,:;'|".includes(character)) return total + 0.28;
     if ("MW@%&".includes(character)) return total + 0.82;
     if (character === " ") return total + 0.3;
@@ -70,7 +81,7 @@ const estimatedWidth = (value: string, fontSize: number, bold = false) => {
 };
 
 const truncate = (value: string, maxWidth: number, fontSize: number, bold = false) => {
-  const clean = ascii(value).trim();
+  const clean = pdfText(value).trim();
   if (estimatedWidth(clean, fontSize, bold) <= maxWidth) return clean;
   let result = clean;
   while (result.length && estimatedWidth(`${result}...`, fontSize, bold) > maxWidth) result = result.slice(0, -1);
@@ -78,7 +89,7 @@ const truncate = (value: string, maxWidth: number, fontSize: number, bold = fals
 };
 
 const wrapText = (value: string, maxWidth: number, fontSize: number, maxLines: number, bold = false) => {
-  const words = ascii(value).trim().split(/\s+/).filter(Boolean);
+  const words = pdfText(value).trim().split(/\s+/).filter(Boolean);
   if (!words.length) return [];
   const lines: string[] = [];
   let line = "";
@@ -125,14 +136,14 @@ class PdfCanvas {
     const bold = options.bold ?? false;
     const fill = options.fill ?? COLORS.ink;
     const maxWidth = options.maxWidth;
-    const clean = maxWidth ? truncate(value, maxWidth, fontSize, bold) : ascii(value);
+    const clean = maxWidth ? truncate(value, maxWidth, fontSize, bold) : pdfText(value);
     const textWidth = estimatedWidth(clean, fontSize, bold);
     let drawX = x;
     if (options.align === "center") drawX -= textWidth / 2;
     if (options.align === "right") drawX -= textWidth;
     const baseline = PAGE_HEIGHT - y - fontSize;
     this.commands.push(
-      `BT /${bold ? "F2" : "F1"} ${number(fontSize)} Tf ${rgbCommand(fill)} rg 1 0 0 1 ${number(drawX)} ${number(baseline)} Tm (${pdfEscape(clean)}) Tj ET`
+      `BT /${bold ? "F2" : "F1"} ${number(fontSize)} Tf ${rgbCommand(fill)} rg 1 0 0 1 ${number(drawX)} ${number(baseline)} Tm <${pdfHex(clean)}> Tj ET`
     );
   }
 
@@ -204,9 +215,10 @@ const drawVectorRow = (
   y: number,
   labelWidth: number,
   cellWidth: number,
-  rowHeight: number
+  rowHeight: number,
+  careerStart: number
 ) => {
-  const endYear = startYear + YEARS_PER_PAGE;
+  const endYear = Math.min(startYear + YEARS_PER_PAGE, careerStart + 30);
   canvas.rect(x, y, labelWidth, rowHeight, COLORS.pale);
   canvas.textBox(vector.label, x, y, labelWidth, rowHeight, { fontSize: 8, bold: true, maxLines: 2, align: "left" });
 
@@ -214,10 +226,10 @@ const drawVectorRow = (
     canvas.rect(x + labelWidth + index * cellWidth, y, cellWidth, rowHeight, COLORS.white);
   }
 
-  visibleSegments(vector.segments, startYear, endYear).forEach(({ segment, visibleStart, visibleEnd }) => {
+  visibleSegments(vector.segments, Math.max(startYear, careerStart), endYear).forEach(({ segment, visibleStart, visibleEnd }) => {
     const segmentX = x + labelWidth + (visibleStart - startYear) * cellWidth;
     const segmentWidth = (visibleEnd - visibleStart) * cellWidth;
-    const segmentColor = VECTOR_COLORS[segment.color] ?? VECTOR_COLORS.green;
+    const segmentColor = Object.hasOwn(VECTOR_COLORS, segment.color) ? VECTOR_COLORS[segment.color] : VECTOR_COLORS.green;
     canvas.rect(segmentX, y + 5, segmentWidth, rowHeight - 10, segmentColor.background, COLORS.ink, 0.7);
     if (segmentWidth >= 24) {
       canvas.textBox(segment.label, segmentX, y + 5, segmentWidth, rowHeight - 10, {
@@ -255,10 +267,12 @@ const drawMember = (
     maxWidth: tableWidth - 88
   });
 
-  const promotionY = y + headerHeight;
+  const pinOnHeight = 28;
+  drawCellRow(canvas, "Pin-on history", years.map((year) => pinOnTimelineValue(chart, year)), x, y + headerHeight, labelWidth, cellWidth, pinOnHeight, COLORS.pale);
+  const promotionY = y + headerHeight + pinOnHeight;
   drawCellRow(
     canvas,
-    "Promotion",
+    "Board estimates",
     years.map((year) => ribbonTimelineValue(chart, "promotion", year)),
     x,
     promotionY,
@@ -282,9 +296,9 @@ const drawMember = (
   );
 
   chart.vectors.forEach((vector, index) => {
-    drawVectorRow(canvas, vector, pageStart, x, pmeY + rowHeight + index * vectorHeight, labelWidth, cellWidth, vectorHeight);
+    drawVectorRow(canvas, vector, pageStart, x, pmeY + rowHeight + index * vectorHeight, labelWidth, cellWidth, vectorHeight, chart.timeline.eadYear);
   });
-  return headerHeight + rowHeight * 2 + vectorHeight * chart.vectors.length;
+  return headerHeight + pinOnHeight + rowHeight * 2 + vectorHeight * chart.vectors.length;
 };
 
 const createPageContent = (
@@ -307,7 +321,7 @@ const createPageContent = (
     fill: COLORS.muted,
     align: "right"
   });
-  canvas.text("Promotion, professional military education, and three career vector options", tableX, 49, 8.5, { fill: COLORS.muted });
+  canvas.text("Editable board/PME estimates and career options; board milestones are separate from pin-on history", tableX, 49, 8.5, { fill: COLORS.muted });
 
   const calendarY = 70;
   const calendarHeight = 26;
@@ -345,8 +359,8 @@ const createPdf = (contents: string[]) => {
   const pageObjectIds = contents.map((_, index) => 5 + index * 2);
   objects[1] = "<< /Type /Catalog /Pages 2 0 R >>";
   objects[2] = `<< /Type /Pages /Count ${contents.length} /Kids [${pageObjectIds.map((id) => `${id} 0 R`).join(" ")}] >>`;
-  objects[3] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>";
-  objects[4] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>";
+  objects[3] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>";
+  objects[4] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>";
 
   contents.forEach((content, index) => {
     const pageId = pageObjectIds[index];

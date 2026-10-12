@@ -4,7 +4,8 @@ tags:
 title: Essence of Decision
 subtitle: Explaining the Cuban Missile Crisis
 author:
-  - Graham T. Allison, Philip Zelikow
+- "Graham T. Allison"
+- "Philip Zelikow"
 category:
   - History
 publisher: Addison-Wesley Longman

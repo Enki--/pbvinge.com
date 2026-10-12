@@ -3,7 +3,9 @@ tags: [📚Book]
 title: "Strategic Narratives"
 subtitle: "Communication Power and the New World Order"
 author:
-- "Alister Miskimmon, Ben O'Loughlin, Laura Roselle"
+- "Alister Miskimmon"
+- "Ben O'Loughlin"
+- "Laura Roselle"
 category:
 - "Political Science"
 publisher: "Routledge"

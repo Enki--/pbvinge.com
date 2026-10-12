@@ -2,17 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About - Shrink">
+<Layout title="About - Shrink" description="About Patrick Vinge, academic use and copyright, and how to request corrections or removal of material.">
   <article class="about">
     <h1>About Me</h1>
     <p>
       I'm Patrick "Shrink" Vinge, a lifelong learner and technology enthusiast based in Minneapolis, Minnesota. With a background in both the military and academia, I'm passionate about bridging the gap between strategy, technology, and leadership. I enjoy tackling complex problems, building meaningful connections, and sharing knowledge with others. When I'm not working, you'll find me reading, exploring new ideas, or spending time outdoors with my German Shorthair Pointers.
     </p>
 
-    <section class="contact-note" aria-labelledby="requests-heading">
-      <h2 id="requests-heading">Requests and Corrections</h2>
+    <section class="legal-note" aria-labelledby="academic-use-heading">
+      <h2 id="academic-use-heading">Academic Use and Copyright</h2>
       <p>
-        This site is maintained in the spirit of study, synthesis, and good-faith intellectual exchange. If any note, excerpt, or attribution warrants correction, raises a concern, or should be removed from public view, please send a concise request to <a href="mailto:shrink@pbvinge.com">shrink@pbvinge.com</a>. Thoughtful feedback, source clarifications, and takedown requests are welcome and will be reviewed with appropriate care.
+        This is a personal study resource. The book notes bring together summaries, analysis, comparisons, and citations for scholarship, research, criticism, and discussion. Quotations and source materials support that work. The notes are intended to accompany the original publications; readers are encouraged to consult and cite those sources.
+      </p>
+      <p>
+        Where copyrighted excerpts are used without permission, the intended basis is fair use under <a href="https://www.copyright.gov/title17/92chap1.html#107">17 U.S.C. § 107</a>. Fair use is assessed case by case, considering the purpose and character of the use, the nature of the source work, the amount and significance of the material used, and the effect on the work’s potential market or value. Academic purpose, citations, and this notice do not by themselves establish fair use. See the <a href="https://www.copyright.gov/fair-use/">U.S. Copyright Office’s fair-use guidance</a>.
+      </p>
+      <p>
+        Citations and page references identify the underlying sources. Copyright in third-party works remains with the respective rights holders, where applicable. The <a href="https://opensource.org/license/mit">MIT License</a> covers original website code only; it does not grant reuse rights to the study notes, excerpts, scans, images, or third-party archives. Existing public-domain status and separate licenses remain unchanged.
+      </p>
+    </section>
+
+    <section class="contact-note" aria-labelledby="requests-heading">
+      <h2 id="requests-heading">Corrections and Takedown Requests</h2>
+      <p>
+        If you are a rights holder or an authorized representative and believe material should be corrected or removed, please email <a href="mailto:shrink@pbvinge.com">shrink@pbvinge.com</a>. Include the page URL, the specific passage or image, the original work, your relationship to the rights holder, and a reply address.
+      </p>
+      <p>
+        Requests will be reviewed in good faith, with corrections, reduced excerpts, or removal as appropriate. Source clarifications and other thoughtful feedback are also welcome at the same address.
       </p>
     </section>
     
@@ -29,6 +45,7 @@ import Layout from '../layouts/Layout.astro';
     max-width: 680px;
     margin: 0 auto;
     padding: 2rem 0;
+    overflow-wrap: anywhere;
   }
 
   h1 {
@@ -46,14 +63,21 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.1rem;
   }
 
+  .legal-note,
   .contact-note {
     border-left: 3px solid var(--border-color);
     margin: 2.5rem 0;
     padding-left: 1.25rem;
   }
 
-  .contact-note p {
-    color: var(--muted-text);
+  .about p a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .about a:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 3px;
   }
 
   .social-links {

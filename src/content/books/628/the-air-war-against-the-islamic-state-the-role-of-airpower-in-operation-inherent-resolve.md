@@ -3,7 +3,15 @@ tags: [📚Book]
 title: "The Air War Against the Islamic State"
 subtitle: "The Role of Airpower in Operation Inherent Resolve"
 author:
-- "Becca Wasser, Stacie L. Pettyjohn, Jeffrey Martini, Alexandra T. Evans, Karl P. Mueller, Nathaniel Edenfield, Gabrielle Tarini, Ryan Haberman, Jalen Zeman"
+- "Becca Wasser"
+- "Stacie L. Pettyjohn"
+- "Jeffrey Martini"
+- "Alexandra T. Evans"
+- "Karl P. Mueller"
+- "Nathaniel Edenfield"
+- "Gabrielle Tarini"
+- "Ryan Haberman"
+- "Jalen Zeman"
 category:
 - "History"
 publisher: ""

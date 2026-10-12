@@ -4,24 +4,20 @@ import { getCollection } from 'astro:content';
 import {
   buildBookSearchString,
   getStatusColor,
-  normalizeAuthors,
+  isPublishedBookNote,
+  compareBookRecency,
   normalizeCategories,
   normalizeTags
 } from '../utils/books';
+import { contributorNames } from '../utils/citations';
 import '../css/tables.css';
 
-// Get all published and completed books from the content collection
-const books = await getCollection('books', ({ data }) => {
-  return data.isPublished && data.status === 'complete';
-});
-
-// Sort books by created date, most recent first
-const sortedBooks = books.sort((a, b) => 
-  new Date(b.data.created || '').getTime() - new Date(a.data.created || '').getTime()
-);
+// Publication and status rules are shared by lists, notes, and flashcards.
+const books = await getCollection('books', ({ data }) => isPublishedBookNote(data));
+const sortedBooks = books.sort(compareBookRecency);
 
 const decoratedBooks = sortedBooks.map((book) => {
-  const authors = normalizeAuthors(book.data.author);
+  const authors = contributorNames(book.data);
   const tags = normalizeTags(book.data.tags);
   const categories = normalizeCategories(book.data.category);
   const className = book.data.class || '';
@@ -55,15 +51,16 @@ const decoratedBooks = sortedBooks.map((book) => {
     <header class="page-header">
       <h1>Book Notes</h1>
       <p class="intro">
-        A collection of books I've read, am reading, or plan to read.
+        Published notes for completed books. See <a href="/future-reading">Future Reading</a> for books in progress and planned reading.
       </p>
     </header>
 
     <div class="search-section">
       <div class="filters">
-        <input 
-          type="text" 
-          id="searchInput" 
+        <input
+          type="search"
+          id="searchInput"
+          aria-label="Search book notes"
           placeholder="Search books by title, author, or tag..."
           class="search-input"
         />
@@ -78,10 +75,10 @@ const decoratedBooks = sortedBooks.map((book) => {
         <!-- Tags will be dynamically populated -->
       </div>
       <div class="view-toggle" role="group" aria-label="Switch book layout">
-        <button type="button" class="view-button active" data-view-button data-view="tiles">
+        <button type="button" class="view-button active" data-view-button data-view="tiles" aria-pressed="true">
           Grid
         </button>
-        <button type="button" class="view-button" data-view-button data-view="table">
+        <button type="button" class="view-button" data-view-button data-view="table" aria-pressed="false">
           Table
         </button>
       </div>
@@ -90,10 +87,10 @@ const decoratedBooks = sortedBooks.map((book) => {
     <div class="books-view">
       <div class="books-grid view-panel active" id="booksGrid" data-view-panel="tiles">
         {decoratedBooks.map((book) => (
-          <article 
-            class="book-card" 
-            data-book-item 
-            data-class={book.className.toLowerCase()} 
+          <article
+            class="book-card"
+            data-book-item
+            data-class={book.className.toLowerCase()}
             data-search={book.searchString}
             data-title={book.data.title.toLowerCase()}
             data-author={book.authors.join(', ').toLowerCase()}
@@ -152,11 +149,11 @@ const decoratedBooks = sortedBooks.map((book) => {
             <thead>
               <tr>
                 <th scope="col" class="pbv-col-cover">Cover</th>
-                <th scope="col" data-sort="title">Title <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" data-sort="author">Author <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" class="pbv-col-status" data-sort="status">Status <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" class="pbv-col-class" data-sort="class">Class <span class="pbv-sort-icon">↕</span></th>
-                <th scope="col" class="pbv-col-notes" data-sort="notes">Notes <span class="pbv-sort-icon">↕</span></th>
+                <th scope="col" data-sort="title" aria-sort="none"><button type="button" class="sort-button" data-sort-button>Title <span class="pbv-sort-icon" aria-hidden="true">↕</span></button></th>
+                <th scope="col" data-sort="author" aria-sort="none"><button type="button" class="sort-button" data-sort-button>Author <span class="pbv-sort-icon" aria-hidden="true">↕</span></button></th>
+                <th scope="col" class="pbv-col-status" data-sort="status" aria-sort="none"><button type="button" class="sort-button" data-sort-button>Status <span class="pbv-sort-icon" aria-hidden="true">↕</span></button></th>
+                <th scope="col" class="pbv-col-class" data-sort="class" aria-sort="none"><button type="button" class="sort-button" data-sort-button>Class <span class="pbv-sort-icon" aria-hidden="true">↕</span></button></th>
+                <th scope="col" class="pbv-col-notes" data-sort="notes" aria-sort="none"><button type="button" class="sort-button" data-sort-button>Notes <span class="pbv-sort-icon" aria-hidden="true">↕</span></button></th>
               </tr>
             </thead>
             <tbody>
@@ -206,6 +203,9 @@ const decoratedBooks = sortedBooks.map((book) => {
 </Layout>
 
 <style>
+  .sort-button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: .25rem; }
+  .sort-button:focus-visible { outline: 2px solid var(--link-color); outline-offset: 4px; }
+
   .books-container {
     max-width: var(--max-width);
     margin: 0 auto;

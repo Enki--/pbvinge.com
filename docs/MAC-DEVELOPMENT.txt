@@ -39,13 +39,15 @@ Open http://127.0.0.1:4321/ from the Mini's browser. The loopback address belong
 to the Mini; remote access clients need their existing supported access route.
 Build output is dist/. Dependencies and output are regeneratable and ignored.
 
-EXISTING PYTHON TESTS
+RETIRED PYTHON WORKFLOWS
 
-  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
-
-Python 3.14.3 passed all four timestamp tests. The missing faster_whisper
-warning is expected. These tests do not validate real transcription. No Python
-packages or virtual environment were installed for this transfer.
+Audio transcription and historical book migration were retired by the user's
+decision on October 12, 2026. The four former timestamp tests are preserved as
+historical text alongside the original scripts in docs/retired-workflows/.
+They are no longer an active development check. The old entry points now stop
+with a retirement message, without loading dependencies or processing content.
+The initial setup checkpoint's four passing tests describe that earlier state.
+No Python model packages or virtual environment are needed for site development.
 
 DEPENDENCIES
 
@@ -55,20 +57,53 @@ Exact direct versions resolved by npm 11.19.0:
   @astrojs/tailwind     5.1.5
   react                19.2.8
   react-dom            19.2.8
-  dompurify             2.5.9
-  esbuild               0.18.20
-  jsdom                22.1.0
-  marked                5.1.2
   tailwindcss           3.4.19
+Development:
+  @astrojs/check        0.9.4
+  typescript            5.9.3
+  jsdom                22.1.0
 
 package-lock.json records every resolved dependency version and integrity.
 The known laptop Astro/integration/React versions were retained and pinned in
 package.json. React/React DOM are now direct dependencies. The remaining
 original manifest ranges were retained and their resolutions frozen in the lock.
 No dependency lifecycle scripts were executed. Native esbuild, sharp, and
-fsevents checks passed. The existing postinstall helper is a no-op and is skipped.
-The initial install reports four upstream deprecation notices. Build is not a
-full TypeScript check or dependency security audit.
+fsevents checks passed. The ineffective root postinstall was removed during stabilization.
+The initial install reports four upstream deprecation notices. Unused direct
+dompurify, marked and esbuild were removed with explicit user approval; jsdom is
+used only for development regression tests. The approved lockfile was verified
+with clean npm ci, scripts disabled; full Astro source checking passes. See
+docs/STABILIZATION-2026-10-12.txt for this pre-upgrade checkpoint.
+
+ACTIVE STABILIZATION CHECKS
+
+  npm test
+  npm run test:helpers
+  npm run check:types
+  node node_modules/typescript/bin/tsc --noEmit
+  npm run build
+  node scripts/verify-reading-build.mjs
+  python3 scripts/verify-site-links.py --build-log BUILD_LOG --dist dist
+
+Capture the build output to BUILD_LOG for the local-route/fragment audit. The
+Node tests run 24 groups, including 22 sequential chart checks. Helper tests use
+only synthetic temporary files and Python stdlib; they do not run migration or
+cleanup on real notes. tsc checks TS/TSX under the strict source configuration.
+
+npm run check:types checks .astro templates as well as TS/TSX and application
+JavaScript syntax, using pinned @astrojs/check 0.9.4 and TypeScript 5.9.3. The
+user approved the lockfile update and publication after the initial review
+rejection. The framework upgrade is a separate change after stabilization.
+
+RETAINED MARKDOWN HELPER
+
+  python3 scripts/cleanup_md.py SOURCE.md
+  python3 scripts/cleanup_md.py SOURCE.md --preview REVIEW.md
+
+Both show a diff without editing the source. Explicit replacement requires the
+reviewed preview and the source/preview hashes printed by the command; see the
+helper's --help. It preserves a backup, checks unchanged bytes and rejects
+ambiguous TOC boundaries and archive targets. Do not run it as a test on content.
 
 RECOVERY AND CONTINUATION
 

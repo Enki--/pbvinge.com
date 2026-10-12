@@ -3,7 +3,7 @@ tags: [📚Book]
 title: "A Small State's Guide to Influence in World Politics"
 subtitle: ""
 author:
-- "Tom Long, Thomas Stephen Long"
+- "Tom Long"
 category:
 - "Political Science"
 publisher: "Oxford University Press"

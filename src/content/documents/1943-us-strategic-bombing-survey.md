@@ -7,12 +7,15 @@ authors:
   - United States Strategic Bombing Survey
 origin: United States of America
 date: 1947-01-01
+externalUrl: https://books.google.com/books?id=c8wnG5kKSVEC
 cover: "/assets/Screenshot%202025-09-10%20at%2014.35.19.png"
 ---
 
 # Aircraft Division Industry Report
 
 ## Second Edition January 1947
+
+> Editorial note: original figures have been restored from digitized copies of the January 1947 second edition held by the University of Michigan and Indiana University. Figure links lead to the [figure appendix](#restored-figures), where each image has its source and a full-resolution view.
 
 ## Table of Contents
 
@@ -27,6 +30,7 @@ cover: "/assets/Screenshot%202025-09-10%20at%2014.35.19.png"
 - Chapter VIII: Materials and Aircraft Components
 - Chapter IX: Report on V-Weapon Production
 - Exhibits
+- [Restored figures](#restored-figures)
 
 ### Preface
 
@@ -75,7 +79,7 @@ Page 5
 
 8. The question is still open, however, as to how many of those accomplishments resulted from the direct attacks against the aircraft industry. The records which are presented in detail in this report point up the tremendous recuperative powers of Germany's aircraft production. Paradoxically, aircraft production, appears, at first glance, to have been stimulated rather than retarded by the attacks. It must be remembered, however, that the great upswing in production that took place in the spring of 1944 had been planned and provided for during the six to nine month's period preceeding. How much higher the production curve would have risen had the attacks not been made is only a matter for conjecture. It was not until the fall of 1944, after the aircraft industry per se had ceased to be a primary target for the Combined Bomber Offensive, that production began to lag. Airframes, engines and parts were being manufactured in increasing numbers in the vast network of dispersed and concealed factories, but it was only after transportation was disrupted and supplies of fuel dwindled that deliveries of finished aircraft to the GAF finally approached the vanishing point.
 
-9. The quantitive study of the results of the strategic bombing of the German aircraft industry occupies the bulk of this report. Figure 1, which is not to be considered as a statistical presentation, is a composite picture of the trends of capacity, planning and production during the war years. The curves have all been "faired" and any quantitive vertical scale has been deliberately omitted. The relationship of the various elements of the chart, however, is in close agreement with the facts as disclosed in the detailed study that follows. (A more complete discussion of the meaning of the chart appears on the facing page.)
+9. The quantitive study of the results of the strategic bombing of the German aircraft industry occupies the bulk of this report. [Figure 1](#figure-i-1), which is not to be considered as a statistical presentation, is a composite picture of the trends of capacity, planning and production during the war years. The curves have all been "faired" and any quantitive vertical scale has been deliberately omitted. The relationship of the various elements of the chart, however, is in close agreement with the facts as disclosed in the detailed study that follows. (A more complete discussion of the meaning of the chart appears on the facing page.)
 
 Page 6
 
@@ -192,7 +196,7 @@ e. Funds for the expansion were provided principally by the Air Ministry directl
 
 f. From the first, the keynote of the organization of the German aircraft industry was "rationalization". Competition was discarded as a matter of policy. Patents and designs were pooled. Only a few of the more competent goups were encouraged to carry on engineering development. Several companies were regarded as satellite or "shadow-plants" for concerns with strong design organizations, such as Junkers and Messerschmitt. Henschel entered the aircraft industry of its own accord in 1933 and made a substantial investment of its own funds. At first it was not welcomed by the Air Ministry and it was refused contracts. Shortly, however, this attitude was reversed. Henschel developed several new designs, but its principal contribution was the production of airplanes designed by other companies.
 
-g. The new combat designs were put into line production in the expanded aircraft facilities and a substantial output resulted. The actual yearly production of combat and non-combat types from 1933 through 1944 is shown in Figure VI-1. The types of aircraft that were being built in 1939 as Germany entered the war are shown in Table VI-1, Chapter VI.
+g. The new combat designs were put into line production in the expanded aircraft facilities and a substantial output resulted. The actual yearly production of combat and non-combat types from 1933 through 1944 is shown in [Figure VI-1](#figure-vi-1). The types of aircraft that were being built in 1939 as Germany entered the war are shown in Table VI-1, Chapter VI.
 
 **2\. The Aircraft Complexes**
 
@@ -204,7 +208,7 @@ Page 16
 
 ---
 
-from the designer. The Speer Ministry recommended at that time that Special Committees be established for each principal design concern, to coordinate the several complexes engaged in production of a particular model. The committees were resident in the main office of the design company. They were manned by people from industry but were responsible to the Main Committee for Airframes (Figure III-2). When the Fighter Staff (Jagerstab) was formed in February 1944, the Special and Main Committees were made responsible to it in the Speer Ministry (Ministry of Armaments and War Production).
+from the designer. The Speer Ministry recommended at that time that Special Committees be established for each principal design concern, to coordinate the several complexes engaged in production of a particular model. The committees were resident in the main office of the design company. They were manned by people from industry but were responsible to the Main Committee for Airframes ([Figure III-2](#figure-iii-2)). When the Fighter Staff (Jagerstab) was formed in February 1944, the Special and Main Committees were made responsible to it in the Speer Ministry (Ministry of Armaments and War Production).
 
 c. The complexes and Special Committees constituted centralized organizational groups which could draw upon expert technical staffs to handle engineering, tooling, material expediting and other emergencies arising out of bombings. In addition, they were able to arrange interchanges of materials and components among the several manufacturers of the same articles and products. For example, when Focke-Wulf's sole source for empennage assemblies at Posen was bombed out in May 1944, the Special Committee for FW-190s could divert enough identical assemblies from the reserves of licensee complexes, Arado and Fieseler, to supply Focke-Wulf assembly operations while Posen was being set up in dispersed locations.
 
@@ -212,7 +216,7 @@ c. The complexes and Special Committees constituted centralized organizational g
 
 a. The aircraft industry in 1939 was scattered over most parts of central Germany. There was no concentration of production in a single region. The principal plants lay along an approximately north-south axis from Bremen to Munich. The new plants built between 1934 and 1939, furthermore, were built in the open country, well outside of the towns and cities.
 
-b. The industry was thus originally well protected against bombing attacks. During the war two other steps were taken to improve the situation: 1) removal eastward to get out of range of heavy bombers based on Britain, and 2) dispersal to scattered locations which offered less concentrated bombing targets, a point which will be treated at greater length later. The location of the German aircraft industry at the beginning of the war, and again in 1944, is shown in Figure II-1 and II-2.
+b. The industry was thus originally well protected against bombing attacks. During the war two other steps were taken to improve the situation: 1) removal eastward to get out of range of heavy bombers based on Britain, and 2) dispersal to scattered locations which offered less concentrated bombing targets, a point which will be treated at greater length later. The location of the German aircraft industry at the beginning of the war, and again in 1944, is shown in [Figure II-1](#figure-ii-1) and II-2.
 
 **4\. Changes in the Industry During the War**
 
@@ -224,9 +228,11 @@ Page 17
 
 Several new ones were established in Czechoslovakia. Others were set up to balance the operations of individual companies, but there was no need for a general expansion of plant capacity.
 
-b. The prewar concept of multiple integrated production operations, eventually was abandoned. Sometimes the manufacture of subassemblies was separated by several hundred miles, and the parts brought together at two or more widely separated places for final assembly. This shift was necessitated by bombing. The organization of the operations of the Erla Maschinewerk as of the last months of the war provide an example of the changed situation. The Erla operations are shown in Figure II-3.
+b. The prewar concept of multiple integrated production operations, eventually was abandoned. Sometimes the manufacture of subassemblies was separated by several hundred miles, and the parts brought together at two or more widely separated places for final assembly. This shift was necessitated by bombing. The organization of the operations of the Erla Maschinewerk as of the last months of the war provide an example of the changed situation. The Erla operations are shown in [Figure II-3](#figure-ii-3).
 
 c. The companies which constituted the German aircraft industry in October 1944, are given in Table II-1. The total number of workers employed by each, and the estimated floor space utilized are listed to provide a rough measure of size. The floor area figure became very difficult to appraise after general dispersal had been undertaken in 1944.
+
+<span id="II-1"></span>
 
 **Table II-1  
 Number of Persons Employed and Floor Area in German Airframe Plants**  
@@ -283,7 +289,7 @@ N.R. Not Reported: On the assumption that the proportion of persons employed by 
 
 a. The aircraft industry was exceedingly well housed as a result of the expansion of facilities between 1934 and 1941. Most of the buildings were of steel frame. Some were of hangar type with wide clearances. Others were the monitor-style type with overhead cranes and monorail systems. Saw-tooth roofs were also widely used. There were no blackout type buildings.
 
-b. The prinicipal of local dispersal was applied to the layout of new aircraft plants. As a precaution against bombing the Air Ministry restricted the total ground area covered by individual buildings, except in rare cases, to about 75,000 sq ft. This meant that the usual plant consisted of several buildings distributed over an area of 30 or 40 acres. An example of such a plant is given in Figure II-5, which shows the arrangement of the buildings which made up the Heinkel plant at Oranienburg. Even before the war this plant was equipped with an elaborate system of underground bomb shelters (See "Hitler Wasn't Bluffing", Saturday Evening Post, 19 February 1939).
+b. The prinicipal of local dispersal was applied to the layout of new aircraft plants. As a precaution against bombing the Air Ministry restricted the total ground area covered by individual buildings, except in rare cases, to about 75,000 sq ft. This meant that the usual plant consisted of several buildings distributed over an area of 30 or 40 acres. An example of such a plant is given in [Figure II-5](#figure-ii-5), which shows the arrangement of the buildings which made up the Heinkel plant at Oranienburg. Even before the war this plant was equipped with an elaborate system of underground bomb shelters (See "Hitler Wasn't Bluffing", Saturday Evening Post, 19 February 1939).
 
 c. When manufacturing operations were dispersed it was necessary to make use of a miscellany of structures such as converted textile plants and car barns. Many of the new buildings built during the war, including the great Ostmark engine plants, had wooden roofs. Metal shelves and storage bins were not available, thus increasing fire hazard.
 
@@ -329,7 +335,7 @@ g. The use of mechanized assembly lines and mobile jigs was common but not unive
 
 **8\. Capacity of Plant and Equipment**
 
-a. The aircraft plants built by Germany in the years immediately preceding and in the first two years of the war had a capacity, on a single-shift basis, adequate to supply the aircraft requested by the General Staff. This fact had a very important bearing on strategic bombing. Theoretically half of the plant capacity could have been destroyed and the other half, by working, two shifts, could have produced just as many planes as before. There was no problem of a major expansion of aircraft manufacturing capacity during the war, therefore, as there was in the United States. In 1943 and 1944 strategic bombing made necessary the provision of alternate plant capacity in dispersed locations, but it is probable that the plant and equipment which Germany possessed in 1941, if undisturbed, could have produced the quantity of aircraft turned out in the peak months of the war. (Figure I-1).
+a. The aircraft plants built by Germany in the years immediately preceding and in the first two years of the war had a capacity, on a single-shift basis, adequate to supply the aircraft requested by the General Staff. This fact had a very important bearing on strategic bombing. Theoretically half of the plant capacity could have been destroyed and the other half, by working, two shifts, could have produced just as many planes as before. There was no problem of a major expansion of aircraft manufacturing capacity during the war, therefore, as there was in the United States. In 1943 and 1944 strategic bombing made necessary the provision of alternate plant capacity in dispersed locations, but it is probable that the plant and equipment which Germany possessed in 1941, if undisturbed, could have produced the quantity of aircraft turned out in the peak months of the war. ([Figure I-1](#figure-i-1)).
 
 b. Not only was plant capacity exceedingly large at the beginning of the war, but production tooling had been built for a scale of operations much greater than that actually carried on in 1938 and 1939. German manufacturers had made an intensive study of aircraft tooling during the thirties, and had evolved techniques of "series" or line production for the industry averaged 700 airplanes a month, only one shift of 40 hours a week was worked. Holidays were observed, and most models stood high on the learning curve. These facts as to the capacity and advanced conceptions of German aircraft factories had been noted by visited and had been reported in magazine articles in the United States
 
@@ -402,7 +408,7 @@ c. When the war ended most of the principal buildings of Germany's prewar indust
 
 a. The Combined Bomber Offensive was as effective in forcing the dispersal of the German airframe, engine and accessory industries as it was in the direct damage of factories. It may well be that more aircraft were lost out of production because of dispersal than because of direct bombing.
 
-b. The principal of local dispersal has already been referred to. The arrangement of the buildings at the Heinkel plant at Oranienburg as shown in Figure II-5 is typical. There was a great difference, however, between the planned dispersal the Air Ministry ordered before the war and the frantic scattering of production operations all over Germany undertaken so energetically in 1944. Examination of the maps (Figures II-1 and II-2), which show the location of the principal airframe plants in 1944, indicates only in part the extent of the effort to avoid strategic bombing. It was not practical to show the many small plants involved on small scale maps.
+b. The principal of local dispersal has already been referred to. The arrangement of the buildings at the Heinkel plant at Oranienburg as shown in [Figure II-5](#figure-ii-5) is typical. There was a great difference, however, between the planned dispersal the Air Ministry ordered before the war and the frantic scattering of production operations all over Germany undertaken so energetically in 1944. Examination of the maps (Figures II-1 and II-2), which show the location of the principal airframe plants in 1944, indicates only in part the extent of the effort to avoid strategic bombing. It was not practical to show the many small plants involved on small scale maps.
 
 c. The first important airplane factory to be dispersed was the Focke-Wulf plant in Bremen. The British bombing of Bremen during 1940 and 1941 convinced Dr Kurt Tank, president of Focke-Wulf, that he should move his manufacturing facilities eastward, beyond the range of British-based bombers, and that production operations should be broken up among several plants in different cities. He selected Marienburg, Posen, Cottbus, and Sorau, which were east and southeast of Berlin.
 
@@ -418,7 +424,7 @@ c. Early in the war, Messerschmitt believed that his principal plants at Augsbur
 
 a. The official general order to disperse the aircraft industry was not issued until February 1944. Previously, however, a good many individual dispersals of critical war industries, such as ball bearings, had been ordered. The official decision undoubtedly was delayed too long. Beginning in August 1942, American bombers based in the United Kingdom had demonstrated their ability to do precision bombing against continental targets, but it was not until January 1943, that such raids were made on Germany itself. The impression was widely held in Germany that American bombers would not dare to penetrate the Fatherland.
 
-b. Beginning in July 1943, after the decision at Casablanca to conduct the Combined Bomber Offensive against German industry, the Eighth AF began its long campaign of heavy attacks on selected targets within Germany. The Messerschmitt plant at Regensburg was heavily hit. In November, when the Fifteenth AF based in Italy hit the Wiener Neustadt plant near Vienna, Germany no longer could have been in doubt as to the ability of Allied bombers to reach her vital war industries. A detailed analysis of bombing attacks made by the Eighth and Fifteenth AFs against aircraft targets is given in Chapter V. A diagramatic idea of the dispersal of the plant facilities engaged in the production of the Me 109 airplane is given in Figure II-6.
+b. Beginning in July 1943, after the decision at Casablanca to conduct the Combined Bomber Offensive against German industry, the Eighth AF began its long campaign of heavy attacks on selected targets within Germany. The Messerschmitt plant at Regensburg was heavily hit. In November, when the Fifteenth AF based in Italy hit the Wiener Neustadt plant near Vienna, Germany no longer could have been in doubt as to the ability of Allied bombers to reach her vital war industries. A detailed analysis of bombing attacks made by the Eighth and Fifteenth AFs against aircraft targets is given in Chapter V. A diagramatic idea of the dispersal of the plant facilities engaged in the production of the Me 109 airplane is given in [Figure II-6](#figure-ii-6).
 
 c. The climax to the suprise given the German High Command came in February 1944, when for several successive days large bomber formations attacked targets deep in Germany, with fighter escort all the way. There was no longer any doubt as to what German industry must do in order to maintain the flow of its war materials.
 
@@ -448,7 +454,7 @@ Page 25
 
 ---
 
-plant of Messerschmitt is shown in Figure II-7.
+plant of Messerschmitt is shown in [Figure II-7](#figure-ii-7).
 
 (2) Management: Dispersal made necessary a tremendous dilution of supervisory and technical talent. On top of the heavy manpower demands that were being made by the army, the shortage of persons capable of running the dispersed plants was acute.
 
@@ -534,7 +540,7 @@ h. Daimler-Benz officials in charge of the plant summarized their experience wit
 
 a. One of the most interesting and effective dispersal methods developed by the Germans was to hide plants in forests. Such plants were necessarily small but they were quite large enough for the production of subassemblies for fighter aircraft. They were constructed principally of wood, hence they were cheap and could be erected quickly. In many ways forest factories were Germany's most successful form of dispersal. Only a few were built, however, and they were available only in the last months of the war.
 
-b. Messerschmitt used the forest plant idea extensively. Such buildings played an important part in the production of the Me 262 jet fighter. Messerschmitt had had a considerable amount of experience with the common types of dispersal and with the operation of underground plants. It concluded that factories hidden in the woods near its plant at Augsburg offered the best possibilities for a quick solution to the problem of evading Allied bomber attacks. More than a dozen such installations were built near Leipheim, Kuno, Horgau, Schwabisch Hall, Gauting and other places. A diagram of the Kuno plant is given in Figure II-8.
+b. Messerschmitt used the forest plant idea extensively. Such buildings played an important part in the production of the Me 262 jet fighter. Messerschmitt had had a considerable amount of experience with the common types of dispersal and with the operation of underground plants. It concluded that factories hidden in the woods near its plant at Augsburg offered the best possibilities for a quick solution to the problem of evading Allied bomber attacks. More than a dozen such installations were built near Leipheim, Kuno, Horgau, Schwabisch Hall, Gauting and other places. A diagram of the Kuno plant is given in [Figure II-8](#figure-ii-8).
 
 c. The plant at Horgau, about seven miles west of Augsburg, on the Autobahn, is typical of the forest factories built by Messerschmitt. It assembled wing panels, nose and tail sections for the Me 262. A nearby forest plant attended to final assembly, and the Autobahn was used for flight tests. The Horgau plant had 21 separate wooden buildings, including seven barracks in which workers lived. The total floor space was approximately 25,000 sq ft. The wing assembly was 300 ft long and 50 ft wide. The roofs were painted green, and as the tops of the trees met overhead the locations could not be detected from the air.
 
@@ -603,7 +609,7 @@ Page 32
 
 a. Hitler appointed Goering Commander-in-Chief of the German Air Forces and also Air Minister. The jurisdiction of the Air Minister extended to production of civilian aircraft as well as military, and to the operations of the Lufthansa commercial airlines. In his capacity as Air Minister, Goering appointed a Director of Aircraft Procurement (General Luftzeugmeister) who was charged with the procurement of aircraft for the German Air Force. General Udet occupied this position until his death by suicide in November, 1941. Field Marshall Milch, who had been serving as State Secretary of the Air Ministry, took over Udet's office.
 
-b. The overall organization of the Air Ministry as it existed throughout most of the war is given in Figure III-1, which also shows the Ministry's relationship to the General Staff of the German Air Force, to Speer, to Goering in his several capacities, and to Hitler.
+b. The overall organization of the Air Ministry as it existed throughout most of the war is given in [Figure III-1](#figure-iii-1), which also shows the Ministry's relationship to the General Staff of the German Air Force, to Speer, to Goering in his several capacities, and to Hitler.
 
 c. Milch served as director of Aircraft Procurement until the Air Ministry became formally associated with the Speer Ministry for Armament and Munitions in February 1944 and was finally dissolved a few months later. Milch had requested that the initial association be arranged. He had enjoyed the friendliest relationships with Speer. The overwhelming problems with which the Air Ministry was confronted in the winter of 1943-1944 as a result of heavy bombing of aircraft targets, the general dispersal order, and the desparate need for increased fighter production, could only, Milch believed, by getting the direct action on materials, machine tools, manpower, and construction which Speer was able to supply.
 
@@ -681,7 +687,7 @@ the homeland by building up a mighty fighter force. But the declaration of war o
 
 **5\. Relationship Between Air Ministry and Aircraft Industry**
 
-a. The formation of the Industry Council by General Udet in May 1941 has already been mentioned. This group, made up of principal members of the aircraft, engine and accessories industries, served in an advisory capacity to the Air Ministry. The Director of Aircraft Procurement served as chairman. Milch continued this Council. In March 1942 however, when Speer succeeded Todt as Minister of Armament and Munitions the Industry Council was reconstituted into three Main Committees, one each for airframes, engines and accessories. The council continued in nominal existence but the Main Committees were active throughout the war. Speer established similiar committees for each major war industry. The organization of the Main Committee for Aircraft as it existed in 1944 is shown in Figure III-2.
+a. The formation of the Industry Council by General Udet in May 1941 has already been mentioned. This group, made up of principal members of the aircraft, engine and accessories industries, served in an advisory capacity to the Air Ministry. The Director of Aircraft Procurement served as chairman. Milch continued this Council. In March 1942 however, when Speer succeeded Todt as Minister of Armament and Munitions the Industry Council was reconstituted into three Main Committees, one each for airframes, engines and accessories. The council continued in nominal existence but the Main Committees were active throughout the war. Speer established similiar committees for each major war industry. The organization of the Main Committee for Aircraft as it existed in 1944 is shown in [Figure III-2](#figure-iii-2).
 
 b. The function of these committees in the aircraft industry was to advise the Director of Aircraft Procurement and the Air Ministry on production matters. They served also as a buffer against unreasonable requests from the General Staff, in cases where Milch, because of his military position, was unable to take a firm stand. Because they represented the industry point of view, Speer referred to them as "parliaments."
 
@@ -715,7 +721,7 @@ failure was part of the general failure to determine which of the 35 types of ai
 
 a. The successive official aircraft programs do not fall into clear-cut groupings. For present purposes, those dated between the beginning of 1939 and the middle of 1942 will be considered first. During this period there were 14 separate plans no including minor revisions.
 
-b. It was characteristic of this period that the sights of the aircraft program were kept low. The aircraft industry was allowed to operate at substantially less than capacity, even on a single-shift basis. Actual production of the leading combat types (fighters and bombers) followed closely and sometimes exceeded figures in the official plan (Figure III-3 and Exhibit I.) Program totals tended to exceed actual production because they included hoped-for production of new types especially the Me 210 and the He 177.
+b. It was characteristic of this period that the sights of the aircraft program were kept low. The aircraft industry was allowed to operate at substantially less than capacity, even on a single-shift basis. Actual production of the leading combat types (fighters and bombers) followed closely and sometimes exceeded figures in the official plan ([Figure III-3](#figure-iii-3) and Exhibit I.) Program totals tended to exceed actual production because they included hoped-for production of new types especially the Me 210 and the He 177.
 
 c. The average monthly production of combat types of aircraft during the period 1939-June 1942 was as follows:
 
@@ -751,7 +757,7 @@ h. The weakness of the leadership of the Air Ministry on production matters is i
 
 **7\. Programs Subsequent to September 1942**
 
-a. Nine separate programs were set up between September 1942 and the end of the war. They are shown in chart form in Figure III-3. The data for these charts are given in Exhibit II. Actual production curves are shown on these same charts. The comparison of the successive official schedules with what actually was produced throws light on the hopes and desires of those responsible for planning the aircraft program.
+a. Nine separate programs were set up between September 1942 and the end of the war. They are shown in chart form in [Figure III-3](#figure-iii-3). The data for these charts are given in Exhibit II. Actual production curves are shown on these same charts. The comparison of the successive official schedules with what actually was produced throws light on the hopes and desires of those responsible for planning the aircraft program.
 
 b. A summary table which brings out the principal features of these plans is given in [Table III-1](#III-1). It shows a comparison of the successive plans as to single-engine fighters, twin-engine fighters, bombers, and total airplanes, as of six-month intervals, 1941-45. Actual production as of those check points is given for convience in making further comparisons.
 
@@ -762,6 +768,8 @@ d. The next two plans, those dated 21 Sep 1942 and 15 April 1943, show the first
 Page 43
 
 ---
+
+<span id="III-1"></span>
 
 **Table III-1  
 Comparison of Official Programs**  
@@ -1043,6 +1051,8 @@ Page 57
 
 ---
 
+<span id="V-2"></span>
+
 **Table V-2  
 Total Tonnage Dropped by Eighth and Fifteenth Air Forces on Aircraft Industry**  
 Monthly Data, Apr 1943 - Apr 1945
@@ -1082,6 +1092,8 @@ Source: 8th Air Force Statistical Summary; and for 15th Air Force, Tabulating Se
 Page 58
 
 ---
+
+<span id="V-3"></span>
 
 **Table V-3  
 Tonnage Dropped on Airframe, Engine and Component Plants by Eighth Air Force**  
@@ -1123,6 +1135,8 @@ Page 59
 
 ---
 
+<span id="V-4"></span>
+
 **Table V-4  
 Number of Missions Flown Against Aircraft Industry by Eighth and Fifteenth Air Forces**  
 Monthly Data, Apr 1943 - Apr 1945
@@ -1163,6 +1177,8 @@ Monthly Data, Apr 1943 - Apr 1945
 Page 60
 
 ---
+
+<span id="V-5"></span>
 
 **Table V-5  
 Dates of Individual Attacks on Aircraft Industry Targets  
@@ -1639,7 +1655,7 @@ Model Designation of German Aircraft**
 N.A. Not Available  
 \[Editor's note: no attempt has been made to update the information in this table and it should be regarded as unreliable with the possible exception of airframe weight.\]
 
-b. The annual production of aircraft broken down by type is given in [Figure VI-1](#images/FigVI-1.jpg). The figures are annual totals from 1939-1944. For the preceding period 1933-1938, only the cumulative total is given. Prior to 1939 the breakdown is by combat and non-combat types; thereafter it is by single-engine fighters, twin-engine fighters, single-, twin-, and four-engine bombers, transports, trainers, gliders and miscellaneous. In the period 1939-1944 the proportion of combat to non-combat types, computed on the basis of numbers of airplanes, rose from 57 percent to almost 80 percent. In brief, this chart shows the following:
+b. The annual production of aircraft broken down by type is given in [Figure VI-1](#figure-vi-1). The figures are annual totals from 1939-1944. For the preceding period 1933-1938, only the cumulative total is given. Prior to 1939 the breakdown is by combat and non-combat types; thereafter it is by single-engine fighters, twin-engine fighters, single-, twin-, and four-engine bombers, transports, trainers, gliders and miscellaneous. In the period 1939-1944 the proportion of combat to non-combat types, computed on the basis of numbers of airplanes, rose from 57 percent to almost 80 percent. In brief, this chart shows the following:
 
 |     | Combat Types |     | All Types |     |
 | --- | --- | --- | --- | --- |
@@ -1653,7 +1669,7 @@ b. The annual production of aircraft broken down by type is given in [Figure VI-
 
 **4\. Detailed Production Record**
 
-a. The monthly record of German aircraft production is given in [Figure VI-2](#images/figvi-2.jpg). It shows the total production by number and by airframe weight, and the average unit airframe weight. The period covered is 1941-1944.
+a. The monthly record of German aircraft production is given in [Figure VI-2](#figure-vi-2). It shows the total production by number and by airframe weight, and the average unit airframe weight. The period covered is 1941-1944.
 
 b. The principal points revealed by this chart are: 1) the dramatic increase in output especially in numbers of airplanes between February and July 1944 at the very time when the greatest tonnage of bombs was being dropped on the industry, 2) the marked decline in the average unit weight of German airplanes especially in 1944, and 3) the slow build-up of production in 1940, 1941, and 1942. The rapid increase in 1944 amounted to 109.4 percent from February to July measured in number of airplanes, but 97.6 percent measured in airframe pounds.
 
@@ -1661,15 +1677,15 @@ Page 78
 
 ---
 
-c. The distribution of German aircraft production among fighters, bombers, transports, and others, is given in [Figure VI-3](#images/figvi-3.jpg). The data are on airframe weight basis, monthly, 1941-1944. The chart shows the decided shift to fighters beginning in 1943 and continuing through 1944. It shows also the extremely small proportion of transports, trainers, and other types. Fighters constituted 18.1 percent of the weight produced in December 1942, but 71.9 percent in December 1944. Bombers constituted 10.8 percent of the weight produced in December 1942, but 25.4 percent in December, 1944.
+c. The distribution of German aircraft production among fighters, bombers, transports, and others, is given in [Figure VI-3](#figure-vi-3). The data are on airframe weight basis, monthly, 1941-1944. The chart shows the decided shift to fighters beginning in 1943 and continuing through 1944. It shows also the extremely small proportion of transports, trainers, and other types. Fighters constituted 18.1 percent of the weight produced in December 1942, but 71.9 percent in December 1944. Bombers constituted 10.8 percent of the weight produced in December 1942, but 25.4 percent in December, 1944.
 
 **5\. Analysis of the Production Record**
 
-a. The size of the principal German airplanes must be comprehended in order to understand the problem involved in producing them. In Figures VI-4 and VI-5 \[Editor's note: not included in the interest of conserving space\] diagrams are given to scale which compare the principal German types with their nearest American counterparts. The production task roughly is a function of the weight of the airplane. However, it has been proven by several US agencies that the cost of a pound of airframe in a smaller airplane is less by the inverse ratio of weights to the one-third power. Actually (although not so derived in making this estimate) this means that airplane costs vary as their weights to the two-thirds power.
+a. The size of the principal German airplanes must be comprehended in order to understand the problem involved in producing them. In [Figures VI-4](#figure-vi-4) and [VI-5](#figure-vi-5) diagrams are given to scale which compare the principal German types with their nearest American counterparts. The production task roughly is a function of the weight of the airplane. However, it has been proven by several US agencies that the cost of a pound of airframe in a smaller airplane is less by the inverse ratio of weights to the one-third power. Actually (although not so derived in making this estimate) this means that airplane costs vary as their weights to the two-thirds power.
 
 b. The total monthly production of the German aircraft industry, measured in airframe pounds, never exceede twice the peak monthly output of the Ford Willow Run plant. The combined airframe weight output, on a monthly basis, of three other plants in the United States, Boeing-Seattle, Douglas-Long Beach, and Consolidated Vultee-San Diego, far exceeded the peak output of Germany and the countries it occupied. Making allowance for variations in airplane types, the following plants in the United States roughly equalled the German industry, when compared on the basis of airframe weight: North American Aviation plants at Inglewood, Kansas City, and Dallas "A", Republic Aircraft plants at Farmingdale and Evansville, Lockheed Aircraft (including Vega Division) at Burbank, and Douglas Aircraft at Santa Monica.
 
-c. The comparison of total German and American aircraft production on the basis of number of airplanes and of airframe weight, is given in [Figure VI-6](#images/figvi-6.jpg). The great difference in weight of sharpest rise in the American production curve preceeded the period of sharpest rise in the German production curve by approximately two years. Once American production reached its peak, it continued at a high rate for a period of seven months, while in Germany production fell sharply almost immediately after it reached its peak.
+c. The comparison of total German and American aircraft production on the basis of number of airplanes and of airframe weight, is given in [Figure VI-6](#figure-vi-6). The great difference in weight of sharpest rise in the American production curve preceeded the period of sharpest rise in the German production curve by approximately two years. Once American production reached its peak, it continued at a high rate for a period of seven months, while in Germany production fell sharply almost immediately after it reached its peak.
 
 Page 79
 
@@ -1677,7 +1693,7 @@ Page 79
 
 d. The failure of Hitler and of his high command for the German Air Force to take cognizance of the air offensive that was being mounted against Germany by the Allies, is difficult to comprehend. Documents in the files of the German Air Ministry prove that German intelligence knew that American and British production figures. Hitler and Goering were said to have characterized these reports as false and impossible. Milch tried to have the aircraft programs increased in 1941 and 1942, but he did not succeed until the second half of 1943. Messerschmitt pointed out to Hitler in 1943 the necessity of a larger aircraft program, and the limitations of V-weapons.
 
-e. The record of total production, production by major types and production of four principal models for the period 1941-1945 is given in Figures [VI-7](#images/figvi-7.jpg)\-[8](#images/figvi-8.jpg)\-[9](#images/figvi-9.jpg). Included are the applicable composite curves for planned production in each case. The planned curves are composites of segments of successive official programs. Every point is a figure taken from an official plan. The resultant program curve is believed realistic. Dr. Frydag volunteered the opinion that they could have been attained except for the direct and indirect effect of bombing.
+e. The record of total production, production by major types and production of four principal models for the period 1941-1945 is given in Figures [VI-7](#figure-vi-7)\-[8](#figure-vi-8)\-[9](#figure-vi-9). Included are the applicable composite curves for planned production in each case. The planned curves are composites of segments of successive official programs. Every point is a figure taken from an official plan. The resultant program curve is believed realistic. Dr. Frydag volunteered the opinion that they could have been attained except for the direct and indirect effect of bombing.
 
 f. These charts serve two purposes, they show the way in which actual production fluctuated during the war, and the loss of production compared with planned production. These two points will be covered in detail.
 
@@ -1705,7 +1721,7 @@ e. The Ju 88, 188 and 388 were modifications of the same basic type. The Ju 88 w
 
 **8\. Estimates of Production Loss**
 
-a. Due to the effects of the Combined Bomber Offensive, it is the conclusion of this report that the airplanes denied to the enemy totalled approximately 18,500. The differences between actual and planned production, shown in [Figure VI-10](#images/figvi-10.jpg) are summarized in the following table:
+a. Due to the effects of the Combined Bomber Offensive, it is the conclusion of this report that the airplanes denied to the enemy totalled approximately 18,500. The differences between actual and planned production, shown in [Figure VI-10](#figure-vi-10) are summarized in the following table:
 
 Page 81
 
@@ -1759,7 +1775,7 @@ j. The natural tendency of a campaign such as that conducted by Saur and his Fig
 
 **9\. The Efficiency of the German Aircraft Industry**
 
-a. The efficiency of the German airframe manufacturers can be measured within rough limits by comparing the number of workers engaged in the industry with the airframe weight produced. In this analysis no allowance has been made for differences in difficulty of production between bombers and fighters, and for the cumulative number of each model produced. The curves for the two series are given in [Figure VI-11](#images/figvi-11.jpg). The data for the number of workers include those employed in aircraft production in conquered countries. The data for airframe weight produced include an allowance for spare parts of 25 percent during 1941-1942; 20 percent in 1943; and 15 percent in 1944.
+a. The efficiency of the German airframe manufacturers can be measured within rough limits by comparing the number of workers engaged in the industry with the airframe weight produced. In this analysis no allowance has been made for differences in difficulty of production between bombers and fighters, and for the cumulative number of each model produced. The curves for the two series are given in [Figure VI-11](#figure-vi-11). The data for the number of workers include those employed in aircraft production in conquered countries. The data for airframe weight produced include an allowance for spare parts of 25 percent during 1941-1942; 20 percent in 1943; and 15 percent in 1944.
 
 b. The chart shows that in 1941 approximately one pound of airframe was produced each day by each worker. The highest point was reached in the summer of 1943, when approximately 1.5 lbs, were produced each day by each worker. The Bomber Offensive of 1943 was accompanied by a decline in the figure. The Fighter Staff campaign in the first half of 1944 increased the daily output only to 1.4 lbs per worker in July. After July there was a substantial decline in productivity which for the most part can be attributed to to the fact that the flow of materials and fabricated parts broke down under the
 
@@ -1771,7 +1787,7 @@ dispersal system because of the overload placed on transportation.
 
 c. Continuous series showing monthly employment and floor space for each manufacturer were not found, so detailed analysis of the efficiency of each company cannot be found. The breakdown of the total employment figure by company as of October 1944 is given in [Table II-1](#II-1), together with the best measure of floor space for each that could be found. The source of this information in both cases were Air Ministry and Main Committee for Aircraft records. They afford, however, only the roughest basis for measuring efficiency as to manpower and floor-space utilization.
 
-d. A comparison of German and American efficiency in the field of aircraft production during the war is shown in [Figure VI-12](#images/figvi-12.jpg). To make the data more nearly comparable they have been adjusted for airframe size and production quantities. The data for this analysis are given in Appendix V. The comparison shows that American production was between 20 and 40 percent more efficient than German from 1941-1943, and about 110 percent more efficient in 1944. In 1944, principally because of Allied bombing, German efficiency declined while American almost doubled.
+d. A comparison of German and American efficiency in the field of aircraft production during the war is shown in [Figure VI-12](#figure-vi-12). To make the data more nearly comparable they have been adjusted for airframe size and production quantities. The data for this analysis are given in Appendix V. The comparison shows that American production was between 20 and 40 percent more efficient than German from 1941-1943, and about 110 percent more efficient in 1944. In 1944, principally because of Allied bombing, German efficiency declined while American almost doubled.
 
 e. The relative inefficiency of the German aircraft industry has an important bearing on strategic bombing. It consitituted a tremendous potential for improvement, which made it possible by better management, to maintain and even increase the volume of output in the face of severe bomb damage. When the Speer Ministry took over the Air Ministry in February 1944 the aircraft companies were put under terrific pressure to increase their output. The details of this national effort have already been noted.
 
@@ -1952,7 +1968,7 @@ Page 95
 
 ---
 
-d. The location of the aircraft engine industry is shown in [Figures VII-1](images/figvii-1.jpg) and [2](images/figvii-2.jpg), at the beginning of the war and in 1944. The situation toward the end of the war was much blurred by dispersal. As in the case of airframes, there was no concentration of the industry geographically, but locations near the eastern and western borders were avoided. During the war, production was extended to several centers in Czechoslovakia, to Strasbourg and its vicinity, and in 1941, a huge plant, the Ostmark, was built in Vienna.
+d. The location of the aircraft engine industry is shown in [Figures VII-1](#figure-vii-1) and [2](#figure-vii-2), at the beginning of the war and in 1944. The situation toward the end of the war was much blurred by dispersal. As in the case of airframes, there was no concentration of the industry geographically, but locations near the eastern and western borders were avoided. During the war, production was extended to several centers in Czechoslovakia, to Strasbourg and its vicinity, and in 1941, a huge plant, the Ostmark, was built in Vienna.
 
 **3\. Surplus Capacity in the Engine Industry**
 
@@ -1992,13 +2008,13 @@ Page 98
 
 In the case of BMW, however, serious difficulty was encountered, and more production of engines was lost during dispersal than had been caused by earlier bombings. The plan was to remove the aircraft engine operations from the Munich-Allach plants to an underground facility at Merkirch in Alsace. The decision was made in March 1944, the actual moving began in June, and was completed in September, in the face of great transportation difficulties. The advance of the Allied armies, however, precipitated a decision to return to dispered locations in Munich. This was not completed until November.
 
-b. Dispersed operations proved to be unsatisfactory because of the dependence upon a rapidly disintegrating transportation system so haste was made to bring operations together in underground facilities. V-weapons were given a special priority in this move, but early action was also taken on aircraft engines. The Jumo 004 engine for the Me 262 was set up in the Nordwerk, which was the north end of the tunnel complex occupied by the Mittelwerke, near Nordhausen. (Description in Chapter IX). The Daimler-Benz production operations at Genshagen were transferred in large part to an underground location near Heidelburg, called the Goldfische plant. (Description in [Chapter II](#Ch2)). The eventual plan was to centralized manufacturing operations in a few underground and bunker type facilities. The war ended before satisfactory conditions had been attained.
+b. Dispersed operations proved to be unsatisfactory because of the dependence upon a rapidly disintegrating transportation system so haste was made to bring operations together in underground facilities. V-weapons were given a special priority in this move, but early action was also taken on aircraft engines. The Jumo 004 engine for the Me 262 was set up in the Nordwerk, which was the north end of the tunnel complex occupied by the Mittelwerke, near Nordhausen. (Description in Chapter IX). The Daimler-Benz production operations at Genshagen were transferred in large part to an underground location near Heidelburg, called the Goldfische plant. (Description in [Chapter II](#chapter-ii-german-aircraft-industry)). The eventual plan was to centralized manufacturing operations in a few underground and bunker type facilities. The war ended before satisfactory conditions had been attained.
 
 **6\. The Production Record**
 
-a. The production of the main types of German aircraft engines for the period September 1939 through December 1944 is shown in [Figure VII-3](images/figvii-3.jpg). This series cannot be compared directly with the curve for aircraft production because of the varying proportions of single and multi-engine airplanes that were being produced. In 1944, for example, there was a drastic shift of production to fighter types, mostly single-engine types. The chart shows the persistent rise of production thoughout the Combined Bomber Offensive until April 1944 when the direct and indirect effects of the attack resulted in the beginning of a substantial production decline. From April until the end of the war no additions were made to engine reserves, and deliveries of spare engines were in greatly reduced volume. The reduction in production of multi-engine airplane types which began early in 1944 lessened requirements with the result that the reduced supplies of engines did not seriously interrupt the production of aircraft.
+a. The production of the main types of German aircraft engines for the period September 1939 through December 1944 is shown in [Figure VII-3](#figure-vii-3). This series cannot be compared directly with the curve for aircraft production because of the varying proportions of single and multi-engine airplanes that were being produced. In 1944, for example, there was a drastic shift of production to fighter types, mostly single-engine types. The chart shows the persistent rise of production thoughout the Combined Bomber Offensive until April 1944 when the direct and indirect effects of the attack resulted in the beginning of a substantial production decline. From April until the end of the war no additions were made to engine reserves, and deliveries of spare engines were in greatly reduced volume. The reduction in production of multi-engine airplane types which began early in 1944 lessened requirements with the result that the reduced supplies of engines did not seriously interrupt the production of aircraft.
 
-b. The production of engines was based upon the plans for the production of aircraft which have already been described ([Chapter VI](#ChVI)). The normal load time for engine deliveries in advance of airplane completion was one month, with an additional two weeks required for powerplant ("power egg") assembly. A reserve supply of one month's requirements was maintained when possible. The time required to get
+b. The production of engines was based upon the plans for the production of aircraft which have already been described ([Chapter VI](#chapter-vi-effects-of-bombing-on-aircraft-production)). The normal load time for engine deliveries in advance of airplane completion was one month, with an additional two weeks required for powerplant ("power egg") assembly. A reserve supply of one month's requirements was maintained when possible. The time required to get
 
 Page 99
 
@@ -2006,13 +2022,13 @@ Page 99
 
 an engine into production was longer than that for airframes. Engine manufacturers, as a result, complained even more bitterly than did airframe manufacturers of the frequency and multiplicity of program changes, and of delays in clearing important engine projects for high production.
 
-c. The cushion for aircraft engines is shown in [Figure VII-4](images/figvii-4.jpg), the totals of the principal engine types produced for practically all combat airplanes are given, compared with the engine requirements of those airplanes. Figures were not readily available for the individual engine models and the airplanes into which they went. The significance of such a detailed check was reduced because different engines types could be used, within limits, in the same airplane. The situation for different engine types varied considerably. In the case of the DB 605, for example, used principally in the Me 109, probably there was always sufficient cushion to tide over the ordinary bomb damage emergency. In the case of the BMW 801, however, used principally in the FW 190, the situation was frequently critical.
+c. The cushion for aircraft engines is shown in [Figure VII-4](#figure-vii-4), the totals of the principal engine types produced for practically all combat airplanes are given, compared with the engine requirements of those airplanes. Figures were not readily available for the individual engine models and the airplanes into which they went. The significance of such a detailed check was reduced because different engines types could be used, within limits, in the same airplane. The situation for different engine types varied considerably. In the case of the DB 605, for example, used principally in the Me 109, probably there was always sufficient cushion to tide over the ordinary bomb damage emergency. In the case of the BMW 801, however, used principally in the FW 190, the situation was frequently critical.
 
 **7\. Effects of Bombing on Engine Production**
 
-a. The weight of bombs dropped on the aircraft engine industry has already been shown in [Chapter V](#Ch5). The effect of these attacks on engine production will be noted briefly.
+a. The weight of bombs dropped on the aircraft engine industry has already been shown in [Chapter V](#chapter-v-attacks-on-the-aircraft-industry). The effect of these attacks on engine production will be noted briefly.
 
-b. The overall situation for the supply of engines for installation and spares has been shown in [Figure VII-4](images/figvii-4.jpg). It shows the engines required for actual production of aircraft and the production of engines, monthly for the period 1941-1944, with the cumulative changes in the cushion position. Only the relative changes in the cushions are significant, since it was not possible to determine the size of the cushion at the beginning of the period. This chart reveals the fact that the engine supply did not become critically short until the second half of 1944. The total monthly production of BMW and DB types of aircraft engines in each factory is shown in Table VII-1.
+b. The overall situation for the supply of engines for installation and spares has been shown in [Figure VII-4](#figure-vii-4). It shows the engines required for actual production of aircraft and the production of engines, monthly for the period 1941-1944, with the cumulative changes in the cushion position. Only the relative changes in the cushions are significant, since it was not possible to determine the size of the cushion at the beginning of the period. This chart reveals the fact that the engine supply did not become critically short until the second half of 1944. The total monthly production of BMW and DB types of aircraft engines in each factory is shown in Table VII-1.
 
 **Table VII-1  
 German Aircraft Engine Production  
@@ -2091,7 +2107,7 @@ September 1939 - December 1944
 
 c. Individual analysis of the effect of bombing on the production of the major engine types follows:
 
-(1) BMW 801: The production curve for this engine is shown in [Figure VII-5](images/figvii-5.jpg). Monthly data are given for each plant for the period 1942-1944. A raid on the Munich-Allach plant in March 1943 caused a loss of approximately 400 engines, or one month's production. Another attack in December 1943 caused a loss of about 200 engines. In May 1944 there was a heavy attack, but the effect cannot be distinguished from losses caused by dispersal. These losses mounted to several thousand engines. As a result of a raid in
+(1) BMW 801: The production curve for this engine is shown in [Figure VII-5](#figure-vii-5). Monthly data are given for each plant for the period 1942-1944. A raid on the Munich-Allach plant in March 1943 caused a loss of approximately 400 engines, or one month's production. Another attack in December 1943 caused a loss of about 200 engines. In May 1944 there was a heavy attack, but the effect cannot be distinguished from losses caused by dispersal. These losses mounted to several thousand engines. As a result of a raid in
 
 Page 100
 
@@ -2099,9 +2115,9 @@ Page 100
 
 the summer of 1944 on the Klockner plant at Hamburg, licensee under BMW, operations were removed to Brno, Czechoslovakia. The attendant loss in production was approximately 700 engines.
 
-(2) DB 605: The production curve for this type is shown in [Figure VII-6](images/figvii-6.jpg). Monthly data are given for each plant for the period 1940-1944. This engine used principally on the Me 109 was produced in several plants which were bombed. The principal plant at Genshagen was hit in July 1944, but production did not fall below 40 percent of the peak rate that had previously obtained. The machine shop for this plant was removed to an underground location late in the summer of 1944. This arrangement proved to be exceedingly awkward and the production rate rose only to 70 percent of the pre-raid rate. Attacks on Büssing, a licensee, in April and August 1944 were not important in reducing production because of successful dispersal. The attacks on the Henshel works at Kassel were somewhat more effective, but through dispersal the rate of operation in December 1944 was as high as it had ever been. The operations at Pommersche Motorenwerke at Stettin were not on a large scale. An attack in March 1944 interrupted production, but by the end of the year the rate was higher than it had ever been. The total curve for DB 605 engines does not show a serious decline in production in connection with bombing or dispersal.
+(2) DB 605: The production curve for this type is shown in [Figure VII-6](#figure-vii-6). Monthly data are given for each plant for the period 1940-1944. This engine used principally on the Me 109 was produced in several plants which were bombed. The principal plant at Genshagen was hit in July 1944, but production did not fall below 40 percent of the peak rate that had previously obtained. The machine shop for this plant was removed to an underground location late in the summer of 1944. This arrangement proved to be exceedingly awkward and the production rate rose only to 70 percent of the pre-raid rate. Attacks on Büssing, a licensee, in April and August 1944 were not important in reducing production because of successful dispersal. The attacks on the Henshel works at Kassel were somewhat more effective, but through dispersal the rate of operation in December 1944 was as high as it had ever been. The operations at Pommersche Motorenwerke at Stettin were not on a large scale. An attack in March 1944 interrupted production, but by the end of the year the rate was higher than it had ever been. The total curve for DB 605 engines does not show a serious decline in production in connection with bombing or dispersal.
 
-(3) Jumo 211: The production curve for this engine is shown in [Figure VII-7](images/figvii-7.jpg). Monthly data are given for the period 1940-1944. It was used principally in the Ju 88, and was produced in three plants: Junkers at Kothen and Magdeburg, and Mitteldeutsche Motorenwerke at Taucha. Peak production was reached in November 1942. The aircraft program had limited requirements for this type of engine at that time. It was intended to substitute the higher performance Jumo 213. The transition was not accomplished smoothly because of design difficulties, and production declined gradually through November 1943. By that time the combined production of Jumo 211 and 213 types had begun to rise. A bomb attack on the Taucha plant in July 1944 caused a loss of production of about 800 engines, but by November 1944, as a result of dispersal, the previous peak production rate had been reached, and in December a new peak was attained. The completion
+(3) Jumo 211: The production curve for this engine is shown in [Figure VII-7](#figure-vii-7). Monthly data are given for the period 1940-1944. It was used principally in the Ju 88, and was produced in three plants: Junkers at Kothen and Magdeburg, and Mitteldeutsche Motorenwerke at Taucha. Peak production was reached in November 1942. The aircraft program had limited requirements for this type of engine at that time. It was intended to substitute the higher performance Jumo 213. The transition was not accomplished smoothly because of design difficulties, and production declined gradually through November 1943. By that time the combined production of Jumo 211 and 213 types had begun to rise. A bomb attack on the Taucha plant in July 1944 caused a loss of production of about 800 engines, but by November 1944, as a result of dispersal, the previous peak production rate had been reached, and in December a new peak was attained. The completion
 
 Page 101
 
@@ -2187,9 +2203,9 @@ b. The importance of aircraft accessories in the German aircraft industry in ind
 
 c. As a general matter the sources for aircraft accessories and components were adquate throughout the war, and few delays to aircraft production were caused by shortages.
 
-d. One of the principal manufacturers of accessories and components was the Vereinighte Deutsche Metallwerke, A.G. at Frankfurt-am-Main. They produced a considerable percentage of the metal propellers, landing gears, radiators, hydraulic components, etc., for the industry. It offers a typical example of the growth and scattering of the accessory business generally. Figure VIII-1 \[not scanned for lack of space\] shows the dispersal pattern from the original single plant in 1934 to some 19 scattered factories in 1945. It is easy to see why accessory supplies became more and more difficult to hit by bombing as the war progresses.
+d. One of the principal manufacturers of accessories and components was the Vereinighte Deutsche Metallwerke, A.G. at Frankfurt-am-Main. They produced a considerable percentage of the metal propellers, landing gears, radiators, hydraulic components, etc., for the industry. It offers a typical example of the growth and scattering of the accessory business generally. [Figure VIII-1](#figure-viii-1) shows the dispersal pattern from the original single plant in 1934 to some 19 scattered factories in 1945. It is easy to see why accessory supplies became more and more difficult to hit by bombing as the war progresses.
 
-e. [Figures VIII-2](images/figviii-2.gif) and [VIII-3](images/figviii-3.gif) are included to show the course of VDM's prodution of propellor blades and landing gear wheels during the latter war years. Increases in production were continuous, even during periods of bombing and of plant dispersal. It was only when transportation began to fail in the last months of the war that any serious decline in the production of these items occured.
+e. [Figures VIII-2](#figure-viii-2) and [VIII-3](#figure-viii-3) are included to show the course of VDM's prodution of propellor blades and landing gear wheels during the latter war years. Increases in production were continuous, even during periods of bombing and of plant dispersal. It was only when transportation began to fail in the last months of the war that any serious decline in the production of these items occured.
 
 f. The Main Committee for Airframes was responsible for seeing that each of the Special Committees for a particular airplane complex covered its requirements for airframe accessories and components. The Main Committee for Engines was responsible for seeing that each of the Special Committees for a particular engine manufacturing complex covered its requirements for engine accessories. Accessories, especially armament, not included in the jurisdiction of the airframe and engine committees, were covered by a third Main Committee. The
 
@@ -2348,7 +2364,7 @@ a. The V-2, (called by the Germans Project A-4), is a rocket, without wings, pro
 
 b. There is enough fuel for about one minute of power flight. During this time, the rocket ascends first vertically, then by means of fins located in the jet stream, its trajectory is changed to a controlled parabola terminating in a curve tangent to a line 42 degrees to the horizontal. Control during the ascent is by a gyroscopic accelerometer, an electronic system of great ingenuity and considerable complexity. After the fuel is exhausted, the rocket continues its upward motion, reaching an altitude of about 55 to 60 miles. The descent follows a ballistic parabola like an ordinary projectile. A terminal velocity is reached of some 3,000 feet per second. The maximum range of the V-2 is about 210 miles.
 
-c. A schematic diagram of the V-2 is given in [Figure IX-2](images/figix-2a.gif). The principal structural subassemblies which made the V-2 included: (1) the nose, which was made of wood, (2) the center section and (3) the tail section which included the fins. The latter was made of formed sheet steel, .035 thick, welded or riveted. The combustion chamber was made of formed and welded steel sheet. Small serve gyroscopic control units in the fins directed the missile in flight. There were eight such units in each weapon, two on each fin. The ones on the outer edges actuated the control tabs, and those on the inner edges operated a control surface in the jet stream.
+c. A schematic diagram of the V-2 is given in [Figure IX-2A](#figure-ix-2a). The principal structural subassemblies which made the V-2 included: (1) the nose, which was made of wood, (2) the center section and (3) the tail section which included the fins. The latter was made of formed sheet steel, .035 thick, welded or riveted. The combustion chamber was made of formed and welded steel sheet. Small serve gyroscopic control units in the fins directed the missile in flight. There were eight such units in each weapon, two on each fin. The ones on the outer edges actuated the control tabs, and those on the inner edges operated a control surface in the jet stream.
 
 Page 115
 
@@ -2392,7 +2408,7 @@ Page 117
 
 camp, which is located immediately outside one of the main entrances to the underground plant. There, under SS guard and behind electrically charged fences, the bulk of the laborers of the Mittelwerke were imprisoned. Living conditions for the 20,000 people housed there were intolerable, the death rate was high, and, consequently, the labor turnover in the factory was very great. Production standards were difficult to maintain. The factory operated 24 hours per day, seven days per week, with a few units working only two shifts and with an average of 70 hours per working week per individual. The labor force, as evidenced in the prison camp, was composed largely of people from eastern Europe, although many nationalities were represented, including many German political prisoners. The SS was in direct charge of the camp as well as the workers when they were in the factories.
 
-f. The physical plant layout consists of two approximately parallel tunnels driven through soft mountain rock, with an overburden of 140 to 200 feet. Each tunnel is approximately 5,700 feet in length, curving as indicated in [Figure IX-3](images/figxx.jpg). Forty-seven cross tunnels, more or less evenly spaced, connected the two main tunnels and served as an area for the machining and subassembly of parts that are fed into the final assembly in one or another of the main tunnels.
+f. The physical plant layout consists of two approximately parallel tunnels driven through soft mountain rock, with an overburden of 140 to 200 feet. Each tunnel is approximately 5,700 feet in length, curving as indicated in [Figure IX-3](#figure-ix-3). Forty-seven cross tunnels, more or less evenly spaced, connected the two main tunnels and served as an area for the machining and subassembly of parts that are fed into the final assembly in one or another of the main tunnels.
 
 g. The cross connecting tunnels, 20 through 47 inclusive and the corresponding section of the main tunnels were devoted to the production of the V-1 and V-2. The rest of the plant, not discussed in this report, was under the management of Junkers for the manufacture of aero-engines.
 
@@ -2513,3 +2529,380 @@ g. Friction between the German Army which developed the V-2, and the German Air 
 ---
 
 Return to the [Table of Contents](index.html) of the United States Strategic Bombing Survey.
+
+
+---
+
+## Restored Figures
+
+These are reproductions of the original scanned plates. Select an image to open it at full resolution. Scan wear, soft lettering and any surviving margin clipping are described below; no chart data have been reconstructed.
+
+<figure id="figure-i-1">
+<h3>Figure I-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-i-1.png" aria-label="Open Figure I-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-i-1.webp" alt="Figure I-1: The German Aircraft Industry under Allied Air Attack" width="1600" height="1156" loading="lazy" decoding="async" />
+</a>
+<figcaption>The German Aircraft Industry under Allied Air Attack</figcaption>
+<p><em>Scan note: The narrative also refers to this schematic as Figure 1. The scanned plate is labeled I-1.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 24 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-1">
+<h3>Figure II-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-1.png" aria-label="Open Figure II-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-1.webp" alt="Figure II-1: Principal Plants Of German Aircraft Industry Prior To 1939" width="1600" height="1224" loading="lazy" decoding="async" />
+</a>
+<figcaption>Principal Plants Of German Aircraft Industry Prior To 1939</figcaption>
+<p><em>Scan note: Complete unfolded map, map frame, scale, factories, title, figure label and German Air Ministry source line. Small map labels are legible in the full native image. Binding strip and page holder remain outside the map content.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA21">Indiana University source scan</a>, PDF page 56 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-2">
+<h3>Figure II-2</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-2.png" aria-label="Open Figure II-2 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-2.webp" alt="Figure II-2: Dispersal Of Airframe Manufacture-1944" width="1600" height="1237" loading="lazy" decoding="async" />
+</a>
+<figcaption>Dispersal Of Airframe Manufacture-1944</figcaption>
+<p><em>Scan note: Complete unfolded map, full factory-symbol legend, scale, factories, title, figure label and German Air Ministry source line. Binding and page holder are outside the map content.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA23">Indiana University source scan</a>, PDF page 58 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-3">
+<h3>Figure II-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-3.png" aria-label="Open Figure II-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-3.webp" alt="Figure II-3: Erla Maschinenwerk GmbH, Leipzig, Flow Chart, January-February-March 1945" width="1600" height="1172" loading="lazy" decoding="async" />
+</a>
+<figcaption>Erla Maschinenwerk GmbH, Leipzig, Flow Chart, January-February-March 1945</figcaption>
+<p><em>Scan note: Complete flow chart, arrows, columns and labels. Original scan wear is retained.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 51 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-4">
+<h3>Figure II-4</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-4.png" aria-label="Open Figure II-4 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-4.webp" alt="Figure II-4: Geographical Dispersal as of January-February-March 1945; Erla Maschine Works" width="1172" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>Geographical Dispersal as of January-February-March 1945; Erla Maschine Works</figcaption>
+<p><em>Scan note: Complete map and legend, including the original figure label.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 52 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-5">
+<h3>Figure II-5</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-5.png" aria-label="Open Figure II-5 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-5.webp" alt="Figure II-5: Heinkel Flugzeug Werke Oranienburg, Arrangement of Factory Building" width="1600" height="1137" loading="lazy" decoding="async" />
+</a>
+<figcaption>Heinkel Flugzeug Werke Oranienburg, Arrangement of Factory Building</figcaption>
+<p><em>Scan note: Complete factory plan, numbered building legend, compass, title and footer. Original scan wear is retained.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA27">Indiana University source scan</a>, PDF page 62 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-6">
+<h3>Figure II-6</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-6.png" aria-label="Open Figure II-6 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-6.webp" alt="Figure II-6: Dispersal of Me 109 Airplane Production" width="1600" height="1125" loading="lazy" decoding="async" />
+</a>
+<figcaption>Dispersal of Me 109 Airplane Production</figcaption>
+<p><em>Scan note: Complete graph, airplane-count axis, 1942–1944 time axis, space-area annotations, title and footer. Original scan wear is retained.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA28">Indiana University source scan</a>, PDF page 63 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-7">
+<h3>Figure II-7</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-7.png" aria-label="Open Figure II-7 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-7.webp" alt="Figure II-7: Dispersal Network Of The Messerschmitt Production Complexes" width="1600" height="1239" loading="lazy" decoding="async" />
+</a>
+<figcaption>Dispersal Network Of The Messerschmitt Production Complexes</figcaption>
+<p><em>Scan note: Complete unfolded dispersal network, map frame, all transport lines and visible title block. Dense small city/component labels require opening the full-resolution image. A strip of the facing page is visible at far left, outside the figure frame.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA29">Indiana University source scan</a>, PDF page 64 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ii-8">
+<h3>Figure II-8</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ii-8.png" aria-label="Open Figure II-8 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ii-8.webp" alt="Figure II-8: Typical Forest Dispersal, Messerschmitt, Kuno AG. I" width="1600" height="1172" loading="lazy" decoding="async" />
+</a>
+<figcaption>Typical Forest Dispersal, Messerschmitt, Kuno AG. I</figcaption>
+<p><em>Scan note: Full site plan, buildings, roads, flight strip, scale and figure label.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 57 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-iii-1">
+<h3>Figure III-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-iii-1.png" aria-label="Open Figure III-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-iii-1.webp" alt="Figure III-1: Organization Chart German Governmental Controls For Aircraft Production" width="1600" height="792" loading="lazy" decoding="async" />
+</a>
+<figcaption>Organization Chart German Governmental Controls For Aircraft Production</figcaption>
+<p><em>Scan note: Entire wide organization chart visible: all boxes, labels, branches, title and figure label. Original narrow vertical tear from the top edge breaks the upper border and reaches a diagonal connector near the Hitler/German Air Ministry branch; it does not hide a box or label. Preserve this source damage and do not reconstruct the line.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA45-IA6">Indiana University source scan</a>, PDF page 86 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-iii-2">
+<h3>Figure III-2</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-iii-2.png" aria-label="Open Figure III-2 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-iii-2.webp" alt="Figure III-2: Organization Chart, Main Airframe Committee" width="1600" height="1187" loading="lazy" decoding="async" />
+</a>
+<figcaption>Organization Chart, Main Airframe Committee</figcaption>
+<p><em>Scan note: Complete chart, boxes, connectors and figure label.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 79 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-iii-3">
+<h3>Figure III-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-iii-3.png" aria-label="Open Figure III-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-iii-3.webp" alt="Figure III-3: German Airplane Programs And Production / All Models / Jan. 1941 - Mar. 1945" width="1600" height="1068" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Programs And Production / All Models / Jan. 1941 - Mar. 1945</figcaption>
+<p><em>Scan note: Complete unfolded chart: both number axes, time axis through 1945, full program legend, plotted curves, source notes and title block. The scanned plate explicitly calls itself EXHIBIT III-3 although the figure table lists it as III-3; retain the visible source label in provenance.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA45-IA10">Indiana University source scan</a>, PDF page 90 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-1">
+<h3>Figure VI-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-1.png" aria-label="Open Figure VI-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-1.webp" alt="Figure VI-1: German Airplane Production by Type and by Year, 1933 through 1944" width="1600" height="1188" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Production by Type and by Year, 1933 through 1944</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 131 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-2">
+<h3>Figure VI-2</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-2.png" aria-label="Open Figure VI-2 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-2.webp" alt="Figure VI-2: German Airplane Production: Airframe Weight, Number of Airplanes and Average Unit Weight (Including Spare Parts), Jan.1941-Dec.1944" width="1154" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Production: Airframe Weight, Number of Airplanes and Average Unit Weight (Including Spare Parts), Jan.1941-Dec.1944</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 132 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-3">
+<h3>Figure VI-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-3.png" aria-label="Open Figure VI-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-3.webp" alt="Figure VI-3: German Airplane Production: Percent Distribution of Airframe Weight Output by Major Type Classification, 1941-1944" width="1166" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Production: Percent Distribution of Airframe Weight Output by Major Type Classification, 1941-1944</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 133 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-4">
+<h3>Figure VI-4</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-4.png" aria-label="Open Figure VI-4 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-4.webp" alt="Figure VI-4: Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (P-51, Me-109, P-47, FW-190)" width="1166" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (P-51, Me-109, P-47, FW-190)</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 134 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-5">
+<h3>Figure VI-5</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-5.png" aria-label="Open Figure VI-5 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-5.webp" alt="Figure VI-5: Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (B-25, Ju-88, B-17, He-177)" width="1188" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>Diagrams of Four Typical German Airplane Models and Their Nearest United States Counterparts (B-25, Ju-88, B-17, He-177)</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 135 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-6">
+<h3>Figure VI-6</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-6.png" aria-label="Open Figure VI-6 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-6.webp" alt="Figure VI-6: Comparison of United States &amp; Germany Airplane Production, January1941-December1944" width="1154" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>Comparison of United States &amp; Germany Airplane Production, January1941-December1944</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 136 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-7">
+<h3>Figure VI-7</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-7.png" aria-label="Open Figure VI-7 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-7.webp" alt="Figure VI-7: German Airplane Program &amp; Production, Jan41-Jan45 (one-engine fighters, two-engine fighters, two-engine bombers, four-engine bombers)" width="1188" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Program &amp; Production, Jan41-Jan45 (one-engine fighters, two-engine fighters, two-engine bombers, four-engine bombers)</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 137 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-8">
+<h3>Figure VI-8</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-8.png" aria-label="Open Figure VI-8 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-8.webp" alt="Figure VI-8: German Airplane Program &amp; Production, Jan1941-Jan1945 (one-engine bombers, transports, trainers, NEC &amp; gliders)" width="1154" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Program &amp; Production, Jan1941-Jan1945 (one-engine bombers, transports, trainers, NEC &amp; gliders)</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 138 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-9">
+<h3>Figure VI-9</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-9.png" aria-label="Open Figure VI-9 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-9.webp" alt="Figure VI-9: German Airplane Programs and Production, Four Principal Models: Me-109, FW-190, Ju-88/188/388 and Me-262, January1941-January1945" width="1154" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Programs and Production, Four Principal Models: Me-109, FW-190, Ju-88/188/388 and Me-262, January1941-January1945</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 139 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-10">
+<h3>Figure VI-10</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-10.png" aria-label="Open Figure VI-10 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-10.webp" alt="Figure VI-10: German Airplane Programs &amp; Production, All Types, Jan1941-Jan1945" width="1188" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Programs &amp; Production, All Types, Jan1941-Jan1945</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 140 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-11">
+<h3>Figure VI-11</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-11.png" aria-label="Open Figure VI-11 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-11.webp" alt="Figure VI-11: German Airplane Production: Airframe Weight Produced (Including Spares), Number of Employees in Airframe Industry and Average Airframe Weight Output per Employee per Working Day" width="1154" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Airplane Production: Airframe Weight Produced (Including Spares), Number of Employees in Airframe Industry and Average Airframe Weight Output per Employee per Working Day</figcaption>
+<p><em>Scan note: Main axes, curves, inset, title and figure label visible. Left outer border/margin has scan fading; no missing plot data identified.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 141 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vi-12">
+<h3>Figure VI-12</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vi-12.png" aria-label="Open Figure VI-12 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vi-12.webp" alt="Figure VI-12: Relative Efficiency of American and German Aircraft Industries (July1941-July1944)" width="1600" height="1188" loading="lazy" decoding="async" />
+</a>
+<figcaption>Relative Efficiency of American and German Aircraft Industries (July1941-July1944)</figcaption>
+<p><em>Scan note: Original scan lettering and paper wear are retained; all chart or diagram panels are visible.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 142 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-1">
+<h3>Figure VII-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-1.png" aria-label="Open Figure VII-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-1.webp" alt="Figure VII-1: Principal Aero Engine Factories Prior to 1939" width="1600" height="1238" loading="lazy" decoding="async" />
+</a>
+<figcaption>Principal Aero Engine Factories Prior to 1939</figcaption>
+<p><em>Scan note: The complete unfolded map includes the plant names, scale and figure label. Small source lettering benefits from full-resolution viewing. Original paper tone and wear are retained.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA1">Indiana University source scan</a>, PDF page 162 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-2">
+<h3>Figure VII-2</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-2.png" aria-label="Open Figure VII-2 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-2.webp" alt="Figure VII-2: Aero-Engine Factory Dispersal-1944" width="1600" height="1248" loading="lazy" decoding="async" />
+</a>
+<figcaption>Aero-Engine Factory Dispersal-1944</figcaption>
+<p><em>Scan note: Full unfolded Germany/central Europe map, scale, six-manufacturer symbol legend, plant names, title block and figure label visible. Main map and legend are complete; paper wear and minor margin marks remain.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA3">Indiana University source scan</a>, PDF page 164 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-3">
+<h3>Figure VII-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-3.png" aria-label="Open Figure VII-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-3.webp" alt="Figure VII-3: German Aircraft Engine Production; Principal Types - By Model &amp; By Months; Sept. 1939-Dec. 1944" width="1600" height="1233" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Aircraft Engine Production; Principal Types - By Model &amp; By Months; Sept. 1939-Dec. 1944</figcaption>
+<p><em>Scan note: Entire stacked production chart, model labels, both number-of-engines axes, monthly timeline, heading and footer label are visible. Source has paper tone/wear; no missing chart panel identified.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA5">Indiana University source scan</a>, PDF page 166 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-4">
+<h3>Figure VII-4</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-4.png" aria-label="Open Figure VII-4 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-4.webp" alt="Figure VII-4: German Aircraft Engine Production vs Requirements, Principal Engine Types Only (Exclusive of Spare Parts)" width="1117" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Aircraft Engine Production vs Requirements, Principal Engine Types Only (Exclusive of Spare Parts)</figcaption>
+<p><em>Scan note: Complete production and requirement curves, surplus/deficit inset, axes and engine-list footnote. The final digit 4 touches the heavy right border and has minor edge interference.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA7">Indiana University source scan</a>, PDF page 168 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-5">
+<h3>Figure VII-5</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-5.png" aria-label="Open Figure VII-5 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-5.webp" alt="Figure VII-5: German Aircraft Engine Production; BMW Model 801; By Plant By Month Sept. 39-Dec. 44" width="1600" height="1246" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Aircraft Engine Production; BMW Model 801; By Plant By Month Sept. 39-Dec. 44</figcaption>
+<p><em>Scan note: Complete production chart with plant labels, stacked patterns, both axes, timeline, heading and figure label. Source paper tone/wear retained; no plot clipping identified.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA9">Indiana University source scan</a>, PDF page 170 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-6">
+<h3>Figure VII-6</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-6.png" aria-label="Open Figure VII-6 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-6.webp" alt="Figure VII-6: German Aircraft Engine Production; DB 605; By Plant By Month Sept. 39-Dec. 44" width="1600" height="1067" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Aircraft Engine Production; DB 605; By Plant By Month Sept. 39-Dec. 44</figcaption>
+<p><em>Scan note: Complete production chart, five-plant legend (Bussing, Henschel, Manfred, Steyr, Genshagen), stacked patterns, axes, timeline, heading and figure label. Wide blank right margin and scanner holder are outside the chart.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA11">Indiana University source scan</a>, PDF page 172 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-vii-7">
+<h3>Figure VII-7</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-vii-7.png" aria-label="Open Figure VII-7 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-vii-7.webp" alt="Figure VII-7: German Aircraft Engine Production; Jumo 211; By Plant Sept. 39-Dec. 44" width="1600" height="1074" loading="lazy" decoding="async" />
+</a>
+<figcaption>German Aircraft Engine Production; Jumo 211; By Plant Sept. 39-Dec. 44</figcaption>
+<p><em>Scan note: Full Jumo 211 curve, both axes, timeline, heading and footer label visible. Blank right margin and scanner holder are outside the chart; no missing plot panel identified.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA102-IA13">Indiana University source scan</a>, PDF page 174 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-viii-1">
+<h3>Figure VIII-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-viii-1.png" aria-label="Open Figure VIII-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-viii-1.webp" alt="Figure VIII-1: Expansion and Dispersal Chart for V.D.M.-A.G. and Continentale Metall Aktiengesellschaft" width="1600" height="1068" loading="lazy" decoding="async" />
+</a>
+<figcaption>Expansion and Dispersal Chart for V.D.M.-A.G. and Continentale Metall Aktiengesellschaft</figcaption>
+<p><em>Scan note: Complete unfolded organization/dispersal diagram. All visible year rows from 1934 through 1945, all plant/component boxes, connecting arrows, title and footer label lie within the intact diagram border. Small hand-lettered text benefits from full-resolution viewing; no folded or missing panel remains. A paper nick and scanner holder are outside the diagram.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA110-IA1">Indiana University source scan</a>, PDF page 184 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-viii-2">
+<h3>Figure VIII-2</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-viii-2.png" aria-label="Open Figure VIII-2 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-viii-2.webp" alt="Figure VIII-2: Production of Propeller Blades, Continental Metall-VDM" width="1138" height="1600" loading="lazy" decoding="async" />
+</a>
+<figcaption>Production of Propeller Blades, Continental Metall-VDM</figcaption>
+<p><em>Scan note: Complete propeller-blade chart, numbered axis and monthly/year labels for 1942–1944. The footer reads VIII2, with no distinct hyphen; its final digit touches the heavy right border.</em></p>
+<p><a href="https://books.google.com/books?id=c8wnG5kKSVEC&amp;pg=PA110-IA3">Indiana University source scan</a>, PDF page 186 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-viii-3">
+<h3>Figure VIII-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-viii-3.png" aria-label="Open Figure VIII-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-viii-3.webp" alt="Figure VIII-3: Production Of Aircraft Landing Wheels / Continentale Mettall,A.G.-Vdm" width="1600" height="1150" loading="lazy" decoding="async" />
+</a>
+<figcaption>Production Of Aircraft Landing Wheels / Continentale Mettall,A.G.-Vdm</figcaption>
+<p><em>Scan note: The production curve and axes are complete; the original scan has minor clipping at the footer/title-block edge.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 178 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ix-1">
+<h3>Figure IX-1</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ix-1.png" aria-label="Open Figure IX-1 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ix-1.webp" alt="Figure IX-1: V-1 Flying Bomb" width="1600" height="1154" loading="lazy" decoding="async" />
+</a>
+<figcaption>V-1 Flying Bomb</figcaption>
+<p><em>Scan note: Full weapon and inset/labels visible; small lower-left paper tear is outside drawing.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 194 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ix-2a">
+<h3>Figure IX-2A</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ix-2a.png" aria-label="Open Figure IX-2A at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ix-2a.webp" alt="Figure IX-2A: A-4 Long-Range Rocket" width="1600" height="1182" loading="lazy" decoding="async" />
+</a>
+<figcaption>A-4 Long-Range Rocket</figcaption>
+<p><em>Scan note: The original transcription linked this cutaway as IX-2; the source plate is explicitly labeled IX-2A.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 197 (page count includes inserted plates).</p>
+</figure>
+
+<figure id="figure-ix-3">
+<h3>Figure IX-3</h3>
+<a href="/assets/historic-documents/aircraft-division-industry-report/figure-ix-3.png" aria-label="Open Figure IX-3 at full resolution">
+<img src="/assets/historic-documents/aircraft-division-industry-report/figure-ix-3.webp" alt="Figure IX-3: Mittelwerke (plan; TOC: Plant Layout, Mittelwerke, Nordhausen)" width="1600" height="1182" loading="lazy" decoding="async" />
+</a>
+<figcaption>Mittelwerke (plan; TOC: Plant Layout, Mittelwerke, Nordhausen)</figcaption>
+<p><em>Scan note: Complete twin-tunnel plan with chamber labels, cross-sections, scale and title block.</em></p>
+<p><a href="https://hdl.handle.net/2027/mdp.39015008565429">University of Michigan source scan</a>, PDF page 198 (page count includes inserted plates).</p>
+</figure>

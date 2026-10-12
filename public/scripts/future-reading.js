@@ -1,86 +1,43 @@
 function initFutureReading() {
   const filterInput = document.getElementById('filterInput');
   const tableBody = document.getElementById('tableBody');
-  const sortableHeaders = document.querySelectorAll('[data-sort]');
+  const count = document.getElementById('filterCount');
+  if (!filterInput || !tableBody) return;
+  const headers = Array.from(document.querySelectorAll('th[data-sort]'));
+  // Keep all source rows. Filtering never removes a row from this dataset.
+  const rows = Array.from(tableBody.querySelectorAll('tr'));
+  const sort = { column: 'title', ascending: true };
 
-  const currentSort = {
-    column: '',
-    ascending: true,
-  };
-
-  function getTableData() {
-    if (!tableBody) return [];
-    const rows = Array.from(tableBody.querySelectorAll('tr'));
-    return rows.map(row => ({
-      element: row,
-      title: row.children[1].textContent || '',
-      author: row.children[2].textContent || '',
-      class: row.children[3].textContent || '',
-      dateCompleted: row.children[4].textContent || '',
-    }));
-  }
-
-  function sortData(data, column) {
-    return data.sort((a, b) => {
-      const aVal = a[column].toLowerCase();
-      const bVal = b[column].toLowerCase();
-      return currentSort.ascending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+  function update() {
+    const query = filterInput.value.trim().toLowerCase();
+    rows.sort((a, b) => {
+      const comparison = (a.dataset[sort.column] || '').localeCompare(b.dataset[sort.column] || '', undefined, { sensitivity: 'base' });
+      return sort.ascending ? comparison : -comparison;
     });
-  }
-
-  function updateTable(data) {
-    if (!tableBody) return;
-    tableBody.innerHTML = '';
-    data.forEach(item => {
-      tableBody.appendChild(item.element);
+    let visible = 0;
+    rows.forEach(row => {
+      row.hidden = !(row.dataset.search || '').includes(query);
+      if (!row.hidden) visible += 1;
+      tableBody.appendChild(row);
     });
-  }
-
-  function filterData(data, searchTerm) {
-    const term = searchTerm.toLowerCase();
-    return data.filter(item => {
-      const searchString = `${item.title} ${item.author} ${item.class} ${item.dateCompleted}`.toLowerCase();
-      return searchString.includes(term);
+    headers.forEach(header => {
+      const active = header.dataset.sort === sort.column;
+      header.classList.toggle('is-sorted', active);
+      header.setAttribute('aria-sort', active ? (sort.ascending ? 'ascending' : 'descending') : 'none');
     });
+    if (count) count.textContent = `${visible} of ${rows.length} books`;
   }
 
-  function setSortedHeader(header) {
-    sortableHeaders.forEach(h => h.classList.remove('is-sorted'));
-    header.classList.add('is-sorted');
-  }
-
-  if (filterInput && tableBody) {
-    filterInput.addEventListener('input', () => {
-      const data = getTableData();
-      const filtered = filterData(data, filterInput.value);
-      updateTable(filtered);
-    });
-  }
-
-  sortableHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const column = header.dataset.sort;
-      if (!column) return;
-      if (currentSort.column === column) {
-        currentSort.ascending = !currentSort.ascending;
-      } else {
-        currentSort.column = column;
-        currentSort.ascending = true;
-      }
-      setSortedHeader(header);
-      const data = getTableData();
-      const sorted = sortData(data, column);
-      updateTable(sorted);
-    });
-  });
-
-  if (sortableHeaders.length) {
-    setSortedHeader(sortableHeaders[0]);
-  }
+  filterInput.addEventListener('input', update);
+  headers.forEach(header => header.querySelector('[data-sort-button]')?.addEventListener('click', () => {
+    const column = header.dataset.sort;
+    if (!column) return;
+    sort.ascending = sort.column === column ? !sort.ascending : true;
+    sort.column = column;
+    update();
+  }));
+  update();
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFutureReading);
-} else {
-  initFutureReading();
-}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFutureReading);
+else initFutureReading();

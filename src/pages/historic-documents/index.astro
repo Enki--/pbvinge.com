@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { formatCalendarDate } from '../../utils/dates';
 
 const documents = await getCollection('documents', ({ data }) => data.isPublished !== false);
 
@@ -49,7 +50,7 @@ const sortedDocs = documents.sort((a, b) => {
                 {doc.data.origin && <span class="origin">{doc.data.origin}</span>}
                 {doc.data.date && (
                   <span class="date">
-                    {new Date(doc.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+                    {formatCalendarDate(doc.data.date, { year: 'numeric', month: 'long' })}
                   </span>
                 )}
               </div>

@@ -1,6 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "public/archives",
+    ".local",
+    "node_modules"
+  ],
   "compilerOptions": {
-    "types": ["astro/client", "astro/content"]
+    "types": [
+      "astro/client"
+    ]
   }
-} 
+}

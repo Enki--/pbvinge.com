@@ -1,13 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { getCitation } from '../../utils/citations';
-import { formatLongDate, getStatusColor } from '../../utils/books';
+import { citationParts, contributorCredit } from '../../utils/citations';
+import { formatLongDate, getStatusColor, isPublishedBookNote } from '../../utils/books';
+import { serializeJsonForHtml } from '../../utils/htmlData';
 
 // Generate static paths for completed books only
 export async function getStaticPaths() {
   const books = await getCollection('books', ({ data }) => {
-    return data.status === 'complete';
+    return isPublishedBookNote(data);
   });
   return books.map(book => ({
     params: { slug: book.slug },
@@ -20,16 +21,17 @@ const { Content, headings = [] } = await book.render();
 
 const tocHeadings = headings.filter(({ depth }) => depth <= 3);
 
-function formatDate(dateStr: string | Date) {
-  return formatLongDate(dateStr);
+function formatTimestamp(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 // Pre-generate citations
 const citations = {
-  bibtex: getCitation(book.data, 'bibtex'),
-  apa: getCitation(book.data, 'apa'),
-  mla: getCitation(book.data, 'mla')
+  bibtex: citationParts(book.data, 'bibtex'),
+  apa: citationParts(book.data, 'apa'),
+  mla: citationParts(book.data, 'mla')
 };
+const citationsJson = serializeJsonForHtml(citations);
 ---
 
 <Layout title={`${book.data.title} - Book Notes`}>
@@ -38,7 +40,7 @@ const citations = {
       <div class="sidebar-card">
         <p class="sidebar-label">On this page</p>
         {tocHeadings.length ? (
-          <nav>
+          <nav aria-label="Book table of contents">
             <ol class="toc-list">
               {tocHeadings.map((heading) => (
                 <li class={`toc-item depth-${heading.depth}`}>
@@ -58,7 +60,7 @@ const citations = {
         <h1>{book.data.title}</h1>
         {book.data.subtitle && <p class="subtitle">{book.data.subtitle}</p>}
         
-        <p class="author">by {book.data.author.join(', ')}</p>
+        {contributorCredit(book.data) && <p class="author">{contributorCredit(book.data)}</p>}
         
         <div class="book-cover mb-6">
           {book.data.cover && (
@@ -95,10 +97,10 @@ const citations = {
             </div>
 
             {book.data.created && (
-              <span class="date">Added: {formatDate(book.data.created)}</span>
+              <span class="date">Added: {formatTimestamp(book.data.created)}</span>
             )}
             {book.data.updated && book.data.updated !== book.data.created && (
-              <span class="date">Updated: {formatDate(book.data.updated)}</span>
+              <span class="date">Updated: {formatTimestamp(book.data.updated)}</span>
             )}
           </div>
         </div>
@@ -121,7 +123,7 @@ const citations = {
             {book.data.publish && (
               <>
                 <dt>Published</dt>
-                <dd>{formatDate(book.data.publish)}</dd>
+                <dd>{formatLongDate(book.data.publish)}</dd>
               </>
             )}
             {book.data.isbn13 && (
@@ -172,14 +174,15 @@ const citations = {
         <p class="sidebar-label">Copy citation</p>
         <div class="citation-export">
           <div class="citation-controls">
-            <select id="citationFormat">
+            <select id="citationFormat" aria-label="Citation format">
               <option value="bibtex">BibTeX</option>
-              <option value="apa">APA</option>
-              <option value="mla">MLA</option>
+              <option value="apa">APA 7</option>
+              <option value="mla">MLA 9</option>
             </select>
             <button type="button" id="copyCitation" class="citation-copy">Copy</button>
           </div>
           <pre id="citationPreview" class="citation-preview"></pre>
+          <p class="citation-note">Cites this record’s edition. Check the source’s copyright page before submitting academic work.</p>
         </div>
       </div>
     </aside>
@@ -384,6 +387,7 @@ const citations = {
     max-width: clamp(90ch, 80vw, 125ch);
     width: 100%;
     margin: 0 auto;
+    overflow-wrap: anywhere;
     transition: font-size 0.2s ease, max-width 0.2s ease;
   }
 
@@ -538,6 +542,10 @@ const citations = {
     color: var(--text-color);
   }
 
+  .citation-preview[data-format="apa"],
+  .citation-preview[data-format="mla"] { font-family: inherit; }
+  .citation-note { color: var(--muted-text); font-size: 0.75rem; margin-top: 0.5rem; }
+
   @media (max-width: 1200px) {
     .book-layout {
       grid-template-columns: minmax(0, 640px) minmax(200px, 260px);
@@ -601,15 +609,19 @@ const citations = {
 
     .book-sidebar,
     .book-tools {
-      display: none;
+      position: static;
+      min-width: 0;
     }
   }
 </style>
 
-<script define:vars={{ citations }}>
+<script id="citationData" type="application/json" set:html={citationsJson} is:inline></script>
+<script>
+import type { CitationPart } from '../../utils/citations';
+const citations: Record<string, CitationPart[]> = JSON.parse(document.getElementById('citationData')?.textContent || '{}');
 // Citation export functionality
-const formatSelect = document.getElementById('citationFormat');
-const copyButton = document.getElementById('copyCitation');
+const formatSelect = document.querySelector<HTMLSelectElement>('#citationFormat');
+const copyButton = document.querySelector<HTMLButtonElement>('#copyCitation');
 const previewElement = document.getElementById('citationPreview');
 const contentElement = document.querySelector('.book-content');
 const articleElement = document.querySelector('.book-detail');
@@ -620,7 +632,17 @@ const themeButtons = document.querySelectorAll('[data-theme-mode]');
 function updateCitationPreview() {
   if (!formatSelect || !previewElement) return;
   const format = formatSelect.value;
-  previewElement.textContent = citations[format];
+  previewElement.replaceChildren();
+  previewElement.dataset.format = format;
+  for (const part of citations[format] ?? []) {
+    if (part.italic) {
+      const emphasis = document.createElement('em');
+      emphasis.textContent = part.text;
+      previewElement.append(emphasis);
+    } else {
+      previewElement.append(document.createTextNode(part.text));
+    }
+  }
 }
 
 formatSelect?.addEventListener('change', updateCitationPreview);
@@ -629,7 +651,18 @@ copyButton?.addEventListener('click', async () => {
   if (!previewElement?.textContent) return;
   
   try {
-    await navigator.clipboard.writeText(previewElement.textContent);
+    if (formatSelect?.value !== 'bibtex' && typeof ClipboardItem !== 'undefined' && navigator.clipboard.write) {
+      try {
+        await navigator.clipboard.write([new ClipboardItem({
+          'text/plain': new Blob([previewElement.textContent], { type: 'text/plain' }),
+          'text/html': new Blob([previewElement.innerHTML], { type: 'text/html' }),
+        })]);
+      } catch {
+        await navigator.clipboard.writeText(previewElement.textContent);
+      }
+    } else {
+      await navigator.clipboard.writeText(previewElement.textContent);
+    }
     const originalText = copyButton.textContent;
     copyButton.textContent = 'Copied!';
     copyButton.classList.add('is-success');
@@ -660,7 +693,7 @@ widthButtons.forEach((button) => {
   });
 });
 
-function setTheme(theme) {
+function setTheme(theme: string) {
   document.documentElement.dataset.theme = theme;
   try {
     window.localStorage.setItem('site-theme', theme);

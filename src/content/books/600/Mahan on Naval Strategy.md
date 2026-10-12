@@ -395,9 +395,9 @@ Alfred Thayer Mahan's decision to write "Mahan on Naval Strategy" was profoundly
 - The Navy
 
 ## 📚 Related Books
-- [On War notes](/books/on-war)
-- [The Art of War notes](/books/the-art-of-war)
-- [The Landmark Thucydides notes](/books/the-landmark-thucydides)
+- [On War notes](/books/600/on-war)
+- [The Art of War notes](/books/600/the-art-of-war)
+- [The Landmark Thucydides notes](/books/601/the-landmark-thucydides)
 
 ## ☠️ Agree, Disagree, or Suspend
 ### Strengths

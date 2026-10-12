@@ -9,6 +9,13 @@ const PARTY_FILTERS = ["All", "Democratic", "Republican"] as const;
 
 type PartyFilter = (typeof PARTY_FILTERS)[number];
 
+const snapshotDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+}).format(new Date(`${presidentsData.snapshot.asOf}T00:00:00Z`));
+
 const PresidentsPage: React.FC = () => {
   const [filter, setFilter] = useState<PartyFilter>("All");
 
@@ -27,9 +34,13 @@ const PresidentsPage: React.FC = () => {
       <div className="pbv-presidents-header">
         <h1>U.S. Presidents Since World War I</h1>
         <p>
-          Quick reference for administrations from Woodrow Wilson to today, highlighting the vice presidents,
-          cabinet secretaries who shaped strategy, and the wars, conflicts, and landmark events they managed.
+          Quick reference from Woodrow Wilson through Donald Trump’s second administration, highlighting
+          selected vice presidents, cabinet officials, advisers, wars, and major events.
         </p>
+        <p className="pbv-presidents-snapshot">
+          <strong>Snapshot as of <time dateTime={presidentsData.snapshot.asOf}>{snapshotDate}</time></strong>
+        </p>
+        <p className="pbv-presidents-scope">{presidentsData.snapshot.scope}</p>
       </div>
       <FilterChips tags={[...PARTY_FILTERS]} value={filter} onChange={handleFilterChange} label="Party filter" />
       <section className="pbv-president-grid">

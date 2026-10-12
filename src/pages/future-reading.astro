@@ -2,79 +2,66 @@
 import Layout from '../layouts/Layout.astro';
 import { getFutureReads } from '../data/future-reads';
 import '../css/tables.css';
-
 const futureReads = await getFutureReads();
 ---
 
 <Layout title="Future Reading - Shrink">
-  <div class="w-full flex justify-center">
-    <div class="w-full max-w-7xl px-2 sm:px-4 lg:px-8 py-8">
-      <header class="text-center mb-8">
-        <h1 class="text-4xl font-bold mb-4">Future Reading</h1>
-        <p class="text-lg pbv-text-subtle max-w-2xl mx-auto">
-          Books I plan to read next, organized by reading list.
-        </p>
-      </header>
-
-      <div class="mb-6">
-        <input 
-          type="text" 
-          id="filterInput" 
-          placeholder="Filter books..."
-          class="w-full max-w-md mx-auto block px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-
-      <div class="flex justify-center w-full">
-        <div class="pbv-table-wrapper w-full max-w-5xl min-w-0 mx-auto">
-          <table class="pbv-table w-full text-xs sm:text-sm md:text-base">
-          <thead>
-            <tr>
-              <th scope="col" class="pbv-col-cover py-2 sm:py-3.5 pl-2 sm:pl-4 pr-2 sm:pr-3 text-left font-semibold pbv-text-strong sm:pl-6">Cover</th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="title">
-                Title
-                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
+  <div class="future-reading">
+    <header>
+      <h1>Future Reading</h1>
+      <p>Books in progress and planned reading, organized by reading list.</p>
+    </header>
+    <div class="filters">
+      <label for="filterInput">Search future reading</label>
+      <input type="search" id="filterInput" placeholder="Search titles, authors, lists, or tags" />
+      <p id="filterCount" role="status">{futureReads.length} books</p>
+    </div>
+    <div class="pbv-table-wrapper">
+      <table class="pbv-table">
+        <caption class="sr-only">Published reading and planned books</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="pbv-col-cover">Cover</th>
+            {(['title', 'author', 'class', 'status'] as const).map((key) => (
+              <th scope="col" data-sort={key} aria-sort="none">
+                <button type="button" class="sort-button" data-sort-button>
+                  {{title: 'Title', author: 'Author', class: 'List', status: 'Status'}[key]}
+                  <span class="pbv-sort-icon" aria-hidden="true">↕</span>
+                </button>
               </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="author">
-                Author
-                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
-              </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="class">
-                List
-                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
-              </th>
-              <th scope="col" class="px-2 sm:px-3 py-2 sm:py-3.5 text-left font-semibold pbv-text-strong cursor-pointer" data-sort="dateCompleted">
-                Status
-                <span class="pbv-sort-icon ml-1 sm:ml-2">↕</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            {futureReads.map((book) => (
-              <tr>
-                <td class="pbv-col-cover py-2 sm:py-4 pl-2 sm:pl-4 pr-2 sm:pr-3">
-                  <img src={book.coverImage} alt={`Cover of ${book.title}`} class="pbv-table-cover" />
-                </td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 font-medium pbv-text-strong">{book.title}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.author.join(', ')}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.class}</td>
-                <td class="px-2 sm:px-3 py-2 sm:py-4 pbv-text-subtle">{book.dateCompleted}</td>
-              </tr>
             ))}
-          </tbody>
-        </table>
-        </div>
-      </div>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          {futureReads.map((book) => (
+            <tr data-title={book.title} data-author={book.author.join(', ')} data-class={book.class} data-status={book.status}
+                data-search={[book.title, book.author.join(' '), book.class, book.status, book.tags.join(' '), book.notes].join(' ').toLowerCase()}>
+              <td class="pbv-col-cover"><img src={book.coverImage} alt={`Cover of ${book.title}`} class="pbv-table-cover" loading="lazy" /></td>
+              <td><strong>{book.title}</strong>{book.notes && <p>{book.notes}</p>}</td>
+              <td>{book.author.join(', ')}</td>
+              <td>{book.class || '—'}</td>
+              <td>{book.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 </Layout>
 <style>
-  @media (max-width: 768px) {
-    th:nth-child(4),
-    td:nth-child(4) {
-      display: none;
-    }
-  }
+  .future-reading { width: min(100%, 1100px); margin: auto; padding: 2rem var(--gutter); min-width: 0; }
+  header { text-align: center; margin-bottom: 2rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); }
+  header p { color: var(--text-subtle); }
+  .filters { max-width: 36rem; margin: 0 auto 1rem; }
+  label { display: block; margin-bottom: .4rem; }
+  input { width: 100%; padding: .75rem; border: 1px solid var(--border-light); border-radius: .5rem; background: var(--background-color); color: var(--text-color); }
+  #filterCount { color: var(--text-subtle); margin-top: .5rem; }
+  .pbv-table-wrapper { overflow-x: auto; }
+  .pbv-table { min-width: 680px; }
+  .sort-button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: .25rem; }
+  .sort-button:focus-visible { outline: 2px solid var(--link-color); outline-offset: 4px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  [hidden] { display: none !important; }
 </style>
-
 <script type="module" src="/scripts/future-reading.js"></script>

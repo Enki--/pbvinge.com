@@ -2,8 +2,7 @@
 tags: [📚Book]
 title: "The Woomera Manual on the International Law of Military Space Operations"
 subtitle: ""
-author:
-- ""
+author: []
 category:
 - "Law"
 publisher: "Oxford University Press"
@@ -17,6 +16,7 @@ created: 2026-03-13 06:27:49
 updated: 2026-03-13 06:27:49
 class: "665"
 sequence: "4"
+citation: {"editors": [{"family": "Beard", "given": "Jack"}, {"family": "Stephens", "given": "Dale"}]}
 ---
 # **The Woomera Manual**
 

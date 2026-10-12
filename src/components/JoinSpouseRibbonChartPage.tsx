@@ -2,11 +2,13 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/join-spouse-ribbon-chart.css";
 import {
   parseRibbonComparisonChart,
+  RIBBON_MAX_FILE_BYTES,
   ribbonTimelineValue,
   type RibbonComparisonChart,
   type RibbonComparisonSegment,
   type RibbonComparisonVector
 } from "../utils/ribbonChartFile";
+import { pinOnTimelineValue } from "../utils/ribbonPlanning";
 import { buildJoinSpousePdf, joinSpousePdfFilename } from "../utils/joinSpousePdf";
 
 type RangeYears = 10 | 20 | 30;
@@ -82,6 +84,7 @@ const MemberUploadCard: React.FC<{
             <p>Drop the member&apos;s saved chart here or choose the file from this device.</p>
           </>
         )}
+        {state.chart?.warnings?.map((warning) => <p key={warning} role="status">{warning}</p>)}
         {state.error && <p className="join-upload-error" role="alert">{state.error}</p>}
       </div>
       <div className="join-upload-actions">
@@ -127,8 +130,8 @@ const VectorTrack: React.FC<{
 }> = ({ chart, vector, startYear, rangeYears }) => {
   const endYear = startYear + rangeYears;
   const visibleSegments = vector.segments.flatMap((segment: RibbonComparisonSegment) => {
-    const visibleStart = Math.max(segment.startYear, startYear);
-    const visibleEnd = Math.min(segment.endYear, endYear);
+    const visibleStart = Math.max(segment.startYear, startYear, chart.timeline.eadYear);
+    const visibleEnd = Math.min(segment.endYear, endYear, chart.timeline.eadYear + 30);
     return visibleEnd > visibleStart ? [{ segment, visibleStart, visibleEnd }] : [];
   });
 
@@ -139,7 +142,7 @@ const VectorTrack: React.FC<{
       aria-label={`${chart.identity.name} ${vector.label}`}
     >
       {visibleSegments.map(({ segment, visibleStart, visibleEnd }) => {
-        const segmentColor = VECTOR_COLORS[segment.color] ?? VECTOR_COLORS.green;
+        const segmentColor = Object.hasOwn(VECTOR_COLORS, segment.color) ? VECTOR_COLORS[segment.color] : VECTOR_COLORS.green;
         return (
           <div
             key={segment.id}
@@ -174,7 +177,10 @@ const MemberTimeline: React.FC<{
       <small>EAD {chart.timeline.eadYear}</small>
     </div>
 
-    <div className="join-row-label">Promotion</div>
+    <div className="join-row-label">Pin-on history</div>
+    {years.map((year) => <div key={`pin-on-${year}`} className="join-timeline-cell" title={pinOnTimelineValue(chart, year) || "No dated pin-on entered"}>{pinOnTimelineValue(chart, year)}</div>)}
+
+    <div className="join-row-label">Board estimates</div>
     {years.map((year) => timelineCell(chart, "promotion", year))}
 
     <div className="join-row-label">PME</div>
@@ -195,6 +201,13 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
   const [startYear, setStartYear] = useState(2024);
   const [rangeYears, setRangeYears] = useState<RangeYears>(10);
   const [pdfMessage, setPdfMessage] = useState("");
+  const requests = useRef({ 1: 0, 2: 0 });
+  useEffect(() => () => { requests.current[1] += 1; requests.current[2] += 1; }, []);
+  const removeMember = (memberNumber: MemberNumber) => {
+    requests.current[memberNumber] += 1;
+    (memberNumber === 1 ? setMemberOne : setMemberTwo)(emptyMember());
+    setPdfMessage("");
+  };
 
   const loadedMembers = memberOne.chart && memberTwo.chart
     ? [memberOne.chart, memberTwo.chart] as [RibbonComparisonChart, RibbonComparisonChart]
@@ -212,13 +225,17 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
   );
 
   const loadMember = async (memberNumber: MemberNumber, file: File) => {
+    const request = ++requests.current[memberNumber];
     const setMember = memberNumber === 1 ? setMemberOne : setMemberTwo;
     try {
+      if (file.size > RIBBON_MAX_FILE_BYTES) throw new Error("Choose a chart smaller than 2 MB.");
       if (!file.name.toLowerCase().endsWith(".json")) throw new Error("Choose a .json file saved from the ribbon-chart page.");
       const parsed = JSON.parse(await file.text()) as unknown;
       const chart = parseRibbonComparisonChart(parsed);
+      if (request !== requests.current[memberNumber]) return;
       setMember({ chart, fileName: file.name, error: "" });
     } catch (error) {
+      if (request !== requests.current[memberNumber]) return;
       const message = error instanceof Error ? error.message : "That file could not be read.";
       setMember((current) => ({ ...current, error: message }));
     }
@@ -238,8 +255,8 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
       anchor.remove();
       window.setTimeout(() => URL.revokeObjectURL(url), 0);
       setPdfMessage(`PDF downloaded with ${rangeYears / 10} ${rangeYears === 10 ? "page" : "pages"}.`);
-    } catch {
-      setPdfMessage("The PDF could not be generated. Please try again.");
+    } catch (error) {
+      setPdfMessage(error instanceof Error ? error.message : "The PDF could not be generated. Please try again.");
     }
   };
 
@@ -255,7 +272,7 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
           <p className="join-eyebrow">17X Ribbon Chart</p>
           <h1>Join Spouse Career Planner</h1>
           <p className="join-lede">
-            Place two career plans on one calendar to see promotion, PME, and all three career vector options together.
+            Place two career plans on one calendar to see editable board/PME estimates and all three career vector options together. Pin-on history is recorded separately in each individual chart.
           </p>
         </div>
         <a className="join-editor-link" href="/17x-ribbon-chart">Open individual ribbon chart</a>
@@ -272,8 +289,8 @@ const JoinSpouseRibbonChartPage: React.FC = () => {
           </p>
         </div>
         <div className="join-upload-grid">
-          <MemberUploadCard memberNumber={1} state={memberOne} onFile={(file) => loadMember(1, file)} onRemove={() => setMemberOne(emptyMember())} />
-          <MemberUploadCard memberNumber={2} state={memberTwo} onFile={(file) => loadMember(2, file)} onRemove={() => setMemberTwo(emptyMember())} />
+          <MemberUploadCard memberNumber={1} state={memberOne} onFile={(file) => loadMember(1, file)} onRemove={() => removeMember(1)} />
+          <MemberUploadCard memberNumber={2} state={memberTwo} onFile={(file) => loadMember(2, file)} onRemove={() => removeMember(2)} />
         </div>
       </section>
 

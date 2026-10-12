@@ -2,8 +2,7 @@
 tags: [📚Book]
 title: "The New Makers of Modern Strategy"
 subtitle: "From the Ancient World to the Digital Age"
-author:
-- "Hal Brands"
+author: []
 category:
 - "History"
 publisher: "Princeton University Press"
@@ -17,6 +16,7 @@ created: 2025-07-28 11:55:29
 updated: 2025-07-28 11:55:29
 class: "600"
 sequence: "4"
+citation: {"editors": [{"family": "Brands", "given": "Hal"}]}
 ---
 
 # The New Makers of Modern Strategy

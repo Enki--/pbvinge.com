@@ -1,100 +1,85 @@
-# Books System Documentation
+# Books system
 
-## Overview
+All books use `src/content/books/`. On October 12, 2026, four legacy Future Reading
+records moved into `books/future-reading/`, preserving their metadata and bodies.
+The separate `futureReads` collection is retired.
 
-This system manages all books in a unified collection (`src/content/books/`) with status-based filtering:
+- `/books`, the homepage and book detail routes include published `complete` notes.
+- `/future-reading` includes published `reading`, `to read`, `tbr` and `tbd` entries.
+- `isPublished: false` excludes a record from public lists, detail routes, comps
+  note links and generated flashcards. Missing status does not publish a note.
+- `/flashcards` generates two source excerpts per usable completed note, preferring
+  thesis, overview and argument sections. It excludes discussion questions,
+  descriptions, quotation banks and placeholders. The source link provides context.
 
-- **Books page** (`/books`): Shows only completed books with full reviews
-- **Future Reading page** (`/future-reading`): Shows all books (completed, reading, to-read)
-- **Individual book pages**: Only generated for completed books
+The October 12 checkpoint contains 129 records: 120 completed notes and nine planned
+books. Craft of Research had only a reading-list placeholder; its status is now
+`to read`. Its other metadata and body were retained. The old manual flashcard JSON
+is preserved as reference but is no longer the deck source.
 
-## Book Status Options
+## Add or update a book
 
-- `complete`: Book is finished, shows on books page and gets individual page
-- `reading`: Currently reading, shows on future reading page only
-- `to read`: Plan to read, shows on future reading page only
-
-## Adding New Books
-
-### Option 1: Interactive Script
-```bash
-python3 add-book.py
-```
-
-This will prompt you for:
-- Book title
-- Author(s)
-- Class (optional)
-- Status (complete/reading/to read)
-- Cover image URL
-- Tags
-
-### Option 2: Manual Creation
-Create a new `.md` file in `src/content/books/` with this template:
+Run `python3 add-book.py`, or create an individual Markdown file. The helper
+requires an author and a useful Unicode filename, serializes metadata safely,
+and confirms before replacing an unchanged existing file. It never runs as part
+of a site build. Use `to read` until substantive study notes are ready.
 
 ```yaml
 ---
-title: "Book Title"
-author: ["Author Name"]
-status: "to read"  # or "reading" or "complete"
-cover: "https://cover-image-url.com/image.jpg"
-tags: ["tag1", "tag2"]
-class: "600"  # optional
+title: "Book title"
+author: ["Given Family"]
+status: "to read"
+cover: "/assets/placeholder-book.png"
+tags: ["📚Book"]
+class: "600"
 isPublished: true
-created: 2024-01-01  # only for completed books
+publish: 2025  # A year, YYYY-MM, or ISO date; retain the recorded edition's precision
 ---
 ```
 
-## File Structure
+Change status to `complete` when adding the finished note. `created` and `updated`
+are optional timestamps; publication dates are calendar values. Missing timestamps
+have a stable sort fallback and produce no invented date label.
 
+## Citations
+
+The detail page exports APA 7, MLA 9 and BibTeX. Its preview and rich clipboard
+format preserve title italics. Plain-text copy is also available automatically
+when the browser does not support rich copy. BibTeX fields are escaped safely.
+
+Names with ambiguous commas, compound surnames or organizational authors can use
+explicit metadata. Editors and translators are separate from authors:
+
+```yaml
+citation:
+  authors:
+    - family: "Family"
+      given: "Given Middle"
+  editors:
+    - family: "Editor"
+      given: "Given"
+  translators:
+    - family: "Translator"
+      given: "Given"
+  edition: "2nd ed."
+  apaTitle: "Book title: Subtitle with proper nouns preserved"
 ```
-src/content/books/
-├── book-title-1.md
-├── book-title-2.md
-└── ...
-```
 
-## Migration from Old System
+For an editor-only book, use `author: []` and `citation.editors`. A collective
+contributor uses `literal: "Organization name"`. `citation.title` can override
+promotional edition text in the display subtitle; `citation.originalYear` records
+an original year separately from `publish`, which describes the cited edition.
+Do not replace a recorded edition year with an original publication year.
 
-The old system used a single `index.md` file with a large frontmatter array. To migrate:
+The formatter does not prove which edition was read. Keep its year/ISBN tied to
+the source's title and copyright pages. Specific verified corrections and the
+limits of this checkpoint are recorded in `docs/STABILIZATION-2026-10-12.txt`.
 
-1. Run the migration script:
-   ```bash
-   python3 migrate-unified-books.py
-   ```
+## Maintenance and verification
 
-2. This will create individual `.md` files for each book in your future reads list
-
-3. Update existing book files to have proper `status` fields
-
-4. Delete the old `src/content/futureReads/index.md` file
-
-## Benefits of New System
-
-1. **Easier to add books**: Just create a new `.md` file
-2. **Better organization**: All books in one place
-3. **Status-based filtering**: Automatic separation of completed vs future reads
-4. **Individual book pages**: Only for completed books
-5. **Version control friendly**: Each book is a separate file
-6. **Scalable**: No more unwieldy large frontmatter arrays
-
-## Updating Book Status
-
-To change a book's status (e.g., from "to read" to "complete"):
-
-1. Edit the book's `.md` file
-2. Change the `status` field in the frontmatter
-3. If marking as complete, add a `created` date
-4. Add your review content below the frontmatter
-
-## Tags and Categories
-
-- Use `tags` for general topics/themes
-- Use `class` for academic course numbers
-- Use `category` for broader classifications (optional)
-
-## Cover Images
-
-- Store cover images in `public/assets/` for local files
-- Use external URLs for Google Books or other sources
-- Recommended size: 200x300px or similar aspect ratio 
+`npm test` covers publication/date/citation safeguards, substantive flashcard
+extraction, filter reset, chart data/UI behavior and tooling controls.
+`npm run test:helpers` runs synthetic Python helper checks only. After a build,
+`node scripts/verify-reading-build.mjs` compares completed notes with generated
+card sources and planned-list membership. The legacy migration and transcription
+commands remain inert; see `docs/retired-workflows/README.md`.

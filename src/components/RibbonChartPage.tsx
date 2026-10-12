@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "../css/ribbon-chart.css";
-import { extractRibbonChartData, RIBBON_SAVE_SCHEMA } from "../utils/ribbonChartFile";
+import { extractRibbonChartData, ribbonImportWarnings, RIBBON_SAVE_SCHEMA, RIBBON_SAVE_SCHEMA_VERSION, RIBBON_MAX_FILE_BYTES, type RibbonRankEntry, type RibbonPlanningDate } from "../utils/ribbonChartFile";
+import { SCOD_REFERENCE, rankReferenceForYear, shiftedGradeAnchor, promotionDropSource, pinOnTimelineValue } from "../utils/ribbonPlanning";
 
 const SAVE_SCHEMA = RIBBON_SAVE_SCHEMA;
-const SAVE_SCHEMA_VERSION = 11;
-const RIBBON_CHART_VERSION = "2.6";
+const SAVE_SCHEMA_VERSION = RIBBON_SAVE_SCHEMA_VERSION;
+const RIBBON_CHART_VERSION = "2.7";
 const DEFAULT_EAD_YEAR = 2014;
 const DEFAULT_STARTING_YEAR = 2024;
 const DEFAULT_TIMELINE_VIEW_YEARS = 10;
@@ -12,7 +13,7 @@ const MAX_TIMELINE_YEARS = 30;
 const MIN_SEGMENT_YEARS = 0.5;
 const FAMILY_KID_COUNT = 3;
 
-const RANK_OPTIONS = ["Col", "Col(s)", "Lt Col", "Lt Col(s)", "Maj", "Maj(s)", "Capt", "1st Lt", "2d Lt"];
+const RANK_OPTIONS = ["Col", "Lt Col", "Maj", "Capt", "1st Lt", "2d Lt"];
 const YEAR_GROUP_OPTIONS = Array.from({ length: 30 }, (_, index) => String(2026 - index));
 const TIMELINE_YEAR_OPTIONS = Array.from({ length: 76 }, (_, index) => 1980 + index);
 const DEFAULT_VECTOR_ROW_LABELS = ["Vec 1", "Vec 2", "Vec 3"];
@@ -22,39 +23,6 @@ const GRADE_OPTIONS = [
   ...Array.from({ length: 12 }, (_, index) => ({ value: index + 1, label: `${index + 1}${["st", "nd", "rd"][index] ?? "th"}` })),
   { value: 13, label: "Grad" }
 ];
-const SCOD_BY_RANK: Record<string, string> = {
-  "2d Lt": "31 Oct",
-  "1st Lt": "31 Oct",
-  Capt: "31 Aug",
-  Maj: "31 May",
-  "Lt Col": "31 May",
-  Col: "28 Feb"
-};
-const BASE_RANK_BY_OPTION: Record<string, string> = {
-  "2d Lt": "2d Lt",
-  "1st Lt": "1st Lt",
-  Capt: "Capt",
-  Maj: "Maj",
-  "Maj(s)": "Maj",
-  "Lt Col": "Lt Col",
-  "Lt Col(s)": "Lt Col",
-  Col: "Col",
-  "Col(s)": "Col"
-};
-const RANK_ORDER: Record<string, number> = {
-  "2d Lt": 1,
-  "1st Lt": 2,
-  Capt: 3,
-  Maj: 4,
-  "Lt Col": 5,
-  Col: 6
-};
-const PROMOTION_RANK_BY_LABEL: Record<string, string> = {
-  "IPZ Capt": "Capt",
-  "IPZ Maj": "Maj",
-  "IPZ Lt Col": "Lt Col",
-  "IPZ Col": "Col"
-};
 const PROMOTION_YEAR_GROUP_MILESTONES = [
   { label: "IPZ Capt", offset: 4 },
   { label: "IPZ Maj", offset: 9 },
@@ -226,6 +194,8 @@ interface OpbEntry {
 
 interface ChartData {
   identity: ChartIdentity;
+  rankHistory: RibbonRankEntry[];
+  planningDates: RibbonPlanningDate[];
   eligibility: EligibilityState;
   timeline: TimelineData;
   vectors: VectorRow[];
@@ -268,20 +238,9 @@ type TimelineMilestone = [string, string];
 type TimelineViewYears = 10 | 20;
 type CareerViewAnchor = "ead" | "view";
 type TimelineRowKey = keyof Omit<TimelineData, "eadYear" | "startingYear">;
-type FieldGradePromotionRank = "Maj" | "Lt Col" | "Col";
-type PromotionYearOffset = -1 | 0;
-
 interface TimelineCellInfo {
   title: string;
   milestones: TimelineMilestone[];
-}
-
-interface FieldGradePromotionSchedule {
-  boardPrefix: "P04" | "P05" | "P06";
-  gradeName: string;
-  aPopulation: string;
-  bPopulation: string;
-  rows: Array<[string, string, PromotionYearOffset, string, PromotionYearOffset]>;
 }
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
@@ -296,239 +255,19 @@ const timelineDataIndexForYear = (eadYear: number, year: number) => {
   const index = year - eadYear;
   return index >= 0 && index < MAX_TIMELINE_YEARS ? index : null;
 };
-const shortYear = (year: number) => String(year).slice(-2).padStart(2, "0");
-const dateForBoardYear = (monthDay: string, boardYear: number, offset: PromotionYearOffset) => `${monthDay} ${boardYear + offset}`;
-const boardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number, suffix: "A" | "B") => (
-  `${prefix}${shortYear(year)}${suffix}`
-);
-const medicalBoardCode = (prefix: FieldGradePromotionSchedule["boardPrefix"], year: number) => (
-  `M${prefix.slice(1)}${shortYear(year)}A`
-);
-const normalizeRank = (rank: string) => BASE_RANK_BY_OPTION[rank] ?? "Maj";
-const getScodForRank = (rank: string) => SCOD_BY_RANK[normalizeRank(rank)] ?? "31 May";
-const getScodTimeline = (startingRank: string, promotionRow: string[]) => {
-  let effectiveRank = normalizeRank(startingRank);
-
-  return promotionRow.map((promotionLabel) => {
-    const promotedRank = PROMOTION_RANK_BY_LABEL[promotionLabel.trim()];
-    if (promotedRank && RANK_ORDER[promotedRank] > RANK_ORDER[effectiveRank]) {
-      effectiveRank = promotedRank;
-    }
-
-    return {
-      rank: effectiveRank,
-      scod: getScodForRank(effectiveRank)
-    };
-  });
-};
-const FIELD_GRADE_PROMOTION_SCHEDULES: Record<FieldGradePromotionRank, FieldGradePromotionSchedule> = {
-  Maj: {
-    boardPrefix: "P04",
-    gradeName: "Major",
-    aPopulation: "Major, LAF-A/C/F/I/N and LAF-J/CHAP",
-    bPopulation: "Major, NC/MSC/BSC and MC/DC",
-    rows: [
-      ["PRF accounting date", "Aug 9", -1, "Aug 23", -1],
-      ["PRF cutoff date", "Nov 7", -1, "Nov 14", -1],
-      ["AF-level PRFs due", "Dec 2", -1, "Dec 9", -1],
-      ["Remaining PRFs due AFPC", "Dec 7", -1, "Dec 14", -1],
-      ["Letters received by AFPC", "Dec 27", -1, "Jan 10", 0],
-      ["Central board convenes", "Jan 6", 0, "Jan 20", 0]
-    ]
-  },
-  "Lt Col": {
-    boardPrefix: "P05",
-    gradeName: "Lieutenant Colonel",
-    aPopulation: "Lt Col, LAF-A/C/F/I/N/X",
-    bPopulation: "Lt Col, LAF-J/CHAP/NC/MSC/BSC and MC/DC",
-    rows: [
-      ["PRF accounting date", "Jun 6", 0, "Jul 4", 0],
-      ["OPBs flow", "Jun 11", 0, "Jul 9", 0],
-      ["MPF OPB suspense", "Jun 21", 0, "Jul 19", 0],
-      ["Senior-rater RIP/DQHB flows", "Jul 7", 0, "Aug 4", 0],
-      ["AFPC opt-out cutoff", "Jul 11", 0, "Aug 8", 0],
-      ["AF Student MLR", "Aug 25", 0, "Sep 22", 0],
-      ["Final allocation date", "Aug 28", 0, "Sep 25", 0],
-      ["PRF cutoff date", "Sep 4", 0, "Oct 2", 0],
-      ["ML MLR complete / codes updated", "Sep 24", 0, "Oct 22", 0],
-      ["AF-level PRFs and MELs due", "Sep 29", 0, "Oct 27", 0],
-      ["Remaining PRFs due AFPC", "Oct 4", 0, "Nov 1", 0],
-      ["AF-level MLR", "Oct 6", 0, "Nov 3", 0],
-      ["Letters received by AFPC", "Oct 24", 0, "Nov 21", 0],
-      ["Central board convenes", "Nov 3", 0, "Dec 1", 0]
-    ]
-  },
-  Col: {
-    boardPrefix: "P06",
-    gradeName: "Colonel",
-    aPopulation: "Colonel, LAF-A/C/F/I/N/X",
-    bPopulation: "Colonel, LAF-J/CHAP/NC/MSC/BSC and MC/DC",
-    rows: [
-      ["PRF accounting date", "Oct 4", -1, "Oct 18", -1],
-      ["OPBs flow", "Oct 9", -1, "Oct 23", -1],
-      ["MPF OPB suspense", "Oct 19", -1, "Nov 2", -1],
-      ["Senior-rater RIP/DQHB flows", "Nov 4", -1, "Nov 18", -1],
-      ["AFPC opt-out cutoff", "Nov 8", -1, "Nov 22", -1],
-      ["AF Student MLR", "Nov 18", -1, "Jan 6", 0],
-      ["Final allocation date", "Dec 26", -1, "Jan 9", 0],
-      ["PRF cutoff date", "Jan 2", 0, "Jan 16", 0],
-      ["ML MLR complete / codes updated", "Jan 22", 0, "Feb 5", 0],
-      ["AF-level PRFs due", "Jan 27", 0, "Feb 10", 0],
-      ["Remaining PRFs due AFPC", "Feb 1", 0, "Feb 15", 0],
-      ["AF-level MLR", "Feb 3", 0, "Feb 17", 0],
-      ["Letters received by AFPC", "Feb 21", 0, "Mar 7", 0],
-      ["Central board convenes", "Mar 3", 0, "Mar 17", 0]
-    ]
-  }
-};
-const getDevelopmentalEducationCycle = (label: string, year: number): TimelineCellInfo | null => {
-  const trimmed = label.trim();
-  const cycleType = trimmed.startsWith("IDE") ? "IDE" : trimmed.startsWith("SDE") ? "SDE" : "";
-  if (!cycleType) return null;
-
-  const priorYear = year - 1;
+const getScodForRank = (rank: string) => SCOD_REFERENCE.dates[rank] ?? "Choose held grade";
+const getTimelineCellInfo = (key: TimelineRowKey, label: string, year: number, dates: RibbonPlanningDate[] = []): TimelineCellInfo | null => {
+  if (!["promotion", "leadership", "developmentalEducation"].includes(key) || !label.trim()) return null;
   return {
-    title: `${trimmed} - ${year} ${cycleType} school-selection cycle`,
+    title: `${label} — ${year} editable planning estimate`,
     milestones: [
-      ["Senior rater accountability", `1 Nov ${priorYear}`],
-      ["ODP-DE / nomination window", `Dec ${priorYear}-Jan ${year}`],
-      ["Central PME board activity", `Feb-Mar ${year}`],
-      ["Development Teams vector", `Mar-Jun ${year}`],
-      ["School Match Board", `Around 1 Jun ${year}`],
-      ["DEDB / school designation", `Late Jun-Jul ${year}`],
-      ["Public / field announcement", `Expected late Jun ${year}; verify annual PSDM/MyFSS schedule`]
+      ...dates.filter((date) => date.date.startsWith(`${year}-`) && date.kind === (key === "promotion" ? "promotion" : key === "leadership" ? "command" : "education")).map<TimelineMilestone>((date) => [date.label || "Date estimate", `${date.date} — editable estimate`]),
+      ["Authority", "No verified annual schedule is stored for this milestone."],
+      ["Dates", "Enter the applicable dated announcement or your estimate in Planning dates below."],
+      ["Promotion", "Board consideration and selection do not establish a pin-on date."],
+      ["Verify", "Check the applicable annual MyFSS/PSDM/MyVector announcement and your competitive category."]
     ]
   };
-};
-const getCommandSelectionCycle = (label: string, year: number): TimelineCellInfo | null => {
-  const trimmed = label.trim();
-  if (!trimmed) return null;
-
-  const normalized = trimmed.toUpperCase();
-  const isCommandOrDoCell = (
-    normalized.includes("COMMAND") ||
-    normalized.includes("GP/CD") ||
-    normalized.includes("SQ/DO") ||
-    /\bCC\b/.test(normalized) ||
-    /\bDO\b/.test(normalized)
-  );
-  if (!isCommandOrDoCell) return null;
-
-  return {
-    title: `${trimmed} - ${year} 17X command / DO cycle`,
-    milestones: [
-      ["MyVector Candidate SOI opens", `14 Jan ${year}`],
-      ["Non-17X add cutoff", `21 Jan ${year}`],
-      ["Records freeze", `25 Jan ${year}`],
-      ["MyVector Candidate SOI closes", `4 Feb ${year}`],
-      ["Endorsement window closes", `18 Feb ${year}`],
-      ["17X Spring DT", `13-17 Apr ${year}`],
-      ["Command Candidate List PSDM", `Summer ${year}`],
-      ["Consolidated Command Selection PSDM", `Fall ${year}`],
-      ["17X Gp/CD and Sq/DO Selection PSDM", `Fall ${year}`],
-      ["Source note", "Dates are shifted from the 2026 schedule; verify exact annual MyVector/PSDM dates"]
-    ]
-  };
-};
-const promotionRankFromLabel = (label: string) => {
-  const normalized = label.trim().replace(/\s+/g, " ").replace(/^IPZ\s+/i, "").toLowerCase();
-  const rankByLabel: Record<string, string> = {
-    "2d lt": "2d Lt",
-    "2nd lt": "2d Lt",
-    "second lieutenant": "2d Lt",
-    "1st lt": "1st Lt",
-    "first lieutenant": "1st Lt",
-    capt: "Capt",
-    captain: "Capt",
-    maj: "Maj",
-    major: "Maj",
-    "lt col": "Lt Col",
-    ltcol: "Lt Col",
-    "lieutenant colonel": "Lt Col",
-    col: "Col",
-    colonel: "Col"
-  };
-
-  return rankByLabel[normalized] ?? null;
-};
-const getFieldGradePromotionCycle = (label: string, targetRank: FieldGradePromotionRank, year: number): TimelineCellInfo => {
-  const schedule = FIELD_GRADE_PROMOTION_SCHEDULES[targetRank];
-  const aBoard = boardCode(schedule.boardPrefix, year, "A");
-  const bBoard = `${boardCode(schedule.boardPrefix, year, "B")} / ${medicalBoardCode(schedule.boardPrefix, year)}`;
-  const boardRows = schedule.rows.map<TimelineMilestone>(([milestone, aDate, aOffset, bDate, bOffset]) => [
-    milestone,
-    `${aBoard}: ${dateForBoardYear(aDate, year, aOffset)}; ${bBoard}: ${dateForBoardYear(bDate, year, bOffset)}`
-  ]);
-
-  return {
-    title: `${label} - CY${shortYear(year)} ${schedule.gradeName} board milestones`,
-    milestones: [
-      ["A-board population", `${aBoard}: ${schedule.aPopulation}`],
-      ["B/M-board population", `${bBoard}: ${schedule.bPopulation}`],
-      ...boardRows,
-      ["PRF accounting", "AFPC matches eligibles to senior raters using MilPDS unit assignment data"],
-      ["PRF cutoff", "Senior raters sign on or after this date; it is not the final submission deadline"],
-      ["IPZ eligibility", "SecAF sets the IPZ annually for each competitive category; confirm against the current board announcement/MyFSS record"],
-      ["Minimum eligibility", "At least 3 years in the current grade by the board convening date, unless waived for authorized BPZ consideration"],
-      ["Source note", "Dates roll from the CY26 milestone schedule; verify exact annual PSDM/MyFSS weekend and holiday shifts"]
-    ]
-  };
-};
-const getPromotionCycle = (label: string, year: number): TimelineCellInfo | null => {
-  const trimmed = label.trim();
-  const targetRank = promotionRankFromLabel(trimmed);
-  if (!targetRank) return null;
-
-  const priorYear = year - 1;
-
-  if (targetRank === "2d Lt") {
-    return {
-      title: `${trimmed} - accession / initial grade`,
-      milestones: [
-        ["DOR start point", "Commissioning or extended active duty date"],
-        ["Used for", "Starts the clock for first lieutenant timing"],
-        ["Next promotion", "First lieutenant normally after 2 years TIG as a 2d Lt"]
-      ]
-    };
-  }
-
-  if (targetRank === "1st Lt") {
-    return {
-      title: `${trimmed} - promotion to first lieutenant`,
-      milestones: [
-        ["Eligibility", "2 years TIG as a 2d Lt"],
-        ["Pin-on timing", `${year}, if this cell is the officer's 2d Lt DOR + 2 years`],
-        ["Process note", "No central promotion board; NQP or delay actions are handled separately"]
-      ]
-    };
-  }
-
-  if (targetRank === "Capt") {
-    return {
-      title: `${trimmed} - promotion to captain`,
-      milestones: [
-        ["Eligibility", "2 years TIG as a 1st Lt"],
-        ["IPZ consideration", `Quarterly cycle in ${priorYear}, one year before expected pin-on`],
-        ["A-cycle", `1 Jan-31 Mar ${priorYear} -> Jan-Mar ${year} promotions`],
-        ["B-cycle", `1 Apr-30 Jun ${priorYear} -> Apr-Jun ${year} promotions`],
-        ["C-cycle", `1 Jul-30 Sep ${priorYear} -> Jul-Sep ${year} promotions`],
-        ["D-cycle", `1 Oct-31 Dec ${priorYear} -> Oct-Dec ${year} promotions`],
-        ["Results", "Selections announced by email about 60-90 days after cycle closeout"]
-      ]
-    };
-  }
-
-  if (targetRank === "Maj" || targetRank === "Lt Col" || targetRank === "Col") {
-    return getFieldGradePromotionCycle(trimmed, targetRank, year);
-  }
-
-  return null;
-};
-const getTimelineCellInfo = (key: TimelineRowKey, label: string, year: number) => {
-  if (key === "promotion") return getPromotionCycle(label, year);
-  if (key === "leadership") return getCommandSelectionCycle(label, year);
-  if (key === "developmentalEducation") return getDevelopmentalEducationCycle(label, year);
-  return null;
 };
 
 const setLabelForYear = (row: string[], years: number[], targetYear: number, label: string) => {
@@ -594,7 +333,7 @@ const gradeLabelFor = (grade: number) => {
 
 const normalizeGrade = (value: unknown) => {
   const grade = typeof value === "number" && Number.isFinite(value) ? Math.round(value) : 0;
-  return clamp(grade, -1, 13);
+  return grade;
 };
 
 const createDefaultChart = (): ChartData => {
@@ -604,6 +343,8 @@ const createDefaultChart = (): ChartData => {
   const rows = buildTimelineRows(eadYear, adjustedYearGroup);
 
   return {
+    rankHistory: [],
+    planningDates: [],
     identity: {
       rank: "Lt Col",
       name: "First, Last, Middle",
@@ -747,6 +488,7 @@ const normalizeFamilyKids = (value: unknown): FamilyKid[] => {
   return base.map((fallback, index) => {
     const incoming = source[index] as Partial<FamilyKid> | undefined;
     return {
+      ...incoming,
       id: typeof incoming?.id === "string" ? incoming.id : fallback.id,
       enabled: typeof incoming?.enabled === "boolean" ? incoming.enabled : fallback.enabled,
       label: typeof incoming?.label === "string" ? incoming.label : fallback.label,
@@ -755,40 +497,16 @@ const normalizeFamilyKids = (value: unknown): FamilyKid[] => {
   });
 };
 
-const normalizeVectorRows = (value: unknown, timelineStart: number): VectorRow[] => {
-  const base = createDefaultChart().vectors;
-  if (!Array.isArray(value)) return base;
-
-  const timelineEnd = timelineStart + MAX_TIMELINE_YEARS;
-  return DEFAULT_VECTOR_ROW_LABELS.map((defaultLabel, rowIndex) => {
-    const fallback = base[rowIndex];
-    const incoming = value.find((row) => {
-      if (typeof row !== "object" || row === null) return false;
-      const candidate = row as Partial<VectorRow>;
-      return candidate.id === fallback.id || candidate.label === defaultLabel;
-    }) as Partial<VectorRow> | undefined;
-    const segments = Array.isArray(incoming?.segments) ? incoming.segments : fallback.segments;
-
-    return {
-      id: typeof incoming?.id === "string" ? incoming.id : fallback.id,
-      label: typeof incoming?.label === "string" ? incoming.label : defaultLabel,
-      segments: segments
-        .map((segment, segmentIndex) => {
-          const partial = segment as Partial<VectorSegment>;
-          const start = typeof partial.startYear === "number" ? partial.startYear : timelineStart + segmentIndex;
-          const end = typeof partial.endYear === "number" ? partial.endYear : start + 1;
-          const color = VECTOR_COLORS.some((option) => option.id === partial.color) ? partial.color as VectorColorId : "green";
-          return {
-            id: typeof partial.id === "string" ? partial.id : `${fallback.id}-${segmentIndex}`,
-            label: typeof partial.label === "string" ? partial.label : "New block",
-            startYear: clamp(snapHalfYear(start), timelineStart, timelineEnd - MIN_SEGMENT_YEARS),
-            endYear: clamp(snapHalfYear(end), timelineStart + MIN_SEGMENT_YEARS, timelineEnd),
-            color
-          };
-        })
-        .filter((segment) => segment.endYear - segment.startYear >= MIN_SEGMENT_YEARS)
-        .sort((a, b) => a.startYear - b.startYear)
-    };
+const normalizeVectorRows = (value: unknown, _timelineStart: number): VectorRow[] => {
+  const incoming = (value ?? []) as VectorRow[];
+  const usedIds = new Set(incoming.map((row) => row.id));
+  return Array.from({ length: 3 }, (_, i) => {
+    const row = incoming[i];
+    if (row) return { ...row, segments: row.segments.map((segment) => ({ ...segment })).sort((a, b) => a.startYear - b.startYear) };
+    let id = `vec-${i + 1}`;
+    while (usedIds.has(id)) id = `empty-${id}`;
+    usedIds.add(id);
+    return { id, label: DEFAULT_VECTOR_ROW_LABELS[i], segments: [] };
   });
 };
 
@@ -816,13 +534,18 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
   const incomingOpbs = Array.isArray(input.opbs) ? input.opbs : legacyInput.oprs;
 
   return {
-    identity: { ...base.identity, ...input.identity },
+    ...input,
+    rankHistory: input.rankHistory ?? [],
+    planningDates: input.planningDates ?? [],
+    identity: { ...base.identity, jobLocation: "", dor: "", das: "", yearGroup: "", adjustedYearGroup: "", ...input.identity },
     eligibility: {
+      ...input.eligibility,
       de: { ...base.eligibility.de, ...input.eligibility?.de },
       do: { ...base.eligibility.do, ...input.eligibility?.do },
       sqCc: { ...base.eligibility.sqCc, ...input.eligibility?.sqCc }
     },
     timeline: {
+      ...input.timeline,
       eadYear: timelineEad,
       startingYear: timelineStart,
       promotion: normalizeStringArray(input.timeline?.promotion, MAX_TIMELINE_YEARS),
@@ -839,7 +562,7 @@ const normalizeChart = (input: Partial<ChartData>): ChartData => {
     education: { ...base.education, ...input.education },
     opbs: Array.isArray(incomingOpbs) && incomingOpbs.length
       ? incomingOpbs.slice(0, 3).map((opb, index) => ({ ...base.opbs[index], ...opb }))
-      : base.opbs
+      : base.opbs.map((entry) => ({ ...entry, year: "" }))
   };
 };
 
@@ -883,7 +606,7 @@ const shiftVectorRows = (rows: VectorRow[], deltaYears: number): VectorRow[] => 
 const shiftFamilyKids = (kids: FamilyKid[], deltaYears: number): FamilyKid[] => (
   kids.map((kid) => ({
     ...kid,
-    startGrade: normalizeGrade(kid.startGrade + deltaYears)
+    startGrade: shiftedGradeAnchor(kid.startGrade, deltaYears)
   }))
 );
 
@@ -907,19 +630,24 @@ const RibbonChartPage: React.FC = () => {
   const [isCareerViewOpen, setCareerViewOpen] = useState(false);
   const [careerViewAnchor, setCareerViewAnchor] = useState<CareerViewAnchor>("ead");
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
-  const [draggedPromotionIndex, setDraggedPromotionIndex] = useState<number | null>(null);
   const [promotionDropIndex, setPromotionDropIndex] = useState<number | null>(null);
   const [dirty, setDirty] = useState(false);
   const [importMessage, setImportMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const importRequest = useRef(0);
+  const dirtyRef = useRef(false);
+  const activeReader = useRef<FileReader | null>(null);
+  const promotionDragRef = useRef<number | null>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const trackRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const dragRef = useRef<DragState | null>(null);
 
   const years = useMemo(() => yearsFor(chart.timeline.startingYear, timelineViewYears), [chart.timeline.startingYear, timelineViewYears]);
   const rankScod = getScodForRank(chart.identity.rank);
   const scodTimeline = useMemo(
-    () => getScodTimeline(chart.identity.rank, chart.timeline.promotion),
-    [chart.identity.rank, chart.timeline.promotion]
+    () => yearsFor(chart.timeline.eadYear).map((year) => rankReferenceForYear(chart.identity, chart.rankHistory, year)),
+    [chart.identity, chart.rankHistory, chart.timeline.eadYear]
   );
   const careerStart = chart.timeline.eadYear;
   const careerEnd = chart.timeline.eadYear + MAX_TIMELINE_YEARS;
@@ -949,7 +677,7 @@ const RibbonChartPage: React.FC = () => {
     const selectionStart = isCareerViewOpen ? careerDisplayStart : timelineStart;
     const selectionEnd = isCareerViewOpen ? careerDisplayEnd : timelineEnd;
     const visibleSegments = chart.vectors.flatMap((row) => (
-      row.segments.filter((segment) => segment.endYear > selectionStart && segment.startYear < selectionEnd)
+      row.segments.filter((segment) => segment.endYear > Math.max(selectionStart, chart.timeline.eadYear) && segment.startYear < Math.min(selectionEnd, chart.timeline.eadYear + MAX_TIMELINE_YEARS))
     ));
     if (!visibleSegments.some((segment) => segment.id === selectedSegmentId)) {
       setSelectedSegmentId(visibleSegments[0]?.id ?? null);
@@ -960,24 +688,49 @@ const RibbonChartPage: React.FC = () => {
     if (!dirty) return undefined;
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
+      // Keep the legacy fallback for browsers that still require returnValue.
       event.returnValue = "";
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [dirty]);
 
+  useEffect(() => () => { importRequest.current += 1; activeReader.current?.abort(); }, []);
+
   useEffect(() => {
     if (!isCareerViewOpen) return undefined;
-    const priorOverflow = document.body.style.overflow;
+    const dialog = dialogRef.current; const modal = modalRef.current;
+    if (!dialog || !modal) return undefined;
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const isolated: Array<{ node: HTMLElement; inert: boolean; hidden: string | null }> = [];
+    let branch: HTMLElement = modal;
+    while (branch.parentElement) {
+      for (const sibling of Array.from(branch.parentElement.children)) {
+        if (sibling !== branch && sibling instanceof HTMLElement && !["SCRIPT", "STYLE"].includes(sibling.tagName)) {
+          isolated.push({ node: sibling, inert: sibling.inert, hidden: sibling.getAttribute("aria-hidden") });
+          sibling.inert = true; sibling.setAttribute("aria-hidden", "true");
+        }
+      }
+      branch = branch.parentElement;
+      if (branch === document.body) break;
+    }
+    const focusable = () => Array.from(dialog.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), a[href], [tabindex="0"]')).filter((el) => !el.closest('[inert], [hidden]'));
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setCareerViewOpen(false);
+      if (event.key === "Escape") { event.preventDefault(); setCareerViewOpen(false); }
+      if (event.key === "Tab") {
+        const items = focusable(); const first = items[0] ?? dialog; const last = items.at(-1) ?? dialog;
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
+      }
     };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
+    const keepFocus = (event: FocusEvent) => { if (event.target instanceof Node && !dialog.contains(event.target)) (focusable()[0] ?? dialog).focus(); };
+    const priorOverflow = document.body.style.overflow; document.body.style.overflow = "hidden";
+    (dialog.querySelector<HTMLElement>('.ribbon-career-close-button') ?? dialog).focus();
+    document.addEventListener("keydown", handleKeyDown); document.addEventListener("focusin", keepFocus);
     return () => {
-      document.body.style.overflow = priorOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown); document.removeEventListener("focusin", keepFocus);
+      for (const { node, inert, hidden } of isolated) { node.inert = inert; if (hidden === null) node.removeAttribute("aria-hidden"); else node.setAttribute("aria-hidden", hidden); }
+      document.body.style.overflow = priorOverflow; if (opener?.isConnected) opener.focus();
     };
   }, [isCareerViewOpen]);
 
@@ -1012,6 +765,7 @@ const RibbonChartPage: React.FC = () => {
           endYear: nextEnd
         }))
       }));
+      dirtyRef.current = true;
       setDirty(true);
     };
 
@@ -1034,6 +788,7 @@ const RibbonChartPage: React.FC = () => {
 
   const updateChart = (updater: (current: ChartData) => ChartData) => {
     setChart((current) => updater(current));
+    dirtyRef.current = true;
     setDirty(true);
     setImportMessage("");
   };
@@ -1306,6 +1061,7 @@ const RibbonChartPage: React.FC = () => {
       savedAt: new Date().toISOString(),
       data: chart
     };
+    try { extractRibbonChartData(payload); } catch (error) { setImportMessage(error instanceof Error ? error.message : "Review the chart before saving."); return; }
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -1315,33 +1071,42 @@ const RibbonChartPage: React.FC = () => {
     anchor.click();
     anchor.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 0);
+    dirtyRef.current = false;
     setDirty(false);
     setImportMessage("Saved chart file.");
   };
 
   const loadChartFile = (file: File) => {
-    const reader = new FileReader();
+    const request = ++importRequest.current;
+    activeReader.current?.abort();
+    if (!file.name.toLowerCase().endsWith(".json") || file.size > RIBBON_MAX_FILE_BYTES) { setImportMessage("Choose a ribbon-chart .json file smaller than 2 MB."); return; }
+    const reader = new FileReader(); activeReader.current = reader;
     reader.onload = () => {
+      if (request !== importRequest.current) return;
       try {
-        const parsed = JSON.parse(String(reader.result)) as unknown;
-        const data = extractRibbonChartData(parsed);
+        const data = extractRibbonChartData(JSON.parse(String(reader.result)) as unknown);
         const normalized = normalizeChart(data as unknown as Partial<ChartData>);
+        if (dirtyRef.current && !window.confirm("Replace this chart and discard its unsaved changes? Save first if you want to keep them.")) { setImportMessage("Load canceled; current chart retained."); return; }
+        if (request !== importRequest.current) return;
+        dragRef.current = null; document.body.classList.remove("ribbon-is-dragging");
         setChart(normalized);
         setSelectedSegmentId(normalized.vectors.flatMap((row) => row.segments)[0]?.id ?? null);
-        setDirty(false);
-        setImportMessage("Loaded chart file.");
-      } catch {
-        setImportMessage("Could not load that file.");
-      }
+        dirtyRef.current = false; setDirty(false);
+        setImportMessage(["Loaded chart file.", ...ribbonImportWarnings(data)].join(" "));
+      } catch (error) { setImportMessage(error instanceof Error ? error.message : "Could not read this chart; current chart retained."); }
     };
+    reader.onerror = () => { if (request === importRequest.current) setImportMessage("Could not read this file; current chart retained."); };
     reader.readAsText(file);
   };
 
   const resetChart = () => {
     if (!window.confirm("Reset this chart to the default template?")) return;
+    importRequest.current += 1; activeReader.current?.abort();
+    dragRef.current = null; document.body.classList.remove("ribbon-is-dragging");
     const next = createDefaultChart();
     setChart(next);
     setSelectedSegmentId("vec1-current");
+    dirtyRef.current = false;
     setDirty(false);
     setImportMessage("Reset chart.");
   };
@@ -1374,7 +1139,7 @@ const RibbonChartPage: React.FC = () => {
     }
 
     const value = chart.timeline[key][dataIndex] ?? "";
-    const cellInfo = getTimelineCellInfo(key, value, year);
+    const cellInfo = getTimelineCellInfo(key, value, year, chart.planningDates);
 
     if (isCareerOverview) {
       return (
@@ -1401,7 +1166,7 @@ const RibbonChartPage: React.FC = () => {
       );
     }
 
-    const tooltipId = `${key}-${year}-cycle-info`;
+    const tooltipId = `${isCareerOverview ? "career" : "main"}-${key}-${year}-cycle-info`;
     const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= yearCount - 2 ? " ribbon-info-cell-right-edge" : "";
     return (
       <div key={`${key}-${year}`} className={`ribbon-info-cell${edgeClass}`}>
@@ -1422,8 +1187,8 @@ const RibbonChartPage: React.FC = () => {
         <div id={tooltipId} className="ribbon-cycle-popover" role="tooltip">
           <strong>{cellInfo.title}</strong>
           <dl>
-            {cellInfo.milestones.map(([milestone, timing]) => (
-              <div key={milestone}>
+            {cellInfo.milestones.map(([milestone, timing], milestoneIndex) => (
+              <div key={`${milestone}-${milestoneIndex}`}>
                 <dt>{milestone}</dt>
                 <dd>{timing}</dd>
               </div>
@@ -1457,7 +1222,7 @@ const RibbonChartPage: React.FC = () => {
     }
 
     const value = chart.timeline.promotion[dataIndex] ?? "";
-    const cellInfo = getTimelineCellInfo("promotion", value, year);
+    const cellInfo = getTimelineCellInfo("promotion", value, year, chart.planningDates);
 
     if (isCareerOverview) {
       return (
@@ -1472,7 +1237,7 @@ const RibbonChartPage: React.FC = () => {
       );
     }
 
-    const tooltipId = `promotion-${year}-cycle-info`;
+    const tooltipId = `${isCareerOverview ? "career" : "main"}-promotion-${year}-cycle-info`;
     const edgeClass = index <= 1 ? " ribbon-info-cell-left-edge" : index >= yearCount - 2 ? " ribbon-info-cell-right-edge" : "";
     const cellClass = [
       "ribbon-info-cell",
@@ -1484,12 +1249,11 @@ const RibbonChartPage: React.FC = () => {
 
     const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
       event.preventDefault();
-      const transferIndex = Number(event.dataTransfer.getData("application/x-ribbon-promotion-index"));
-      const sourceIndex = Number.isInteger(transferIndex) ? transferIndex : draggedPromotionIndex;
+      const sourceIndex = promotionDropSource(Array.from(event.dataTransfer.types), event.dataTransfer.getData("application/x-ribbon-promotion-index"), promotionDragRef.current);
       if (sourceIndex !== null) {
         movePromotionMilestone(sourceIndex, dataIndex);
       }
-      setDraggedPromotionIndex(null);
+      promotionDragRef.current = null;
       setPromotionDropIndex(null);
     };
 
@@ -1498,10 +1262,12 @@ const RibbonChartPage: React.FC = () => {
         key={`promotion-${year}`}
         className={cellClass}
         onDragEnter={(event) => {
+          if (promotionDragRef.current === null || !Array.from(event.dataTransfer.types).includes("application/x-ribbon-promotion-index")) return;
           event.preventDefault();
           setPromotionDropIndex(dataIndex);
         }}
         onDragOver={(event) => {
+          if (promotionDragRef.current === null || !Array.from(event.dataTransfer.types).includes("application/x-ribbon-promotion-index")) return;
           event.preventDefault();
           event.dataTransfer.dropEffect = "move";
           setPromotionDropIndex(dataIndex);
@@ -1525,12 +1291,12 @@ const RibbonChartPage: React.FC = () => {
             aria-label={`Move ${value}`}
             title="Drag to move promotion year. Arrow keys move one year."
             onDragStart={(event) => {
-              setDraggedPromotionIndex(dataIndex);
+              promotionDragRef.current = dataIndex;
               event.dataTransfer.effectAllowed = "move";
               event.dataTransfer.setData("application/x-ribbon-promotion-index", String(dataIndex));
             }}
             onDragEnd={() => {
-              setDraggedPromotionIndex(null);
+              promotionDragRef.current = null;
               setPromotionDropIndex(null);
             }}
             onKeyDown={(event) => {
@@ -1560,8 +1326,8 @@ const RibbonChartPage: React.FC = () => {
             <div id={tooltipId} className="ribbon-cycle-popover" role="tooltip">
               <strong>{cellInfo.title}</strong>
               <dl>
-                {cellInfo.milestones.map(([milestone, timing]) => (
-                  <div key={milestone}>
+                {cellInfo.milestones.map(([milestone, timing], milestoneIndex) => (
+                  <div key={`${milestone}-${milestoneIndex}`}>
                     <dt>{milestone}</dt>
                     <dd>{timing}</dd>
                   </div>
@@ -1590,7 +1356,9 @@ const RibbonChartPage: React.FC = () => {
 
     return (
       <div className={`ribbon-timeline-grid ${className}`} style={gridStyle}>
-        {renderTimelineRow("Promotion", "promotion", displayYears, isCareerOverview)}
+        <div className="ribbon-timeline-label">Pin-on history</div>
+        {displayYears.map((year) => <div key={`pin-on-${year}`} className="ribbon-family-cell ribbon-pin-on-cell" title={pinOnTimelineValue(chart, year) || "No dated pin-on entered"}>{pinOnTimelineValue(chart, year)}</div>)}
+        {renderTimelineRow("Board estimates", "promotion", displayYears, isCareerOverview)}
         {renderTimelineRow("Leadership", "leadership", displayYears, isCareerOverview)}
         {renderTimelineRow("PME", "developmentalEducation", displayYears, isCareerOverview)}
         {renderTimelineRow("Career Field Edu", "careerFieldEducation", displayYears, isCareerOverview)}
@@ -1598,12 +1366,12 @@ const RibbonChartPage: React.FC = () => {
         <div className="ribbon-timeline-label">Calendar Year</div>
         {displayYears.map((year) => <div key={year} className="ribbon-year-cell">{year}</div>)}
 
-        <div className="ribbon-timeline-label ribbon-scod-label">SCOD</div>
+        <div className="ribbon-timeline-label ribbon-scod-label">SCOD reference</div>
         {displayYears.map((year) => {
           const dataIndex = timelineDataIndexForYear(chart.timeline.eadYear, year);
-          const scodEntry = dataIndex === null ? null : scodTimeline[dataIndex] ?? { rank: normalizeRank(chart.identity.rank), scod: rankScod };
+          const scodEntry = dataIndex === null ? null : scodTimeline[dataIndex];
           return (
-            <div key={`scod-${year}`} className="ribbon-scod-cell" title={scodEntry ? `${scodEntry.rank} SCOD` : "Outside EAD window"}>
+            <div key={`scod-${year}`} className="ribbon-scod-cell" title={scodEntry ? `${scodEntry.rank}: ${scodEntry.basis}. Published SCOD reference; verify promotion-select rules and actual evaluation closeout.` : "No dated grade entered for this year; historical rank is unknown."}>
               {scodEntry?.scod ?? "-"}
             </div>
           );
@@ -1633,9 +1401,9 @@ const RibbonChartPage: React.FC = () => {
               >
                 {row.segments.map((segment) => {
                   const color = colorFor(segment.color);
-                  const visibleStart = Math.max(segment.startYear, displayStart);
-                  const visibleEnd = Math.min(segment.endYear, displayEnd);
-                  if (visibleEnd <= displayStart || visibleStart >= displayEnd) return null;
+                  const visibleStart = Math.max(segment.startYear, displayStart, careerStart);
+                  const visibleEnd = Math.min(segment.endYear, displayEnd, careerEnd);
+                  if (visibleEnd <= visibleStart) return null;
                   const left = ((visibleStart - displayStart) / yearCount) * 100;
                   const width = ((visibleEnd - visibleStart) / yearCount) * 100;
                   return (
@@ -1728,12 +1496,14 @@ const RibbonChartPage: React.FC = () => {
             <label className="ribbon-year-control">
               <span>YG</span>
               <select value={chart.identity.yearGroup} onChange={(event) => updateYearGroup(event.currentTarget.value)}>
+                {!YEAR_GROUP_OPTIONS.includes(chart.identity.yearGroup) && <option value={chart.identity.yearGroup}>{chart.identity.yearGroup || "Choose year"}</option>}
                 {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>
             <label className="ribbon-year-control">
               <span>Adj YG</span>
               <select value={chart.identity.adjustedYearGroup} onChange={(event) => updateIdentity("adjustedYearGroup", event.currentTarget.value)}>
+                {!YEAR_GROUP_OPTIONS.includes(chart.identity.adjustedYearGroup) && <option value={chart.identity.adjustedYearGroup}>{chart.identity.adjustedYearGroup || "Choose year"}</option>}
                 {YEAR_GROUP_OPTIONS.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
             </label>
@@ -1774,7 +1544,39 @@ const RibbonChartPage: React.FC = () => {
         </div>
       </header>
 
-      {importMessage && <p className="ribbon-status">{importMessage}</p>}
+      <section className="ribbon-planning-panel" aria-labelledby="ribbon-planning-title">
+        <h2 id="ribbon-planning-title">Rank history and planning dates</h2>
+        <p>The rank selector is your current held grade. Dated pin-on entries establish grade history; board consideration and selection remain separate. Dates you enter are planning data, not verified orders.</p>
+        <p><a href={SCOD_REFERENCE.url} target="_blank" rel="noreferrer">Published SCOD reference — 17 February 2022</a>: recurring grade dates, phased in during 2022–2023. The chart shows a year-end grade reference, not a determination of your actual evaluation closeout. Promotion-select rules and unit/myEval records can change applicability.</p>
+        <details>
+          <summary>Enter dated pin-on history</summary>
+          <p>Current rank/DOR supplies one dated anchor when DOR is valid. Earlier grades remain unknown until entered. Future pin-on dates should be marked Estimate.</p>
+          {chart.rankHistory.map((entry, index) => (
+            <div className="ribbon-planning-entry" key={entry.id}>
+              <label>Grade <select value={entry.rank} onChange={(event) => { const rank = event.target.value; updateChart((current) => ({ ...current, rankHistory: current.rankHistory.map((v) => v.id === entry.id ? { ...v, rank } : v) })); }}>{RANK_OPTIONS.map((rank) => <option key={rank}>{rank}</option>)}</select></label>
+              <label>Pin-on date <input type="date" value={entry.date} onChange={(event) => { const date = event.target.value; updateChart((current) => ({ ...current, rankHistory: current.rankHistory.map((v) => v.id === entry.id ? { ...v, date } : v) })); }} /></label>
+              <label>Basis <select value={entry.basis} onChange={(event) => { const basis = event.target.value as RibbonRankEntry["basis"]; updateChart((current) => ({ ...current, rankHistory: current.rankHistory.map((v) => v.id === entry.id ? { ...v, basis } : v) })); }}><option value="entered">Entered history</option><option value="estimate">Estimate</option></select></label>
+              <button type="button" aria-label={`Remove pin-on entry ${index + 1}`} onClick={() => updateChart((current) => ({ ...current, rankHistory: current.rankHistory.filter((v) => v.id !== entry.id) }))}>Remove</button>
+            </div>
+          ))}
+          <button type="button" disabled={chart.rankHistory.length >= 80} onClick={() => updateChart((current) => ({ ...current, rankHistory: [...current.rankHistory, { id: createSegmentId(), rank: "2d Lt", date: "", basis: "entered" }] }))}>Add pin-on entry</button>
+        </details>
+        <details>
+          <summary>Enter editable board, school and command date estimates</summary>
+          <p>No verified annual schedule is included. Populate Timeline creates editable year-group estimates; it does not copy CY26 dates into other years. Add dates from your applicable announcement and verify them before taking action.</p>
+          {chart.planningDates.map((entry, index) => (
+            <div className="ribbon-planning-entry" key={entry.id}>
+              <label>Milestone <input value={entry.label} maxLength={500} onChange={(event) => { const label = event.target.value; updateChart((current) => ({ ...current, planningDates: current.planningDates.map((v) => v.id === entry.id ? { ...v, label } : v) })); }} /></label>
+              <label>Date estimate <input type="date" value={entry.date} onChange={(event) => { const date = event.target.value; updateChart((current) => ({ ...current, planningDates: current.planningDates.map((v) => v.id === entry.id ? { ...v, date } : v) })); }} /></label>
+              <label>Category <select value={entry.kind} onChange={(event) => { const kind = event.target.value as RibbonPlanningDate["kind"]; updateChart((current) => ({ ...current, planningDates: current.planningDates.map((v) => v.id === entry.id ? { ...v, kind } : v) })); }}><option value="promotion">Board</option><option value="education">School</option><option value="command">Command</option></select></label>
+              <span>Editable estimate</span><button type="button" aria-label={`Remove planning date ${index + 1}`} onClick={() => updateChart((current) => ({ ...current, planningDates: current.planningDates.filter((v) => v.id !== entry.id) }))}>Remove</button>
+            </div>
+          ))}
+          <button type="button" disabled={chart.planningDates.length >= 150} onClick={() => updateChart((current) => ({ ...current, planningDates: [...current.planningDates, { id: createSegmentId(), label: "", date: "", kind: "promotion" }] }))}>Add planning date</button>
+        </details>
+      </section>
+
+      {importMessage && <p className="ribbon-status" role="status">{importMessage}</p>}
 
       <div className="ribbon-scroll">
         <section className="ribbon-sheet" style={ribbonSheetStyle} aria-label="Cyber Operations Officer Ribbon Chart editor">
@@ -1789,10 +1591,11 @@ const RibbonChartPage: React.FC = () => {
               </div>
               <div className="ribbon-identity-row">
                 <div className="ribbon-rank-cell">
-                  <select value={chart.identity.rank} onChange={(event) => updateIdentity("rank", event.currentTarget.value)} aria-label="Rank">
+                  <select value={chart.identity.rank} onChange={(event) => updateIdentity("rank", event.currentTarget.value)} aria-label="Current rank">
+                    {!RANK_OPTIONS.includes(chart.identity.rank) && <option value={chart.identity.rank}>Legacy {chart.identity.rank}: choose held grade</option>}
                     {RANK_OPTIONS.map((rank) => <option key={rank} value={rank}>{rank}</option>)}
                   </select>
-                  <span className="ribbon-scod-pill">SCOD: {rankScod}</span>
+                  <span className="ribbon-scod-pill">Current grade reference: {rankScod}</span>
                 </div>
                 <input value={chart.identity.name} onChange={(event) => updateIdentity("name", event.currentTarget.value)} aria-label="Name" />
                 <label>
@@ -1909,7 +1712,7 @@ const RibbonChartPage: React.FC = () => {
                   <label>
                     <span>Fall {chart.timeline.startingYear}</span>
                     <select
-                      value={kid.startGrade}
+                      value={Math.max(-1, Math.min(13, kid.startGrade))}
                       onChange={(event) => updateFamilyKid(index, "startGrade", Number(event.currentTarget.value))}
                     >
                       {GRADE_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
@@ -2096,13 +1899,14 @@ const RibbonChartPage: React.FC = () => {
 
       {isCareerViewOpen && (
         <div
+          ref={modalRef}
           className="ribbon-career-modal"
           role="presentation"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setCareerViewOpen(false);
           }}
         >
-          <section className="ribbon-career-dialog" role="dialog" aria-modal="true" aria-labelledby="ribbon-career-title">
+          <section ref={dialogRef} tabIndex={-1} className="ribbon-career-dialog" role="dialog" aria-modal="true" aria-labelledby="ribbon-career-title">
             <header className="ribbon-career-header">
               <div>
                 <p className="ribbon-eyebrow">30 Year View</p>

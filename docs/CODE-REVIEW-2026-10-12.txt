@@ -1,0 +1,532 @@
+pbvinge.com code review — 12 October 2026
+
+Assessment
+==========
+The Mac development baseline works, but a stabilization pass should precede
+new features. The most consequential findings concern chart data preservation,
+publication controls, metadata escaping, and incorrect bibliographic dates.
+They can be repaired without settling the larger product/content decisions.
+
+Reviewed checkout: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Branch: codex/mac-mini-transfer
+Reviewed HEAD: 5b91f95bb8e81356d2f0694fe3a29763bad01020
+The initial review did not change application source or dependency manifests.
+Approved figure restoration, content completion, dated snapshot, workflow
+retirement and licensing work is recorded at D06-D09 below; the broader
+stabilization changes are now implemented locally, with the approved full Astro
+checker and dependency cleanup verified. See docs/STABILIZATION-2026-10-12.txt
+for current verification and remaining limitations.
+
+Initial review verification and coverage
+=======================================
+- Fresh current build: PASS, 150 pages in 10.64 seconds.
+- Existing Python tests: PASS, all 4. These test timestamp utilities, not real
+  transcription or frontend behavior.
+- Isolated source-scoped Astro check: 21 errors, 0 warnings across 42 files.
+  TS/TSX passed after correcting the temporary configuration. Astro templates
+  expose optional-field errors, a missing page title, an undeclared summary
+  field, missing library types, and untyped browser code.
+- Generated application pages: 16 missing local targets, 17 references;
+  19 missing fragment targets, 21 references. Historical captured HTML is
+  preserved as source material and excluded from application-code diagnostics.
+- Focused synthetic/DOM probes reproduce the chart, metadata, filter, file-I/O,
+  and accessibility findings below. Existing preview evidence corroborates the
+  three previously known filter/catalog/mobile defects.
+- Current npm audit: 22 affected package entries, including transitive entries:
+  1 critical, 9 high, 12 moderate. These are dependency-inventory severities,
+  not 22 demonstrated vulnerabilities in the deployed static website.
+- Known-credential-pattern scan: no matches in 668 current tracked text files;
+  no tracked .env/.npmrc files. Git history and arbitrary secret formats were
+  not covered.
+
+Reviewed application routes, React components, utilities, content schemas/data,
+browser scripts, Python helpers, package/configuration files, and local workflow.
+The historical narrative, military rules, all external URLs, authoritative book
+editions, production Pages settings, and live transcription were not validated.
+No current compromise or current unpublished-book disclosure was demonstrated.
+Task-owned browsers/servers are closed. The entire public/archives/91st source
+directory remains unchanged. No publishing, account changes, or schedules occurred.
+
+Priority convention: P2 = fix during stabilization; P3 = lower urgency. Findings
+are high confidence unless explicitly identified as source-inspection evidence.
+Items below retain the initial review evidence and source-line references.
+Resolution labels and the stabilization checkpoint distinguish current results.
+
+Findings and resolution status
+==============================
+
+F01 [P2] Safely serialize citation metadata into HTML.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  A benign mixed-case closing-script marker in book metadata escapes Astro 4's
+  define:vars boundary and becomes real HTML. Malicious metadata would need to
+  enter a build; the route does not accept public request input.
+  Repair: escaped JSON data block, escaping every '<', parsed by the page script.
+  This application patch can keep Astro 4. It matches the maintainer advisory:
+  https://github.com/withastro/astro/security/advisories/GHSA-j687-52p2-xcff
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/books/[...slug].astro:609
+
+F02 [P2] Enforce the publication flag everywhere.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Completed books with isPublished:false are omitted from Books but still enter
+  homepage candidates, generated detail routes, and comps links. No such current
+  book was found; this is a reproduced future publication-control defect.
+  Repair: shared published/completed predicate across all consumers and routes.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/index.astro:8
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/books/[...slug].astro:9
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/comps/[course].astro:25
+
+F03 [P2] Validate chart imports before replacing any state.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  An envelope containing data:{} is accepted, resets EAD to 2024 and clears
+  promotions. Numeric identity.name later crashes Save. schemaVersion:999 is
+  accepted. Validate required sections, scalar types, limits, and supported
+  versions; retain the existing chart on failure and show a useful error.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/ribbonChartFile.ts:64
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:811
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:1326
+
+F04 [P2] Protect unsaved chart edits during file replacement.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Loading another chart silently discards dirty work and clears the unload guard,
+  including when the imported envelope is incomplete. Validate first, then confirm
+  replacement if dirty; cancellation must preserve the current state.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:1329
+
+F05 [P2] Preserve children's original grade/year anchors.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Moving Start Year forward 20 years and back changes a stored Kindergarten grade
+  from 0 to 13 to -1, leaving Pre-K in the original year. Keep an unclamped anchor
+  and clamp only displayed labels. A reversible year change must restore the chart.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:883
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:1098
+
+F06 [P2] Correct imported block ranges outside the career window.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  With EAD 2024, an assignment covering 2000–2002 becomes an invented 2024–2024.5
+  block in editor/comparison. Intersect ranges correctly and reject/omit ranges
+  with no overlap, with an explanation rather than inventing an assignment.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:784
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/ribbonChartFile.ts:93
+
+F07 [P2] Prevent stale file reads from winning upload races.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Select slow file A, then B: B loads, then A replaces it when A finishes. Track
+  the active request per slot and invalidate it on replacement/removal. Apply the
+  same protection to the editor's file load.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/JoinSpouseRibbonChartPage.tsx:214
+
+F08 [P2] Preserve publication years and date-only calendar values.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  25 existing numeric year values are interpreted as milliseconds since 1970,
+  rendering/exporting 1969 on this Chicago build. Example: publish:1875.
+  Separately, four Jan-1 book dates export the previous year because UTC midnight
+  is formatted locally. The January 1947 document displays December 31, 1946.
+  Repair: explicitly model year-only precision and use consistent date-only/UTC
+  formatting. Do not invent a publication month/day or alter genuine timestamps.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/content/config.ts:13
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/citations.ts:30
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/books.ts:32
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/historic-documents/[...slug].astro:13
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/historic-documents/index.astro:50
+
+F09 [P2] Handle schema-valid optional metadata without build failures.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Missing created makes the homepage sort call getTime() on undefined; missing
+  status makes comps call toLowerCase() on undefined. Synthetic valid inputs
+  reproduce both; today's corpus still builds. Use safe predicates and a stable
+  date-sort fallback, omitting unavailable date text instead of Invalid Date.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/index.astro:9
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/index.astro:37
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/comps/[course].astro:25
+
+F10 [P2] Keep the full Future Reading dataset when searching/sorting.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Filtering 4 rows to 1, then clearing, leaves 1. The script rereads only the
+  surviving DOM rows. Keep a master dataset or hide rows rather than deleting
+  them; changing/clearing a query must restore excluded rows.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/public/scripts/future-reading.js:52
+
+F11 [P2] Repair catalog and book links with known local destinations.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Two b29-korean-war catalog URLs target nonexistent captures; three Mahan links
+  omit their class path. Correct catalog metadata/aliases without modifying the
+  captured source. Existing book destinations are /books/600/on-war,
+  /books/600/the-art-of-war, and /books/601/the-landmark-thucydides.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/data/archives/91st-catalog.json:25
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/content/books/600/Mahan on Naval Strategy.md:398
+
+F12 [P2] Reject unrelated drag/drop input in promotion cells.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Ordinary text/link drops have empty custom MIME data. Number("") becomes zero,
+  moving the first promotion milestone to the drop year. Require the chart's
+  custom MIME type, a valid index, and an active matching drag source.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:1485
+
+F13 [P2/P3] Make PDF text/color handling reliable.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Unicode names/labels become question marks, e.g. 李明 becomes ??. Preserve text
+  through appropriate font/encoding support and explicitly report unsupported
+  glyphs instead of silently corrupting them.
+  An imported color:"constructor" also passes validation and crashes export via
+  an inherited-property lookup. Use a color allowlist and own-property lookup.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/joinSpousePdf.ts:52
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/joinSpousePdf.ts:220
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/ribbonChartFile.ts:102
+
+F14 [P2] Contain the ribbon toolbar on mobile.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Prior verified preview: a 390px viewport has a 930–938px document width. Add
+  proper flex/grid shrinking and wrapping. The chart can retain its intended
+  internal horizontal scroller without widening the entire document.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/css/ribbon-chart.css:35
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/css/ribbon-chart.css:1414
+
+F15 [P2] Hide inactive flashcard faces semantically.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  The accessibility tree exposes both answers before Show ideas. CSS backface
+  visibility is insufficient. Hide/inert the inactive face and describe the
+  reveal state/control relationship for assistive technology.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/flashcards.astro:254
+
+F16 [P2] Make sorting and timeline accordions real keyboard controls.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Sort headers have click handlers but no keyboard buttons or aria-sort.
+  Timeline's focusable header lacks button semantics and Space scrolls the page.
+  Use native buttons, expanded/sort state, and controlled-panel relationships.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/books.astro:155
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/future-reading.astro:34
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/EraCard.tsx:26
+
+F17 [P2] Manage keyboard focus in the 30-year chart dialog.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Opening it leaves focus on the background opener; the background stays
+  interactive. Move/trap focus, isolate the background, and restore focus on close.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:2105
+
+F18 [P2/P3] Validate and safely serialize new book metadata.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  Quoted titles such as The "Quoted" Title produce invalid YAML. Blank authors
+  plus complete produce author:[], causing citation generation to throw.
+  Non-ASCII/punctuation-only titles produce the shared destination .md.
+  Serialize all string fields safely, require useful author input, reject empty
+  filename stems, and preserve overwrite confirmation. Apply serialization fixes
+  to the migration helper if it is retained; do not run a content migration.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/add-book.py:11
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/add-book.py:25
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/add-book.py:64
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/retired-workflows/2026-10-12/migrate-unified-books.py.txt:86
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/citations.ts:39
+
+F19 [P2] Establish a usable application type-check command.
+  Resolved: pinned tooling, approved lock update, clean install and full Astro check pass.
+  tsconfig includes nonexistent astro/content type declarations. Plain tsc also
+  scans saved archive .js files that contain captured HTML and generates thousands
+  of irrelevant syntax diagnostics. Scope checks to application source, correct
+  the type configuration, add a reproducible checker, and resolve the 21 template
+  errors without weakening strictness or editing archived source.
+  The Books template reads summary although the collection schema has no summary,
+  so it cannot receive that metadata as intended. Align it with the actual model.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/tsconfig.json:4
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/books.astro:46
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/flashcards.astro:284
+
+F20 [P2] Add targeted regression coverage to the stabilization fixes.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  The four existing tests do not cover content routes, chart imports, dirty-file
+  replacement, year shifting, upload races, filter reset, or citation escaping.
+  Convert the demonstrated cases into meaningful tests and add generated-link
+  validation plus source checks to the local verification command. CI can use
+  the same commands if repository checks are introduced; no deployment changes.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/package.json:5
+
+F21 [P3] Restore book tools on narrow screens.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  At 390px, citations, copy, reading options, and the TOC are entirely hidden by
+  CSS. Provide a compact/collapsible mobile placement so features remain reachable.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/books/[...slug].astro:602
+
+F22 [P3] Correct the Flashcards title and feedback formatting.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  The built page has an empty title. Feedback text uses literal backslash-n
+  separators and an incorrectly escaped whitespace regex. Supply Layout title
+  and correct newline/regex literals. No issue was submitted during the review.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/flashcards.astro:55
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/flashcards.astro:330
+
+F23 [P3] Make historical cleanup explicitly invoked and non-destructive.
+  Resolved locally in the approved stabilization pass; see the checkpoint for tests/limits.
+  cleanup_md.py reads/writes a tracked historic document at import time. Its TOC
+  transform discards everything after the TOC if the exact Preface terminator is
+  absent. Separate a pure transform from guarded writes; validate boundaries and
+  stage a reviewable result. Source inspection only; this helper was not run.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/scripts/cleanup_md.py:4
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/scripts/cleanup_md.py:40
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/scripts/cleanup_md.py:92
+
+F24 [P2] Fix the transcription runtime import if the helper is retained.
+  Resolved by retirement, 12 October 2026; original code is archived as text and
+  its former command stops before loading models or processing input.
+  Runtime WhisperModel is always typing.Any, so real construction throws even
+  when the dependency is installed. Lazily import the real class in main and
+  retain dependency-free utility imports. Real models were not downloaded/run.
+  Original source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/retired-workflows/2026-10-12/scripts--fastwhisper_cli.py.txt:27
+
+F25 [P2] Correct subtitle format separators.
+  Resolved by retirement, 12 October 2026; no supported subtitle writer remains.
+  SRT contains periods and WebVTT contains commas; the intended formats use comma
+  and period respectively. Test writer output, not only timestamp arithmetic.
+  Original source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/retired-workflows/2026-10-12/scripts--fastwhisper_cli.py.txt:54
+  References: https://www.w3.org/TR/webvtt1/#webvtt-timestamp
+    https://www.loc.gov/preservation/digital/formats/fdd/fdd000569.shtml
+
+F26 [P2] Prevent transcription outputs from overwriting sources/results.
+  Resolved by retirement, 12 October 2026; the old command performs no I/O.
+  Once model loading is repaired, a batch with one output file keeps only the
+  final transcript; an output equal to its input overwrites that input. Synthetic
+  files and a stub model reproduce both. Preflight aliases/collisions and require
+  unambiguous per-file batch output before loading any model or writing files.
+  Original source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/retired-workflows/2026-10-12/scripts--fastwhisper_cli.py.txt:131
+
+F27 [P3] Improve repository hygiene and remove misleading setup behavior.
+  Resolved: environment hygiene, postinstall removal and approved dependency cleanup are applied.
+  Ignore .env variants with an explicit example-file exception, project virtual
+  environments, and Python caches. The two tracked .pyc files were removed and
+  bytecode caches ignored during workflow retirement on 12 October 2026.
+  Environment-file/venv hygiene is now fixed; no secret disclosure was observed.
+  The esbuild postinstall helper calls a nonexistent install method and does
+  nothing. Remove it and review whether the direct esbuild dependency is needed.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.gitignore:18
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/package.json:10
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/scripts/__pycache__/
+
+F28 [P3] Correct workflow documentation after the decisions below.
+  Unified/generated reading documentation now matches the implemented system.
+  Corrected during workflow retirement, 12 October 2026: README now identifies
+  the active futureReads collection and labels the approved consolidation as
+  pending stabilization. Retired commands and archived tests are distinguished
+  from active tooling. Initial finding: README pointed to a nonexistent index
+  and described unified behavior that current routes did not implement.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/README.md:146
+
+Product decisions and implementation status
+==========================================
+
+D01 Reading-list source of truth and card curation.
+  Four to-read records in books appear on neither Books nor Future Reading.
+  Future Reading reads a separate collection with four different titles.
+  Recommendation: one books collection, completed notes in Books and reading/
+  to-read statuses in Future Reading, preserving every existing record.
+  Choose the intended included statuses before content migration.
+  Separately, flashcards are a curated 62-card dataset versus 121 completed books;
+  60 cards have four source bullets but intentionally display two. Confirm curated
+  versus generated cards and whether two ideas remains the intended presentation.
+  User decisions, 12 October 2026: APPROVED one books collection with completed
+  notes on Books and reading/planned books on Future Reading. APPROVED generated
+  flashcards so usable book notes are covered automatically, respecting publication
+  controls. Implemented: 129 records, 120 completed notes/cards and nine planned
+  entries; four legacy records preserved. See the stabilization checkpoint.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/data/future-reads.ts:15
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/flashcards.astro:38
+
+D02 Meaning of the planner rank selector and promotion history.
+  SCOD calculation begins with the selected rank and only advances. Selecting
+  Lt Col with earlier 2d Lt/Capt milestones labels all historical rows Lt Col.
+  Choose current rank versus rank at EAD, and board versus pin-on semantics.
+  Recommendation: explicit dated rank history, with separately labeled estimates.
+  User decisions, 12 October 2026: APPROVED current rank for the selector and
+  dated pin-on changes for rank history, with board milestones kept separate.
+  Implemented with explicit dated entries and separate board-estimate rows;
+  comparison and PDF export preserve those distinctions.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/components/RibbonChartPage.tsx:309
+
+D03 Planner authority and annual maintenance.
+  CY26 career dates are rolled into other years. Underlying military guidance was
+  not verified in this review. Choose a scenario planner using labeled estimates,
+  or a rules-backed tool with authoritative sources and annual review ownership.
+  Recommendation: estimates until independently verified schedules are maintained.
+  This decision is separate from repairing chart data preservation and UI bugs.
+  User decision, 12 October 2026: APPROVED a hybrid planner using verified,
+  dated guidance where available and clearly labeled editable estimates elsewhere.
+  Implemented with the dated AFPC February 17, 2022 recurring-SCOD reference
+  and editable annual estimates. Unverified exact-date rollover was removed.
+
+D04 Citation accuracy and edition metadata.
+  Current output labeled APA/MLA leaves names as raw display strings, contrary to
+  the official surname-first examples. Some entries put multiple authors in one
+  string; blind splitting would corrupt surname-first names elsewhere.
+  Choose style editions and the expected accuracy contract, plus original versus
+  cited edition/year. Recommendation: structured author/editor/translator and
+  edition metadata, then proper APA 7/MLA 9 and safe BibTeX export.
+  Year/timezone fixes can proceed independently; guessing authors/editions cannot.
+  User decision, 12 October 2026: APPROVED APA 7, MLA 9 and BibTeX using the
+  edition actually read. Structured roles/edition metadata, APA 7/MLA 9 and
+  safe BibTeX formatting are implemented. Known metadata corrections have
+  primary sources; other stored editions are retained rather than guessed.
+  A complete copyright-page audit of every read edition is not claimed.
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/utils/citations.ts:13
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/content/books/667/how-data-happened.md:5
+  References: https://apastyle.apa.org/style-grammar-guidelines/references/examples/book-references
+    https://style.mla.org/works-cited/citations-by-format/books/
+
+D05 Framework/dependency modernization scope.
+  Astro 4 is intentionally retained by AGENTS during migration. npm suggests a
+  newer Astro major and integration changes; those require a separate upgrade
+  decision and comparison with actual Pages runtime/package-manager settings.
+  Recommendation: repair the concrete F01 usage now, then plan a tested framework
+  upgrade with preview validation. Do not use a blanket npm audit fix --force.
+  Raw audit counts do not establish production exposure. The critical AVIF issue
+  requires untrusted AVIF processing through Sharp; no application image-service
+  usage or deployed image-processing route was found. Vite/local-image issues
+  concern dev endpoints; loopback binding remains important. esbuild's advisory
+  concerns its serve feature, which this app does not directly use. No SSR adapter,
+  actions, authentication middleware, or server islands were found. No current
+  DOMPurify bypass was demonstrated; its flagged optional modes are unused here.
+  User decision, 12 October 2026: APPROVED the framework upgrade after
+  stabilization, as a separate tested change. Astro stays on major 4 for the
+  stabilization work; Pages compatibility checks remain open.
+  Primary maintainer references for the inventory distinctions:
+    https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2
+    https://github.com/withastro/astro/security/advisories/GHSA-x3h8-62x9-952g
+    https://github.com/vitejs/vite/security/advisories/GHSA-4w7w-66w2-5vf9
+    https://github.com/evanw/esbuild/security/advisories/GHSA-67mh-4wv8-2f99
+    https://github.com/cure53/DOMPurify/releases/tag/2.5.9
+
+D06 Missing historic-document figures and destinations.
+  User decision, 12 October 2026: APPROVED restoring figures from a reliable online
+  scan if a matching source can be found. Verify edition, figure labels and scan
+  completeness before restoration; record provenance for the restored assets.
+  Follow-up restoration, 12 October 2026: 37 original figures restored from
+  visually checked scans of the January 1947 second edition. Every restored image
+  has a source, caption, small display preview and linked full-resolution PNG.
+  The user approved the Google Books CAPTCHA; it was completed, and the full
+  311-page Indiana University PDF was retrieved. All eleven prior folded/blank/
+  partial gaps are now restored. Sixteen accepted plates use Indiana's scan and
+  twenty-one use Michigan's. Five previously restored plates have clearer source
+  images or identifying footers. Original tears, wear and surviving border
+  interference are disclosed. Michigan VIII-3 retains its complete time axis;
+  the alternate Indiana page stores some month labels in a separate image.
+  No chart data or lettering have been invented. The original IX-2 link actually
+  pointed to IX-2A; the verified plate label and link are now accurate.
+  All figure links resolve to restored plates. The site builds 150 pages in
+  11.60 seconds, and the figures fit a 390px viewport without horizontal
+  overflow. Full-resolution image navigation works. All 2,487 archive source
+  files retain their original tree hash. Broader chapter/table anchors are now
+  repaired in the stabilization pass.
+  Final validation: all 37 full images preserve their verified native source
+  pixels after lossless rotation where needed. All 148 public/build image files
+  decode and match recorded hashes/dimensions; figure links and IDs pass.
+  Provenance: docs/HISTORIC-FIGURE-RESTORATION.json
+  Initial review: eleven missing figure paths accounted for twelve links;
+  nineteen missing fragment targets accounted for twenty-one references.
+  Matching missing asset bytes were
+  not found in public/content. Existing chapter/table anchors can be mapped and
+  repaired; absent figures need an authoritative source or an explicit gap label.
+  The sources are the University of Michigan scan, corroborated by the Library
+  of Congress edition record, and Indiana University's Google Books scan.
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/content/documents/1943-us-strategic-bombing-survey.md:1656
+
+D07 Editorial readiness and snapshot freshness.
+  User decision, 12 October 2026: APPROVED autonomously completing the five
+  unfinished book-study applications using the notes and reliable sources.
+  Completed: Spin Dictators, How Data Happened, World War II Memory and Contested
+  Commemorations in Europe and Russia, Total Cold War, and Subversion now have
+  concrete research questions, bounded cases, working theses, evidence plans,
+  outlines and limits. New sources distinguish authors' frameworks from proposed
+  analytical applications. Assignment placeholders and generation instructions
+  are removed. Missing bibliographies for Total Cold War and Subversion are filled.
+  Subversion's existing hardcover ISBN is verified against the publisher, which
+  lists 252 pages; its erroneous 5,300-page value is corrected. Original quotation
+  banks are preserved; their inherited page citations are not newly verified
+  against full original books. All five notes have all fourteen numbered sections.
+  Verification: 150 pages built in 11.13 seconds, 107 internal navigation links
+  resolve, all five book pages fit a 390px viewport, and archive bytes are unchanged.
+  Long terms in nested lists caused preexisting mobile overflow; a scoped
+  overflow-wrap rule fixes the book content. Details: docs/BOOK-NOTE-COMPLETION-2026-10-12.txt
+  User decision, 12 October 2026: APPROVED a dated Presidents snapshot and a
+  refresh through today. Completed: visible 2026-10-12 cutoff, manually updated
+  scope, correct route metadata and ongoing-at-snapshot term label. Current
+  officeholders and three selected cabinet roles are verified against official
+  sources. Eight sourced events cover 2025-2026, including current-year Iran
+  operations, the Venezuela raid, tariff ruling and China state visit. Descriptions
+  distinguish ceasefires and announced frameworks from lasting implementation.
+  Biden's stale NATO accession clause is corrected. The 18 earlier entries retain
+  their original data; this is not a new comprehensive historical fact check.
+  Verification: 150-page build passed, 20/9/11 administrations render under the
+  All/Democratic/Republican filters, source links and headings match the data,
+  desktop/phone widths fit, and all protected archive bytes are unchanged.
+  Scoped UI fixes restore missing filter styles, visible focus and readable links.
+  Details: docs/PRESIDENTS-SNAPSHOT-2026-10-12.txt
+  Sources: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/content/books/667/spin-dictators.md:643
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/presidents.astro:6
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/data/presidents.json
+
+D08 Support or retire optional Python workflows.
+  User decision, 12 October 2026: APPROVED retiring audio transcription and old
+  book-list migration. Completed: original scripts, transcription instructions
+  and four timestamp tests are preserved byte-for-byte as historical text with
+  a SHA-256 manifest. Former entry points stop with an explicit retirement message
+  before imports, input processing or writes. Active setup/migration instructions
+  and test guidance are updated; compiled Python caches are removed and ignored.
+  Book notes continue to be maintained directly in the books content collection.
+  The separate add-book and document-cleanup helper findings remain pending.
+  Verification: four archived originals match HEAD, recorded hashes and sizes;
+  five retired-command smoke checks exit safely without writing files. The
+  website still builds 150 pages; archive and original handoff bytes are unchanged.
+  Details: docs/retired-workflows/README.md
+
+D09 Confirm licensing intent.
+  Initial finding: README says MIT and points to LICENSE, but no LICENSE is tracked. Confirm the
+  intended license/scope before adding a legal grant, especially with archived
+  third-party material. Correcting the broken documentation link is straightforward.
+  User decision, 12 October 2026: APPROVED MIT for original website code only.
+  Completed: root LICENSE contains the standard MIT text with an explicit scope
+  statement. Editorial/study content, non-code data, scans/images, third-party
+  archives and third-party code are excluded; their separate rights, licenses
+  and any public-domain status are unchanged. README now states the same scope.
+  The About page explains academic commentary, source attribution, and the
+  case-specific four-factor fair-use basis under 17 U.S.C. section 107, with
+  official links. Academic purpose and citations are not presented as automatic
+  permission. It also explains how to submit correction and takedown requests.
+  The user confirmed shrink@pbvinge.com as the contact address.
+  Details and validation: docs/LICENSE-AND-ACADEMIC-USE-2026-10-12.txt
+  Source: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/LICENSE
+    /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/src/pages/about.astro
+
+Existing integration checks still open
+=====================================
+The prior Mac migration did not establish actual Cloudflare Pages build settings,
+preview behavior/runtime/package manager, Obsidian publisher ownership, laptop-only
+content preservation, or final content cutover. These are separate from code fixes.
+No publishing or additional publisher/schedule is authorized. Full remote-client
+disconnect/reconnect recovery also remains unverified.
+Checkpoint: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com/docs/MAC-SETUP-STATUS.txt
+
+Original implementation sequence (stabilization completed; upgrade follows separately)
+==============================================================================
+1. Publication/serialization safeguards, chart import and data-preservation fixes,
+   date correctness, optional-field guards, and their regression tests (F01–F09).
+2. Restore list/link behavior, fix drag/PDF/mobile/accessibility issues (F10–F17),
+   and establish clean source checks (F18–F20).
+3. Complete smaller usability/hygiene fixes, repair retained helpers, and update
+   documentation (F21–F28). Make the content/model decisions before migrations.
+4. Extract pure planner/import/date functions from the 2,147-line RibbonChartPage
+   once behavior is protected, so future features can be reviewed and tested easily.
+5. A separate framework upgrade and final production integration after D05 and
+   the external setup/cutover checks are resolved.
+
+Evidence retained locally (ignored, synthetic where identified)
+==============================================================
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/build.log
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/astro-check.log
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/astro-diagnostics.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/link-audit.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/fragment-audit.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/planners/
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/routes/FINDINGS.md
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/routes/focused-checks.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/routes/accessibility-check.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/tooling/findings.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/tooling/npm-audit.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/tooling/define-vars-reproduction.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/tooling/helper-reproductions.json
+/Users/shrinkbot/Documents/ChatGPT/pbvinge.com/.local/code-review/tooling/batch-reproduction.json

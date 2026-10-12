@@ -16,8 +16,9 @@ handoff is preserved byte-for-byte in `docs/MAC-HANDOFF.txt`.
   runtime with actual Pages settings before integrating tooling changes.
 - Disable Astro telemetry for task processes with `ASTRO_TELEMETRY_DISABLED=1`.
   Keep shared Node defaults unchanged and bind development servers to loopback.
-- The existing Python tests require no transcription dependencies. Do not run
-  content migration helpers as tests.
+- Audio transcription and historical book migration are retired. Their original
+  code and timestamp tests are preserved as text in `docs/retired-workflows/`;
+  do not install their model dependencies or run archived content helpers as tests.
 - The Obsidian publisher remains unidentified. Do not enable another publisher
   or schedules during this transfer. Keep laptop preservation and final content
   cutover as explicit unresolved checks until verified.

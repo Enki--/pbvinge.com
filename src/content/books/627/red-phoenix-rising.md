@@ -3,7 +3,8 @@ tags: [📚Book]
 title: "Red Phoenix Rising"
 subtitle: "The Soviet Air Force in World War II"
 author:
-- "Von Hardesty, Ilya Grinberg"
+- "Von Hardesty"
+- "Ilya Grinberg"
 category:
 - "History"
 publisher: "University Press of Kansas"

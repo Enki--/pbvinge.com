@@ -1,0 +1,65 @@
+pbvinge.com — code license and academic-use notice
+October 12, 2026 (America/Chicago)
+
+User decision
+=============
+Approved MIT for original website code only, excluding book excerpts, scans,
+and third-party archives. Also requested an About-page academic-use/citation
+notice and a bot email address for takedown requests.
+The user subsequently confirmed shrink@pbvinge.com is the desired contact.
+
+Implementation
+==============
+LICENSE preserves the standard MIT permission/conditions/warranty text beneath
+a separate scope statement. It covers original application/style/build/
+configuration/maintenance code, to the extent owned by Patrick Vinge. The
+public About biography identifies Patrick "Shrink" Vinge, and application
+history begins in 2025; the copyright notice uses 2025-2026.
+
+The grant excludes editorial and study content, non-code content data,
+quotations, bibliographies, flashcards, historical transcriptions, scans,
+images/media and archives, wherever located. Third-party software retains its
+own licenses. Separate licenses and public-domain status are unaffected.
+README's former entire-project MIT claim is narrowed accordingly.
+
+About explains the purpose of the notes, source attribution, the intended
+fair-use basis for copyrighted excerpts, and all four statutory factors.
+It explicitly states that academic purpose, citations and the notice alone
+do not establish fair use. No blanket legality finding, permission from
+publishers, formal DMCA agent designation or guaranteed response deadline is
+claimed. Contact instructions ask for the page, disputed item, original work,
+rights-holder relationship and a reply address.
+
+The user confirmed the existing takedown contact, shrink@pbvinge.com. It is
+retained on About with its matching mailto link. No email was sent or mailbox
+provisioned.
+
+Primary sources checked on October 12, 2026
+=========================================
+MIT canonical text:
+  https://opensource.org/license/mit
+17 U.S.C. section 107, as presented by the U.S. Copyright Office:
+  https://www.copyright.gov/title17/92chap1.html#107
+Official explanation of case-specific fair use and the four factors:
+  https://www.copyright.gov/fair-use/
+Official FAQ on quotations and the absence of a fixed allowed amount:
+  https://www.copyright.gov/help/faq/faq-fairuse.html
+
+This checks the notice's general legal basis; it does not adjudicate fair use
+for each book note, quotation, image or archive item.
+
+Verification
+============
+Fresh Astro 4 build: PASS, 150 pages in 10.91 seconds.
+Browser: About headings, notice, official source links and existing mailto link
+render correctly; no warning/error logs. Desktop (1280px) and phone (390px)
+document/content widths fit, with screenshots visually inspected.
+All 2,487 protected archive files retain the baseline SHA-256 tree:
+  979d57273d264c1ba8fd9ab45f3ee5548f2c56af3f4ad20397d2092be36541f3
+Original docs/MAC-HANDOFF.txt still matches HEAD byte-for-byte.
+Git diff whitespace check: PASS.
+The contact address is confirmed by the user. Mailbox delivery/monitoring was
+not tested.
+Task-owned preview/tab are closed and temporary viewport is reset.
+Evidence: .local/about-license-build.log and .local/about-license/ (ignored).
+No publishing, push, merge, hosting change or external communication.

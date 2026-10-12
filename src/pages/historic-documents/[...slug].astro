@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { formatCalendarDate, type PublicationDate } from '../../utils/dates';
 
 export async function getStaticPaths() {
   const docs = await getCollection('documents', ({ data }) => data.isPublished !== false);
@@ -10,10 +11,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-function fmtDate(d?: string | Date) {
-  if (!d) return '';
-  const date = new Date(d);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+function fmtDate(d?: PublicationDate) {
+  return formatCalendarDate(d);
 }
 ---
 
@@ -71,6 +70,8 @@ function fmtDate(d?: string | Date) {
   .content :global(li) { margin: 0.35rem 0; }
   .content :global(blockquote) { margin: 1.5rem 0; padding: 0.75rem 1rem; border-left: 4px solid var(--border-lighter); background: var(--hover-row); }
   .content :global(img) { max-width: 100%; height: auto; display: block; margin: 1.25rem auto; border-radius: 6px; }
+  .content :global(figure) { margin: 2rem 0; scroll-margin-top: 6rem; }
+  .content :global(figcaption) { font-size: 0.95rem; line-height: 1.5; }
   .content :global(pre) { overflow-x: auto; padding: 1rem; background: #0b1020; color: #e5e7eb; border-radius: 8px; font-size: 0.95rem; }
   .content :global(code) { background: var(--surface-subtle); padding: 0.1rem 0.3rem; border-radius: 4px; }
   .content :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; border-spacing: 0; }

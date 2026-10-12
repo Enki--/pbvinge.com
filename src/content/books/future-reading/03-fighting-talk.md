@@ -8,5 +8,8 @@ coverImage: "https://covers.openlibrary.org/b/id/2349782-L.jpg"
 tags:
   - "Leadership"
   - "Strategy"
+cover: "https://covers.openlibrary.org/b/id/2349782-L.jpg"
+status: "to read"
+isPublished: true
 ---
 

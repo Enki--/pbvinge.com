@@ -1,0 +1,70 @@
+Presidents reference snapshot — 12 October 2026
+
+Decision and scope
+  The user approved a dated snapshot and requested an update through today.
+  src/data/presidents.json stores the 2026-10-12 cutoff. The page renders that
+  calendar date in UTC, avoiding a previous-day label in western time zones.
+  The public description says that this is a selected, manually updated reference.
+  The ongoing administration is explicitly labeled "ongoing at snapshot".
+  The route description now includes the second Trump administration and cutoff.
+
+Content refreshed
+  Current official pages list Donald Trump and JD Vance, with Marco Rubio at
+  State, Pete Hegseth at defense leadership and Scott Bessent at Treasury.
+  The White House styles Hegseth "Secretary of War". The entry links Executive
+  Order 14347, which established that as a secondary title to Secretary of Defense.
+  It does not infer a subsequent statutory rename from a public-facing title.
+  Current officeholder sources were checked on 12 October; that is the check date,
+  not a claim that each official biography was published or updated on that date.
+  Dated corroboration also reaches October: Trump on October 10, Vance on October 8
+  and Bessent in a Treasury release on October 9.
+
+  Eight selected events now cover:
+    20 January 2025 — inauguration.
+    21–22 June 2025 — Operation Midnight Hammer strikes on Iranian nuclear sites.
+    4 July 2025 — H.R. 1 enacted as Public Law 119-21.
+    October 2025–September 2026 — Gaza ceasefire and incomplete implementation.
+    3 January 2026 — Operation Absolute Resolve and Maduro/Flores capture.
+    20–24 February 2026 — IEEPA tariff ruling, termination and implementation.
+    February–October 2026 — Operation Epic Fury, ceasefire and renewed strikes.
+    23–25 September 2026 — Xi Jinping's state visit to Washington.
+
+  Each refreshed officeholder/event has adjacent source links. The Iran entry
+  explicitly attributes its latest assessment to CRS on 5 October; it does not
+  treat an April ceasefire as a permanent resolution. The Gaza entry distinguishes
+  transitional bodies established but not operating in Gaza from disarmament
+  not implemented, according to the UN September report. Announcements and
+  diplomatic talks are not presented as proof of lasting peace or policy success.
+  The stale Biden-era NATO clause now gives Finland's and Sweden's accession dates.
+
+Primary source trail
+  Full event/cabinet source URLs are stored beside their claims in presidents.json.
+  Additional dated officeholder corroboration:
+    https://www.whitehouse.gov/videos/president-trump-gaggles-with-press-at-joint-base-andrews-oct-10-2026/
+    https://www.whitehouse.gov/videos/vice-president-jd-vance-holds-press-conference-on-fighting-visa-fraud/
+    https://home.treasury.gov/news/press-releases/sb0654/
+  The CRS 5 October IN12692 version 5 PDF was read through EveryCRSReport's mirror
+  of the original government report; its on-page link is explicitly labeled mirror.
+  Direct Congress/CRS fetches were unavailable. The official UN September report
+  was accessible as indexed official text; direct page/PDF fetches were blocked.
+  No secondary editorial interpretation was substituted for those reports.
+
+UI and verification
+  President names are h2 headings, with cabinet/event subsections at h3.
+  Source links are readable in the existing dark and light themes.
+  Existing unstyled party filters now have spacing, active-state contrast and
+  visible keyboard focus. Party badges keep their labels on one line.
+  Astro 4 production build: 150 pages, successful.
+  Browser: All 20 administrations; Democratic 9; Republican 11.
+  React hydration and filters work; no browser errors were recorded.
+  Rendered snapshot date, metadata, headings and all 18 source links match the data.
+  Desktop and phone layout checks passed without horizontal card/page overflow.
+  The 18 entries before Biden retain their original data. They were not subjected
+  to a comprehensive new historical fact check in this update. Event coverage is
+  selective; the snapshot does not claim to catalogue every event through today.
+  Protected archive: all 2,487 files unchanged; tree SHA-256
+    979d57273d264c1ba8fd9ab45f3ee5548f2c56af3f4ad20397d2092be36541f3
+  Local QA evidence: .local/presidents-snapshot/ and .local/presidents-build.log.
+
+Delivery
+  Local feature-branch changes only. No publishing, merge, push or scheduled refresh.

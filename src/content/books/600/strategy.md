@@ -3,7 +3,7 @@ tags: [📚Book]
 title: "Strategy"
 subtitle: "Second Revised Edition"
 author:
-- "Hart B. H. Liddell"
+- "B. H. Liddell Hart"
 category:
 - "History"
 publisher: "Penguin"
@@ -17,6 +17,7 @@ created: 2025-08-06 11:54:27
 updated: 2025-08-06 11:54:27
 class: "600"
 sequence: "10"
+citation: {"title": "Strategy", "edition": "2nd rev. ed."}
 ---
 
 # Strategy

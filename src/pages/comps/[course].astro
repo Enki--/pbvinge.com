@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { courseStudyGuides } from '../../data/comps';
+import { isPublishedBookNote } from '../../utils/books';
 
 export async function getStaticPaths() {
   return Object.keys(courseStudyGuides).map((course) => ({
@@ -22,7 +23,7 @@ function normalizeLookupTitle(value: string) {
 
 const noteBooks = await getCollection(
   'books',
-  ({ data }) => data.class === course && data.status.toLowerCase() === 'complete',
+  ({ data }) => data.class === course && isPublishedBookNote(data),
 );
 const noteBookByTitle = new Map(
   noteBooks.map((book) => [normalizeLookupTitle(book.data.title), book]),

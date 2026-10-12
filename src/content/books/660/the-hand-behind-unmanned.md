@@ -1,13 +1,14 @@
 ---
 tags: [📚Book]
-title: "The Rise of Unmanned Warfare"
-subtitle: ""
+title: "The Hand Behind Unmanned"
+subtitle: "Origins of the US Autonomous Military Arsenal"
 author:
-- "Jacquelyn Schneider, MacDonald"
+- "Jacquelyn Schneider"
+- "Julia Macdonald"
 category:
 - "Education"
 publisher: "Oxford University Press"
-publish: 2023-12-15
+publish: 2025
 pages: 281
 isbn10: "0190064382"
 isbn13: "9780190064389"
@@ -15,7 +16,7 @@ cover: "http://books.google.com/books/content?id=VdE_EQAAQBAJ&printsec=frontcove
 status: "Complete"
 created: 2026-04-26 13:04:51
 updated: 2026-04-26 13:04:51
-class: ""
+class: "660"
 sequence: "10"
 ---
 

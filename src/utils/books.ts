@@ -1,4 +1,24 @@
+import { formatCalendarDate, timestampValue, type PublicationDate } from './dates';
+
 export type BookStatus = "complete" | "reading" | "to read" | "tbr" | "tbd" | string;
+
+interface PublicationState { isPublished?: boolean; status?: string; }
+
+export function isPublishedBookNote(data: PublicationState): boolean {
+  return data.isPublished !== false && data.status?.trim().toLowerCase() === 'complete';
+}
+
+export function isPublishedPlannedBook(data: PublicationState): boolean {
+  return data.isPublished !== false && ['reading', 'to read', 'tbr', 'tbd'].includes(data.status?.trim().toLowerCase() ?? '');
+}
+
+export function compareBookRecency(
+  a: { slug: string; data: { created?: Date; updated?: Date } },
+  b: { slug: string; data: { created?: Date; updated?: Date } },
+): number {
+  return timestampValue(b.data.created ?? b.data.updated) - timestampValue(a.data.created ?? a.data.updated)
+    || a.slug.localeCompare(b.slug);
+}
 
 export function normalizeAuthors(author: unknown): string[] {
   if (Array.isArray(author)) return author.filter(Boolean).map(String);
@@ -29,12 +49,8 @@ export function getStatusColor(status?: BookStatus): string {
   }
 }
 
-export function formatLongDate(date: string | Date): string {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+export function formatLongDate(date?: PublicationDate): string {
+  return formatCalendarDate(date);
 }
 
 export function buildBookSearchString(input: {

@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PresidentsPage from "../components/PresidentsPage";
+import presidentsData from "../data/presidents.json";
 
 const title = "U.S. Presidents Since World War I — pbvinge";
-const description = "Administrations from Woodrow Wilson to Joe Biden with key cabinet members and wars.";
+const description = `U.S. administrations from Woodrow Wilson through Donald Trump’s second term, with selected cabinet members and major events. Snapshot as of ${presidentsData.snapshot.asOf}.`;
 ---
 
 <Layout title={title} description={description}>

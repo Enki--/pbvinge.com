@@ -3,7 +3,8 @@ tags: [📚Book]
 title: "How to Read a Book"
 subtitle: ""
 author:
-  - "Mortimer J. Adler, Charles Van Doren"
+- "Mortimer J. Adler"
+- "Charles Van Doren"
 category:
   - "Language Arts & Disciplines"
 publisher: "Simon and Schuster"

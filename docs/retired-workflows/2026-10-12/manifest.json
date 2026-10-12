@@ -1,0 +1,30 @@
+{
+  "retiredOn": "2026-10-12",
+  "reason": "User approved retiring audio transcription and historical book migration.",
+  "files": [
+    {
+      "originalPath": "scripts/fastwhisper_cli.py",
+      "archivePath": "docs/retired-workflows/2026-10-12/scripts--fastwhisper_cli.py.txt",
+      "sha256": "8d7cafa2cb2c35b607d1b21a31b72ef77e7abf2e5d8e93a817ac1c4fde05b30c",
+      "bytes": 5815
+    },
+    {
+      "originalPath": "migrate-unified-books.py",
+      "archivePath": "docs/retired-workflows/2026-10-12/migrate-unified-books.py.txt",
+      "sha256": "2c8d2714be4c4c5ec15b8faba809de72b56c9602e1e40aa5a53ae78c2865f4d0",
+      "bytes": 5035
+    },
+    {
+      "originalPath": "tests/test_transcribe_utils.py",
+      "archivePath": "docs/retired-workflows/2026-10-12/tests--test_transcribe_utils.py.txt",
+      "sha256": "84060b6c8c7fa7a80061dcd7e9bf11ae33bd84fb255a54f7dd5b559b88ede446",
+      "bytes": 811
+    },
+    {
+      "originalPath": "scripts/README_TRANSCRIBE.md",
+      "archivePath": "docs/retired-workflows/2026-10-12/scripts--README_TRANSCRIBE.md.txt",
+      "sha256": "40453ebcd63a6569f678b79ffe86943a19738bc82ef3dd049a52613c3d1415d4",
+      "bytes": 832
+    }
+  ]
+}

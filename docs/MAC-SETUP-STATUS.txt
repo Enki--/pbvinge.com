@@ -1,3 +1,20 @@
+LATEST LOCAL CHECKPOINT — OCTOBER 12 STABILIZATION
+
+The original setup evidence below is historical. The approved stabilization is
+implemented locally on codex/mac-mini-transfer. See
+  docs/STABILIZATION-2026-10-12.txt
+for current results: 149 pages, 120 completed note/cards, nine planned records,
+24 Node test groups (including 22 chart checks), 10 Python helper tests, strict
+tsc pass, zero missing local targets/fragments, and browser mobile/focus/citation
+verification. All 2,487 archive files and MAC-HANDOFF bytes remain unchanged.
+The preview and task-owned browser are stopped. No push/deployment occurred.
+
+The user subsequently approved completing all fixes and publishing. The pinned
+checker/dependency cleanup and lock update are applied, clean npm ci passes and
+full Astro checking passes with 0 errors/warnings. This checkpoint uses Astro 4;
+the separately approved framework upgrade follows before production release.
+The Pages/Obsidian/laptop/remote-recovery cutover checks remain open separately.
+
 pbvinge.com — Mac mini setup acceptance
 October 12, 2026 (America/Chicago)
 
@@ -75,6 +92,9 @@ Before final cutover/integration: inspect actual Pages build settings/log,
 package manager/runtime/preview policy; identify Obsidian publishing owner;
 verify laptop-only work/backup and one normal development cycle; exercise a
 full remote-client disconnect/reconnect. These were not inferred from local tests.
-Real transcription and historical content migration remain optional separate work.
+At this initial checkpoint, transcription and historical migration were optional.
+Both were subsequently retired by the user's October 12 decision; see
+docs/retired-workflows/README.md. The original four timestamp tests are historical
+reference, no longer an active development check.
 No publishing, main merge, hosting change, competing publisher, schedule,
 host restart, or remote-access setting change was performed.

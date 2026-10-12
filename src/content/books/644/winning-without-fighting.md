@@ -4,7 +4,10 @@ tags:
 title: Winning Without Fighting
 subtitle: Irregular Warfare and Strategic Competition in the 21st Century
 author:
-  - Rebecca Patterson, Susan F. Bryant, Ken Gleiman, Mark Troutman
+- "Rebecca Patterson"
+- "Susan F. Bryant"
+- "Ken Gleiman"
+- "Mark Troutman"
 category:
   - Technology & Engineering
 publisher: ""

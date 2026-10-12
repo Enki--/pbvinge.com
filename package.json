@@ -7,18 +7,21 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "postinstall": "node -e \"(async()=>{try{const esbuild=require('esbuild'); if(typeof esbuild.install==='function'){await esbuild.install();} }catch(e){console.error('esbuild postinstall helper failed, continuing', e);} })()\""
+    "check:types": "node scripts/check-source.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "test:helpers": "python3 -m unittest discover -s tests -p test_helpers.py -v"
   },
   "dependencies": {
     "@astrojs/react": "3.6.3",
     "@astrojs/tailwind": "5.1.5",
     "astro": "4.16.19",
-    "dompurify": "^2.4.0",
-    "esbuild": "^0.18.17",
-    "jsdom": "^22.1.0",
-    "marked": "^5.1.1",
     "tailwindcss": "^3.4.1",
     "react": "19.2.8",
     "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.4",
+    "typescript": "5.9.3",
+    "jsdom": "^22.1.0"
   }
 }
