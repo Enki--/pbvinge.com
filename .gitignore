@@ -17,3 +17,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# local migration evidence and regeneratable Astro metadata
+.local/
+.astro/

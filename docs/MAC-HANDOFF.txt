@@ -1,0 +1,274 @@
+pbvinge.com — Mac mini transfer plan and development handoff
+Prepared October 12, 2026 (America/Chicago)
+Status: planning complete; transfer and cutover have not been performed.
+
+OUTCOME
+
+Make the existing Mac mini the primary machine for development and sustained
+Codex work. Keep the live website on its current Cloudflare Pages hosting.
+Use a fresh Git checkout, rebuild dependencies on the Mini, and verify the
+whole workflow before retiring the laptop as the primary development machine.
+
+Registered destination: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Existing connected host: Shrinks-Mac-mini.local
+Repository: https://github.com/Enki--/pbvinge.com
+Source laptop: /Users/patrickvinge/Code/pbvinge.com
+Original planning chat: codex://threads/01a13052-94ea-78f3-8b52-c99b98e47dc6
+
+Patrick registered this destination on the Mini on October 12, using the
+Documents/ChatGPT location shared by his other projects. Verify its contents
+and account before cloning; remote filesystem contents have not yet been
+inspected from this planning chat.
+
+VERIFIED BASELINE
+
+Before adding this handoff file, the laptop working tree was clean on main.
+Only main and origin/main were present; no local tags or stashes were listed.
+There are no Git submodules or tracked symlinks.
+
+Laptop HEAD, cached origin/main, and the live GitHub main branch all matched:
+  04806a28d36380296bbb2dd07026814529071586
+Tracked Git tree:
+  bf984dc853ea27bad69ade3b6cfae6a350b348fa
+
+The repository is public. Its baseline contains 2,733 tracked files totaling
+about 309 MB, including about 302 MB of public assets. Preserve the complete
+public/archives/91st directory: these snapshots are source assets.
+
+The site declares Astro static output. README documents automatic Cloudflare
+Pages deployment on pushes to main. Actual Pages settings and its last
+successful build log remain to be checked.
+
+A temporary copy of the exact tracked baseline built successfully using the
+laptop's existing node_modules and the bundled Node v24.19.0: 150 pages built
+in 11.83 seconds. No warning/error matches were found in the build log. This
+checks the existing installation; it does not prove a fresh install reproduces
+it. Temporary diagnostic log:
+  /private/tmp/pbvinge-transfer-baseline.zY6PRq/build.log
+
+All four existing Python timestamp tests also passed. These do not validate
+real transcription or other Python helper workflows.
+
+WHAT TRAVELS
+
+Clone through Git:
+  src, public (including archives), scripts, tests, root project files,
+  and Git history. Carry this handoff file through the migration branch or
+  stage it separately at /Users/shrinkbot/Documents/ChatGPT/pbvinge-MAC-HANDOFF.txt. Stage
+  it outside the destination checkout so the clone directory remains absent.
+  It is currently a local planning artifact.
+
+Recreate on the Mini:
+  node_modules, dist, and any required Python virtual environment.
+  Existing native Node binaries target Darwin ARM64. The Python venv embeds
+  laptop/Homebrew interpreter paths. Neither is a portable installation.
+
+Inspect separately if still needed:
+  Obsidian publishing scripts/configuration, required local environment files,
+  and user-exported ribbon-chart/planner JSON downloads outside the repository.
+  No project .env, .npmrc, or environment-variable usage was found in the audit.
+
+Use the Mini's normal GitHub authentication. The laptop checkout's local Git
+core.sshCommand selects ~/.ssh/pbvinge_com_codex; a clone does not carry that
+setting. A public clone can succeed without proving write access. Verify both
+the repository identity and authenticated push readiness. Git-driven Pages
+deployment does not require copying a Cloudflare token to the Mini.
+
+PHASE 1 — PRESERVE THE SOURCE AND RECORD THE HOSTING WORKFLOW
+
+1. Recheck the laptop branch, changes, ignored files, stashes, tags, and live
+   GitHub HEAD at execution time. Record new changes rather than assuming the
+   October 12 baseline is still current. Preserve intentional local work.
+2. Create a verified Git bundle of all refs in a separate backup location.
+   Remember that a Git bundle omits uncommitted and ignored files; archive any
+   required local-only files separately. Keep the original checkout intact.
+3. Read the actual Cloudflare Pages project settings and last successful build
+   log: repository, production branch, project root, install/build command,
+   output directory, build image, Node/package-manager versions, environment
+   variable names, and preview-branch policy. Record names without secret values.
+4. Identify the Obsidian-to-repository publishing mechanism. The laptop vault
+   metadata points to /Users/patrickvinge/Documents/The Hive Mind. Narrow
+   searches of launch agents and vault plugin configuration did not identify
+   the publisher, so README's automation claims remain unverified. Determine
+   its source directory, trigger, target checkout, and whether it pushes main.
+
+Exit condition: current work is recoverable and the hosting workflow is
+recorded. An unidentified publisher blocks final cutover and competing content
+automation; read-only cloning and isolated build checks can proceed while it
+is investigated.
+
+PHASE 2 — CLONE AND VERIFY THE UNCHANGED PROJECT ON THE MINI
+
+1. Through the existing connected Mini, check account, architecture, available
+   disk space, Git, Node, package manager, and GitHub authentication. Check for
+   an existing pbvinge.com directory before cloning; preserve it if present.
+   Do not interrupt other running projects to perform these checks.
+2. If the destination is absent, clone:
+     git clone https://github.com/Enki--/pbvinge.com.git /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+3. Verify origin URL, branch, HEAD, clean working tree, tracked file count,
+   and Git tree against the newly recorded source baseline. Git commit/tree
+   identity plus a clean checkout verifies the tracked source and asset bytes.
+   Investigate missing archive files, checkout filters, or local changes.
+4. Create a working branch such as codex/mac-mini-transfer. If that branch
+   already exists, inspect it and preserve its work before choosing the next
+   step. Establish authenticated write readiness with an appropriate GitHub
+   auth check and a dry-run push to the migration branch, never to main.
+   After the unchanged-source check passes, copy the staged handoff into docs
+   on this branch; compare and preserve any existing handoff rather than
+   overwriting it blindly.
+
+Exit condition: source transfer is verified independently of dependency repair.
+
+PHASE 3 — MAKE THE DEVELOPMENT INSTALL REPRODUCIBLE
+
+The baseline has no committed dependency lockfile, Node version pin, or
+packageManager field. All declared dependencies use ranges. Existing
+node_modules identifies pnpm 11.19.0 and includes:
+  Astro 4.16.19
+  @astrojs/react 3.6.3
+  @astrojs/tailwind 5.1.5
+  React and React DOM 19.2.8
+
+React is imported directly by components but is not declared directly in
+package.json. A generic fresh install may resolve different dependencies.
+
+1. Preserve the installed-version inventory and successful baseline before
+   resolving anything new. Do not combine this transfer with an Astro upgrade.
+2. Prefer the package manager already used by the successful Pages build.
+   Use npm if Pages uses npm; retain pnpm if it already uses pnpm. If choosing
+   pnpm differs from Pages, make the change explicit and test its Pages build
+   behavior. Keep one lockfile for the selected manager.
+3. Start with the successfully tested Node 24 runtime, preferably v24.19.0 for
+   the initial comparison. Node 24 is a supported LTS line as of this plan.
+   Compare the choice with Pages before adding a repository runtime pin.
+   If a supported Pages runtime is preferred, test that version explicitly.
+4. Declare compatible direct React/React DOM dependencies, resolve the
+   dependency tree, record the exact package-manager version, and save the
+   chosen lockfile on the migration branch. Explain any difference from the
+   known installed baseline.
+5. Build once and commit the reviewed dependency metadata, lockfile, and runtime
+   pin locally on the migration branch. Then prove reproducibility with a
+   second clean installation in a separate temporary checkout of that commit.
+   Use and verify the exact recorded Node and package-manager versions in both
+   installations. With those version-pinned executables on PATH, run:
+     npm ci
+     npm run build
+   Or, if pnpm was selected:
+     pnpm install --frozen-lockfile
+     pnpm run build
+6. Treat .nvmrc/.node-version and lockfile changes as changes to future Pages
+   builds when merged. Pages recognizes those Node pin files; its v3 build
+   image does not infer Node/package-manager versions from package.json engines.
+   Check the preview-deployment policy before publishing the branch, and
+   validate the branch with Pages through the established review workflow.
+
+Exit condition: a fresh Mini install builds using recorded versions and a lock.
+
+PHASE 4 — VERIFY DEVELOPMENT AND OPTIONAL TOOLS
+
+Run the build, start a local preview, and inspect representative desktop and
+mobile views. Compare failures with the known baseline before attributing
+them to transfer. Check:
+  Home and navigation
+  Books: a report, search/filter behavior, cover assets, citations
+  Future reading and historic documents
+  91st archives: navigation and locally preserved images/assets
+  Timeline, presidents, and flashcards
+  Ribbon chart: interaction and JSON export/import
+  Join-spouse planner: interaction and PDF export
+
+Use the exact new installation's build output, not copied laptop dist. A route
+being generated is not evidence that its browser interaction works.
+
+Existing Python test command:
+  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Python is optional for site development. Recreate a venv only for workflows
+still used. The historical book migration helper needs PyYAML and writes
+content, so do not run it as a migration test. Transcription declares
+faster-whisper, but the current wrapper assigns typing.Any instead of loading
+WhisperModel at runtime; real transcription is an existing separate issue.
+If transcription is required, repair and test it separately with a short
+sample before describing that workflow as transferred.
+
+Exit condition: the fresh build and relevant interactive workflows work.
+
+PHASE 5 — CONTINUE CODEX WORK AND CUT OVER
+
+1. Stage this handoff outside the destination as described above, then start
+   the bootstrap chat on the existing connected Mini with the prompt below.
+   Once cloned, register /Users/shrinkbot/Documents/ChatGPT/pbvinge.com as its project.
+   Verify the chat's actual host, working directory, branch,
+   runtime, and Git identity. Existing Codex host connection alone does not
+   register or populate this project.
+2. If preserving this exact conversation through native handoff is desired,
+   first establish a matching saved project on the Mini. Perform the supported
+   handoff from another chat or the app, since the handoff tool cannot move its
+   own invoking chat. Verify the resulting checkout/worktree path afterward.
+3. Establish ownership of content publication before final cutover. Preserve
+   the identified Obsidian publisher until a replacement is verified. Code
+   changes on the Mini should use
+   feature branches and reconcile new upstream content before integration.
+   If moving the publisher, stop the old writer before enabling the new one,
+   copy only the necessary inputs/configuration, and dry-run the new mapping
+   in a nonproduction branch. Keep exactly one automated publishing writer.
+4. Inventory any existing project schedules before redirecting them. Enable
+   future automation only as requested and avoid creating duplicate controllers.
+5. Close and reopen a remote development session, verify normal PATH/runtime
+   availability, and restart the development server successfully. Check the
+   Mini's existing availability arrangement without disrupting its other work.
+6. Record a short Mini acceptance report with destination, branch/commit,
+   runtimes, install/build results, browser checks, Git authentication status,
+   content-writer ownership, and remaining optional work.
+
+Declare development cutover complete only after all required exit conditions
+pass. Keep the laptop checkout and backup through at least one normal
+development cycle. Merge validated tooling changes through the existing
+review/deployment process; any main push may deploy the live site.
+
+ROLLBACK
+
+Before a production merge, resume the preserved laptop checkout if a required
+Mini check fails; preserve Mini work on its feature branch or in a backup.
+If the content publisher was moved, stop its Mini writer before restarting the
+original writer. Reconcile Git histories before either machine pushes again.
+If merged tooling later breaks a Pages build, revert the specific tooling
+commit through the normal Git workflow and verify the resulting deployment.
+
+OPEN CHECKS
+
+Mini runtime, authentication, available disk space, and existing destination
+are not freshly verified. Direct local SSH did not resolve its .local name in
+this session; use the existing supported Codex connection for execution.
+Actual Pages settings and the Obsidian publisher remain to be inspected.
+The handoff file has not been committed, pushed, or sent to the Mini.
+
+MINI START PROMPT (COPY AFTER THE HANDOFF FILE IS STAGED THERE)
+
+Move pbvinge.com development and sustained Codex work to this Mac mini,
+keeping its existing Cloudflare Pages hosting. First read the separately
+staged /Users/shrinkbot/Documents/ChatGPT/pbvinge-MAC-HANDOFF.txt. Inspect the proposed
+destination /Users/shrinkbot/Documents/ChatGPT/pbvinge.com and any applicable AGENTS.md
+instructions. If the folder is absent, clone
+https://github.com/Enki--/pbvinge.com into that exact destination. If it already
+exists, inspect and preserve its work before proceeding. Then read README.md
+and BOOKS_SYSTEM.md in the checkout.
+Verify source identity against the current laptop/GitHub baseline before
+repairing dependencies. The October 12 recorded baseline is
+04806a28d36380296bbb2dd07026814529071586. Work on a codex migration branch.
+Use this Mac's established GitHub authentication; use normal interactive
+login if required. Follow the handoff phases to create a reproducible fresh
+install, build and inspect the site, identify the Obsidian publishing owner,
+and verify a reopened remote development session. Record the acceptance
+report and any unresolved checks. Keep main integration and live deployments
+within our normal review workflow. This request is a development transfer;
+hosting settings and existing scheduled work retain their current scope.
+
+PRIMARY REFERENCES
+
+Node release support schedule:
+  https://github.com/nodejs/Release
+Cloudflare Pages build image, runtime pins, package-manager versions:
+  https://developers.cloudflare.com/pages/configuration/build-image/
+Official OpenAI documentation on remote hosts and workspaces:
+  https://developers.openai.com/blog/mastering-codex-remote-for-engineering

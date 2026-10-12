@@ -1,0 +1,93 @@
+pbvinge.com — verified Mac mini development commands
+October 12, 2026 (America/Chicago)
+
+Checkout: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+Migration branch: codex/mac-mini-transfer
+
+RUNTIME
+
+Native Homebrew Node v24.20.0 and its npm 11.19.0:
+  /opt/homebrew/Cellar/node@24/24.20.0/bin/node
+  /opt/homebrew/Cellar/node@24/24.20.0/bin/npm
+
+Use this PATH in each shell for the recorded versions; shared defaults were
+not changed. The bundled Codex Node v24.19.0 is also present, but has no
+accompanying npm executable in its bin directory. The native Homebrew pair was
+chosen for this fresh install. Node 24 is a supported LTS release line.
+
+RESTART IN A NEW TERMINAL
+
+  cd /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+  export PATH=/opt/homebrew/Cellar/node@24/24.20.0/bin:$PATH
+  export ASTRO_TELEMETRY_DISABLED=1
+  node --version
+  npm --version
+  git status --short --branch
+  npm ci --ignore-scripts --no-audit --no-fund
+  npm run dev -- --host 127.0.0.1 --port 4321
+
+The version commands must print v24.20.0 and 11.19.0. Stop the task-owned server
+with Ctrl-C. Do not start another server if port 4321 is already in use.
+
+BUILD AND PREVIEW
+
+With the same environment:
+  npm run build
+  npm run preview -- --host 127.0.0.1 --port 4321
+
+Open http://127.0.0.1:4321/ from the Mini's browser. The loopback address belongs
+to the Mini; remote access clients need their existing supported access route.
+Build output is dist/. Dependencies and output are regeneratable and ignored.
+
+EXISTING PYTHON TESTS
+
+  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Python 3.14.3 passed all four timestamp tests. The missing faster_whisper
+warning is expected. These tests do not validate real transcription. No Python
+packages or virtual environment were installed for this transfer.
+
+DEPENDENCIES
+
+Exact direct versions resolved by npm 11.19.0:
+  astro                 4.16.19
+  @astrojs/react        3.6.3
+  @astrojs/tailwind     5.1.5
+  react                19.2.8
+  react-dom            19.2.8
+  dompurify             2.5.9
+  esbuild               0.18.20
+  jsdom                22.1.0
+  marked                5.1.2
+  tailwindcss           3.4.19
+
+package-lock.json records every resolved dependency version and integrity.
+The known laptop Astro/integration/React versions were retained and pinned in
+package.json. React/React DOM are now direct dependencies. The remaining
+original manifest ranges were retained and their resolutions frozen in the lock.
+No dependency lifecycle scripts were executed. Native esbuild, sharp, and
+fsevents checks passed. The existing postinstall helper is a no-op and is skipped.
+The initial install reports four upstream deprecation notices. Build is not a
+full TypeScript check or dependency security audit.
+
+RECOVERY AND CONTINUATION
+
+The registered app folder originally held one nested checkout. It was moved,
+including its Git history, into the registered root after clean source identity
+verification. No second primary checkout was created.
+
+Local-only evidence: .local/mac-transfer/ (ignored)
+Source recovery bundle: .local/mac-transfer/source-baseline.bundle
+The bundle includes all refs present before tooling changes and was verified
+by git bundle verify. It preserves this Mini's source history, not unobserved
+laptop files or ignored laptop dependencies.
+
+Read docs/MAC-SETUP-STATUS.txt before resuming. Recheck git status and upstream
+before editing. This branch is local only; main and live hosting are unchanged.
+Cloudflare Pages settings, preview policy, package manager, runtime, and last
+successful build log remain to be checked before integration. No runtime pin
+file or packageManager field was added pending that hosting evidence.
+
+References:
+  https://github.com/nodejs/Release
+  https://developers.cloudflare.com/pages/configuration/build-image/

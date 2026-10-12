@@ -117,7 +117,13 @@ pbvinge.com/
 
 ## Development
 
-Note: In this Codex environment, local Node/npm builds are not available, so commands like `npm install` or `npm run build` will fail. Use CI/Cloudflare Pages builds to validate instead.
+Local development is available on the Mac mini at
+`/Users/shrinkbot/Documents/ChatGPT/pbvinge.com`. See
+[`docs/MAC-DEVELOPMENT.txt`](docs/MAC-DEVELOPMENT.txt) for the verified runtime,
+installation commands, and restart procedure, and
+[`docs/MAC-SETUP-STATUS.txt`](docs/MAC-SETUP-STATUS.txt) for acceptance results.
+The npm lockfile and dependency choices are local migration-branch work pending
+comparison with the existing Cloudflare Pages configuration.
 
 1. Clone the repository:
    ```bash
@@ -126,7 +132,7 @@ Note: In this Codex environment, local Node/npm builds are not available, so com
 
 2. Install dependencies:
    ```bash
-   npm install
+   npm ci --ignore-scripts --no-audit --no-fund
    ```
 
 3. Start development server:
