@@ -1,0 +1,80 @@
+pbvinge.com — Mac mini setup acceptance
+October 12, 2026 (America/Chicago)
+
+RESULT: local development is ready; final hosting/content cutover remains open.
+Host/account: Shrinks-Mac-mini.local / shrinkbot / Darwin ARM64
+Project path: /Users/shrinkbot/Documents/ChatGPT/pbvinge.com
+App project: pbvinge.com; registered path now recognizes this Git repository.
+Branch: codex/mac-mini-transfer (local only)
+Validated tooling commit: 120ad2962c897235bf7bfa930ea95882ef185603
+The acceptance report and generated-metadata ignore follow in a local commit;
+use git rev-parse HEAD to identify that report commit.
+Origin: https://github.com/Enki--/pbvinge.com.git
+
+SOURCE IDENTITY AND PRESERVATION
+Baseline/local main/live GitHub main: 04806a28d36380296bbb2dd07026814529071586
+Baseline tracked tree: bf984dc853ea27bad69ade3b6cfae6a350b348fa
+Baseline: 2,733 tracked files; clean tracked and untracked state before changes.
+Archive subtree: c28fbd9e53231c234eecb216370453b8f42e9849
+All 2,487 archive files preserved; their bytes match source, fresh dist output,
+and second clean checkout. No tracked application/source/asset file changed.
+Exact docs/MAC-HANDOFF.txt SHA-256:
+  f651ab3e5833256b9196cb52de6376dc5556a5d741849acb8be244ecb25ca853
+The single nested clone was moved intact into the requested registered root.
+Verified local all-refs recovery bundle: .local/mac-transfer/source-baseline.bundle
+The original laptop checkout was not accessed or modified by this task.
+
+INSTALL, BUILD AND TESTS
+Existing native runtime: Homebrew Node v24.20.0 / npm 11.19.0.
+Free disk at inspection: 111 GiB. Shared defaults were not changed.
+Native npm install --ignore-scripts --no-audit --no-fund: 450 packages installed.
+First build: PASS, 150 pages in 10.52s; no build warnings/errors.
+Separate checkout of validated commit, same exact Node/npm:
+  npm ci --ignore-scripts --offline --no-audit --no-fund: PASS
+  npm run build: PASS, 150 pages in 10.03s; no build warnings/errors
+  Four existing Python tests: PASS (also passed in primary checkout)
+Python: 3.14.3; no transcription packages or venv installed.
+Locked versions are in package-lock.json and docs/MAC-DEVELOPMENT.txt.
+Lockfile SHA-256 remained unchanged through the clean install:
+  91dd74a8dade97f06ee8d5e0c90bc840cbf5fc396e07ae390c4b70c0d24f97df
+No dependency lifecycle scripts were needed. Native esbuild/sharp/fsevents work.
+Astro telemetry disabled only for task processes. No repository Node pin or
+packageManager field added pending actual Pages evidence. Astro remains 4.16.19.
+Build is not a comprehensive TypeScript check or dependency security audit.
+
+BROWSER AND RESTART
+Fresh dist preview checked with task-owned headless Chrome on loopback.
+Desktop/mobile representative routes render; React controls hydrate.
+Books search/clear/class/grid/table, report/citations/assets, historic document,
+working 91st capture/local assets, timeline/president filters, flashcards pass.
+Ribbon edit/populate/add-block/30-year view and JSON Save/Load round trip pass.
+Join Spouse uploads/alignment/ranges/start year/error retention/removal pass;
+PDF downloads produce one, two and three pages for 10/20/30-year ranges.
+Strict parsing confirms landscape Letter; all six rendered sample pages were
+visually checked. No browser page errors were observed. The supplement loaded
+all four Future Reading covers and HTTP-checked representative local images.
+Every lazy/hidden external Books cover was not forced to load.
+Existing defects confirmed, with application code unchanged:
+  - Future Reading: clear a narrowed filter; 1 of 4 rows remains until reload.
+  - /archives/91st/b29-korean-war/latest/index.html returns 404.
+  - Ribbon editor overflows a 390px mobile viewport (938px document width).
+Fresh login shell had normal Node/npm PATH; dev server served planner HTTP 200.
+Stopped it, opened a second fresh login shell, restarted dev, home HTTP 200.
+All task-owned development/preview servers and headless browsers were stopped.
+See local evidence under .local/mac-transfer/ and browser/results.json.
+
+GIT, RECOVERY AND REMAINING CHECKS
+Existing GitHub Enki-- authentication verified outside the sandbox; repo push
+permission and dry-run push to the migration branch passed. No login needed.
+Remote main is unchanged; migration branch remains absent remotely.
+Project index/change log updated in Computer Setup, preserving existing work
+in backups/pbvinge-onboarding-20261012. Disposable reproduction checkout removed.
+Local start/build/stop instructions: docs/MAC-DEVELOPMENT.txt.
+No action is required to continue local development.
+Before final cutover/integration: inspect actual Pages build settings/log,
+package manager/runtime/preview policy; identify Obsidian publishing owner;
+verify laptop-only work/backup and one normal development cycle; exercise a
+full remote-client disconnect/reconnect. These were not inferred from local tests.
+Real transcription and historical content migration remain optional separate work.
+No publishing, main merge, hosting change, competing publisher, schedule,
+host restart, or remote-access setting change was performed.

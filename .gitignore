@@ -21,3 +21,4 @@ pnpm-debug.log*
 # local migration evidence and regeneratable Astro metadata
 .local/
 .astro/
+/src/env.d.ts
