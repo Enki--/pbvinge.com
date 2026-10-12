@@ -632,10 +632,14 @@ const RibbonChartPage: React.FC = () => {
   const [selectedSegmentId, setSelectedSegmentId] = useState<string | null>("vec1-current");
   const [promotionDropIndex, setPromotionDropIndex] = useState<number | null>(null);
   const [dirty, setDirty] = useState(false);
+  const [isSaving, setSaving] = useState(false);
   const [importMessage, setImportMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const importRequest = useRef(0);
   const dirtyRef = useRef(false);
+  const chartRevision = useRef(0);
+  const saveActive = useRef(false);
+  const mounted = useRef(true);
   const activeReader = useRef<FileReader | null>(null);
   const promotionDragRef = useRef<number | null>(null);
   const dialogRef = useRef<HTMLElement>(null);
@@ -695,7 +699,10 @@ const RibbonChartPage: React.FC = () => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [dirty]);
 
-  useEffect(() => () => { importRequest.current += 1; activeReader.current?.abort(); }, []);
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; importRequest.current += 1; activeReader.current?.abort(); };
+  }, []);
 
   useEffect(() => {
     if (!isCareerViewOpen) return undefined;
@@ -757,6 +764,7 @@ const RibbonChartPage: React.FC = () => {
         nextEnd = clamp(snapHalfYear(drag.initialEnd + deltaYears), drag.initialStart + MIN_SEGMENT_YEARS, drag.upperBound);
       }
 
+      chartRevision.current += 1;
       setChart((current) => ({
         ...current,
         vectors: updateSegmentInRows(current.vectors, drag.rowId, drag.segmentId, (segment) => ({
@@ -787,6 +795,7 @@ const RibbonChartPage: React.FC = () => {
   }, []);
 
   const updateChart = (updater: (current: ChartData) => ChartData) => {
+    chartRevision.current += 1;
     setChart((current) => updater(current));
     dirtyRef.current = true;
     setDirty(true);
@@ -1054,26 +1063,83 @@ const RibbonChartPage: React.FC = () => {
     updateChart((current) => ({ ...current, vectors }));
   };
 
-  const saveChart = () => {
+  const saveChart = async () => {
+    if (saveActive.current) return;
     const payload: RibbonSaveFile = {
       schema: SAVE_SCHEMA,
       schemaVersion: SAVE_SCHEMA_VERSION,
       savedAt: new Date().toISOString(),
       data: chart
     };
-    try { extractRibbonChartData(payload); } catch (error) { setImportMessage(error instanceof Error ? error.message : "Review the chart before saving."); return; }
-    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `${fileSafeName(chart.identity.name)}-17x-ribbon-chart.json`;
-    document.body.append(anchor);
-    anchor.click();
-    anchor.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 0);
-    dirtyRef.current = false;
-    setDirty(false);
-    setImportMessage("Saved chart file.");
+    let serialized: string;
+    try {
+      extractRibbonChartData(payload);
+      serialized = JSON.stringify(payload, null, 2);
+    } catch (error) {
+      setImportMessage(error instanceof Error ? error.message : "Review the chart before saving.");
+      return;
+    }
+    const savedRevision = chartRevision.current;
+    const blob = new Blob([serialized], { type: "application/json" });
+    const fileName = `${fileSafeName(chart.identity.name)}-17x-ribbon-chart.json`;
+    const pickerWindow = window as Window & {
+      showSaveFilePicker?: (options: {
+        suggestedName: string;
+        types: Array<{ description: string; accept: Record<string, string[]> }>;
+      }) => Promise<FileSystemFileHandle>;
+    };
+    let writable: FileSystemWritableFileStream | undefined;
+    saveActive.current = true;
+    setSaving(true);
+    try {
+      if (typeof pickerWindow.showSaveFilePicker === "function") {
+        // Call the picker in this user gesture; only a completed close confirms
+        // that this snapshot was written. Later edits keep their dirty state.
+        const handle = await pickerWindow.showSaveFilePicker({
+          suggestedName: fileName,
+          types: [{ description: "Ribbon chart JSON", accept: { "application/json": [".json"] } }]
+        });
+        if (mounted.current) setImportMessage("Saving chart file…");
+        writable = await handle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+        writable = undefined;
+        if (!mounted.current) return;
+        if (chartRevision.current === savedRevision) {
+          dirtyRef.current = false;
+          setDirty(false);
+          setImportMessage("Saved chart file.");
+        } else {
+          setImportMessage(dirtyRef.current
+            ? "Saved the earlier chart version; newer changes still need saving."
+            : "Saved the earlier chart version; current chart retained.");
+        }
+      } else {
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = fileName;
+        try {
+          document.body.append(anchor);
+          anchor.click();
+        } finally {
+          anchor.remove();
+          window.setTimeout(() => URL.revokeObjectURL(url), 0);
+        }
+        // Anchor downloads cannot report completion or cancellation.
+        setImportMessage("Download requested; any unsaved changes are still protected.");
+      }
+    } catch (error) {
+      if (writable) { try { await writable.abort(); } catch {} }
+      if (!mounted.current) return;
+      const canceled = error !== null && typeof error === "object" && "name" in error && error.name === "AbortError";
+      setImportMessage(canceled
+        ? "Save canceled; current chart retained."
+        : `Could not save chart: ${error instanceof Error ? error.message : "Please try again."} Current chart retained.`);
+    } finally {
+      saveActive.current = false;
+      if (mounted.current) setSaving(false);
+    }
   };
 
   const loadChartFile = (file: File) => {
@@ -1089,6 +1155,7 @@ const RibbonChartPage: React.FC = () => {
         if (dirtyRef.current && !window.confirm("Replace this chart and discard its unsaved changes? Save first if you want to keep them.")) { setImportMessage("Load canceled; current chart retained."); return; }
         if (request !== importRequest.current) return;
         dragRef.current = null; document.body.classList.remove("ribbon-is-dragging");
+        chartRevision.current += 1;
         setChart(normalized);
         setSelectedSegmentId(normalized.vectors.flatMap((row) => row.segments)[0]?.id ?? null);
         dirtyRef.current = false; setDirty(false);
@@ -1104,6 +1171,7 @@ const RibbonChartPage: React.FC = () => {
     importRequest.current += 1; activeReader.current?.abort();
     dragRef.current = null; document.body.classList.remove("ribbon-is-dragging");
     const next = createDefaultChart();
+    chartRevision.current += 1;
     setChart(next);
     setSelectedSegmentId("vec1-current");
     dirtyRef.current = false;
@@ -1525,7 +1593,7 @@ const RibbonChartPage: React.FC = () => {
             <button type="button" className="ribbon-populate-button" onClick={populateTimeline}>Populate Timeline</button>
           </div>
           <div className="ribbon-file-actions">
-            <button type="button" onClick={saveChart}>Save</button>
+            <button type="button" onClick={saveChart} disabled={isSaving} aria-busy={isSaving}>Save</button>
             <button type="button" onClick={() => fileInputRef.current?.click()}>Load</button>
             <button type="button" onClick={() => window.print()}>Print</button>
             <button type="button" onClick={resetChart}>Reset</button>
